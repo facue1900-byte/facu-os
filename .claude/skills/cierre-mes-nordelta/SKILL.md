@@ -92,6 +92,16 @@ python3 "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/radar_ra
 
 El mes de corte se pasa siempre a mano: el script no adivina la fecha.
 
+**2-bis. Alerta automática de rampa** (baja el sheet solo y avisa por mail):
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/alerta_rampa.py" --mes 2026-08
+```
+
+Sin `--send` no manda nada. Corre por launchd el día 5 de cada mes
+(`execution/launchd/com.facu.alerta-rampa.plist`). Manda **solo a Facu**.
+
 **3. Conciliación** (esto lo hago yo leyendo, contra el output de arriba):
 
 1. Detectar el extracto más nuevo sin conciliar. Si no hay, decirlo y terminar.

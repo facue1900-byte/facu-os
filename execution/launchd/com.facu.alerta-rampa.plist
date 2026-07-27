@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Radar de rampa de alquileres — Paseo Nordelta. Día 5 de cada mes, 9:00.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.alerta-rampa.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.alerta-rampa.plist
+    launchctl list | grep facu
+
+  Probar sin esperar al día 5:
+    launchctl start com.facu.alerta-rampa
+    tail -20 ~/facu-os/data/logs/alerta-rampa.log
+
+  NO cargar esto hasta que `credentials.json` esté puesto y el script se haya
+  corrido a mano varias veces con éxito. Sin log, un agente que falla en silencio
+  es peor que no tenerlo.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.alerta-rampa</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/Facu/facu-os/.venv/bin/python</string>
+        <string>/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/alerta_rampa.py</string>
+        <string>--send</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Day</key>
+        <integer>5</integer>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- Si la Mac estaba apagada a la hora programada, corre al prender. -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/alerta-rampa.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/alerta-rampa.log</string>
+</dict>
+</plist>
