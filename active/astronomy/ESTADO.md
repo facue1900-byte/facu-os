@@ -43,6 +43,6 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
 ## Pendiente de dato
 
 - Nombre del equipo de pauta.
-- ⚠ **Discrepancia a resolver con Facu**: el CLAUDE.md global dice que un profe es
-  "Mateo Iní"; la web y la app dicen "Mateo Guini" (martes y viernes). ¿Es la misma
-  persona? Hasta aclararlo, en la app manda "Guini".
+
+(Resuelto 27/07/2026: "Mateo Iní" y "Mateo Guini" eran la misma persona — confirmado
+por Facu. El nombre correcto es **Mateo Guini**; ya está unificado en todos lados.)
