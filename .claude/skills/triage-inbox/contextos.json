@@ -1,0 +1,55 @@
+{
+  "_comentario": [
+    "Los ámbitos con los que el triage etiqueta cada mail. Editá este archivo",
+    "y el skill se adapta: no hay nada de esto hardcodeado en el agente.",
+    "",
+    "Cada ámbito necesita 'nombre' y 'senales' (a qué mirar para reconocerlo).",
+    "'no_confundir' es opcional: se usa cuando dos ámbitos se parecen y hay que",
+    "distinguirlos a propósito.",
+    "",
+    "Para usar el skill en otro contexto, reemplazá la lista entera.",
+    "'Personal' y '—' se agregan siempre y no hace falta declararlos."
+  ],
+  "ambitos": [
+    {
+      "nombre": "Paseo Nordelta",
+      "senales": [
+        "Banco Macro",
+        "locatarios y alquileres del paseo comercial",
+        "expensas del paseo",
+        "obra y demolición de locales",
+        "municipalidad de Tigre, permisos y habilitaciones del paseo"
+      ],
+      "no_confundir": "Nordelta Plaza es OTRO negocio: otra sociedad, otros socios, otro banco. Un mail que dice solo 'Nordelta' sin más señales va a '—', no se adivina."
+    },
+    {
+      "nombre": "Nordelta Plaza",
+      "senales": [
+        "BBVA",
+        "NDPL SAS",
+        "Noreventos SRL",
+        "el predio"
+      ],
+      "no_confundir": "Paseo Nordelta es OTRO negocio. Ver arriba."
+    },
+    {
+      "nombre": "Astronomy",
+      "senales": [
+        "eventos de música electrónica",
+        "Puzzle",
+        "DJs, venues, productoras",
+        "academia: alumnos, créditos, membresías, profesores",
+        "música: sellos, EPs, releases"
+      ]
+    },
+    {
+      "nombre": "Campos",
+      "senales": [
+        "SENASA, guías de traslado, pases de provincia",
+        "frigoríficos y consignatarios",
+        "hacienda: novillos, vacas, jaulas",
+        "Chaco, Pergamino"
+      ]
+    }
+  ]
+}

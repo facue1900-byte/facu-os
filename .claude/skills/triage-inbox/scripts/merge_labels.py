@@ -10,7 +10,7 @@ escribe dos cosas: el mapa de etiquetas para aplicar y el reporte para leer.
         --report .tmp/triage/reporte.md
 
 Cada `clasificado_N.json` es una lista de:
-    {"id": "...", "etiqueta": "...", "negocio": "...", "motivo": "..."}
+    {"id": "...", "etiqueta": "...", "ambito": "...", "motivo": "..."}
 
 Si un mail quedó sin clasificar, el script falla. Un triage que se come mails en
 silencio es peor que no tener triage.
@@ -23,11 +23,26 @@ import sys
 from collections import Counter, defaultdict
 
 ETIQUETAS = ["Plata", "Acción", "Esperando", "Referencia"]
-NEGOCIOS = ["Paseo Nordelta", "Nordelta Plaza", "Astronomy", "Campos",
-            "Personal", "—"]
+SIEMPRE = ["Personal", "—"]
+CONTEXTOS = pathlib.Path(__file__).resolve().parents[1] / "contextos.json"
 
 
-def cargar_clasificados(carpeta):
+def ambitos_validos():
+    """Los ámbitos declarados en contextos.json, más los que valen siempre."""
+    if not CONTEXTOS.exists():
+        sys.exit(f"Falta {CONTEXTOS}. Es donde se declaran los ámbitos.")
+    try:
+        cfg = json.loads(CONTEXTOS.read_text())
+    except json.JSONDecodeError as e:
+        sys.exit(f"{CONTEXTOS.name} no es JSON válido: {e}")
+
+    declarados = [a["nombre"] for a in cfg.get("ambitos", [])]
+    if not declarados:
+        sys.exit(f"{CONTEXTOS.name} no declara ningún ámbito.")
+    return declarados + SIEMPRE
+
+
+def cargar_clasificados(carpeta, validos):
     """Lee todos los clasificado_*.json. Devuelve {id: registro}."""
     archivos = sorted(carpeta.glob("clasificado_*.json"))
     if not archivos:
@@ -49,6 +64,12 @@ def cargar_clasificados(carpeta):
             if etiqueta not in ETIQUETAS:
                 sys.exit(f"{ruta.name}: etiqueta inválida {etiqueta!r} "
                          f"en el mail {r.get('id')}. Válidas: {ETIQUETAS}")
+            # Un ámbito inventado manda el mail a un grupo que no existe, y
+            # ahí se pierde igual que si no lo hubiéramos clasificado.
+            ambito = r.get("ambito")
+            if ambito not in validos:
+                sys.exit(f"{ruta.name}: ámbito inválido {ambito!r} en el mail "
+                         f"{r.get('id')}.\nVálidos (de contextos.json): {validos}")
             por_id[r["id"]] = r
         print(f"  {ruta.name}: {len(registros)}")
 
@@ -66,7 +87,8 @@ def main():
     args = p.parse_args()
 
     mails = json.loads(pathlib.Path(args.emails).read_text())
-    por_id = cargar_clasificados(pathlib.Path(args.input_dir))
+    validos = ambitos_validos()
+    por_id = cargar_clasificados(pathlib.Path(args.input_dir), validos)
 
     originales = {m["id"] for m in mails}
     faltantes = originales - set(por_id)
@@ -95,19 +117,19 @@ def main():
     salida.parent.mkdir(parents=True, exist_ok=True)
     salida.write_text(json.dumps(etiquetas, indent=2, ensure_ascii=False))
 
-    # Reporte legible: por etiqueta, y adentro por negocio.
+    # Reporte legible: por etiqueta, y adentro por ámbito.
     info = {m["id"]: m for m in mails}
     lineas = [f"# Triage de inbox — {len(mails)} mails", ""]
 
-    conteo_negocio = Counter(por_id[m["id"]].get("negocio", "—") for m in mails)
+    conteo_ambito = Counter(por_id[m["id"]]["ambito"] for m in mails)
     lineas.append("| Etiqueta | Mails |")
     lineas.append("|---|---:|")
     for e in ETIQUETAS:
         lineas.append(f"| {e} | {len(etiquetas[e])} |")
     lineas.append("")
-    lineas.append("| Negocio | Mails |")
+    lineas.append("| Ámbito | Mails |")
     lineas.append("|---|---:|")
-    for n, c in conteo_negocio.most_common():
+    for n, c in conteo_ambito.most_common():
         lineas.append(f"| {n} | {c} |")
     lineas.append("")
 
@@ -116,14 +138,14 @@ def main():
             continue
         lineas.append(f"## {e} ({len(etiquetas[e])})")
         lineas.append("")
-        por_negocio = defaultdict(list)
+        por_ambito = defaultdict(list)
         for mid in etiquetas[e]:
-            por_negocio[por_id[mid].get("negocio", "—")].append(mid)
+            por_ambito[por_id[mid]["ambito"]].append(mid)
 
-        for negocio in sorted(por_negocio, key=lambda n: -len(por_negocio[n])):
-            lineas.append(f"**{negocio}**")
+        for ambito in sorted(por_ambito, key=lambda n: -len(por_ambito[n])):
+            lineas.append(f"**{ambito}**")
             lineas.append("")
-            for mid in por_negocio[negocio]:
+            for mid in por_ambito[ambito]:
                 m, c = info[mid], por_id[mid]
                 de = m["de"].split("<")[0].strip().strip('"') or m["de"]
                 lineas.append(f"- **{m['asunto']}** — {de}  ")

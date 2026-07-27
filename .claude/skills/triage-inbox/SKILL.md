@@ -1,6 +1,6 @@
 ---
 name: triage-inbox
-description: Ordena el inbox de Gmail clasificando cada mail en Plata / Acción / Esperando / Referencia y asignándole negocio (Paseo Nordelta, Nordelta Plaza, Astronomy, Campos). Usar cuando Facu pida "ordename el mail", "qué tengo pendiente", "triage del inbox", "qué me están pidiendo", "revisá los mails", o pregunte si se le pasó algo por mail.
+description: Ordena el inbox de Gmail clasificando cada mail en Plata / Acción / Esperando / Referencia y asignándole un ámbito configurable. Usar cuando Facu pida "ordename el mail", "qué tengo pendiente", "triage del inbox", "qué me están pidiendo", "revisá los mails", o pregunte si se le pasó algo por mail.
 allowed-tools: Bash, Read, Write, Task
 ---
 
@@ -11,8 +11,22 @@ para leer** antes de tocar nada. Aplicar las etiquetas en Gmail es un paso
 aparte y opcional.
 
 Lo que sale es la lista de qué hay que hacer, agrupada por plata primero y por
-negocio. El objetivo no es tener el inbox lindo: es que no se pierda un
+ámbito. El objetivo no es tener el inbox lindo: es que no se pierda un
 vencimiento.
+
+## Los ámbitos se configuran, no se hardcodean
+
+Viven en **`contextos.json`**, al lado de este archivo. Ahí se declara cada
+ámbito con las señales para reconocerlo, y opcionalmente un `no_confundir` para
+los que se parecen entre sí.
+
+Hoy están los cuatro negocios de Facu, pero el skill no sabe nada de ellos: si
+cambiás ese JSON, cambia el triage. `Personal` y `—` valen siempre y no hace
+falta declararlos.
+
+El merge **valida** que cada ámbito devuelto esté declarado ahí. Un ámbito
+inventado corta la corrida: un mail archivado en un grupo que no existe se
+pierde igual que uno sin clasificar.
 
 ## Antes de correrlo
 
@@ -87,7 +101,7 @@ al paso 3 con los chunks que faltaron. Un triage que se come mails en silencio
 es peor que no tener triage.
 
 Leé `reporte.md` y contale a Facu lo de **Plata** y **Acción** primero, con el
-negocio de cada uno. `Esperando` y `Referencia` van en una línea de resumen.
+ámbito de cada uno. `Esperando` y `Referencia` van en una línea de resumen.
 
 ### 5. Aplicar etiquetas en Gmail (opcional, y no por default)
 
@@ -116,14 +130,17 @@ Los pasos 1 a 4 andan sin tocar nada de eso: bajar y clasificar es solo lectura.
 
 | Etiqueta | Qué es |
 |---|---|
-| **Plata** | Toca dinero: vencimientos, facturas, ARCA, extractos, transferencias, liquidaciones. |
-| **Acción** | Te piden algo y no es plata: trámites, firmas, respuestas, SENASA, municipalidad. |
+| **Plata** | Toca dinero: vencimientos, facturas, impuestos, extractos, transferencias, liquidaciones. |
+| **Acción** | Te piden algo y no es plata: trámites, firmas, respuestas, permisos. |
 | **Esperando** | Mandaste algo y esperás a un tercero. |
 | **Referencia** | Newsletters, notificaciones, informativo. |
 
-Son excluyentes y en ese orden de precedencia. Las reglas finas viven en
-`.claude/agents/clasificador-mails.md` — si el triage clasifica mal algo, se
-arregla ahí, no acá.
+Son excluyentes y en ese orden de precedencia. Estas cuatro sí son fijas: valen
+para cualquier inbox. Lo que cambia por contexto son los **ámbitos**, y esos van
+en `contextos.json`.
+
+Las reglas finas de clasificación viven en `.claude/agents/clasificador-mails.md`
+— si el triage etiqueta mal algo, se arregla ahí, no acá.
 
 ## Lecciones
 
@@ -131,6 +148,8 @@ arregla ahí, no acá.
   `emails.json` original y corta si falta uno. La versión de la que salió esto
   no chequeaba nada: un subagente que moría dejaba mails sin etiquetar y el
   resumen igual decía "listo".
-- **Nordelta no es un negocio, son dos.** Un mail que dice "Nordelta" sin más
-  contexto se marca `—`, no se adivina. Banco Macro → Paseo Nordelta;
-  BBVA / NDPL / Noreventos → Nordelta Plaza.
+- **Ante la duda, `—`.** Dos ámbitos que se parecen son la trampa clásica (Paseo
+  Nordelta vs Nordelta Plaza: comparten el nombre y son negocios distintos). Por
+  eso `contextos.json` tiene el campo `no_confundir`, y por eso la instrucción es
+  marcar `—` en vez de adivinar. Un `—` se revisa a mano; un ámbito equivocado se
+  pierde.
