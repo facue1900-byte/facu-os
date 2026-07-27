@@ -111,6 +111,18 @@ la terminal de VSCode). `~/.zshrc` tiene una copia por si algún día se cambia 
 vence y no sirve headless: cuando el `launchd` corra a las 9 de la mañana no hay nadie para
 clickear. Los tokens viven en el `.env` (`VERCEL_TOKEN`, `SUPABASE_ACCESS_TOKEN`).
 
+**Inventario de infraestructura** (verificado con los tokens el 27/07/2026):
+
+| Plataforma | Qué hay |
+|---|---|
+| Vercel | Team `astronomyofficial` · proyecto `astronomy` → **astronomyofficial.com** en producción |
+| Supabase | **Dos** proyectos, los dos sanos: `qeakrjnseboiulcojlcw` (Astronomy Oficial) y `wujutradczplokjrgmdo` (**Paseo Nordelta**) |
+| GitHub | `facue1900-byte/facu-os` (privado) y `facue1900-byte/astronomy-members` |
+| Google Cloud | Proyecto `astronomy-app-502618`, service account `astronomy-calendar@…` (Sheets + Calendar, impersona `studio@astronomyofficial.com`) |
+
+> Son **dos bases de Supabase distintas**, igual que Paseo Nordelta y Nordelta Plaza son dos
+> negocios distintos. Antes de correr una migración o un query, confirmar contra cuál.
+
 **Sitios de Netlify de la app del Paseo** — un deploy por rol, credencial aislada en cada build:
 `lucent-buttercream` = Mati · `whimsical-alfajores` = Inversores · `dancing-elf` = Admin.
 (`dapper-cajeta` es de Astronomy, no tocar.)
