@@ -140,9 +140,31 @@ que es código compartido y de largo plazo; los skills se verifican corriéndolo
 
 ## Utilidades compartidas (`execution/`)
 
-- **`google_auth.py`** — OAuth único para Sheets, Drive y Gmail. `sheets()`, `drive()`,
-  `gmail()`, y `bajar_xlsx(file_id, destino)` que exporta el sheet **completo** (el
-  conector de Drive trunca). Setup: `.venv/bin/python execution/google_auth.py --setup`.
+- **`google_auth.py`** — OAuth **multi-cuenta** para Sheets, Drive y Gmail. `sheets()`,
+  `drive()`, `gmail()` y `bajar_xlsx()` aceptan `cuenta=` (default `facu`). Un solo
+  `credentials.json` sirve para todas: identifica la *app*, no a la persona. Cada cuenta
+  guarda su `token-<cuenta>.json`.
+
+  ```bash
+  .venv/bin/python execution/google_auth.py --setup --cuenta facu
+  .venv/bin/python execution/google_auth.py --listar     # con qué mail quedó cada una
+  ```
+
+  **Quién llega a qué** (verificado el 27/07/2026, incluyendo permiso de escritura):
+
+  | Planilla | `facu` (facue1900@) | `studio` (studio@astronomyofficial) |
+  |---|---|---|
+  | Master Plan Paseo Nordelta | escribe | solo lee |
+  | Ctas Ctes Paseo 2026 | escribe | sin acceso |
+  | Gastos Obra Paseo | escribe | sin acceso |
+  | Finanzas Astronomy Academy | escribe | escribe |
+  | Base de Clientes Astronomy | escribe | escribe |
+
+  **`facu` llega a todo y escribe en todo: es el default correcto.** `studio` sirve para
+  su propio inbox (6.768 mails) y como respaldo en los sheets de la academia.
+
+  > Queda desactualizada la nota vieja de que "facue1900 es solo Lector en Finanzas y hay
+  > que correrlo desde it@": hoy tiene permiso de edición.
 - **`gemini.py`** — `preguntar()` y `leer_imagen()`. Para volumen barato, leer fotos y
   capturas (guías del campo, comprobantes) y pedir segunda opinión. El modelo sale de
   `GEMINI_MODEL` en el `.env`; no hay default hardcodeado a propósito. Hoy:

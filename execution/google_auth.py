@@ -103,11 +103,47 @@ def credenciales(cuenta=CUENTA_DEFAULT, interactivo=None):
     print(f"Abriendo el navegador. Elegí la cuenta que corresponde a '{cuenta}'.",
           file=sys.stderr)
     flow = InstalledAppFlow.from_client_secrets_file(str(CREDENCIALES), SCOPES)
-    creds = flow.run_local_server(port=0)
+    # prompt="select_account": sin esto Google reusa la sesión ya abierta y NO
+    # muestra el selector. Autorizar una segunda cuenta terminaba guardando la
+    # primera con otro nombre — y eso no falla, solo miente en silencio.
+    creds = flow.run_local_server(port=0, prompt="select_account")
+
+    email = _email_de(creds)
+    ajena = _cuenta_con_email(email, excepto=cuenta)
+    if ajena:
+        sys.exit(
+            f"\nAutorizaste {email}, que YA está guardada como cuenta '{ajena}'.\n"
+            f"No guardo nada: tendrías dos nombres para el mismo buzón y los skills\n"
+            f"leerían el inbox equivocado sin dar error.\n\n"
+            f"Volvé a correrlo y en el selector de Google elegí OTRA cuenta. Si no\n"
+            f"aparece el selector, deslogueate en accounts.google.com o usá una\n"
+            f"ventana de incógnito."
+        )
+
     token.write_text(creds.to_json())
-    print(f"Token de '{cuenta}' guardado en {token.name}. No lo commitees "
-          "(ya está en .gitignore).")
+    print(f"Token de '{cuenta}' guardado en {token.name} → {email}")
     return creds
+
+
+def _email_de(creds):
+    """El mail que quedó autorizado. Es el único dato que prueba con quién entramos."""
+    return build("gmail", "v1", credentials=creds).users().getProfile(
+        userId="me").execute()["emailAddress"]
+
+
+def _cuenta_con_email(email, excepto=None):
+    """Si otro token ya tiene ese mail, devuelve su nombre de cuenta."""
+    for p in RAIZ.glob("token-*.json"):
+        nombre = p.stem.removeprefix("token-")
+        if nombre == excepto:
+            continue
+        try:
+            otras = Credentials.from_authorized_user_file(str(p), SCOPES)
+            if otras and otras.valid and _email_de(otras) == email:
+                return nombre
+        except Exception:
+            continue
+    return None
 
 
 def cuentas_configuradas():

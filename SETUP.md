@@ -5,7 +5,7 @@ esperando algo que **solo podés hacer vos** (un login, una key, un permiso).
 
 ## Ya funciona
 
-- [x] **El OS** — `~/facu-os`, git con 6 commits, estructura completa.
+- [x] **El OS** — `~/facu-os`, con backup en GitHub (privado), estructura completa.
 - [x] **Stack local** — Node 24, `claude` CLI, `gemini` CLI, Python 3.12 + venv con
       todas las dependencias, `gh` CLI. Todo en el home, sin sudo.
 - [x] **El `claude` de la terminal** — el PATH vive en `~/.profile` (el shell de login es
@@ -24,11 +24,20 @@ esperando algo que **solo podés hacer vos** (un login, una key, un permiso).
       con instrucciones claras cuando falta una credencial, en vez de romperse feo.
       13 tests en `execution/tests/` (`.venv/bin/python -m pytest execution/tests/ -q`).
 
+- [x] **Credenciales de Google** — `credentials.json` puesto y **dos cuentas autorizadas**:
+      `facu` (facue1900@gmail.com) y `studio` (studio@astronomyofficial.com). Verificado
+      contra las 5 planillas reales, con permiso de escritura. Ver la tabla de acceso en
+      `.claude/CLAUDE.md`.
+- [x] **GitHub** — `facue1900-byte/facu-os`, privado, pusheado.
+- [x] **Vercel, Supabase y Netlify** — CLIs instalados y tokens verificados contra las
+      cuentas reales.
+
 ## Bloqueado esperándote (en orden de lo que más desbloquea)
 
-### 1. Credenciales de Google — 10 min · desbloquea TODO lo automático
+### ~~1. Credenciales de Google~~ ✅ HECHO (27/07/2026)
 
-Es el cuello de botella real. Sin esto no hay ni un solo proceso que corra solo.
+Era el cuello de botella real: sin esto no corría ni un proceso solo. Queda el
+procedimiento documentado por si hay que rehacerlo o sumar una tercera cuenta.
 
 1. Entrá a [console.cloud.google.com](https://console.cloud.google.com) → creá un
    proyecto (o usá uno que tengas).
@@ -40,26 +49,13 @@ Es el cuello de botella real. Sin esto no hay ni un solo proceso que corra solo.
 5. Guardalo como `~/facu-os/credentials.json` y corré una sola vez:
 
 ```bash
-cd ~/facu-os && .venv/bin/python execution/google_auth.py --setup
+cd ~/facu-os && .venv/bin/python execution/google_auth.py --setup --cuenta facu
 ```
 
-Se abre el navegador, aceptás, y listo para siempre.
+El cliente OAuth vive en el proyecto `astronomy-app-502618` de Google Cloud (App de
+escritorio). **Un solo `credentials.json` sirve para todas las cuentas.**
 
-**Qué se enciende con esto:** bajar el Master Plan solo (sin truncado), el radar de
-rampa automático el día 5, cargar movimientos en el sheet sin abrir el navegador, y
-mandar reportes por mail.
-
-### 2. GitHub — 3 min · hoy el OS existe en un solo disco
-
-```bash
-gh auth login          # elegí HTTPS y "Login with a web browser"
-cd ~/facu-os && gh repo create facu-os --private --source=. --push
-```
-
-**Qué se enciende:** backup real (hoy si se rompe el disco perdés el OS), y que las
-tareas en la nube corran *tus* scripts en vez de improvisar la lógica.
-
-### 3. Token de Apify — 2 min · solo desbloquea `prospectar-gmaps`
+### 1. Token de Apify — 2 min · solo desbloquea `prospectar-gmaps`
 
 1. [console.apify.com/settings/integrations](https://console.apify.com/settings/integrations)
    → copiá el API token.
@@ -68,14 +64,14 @@ tareas en la nube corran *tus* scripts en vez de improvisar la lógica.
 **Qué se enciende:** listas de candidatos a locatario para los locales vacíos del Paseo,
 venues y productoras para eventos, frigoríficos y transportistas por zona.
 
-### 4. Encender el radar automático — 1 min, después del punto 1
+### 2. Encender el radar automático — 1 min
 
 **Hoy NO está cargado**: el `.plist` está en el repo pero no en `~/Library/LaunchAgents`,
-y `launchctl list` no lo muestra. Está bien que sea así — depende del punto 1, y el propio
-`.plist` avisa que no se cargue antes de tiempo. Pero que exista el archivo no significa
-que corra: verificar siempre con `launchctl list | grep facu`.
+y `launchctl list` no lo muestra. Que exista el archivo no significa que corra: verificar
+siempre con `launchctl list | grep facu`.
 
-Probalo a mano primero, varias veces:
+Ya no está bloqueado por credenciales — el OAuth está resuelto. Falta solo probarlo a mano
+contra agosto, varias veces:
 
 ```bash
 cd ~/facu-os && .venv/bin/python \
