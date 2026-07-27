@@ -1,0 +1,33 @@
+{
+  "inversor-paseo": {
+    "negocio": "Paseo Nordelta",
+    "tono": "Sobrio y numérico. Un inversor (Richi puso ~87% del capital) quiere ver recupero, plazos y riesgo — no adjetivos.",
+    "secciones_clave": ["estado de la inversión", "rampa de alquileres y run-rate", "recupero proyectado", "qué se necesita y para qué"],
+    "no_decir": "Nada de proyecciones sin fuente. Cada número lleva de dónde salió. No prometer fechas de obra que no estén confirmadas.",
+    "regla_extra": "Antes de entregar, correr el agente numeros sobre los montos."
+  },
+  "locatario-paseo": {
+    "negocio": "Paseo Nordelta",
+    "tono": "Comercial y concreto: por qué conviene el paseo, qué tráfico y vecindario de marcas tiene, condiciones claras.",
+    "secciones_clave": ["el local (m², ubicación en el paseo)", "condiciones (alquiler, expensas, carencia si la hay)", "el paseo y sus locales operativos", "próximos pasos"],
+    "no_decir": "No inventar métricas de tráfico que no medimos. No comprometer condiciones (carencias, descuentos) que Facu no haya dicho."
+  },
+  "venue-astronomy": {
+    "negocio": "Astronomy (eventos)",
+    "tono": "Marca y trayectoria: eventos hechos (Dark Mansion, Dome, Boiler Room JET, Moonrise), comunidad y estética. Seguro y directo.",
+    "secciones_clave": ["quiénes somos y qué hicimos", "qué proponemos para el venue (fecha, formato, público)", "qué pone cada parte", "condiciones económicas"],
+    "no_decir": "No inflar números de asistencia. Si no hay dato medido de un evento, no se cita."
+  },
+  "productora-astronomy": {
+    "negocio": "Astronomy (eventos)",
+    "tono": "Entre pares: co-producción, split claro, qué aporta cada uno.",
+    "secciones_clave": ["la propuesta de co-producción", "split económico y de responsabilidades", "marca y line-up", "fechas"],
+    "no_decir": "El split se escribe explícito y sobre qué base (bruto/neto). No dejar ambigüedades de reparto: es la fuente clásica de conflicto."
+  },
+  "generico": {
+    "negocio": "cualquiera",
+    "tono": "Claro, profesional, sin jerga.",
+    "secciones_clave": ["contexto", "propuesta", "condiciones", "próximos pasos"],
+    "no_decir": "Nada que Facu no haya confirmado."
+  }
+}

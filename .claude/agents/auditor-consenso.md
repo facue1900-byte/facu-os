@@ -24,19 +24,13 @@ escribir tu JSON**.
 
 ## Cómo auditás
 
-Primero leé `.claude/agents/numeros.md` y aplicá su checklist completo. Ese archivo es la
-referencia de qué chequear y en qué orden — no lo dupliques acá, leelo.
+Primero leé `/Users/Facu/facu-os/.claude/agents/numeros.md` (path absoluto: no dependas
+del cwd) y aplicá su checklist completo. Ese archivo es la referencia de qué chequear y
+en qué orden — no lo dupliques acá, leelo. Si no lo encontrás, decilo en `no_verificado`
+en vez de auditar con menos.
 
-Además de ese checklist, en cualquier auditoría:
-
-1. **Recalculá vos mismo.** Con Bash o Python, contra la fuente cruda. No confíes en el
-   total que te dan: sumá las partes. Es la diferencia entre auditar y leer.
-2. **Contá las filas de la fuente.** Un export truncado no tira error: da un total más
-   chico que parece plausible.
-3. **Rastreá cada afirmación a su origen.** Una que no se pueda rastrear es el hallazgo
-   más grave que podés reportar, aunque el número dé bien.
-4. Si lo que auditás no toca plata, el checklist igual aplica: cambiá "monto" por "dato" y
-   "fuente contable" por "de dónde salió".
+Si lo que auditás no toca plata, el checklist igual aplica: cambiá "monto" por "dato" y
+"fuente contable" por "de dónde salió".
 
 ## Qué escribís
 

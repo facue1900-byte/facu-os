@@ -12,7 +12,8 @@ Aplica las etiquetas en Gmail. TOCA TU INBOX DE VERDAD: sin --send no hace nada.
 
 Necesita los scopes `gmail.modify` y `gmail.labels`, que NO están en
 execution/google_auth.py a propósito (ahí solo hay readonly + send). Para
-habilitarlo hay que agregarlos a SCOPES, borrar token.json y re-loguearse.
+habilitarlo hay que agregarlos a SCOPES, borrar token-facu.json y re-loguearse
+con --setup --cuenta facu.
 Mientras tanto este script falla con un mensaje claro en vez de romper feo.
 
 Las etiquetas se crean bajo el prefijo "Triage/" para no ensuciar la raíz y
@@ -104,8 +105,8 @@ def main():
                     f"\nGmail rechazó la operación ({e.resp.status}).\n"
                     "Casi seguro faltan los scopes gmail.modify y gmail.labels.\n"
                     "Agregalos a SCOPES en execution/google_auth.py, borrá "
-                    "token.json y corré:\n"
-                    "  .venv/bin/python execution/google_auth.py --setup"
+                    "token-facu.json y corré:\n"
+                    "  .venv/bin/python execution/google_auth.py --setup --cuenta facu"
                 )
             raise
 

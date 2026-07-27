@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>{{TITULO}}</title>
+<style>
+  @page { size: A4; margin: 22mm 20mm; }
+  :root {
+    --tinta: #1a1a1a; --gris: #666; --linea: #d8d4cc; --acento: #8b5cf6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif; color: var(--tinta);
+    margin: 0 auto; max-width: 720px; padding: 48px 32px; line-height: 1.55;
+    font-size: 15px;
+  }
+  header { border-bottom: 2px solid var(--tinta); padding-bottom: 20px; margin-bottom: 32px; }
+  .rotulo {
+    font-family: "SF Mono", Menlo, monospace; font-size: 11px; color: var(--gris);
+    text-transform: uppercase; letter-spacing: .18em; margin: 0 0 12px;
+  }
+  h1 { font-size: 27px; margin: 0 0 14px; line-height: 1.2; letter-spacing: -.01em; }
+  .meta { display: flex; gap: 32px; font-size: 13px; color: var(--gris); }
+  .meta strong { color: var(--tinta); font-weight: 600; }
+  section { margin: 28px 0; }
+  h2 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: .14em;
+    color: var(--acento); margin: 0 0 10px; font-weight: 700;
+  }
+  p { margin: 0 0 12px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+  td { padding: 9px 4px; border-bottom: 1px solid var(--linea); }
+  td.monto { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.total td { border-top: 2px solid var(--tinta); border-bottom: none; font-weight: 700; }
+  .nota { font-size: 12.5px; color: var(--gris); margin-top: 10px; }
+  footer {
+    margin-top: 44px; padding-top: 16px; border-top: 1px solid var(--linea);
+    font-size: 12px; color: var(--gris);
+  }
+  @media print { body { padding: 0; } }
+</style>
+</head>
+<body>
+<header>
+  <p class="rotulo">Propuesta</p>
+  <h1>{{TITULO}}</h1>
+  <div class="meta">
+    <span><strong>Para</strong> {{PARA}}</span>
+    <span><strong>De</strong> {{DE}}</span>
+    <span><strong>Fecha</strong> {{FECHA}}</span>
+  </div>
+</header>
+
+{{INTRO}}
+
+{{SECCIONES}}
+
+{{INVERSION}}
+
+<section>{{CIERRE}}</section>
+
+<footer>Documento preparado para {{PARA}} · {{FECHA}} · Confidencial</footer>
+</body>
+</html>

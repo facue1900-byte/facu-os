@@ -30,7 +30,7 @@ pierde igual que uno sin clasificar.
 
 ## Antes de correrlo
 
-- El OAuth de Google tiene que estar hecho: `.venv/bin/python execution/google_auth.py --setup`
+- El OAuth de Google tiene que estar hecho: `.venv/bin/python execution/google_auth.py --setup --cuenta facu`
 - Los scripts van con path absoluto y con el Python del venv.
 - Para el paso 5 (aplicar etiquetas) hacen falta scopes que hoy **no** están.
   Ver "Aplicar etiquetas" abajo.
@@ -122,7 +122,8 @@ juntas si no sirve.
 `gmail.readonly` y `gmail.send`, no `gmail.modify` ni `gmail.labels`. Es una
 decisión de seguridad escrita en ese archivo — si un script se vuelve loco, que
 no pueda borrar nada. Para habilitarlo hay que agregar los dos scopes, borrar
-`token.json` y rehacer el login. **Eso lo decide Facu, no vos.**
+`token-facu.json` y rehacer el login con `--setup --cuenta facu`. **Eso lo decide
+Facu, no vos.**
 
 Los pasos 1 a 4 andan sin tocar nada de eso: bajar y clasificar es solo lectura.
 

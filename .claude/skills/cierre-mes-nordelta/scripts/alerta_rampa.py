@@ -17,13 +17,17 @@ El mes de corte se toma del sistema, pero se puede forzar con --mes 2026-08.
 import argparse
 import base64
 import datetime
+import os
 import pathlib
 import subprocess
 import sys
 from email.message import EmailMessage
 
+from dotenv import load_dotenv
+
 RAIZ = pathlib.Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(RAIZ))
+load_dotenv(RAIZ / ".env")
 
 from execution.google_auth import bajar_xlsx, gmail  # noqa: E402
 
@@ -59,12 +63,15 @@ def main():
     p.add_argument("--send", action="store_true",
                    help="Manda el mail. Sin esto, solo imprime.")
     p.add_argument("--mes", help="Mes de corte AAAA-MM (default: el mes actual)")
-    p.add_argument("--para", default="facue1900@gmail.com",
-                   help="Destinatario. Solo Facu por default: a Richi no se le manda "
-                        "nada sin OK previo.")
+    p.add_argument("--para", default=os.environ.get("MAIL_FACU"),
+                   help="Destinatario. Default: MAIL_FACU del .env — solo Facu; "
+                        "a Richi no se le manda nada sin OK previo.")
     p.add_argument("--siempre", action="store_true",
                    help="Manda el mail aunque no haya atrasos (default: solo si hay).")
     a = p.parse_args()
+
+    if not a.para:
+        sys.exit("Falta el destinatario: definí MAIL_FACU en el .env o pasá --para.")
 
     hoy = datetime.date.today()
     mes = a.mes or f"{hoy.year}-{hoy.month:02d}"

@@ -1,0 +1,23 @@
+- [Membership system project](membership-system-project.md) — Astronomy credits/membership app: scope, decisions, demo status, Phase-2 needs
+- [Astronomy brand](astronomy-brand.md) — palette (black/white/gold + cyan), 4-point star logo, aesthetic, photo library
+- [Astronomy catalog data](astronomy-catalog-data.md) — exact memberships, prices, credits, professors
+- [Public site vision](public-site-vision.md) — Etapa 3: new astronomyofficial.com (company home + Dominé/Academy split, footer, jobs form)
+- [Finance report](astronomy-finance-report.md) — monthly financial report: data source, FX method, key figures (+US$8.575, rentable), artifact link
+- [Contacts & links](astronomy-contacts-links.md) — official WhatsApp/IG/YouTube/SoundCloud/mail + per-professor Calendly links & credit costs
+- [App color direction](app-color-direction.md) — violet (crown chakra), kill gold/yellow, white text; where to change it
+- [Demo account](demo-account.md) — demo.gold@astronomyofficial.com login to showcase the members app
+- [Pending features](astronomy-pending-features.md) — next-up: profes, ops panel, notifications (+ phone-OTP note)
+- [App aesthetic rules](app-aesthetic-rules.md) — STANDING: left-align text in cards, uniform button/card sizes, no dup nav
+- [Identidad de alumnos](identidad-alumnos.md) — la cuenta va a nombre del alumno con el mail del que paga (padres, empresas, typos)
+- [Paseo Nordelta web](paseo-nordelta-web.md) — rebuild de paseonordelta.com para control total sin el hermano; proyecto en Desktop, dominio en GoDaddy
+- [Paseo Nordelta app](paseo-nordelta-app.md) — PWA de finanzas (cobros/banco/impuestos/rentabilidad), base propia local-first, v1 con datos reales de junio 2026
+- [Sin City proyecto musical](sin-city-proyecto-musical.md) — trío de electrónica (Vlado, Lanfran, Facu); kit de crecimiento House/Melodic + plan 90 días
+- [E-commerce dropshipping](ecommerce-dropshipping-project.md) — proyecto nuevo aparte de Astronomy: mercado AR nacional, 3 productos elegidos, ~$500k pauta, landings creadas
+- [Annie promo account](annie-promo-account.md) — annie hoffer = cuenta de diseño/promo, no tocar su membresía ni créditos
+- [Reconciliación pagos (sistema)](reconciliacion-pagos-sistema.md) — cron: pull MP + reconcile subs + espejo unificado 4 pestañas; closer/comisión
+- [Reglas clases/sueldo](reglas-clases-sueldo.md) — cancelación -24/+24hs → sueldo del profe; anticipación mínima 12hs para agendar
+- [Ctas ctes import pendiente](paseo-ctas-ctes-import.md) — DIC'25/ENE'26 a importar, solapamientos y columnas por hoja ya verificados
+- [Egresos sistema](egresos-sistema.md) — sección /admin/egresos + pestaña Egresos del sheet: sueldos, comisión MP real, gastos a mano
+- [Atribución de pagos](atribucion-pagos.md) — REGLA: nunca matchear pagos por nombre parecido; usar ledger_aliases + payment_links
+- [Regla de créditos](regla-creditos.md) — CENTRAL: membresías ACUMULAN, Curso de DJ RENUEVA; recalcular solo activos desde su primer pago
+- [Estética sin emojis](estetica-sin-emojis.md) — STANDING: nada de emojis en la web; usar tipografía técnica (mono/mayúsculas/tracking) del Instagram

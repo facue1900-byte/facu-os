@@ -22,12 +22,25 @@ esperando algo que **solo podés hacer vos** (un login, una key, un permiso).
       como vault por defecto y sus convenciones de links aplicadas.
 - [x] **Helpers** — `execution/google_auth.py` y `execution/gemini.py`, probados: fallan
       con instrucciones claras cuando falta una credencial, en vez de romperse feo.
-      13 tests en `execution/tests/` (`.venv/bin/python -m pytest execution/tests/ -q`).
+      24 tests en `execution/tests/` (`.venv/bin/python -m pytest execution/tests/ -q`):
+      13 de gemini + 11 de google_auth, incluida la regresión del bug de identidad.
 
 - [x] **Credenciales de Google** — `credentials.json` puesto y **dos cuentas autorizadas**:
       `facu` (facue1900@gmail.com) y `studio` (studio@astronomyofficial.com). Verificado
-      contra las 5 planillas reales, con permiso de escritura. Ver la tabla de acceso en
-      `.claude/CLAUDE.md`.
+      contra las 5 planillas reales, con permiso de escritura (27/07/2026, tabla abajo).
+
+      | Planilla | `facu` (facue1900@) | `studio` (studio@astronomyofficial) |
+      |---|---|---|
+      | Master Plan Paseo Nordelta | escribe | solo lee |
+      | Ctas Ctes Paseo 2026 | escribe | sin acceso |
+      | Gastos Obra Paseo | escribe | sin acceso |
+      | Finanzas Astronomy Academy | escribe | escribe |
+      | Base de Clientes Astronomy | escribe | escribe |
+
+      **`facu` llega a todo y escribe en todo: es el default correcto.** `studio` sirve
+      para su propio inbox (6.768 mails) y como respaldo en los sheets de la academia.
+      (Desactualizada la nota vieja de que "facue1900 es solo Lector en Finanzas":
+      hoy tiene edición.)
 - [x] **GitHub** — `facue1900-byte/facu-os`, privado, pusheado.
 - [x] **Vercel, Supabase y Netlify** — CLIs instalados y tokens verificados contra las
       cuentas reales.

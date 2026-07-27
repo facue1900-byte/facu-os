@@ -1,0 +1,9 @@
+- [La estructura del OS](facu-os-estructura.md) — el sistema vive en ~/facu-os, el vault en ~/Obsidian/facu-vault, la data cruda sigue en el Desktop
+- [Paseo Nordelta ≠ Nordelta Plaza](paseo-vs-nordelta-plaza.md) — dos negocios distintos: otra sociedad, otros socios, Macro vs BBVA
+- [Stack local instalado](stack-local-instalado.md) — node/uv/claude/gemini/gh en ~/.local sin sudo; el python3 del sistema no sirve
+- [Consolidación del Claude Workspace](claude-workspace-consolidation.md) — 4 carpetas unificadas en ~/Claude-Workspace; los skills heredados son de otro rubro
+- [Cartera de inversiones personal](cartera-inversiones-personal.md) — brokerage en USD trackeado en ~/Desktop/INVERSIONES_Facu.md, área que no está en el CLAUDE.md global
+- [El conector de Drive trunca sheets](drive-connector-trunca-sheets.md) — read_file_content cortó 206 de 455 filas sin avisar; usar el export xlsx
+- [Rampa de alquileres de Paseo Nordelta](paseo-nordelta-rampa-alquileres.md) — $27,4M/mes sin generar y las fechas de alta comprometidas
+- [La estética simétrica siempre](estetica-simetrica-siempre.md) — tamaños, colores, scroll y filtros parejos en todo lo que construya
+- [No robarle la pantalla](no-robarle-la-pantalla.md) — trabajar headless y en segundo plano, avisar recién al final

@@ -60,6 +60,17 @@ expensas solas (sep y oct) antes del alquiler.
   placeholder, no un compromiso.
 - Se demuele solo la heladería vieja, cuando arranque la nueva.
 
+## Pendientes operativos (de la memoria migrada, 27/07/2026)
+
+- **Bigg debe la mitad en efectivo de julio** (~$1.910.387, "Diferencia Alquiler").
+  Es el único que debe efectivo hoy. Ver memoria `paseo-ctas-ctes-import`.
+- **La Jaula**: tenía saldo a favor; se le cobra recién desde agosto 2026. Los ~$12,6M
+  cargados ene–jul en Ctas Ctes son un estimado inventado y hay que borrarlos.
+- Ctas Ctes: `generarCargosDelMes` todavía lee CONTRATOS (valores viejos) en vez de
+  Expensas Predio — no activar la generación automática hasta arreglarlo.
+- **$0,69 de diferencia** entre el saldo de cierre del extracto de junio ($4.119.498,46)
+  y la pestaña Saldo Actual ($4.119.497,77) — la detectó `conciliar.py` el 27/07.
+
 ## Pendiente de dato
 
 - Bajo qué sociedad opera Paseo Nordelta (NDPL SAS es Nordelta Plaza, no esto).

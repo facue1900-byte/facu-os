@@ -30,7 +30,7 @@ para todo: si se vuelve el default, deja de significar algo.
 
 ## Flujo
 
-Todo va a `.tmp/consenso/`.
+Todo va a `.tmp/consenso/` (crearlo si no existe: es descartable y no está en git).
 
 ### 1. Preparar qué se audita
 
@@ -60,6 +60,7 @@ auditor contaminado es peor que no tenerlo: agrega una confirmación falsa.
 Esperá a que existan los tres archivos:
 
 ```bash
+mkdir -p /Users/Facu/facu-os/.tmp/consenso && \
 cd /Users/Facu/facu-os/.tmp/consenso && \
 for i in 1 2 3; do while [ ! -f "auditor_$i.json" ]; do sleep 2; done; done && \
 echo "listos"

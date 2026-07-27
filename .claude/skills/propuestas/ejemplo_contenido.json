@@ -1,0 +1,26 @@
+{
+  "titulo": "Local 4 — Paseo Nordelta",
+  "para": "Candidato a locatario (ejemplo)",
+  "de": "Facundo Estevez — Paseo Nordelta",
+  "fecha": "27/07/2026",
+  "intro": "Este es un ejemplo del formato. El contenido real lo escribe el modelo según destinatarios.json; los montos salen siempre de la fuente.",
+  "secciones": [
+    {
+      "titulo": "El local",
+      "cuerpo": "47,9 m² sobre el paseo principal, entrega estimada enero 2027.\n\nVecindario operativo: gastronomía y servicios con tráfico diario."
+    },
+    {
+      "titulo": "Próximos pasos",
+      "cuerpo": "Visita al paseo y carta de intención. Condiciones finales por contrato."
+    }
+  ],
+  "inversion": {
+    "titulo": "Condiciones",
+    "items": [
+      { "concepto": "Alquiler mensual", "monto": 2000000, "moneda": "ARS" },
+      { "concepto": "Expensas", "monto": "a confirmar", "moneda": "ARS" }
+    ],
+    "nota": "Valores de ejemplo. Sin totales cuando hay ítems a confirmar."
+  },
+  "cierre": "Quedamos a disposición para avanzar."
+}

@@ -43,8 +43,17 @@ acá figura como el gasto puntual que pagó.
 (ej. `Junio 2026.pdf`). Hay además una CC Bancaria `3-452-0942483045-1` donde caen los
 cargos VISA — no es la cuenta de trabajo.
 
-**Bajar el sheet**: exportar a `.xlsx`. El conector de Drive (`read_file_content`)
+**Bajar el sheet**: exportar a `.xlsx` completo. El conector de Drive (`read_file_content`)
 **trunca** las hojas largas sin avisar — Movimientos entró cortada en 206 de 455 filas.
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python -c "
+import sys; sys.path.insert(0, '/Users/Facu/facu-os')
+from execution.google_auth import bajar_xlsx
+bajar_xlsx('1ATiNBHCukPYPn9-poP1HO4SlfsDu5pGXsLz-JvW-IQs',
+           '/Users/Facu/facu-os/data/master_plan.xlsx')"
+```
+
 Lectura rápida en vivo por gviz:
 `https://docs.google.com/spreadsheets/d/<fileId>/gviz/tq?tqx=out:csv&sheet=<Pestaña>`
 
@@ -74,9 +83,10 @@ Lectura rápida en vivo por gviz:
 **1. Extracto → filas para Movimientos** (marca las que ya están cargadas):
 
 ```bash
-python3 "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/extracto_a_movimientos.py" \
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/extracto_a_movimientos.py" \
   "/Users/Facu/Desktop/Paseo Nordelta/Principio de mes/Resumen de Banco Paseo Nordelta/2026/Junio 2026.pdf" \
-  master.xlsx
+  /Users/Facu/facu-os/data/master_plan.xlsx
 ```
 
 Los cargos bancarios chicos (SIRCREB, Ley 25413, comisiones) se agrupan en una línea
@@ -86,8 +96,9 @@ se controla contra el extracto **crudo**, no contra el agrupado.
 **2. Radar de la rampa de alquileres** (qué alta se atrasó y cuánta plata cuesta):
 
 ```bash
-python3 "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/radar_rampa.py" \
-  master.xlsx 2026-08
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/radar_rampa.py" \
+  /Users/Facu/facu-os/data/master_plan.xlsx 2026-08
 ```
 
 El mes de corte se pasa siempre a mano: el script no adivina la fecha.
@@ -99,22 +110,32 @@ El mes de corte se pasa siempre a mano: el script no adivina la fecha.
   "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/alerta_rampa.py" --mes 2026-08
 ```
 
-Sin `--send` no manda nada. Corre por launchd el día 5 de cada mes
-(`execution/launchd/com.facu.alerta-rampa.plist`). Manda **solo a Facu**.
+Sin `--send` no manda nada. Flags: `--para` (destinatario; default `MAIL_FACU` del
+`.env` — a Richi nunca sin OK) y `--siempre` (manda aunque no haya atrasos). Hay un
+plist para correrlo el día 5 de cada mes (`execution/launchd/com.facu.alerta-rampa.plist`)
+pero **hoy NO está cargado** en `~/Library/LaunchAgents` — ver `SETUP.md`.
 
-**3. Conciliación** (esto lo hago yo leyendo, contra el output de arriba):
+**3. Conciliación** — los chequeos deterministas los hace el script; yo interpreto:
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/conciliar.py" \
+  "/Users/Facu/Desktop/Paseo Nordelta/Principio de mes/Resumen de Banco Paseo Nordelta/2026/Junio 2026.pdf" \
+  /Users/Facu/facu-os/data/master_plan.xlsx 2026-06
+```
+
+Chequea NETO banco vs extracto, saldo de cierre vs *Saldo Actual*, presencia de cada
+movimiento en los dos sentidos, y categorías huérfanas contra el Dashboard Mensual.
+Sale 0 solo si todo CIERRA; cualquier ⚠ da 1 — eso es algo para mirar, no un fallo
+del script. **Un ⚠ nunca se esquiva ni se "redondea": se investiga o se le muestra
+a Facu.**
+
+Queda a mano interpretar (esto sí lo hago yo, leyendo):
 
 1. Detectar el extracto más nuevo sin conciliar. Si no hay, decirlo y terminar.
-2. NETO banco del mes en Movimientos (ingresos − egresos, Banco, ARS) vs NETO del
-   extracto (créditos − débitos). **Tienen que coincidir al peso.**
-3. Saldo de cierre del extracto vs saldo de banco en *Saldo Actual*.
-4. Cada crédito y débito del extracto tiene que estar en Movimientos.
-5. Caja: que *Saldo Actual* (Caja ARS) sea coherente con ingresos Caja − egresos Caja.
-6. **Categorías huérfanas** — desfasan el Dashboard en silencio: listar todo Local (en
-   ingresos) o Categoría (en egresos) que no exista como fila del Dashboard Mensual
-   (ingresos filas 9-40, egresos 46-75). El SUMIFS es sensible a acentos y espacios
-   (no a mayúsculas). Reportar nombre exacto y monto.
-7. Reportar con ✅/⚠ por punto. Cada ⚠ con qué está mal y el monto.
+2. Caja: que *Saldo Actual* (Caja ARS) sea coherente con ingresos Caja − egresos Caja
+   (necesita la base previa, no sale de un mes solo).
+3. Explicar cada ⚠ del script: qué es, cuánto es, y qué corrección proponer.
 
 **Dólar blue** (para Gastos Obra): histórico
 `https://api.argentinadatos.com/v1/cotizaciones/dolares/blue/AAAA/MM/DD` → promedio
@@ -138,6 +159,12 @@ Sin `--send` no manda nada. Corre por launchd el día 5 de cada mes
 - El radar comparaba el cobro del mes sin descontar las expensas (el `piso` daba 0 fijo
   por una condición muerta). Un local que paga expensas altas y cero alquiler aparecía
   como "al día". Arreglado el 27/07/2026.
+- El chequeo de huérfanas de `conciliar.py` v1 normalizaba sacando tildes y espacios —
+  **más permisivo que el SUMIFS real**, que es sensible a los dos. Un chequeo que replica
+  a otro sistema tiene que ser exactamente igual de estricto, ni más ni menos.
+- *Saldo Actual* es un SUMIFS sobre TODO el historial, no el cierre del mes: una
+  diferencia ahí puede venir arrastrada de meses viejos. `conciliar.py` la descompone
+  (el $0,69 "de junio" era en realidad de marzo, fila 95 de Movimientos).
 
 ## Pendientes
 

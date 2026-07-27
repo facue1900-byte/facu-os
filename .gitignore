@@ -2,7 +2,8 @@
 credentials.json
 token*.json
 gmail_accounts.json
-data/
+data/*
+!data/.gitkeep
 node_modules/
 .DS_Store
 __pycache__/
@@ -11,4 +12,3 @@ __pycache__/
 *.xlsx
 *.pdf
 .venv/
-credentials.json

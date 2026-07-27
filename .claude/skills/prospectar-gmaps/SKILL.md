@@ -42,6 +42,7 @@ de pedir un límite alto.
 | `--buscar` | Qué y **dónde**. La zona va adentro de la búsqueda. |
 | `--limite` | Máximo de listados. Cada uno cuesta plata. Default 20. |
 | `--salida` | CSV. Va a `data/prospectos/` (gitignoreado). |
+| `--idioma` | Idioma de los resultados. Default `es`. |
 | `--json` | Opcional, guarda la respuesta cruda por si falta un campo. |
 
 ## Reglas

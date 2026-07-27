@@ -2,44 +2,47 @@
 
 Última actualización: 2026-07-27
 
-## Qué es
-
-Tres ramas: **eventos** (música electrónica), **academia** (Astronomy Academy) y
-**música** (producción, sellos, EPs). Es el negocio más complejo de los tres.
-
-## Participaciones
-
-**Astronomy** (toda la empresa): Blado 35% · Facu 35% · Benja 15% · Lanfral 15%
-**Puzzle** (solo la rama de eventos): Astronomy 50% · Lanfral 25% · Benja 25%
-→ en la práctica, 25% real cada uno.
-
-Al repartir ganancias, **aclarar siempre sobre qué base**: Astronomy entero vs. solo
-eventos vs. Puzzle. Confundir las bases da números mal.
+Participaciones, ramas, equipo y objetivos: en el CLAUDE.md global. Acá va solo lo
+operativo y lo que cambió.
 
 ## Dónde está todo
 
 `~/Desktop/Productoras/Astronomy/` y `~/Desktop/Productoras/Puzzle/`
 
+**La academia se gestiona con app propia**: `astronomy-members` (Next.js + Supabase +
+Mercado Pago), **en producción en astronomyofficial.com**. Código en
+`~/Desktop/Productoras/Astronomy/astronomy-members/`. El detalle vive en la memoria
+(`membership-system-project`, `reconciliacion-pagos-sistema`, `egresos-sistema`).
+
+## Datos que ya no son hueco (migrados a la memoria el 27/07/2026)
+
+Fuente: la web y la app en producción (verificado 09-24/07/2026).
+
+- **Membresías** (mensuales, ARS): Silver $143.520 / 250 créditos · Gold $195.600 / 360 ·
+  Platinum $272.000 / 480 · Bronze $1 (secreta, para amigos, a mano).
+- **Costos en créditos**: clase individual (DJ o producción) 60 · alquiler cabina/estudio 50 ·
+  clase grupal 50 por alumno.
+- **Regla central de créditos**: las membresías **acumulan** mes a mes; el Curso de DJ
+  **renueva** (cada pago resetea a 240 = 4 clases). Los créditos vencen a los 3 meses.
+- **Clases**: cancelación con menos de 24 hs no devuelve créditos y el profe cobra igual;
+  con más de 24 hs devuelve y el profe no cobra. Anticipación mínima para agendar: 12 hs.
+  Los dos umbrales son editables desde la app (`studio_config`).
+- **Cobros**: suscripción por Mercado Pago + cargas manuales. `sales` es la fuente única
+  de verdad de la plata; la comisión de José (closer) sale de ahí.
+
 ## Frentes abiertos
 
-**Eventos** — productoras, venues nuevos, DJs nuevos, invitaciones.
-Lo que más duele: **las invitaciones**. Tres objetivos concretos:
-1. Subir la conversión invitado → asistente.
-2. Generar FOMO real.
-3. Conseguir gente de estatus alto (influencers) a bajo costo.
-
-**Academia** — membresías mensuales con créditos canjeables por clases (producción o DJ:
-individual, grupal, online) o alquiler de estudio (DJ y producción).
-Profes: Mateo Iní, Mateo Pastrana (producción y DJ), Valen Frando (producción, solo online).
-Soporte: José Alugi (admin), Annie y Lola (diseño), equipo de pauta *(nombre pendiente)*.
-
-**Música** — canciones, sellos, EPs. La rama más de largo plazo.
+- **Eventos** — lo que más duele: invitaciones. 1) conversión invitado → asistente,
+  2) FOMO real, 3) influencers a bajo costo.
+- **Academia** — la app está productiva. Queda: pase de estética final (contra el demo
+  aprobado), sitio público etapa 3, y decidir si se reemplaza Calendly por el booking
+  nativo (ya está completo y listo).
+- **Música** — Sin City: trío de Facu (@thefacu__), Vlado (@vladinicc) y Lucas
+  Lanfranconi. Ver memoria `sin-city-proyecto-musical`.
 
 ## Pendiente de dato
 
-Sin esto no se puede automatizar nada de la academia:
-
-- Reglas de cada membresía: precio, créditos que otorga, vencimiento.
-- Costo en créditos de cada clase y de cada hora de estudio.
-- Cómo se gestiona hoy (planilla, plataforma, papel) y cómo se cobran las membresías.
 - Nombre del equipo de pauta.
+- ⚠ **Discrepancia a resolver con Facu**: el CLAUDE.md global dice que un profe es
+  "Mateo Iní"; la web y la app dicen "Mateo Guini" (martes y viernes). ¿Es la misma
+  persona? Hasta aclararlo, en la app manda "Guini".
