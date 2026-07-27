@@ -48,6 +48,11 @@ de este OS y sus skills no aplican a estos negocios.
 | Skill | Qué hace | Estado |
 |---|---|---|
 | `cierre-mes-nordelta` | Concilia el extracto del Macro contra el sheet Master Plan, chequea caja, categorías huérfanas y el radar de la rampa de alquileres. | Productivo |
+| `triage-inbox` | Clasifica el inbox en Plata / Acción / Esperando / Referencia con subagentes en paralelo y le pone negocio a cada mail. Reporte primero; etiquetar en Gmail es opcional y va detrás de `--send`. | Falta el OAuth de Google |
+| `prospectar-gmaps` | Listas de negocios reales desde Google Maps a CSV: candidatos a locatario, venues, frigoríficos. | Falta `APIFY_API_TOKEN` |
+
+Los dos últimos salieron de portar skills de `~/Downloads/Claude Code Full Course/All Of My
+Claude Skills/` (27/07/2026). Ver la Lab Note: no se copian tal cual, se portan.
 
 Se corren siempre con **path absoluto** y con el Python del venv — el `python3` del
 sistema es 3.9 y no tiene las dependencias:
@@ -66,7 +71,9 @@ el contexto.
 
 ## Stack
 
-Todo instalado en el home, **sin sudo** (27/07/2026). El PATH está en `~/.zshrc`.
+Todo instalado en el home, **sin sudo** (27/07/2026). El shell de login es **bash**, así
+que el PATH vive en `~/.profile` (y `~/.bashrc` lo sourcea para las shells no-login, como
+la terminal de VSCode). `~/.zshrc` tiene una copia por si algún día se cambia a zsh.
 
 | Qué | Dónde | Para qué |
 |---|---|---|
@@ -76,8 +83,18 @@ Todo instalado en el home, **sin sudo** (27/07/2026). El PATH está en `~/.zshrc
 | `uv` + Python 3.12 | `~/.local/bin/` | gestor de Python y paquetes |
 | venv del OS | `~/facu-os/.venv/` | PyMuPDF, openpyxl, pandas, gspread, google-genai |
 | `gh` CLI | `~/.local/gh/bin/` | GitHub |
+| Obsidian 1.12.7 | `/Applications/Obsidian.app` | Segundo cerebro. Abre `~/Obsidian/facu-vault/` por defecto. |
+
+**Obsidian se abre desde `/Applications`, nunca desde el `.dmg`.** Si se abre desde el
+dmg, macOS lo corre translocado (`/private/var/.../AppTranslocation/`) en una copia de
+solo lectura: no actualiza y la config no persiste. Chequeo: `pgrep -fl Obsidian`.
 
 El `python3` del sistema es 3.9 y no sirve: usar siempre `.venv/bin/python` (alias `py`).
+Por lo mismo, el linter del IDE marca `Cannot find module` sobre `httpx`, `google.genai`
+y `dotenv`: está mirando el 3.9 del sistema, no el venv. Es ruido, no un error.
+
+Tests: `.venv/bin/python -m pytest execution/tests/ -q`. Van solo sobre `execution/`,
+que es código compartido y de largo plazo; los skills se verifican corriéndolos.
 
 ## Utilidades compartidas (`execution/`)
 
@@ -86,7 +103,10 @@ El `python3` del sistema es 3.9 y no sirve: usar siempre `.venv/bin/python` (ali
   conector de Drive trunca). Setup: `.venv/bin/python execution/google_auth.py --setup`.
 - **`gemini.py`** — `preguntar()` y `leer_imagen()`. Para volumen barato, leer fotos y
   capturas (guías del campo, comprobantes) y pedir segunda opinión. El modelo sale de
-  `GEMINI_MODEL` en el `.env`; no hay default hardcodeado a propósito.
+  `GEMINI_MODEL` en el `.env`; no hay default hardcodeado a propósito. Hoy:
+  `gemini-flash-latest`, verificado con una llamada real. **`--modelos` lista modelos que
+  la key no puede usar** (`gemini-2.5-flash` figura y tira 404): antes de fijar uno nuevo,
+  probarlo con un `generate_content` de verdad.
 
 **Cuándo usar Gemini y cuándo no:** Gemini para volumen, transcripción de imágenes y
 contraste. **Nunca** para decidir un número que va a un reporte de plata — eso se calcula
