@@ -10,3 +10,5 @@ __pycache__/
 .tmp/
 *.xlsx
 *.pdf
+.venv/
+credentials.json

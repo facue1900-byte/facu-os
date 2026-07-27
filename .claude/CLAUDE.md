@@ -49,15 +49,48 @@ de este OS y sus skills no aplican a estos negocios.
 |---|---|---|
 | `cierre-mes-nordelta` | Concilia el extracto del Macro contra el sheet Master Plan, chequea caja, categorías huérfanas y el radar de la rampa de alquileres. | Productivo |
 
-Se corren siempre con **path absoluto**:
+Se corren siempre con **path absoluto** y con el Python del venv — el `python3` del
+sistema es 3.9 y no tiene las dependencias:
 
 ```bash
-python3 "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/radar_rampa.py" master.xlsx 2026-08
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/radar_rampa.py" \
+  master.xlsx 2026-08
 ```
 
 Un skill nuevo se crea **solo después de haber hecho la tarea 3 veces a mano**, y
 solo si me lo pedís. Un skill que no se usa es deuda: hay que mantenerlo y ensucia
 el contexto.
+
+---
+
+## Stack
+
+Todo instalado en el home, **sin sudo** (27/07/2026). El PATH está en `~/.zshrc`.
+
+| Qué | Dónde | Para qué |
+|---|---|---|
+| Node 24 LTS + npm | `~/.local/node/bin/` | CLIs |
+| `claude` CLI | vía npm | correr Claude headless desde launchd |
+| `gemini` CLI | vía npm | segunda opinión desde la terminal |
+| `uv` + Python 3.12 | `~/.local/bin/` | gestor de Python y paquetes |
+| venv del OS | `~/facu-os/.venv/` | PyMuPDF, openpyxl, pandas, gspread, google-genai |
+| `gh` CLI | `~/.local/gh/bin/` | GitHub |
+
+El `python3` del sistema es 3.9 y no sirve: usar siempre `.venv/bin/python` (alias `py`).
+
+## Utilidades compartidas (`execution/`)
+
+- **`google_auth.py`** — OAuth único para Sheets, Drive y Gmail. `sheets()`, `drive()`,
+  `gmail()`, y `bajar_xlsx(file_id, destino)` que exporta el sheet **completo** (el
+  conector de Drive trunca). Setup: `.venv/bin/python execution/google_auth.py --setup`.
+- **`gemini.py`** — `preguntar()` y `leer_imagen()`. Para volumen barato, leer fotos y
+  capturas (guías del campo, comprobantes) y pedir segunda opinión. El modelo sale de
+  `GEMINI_MODEL` en el `.env`; no hay default hardcodeado a propósito.
+
+**Cuándo usar Gemini y cuándo no:** Gemini para volumen, transcripción de imágenes y
+contraste. **Nunca** para decidir un número que va a un reporte de plata — eso se calcula
+en Python contra la fuente, no se le pregunta a un modelo.
 
 ---
 
