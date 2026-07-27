@@ -3,8 +3,12 @@
 El repo que ejecuta. Quién soy y qué quiero está en `~/.claude/CLAUDE.md` (global);
 acá va la mecánica: dónde vive cada cosa, cómo se corren los scripts, qué no se toca.
 
-Tres negocios: **Astronomy** (eventos, academia, música), **Paseo Nordelta** (paseo
-comercial) y **campos** (Chaco, Pergamino).
+Negocios: **Astronomy** (eventos, academia, música), **Paseo Nordelta** (paseo comercial),
+**Nordelta Plaza** (predio, NDPL SAS) y **campos** (Chaco, Pergamino).
+
+> **Paseo Nordelta y Nordelta Plaza son dos negocios distintos.** Otra sociedad, otros
+> socios, otro banco (Macro vs BBVA), otras carpetas. Nunca sumar sus números ni asumir
+> que un dato de uno aplica al otro.
 
 ---
 
@@ -25,8 +29,9 @@ No se mueve sin avisar — hay tareas programadas y scripts que la abren por pat
 
 | Qué | Dónde |
 |---|---|
-| Extractos Banco Macro (Paseo) | `~/Desktop/Paseo Nordelta/Principio de mes/Resumen de Banco Paseo Nordelta/<año>/` |
-| Contratos, expensas, BBVA (Nordelta Plaza) | `~/Desktop/Nordelta Plaza/` |
+| Paseo Nordelta (extractos Macro, cierre de mes) | `~/Desktop/Paseo Nordelta/` |
+| Nordelta Plaza (BBVA, contratos, expensas, societario) | `~/Desktop/Nordelta Plaza/` |
+| Noreventos SRL (socio del predio de Nordelta Plaza) | `~/Desktop/Noreventos/` |
 | Logos Paseo Nordelta | `~/Desktop/Paseo Nordelta/Logotipos Nordelta Plaza/` |
 | Guías de traslado de hacienda (Chaco) | `~/Desktop/Chaco/` |
 | Astronomy y Puzzle | `~/Desktop/Productoras/` |

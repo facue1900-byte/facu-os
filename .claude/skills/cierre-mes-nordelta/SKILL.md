@@ -8,7 +8,11 @@ allowed-tools: Bash, Read, Write, Edit, Glob, Grep, WebFetch
 
 ## Contexto
 
-Paseo Nordelta (NDPL SAS) es el negocio donde Facu más miedo tiene de pifiarla. Todo
+**Este skill es de Paseo Nordelta, NO de Nordelta Plaza.** Son dos negocios distintos:
+otra sociedad, otros socios, otro banco (Paseo → Macro, Plaza → BBVA, NDPL SAS). Nunca
+mezclar sus números. Nordelta Plaza no tiene skill todavía.
+
+Paseo Nordelta es el negocio donde Facu más miedo tiene de pifiarla. Todo
 número acá se verifica contra la fuente; nada se estima ni se redondea sin avisarlo.
 El destinatario final del reporte es **Richi** (Ricardo, inversor, `re1900@gmail.com`),
 que puso el ~87% del capital. La pregunta de fondo que el reporte tiene que responder

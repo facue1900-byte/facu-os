@@ -4,9 +4,13 @@
 
 ## Qué es
 
-Paseo comercial en Nordelta (NDPL SAS). 2.292 m². Algunos locales operativos, otros en
-obra. La obra se financia casi 100% con capital de socios: **Richi ~$150–161M**,
+Paseo comercial en Nordelta. 2.292 m². Algunos locales operativos, otros en obra.
+La obra se financia casi 100% con capital de socios: **Richi ~$150–161M**,
 **Facu ~$23M**, invertido en obra ~$166M (a julio 2026).
+
+> **No confundir con [Nordelta Plaza](../nordelta-plaza/ESTADO.md)** — son dos negocios
+> distintos, con sociedades, socios, bancos y carpetas separados. Paseo Nordelta opera
+> por el **Banco Macro**; Nordelta Plaza (NDPL SAS) por el **BBVA**.
 
 ## Dónde está todo
 
@@ -14,7 +18,6 @@ obra. La obra se financia casi 100% con capital de socios: **Richi ~$150–161M*
 |---|---|
 | Extractos Banco Macro | `~/Desktop/Paseo Nordelta/Principio de mes/Resumen de Banco Paseo Nordelta/<año>/` |
 | Cierre de mes (facturas, impuestos, sueldos) | `~/Desktop/Paseo Nordelta/Principio de mes/` |
-| Contratos, expensas, BBVA, Tigre municipal | `~/Desktop/Nordelta Plaza/` |
 | Logos | `~/Desktop/Paseo Nordelta/Logotipos Nordelta Plaza/` |
 | Web e informes a inversores | `~/Desktop/Paseo Nordelta/Paseo Nordelta - CLAUDE/` |
 
@@ -59,5 +62,5 @@ expensas solas (sep y oct) antes del alquiler.
 
 ## Pendiente de dato
 
-- Detalle de locales, m² y alquiler de Nordelta Plaza (la otra unidad) — hoy solo está
-  en carpetas del Desktop, sin consolidar.
+- Bajo qué sociedad opera Paseo Nordelta (NDPL SAS es Nordelta Plaza, no esto).
+- Qué relación societaria hay, si hay alguna, entre Paseo Nordelta y Nordelta Plaza.
