@@ -48,11 +48,30 @@ de este OS y sus skills no aplican a estos negocios.
 | Skill | Qué hace | Estado |
 |---|---|---|
 | `cierre-mes-nordelta` | Concilia el extracto del Macro contra el sheet Master Plan, chequea caja, categorías huérfanas y el radar de la rampa de alquileres. | Productivo |
-| `triage-inbox` | Clasifica el inbox en Plata / Acción / Esperando / Referencia con subagentes en paralelo y le pone negocio a cada mail. Reporte primero; etiquetar en Gmail es opcional y va detrás de `--send`. | Falta el OAuth de Google |
+| `triage-inbox` | Clasifica el inbox en Plata / Acción / Esperando / Referencia con subagentes en paralelo y le pone un ámbito a cada mail. Reporte primero; etiquetar en Gmail es opcional y va detrás de `--send`. | Falta el OAuth de Google |
+| `grabacion-a-tareas` | Cualquier audio o video (reunión, llamada, nota de voz) → tareas con responsable, plazo y la cita textual de dónde salió cada una. | Productivo |
+| `consenso` | Manda N auditores independientes al mismo cálculo sin que se vean, y compara. Para números que salen a un tercero o decisiones caras de revertir. | Productivo |
 | `prospectar-gmaps` | Listas de negocios reales desde Google Maps a CSV: candidatos a locatario, venues, frigoríficos. | Falta `APIFY_API_TOKEN` |
 
-Los dos últimos salieron de portar skills de `~/Downloads/Claude Code Full Course/All Of My
-Claude Skills/` (27/07/2026). Ver la Lab Note: no se copian tal cual, se portan.
+`triage-inbox` y `prospectar-gmaps` salieron de portar skills de `~/Downloads/Claude Code
+Full Course/All Of My Claude Skills/` (27/07/2026). Ver la Lab Note: no se copian tal cual,
+se portan.
+
+**Los skills se escriben genéricos y lo específico va en config.** `triage-inbox` no sabe
+nada de los negocios: los ámbitos viven en su `contextos.json` y se editan sin tocar código.
+`grabacion-a-tareas` recibe el dominio por `--contexto`. Un skill clavado a un negocio
+sirve para uno solo; el mismo skill parametrizado sirve para los cuatro y para el próximo.
+
+## Subagentes
+
+| Agente | Para qué | Modelo |
+|---|---|---|
+| `numeros` | Audita cualquier cálculo que toque plata, contra la fuente. Read-only. Su checklist es también el del skill `consenso`. | Opus |
+| `auditor-consenso` | Igual que `numeros` pero escribe JSON, para correr de a varios y comparar. Lo usa el skill `consenso`. | Opus |
+| `clasificador-mails` | Clasifica un chunk de mails. Lo usa `triage-inbox`. | Haiku |
+| `code-reviewer` | Revisa código sin contexto del repo. | Sonnet |
+| `qa` | Escribe tests, **los corre**, y reporta. | Sonnet |
+| `research` | Investiga a fondo sin ensuciar el contexto principal. | Sonnet |
 
 Se corren siempre con **path absoluto** y con el Python del venv — el `python3` del
 sistema es 3.9 y no tiene las dependencias:
@@ -83,7 +102,18 @@ la terminal de VSCode). `~/.zshrc` tiene una copia por si algún día se cambia 
 | `uv` + Python 3.12 | `~/.local/bin/` | gestor de Python y paquetes |
 | venv del OS | `~/facu-os/.venv/` | PyMuPDF, openpyxl, pandas, gspread, google-genai |
 | `gh` CLI | `~/.local/gh/bin/` | GitHub |
+| `netlify` CLI | vía npm | Deploys de la app del Paseo. **Ya autenticado** (team Astronomy). |
+| `vercel` CLI | vía npm | Deploys de `astronomy-members`. Falta `VERCEL_TOKEN`. |
+| `supabase` CLI | vía npm | Base de `astronomy-members` y del Paseo. Falta `SUPABASE_ACCESS_TOKEN`. |
 | Obsidian 1.12.7 | `/Applications/Obsidian.app` | Segundo cerebro. Abre `~/Obsidian/facu-vault/` por defecto. |
+
+**Vercel y Supabase van por token, no por `login` interactivo.** El login de navegador se
+vence y no sirve headless: cuando el `launchd` corra a las 9 de la mañana no hay nadie para
+clickear. Los tokens viven en el `.env` (`VERCEL_TOKEN`, `SUPABASE_ACCESS_TOKEN`).
+
+**Sitios de Netlify de la app del Paseo** — un deploy por rol, credencial aislada en cada build:
+`lucent-buttercream` = Mati · `whimsical-alfajores` = Inversores · `dancing-elf` = Admin.
+(`dapper-cajeta` es de Astronomy, no tocar.)
 
 **Obsidian se abre desde `/Applications`, nunca desde el `.dmg`.** Si se abre desde el
 dmg, macOS lo corre translocado (`/private/var/.../AppTranslocation/`) en una copia de

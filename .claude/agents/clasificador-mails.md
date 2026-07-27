@@ -78,3 +78,10 @@ Reglas para asignarlo:
 
 Diez palabras o menos, en español, concreto. "vence el 5, expensas local 4"
 sirve. "mail importante" no sirve.
+
+---
+
+_Corre en **Haiku**: clasificar es exactamente para lo que está, y con 200 mails
+repartidos en 8 subagentes la diferencia de costo se nota. La versión de la que
+salió esto usaba Sonnet. Si empieza a confundir ámbitos parecidos o a mandar
+plata a Referencia, subilo a `sonnet` en el frontmatter — es una línea._
