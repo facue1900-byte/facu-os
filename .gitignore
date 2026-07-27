@@ -1,0 +1,12 @@
+.env
+credentials.json
+token*.json
+gmail_accounts.json
+data/
+node_modules/
+.DS_Store
+__pycache__/
+*.pyc
+.tmp/
+*.xlsx
+*.pdf
