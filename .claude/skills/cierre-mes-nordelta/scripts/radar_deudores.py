@@ -20,14 +20,17 @@ import sys
 import openpyxl
 
 # Reglas por local confirmadas por Facu (22/07 y 27/07/2026). Un saldo "raro" en
-# estos locales no es deuda: es el generador de cargos que todavía no los refleja.
+# estos locales no es deuda: es una regla del negocio.
 REGLAS = {
     "Escuelita": "Paga % de facturación: no lleva cargo generado. Sus pagos figuran "
                  "como saldo a favor — es normal, no es plata a devolver.",
-    "Salón (Alto)": "Solo paga expensas, sin alquiler. Los meses sin cargo generado "
-                    "hacen que sus pagos figuren como saldo a favor.",
     "La Jaula / torneo": "Se le cobra recién desde agosto 2026 (tenía saldo a favor).",
 }
+
+# Locales que pagan (parte) por banco: esos pagos NO se ven hasta que el extracto
+# del mes se anota en Movimientos. Su exigible puede estar sobreestimado mientras
+# el mes está abierto (Facu, 27/07/2026).
+PAGAN_POR_BANCO = {"Fabric", "Bigg"}
 
 
 def leer_cuenta_corriente(xlsx):
@@ -91,10 +94,14 @@ def main():
     if deudores:
         print("DEBEN (exigible hoy)")
         for nombre, loc in sorted(deudores, key=lambda x: -x[1]["exigible"]):
+            banco = "  ⚠ paga por banco: puede haber pagos en tránsito hasta el extracto" \
+                if nombre in PAGAN_POR_BANCO else ""
             print(f"  {nombre:<14} ${loc['exigible']:>13,.0f}"
                   + (f"   + cargo {mes} por vencer: ${loc['corriente_cargo']:,.0f}"
-                     if loc["corriente_cargo"] else ""))
-        print(f"\n  Total exigible: ${sum(l['exigible'] for _, l in deudores):,.0f}\n")
+                     if loc["corriente_cargo"] else "") + banco)
+        print(f"\n  Total exigible: ${sum(l['exigible'] for _, l in deudores):,.0f}")
+        print("  Antes de reclamar a los que pagan por banco, esperar el extracto "
+              "del mes o chequear el homebanking.\n")
     else:
         print("Nadie debe nada exigible.\n")
 
