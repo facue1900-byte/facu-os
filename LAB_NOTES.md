@@ -8,6 +8,32 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-07-28 · FAIL ✓ — Chrome headless renderiza mínimo a 500px y después recorta: inventé un bug de mobile que no existía
+
+Sacando la vista previa del salón de premios, la captura a `--window-size=390,1500` mostraba
+todo cortado a la derecha: nombres partidos, el texto de la nota tajeado. Diagnostiqué
+desborde horizontal, encontré una causa plausible —la trampa ya documentada de `min-width:auto`
+en items de grid— y **edité `ui.css` para arreglarlo**. La captura de después seguía cortada.
+
+**La causa real:** Chrome headless tiene un **ancho de ventana mínimo de ~500px**. Pide 390 y
+lo que hace es maquetar a 500 y **recortar la imagen** a 390. Todo lo que caía entre 390 y 500
+desaparecía de la foto sin desaparecer del layout. El `--window-size` no controla el viewport
+CSS por debajo de ese piso, sólo el encuadre.
+
+Lo delató inyectar un script que imprimiera `document.documentElement.clientWidth`: decía
+**500**, no 390. Y `DESBORDAN=0`. Después revertí `ui.css` y medí de nuevo: también 0. **No
+había bug.** El parche llevaba 20 minutos de trabajo sobre un fantasma.
+
+`--headless=new` no lo arregla: la imagen sale de 780px (390×2) pero el layout se sigue
+haciendo a 500. `--dump-dom` es peor todavía, ignora el `--window-size` por completo.
+
+**La próxima:** Para medir anchos de teléfono de verdad, **embeber la página en un `<iframe>`
+del ancho buscado**, servido desde el mismo origen (un HTML en `public/`). El iframe crea su
+propio viewport, las media queries responden al ancho real y desde el padre se puede leer el
+`clientWidth` y el `scrollWidth` del hijo. Y la regla de fondo: **antes de arreglar algo que
+viste en un screenshot, verificá que el screenshot mida lo que creés.** Un artefacto de
+captura se parece muchísimo a una regresión.
+
 ### 2026-07-27 · FAIL ✓ — El conector de Drive (read_file_content) devolvió la pestaña…
 
 El conector de Drive (`read_file_content`) devolvió la pestaña Movimientos del Master Plan cortada en 206 de 455 filas, **sin error ni aviso**. Los totales daban más chicos y plausibles.
@@ -531,3 +557,47 @@ sockets subordinados del mismo pedido, así que contar coincidencias de texto da
 mismo tamaño, y `ImageChops.difference(...).getbbox()`. Si devuelve `None`, el refactor no
 cambió **un solo pixel**. En `/academy` dio `None`. Cuando después toqué la tipografía, el
 mismo diff me dijo exactamente qué se había movido y pude mirar sólo eso.
+
+---
+
+## Meta Marketing API: el `creative_id` es un objeto compartido, no una copia
+
+*28/07/2026 · Astronomy Academy · costó una hora de entrega del anuncio que más gastaba*
+
+Para armar un test A/B necesitaba un anuncio nuevo con la misma imagen que uno existente.
+Reutilicé su `creative_id` — parecía lo obvio y lo barato:
+
+```python
+post(f"{CUENTA}/ads", name=..., adset_id=NUEVO,
+     creative=json.dumps({"creative_id": "1514918636967589"}))  # el del anuncio que ya corría
+```
+
+Un `creative` en Meta **no es un archivo, es un objeto vivo compartido entre todos los
+anuncios que lo referencian.** El conjunto nuevo pertenecía a una app que en ese momento
+estaba en modo Desarrollo, así que Meta marcó el creativo, y **el anuncio original —que
+no toqué— heredó el problema y se autopausó.** Se llevaba el 76% de la entrega del
+conjunto.
+
+Reactivarlo no alcanza: Meta vuelve a marcarlo. La marca queda en el objeto.
+
+**La regla:** para un anuncio nuevo, siempre un creativo nuevo, aunque apunte a la misma
+imagen. Cuesta una llamada más y aísla el riesgo.
+
+Al reconstruirlo aparecieron dos trampas más:
+
+- **`/copies` falla** si el creativo original usa `asset_feed_spec` con recortes
+  discontinuados (`191x100`). El error no menciona el recorte hasta que se lee
+  `error_user_msg`, no `message`.
+- **Crear un `adcreative` desde `object_story_id`** de una publicación dinámica devuelve
+  `Invalid parameter` a secas; el motivo real (*"falta el identificador del conjunto de
+  productos"*) sólo aparece en `error_user_msg`.
+
+**En esta API, `error["message"]` casi nunca alcanza. Siempre loguear también
+`error_user_msg` y `error_subcode`** — ahí está el diagnóstico.
+
+Lo que sí se puede reutilizar sin riesgo es el **`image_hash`**: son inmutables y
+compartirlos entre creativos no propaga nada.
+
+**Y un borde de reporte:** `issues_info` a nivel cuenta devuelve el ruido histórico de
+años de campañas pausadas. Filtrar por anuncios que pertenezcan a conjuntos con
+`effective_status == ACTIVE`, o el informe grita todas las semanas por anuncios de 2024.
