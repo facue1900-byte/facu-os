@@ -193,3 +193,17 @@ La primera versión de `conciliar.py` normalizaba categorías sacando tildes y c
 La memoria de Claude Code se guarda según la carpeta desde donde se abre la sesión: 224 KB de memoria de los negocios (35 archivos, incluidas las reglas de membresías que el CLAUDE.md listaba como "hueco por completar") estaban repartidos entre el proyecto del Curso y el de Astronomy, y la memoria de facu-os estaba VACÍA. Unificada el 27/07/2026: 27 memorias + MEMORY.md en facu-os, crudos grandes en `archive/memoria-importada/`, orígenes vaciados tras verificar byte a byte.
 
 **La próxima:** las sesiones de los negocios se abren SIEMPRE desde `~/facu-os` — es lo que decide dónde vive la memoria. Si una sesión se abrió desde otra carpeta y guardó memoria valiosa, migrarla en el momento.
+
+### 2026-07-27 · LEARN — La política de modelos no rutea nada si no hay a quién delegar
+
+El global declaraba "Haiku clasifica · Sonnet genera · Opus para plata" desde siempre, pero el hilo principal corre en Opus y **un skill no puede bajarse el modelo: no existe esa palanca en el frontmatter de `SKILL.md`**. El único ruteo real es delegar a un subagente con `model:` clavado. Resultado: los 6 subagentes estaban bien ruteados, pero todo el trabajo mecánico (leer archivos, extraer campos, escribir borradores) se lo comía Opus 1M porque no había ningún agente genérico a quien mandárselo — `clasificador-mails` estaba clavado a mails.
+
+**El fix:** agentes `mecanico` (Haiku, trabajo de dedos) y `redactor` (Sonnet, texto para terceros), más la tabla de ruteo en `.claude/CLAUDE.md`. Regla que los sostiene: **lo que decide no se delega** — el `mecanico` trae datos, el hilo principal saca la conclusión.
+
+**La próxima:** Una política sin mecanismo es un comentario. Antes de escribir una regla en un CLAUDE.md, preguntarse qué la ejecuta.
+
+### 2026-07-27 · LEARN — Los subagentes nuevos no existen hasta reiniciar la sesión
+
+Recién creado `.claude/agents/mecanico.md`, invocarlo devolvió `Agent type 'mecanico' not found`. El registro de agentes se arma **al arrancar la sesión**; escribir el archivo no lo registra en caliente.
+
+**La próxima:** Un agente nuevo se prueba en la sesión siguiente, no en la que lo creó. El frontmatter sí se puede validar en el momento (`name` == nombre del archivo, `model` en haiku/sonnet/opus).

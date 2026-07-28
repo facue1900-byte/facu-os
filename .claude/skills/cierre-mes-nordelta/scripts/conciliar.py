@@ -289,6 +289,33 @@ def main():
         for f in sin_etiqueta:
             print(f"    {f['fecha']} {f['tipo']} ${f['monto']:,.2f} — {f['obs']}")
 
+    # Resultado del mes — informativo, no es un chequeo. Separa la plata que
+    # genera el paseo de la que ponen los socios, con las definiciones del
+    # SKILL.md: INVERSIÓN = aportes de capital + egresos "Inversiones";
+    # NEGOCIO = el resto. Solo ARS; USD se netea aparte si hay.
+    ars = [f for f in todos if f["moneda"] == "ARS"]
+    ing = [f for f in ars if f["tipo"] == "ingreso"]
+    egr = [f for f in ars if f["tipo"] == "egreso"]
+    es_aporte = lambda f: normalizar(f["local"]).strip().startswith("aporte de capital")
+    ing_aportes = sum(f["monto"] for f in ing if es_aporte(f))
+    ing_oper = sum(f["monto"] for f in ing if not es_aporte(f))
+    egr_inv = sum(f["monto"] for f in egr
+                  if normalizar(f["categoria"]).strip() == "inversiones")
+    egr_oper = sum(f["monto"] for f in egr
+                   if normalizar(f["categoria"]).strip() != "inversiones")
+    print(f"\nRESULTADO DEL MES {mes} (Caja + Banco, ARS)")
+    print(f"  Ingresos totales:    ${ing_aportes + ing_oper:>14,.2f}"
+          f"   (de eso, aportes de capital: ${ing_aportes:,.2f})")
+    print(f"  Ingresos operativos: ${ing_oper:>14,.2f}")
+    print(f"  Egresos operativos:  ${egr_oper:>14,.2f}"
+          f"   (aparte, egresos de Inversiones: ${egr_inv:,.2f})")
+    print(f"  Resultado operativo: ${ing_oper - egr_oper:>14,.2f}")
+    usd = [f for f in todos if f["moneda"] == "USD"]
+    if usd:
+        neto_usd = sum(f["monto"] if f["tipo"] == "ingreso" else -f["monto"]
+                       for f in usd)
+        print(f"  USD (se netea aparte): {len(usd)} movimientos, neto USD {neto_usd:,.2f}")
+
     print(f"\n{'CIERRA' if not problemas else f'NO CIERRA — {problemas} punto(s) para mirar'}")
     return 1 if problemas else 0
 

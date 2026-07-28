@@ -69,9 +69,35 @@ si Facu lo pide. Un skill que no se usa es deuda.
 | `numeros` | Audita cualquier cálculo que toque plata, contra la fuente. Su checklist es también el del skill `consenso`. | Opus |
 | `auditor-consenso` | Igual que `numeros` pero escribe JSON, para correr de a varios. | Opus |
 | `clasificador-mails` | Clasifica un chunk de mails. Lo usa `triage-inbox`. | Haiku |
+| `mecanico` | Trabajo de dedos: leer, grepear, contar, extraer campos, resumir. Devuelve datos, no conclusiones. | Haiku |
+| `redactor` | Escribe texto para terceros: mails, propuestas, copies. Genera y frena. | Sonnet |
 | `code-reviewer` | Revisa código sin contexto del repo. | Sonnet |
 | `qa` | Escribe tests, **los corre**, y reporta. | Sonnet |
 | `research` | Investiga a fondo sin ensuciar el contexto principal. | Sonnet |
+
+### Ruteo de modelos: la política necesita mecanismo
+
+El hilo principal corre en **Opus** siempre — un skill no puede bajarse el modelo, no
+existe esa palanca. **El único ruteo real es delegar.** Si el trabajo mecánico no se
+delega, la política de "Haiku clasifica · Sonnet genera · Opus para plata" es una
+declaración que no ejecuta nada.
+
+Antes de arrancar una tarea, el hilo principal se pregunta qué parte no necesita criterio:
+
+| Si la tarea es… | Va a |
+|---|---|
+| Leer varios archivos, grepear, contar filas, extraer campos, resumir un PDF largo | `mecanico` |
+| Escribir un mail, una propuesta, un copy, una respuesta a un proveedor | `redactor` |
+| Buscar en la web o recorrer código desconocido | `research` |
+| Cualquier número que salga a un tercero | `numeros` (o el skill `consenso`) |
+| Decidir, arquitectura, estrategia, qué decir | se queda en el hilo principal |
+
+**Un solo archivo chico se lee directo** — delegar cuesta más que leerlo. El umbral es
+"más de un par de archivos, o uno grande".
+
+**Lo que decide no se delega.** El `mecanico` trae los datos, el hilo principal saca la
+conclusión. El `redactor` escribe el borrador, el hilo principal decide qué se dice.
+Delegar el criterio a un modelo más chico es cómo se rompe esto.
 
 Todo se corre con **path absoluto** y con el Python del venv — el `python3` del sistema
 es 3.9, sin las dependencias (por eso el linter del IDE marca `Cannot find module`
