@@ -8,7 +8,8 @@
   "marca": {
     "nombre": "Astronomy Academy",
     "isotipo": "isotipo-blanco.png",
-    "legal": "astronomyofficial.com · @astronomy.oficial"
+    "legal": "astronomyofficial.com · @astronomy.academy",
+    "firma": "academy-blanco.png"
   },
   "productos": [
     {
@@ -79,7 +80,8 @@
           },
           "cta": "Empezar ahora"
         }
-      ]
+      ],
+      "foto": "booth-violeta.jpg"
     },
     {
       "id": "produccion",
@@ -149,7 +151,8 @@
           },
           "cta": "Empezar ahora"
         }
-      ]
+      ],
+      "foto": "estudio-cdjs.jpg"
     },
     {
       "id": "produccion-online",
@@ -219,7 +222,8 @@
           },
           "cta": "Empezar ahora"
         }
-      ]
+      ],
+      "foto": "estudio-cdj.jpg"
     },
     {
       "id": "membresias",
@@ -291,7 +295,8 @@
           },
           "cta": "Ver los planes"
         }
-      ]
+      ],
+      "foto": "estudio-neon.jpg"
     },
     {
       "id": "modo-profesional",
@@ -361,7 +366,8 @@
           },
           "cta": "Empezar ahora"
         }
-      ]
+      ],
+      "foto": "dj-bw.jpg"
     }
   ]
 }

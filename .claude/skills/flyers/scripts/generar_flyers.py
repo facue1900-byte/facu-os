@@ -109,19 +109,51 @@ def bloque_html(bloque, producto, planes):
     raise ValueError(f"Tipo de bloque desconocido: {tipo}")
 
 
-def armar_html(template, marca, producto, angulo, fmt, planes, assets):
+def fondo_y_cabecera(estilo, marca, producto, assets):
+    """Devuelve (clase del body, HTML del fondo, HTML de la cabecera).
+
+    `plano` = degradado violeta sobre negro, el look de la app.
+    `foto`  = foto del estudio a sangre + velo, el look de la cuenta de Instagram.
+    """
+    if estilo == "plano":
+        return (
+            "",
+            '<div class="bg"></div>\n<div class="grid"></div>',
+            f'<img src="{(assets / "marca" / marca["isotipo"]).as_uri()}" alt="">'
+            f'<div class="nombre">{esc(marca["nombre"])}</div>',
+        )
+
+    foto = producto.get("foto")
+    if not foto:
+        raise ValueError(
+            f"El producto '{producto['id']}' no declara `foto` y el estilo es 'foto'. "
+            f"Agregale una de assets/fotos/ o generá ese producto con --estilo plano."
+        )
+    ruta = assets / "fotos" / foto
+    if not ruta.exists():
+        raise ValueError(f"No existe la foto {ruta}. Están: {[p.name for p in (assets / 'fotos').glob('*')]}")
+    return (
+        "con-foto",
+        f'<img class="foto" src="{ruta.as_uri()}" alt="">\n<div class="velo"></div>',
+        f'<img class="firma" src="{(assets / "marca" / marca["firma"]).as_uri()}" alt="">',
+    )
+
+
+def armar_html(template, marca, producto, angulo, fmt, planes, assets, estilo):
     f = FORMATOS[fmt]
     kicker = angulo.get("kicker")
     sub = angulo.get("sub")
+    clase, fondo, cabecera = fondo_y_cabecera(estilo, marca, producto, assets)
     reemplazos = {
         "{{FONT}}": (assets / "fonts/Montserrat.ttf").as_uri(),
-        "{{ISOTIPO}}": (assets / "marca" / marca["isotipo"]).as_uri(),
+        "{{CLASE}}": clase,
+        "{{FONDO}}": fondo,
+        "{{CABECERA}}": cabecera,
         "{{W}}": str(f["w"]),
         "{{H}}": str(f["h"]),
         "{{BASE}}": str(f["base"]),
         "{{PAD}}": str(f["pad"]),
         "{{PADX}}": str(f["padx"]),
-        "{{MARCA}}": esc(marca["nombre"]),
         "{{KICKER}}": f'<div class="kicker">{esc(kicker)}</div>' if kicker else "",
         # El titular admite <em> (palabra en violeta) y <br>: es copy nuestro,
         # no entrada de usuario.
@@ -230,6 +262,9 @@ def main():
     ap.add_argument("--productos", help="IDs separados por coma. Default: todos.")
     ap.add_argument("--angulos", help="IDs separados por coma. Default: todos.")
     ap.add_argument("--formatos", default="feed,story,square")
+    ap.add_argument("--estilo", default="foto", choices=["foto", "plano"],
+                    help="foto = fotos del estudio (el look de @astronomy.academy). "
+                         "plano = degradado violeta (el look de la app).")
     ap.add_argument("--jobs", type=int, default=5)
     args = ap.parse_args()
 
@@ -251,7 +286,9 @@ def main():
     filtro_prod = {p.strip() for p in args.productos.split(",")} if args.productos else None
     filtro_ang = {a.strip() for a in args.angulos.split(",")} if args.angulos else None
 
-    salida = pathlib.Path(args.salida)
+    # Cada estilo tiene su carpeta: la idea es poder comparar la tanda entera de uno
+    # contra la del otro, no mezclarlas en el mismo directorio.
+    salida = pathlib.Path(args.salida) / args.estilo
     trabajos = []
     for producto in cont["productos"]:
         if filtro_prod and producto["id"] not in filtro_prod:
@@ -261,7 +298,7 @@ def main():
                 continue
             for fmt in formatos:
                 destino = salida / producto["id"] / f"{angulo['id']}__{fmt}.png"
-                html = armar_html(template, cont["marca"], producto, angulo, fmt, planes, assets)
+                html = armar_html(template, cont["marca"], producto, angulo, fmt, planes, assets, args.estilo)
                 trabajos.append((html, destino, fmt))
 
     if not trabajos:

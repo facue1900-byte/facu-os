@@ -23,16 +23,34 @@ Siempre en dos pasos, y en este orden:
   "/Users/Facu/facu-os/.claude/skills/flyers/scripts/generar_flyers.py"
 ```
 
-Sale todo a `~/Desktop/Productoras/Astronomy/Flyers Academy/<producto>/<angulo>__<formato>.png`,
-más una `_hoja-de-contacto.jpg` para revisar las piezas de un vistazo.
+Sale todo a `~/Desktop/Productoras/Astronomy/Flyers Academy/<estilo>/<producto>/<angulo>__<formato>.png`,
+más una `_hoja-de-contacto.jpg` por estilo para revisar las piezas de un vistazo.
 
 Filtros útiles cuando cambia una sola cosa:
 
 ```bash
+--estilo foto|plano                 # default: foto
 --productos membresias,curso-dj     # solo esos productos
 --angulos precio                    # solo el ángulo de precio
 --formatos story                    # solo 1080x1920
 ```
+
+## Los dos estilos
+
+| Estilo | Qué es | Cuándo |
+|---|---|---|
+| `foto` (default) | Foto del estudio a sangre + velo + firma cursiva. | **Instagram (@astronomy.academy).** Es la estética propia de Academy: estudio oscuro, luz violeta, el neón con la firma. |
+| `plano` | Degradado violeta sobre negro + isotipo estrella. | La app y el sitio (astronomyofficial.com), donde manda el sistema de diseño del producto. |
+
+El velo del estilo `foto` va en tres tramos (oscuro arriba y abajo, transparente en
+el medio) y el tinte violeta va en **`soft-light`, nunca `screen`**: con `screen` se
+levantan los negros y la foto queda como una sopa violeta plana. Las fotos del
+estudio ya tienen luz violeta sobre negros profundos; el tinte solo unifica
+temperaturas entre tomas.
+
+Las fotos viven en `assets/fotos/` y se asignan por producto en `academy.json`
+(campo `foto`). Vinieron de `~/Desktop/Productoras/Astronomy/Astronomy Academy/Material para contenido/`,
+reescaladas a 1800px de lado largo.
 
 ## Qué hay adentro
 
@@ -41,7 +59,8 @@ Filtros útiles cuando cambia una sola cosa:
 | `contenido/academy.json` | Productos, ángulos y copy. **Es lo único que se edita para cambiar textos.** |
 | `contenido/precios.json` | Snapshot de la tabla `plans`, con fecha. Lo escribe `sync_precios.py`. |
 | `templates/flyer.html` | La estética. Tokens copiados de `app/globals.css` de astronomy-members. |
-| `assets/marca/` | Isotipo y logotipo oficiales. |
+| `assets/marca/` | Isotipo, logotipo y **firma cursiva** (`academy-blanco.png`, la del neón del estudio). |
+| `assets/fotos/` | Fotos del estudio para el estilo `foto`. |
 | `assets/fonts/` | Montserrat variable. |
 
 **Productos** (5): `curso-dj`, `produccion`, `produccion-online`, `membresias`,

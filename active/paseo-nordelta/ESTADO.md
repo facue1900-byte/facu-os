@@ -111,7 +111,30 @@ expensas solas (sep y oct) antes del alquiler.
    recategorizadas las dos "Diferencia de caja" que estaban infladas en Inversiones.
    Inversiones bajó $882.814. La caja no cambió ni un centavo (verificado).
 
+## Cuentas corrientes — repaso local por local (cerrado 28/07/2026)
+
+Todos triple-verificados (Movimientos ↔ Cobros ↔ extractos) y con la vía de cobro
+marcada en CARGOS ("Cobra por"):
+
+| Local | Vía | Convención | Estado |
+|---|---|---|---|
+| Fabric | Banco (factura todo) | mes vencido | debe $2.301.918 (esperar extracto jul) |
+| Bigg | mitad factura banco + mitad efectivo; expensas banco | **adelantado** | al día |
+| Boss | efectivo, redondea | mes vencido | al día |
+| Volta + Open | efectivo | mensual | al día · **se va, fecha desconocida** |
+| Peak One | efectivo, solo expensas | mes vencido | al día |
+| Salón (Alto) | efectivo, expensas $1M (Marina desde mar; penalidad Carolas feb neteada) | mes vencido | al día |
+| Escuelita | % de facturación, sin cargo | — | regla propia |
+| La Jaula | arranca **agosto 2026** ($1M + $798.825 serv.) | — | primera alta a vigilar |
+
+IPC: `actualizar_ipc.py` completa la tabla INFLACIÓN desde el dato oficial; las
+pestañas indexan solas (trimestral). Correr en cada cierre (el IPC sale a mitad de mes).
+
 ## Pendiente de dato
 
+- **Fecha de salida de Volta + Open** (Facu: "se va pero no sé exactamente cuándo").
+  Atada a la heladería nueva (Shock Ba, dic-26 en CONTRATOS / ene-27 en la rampa).
+- **OK de Facu al aumento del Salón por IPC desde agosto** (propuesto: $1.135.751 con
+  IPC publicado a junio; recalcular cuando salga julio).
 - Bajo qué sociedad opera Paseo Nordelta (NDPL SAS es Nordelta Plaza, no esto).
 - Qué relación societaria hay, si hay alguna, entre Paseo Nordelta y Nordelta Plaza.
