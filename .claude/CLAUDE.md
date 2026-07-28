@@ -54,6 +54,7 @@ código de ejemplo, no una capacidad de este OS.
 | `consenso` | N auditores independientes al mismo cálculo sin verse, y compara. Para números que salen a un tercero. | Productivo |
 | `prospectar-gmaps` | Negocios reales desde Google Maps a CSV. | Falta `APIFY_API_TOKEN` |
 | `propuestas` | Propuesta comercial en HTML/PDF por tipo de destinatario (`destinatarios.json`). Genera y frena: no manda. | Productivo |
+| `flyers` | Tandas de flyers PNG para Astronomy Academy (5 productos × 5 ángulos × 3 formatos). Precios sincronizados desde Supabase; render con Chrome headless. | Productivo |
 
 **Los skills se escriben genéricos y lo específico va en config** (`contextos.json`,
 `--contexto`). Un skill clavado a un negocio sirve para uno; parametrizado sirve para

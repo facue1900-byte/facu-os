@@ -207,3 +207,36 @@ El global declaraba "Haiku clasifica · Sonnet genera · Opus para plata" desde 
 Recién creado `.claude/agents/mecanico.md`, invocarlo devolvió `Agent type 'mecanico' not found`. El registro de agentes se arma **al arrancar la sesión**; escribir el archivo no lo registra en caliente.
 
 **La próxima:** Un agente nuevo se prueba en la sesión siguiente, no en la que lo creó. El frontmatter sí se puede validar en el momento (`name` == nombre del archivo, `model` en haiku/sonnet/opus).
+
+### 2026-07-28 · LEARN — Skill `flyers`: `--user-data-dir` cuelga al Chrome headless de macOS
+
+Armando el generador de flyers de Academy, los 75 renders se colgaban a los 120s sin
+escribir el PNG ni tirar error. Aislando flag por flag, el culpable era
+`--user-data-dir` apuntando a un perfil nuevo en `/tmp`: se queda esperando para
+siempre, ni siquiera con `--no-first-run --no-default-browser-check --disable-sync`.
+Sin el flag anda, y cinco corridas en paralelo producen PNGs **byte a byte idénticos**
+— o sea que compartir el perfil por defecto no genera contención.
+
+De paso: **`timeout` no existe en macOS**, así que el primer intento de acotar el
+render "colgado" no corrió Chrome en absoluto y dio un falso negativo. El corte tiene
+que ir en el `subprocess.run(timeout=...)` de Python.
+
+**La próxima:** cuando un subproceso se cuelga, bisectar los flags antes de tocar el
+código. Y desconfiar de un test que "falla rápido": verificar que la herramienta que
+usás para acotarlo exista (`command -v timeout`) — un 127 se lee igual que un fallo
+real si no mirás el stderr.
+
+### 2026-07-28 · LEARN — Un flyer con precio a mano es un precio que se desactualiza
+
+Los precios de los flyers de Academy no se escriben en el JSON de contenido: los pisa
+`sync_precios.py` leyendo la tabla `plans` de Supabase, la misma que lee el checkout.
+Un flyer publicado con precio viejo lo compara el alumno contra Mercado Pago y no
+coincide. Además el generador **revienta** si un ángulo de tipo `precio` se encuentra
+con `precio_ars: null`, en vez de dibujar el precio en blanco.
+
+Excepción registrada: `modo-profesional` tiene el precio hardcodeado en
+`app/actions/buyCursoPro.ts` (`PRECIO_UNICO` $440.000 / `PRECIO_CUOTA` $250.000), no
+en la base. Si cambia allá, hay que actualizarlo a mano en `contenido/academy.json`.
+
+**La próxima:** todo número que sale a un tercero se sincroniza desde su fuente o el
+script no corre. "Lo actualizo cuando cambie" es cómo se publica un precio viejo.

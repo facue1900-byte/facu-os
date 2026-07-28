@@ -149,11 +149,15 @@ def render(html, destino, fmt):
         pagina = tmp / "flyer.html"
         pagina.write_text(html, encoding="utf-8")
         salida = tmp / "out.png"
+        # Nada de `--user-data-dir`: con un perfil nuevo en /tmp, el Chrome de macOS
+        # se cuelga indefinidamente (probado: 25s sin escribir nada, ni con
+        # --no-first-run --no-default-browser-check --disable-sync). Sin el flag
+        # anda, y cinco corridas en paralelo dan PNGs byte a byte idénticos, así
+        # que compartir el perfil por defecto no molesta.
         proc = subprocess.run(
             [
-                CHROME, "--headless", "--disable-gpu", "--no-sandbox", "--hide-scrollbars",
+                CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
                 "--force-device-scale-factor=1",
-                f"--user-data-dir={tmp / 'perfil'}",
                 "--virtual-time-budget=4000",
                 f"--window-size={f['w']},{f['h']}",
                 "--dump-dom",

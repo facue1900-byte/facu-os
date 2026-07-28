@@ -85,7 +85,10 @@ body{
 }
 .titular{
   font-weight:800;font-size:5.6rem;line-height:.98;letter-spacing:-.022em;
-  max-width:19ch;text-wrap:balance;
+  /* 15ch, no 19: con 19 los titulares cortos entran en una sola línea y llegan
+     al borde del margen. Forzar el corte antes los deja apilados y con aire
+     igual en las tres relaciones de aspecto. */
+  max-width:15ch;text-wrap:balance;
 }
 .titular em{font-style:normal;color:var(--violet)}
 .sub{
@@ -119,7 +122,7 @@ body{
 }
 .bullets li::before{
   content:"";display:block;
-  width:.62rem;height:.62rem;margin-top:.45rem;margin-left:.44rem;
+  width:.78rem;height:.78rem;margin-top:.5rem;margin-left:.36rem;
   background:var(--violet);
   clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);
 }
