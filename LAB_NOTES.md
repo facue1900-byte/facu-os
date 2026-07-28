@@ -478,3 +478,56 @@ volver a poner `text-align: left` explícito.
 **Cómo se verificó**, además del build y `tsc`: screenshots de cada página nueva, y un
 crawl de los 138 links internos de las 11 páginas públicas para confirmar que ninguno
 quedó roto. Un link roto en un footer nuevo no lo detecta ningún compilador.
+
+---
+
+## 28/07/2026 · Astronomy web — sacar una página del servidor sin que se note
+
+**El resultado.** Las seis páginas públicas pasaron de renderizarse en el servidor en cada
+visita a servirse del CDN. `/academy`, que es donde cae la pauta, bajó de **0,47–1,05 s a
+0,12 s** de TTFB.
+
+**Qué las ataba.** Casi nunca es la consulta pesada que uno imagina. Eran tres cosas
+chiquitas, y cualquiera de las tres sola alcanzaba para volver dinámica la página entera:
+leer un `searchParam` para mostrar un cartel de error, un `getUser()` que sólo decidía el
+texto de un botón, y usar el cliente de Supabase que lee cookies para traer datos que son
+**públicos**. Ese último es el más fácil de pasar por alto: la consulta no necesitaba
+sesión, sólo se había escrito con el cliente que estaba a mano.
+
+**La regla:** antes de optimizar consultas, buscar quién toca cookies, headers o
+searchParams. Una sola línea condicional cuesta la página completa.
+
+**El patrón para que el usuario no vea el cambio.** Cuando la sesión se resuelve en el
+navegador hay un momento en que no se sabe quién entró. La solución no es única, depende
+de si las dos variantes se ven distinto:
+
+- **Se ven igual** (un botón "Suscribirme" que cambia de destino pero no de texto):
+  dibujar la variante anónima y listo. No hay parpadeo posible porque el pixel es el mismo.
+- **Se ven distinto** (el header con créditos, un "¿todavía no tenés cuenta?"): **no
+  dibujar nada** hasta saber. Mostrar el estado equivocado y darlo vuelta 150 ms después se
+  ve peor que que aparezca una vez, bien.
+
+Y siempre hay que cubrir el borde: alguien que toca el botón *antes* de que resuelva. Acá
+eso mandaba a un usuario logueado a `/registro?plan=gold`, donde el proxy lo redirigía al
+panel **perdiéndole el plan que había elegido**. Se arregló en el proxy, no en el botón.
+
+**Una petición, no cinco.** En `/academy` hay cinco componentes que preguntan lo mismo. La
+promesa del `fetch` se guarda **a nivel de módulo**, así todos esperan la misma respuesta:
+
+```ts
+let promesa = null;
+export function pedirSesion() {
+  if (!promesa) promesa = fetch("/api/header").then(...).catch(() => ANONIMO);
+  return promesa;
+}
+```
+
+Sin contexto, sin provider, sin envolver el árbol. Y se verifica de verdad, no de palabra:
+`chrome --headless --log-net-log=net.json`, y después contar en el JSON las fuentes de
+tipo `URL_REQUEST` (type 1) que mencionan la URL — los otros ids que aparecen son jobs y
+sockets subordinados del mismo pedido, así que contar coincidencias de texto da de más.
+
+**La verificación que más tranquilidad da:** screenshot de la página vieja y de la nueva al
+mismo tamaño, y `ImageChops.difference(...).getbbox()`. Si devuelve `None`, el refactor no
+cambió **un solo pixel**. En `/academy` dio `None`. Cuando después toqué la tipografía, el
+mismo diff me dijo exactamente qué se había movido y pude mirar sólo eso.
