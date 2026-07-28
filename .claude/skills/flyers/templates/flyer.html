@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{
+  font-family:"Montserrat";
+  src:url("{{FONT}}") format("truetype");
+  font-weight:100 900;
+  font-style:normal;
+}
+
+/* Tokens copiados 1:1 de app/globals.css de astronomy-members (2026-07-28).
+   Si allá cambia el violeta, acá también: los flyers y la app tienen que ser
+   el mismo objeto. */
+:root{
+  --space:#05060a; --surface:#0f121c; --surface-2:#161a28;
+  --line:#232838; --line-2:#2e3446;
+  --ink:#eef1f8; --muted:#9aa2b8; --faint:#656d84;
+  --violet:#8b5cf6; --violet-strong:#7c3aed; --violet-dim:rgba(139,92,246,.14);
+  --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:{{BASE}}px}
+
+body{
+  width:{{W}}px; height:{{H}}px;
+  background:var(--space);
+  color:var(--ink);
+  font-family:"Montserrat",system-ui,sans-serif;
+  overflow:hidden;
+  position:relative;
+}
+
+/* Glow violeta arriba + viñeta abajo. Da profundidad sin necesitar una foto,
+   que es lo que permite generar 75 piezas sin depender de banco de imágenes. */
+.bg{position:absolute;inset:0;z-index:0}
+.bg::before{
+  content:"";position:absolute;left:50%;top:-18%;
+  width:150%;aspect-ratio:1;transform:translateX(-50%);
+  background:radial-gradient(circle at 50% 50%,
+    rgba(139,92,246,.30) 0%, rgba(124,58,237,.13) 32%, transparent 62%);
+}
+.bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(5,6,10,.92) 100%);
+}
+/* Trama fina: rompe el degradado plano cuando Instagram recomprime el JPG. */
+.grid{
+  position:absolute;inset:0;z-index:0;opacity:.5;
+  background-image:
+    linear-gradient(rgba(46,52,70,.16) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(46,52,70,.16) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(circle at 50% 42%,#000 15%,transparent 72%);
+}
+
+.hoja{
+  position:relative;z-index:1;
+  height:100%;
+  padding:{{PAD}}rem {{PADX}}rem;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+}
+
+/* ---------- cabecera ---------- */
+.marca{display:flex;flex-direction:column;align-items:center;gap:1.05rem}
+.marca img{height:4.4rem;width:auto;opacity:.96}
+.marca .nombre{
+  font-family:var(--mono);font-size:1.28rem;letter-spacing:.42em;
+  text-transform:uppercase;color:var(--muted);text-indent:.42em;
+}
+
+/* ---------- centro ---------- */
+.centro{
+  flex:1;width:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1.9rem;
+  min-height:0;
+}
+.kicker{
+  font-family:var(--mono);font-size:1.42rem;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--violet);text-indent:.34em;
+}
+.titular{
+  font-weight:800;font-size:5.6rem;line-height:.98;letter-spacing:-.022em;
+  max-width:19ch;text-wrap:balance;
+}
+.titular em{font-style:normal;color:var(--violet)}
+.sub{
+  font-weight:400;font-size:1.85rem;line-height:1.5;color:var(--muted);
+  max-width:30ch;text-wrap:balance;
+}
+
+/* ---------- bloques ---------- */
+.bloque{width:100%;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+
+.precio{display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.precio .monto{
+  font-weight:800;font-size:6.2rem;line-height:1;letter-spacing:-.03em;
+  color:#fff;
+}
+.precio .periodo{
+  font-family:var(--mono);font-size:1.28rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--faint);text-indent:.24em;
+}
+.precio .nota{font-size:1.55rem;color:var(--muted)}
+
+.bullets{
+  display:flex;flex-direction:column;gap:1.05rem;
+  width:100%;max-width:34rem;
+}
+.bullets li{
+  list-style:none;
+  display:grid;grid-template-columns:1.5rem 1fr;gap:1.1rem;align-items:baseline;
+  text-align:left;
+  font-size:1.78rem;line-height:1.35;color:var(--ink);
+}
+.bullets li::before{
+  content:"";display:block;
+  width:.62rem;height:.62rem;margin-top:.45rem;margin-left:.44rem;
+  background:var(--violet);
+  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);
+}
+
+.planes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.05rem;width:100%}
+.plan{
+  background:var(--surface);border:1px solid var(--line-2);border-radius:1.15rem;
+  padding:1.7rem 1rem 1.85rem;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+}
+.plan.destacado{border-color:var(--violet);background:var(--violet-dim)}
+.plan .n{
+  font-family:var(--mono);font-size:1.1rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muted);text-indent:.24em;
+}
+.plan.destacado .n{color:var(--violet)}
+.plan .p{font-weight:800;font-size:2.35rem;line-height:1.1;letter-spacing:-.02em}
+.plan .c{font-size:1.35rem;color:var(--faint)}
+
+.dato{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.dato .n{font-weight:800;font-size:8.2rem;line-height:.9;letter-spacing:-.04em;color:var(--violet)}
+.dato .l{
+  font-family:var(--mono);font-size:1.32rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--muted);text-indent:.26em;max-width:24ch;
+}
+
+/* ---------- pie ---------- */
+.pie{display:flex;flex-direction:column;align-items:center;gap:1.5rem;width:100%}
+.cta{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--violet);color:#0a0616;
+  font-weight:700;font-size:1.82rem;letter-spacing:-.01em;
+  padding:1.32rem 3.1rem;border-radius:999px;
+  box-shadow:0 0 3.5rem rgba(139,92,246,.42);
+}
+.legal{
+  font-family:var(--mono);font-size:1.14rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--faint);text-indent:.2em;
+}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="grid"></div>
+
+<div class="hoja">
+  <header class="marca">
+    <img src="{{ISOTIPO}}" alt="">
+    <div class="nombre">{{MARCA}}</div>
+  </header>
+
+  <main class="centro">
+    {{KICKER}}
+    <h1 class="titular">{{TITULAR}}</h1>
+    {{SUB}}
+    {{BLOQUE}}
+  </main>
+
+  <footer class="pie">
+    {{CTA}}
+    <div class="legal">{{LEGAL}}</div>
+  </footer>
+</div>
+
+<script>
+// Auto-ajuste: con 75 piezas generadas, una sola que desborde pasa desapercibida
+// hasta que ya está publicada. En vez de confiar en que el copy entre, se mide y
+// se achica hasta que entra de verdad. Si ni al 62% entra, se marca la pieza para
+// que el script la repruebe en vez de exportarla rota.
+(function(){
+  var hoja = document.querySelector('.hoja');
+  var html = document.documentElement;
+  var base = parseFloat(getComputedStyle(html).fontSize);
+  var k = 1;
+  function desborda(){
+    // 1px de tolerancia: el redondeo subpíxel de Chrome marca falsos positivos.
+    return hoja.scrollHeight > hoja.clientHeight + 1 ||
+           hoja.scrollWidth  > hoja.clientWidth + 1;
+  }
+  while (desborda() && k > 0.62) {
+    k -= 0.02;
+    html.style.fontSize = (base * k) + 'px';
+  }
+  document.title = desborda() ? 'DESBORDA' : 'OK:' + k.toFixed(2);
+})();
+</script>
+</body>
+</html>

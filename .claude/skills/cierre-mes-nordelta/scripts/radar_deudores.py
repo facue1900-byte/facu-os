@@ -32,6 +32,10 @@ REGLAS = {
 # el mes está abierto (Facu, 27/07/2026).
 PAGAN_POR_BANCO = {"Fabric", "Bigg"}
 
+# Bigg paga POR ADELANTADO (el cargo del mes se paga durante el mismo mes, no el
+# siguiente). Su cargo "por vencer" en realidad ya está corriendo (Facu, 28/07).
+PAGAN_ADELANTADO = {"Bigg"}
+
 
 def leer_cuenta_corriente(xlsx):
     ws = openpyxl.load_workbook(xlsx, data_only=True)["CUENTA CORRIENTE"]
@@ -96,8 +100,10 @@ def main():
         for nombre, loc in sorted(deudores, key=lambda x: -x[1]["exigible"]):
             banco = "  ⚠ paga por banco: puede haber pagos en tránsito hasta el extracto" \
                 if nombre in PAGAN_POR_BANCO else ""
+            etiqueta_corriente = ("ya corriendo (paga adelantado)"
+                                  if nombre in PAGAN_ADELANTADO else "por vencer")
             print(f"  {nombre:<14} ${loc['exigible']:>13,.0f}"
-                  + (f"   + cargo {mes} por vencer: ${loc['corriente_cargo']:,.0f}"
+                  + (f"   + cargo {mes} {etiqueta_corriente}: ${loc['corriente_cargo']:,.0f}"
                      if loc["corriente_cargo"] else "") + banco)
         print(f"\n  Total exigible: ${sum(l['exigible'] for _, l in deudores):,.0f}")
         print("  Antes de reclamar a los que pagan por banco, esperar el extracto "

@@ -1,0 +1,55 @@
+{
+  "verificado": "2026-07-28",
+  "origen": "https://qeakrjnseboiulcojlcw.supabase.co",
+  "planes": [
+    {
+      "id": "silver",
+      "name": "Silver",
+      "price_ars": 143520,
+      "monthly_credits": 250,
+      "credit_months": 2
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "price_ars": 195600,
+      "monthly_credits": 360,
+      "credit_months": 2
+    },
+    {
+      "id": "platinum",
+      "name": "Platinum",
+      "price_ars": 272000,
+      "monthly_credits": 480,
+      "credit_months": 2
+    },
+    {
+      "id": "cursodj",
+      "name": "Curso de DJ",
+      "price_ars": 143520,
+      "monthly_credits": 240,
+      "credit_months": 1
+    },
+    {
+      "id": "bronze",
+      "name": "Bronze",
+      "price_ars": 71760,
+      "monthly_credits": 125,
+      "credit_months": 2
+    },
+    {
+      "id": "test",
+      "name": "Prueba",
+      "price_ars": 15,
+      "monthly_credits": 1000,
+      "credit_months": 2
+    },
+    {
+      "id": "djdelivery",
+      "name": "DJ Delivery",
+      "price_ars": 16499,
+      "monthly_credits": 0,
+      "credit_months": 2
+    }
+  ]
+}

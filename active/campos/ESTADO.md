@@ -1,6 +1,6 @@
 # Campos — Chaco y Pergamino
 
-Última actualización: 2026-07-27
+Última actualización: 2026-07-28
 
 ## Qué es
 
@@ -25,9 +25,22 @@ Nomenclatura de los PDFs: `<cantidad y categoría> <Origen> - <Destino> (DD:MM:A
 
 Por año: 2022 (2) · 2023 (158) · 2024 (121) · 2025 (115) · 2026 (92 hasta julio).
 
-Campos que aparecen como origen o destino: **La Brava** (178), **La Camila** (162),
-**El Sabalo** (123), Cañada Rica, El Colmena, Agua Viva, Fortín Cocherek, La Magdalena,
-Patroncito, Talabera, La Horquilla, La Victorina, El Galicia.
+**Los 646 nombres ya están parseados** (27/07/2026). El conocimiento permanente quedó en
+`~/Obsidian/facu-vault/wiki/campo/` — seis notas. Lo esencial:
+
+- **Once campos propios**, todos con RENSPA `05.023.x`. **El Galicia y El Colmena son
+  campos, no compradores** (aparecen como destino igual que un frigorífico).
+- **Stock: 10.114 cabezas** (`stock_ganadero.xlsx`): 5.053 vacas · 2.212 novillitos ·
+  1.810 vaquillonas · 399 novillos.
+- **La jaula son 32 cabezas**: 189 de 358 salidas son exactamente 32; el 85% cae entre 30
+  y 36. Vender es una decisión discreta — la pregunta es "¿está la jaula completa?".
+- **Dos canales**: novillo sale por **La Camila** (158 guías), vaca por **El Sábalo** (104).
+  La Rural y Frinea compran solo vaca; Talabera solo macho.
+- **La Brava concentra el riesgo**: 159 guías y 5.097 cabezas, más de la mitad de todo.
+  El segundo (Agua Viva) tiene 35. Frigorífico en Corrientes, CUIT 30-70781069-2.
+
+Ojo: `Lista 22 de Julio AUTOGESTIONADOS.xlsx` está traspapelado en `~/Desktop/Chaco/` —
+es la lista de precios de whisky de la barra de eventos, no del campo.
 
 ## Automatizaciones que quiere Facu
 
@@ -45,7 +58,14 @@ próximo candidato a skill después de que `cierre-mes-nordelta` esté rodando.
 
 ## Pendiente de dato
 
-- Volumen de hacienda y con qué frigoríficos se opera.
+- ~~Volumen de hacienda y con qué frigoríficos se opera~~ → **resuelto 27/07/2026**, arriba.
+- **SENASA: no está documentado el paso a paso del DT-e.** Facu preguntó si se puede operar
+  ARCA/SENASA desde acá: **no se puede** — no hay browser automation instalada, ni
+  certificado digital, ni credenciales en el `.env`, y ARCA pide Clave Fiscal con 2FA.
+  Pendiente: investigar el trámite contra la fuente oficial y dejar checklist verificado, y
+  averiguar si existe web service de ARCA/SENASA para DT-e.
+- Kilos, precio por kilo, desbaste y criterio de cuándo vender: **no están en ningún
+  archivo**. Las guías son sanitarias, no comerciales. Ver `wiki/campo/que-falta-saber-del-campo`.
 - De dónde sale el precio de referencia del kilo (frigorífico directo, Rosgan, WhatsApp
   de un consignatario). Sin esto no hay skill de precios.
 - Situación de Pergamino, que hoy casi no se toca.

@@ -1,0 +1,367 @@
+{
+  "_fuente_precios": {
+    "origen": "tabla `plans` de Supabase (proyecto Astronomy Oficial, qeakrjnseboiulcojlcw) + app/actions/buyCursoPro.ts",
+    "verificado": "2026-07-28",
+    "como_refrescar": "scripts/sync_precios.py — reescribe los precio_ars de este archivo contra la base y avisa qué cambió",
+    "regla": "Ningún precio se escribe a mano acá. Si un producto no tiene precio en la base, va `precio_ars: null` y el ángulo de precio no se genera."
+  },
+  "marca": {
+    "nombre": "Astronomy Academy",
+    "isotipo": "isotipo-blanco.png",
+    "legal": "astronomyofficial.com · @astronomy.oficial"
+  },
+  "productos": [
+    {
+      "id": "curso-dj",
+      "nombre": "Curso de DJ",
+      "plan_id": "cursodj",
+      "precio_ars": 143520,
+      "creditos": 240,
+      "angulos": [
+        {
+          "id": "precio",
+          "kicker": "Curso de DJ",
+          "titular": "Aprendé a mezclar en <em>cabina real</em>",
+          "sub": "Cuatro clases por mes, uno a uno, con DJs que están tocando.",
+          "bloque": {
+            "tipo": "precio",
+            "periodo": "por mes",
+            "nota": "240 créditos · se renuevan todos los meses"
+          },
+          "cta": "Empezá este mes"
+        },
+        {
+          "id": "beneficios",
+          "kicker": "Curso de DJ",
+          "titular": "Qué incluye el <em>Curso de DJ</em>",
+          "sub": null,
+          "bloque": {
+            "tipo": "bullets",
+            "items": [
+              "4 clases individuales por mes",
+              "Cabina profesional del estudio Astronomy",
+              "Clases adaptadas a tu nivel, no a un programa fijo",
+              "DJ Delivery: descargas ilimitadas",
+              "Agendás vos, desde la app, cuando te queda bien"
+            ]
+          },
+          "cta": "Quiero mi lugar"
+        },
+        {
+          "id": "profe",
+          "kicker": "Quién te enseña",
+          "titular": "No te enseña un video. Te enseña un <em>DJ</em>.",
+          "sub": "Mateo Pastrana y Mateo Guini dan las clases de DJ, uno a uno, en el estudio de Paseo Nordelta.",
+          "bloque": {
+            "tipo": "ninguno"
+          },
+          "cta": "Reservá tu primera clase"
+        },
+        {
+          "id": "como-funciona",
+          "kicker": "Cómo funciona",
+          "titular": "Cuatro clases. Todos los meses.",
+          "sub": "El curso se renueva cada mes: pagás, se te acreditan los créditos y agendás cuando quieras.",
+          "bloque": {
+            "tipo": "dato",
+            "numero": "4",
+            "etiqueta": "clases individuales por mes"
+          },
+          "cta": "Ver cómo funciona"
+        },
+        {
+          "id": "cta",
+          "kicker": "Curso de DJ",
+          "titular": "Tu primera fecha empieza en una <em>cabina</em>",
+          "sub": "Todos los que tocan hoy empezaron ensayando en una. Empezá en la nuestra.",
+          "bloque": {
+            "tipo": "ninguno"
+          },
+          "cta": "Empezar ahora"
+        }
+      ]
+    },
+    {
+      "id": "produccion",
+      "nombre": "Producción musical presencial",
+      "plan_id": null,
+      "precio_ars": null,
+      "creditos_por_clase": 60,
+      "angulos": [
+        {
+          "id": "precio",
+          "kicker": "Producción musical",
+          "titular": "Terminá el track que tenés a medias",
+          "sub": "Clases de producción en Ableton, en el estudio, uno a uno.",
+          "bloque": {
+            "tipo": "dato",
+            "numero": "60",
+            "etiqueta": "créditos por clase · incluida en tu membresía"
+          },
+          "cta": "Ver membresías"
+        },
+        {
+          "id": "beneficios",
+          "kicker": "Producción musical",
+          "titular": "Qué incluye <em>Producción</em>",
+          "sub": null,
+          "bloque": {
+            "tipo": "bullets",
+            "items": [
+              "Clases de producción en Ableton Live",
+              "Estudio de producción profesional",
+              "Uno a uno, sobre tus propios tracks",
+              "Alquiler de estudio para seguir solo",
+              "Mixing y mastering profesional (Platinum)"
+            ]
+          },
+          "cta": "Empezá a producir"
+        },
+        {
+          "id": "profe",
+          "kicker": "Quién te enseña",
+          "titular": "Producís con alguien que <em>publica</em>",
+          "sub": "Mateo Pastrana y Mateo Guini dan producción presencial en el estudio de Paseo Nordelta.",
+          "bloque": {
+            "tipo": "ninguno"
+          },
+          "cta": "Reservá tu clase"
+        },
+        {
+          "id": "como-funciona",
+          "kicker": "Cómo funciona",
+          "titular": "Traés tu proyecto. Salís con él terminado.",
+          "sub": "No hay temario cerrado: la clase se arma sobre lo que estás produciendo vos.",
+          "bloque": {
+            "tipo": "dato",
+            "numero": "1 a 1",
+            "etiqueta": "sobre tu propio proyecto"
+          },
+          "cta": "Agendar"
+        },
+        {
+          "id": "cta",
+          "kicker": "Producción musical",
+          "titular": "La idea ya la tenés. Falta <em>terminarla</em>.",
+          "sub": "Estudio, Ableton y alguien al lado que ya pasó por ahí.",
+          "bloque": {
+            "tipo": "ninguno"
+          },
+          "cta": "Empezar ahora"
+        }
+      ]
+    },
+    {
+      "id": "produccion-online",
+      "nombre": "Producción musical online",
+      "plan_id": null,
+      "precio_ars": null,
+      "creditos_por_clase": 60,
+      "angulos": [
+        {
+          "id": "precio",
+          "kicker": "Producción online",
+          "titular": "Producí desde donde estés",
+          "sub": "Clases de producción online, uno a uno, con los mismos créditos de tu membresía.",
+          "bloque": {
+            "tipo": "dato",
+            "numero": "60",
+            "etiqueta": "créditos por clase · incluida en tu membresía"
+          },
+          "cta": "Ver membresías"
+        },
+        {
+          "id": "beneficios",
+          "kicker": "Producción online",
+          "titular": "Qué incluye <em>Producción online</em>",
+          "sub": null,
+          "bloque": {
+            "tipo": "bullets",
+            "items": [
+              "Clases uno a uno por videollamada",
+              "Sobre tu propio proyecto de Ableton",
+              "Sin viajar: desde cualquier provincia o país",
+              "Los mismos créditos que las clases presenciales",
+              "Agendás desde la app cuando te queda bien"
+            ]
+          },
+          "cta": "Empezá online"
+        },
+        {
+          "id": "profe",
+          "kicker": "Quién te enseña",
+          "titular": "Producción online con <em>Owners Of Time</em>",
+          "sub": "Valen Frando da las clases de producción online, uno a uno, sobre tus tracks.",
+          "bloque": {
+            "tipo": "ninguno"
+          },
+          "cta": "Reservá tu clase"
+        },
+        {
+          "id": "como-funciona",
+          "kicker": "Cómo funciona",
+          "titular": "Misma clase. Sin moverte de tu casa.",
+          "sub": "Compartís pantalla, trabajan sobre tu proyecto, y te quedan las notas.",
+          "bloque": {
+            "tipo": "dato",
+            "numero": "100%",
+            "etiqueta": "online, desde cualquier lugar"
+          },
+          "cta": "Agendar online"
+        },
+        {
+          "id": "cta",
+          "kicker": "Producción online",
+          "titular": "Vivís lejos del estudio. La clase <em>no</em>.",
+          "sub": "Producción musical online, uno a uno, incluida en tu membresía.",
+          "bloque": {
+            "tipo": "ninguno"
+          },
+          "cta": "Empezar ahora"
+        }
+      ]
+    },
+    {
+      "id": "membresias",
+      "nombre": "Membresías",
+      "plan_id": null,
+      "precio_ars": null,
+      "planes": [
+        "silver",
+        "gold",
+        "platinum"
+      ],
+      "angulos": [
+        {
+          "id": "precio",
+          "kicker": "Membresías",
+          "titular": "Elegí cuánto querés entrar al <em>estudio</em>",
+          "sub": "Créditos por mes que canjeás por clases de DJ, de producción o por alquilar el estudio.",
+          "bloque": {
+            "tipo": "planes"
+          },
+          "cta": "Ver los planes"
+        },
+        {
+          "id": "beneficios",
+          "kicker": "Membresías",
+          "titular": "Una membresía, todo el <em>estudio</em>",
+          "sub": null,
+          "bloque": {
+            "tipo": "bullets",
+            "items": [
+              "Créditos todos los meses, y se acumulan",
+              "Clases de DJ y de producción a tu nivel",
+              "Alquiler de cabina y de estudio",
+              "DJ Delivery: descargas ilimitadas",
+              "Grabación de live sets con cámaras (Gold y Platinum)"
+            ]
+          },
+          "cta": "Asociarme"
+        },
+        {
+          "id": "profe",
+          "kicker": "Membresías",
+          "titular": "Tres profes. Un solo <em>abono</em>.",
+          "sub": "Pastrana, Guini y Owners Of Time. DJ, producción presencial y producción online.",
+          "bloque": {
+            "tipo": "ninguno"
+          },
+          "cta": "Ver los planes"
+        },
+        {
+          "id": "como-funciona",
+          "kicker": "Cómo funciona",
+          "titular": "Los créditos que no usás, se te <em>acumulan</em>",
+          "sub": "No perdés el mes que estuviste ocupado: los créditos siguen ahí y vencen recién a los 3 meses.",
+          "bloque": {
+            "tipo": "dato",
+            "numero": "3",
+            "etiqueta": "meses de vigencia de tus créditos"
+          },
+          "cta": "Asociarme"
+        },
+        {
+          "id": "cta",
+          "kicker": "Membresías",
+          "titular": "Dejá de alquilar horas sueltas",
+          "sub": "Una membresía mensual y el estudio pasa a ser tuyo.",
+          "bloque": {
+            "tipo": "ninguno"
+          },
+          "cta": "Ver los planes"
+        }
+      ]
+    },
+    {
+      "id": "modo-profesional",
+      "nombre": "Modo Profesional",
+      "plan_id": null,
+      "precio_ars": 440000,
+      "precio_cuota_ars": 250000,
+      "angulos": [
+        {
+          "id": "precio",
+          "kicker": "Modo Profesional",
+          "titular": "De tu diagnóstico artístico a tu <em>showcase</em>",
+          "sub": "Ocho módulos, dos meses, en cabina real y 100% práctico.",
+          "bloque": {
+            "tipo": "precio",
+            "periodo": "pago único",
+            "nota": "o en 2 cuotas de $250.000"
+          },
+          "cta": "Quiero entrar"
+        },
+        {
+          "id": "beneficios",
+          "kicker": "Modo Profesional",
+          "titular": "Qué incluye el <em>Modo Profesional</em>",
+          "sub": null,
+          "bloque": {
+            "tipo": "bullets",
+            "items": [
+              "8 módulos en 2 meses",
+              "Diagnóstico artístico inicial",
+              "100% práctico, en cabina real",
+              "Showcase final en vivo",
+              "Pago único o en 2 cuotas"
+            ]
+          },
+          "cta": "Ver el programa"
+        },
+        {
+          "id": "profe",
+          "kicker": "Modo Profesional",
+          "titular": "El curso para el que ya <em>arrancó</em>",
+          "sub": "No es un curso de iniciación: es el que te deja tocando en vivo.",
+          "bloque": {
+            "tipo": "ninguno"
+          },
+          "cta": "Quiero entrar"
+        },
+        {
+          "id": "como-funciona",
+          "kicker": "Cómo funciona",
+          "titular": "Ocho módulos. Dos meses. Un show.",
+          "sub": "Cada módulo es práctico y el último es tu showcase, en vivo y con público.",
+          "bloque": {
+            "tipo": "dato",
+            "numero": "8",
+            "etiqueta": "módulos en 2 meses"
+          },
+          "cta": "Ver el programa"
+        },
+        {
+          "id": "cta",
+          "kicker": "Modo Profesional",
+          "titular": "Terminás el curso <em>tocando</em>",
+          "sub": "Ocho módulos, dos meses, y un showcase final en vivo.",
+          "bloque": {
+            "tipo": "ninguno"
+          },
+          "cta": "Empezar ahora"
+        }
+      ]
+    }
+  ]
+}
