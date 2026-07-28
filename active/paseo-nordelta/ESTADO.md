@@ -31,7 +31,9 @@ Skill: [`cierre-mes-nordelta`](../../.claude/skills/cierre-mes-nordelta/SKILL.md
 **Junio 2026** — `conciliar.py` da **CIERRA en los 4 chequeos** (27/07/2026, tras las
 correcciones de abajo). Resultado operativo del mes: **$5.218.023** (Caja + Banco ARS,
 sin aportes de capital, sin Inversiones, con los ajustes de caja como egreso operativo).
-Saldos al cierre: Caja $3.137.080 · Banco $4.119.498,46 (= extracto, al centavo) · USD 0.
+Banco al cierre: $4.119.498,46 (= extracto, al centavo) · USD 0.
+**Caja contable al 30/06: −$172.716 (negativa — ver investigación de faltantes abajo).**
+Caja contable hoy (libro, 27/07): $3.137.080.
 
 ## La rampa de alquileres (lo que más plata mueve)
 
@@ -69,9 +71,28 @@ expensas solas (sep y oct) antes del alquiler.
   cargados ene–jul en Ctas Ctes son un estimado inventado y hay que borrarlos.
 - Ctas Ctes: `generarCargosDelMes` todavía lee CONTRATOS (valores viejos) en vez de
   Expensas Predio — no activar la generación automática hasta arreglarlo.
-- **Investigar los faltantes de caja**: $409.000 (abril) + $473.814 (junio) de
-  "Diferencia de caja" sin explicar. Ya están bien categorizados como "Ajuste de caja"
-  (27/07), pero $882.814 en dos meses es un patrón, no un redondeo.
+- **Faltantes de caja — investigado el 27/07/2026** (fuente: Movimientos + Gastos Obra
+  + Dashboard, recalculado en Python):
+  - **El problema de fondo no son los $882.814: es que falta el saldo inicial de caja
+    de 2026.** El libro arranca en $0 y da negativo en enero (−$2,4M), febrero (−$6,8M)
+    y al cierre de junio (−$172.716) — físicamente imposible. Había efectivo previo a
+    2026 que nunca se cargó (mismo patrón que el saldo pre-2026 de la CC Bancaria).
+    Sin ese ancla, cada "diferencia de caja" mide la deriva de un libro que ya flota.
+  - $120.000 de Gastos Obra de junio ("focos de luz" + "flete durlock", 03/06, pagados
+    por Facundo) **no están en Movimientos** — si salieron de la caja, son un cuarto de
+    la diferencia de junio. El resto de Gastos Obra de junio cruza 1:1 con Movimientos.
+  - El ajuste de abril ($409.000, 23/04 "sin detalle") coincide con un día de
+    conciliación de la **caja de Mati** (mismo día: "efectivo caja Mati", "Diferencia
+    Edenor caja Mati vs facturado"). Hay al menos dos cajas físicas y el libro las
+    mezcla en una.
+  - Los $19,5M de obra en efectivo de junio están cargados como bolsones al 30/06
+    ("Demolición — parte en efectivo", "Galería obra", "Max arquitecto"): con
+    reconstrucción a esa escala, $473.814 (2,4% del bolsón) huele a acumulación de
+    pagos chicos sin comprobante, no a un faltante puntual.
+  - **Para cerrar esto hace falta algo que solo se puede hacer en persona: un arqueo
+    real** (contar la caja grande y la de Mati hoy) y cargar una fila "Saldo inicial
+    caja" con ese número. Desde ahí el libro queda anclado y las diferencias futuras
+    significan algo.
 
 ## Correcciones aplicadas al Master Plan (27/07/2026, con OK de Facu)
 
