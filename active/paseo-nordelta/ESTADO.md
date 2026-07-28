@@ -28,9 +28,10 @@ Skill: [`cierre-mes-nordelta`](../../.claude/skills/cierre-mes-nordelta/SKILL.md
 
 ## Último cierre verificado
 
-**Junio 2026** — conciliación banco impecable (neto y saldo al centavo).
-Resultado del negocio **+$5,4M** (2º mejor mes). Saldos al cierre: Caja ~$4,37M ·
-Banco $4.119.498 · USD 0.
+**Junio 2026** — `conciliar.py` da **CIERRA en los 4 chequeos** (27/07/2026, tras las
+correcciones de abajo). Resultado operativo del mes: **$5.218.023** (Caja + Banco ARS,
+sin aportes de capital, sin Inversiones, con los ajustes de caja como egreso operativo).
+Saldos al cierre: Caja $3.137.080 · Banco $4.119.498,46 (= extracto, al centavo) · USD 0.
 
 ## La rampa de alquileres (lo que más plata mueve)
 
@@ -68,8 +69,21 @@ expensas solas (sep y oct) antes del alquiler.
   cargados ene–jul en Ctas Ctes son un estimado inventado y hay que borrarlos.
 - Ctas Ctes: `generarCargosDelMes` todavía lee CONTRATOS (valores viejos) en vez de
   Expensas Predio — no activar la generación automática hasta arreglarlo.
-- **$0,69 de diferencia** entre el saldo de cierre del extracto de junio ($4.119.498,46)
-  y la pestaña Saldo Actual ($4.119.497,77) — la detectó `conciliar.py` el 27/07.
+- **Investigar los faltantes de caja**: $409.000 (abril) + $473.814 (junio) de
+  "Diferencia de caja" sin explicar. Ya están bien categorizados como "Ajuste de caja"
+  (27/07), pero $882.814 en dos meses es un patrón, no un redondeo.
+
+## Correcciones aplicadas al Master Plan (27/07/2026, con OK de Facu)
+
+1. `Movimientos!F95` (Tubomarket, marzo): $391.325,00 → **$391.324,31** (lo que movió
+   el banco). Saldo Actual quedó = extracto al centavo.
+2. Nota en `Movimientos!H312`: el gasto VISA real de junio fue $310.942,98 — $4.887,43
+   salieron del saldo pre-2026 de la CC Bancaria, que quedó en $0.
+3. `conciliar.py` ahora imprime el resultado operativo del mes separando aportes de
+   capital (en junio: $10,4M de aportes sobre $37,4M de ingresos totales).
+4. Categoría nueva **"Ajuste de caja"** (`Configuración!C31`, Dashboard fila 76) y
+   recategorizadas las dos "Diferencia de caja" que estaban infladas en Inversiones.
+   Inversiones bajó $882.814. La caja no cambió ni un centavo (verificado).
 
 ## Pendiente de dato
 

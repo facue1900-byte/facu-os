@@ -108,14 +108,20 @@ def movimientos_sheet(wb, mes):
 
 
 def filas_dashboard(wb):
-    """Etiquetas de fila del Dashboard Mensual, normalizadas → nombre exacto."""
+    """Etiquetas de fila del Dashboard Mensual, normalizadas → nombre exacto.
+
+    Los rangos son los mismos que suman los totales del propio Dashboard
+    (Total ingresos = SUM(9:42), TOTAL PAGADO = SUM(46:78)): si una etiqueta
+    está ahí, el SUMIFS la cuenta; si no, es huérfana. Las filas de reserva
+    (76-78) leen Configuración y se activan solas al dar de alta una categoría.
+    """
     ws = wb["Dashboard Mensual"]
     ingresos, egresos = {}, {}
-    for r in range(9, 41):
+    for r in range(9, 43):
         v = ws.cell(row=r, column=1).value
         if v:
             ingresos[normalizar(v)] = str(v)
-    for r in range(46, 76):
+    for r in range(46, 79):
         v = ws.cell(row=r, column=1).value
         if v:
             egresos[normalizar(v)] = str(v)
