@@ -130,6 +130,24 @@ lo del mes corriente está en la calle pero no vencido. Los locales con regla pr
 del script. Los mensajes de cobro los arma el `redactor` y los manda Facu: **nunca
 salen solos**.
 
+**2-quater. Verificar/completar los cargos del mes** (antes del radar):
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/generar_cargos.py" \
+  /Users/Facu/facu-os/data/ctas_ctes.xlsx 2026-07            # solo reporta
+# ... y con --escribir corrige/agrega en CARGOS (no pisa nada con valor)
+```
+
+La fuente de verdad de cada cargo es la **pestaña del local** (alquiler indexado por
+IPC, expensas desde Expensas Predio); CARGOS es lo que consume CUENTA CORRIENTE
+(pura fórmula, no hay Apps Script que correr). Regla de contrato Bigg: 50%
+facturado con IVA + 50% "Diferencia Alquiler" en efectivo sin IVA — el script
+avisa si un mes tiene una sola mitad. Las expensas del mes corriente aparecen
+recién cuando Expensas Predio cierra el mes: hasta ahí figuran PENDIENTES, no se
+inventan. **No activar la "generación automática (día 1)" del menú Apps Script**:
+este script la reemplaza con control.
+
 **3. Conciliación** — los chequeos deterministas los hace el script; yo interpreto:
 
 ```bash
