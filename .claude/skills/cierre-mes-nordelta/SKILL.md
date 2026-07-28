@@ -115,6 +115,21 @@ Sin `--send` no manda nada. Flags: `--para` (destinatario; default `MAIL_FACU` d
 plist para correrlo el día 5 de cada mes (`execution/launchd/com.facu.alerta-rampa.plist`)
 pero **hoy NO está cargado** en `~/Library/LaunchAgents` — ver `SETUP.md`.
 
+**2-ter. Radar de deudores** (quién debe qué, hoy — Ctas Ctes, sheet
+`10BDmKvv2wY2M4lVYYab3NiNT04WLh5JjO-EhWI4tnNs`):
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/radar_deudores.py" \
+  /Users/Facu/facu-os/data/ctas_ctes.xlsx 2026-07
+```
+
+Convención clave: **todos pagan el mes siguiente** — exigible = hasta el mes pasado;
+lo del mes corriente está en la calle pero no vencido. Los locales con regla propia
+(Escuelita %, Salón solo expensas, La Jaula desde ago-26) viven en `REGLAS` dentro
+del script. Los mensajes de cobro los arma el `redactor` y los manda Facu: **nunca
+salen solos**.
+
 **3. Conciliación** — los chequeos deterministas los hace el script; yo interpreto:
 
 ```bash
