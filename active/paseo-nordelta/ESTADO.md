@@ -89,10 +89,15 @@ expensas solas (sep y oct) antes del alquiler.
     ("Demolición — parte en efectivo", "Galería obra", "Max arquitecto"): con
     reconstrucción a esa escala, $473.814 (2,4% del bolsón) huele a acumulación de
     pagos chicos sin comprobante, no a un faltante puntual.
-  - **Para cerrar esto hace falta algo que solo se puede hacer en persona: un arqueo
-    real** (contar la caja grande y la de Mati hoy) y cargar una fila "Saldo inicial
-    caja" con ese número. Desde ahí el libro queda anclado y las diferencias futuras
-    significan algo.
+  - **Actualización (misma noche, del crudo de la app):** gran parte del "nivel que
+    flota" ya está explicado y **Facu lo confirmó en julio**: el saldo de caja del
+    libro (~$3,4M hoy) incluye **~$3.024.987 que Facu le debe al Paseo** (parte del
+    aporte de Richi que entró a su banco personal). La caja física chica sería
+    ~$377K. O sea: el número del libro es correcto *con esa deuda adentro*.
+  - Lo que queda para que el chequeo mensual (`--caja-contada`) sirva tal cual:
+    **bookear la deuda de Facu como movimiento** (egreso de caja "Préstamo a Facu",
+    y el ingreso cuando la devuelva). Ahí libro = caja física y cualquier diferencia
+    futura es real. El arqueo sigue valiendo como verificación, no como ancla.
 
 ## Correcciones aplicadas al Master Plan (27/07/2026, con OK de Facu)
 

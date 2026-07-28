@@ -143,9 +143,9 @@ sirve headless para launchd). Los tokens ya están cargados en el `.env` (`VERCE
 > Son **dos bases de Supabase distintas**, igual que Paseo Nordelta y Nordelta Plaza son
 > dos negocios distintos. Antes de una migración o un query, confirmar contra cuál.
 
-Sitios de Netlify de la app del Paseo — un deploy por rol: `lucent-buttercream` = Mati ·
-`whimsical-alfajores` = Inversores · `dancing-elf` = Admin. (`dapper-cajeta` es de
-Astronomy, no tocar.)
+Sitios de Netlify de la app del Paseo — un deploy por rol (URLs completas, con sufijo):
+`lucent-buttercream-8ac45a` = Mati · `whimsical-alfajores-91122a` = Inversores ·
+`dancing-elf-c4ed3f` = Admin. (`dapper-cajeta-537756` es de Astronomy, no tocar.)
 
 ## Utilidades compartidas (`execution/`)
 
