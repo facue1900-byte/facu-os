@@ -252,3 +252,143 @@ El radar de deudores mostraba a Bigg debiendo $2,2M. Facu aclaró que Bigg **pag
 Cargué un cargo "Penalidad rescisión" en CARGOS y la CUENTA CORRIENTE lo ignoró en silencio: sus columnas suman por concepto con SUMIFS (`"Alquiler*"`, `"Servicios comunes"`, `"Recupero*"`) y un concepto nuevo no matchea ninguno. El saldo quedó $5M mal hasta que el radar lo delató. Fix: renombrar a "Alquiler - Penalidad rescisión" para entrar por el comodín.
 
 **La próxima:** antes de inventar un concepto nuevo en una tabla que otra hoja consume por SUMIFS, leer las fórmulas del consumidor y usar un nombre que matchee. Y después de cada escritura al sheet, re-bajar y re-correr el reporte que lo lee: esa verificación fue la que agarró el error.
+
+### 2026-07-28 · FAIL ✓ — Diseñé dos tandas contra la estética equivocada
+
+Para los flyers de Academy inferí la estética de dos fuentes indirectas: los tokens
+de la app (`--violet:#8b5cf6`, Montserrat, centrado) y el material viejo del Desktop
+(PDFs de curso de 2023, portadas de The Bunker). Salieron 150 piezas. Ninguna se
+parecía a la cuenta.
+
+La grilla real de **@astronomy.academy** es un sistema editorial monocromo: negro
+puro o foto muy desaturada, Helvetica Neue en MAYÚSCULAS **alineada a la izquierda
+y anclada abajo**, micro-rótulos mono en las cuatro esquinas, cruces de registro,
+logo de dos círculos, y el CTA como etiqueta entre corchetes. **Cero violeta, cero
+botones, cero centrado.** El énfasis dentro de un titular se hace con peso, no con
+color.
+
+El `WebFetch` a instagram.com no sirvió: pega contra el muro de login y el modelo
+chico que resume la página devolvió una descripción inventada ("rojos, naranjas y
+azules") que contradecía todos los assets reales. Se descartó a tiempo por eso mismo
+— por contradecir la fuente— pero el costo ya estaba pagado en las dos tandas.
+
+**La próxima:** la estética de una cuenta se ve o no se diseña. Antes de generar la
+primera pieza, pedir capturas de la grilla. Inferir una identidad visual desde el
+sistema de diseño de otro producto de la misma empresa es exactamente el error:
+Academy y la app comparten dueño, no lenguaje. Y una descripción de imagen que
+contradice los archivos que sí podés abrir es un dato falso, no una segunda opinión.
+
+### 2026-07-28 · LEARN — En Argentina, un precio impreso es deuda técnica
+
+Facu bajó los precios de las 75 piezas de Academy: con la inflación, un flyer
+publicado con un número queda viejo en semanas y obliga a rehacer la tanda entera.
+Las piezas ahora muestran solo lo que **no se desactualiza** —créditos por mes,
+cantidad de clases, cantidad de módulos— y el valor del mes se pide por DM.
+
+El guard quedó en el código, no en el contenido: `bloque_editorial()` revienta si le
+llega un bloque de tipo `precio`. Puesto solo en el JSON, alcanzaba con editar el
+contenido para que volviera a salir un número.
+
+Efecto secundario que importa: la tanda pasó de tener una fecha de vencimiento a no
+tener ninguna. Antes había que regenerar con cada lista de precios; ahora solo si
+cambia el catálogo.
+
+**La próxima:** en cualquier pieza que se publica y queda dando vueltas —flyer, PDF,
+landing— preguntarse qué dato tiene fecha de vencimiento y sacarlo. Un número que
+obliga a rehacer el material es peor que un número ausente.
+
+### 2026-07-28 · FAIL ✓ — Una tanda que se cae a la mitad deja mezcla, no vacío
+
+Regenerando los 75 flyers sobre la carpeta ya poblada, un Chrome se colgó a los 120s
+y el script murió. En disco quedaron 75 PNGs —el conteo daba bien— pero eran una
+mezcla de la corrida nueva y la vieja. El chequeo de cantidad no lo veía: los
+archivos viejos existen, pesan bien y miden bien.
+
+**El fix:** `render()` reintenta 3 veces antes de darse por vencido (el cuelgue es de
+Chrome bajo carga, no del contenido: la misma pieza sale bien al segundo intento), y
+una regeneración total borra la carpeta primero.
+
+**La próxima:** un contador de archivos no verifica una regeneración; verifica que
+haya archivos. Si el proceso escribe sobre lo que ya estaba, o se borra el destino
+antes, o se compara algo que distinga la corrida (fecha, hash, versión).
+
+### 2026-07-28 · FAIL ✓ — El agente `numeros` frenó dos errores en la estrategia de pauta
+
+Primer borrador de `active/astronomy/PAUTA_ACADEMY.md`: los 8 cálculos centrales
+reprodujeron exactos (retención de cohorte al segundo decimal, CAC, márgenes). Pero
+el auditor encontró dos cosas que sí importaban:
+
+1. **El margen −7% descansaba casi entero en un solo mes con problema de carga.**
+   Dic-2025 tiene CERO filas de Membership (el resto de los meses tienen entre 5 y 20)
+   y ene-2026 tiene 20, el máximo de la serie: las membresías de diciembre se cargaron
+   en enero. Dic-2025 cierra en −US$3.145 y **los otros once meses suman +US$1.103**.
+   El total anual no cambia, pero "el negocio pierde plata" era una lectura falsa:
+   está en el cero. Iba a un documento que decide presupuesto.
+2. **Un escenario alternativo mal derivado.** "Si Sueldos es fijo, la contribución
+   sube a ~75% y el CAC a US$68" — la cuenta real da 81% y US$74. Aparecía dos veces.
+
+Y varias menores reales: un subtotal de US$549 que era US$753 (la planilla tiene la
+misma subcategoría con dos grafías — `Clase de Prueba` / `Clase de prueba` — y el
+conteo tomó una sola), "1,2x más" leído como 120% cuando es 21%, seis filas con tipo
+de cambio implícito imposible (una de 9.546 ARS/USD) que mueven el resultado US$269,
+y `Sueldos Fijos` —la línea de egreso más grande, US$6.904— sin mencionar en ningún
+lado del análisis de costos.
+
+**La próxima:** dos cosas. Una, antes de promediar una serie mensual, mirar si algún
+mes tiene cero de una categoría que todos los demás tienen: es carga corrida, no
+negocio, y contamina cualquier conclusión de tendencia. Dos, agrupar por una columna
+de texto libre sin normalizar mayúsculas parte la categoría en dos y el subtotal
+queda corto en silencio.
+
+**Lo que salió bien:** el auditor corrió ANTES de que el documento se usara, y su
+propio reporte se autolimitó donde correspondía — reconstruyó la retención real
+matcheando Client Id faltantes por nombre, dio el número (2,94 en vez de 2,81), y
+aclaró que no lo tomaba como bueno porque matchear por nombre es exactamente lo que
+la regla de atribución prohíbe. Lo reportó como cota del sesgo, no como dato.
+
+---
+
+## 2026-07-28 — Bigg: una etiqueta de mes movió $1,9M de lugar
+
+**Qué pasó.** Revisando cuentas corrientes, junio de Bigg aparecía con el alquiler
+cargado **tres veces** ($5.731.160,59 cuando el contrato 50/50 da $3.820.773,73) y
+mayo con una sola mitad. Ni uno ni otro eran errores de plata: los pagos estaban
+perfectos. Era una etiqueta de mes mal puesta en la pestaña del local.
+
+**La causa.** En las pestañas de Ctas Ctes, el alquiler de un mes se carga en dos
+filas: `Alquiler` (mitad facturada, con IVA) y `Diferencia Alquiler (sin iva)` (la
+mitad en efectivo). En los bloques viejos la Diferencia llevaba **el mes anterior**
+al que corresponde. Mientras las dos mitades valieron lo mismo ($1.750.000) el
+desfase fue invisible; cuando el ajuste por IPC las movió a $1.910.386,86, un mes
+quedó con tres mitades y otro con una.
+
+**La regla que faltaba escrita:** en una pestaña de local, **cada fila pertenece al
+mes del bloque donde se paga, no al mes que dice la etiqueta**. El bloque es
+"expensas del mes anterior + alquiler del mes corriente", y cierra contra el pago
+de ese mes. Verificarlo así es lo que permitió fechar el ajuste de IPC sin
+adivinar: el pago de mayo usa la tarifa vieja y el de junio la nueva, los dos al
+centavo.
+
+**La próxima:** cuando un local paga en dos canales (banco / efectivo), reconstruir
+el pago esperado por canal y compararlo contra lo pagado. Banco = mitad facturada +
+IVA + expensas del mes anterior; efectivo = mitad sin IVA. Si los dos cierran al
+peso, los movimientos están bien y el problema está en los cargos. Eso convierte
+"algo no cuadra" en "esta celda está mal" en cinco minutos.
+
+**Dos errores míos, para no repetirlos:**
+
+1. **Calculé el saldo contra CARGOS en vez de contra la pestaña del local.** La
+   pestaña es la contabilidad viva: su saldo corre secuencialmente y no le importa
+   la etiqueta de mes, así que estaba bien mientras CARGOS estaba mal. Le pasé a
+   Facu $1.171.137,46 cuando el número correcto —el suyo— era **$961.345**. Antes
+   de dar un saldo, mirar la pestaña del local, no la tabla derivada.
+2. **Prometí que dos celdas iban a arreglar el radar y no lo arreglaron.** Corregí
+   junio, dije "con esto el radar deja de mentir", y el radar siguió marcando a Bigg
+   al día. Faltaban el desfase de las otras tres etiquetas, el crédito por error de
+   expensas y un pago en tránsito. **No anunciar el efecto de un fix antes de
+   correrlo:** aplicar, correr, y recién ahí decir qué cambió.
+
+**Lo que quedó construido.** `exportar_ctas_ctes.py` (radar → JSON) y la pestaña
+**Deuda** en la app del Paseo, con un bloque `PENDIENTES_DE_CARGA` que muestra la
+plata ya cobrada que todavía no entró al sheet **sin sumarla al saldo** — el saldo
+sigue saliendo de la fuente, y el aviso evita reclamar algo ya pagado.

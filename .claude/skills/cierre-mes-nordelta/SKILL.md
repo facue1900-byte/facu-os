@@ -130,6 +130,23 @@ lo del mes corriente está en la calle pero no vencido. Los locales con regla pr
 del script. Los mensajes de cobro los arma el `redactor` y los manda Facu: **nunca
 salen solos**.
 
+**2-bis-bis. Publicar el radar en la app del Paseo** (después de correr el radar):
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/exportar_ctas_ctes.py" \
+  /Users/Facu/facu-os/data/ctas_ctes.xlsx 2026-07 \
+  "/Users/Facu/Desktop/Paseo Nordelta/Paseo Nordelta - CLAUDE/App Paseo Nordelta/src/data/ctas-ctes.json"
+```
+
+Alimenta la pestaña **Deuda** (`/ctas-ctes`) de la app. Usa las mismas convenciones
+que `radar_deudores.py`: si una regla cambia, **cambia en los dos scripts**. La plata
+que ya se cobró pero todavía no entró al sheet va en `PENDIENTES_DE_CARGA` — se
+muestra como aviso, nunca se suma al saldo, y se saca cuando el dato entra por su
+canal normal. Para ver la página sin login: `npm run dev` y abrir
+`/preview-ctas.html?w=390&open=1` (`w` simula el ancho del celular, `open` expande
+el mes a mes).
+
 **2-quater. Verificar/completar los cargos del mes** (antes del radar):
 
 ```bash
