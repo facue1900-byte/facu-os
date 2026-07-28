@@ -130,12 +130,17 @@ Sale 0 solo si todo CIERRA; cualquier ⚠ da 1 — eso es algo para mirar, no un
 del script. **Un ⚠ nunca se esquiva ni se "redondea": se investiga o se le muestra
 a Facu.**
 
+**La caja se chequea el mismo día que se anota el extracto** (decisión de Facu,
+27/07/2026): pedirle el conteo físico (caja grande + caja de Mati, por separado) y
+correr el script con `--caja-contada <total>`. Sin conteo, el script solo recuerda.
+**Pendiente estructural**: falta cargar el saldo inicial de caja 2026 — el libro dio
+negativo en ene/feb/jun, señal de efectivo pre-2026 nunca cargado. Hasta que Facu
+haga un arqueo y se cargue "Saldo inicial caja", el nivel del libro flota.
+
 Queda a mano interpretar (esto sí lo hago yo, leyendo):
 
 1. Detectar el extracto más nuevo sin conciliar. Si no hay, decirlo y terminar.
-2. Caja: que *Saldo Actual* (Caja ARS) sea coherente con ingresos Caja − egresos Caja
-   (necesita la base previa, no sale de un mes solo).
-3. Explicar cada ⚠ del script: qué es, cuánto es, y qué corrección proponer.
+2. Explicar cada ⚠ del script: qué es, cuánto es, y qué corrección proponer.
 
 **Dólar blue** (para Gastos Obra): histórico
 `https://api.argentinadatos.com/v1/cotizaciones/dolares/blue/AAAA/MM/DD` → promedio

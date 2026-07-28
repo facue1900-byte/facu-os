@@ -136,10 +136,32 @@ def multiset(movs):
     return c
 
 
+def caja_libro(wb):
+    """Saldo de caja ARS según el libro: TODO el historial de Movimientos."""
+    total = 0.0
+    for r in wb["Movimientos"].iter_rows(min_row=2, values_only=True):
+        if not isinstance(r[0], datetime.datetime):
+            continue
+        if str(r[2] or "").strip().lower() != "caja" or str(r[6] or "").strip().upper() != "ARS":
+            continue
+        monto = float(r[5] or 0)
+        total += monto if str(r[1] or "").strip().lower() == "ingreso" else -monto
+    return total
+
+
 def main():
-    if len(sys.argv) != 4:
+    argv = sys.argv[1:]
+    caja_contada = None
+    if "--caja-contada" in argv:
+        i = argv.index("--caja-contada")
+        try:
+            caja_contada = float(argv[i + 1])
+        except (IndexError, ValueError):
+            sys.exit("--caja-contada necesita el monto contado, ej: --caja-contada 3137080.44")
+        del argv[i:i + 2]
+    if len(argv) != 3:
         sys.exit(__doc__)
-    pdf, xlsx, mes = sys.argv[1], sys.argv[2], sys.argv[3]
+    pdf, xlsx, mes = argv[0], argv[1], argv[2]
     m = re.fullmatch(r"(\d{4})-(\d{2})", mes)
     if not m or not 1 <= int(m.group(2)) <= 12:
         sys.exit(f"El mes va como AAAA-MM (01-12), no {mes!r}.")
@@ -294,6 +316,22 @@ def main():
               f"Local/Categoría — no suman en ningún lado del Dashboard:")
         for f in sin_etiqueta:
             print(f"    {f['fecha']} {f['tipo']} ${f['monto']:,.2f} — {f['obs']}")
+
+    # 5. Caja física vs libro (el arqueo se hace el mismo día que se anota el
+    # extracto). Sin conteo no hay chequeo — se recuerda, no se inventa.
+    libro = caja_libro(wb)
+    if caja_contada is None:
+        print(f"— Caja: sin conteo físico esta vez. El libro dice ${libro:,.2f}. "
+              f"El día del extracto: contar caja grande + caja Mati y correr con "
+              f"--caja-contada <total>.")
+    else:
+        dif = caja_contada - libro
+        check(abs(dif) <= CENTAVO, "Caja contada vs libro",
+              f"${caja_contada:,.2f} en el conteo y en el libro",
+              f"contado ${caja_contada:,.2f} vs libro ${libro:,.2f} → diferencia "
+              f"${dif:,.2f}. NO cuadrar con un 'ajuste' automático: primero buscar "
+              f"qué movimiento falta (sueldos parciales y obra en efectivo son los "
+              f"sospechosos de siempre).")
 
     # Resultado del mes — informativo, no es un chequeo. Separa la plata que
     # genera el paseo de la que ponen los socios, con las definiciones del
