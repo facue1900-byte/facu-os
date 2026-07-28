@@ -240,3 +240,15 @@ en la base. Si cambia allá, hay que actualizarlo a mano en `contenido/academy.j
 
 **La próxima:** todo número que sale a un tercero se sincroniza desde su fuente o el
 script no corre. "Lo actualizo cuando cambie" es cómo se publica un precio viejo.
+
+### 2026-07-28 · LEARN — La convención de pago de cada local cambia la deuda
+
+El radar de deudores mostraba a Bigg debiendo $2,2M. Facu aclaró que Bigg **paga por adelantado** (el cargo del mes se paga en el mismo mes) y que dic'25 se pagó fuera del registro 2026 → deuda real: cero. Lo mismo con el Salón: un pago de $5M que parecía adelanto de expensas era la **penalidad de una inquilina saliente**. Los números estaban bien calculados; la interpretación estaba mal porque cada local tiene su convención (vencido/adelantado, efectivo/banco, redondeos).
+
+**La próxima:** antes de reportar deuda de un local, confirmar su convención de pago con Facu. Las convenciones viven en `radar_deudores.py` (`REGLAS`, `PAGAN_ADELANTADO`, `PAGAN_POR_BANCO`) — un local nuevo se agrega ahí el día uno.
+
+### 2026-07-28 · FAIL ✓ — CUENTA CORRIENTE solo suma conceptos que matchean sus SUMIFS
+
+Cargué un cargo "Penalidad rescisión" en CARGOS y la CUENTA CORRIENTE lo ignoró en silencio: sus columnas suman por concepto con SUMIFS (`"Alquiler*"`, `"Servicios comunes"`, `"Recupero*"`) y un concepto nuevo no matchea ninguno. El saldo quedó $5M mal hasta que el radar lo delató. Fix: renombrar a "Alquiler - Penalidad rescisión" para entrar por el comodín.
+
+**La próxima:** antes de inventar un concepto nuevo en una tabla que otra hoja consume por SUMIFS, leer las fórmulas del consumidor y usar un nombre que matchee. Y después de cada escritura al sheet, re-bajar y re-correr el reporte que lo lee: esa verificación fue la que agarró el error.
