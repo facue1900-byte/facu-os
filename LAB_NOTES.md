@@ -392,3 +392,47 @@ peso, los movimientos están bien y el problema está en los cargos. Eso convier
 **Deuda** en la app del Paseo, con un bloque `PENDIENTES_DE_CARGA` que muestra la
 plata ya cobrada que todavía no entró al sheet **sin sumarla al saldo** — el saldo
 sigue saliendo de la fuente, y el aviso evita reclamar algo ya pagado.
+
+---
+
+## 28/07/2026 · Astronomy web — el header era lo que impedía que las landings fueran estáticas
+
+**El síntoma.** La pauta de Academy cae en `/` y `/academy`, y esas páginas tardaban
+0,30 s en caliente y **1,83 s en frío**. `/curso-profesional-dj` tardaba 0,18 s. La única
+diferencia entre ellas: `curso-profesional-dj` no usaba `SiteHeader`.
+
+**La causa.** `SiteHeader` es un componente de servidor que llama a `auth.getUser()`. Basta
+con eso —una sola lectura de cookie— para que Next marque **toda la página** como dinámica y
+la renderice en cada visita en vez de servirla del CDN. El header, que es lo mismo en las 9
+páginas, obligaba a re-renderizar las 9.
+
+**El arreglo.** Partirlo en dos: `SiteHeader` (server, para las páginas con sesión, donde el
+alumno no puede ver un header vacío) y `PublicHeader` (cliente, pide `/api/header` al
+montar). La lógica queda en un solo archivo, `lib/headerState.ts`, o las dos vías se
+desincronizan y el header miente en una de las dos. Mientras no sabe si hay sesión, el
+bloque de cuenta **no se dibuja**: mostrar "Ingresar" y darlo vuelta 150 ms después se ve
+peor que que aparezca una vez y bien.
+
+**La generalizable.** Cualquier cosa que lea cookies o headers —aunque sea un componente
+compartido y chiquito— le saca lo estático a la página entera. Antes de optimizar consultas,
+buscar quién toca la sesión.
+
+**El error de método, que fue el que más tiempo comió.** Saqué un screenshot de producción
+con `--virtual-time-budget=8000` y el local **sin** el flag. El local salió a medio cargar,
+lo comparé contra el otro y di por rota una grilla que estaba bien. Recién al repetir la
+medición en igualdad de condiciones apareció la regresión **de verdad**, que era otra:
+
+> `.card` trae `margin-left/right:auto`. Dentro de un grid, un margen automático dimensiona
+> el item a **fit-content**, no a la columna. Mientras hubo un `<img>` normal adentro no se
+> notaba, porque la imagen aportaba su ancho intrínseco. Al pasarlo a `next/image` con
+> `fill` —que es `position:absolute`— la foto dejó de aportar y **cada card se encogió al
+> ancho de su propio título**. `next build` y `tsc` dieron verde.
+
+**Las dos reglas que dejo escritas:**
+
+1. **Comparar siempre con el mismo instrumento.** Un screenshot contra otro tomado con otros
+   flags no es una comparación, es ruido que se disfraza de hallazgo.
+2. **Cambiar un `<img>` a `next/image` con `fill` cambia el layout aunque el CSS no se
+   toque**, porque la imagen deja de aportar tamaño intrínseco al padre. Si el contenedor
+   depende de eso —`fit-content`, `margin:auto` en grid o flex, `width` sin declarar—, se
+   rompe en silencio. Verlo requiere abrir la página; ningún chequeo automático lo agarra.
