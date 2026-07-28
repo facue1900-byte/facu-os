@@ -37,8 +37,6 @@ PENDIENTES_DE_CARGA = {
     "Bigg": [
         {"concepto": "Pago por banco del 14/07 — entra con el extracto de julio",
          "monto": 3796788.00},
-        {"concepto": "Crédito por error de expensas — sólo está en la pestaña del local",
-         "monto": 269041.46},
     ],
 }
 
