@@ -436,3 +436,45 @@ medición en igualdad de condiciones apareció la regresión **de verdad**, que 
    toque**, porque la imagen deja de aportar tamaño intrínseco al padre. Si el contenedor
    depende de eso —`fit-content`, `margin:auto` en grid o flex, `width` sin declarar—, se
    rompe en silencio. Verlo requiere abrir la página; ningún chequeo automático lo agarra.
+
+---
+
+## 28/07/2026 · Astronomy web — legales, y dos veces la misma trampa de CSS
+
+**Lo que destrabó plata.** La app de Meta `astronomy-ads` no se podía publicar sin una URL
+de política de privacidad alcanzable, y con eso los anuncios por API quedaban bloqueados.
+`/privacidad` ya estaba escrita pero sin deployar: el primer deploy la puso online y
+destrabó la pauta. Después se completó el resto —`/terminos`, `/arrepentimiento` (que es
+obligatorio por la Resolución 424/2020 y es la falta que más se sanciona), datos del
+proveedor y link a Defensa del Consumidor en el footer—.
+
+**La decisión que vale repetir.** Los datos que faltaban —razón social, CUIT, domicilio—
+se centralizaron en un `lib/empresa.ts` con los campos en `null`, y **el sitio no dibuja
+esa línea mientras estén vacíos**. La alternativa habitual, un placeholder tipo
+`XX-XXXXXXXX-X`, es peor: parece un dato real, nadie lo nota, y termina publicado. Cuando
+lleguen los datos se cambia un archivo y aparecen en las cuatro páginas a la vez.
+
+**La trampa, que apareció dos veces en la misma sesión.** `globals.css` importa `ui.css`
+en la primera línea. Los `@import` van primeros por regla de CSS, así que **todo lo que
+está en globals se aplica después** y, a igual especificidad, gana por orden de fuente. Mi
+`.legal { max-width: 760px }` perdía contra `.wrap`, y mi `.legal { text-align: left }`
+perdía contra `.section { text-align: center }`. En las dos el síntoma era el mismo: la
+regla existía, el navegador la mostraba tachada, y parecía que el archivo no se había
+recargado.
+
+Se resuelve subiendo la especificidad con doble clase —`.section.legal` mide (0,2,0) y le
+gana a (0,1,0)—, nunca con `!important`, que arregla un caso y arruina el siguiente.
+
+**La regla general:** en un proyecto con dos hojas y una importando a la otra, **la capa
+importada es la más débil, no la más fuerte**. Si el sistema de diseño vive en la hoja
+importada, cualquier regla de la hoja principal lo pisa gratis. Antes de escribir un
+override, mirar quién importa a quién.
+
+**La otra, chica pero repetida:** el `p` global de este sitio va `text-align: justify`.
+Está bien para una landing ancha y mal para cualquier columna angosta —footer, texto
+legal—, donde abre huecos de espacio entre palabras. Toda columna angosta nueva tiene que
+volver a poner `text-align: left` explícito.
+
+**Cómo se verificó**, además del build y `tsc`: screenshots de cada página nueva, y un
+crawl de los 138 links internos de las 11 páginas públicas para confirmar que ninguno
+quedó roto. Un link roto en un footer nuevo no lo detecta ningún compilador.
