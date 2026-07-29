@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+/* Sistema visual de @astronomy.academy, leído de la grilla real (28/07/2026):
+   negro puro o foto muy oscura, monocromo sin acento de color, grotesca neutra en
+   MAYÚSCULAS alineada a la IZQUIERDA y anclada abajo, micro-rótulos mono en las
+   cuatro esquinas, cruces de registro, y el logo de dos círculos.
+   Nada de violeta, nada de firma cursiva, nada de botón redondeado: eso es el
+   lenguaje de la app, no el de la cuenta. */
+
+@font-face{
+  font-family:"MonoTec";
+  src:url("{{FONT_MONO}}") format("truetype");
+  font-weight:100 700;
+}
+
+:root{
+  --tinta:#ffffff;
+  --tinta-2:rgba(255,255,255,.74);
+  --tinta-3:rgba(255,255,255,.52);
+  --linea:rgba(255,255,255,.28);
+  --grot:"Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;
+  --mono:"MonoTec",ui-monospace,Menlo,monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:{{BASE}}px}
+
+body{
+  width:{{W}}px;height:{{H}}px;
+  background:#000;
+  color:var(--tinta);
+  font-family:var(--grot);
+  overflow:hidden;position:relative;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- fondo ---------- */
+/* Las fotos de la cuenta van desaturadas y muy oscuras: la foto es textura, el
+   texto es el mensaje. Sin velo el titular blanco no lee sobre la mitad de ellas. */
+.foto{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+  /* Grayscale alto a propósito: la cuenta es monocroma. Con poca desaturación el
+     neón amarillo del estudio le grita al blanco del titular y rompe la grilla. */
+  filter:grayscale(.72) contrast(1.1) brightness(.82);
+}
+/* El velo pesa abajo, donde vive el titular, y deja respirar la mitad superior:
+   la foto tiene que verse: es la mitad del mensaje.
+   Son DOS capas y la segunda no es adorno: el gradiente vertical solo no alcanza
+   cuando la foto tiene una masa clara justo donde cae el texto (el saco beige del
+   DJ en dj-bw.jpg se comía "EL CURSO PARA / EL QUE YA"). La horizontal oscurece la
+   columna izquierda —donde el sistema ancla todo el texto— y deja intacto el lado
+   derecho de la imagen. */
+.velo{
+  position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,.72) 0%, rgba(0,0,0,.52) 34%,
+      rgba(0,0,0,.14) 62%, rgba(0,0,0,0) 78%),
+    linear-gradient(180deg,
+      rgba(0,0,0,.46) 0%, rgba(0,0,0,.10) 28%,
+      rgba(0,0,0,.66) 64%, rgba(0,0,0,.95) 100%);
+}
+
+/* ---------- marco técnico ---------- */
+.hoja{
+  position:relative;z-index:1;height:100%;
+  padding:{{PAD}}rem {{PADX}}rem;
+  display:flex;flex-direction:column;
+}
+
+/* Cruces de registro en las cuatro esquinas. Van dibujadas, no tipografiadas: el
+   "+" de una fuente tiene el peso y el centro del signo matemático, no el de una
+   marca de corte. */
+.cruz{position:absolute;width:1.1rem;height:1.1rem;opacity:.55}
+.cruz::before,.cruz::after{
+  content:"";position:absolute;background:var(--tinta);
+}
+.cruz::before{left:50%;top:0;width:1px;height:100%;transform:translateX(-50%)}
+.cruz::after{top:50%;left:0;height:1px;width:100%;transform:translateY(-50%)}
+/* Inset fijo y MENOR que el padding del contenido: las cruces son marcas de corte,
+   viven en el margen. Si se las ancla al mismo padding que el texto, se le montan
+   encima al rótulo y al logo. */
+.cruz.tl{left:1.5rem;top:1.5rem}
+.cruz.tr{right:1.5rem;top:1.5rem}
+.cruz.bl{left:1.5rem;bottom:1.5rem}
+.cruz.br{right:1.5rem;bottom:1.5rem}
+
+/* ---------- micro-rótulos ---------- */
+.rotulos{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:2rem;
+}
+.rot{
+  font-family:var(--mono);font-size:.7rem;font-weight:400;
+  letter-spacing:.19em;text-transform:uppercase;
+  line-height:1.7;color:var(--tinta-2);
+}
+.rot.der{text-align:right}
+.rot + .rot{margin-top:1.15rem}
+.rot-col{display:flex;flex-direction:column}
+
+/* ---------- cuerpo ---------- */
+/* Anclado abajo: en la grilla el titular vive en el tercio inferior izquierdo. */
+.cuerpo{
+  flex:1;min-height:0;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  gap:1.6rem;
+}
+
+.ceja{
+  font-size:1.35rem;font-weight:400;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--tinta-2);
+}
+
+.titular{
+  font-weight:400;
+  font-size:4.75rem;line-height:1.02;letter-spacing:-.018em;
+  text-transform:uppercase;
+  max-width:15ch;
+}
+/* Seguro sobre el velo, no reemplazo: una sombra difusa y negra no se ve como
+   sombra sobre negro, pero salva el titular cuando abajo pasa un reflejo claro. */
+.con-foto .titular,.con-foto .sub,.con-foto .ceja,.con-foto .dato .n{
+  text-shadow:0 .06em .34em rgba(0,0,0,.72);
+}
+/* Tarjeta de apertura de carrusel: titular corto y grande. Es lo único que frena
+   el scroll, así que se lleva la pieza entera y no comparte con ningún bloque. */
+.titular.xl{
+  font-size:7.2rem;line-height:.96;letter-spacing:-.03em;
+  max-width:11ch;
+}
+/* En la cuenta el énfasis dentro de un titular se hace con PESO, no con color:
+   "EL **ERROR** QUE COMETEN CASI TODOS LOS DJs". */
+.titular em{font-style:normal;font-weight:700}
+
+.sub{
+  font-size:1.42rem;line-height:1.5;color:var(--tinta-2);
+  max-width:34ch;
+}
+.titular.xl + .sub{font-size:1.6rem;max-width:30ch;color:var(--tinta)}
+
+.regla{height:1px;background:var(--linea);width:100%}
+
+/* ---------- bloques ---------- */
+.bloque{display:flex;flex-direction:column;gap:1.3rem}
+
+.precio{display:flex;flex-direction:column;gap:.35rem}
+.precio .monto{font-size:5.4rem;font-weight:500;line-height:1;letter-spacing:-.03em}
+.precio .periodo{
+  font-family:var(--mono);font-size:.76rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--tinta-3);
+}
+.precio .nota{font-size:1.28rem;color:var(--tinta-2)}
+
+/* Lista numerada con índice mono entre corchetes, como el post del Starter Pack. */
+.bullets{display:flex;flex-direction:column;gap:.92rem}
+.bullets li{
+  list-style:none;display:grid;grid-template-columns:2.9rem 1fr;gap:.9rem;
+  align-items:baseline;font-size:1.42rem;line-height:1.35;
+}
+.bullets .i{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;
+  color:var(--tinta-3);
+}
+
+.planes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;width:100%}
+.plan{display:flex;flex-direction:column;gap:.42rem;padding-top:.95rem;border-top:1px solid var(--linea)}
+.plan.destacado{border-top-color:var(--tinta)}
+.plan .n{
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--tinta-3);
+}
+.plan.destacado .n{color:var(--tinta)}
+.plan .p{font-size:2.05rem;font-weight:500;letter-spacing:-.02em;line-height:1.1}
+.plan .c{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;color:var(--tinta-3)}
+
+.dato{display:flex;flex-direction:column;gap:.3rem}
+.dato .n{font-size:6.6rem;font-weight:400;line-height:.92;letter-spacing:-.035em}
+.dato .l{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--tinta-2);max-width:30ch;line-height:1.7;
+}
+
+/* Etiqueta entre corchetes: es como la cuenta marca estado y llamado a la acción
+   ([ INSCRIPCIONES ABIERTAS ], [NUEVO]). Reemplaza al botón: en la grilla no hay
+   ni un solo botón redondeado. */
+.tag{
+  font-family:var(--mono);font-size:.82rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--tinta);
+}
+.fila-cta{display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.flecha{font-size:1.9rem;line-height:1;color:var(--tinta);font-family:var(--grot)}
+
+/* ---------- pie ---------- */
+.pie{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;
+  margin-top:2.4rem;
+}
+.marca-svg{width:4.6rem;height:auto;display:block;opacity:.92}
+.legal{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--tinta-3);text-align:right;line-height:1.7;
+}
+</style>
+</head>
+<body class="{{CLASE_BODY}}">
+{{FONDO}}
+
+<span class="cruz tl"></span><span class="cruz tr"></span>
+<span class="cruz bl"></span><span class="cruz br"></span>
+
+<div class="hoja">
+
+  <header class="rotulos">
+    <div class="rot-col">{{ROT_IZQ}}</div>
+    <div class="rot-col">{{ROT_DER}}</div>
+  </header>
+
+  <main class="cuerpo">
+    {{CEJA}}
+    <h1 class="titular{{CLASE_TITULAR}}">{{TITULAR}}</h1>
+    {{SUB}}
+    {{BLOQUE}}
+    <div class="fila-cta">{{TAG}}<div class="flecha">{{FLECHA}}</div></div>
+  </main>
+
+  <footer class="pie">
+    <!-- Marca de dos círculos. Está DIBUJADA, no es el archivo oficial: en el repo
+         no hay un asset de este símbolo. Si aparece el original, reemplazarlo. -->
+    <svg class="marca-svg" viewBox="0 0 68 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="22" r="20.4" stroke="#fff" stroke-width="1.3"/>
+      <circle cx="44" cy="22" r="20.4" stroke="#fff" stroke-width="1.3"/>
+    </svg>
+    <div class="legal">{{LEGAL}}</div>
+  </footer>
+
+</div>
+
+<script>
+// Mismo auto-ajuste que el otro template: se mide el alto real y se achica hasta
+// que entra. Con 75 piezas, una sola que desborde no se ve hasta que ya está
+// publicada.
+(function(){
+  var hoja = document.querySelector('.hoja');
+  var html = document.documentElement;
+  var base = parseFloat(getComputedStyle(html).fontSize);
+  var k = 1;
+  function desborda(){
+    return hoja.scrollHeight > hoja.clientHeight + 1 ||
+           hoja.scrollWidth  > hoja.clientWidth + 1;
+  }
+  while (desborda() && k > 0.62) {
+    k -= 0.02;
+    html.style.fontSize = (base * k) + 'px';
+  }
+  document.title = desborda() ? 'DESBORDA' : 'OK:' + k.toFixed(2);
+})();
+</script>
+</body>
+</html>

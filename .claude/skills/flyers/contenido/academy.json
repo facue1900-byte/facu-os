@@ -1,15 +1,36 @@
 {
-  "_fuente_precios": {
-    "origen": "tabla `plans` de Supabase (proyecto Astronomy Oficial, qeakrjnseboiulcojlcw) + app/actions/buyCursoPro.ts",
+  "_fuente_datos": {
+    "origen": "tabla `plans` de Supabase (proyecto Astronomy Oficial, qeakrjnseboiulcojlcw)",
     "verificado": "2026-07-28",
-    "como_refrescar": "scripts/sync_precios.py — reescribe los precio_ars de este archivo contra la base y avisa qué cambió",
-    "regla": "Ningún precio se escribe a mano acá. Si un producto no tiene precio en la base, va `precio_ars: null` y el ángulo de precio no se genera."
+    "como_refrescar": "scripts/sync_precios.py",
+    "regla": "LAS PIEZAS NO LLEVAN PRECIO EN PESOS. Con la inflación argentina un flyer publicado con un número queda viejo en semanas y obliga a rehacer la tanda entera. Lo único numérico que sale es lo que NO se desactualiza: créditos, cantidad de clases, cantidad de módulos — y esos también salen de la base (`monthly_credits`), no se escriben a mano. El que quiere el valor del mes, escribe por DM."
   },
   "marca": {
     "nombre": "Astronomy Academy",
     "isotipo": "isotipo-blanco.png",
+    "firma": "academy-blanco.png",
     "legal": "astronomyofficial.com · @astronomy.academy",
-    "firma": "academy-blanco.png"
+    "legal_editorial": "+54 9 11 2400-5565<br>@ASTRONOMY.ACADEMY · NORDELTA PLAZA",
+    "rotulos": {
+      "izq": [
+        [
+          "COMMUNITY-DRIVEN",
+          "EDUCATION"
+        ],
+        [
+          "BUILT BY ARTISTS",
+          "/ FOR ARTISTS"
+        ]
+      ],
+      "der": [
+        [
+          "WHERE MUSIC",
+          "CONNECTS US"
+        ]
+      ]
+    },
+    "whatsapp": "+54 9 11 2400-5565",
+    "whatsapp_wame": "5491124005565"
   },
   "productos": [
     {
@@ -18,18 +39,39 @@
       "plan_id": "cursodj",
       "precio_ars": 143520,
       "creditos": 240,
+      "foto": "booth-violeta.jpg",
+      "rotulos": {
+        "izq": [
+          [
+            "ASTRONOMY",
+            "ACADEMY"
+          ],
+          [
+            "BUILT BY DJS",
+            "/ FOR DJS"
+          ]
+        ],
+        "der": [
+          [
+            "COMMUNITY-",
+            "DRIVEN"
+          ]
+        ]
+      },
       "angulos": [
         {
-          "id": "precio",
+          "id": "que-es",
           "kicker": "Curso de DJ",
           "titular": "Aprendé a mezclar en <em>cabina real</em>",
-          "sub": "Cuatro clases por mes, uno a uno, con DJs que están tocando.",
+          "sub": "Clases individuales, con DJs que están tocando, en el estudio de Nordelta Plaza.",
           "bloque": {
-            "tipo": "precio",
-            "periodo": "por mes",
-            "nota": "240 créditos · se renuevan todos los meses"
+            "tipo": "dato",
+            "numero": "4",
+            "etiqueta": "clases individuales por mes"
           },
-          "cta": "Empezá este mes"
+          "cta": "Inscripciones abiertas",
+          "fondo": "foto",
+          "foto": "booth-violeta.jpg"
         },
         {
           "id": "beneficios",
@@ -46,42 +88,49 @@
               "Agendás vos, desde la app, cuando te queda bien"
             ]
           },
-          "cta": "Quiero mi lugar"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "neon-oscuro.jpg"
         },
         {
           "id": "profe",
           "kicker": "Quién te enseña",
           "titular": "No te enseña un video. Te enseña un <em>DJ</em>.",
-          "sub": "Mateo Pastrana y Mateo Guini dan las clases de DJ, uno a uno, en el estudio de Paseo Nordelta.",
+          "sub": "Mateo Pastrana y Mateo Guini dan las clases de DJ, uno a uno, en el estudio.",
           "bloque": {
             "tipo": "ninguno"
           },
-          "cta": "Reservá tu primera clase"
+          "cta": "Conocé a los profes",
+          "fondo": "foto",
+          "foto": "dj-bw.jpg"
         },
         {
           "id": "como-funciona",
           "kicker": "Cómo funciona",
           "titular": "Cuatro clases. Todos los meses.",
-          "sub": "El curso se renueva cada mes: pagás, se te acreditan los créditos y agendás cuando quieras.",
+          "sub": "El curso se renueva cada mes: se te acreditan los créditos y agendás cuando quieras.",
           "bloque": {
             "tipo": "dato",
-            "numero": "4",
-            "etiqueta": "clases individuales por mes"
+            "numero": "240",
+            "etiqueta": "créditos por mes · se renuevan"
           },
-          "cta": "Ver cómo funciona"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "cdj-cerca.jpg"
         },
         {
-          "id": "cta",
+          "id": "contacto",
           "kicker": "Curso de DJ",
           "titular": "Tu primera fecha empieza en una <em>cabina</em>",
-          "sub": "Todos los que tocan hoy empezaron ensayando en una. Empezá en la nuestra.",
+          "sub": "Escribinos por WhatsApp y te contamos cómo arrancar.",
           "bloque": {
             "tipo": "ninguno"
           },
-          "cta": "Empezar ahora"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "booth-astronauta.jpg"
         }
-      ],
-      "foto": "booth-violeta.jpg"
+      ]
     },
     {
       "id": "produccion",
@@ -89,18 +138,35 @@
       "plan_id": null,
       "precio_ars": null,
       "creditos_por_clase": 60,
+      "foto": "estudio-cdjs.jpg",
+      "rotulos": {
+        "izq": [
+          [
+            "TRAINED BY CLUBS",
+            "SHAPED BY SOUND"
+          ]
+        ],
+        "der": [
+          [
+            "ZERO NOISE",
+            "ALL IMPACT"
+          ]
+        ]
+      },
       "angulos": [
         {
-          "id": "precio",
+          "id": "que-es",
           "kicker": "Producción musical",
           "titular": "Terminá el track que tenés a medias",
-          "sub": "Clases de producción en Ableton, en el estudio, uno a uno.",
+          "sub": "Clases de producción en Ableton, en el estudio, uno a uno sobre tu propio proyecto.",
           "bloque": {
             "tipo": "dato",
             "numero": "60",
             "etiqueta": "créditos por clase · incluida en tu membresía"
           },
-          "cta": "Ver membresías"
+          "cta": "Inscripciones abiertas",
+          "fondo": "foto",
+          "foto": "estudio-teclado.jpg"
         },
         {
           "id": "beneficios",
@@ -117,42 +183,49 @@
               "Mixing y mastering profesional (Platinum)"
             ]
           },
-          "cta": "Empezá a producir"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "booth-astronauta.jpg"
         },
         {
           "id": "profe",
           "kicker": "Quién te enseña",
           "titular": "Producís con alguien que <em>publica</em>",
-          "sub": "Mateo Pastrana y Mateo Guini dan producción presencial en el estudio de Paseo Nordelta.",
+          "sub": "Mateo Pastrana y Mateo Guini dan producción presencial en el estudio.",
           "bloque": {
             "tipo": "ninguno"
           },
-          "cta": "Reservá tu clase"
+          "cta": "Conocé a los profes",
+          "fondo": "foto",
+          "foto": "estudio-cdjs.jpg"
         },
         {
           "id": "como-funciona",
           "kicker": "Cómo funciona",
-          "titular": "Traés tu proyecto. Salís con él terminado.",
+          "titular": "Traés tu proyecto. Salís con él <em>terminado</em>.",
           "sub": "No hay temario cerrado: la clase se arma sobre lo que estás produciendo vos.",
           "bloque": {
             "tipo": "dato",
             "numero": "1 a 1",
             "etiqueta": "sobre tu propio proyecto"
           },
-          "cta": "Agendar"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "teclas.jpg"
         },
         {
-          "id": "cta",
+          "id": "contacto",
           "kicker": "Producción musical",
           "titular": "La idea ya la tenés. Falta <em>terminarla</em>.",
-          "sub": "Estudio, Ableton y alguien al lado que ya pasó por ahí.",
+          "sub": "Escribinos por WhatsApp y te contamos cómo arrancar.",
           "bloque": {
             "tipo": "ninguno"
           },
-          "cta": "Empezar ahora"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "estudio-monitores.jpg"
         }
-      ],
-      "foto": "estudio-cdjs.jpg"
+      ]
     },
     {
       "id": "produccion-online",
@@ -160,9 +233,24 @@
       "plan_id": null,
       "precio_ars": null,
       "creditos_por_clase": 60,
+      "foto": "estudio-cdj.jpg",
+      "rotulos": {
+        "izq": [
+          [
+            "FROM BEDROOM",
+            "TO BOOTH"
+          ]
+        ],
+        "der": [
+          [
+            "REAL TRACKS",
+            "REAL SCENE"
+          ]
+        ]
+      },
       "angulos": [
         {
-          "id": "precio",
+          "id": "que-es",
           "kicker": "Producción online",
           "titular": "Producí desde donde estés",
           "sub": "Clases de producción online, uno a uno, con los mismos créditos de tu membresía.",
@@ -171,7 +259,9 @@
             "numero": "60",
             "etiqueta": "créditos por clase · incluida en tu membresía"
           },
-          "cta": "Ver membresías"
+          "cta": "Inscripciones abiertas",
+          "fondo": "foto",
+          "foto": "estudio-neon.jpg"
         },
         {
           "id": "beneficios",
@@ -188,17 +278,21 @@
               "Agendás desde la app cuando te queda bien"
             ]
           },
-          "cta": "Empezá online"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "controller-cerca.jpg"
         },
         {
           "id": "profe",
           "kicker": "Quién te enseña",
           "titular": "Producción online con <em>Owners Of Time</em>",
-          "sub": "Valen Frando da las clases de producción online, uno a uno, sobre tus tracks.",
+          "sub": "Valentino Frandolich da las clases online, uno a uno, sobre tus tracks.",
           "bloque": {
             "tipo": "ninguno"
           },
-          "cta": "Reservá tu clase"
+          "cta": "Conocé a los profes",
+          "fondo": "foto",
+          "foto": "estudio-cdj.jpg"
         },
         {
           "id": "como-funciona",
@@ -210,20 +304,23 @@
             "numero": "100%",
             "etiqueta": "online, desde cualquier lugar"
           },
-          "cta": "Agendar online"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "teclas.jpg"
         },
         {
-          "id": "cta",
+          "id": "contacto",
           "kicker": "Producción online",
           "titular": "Vivís lejos del estudio. La clase <em>no</em>.",
-          "sub": "Producción musical online, uno a uno, incluida en tu membresía.",
+          "sub": "Escribinos por WhatsApp y te contamos cómo arrancar.",
           "bloque": {
             "tipo": "ninguno"
           },
-          "cta": "Empezar ahora"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "neon-led.jpg"
         }
-      ],
-      "foto": "estudio-cdj.jpg"
+      ]
     },
     {
       "id": "membresias",
@@ -235,16 +332,37 @@
         "gold",
         "platinum"
       ],
+      "foto": "estudio-neon.jpg",
+      "rotulos": {
+        "izq": [
+          [
+            "COMMUNITY-DRIVEN",
+            "EDUCATION"
+          ],
+          [
+            "JOIN THE",
+            "FREQUENCY"
+          ]
+        ],
+        "der": [
+          [
+            "WHERE MUSIC",
+            "CONNECTS US"
+          ]
+        ]
+      },
       "angulos": [
         {
-          "id": "precio",
+          "id": "que-es",
           "kicker": "Membresías",
           "titular": "Elegí cuánto querés entrar al <em>estudio</em>",
           "sub": "Créditos por mes que canjeás por clases de DJ, de producción o por alquilar el estudio.",
           "bloque": {
             "tipo": "planes"
           },
-          "cta": "Ver los planes"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "estudio-monitores.jpg"
         },
         {
           "id": "beneficios",
@@ -261,7 +379,9 @@
               "Grabación de live sets con cámaras (Gold y Platinum)"
             ]
           },
-          "cta": "Asociarme"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "neon-oscuro.jpg"
         },
         {
           "id": "profe",
@@ -271,51 +391,75 @@
           "bloque": {
             "tipo": "ninguno"
           },
-          "cta": "Ver los planes"
+          "cta": "Conocé a los profes",
+          "fondo": "foto",
+          "foto": "estudio-cdjs.jpg"
         },
         {
           "id": "como-funciona",
           "kicker": "Cómo funciona",
           "titular": "Los créditos que no usás, se te <em>acumulan</em>",
-          "sub": "No perdés el mes que estuviste ocupado: los créditos siguen ahí y vencen recién a los 3 meses.",
+          "sub": "No perdés el mes que estuviste ocupado: los créditos siguen ahí.",
           "bloque": {
             "tipo": "dato",
-            "numero": "3",
-            "etiqueta": "meses de vigencia de tus créditos"
+            "numero": "24/7",
+            "etiqueta": "agendás desde la app, cuando te queda bien"
           },
-          "cta": "Asociarme"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "booth-mural.jpg"
         },
         {
-          "id": "cta",
+          "id": "contacto",
           "kicker": "Membresías",
           "titular": "Dejá de alquilar horas sueltas",
-          "sub": "Una membresía mensual y el estudio pasa a ser tuyo.",
+          "sub": "Escribinos por WhatsApp y te pasamos los planes y los valores del mes.",
           "bloque": {
             "tipo": "ninguno"
           },
-          "cta": "Ver los planes"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "estudio-neon.jpg"
         }
-      ],
-      "foto": "estudio-neon.jpg"
+      ]
     },
     {
       "id": "modo-profesional",
       "nombre": "Modo Profesional",
       "plan_id": null,
-      "precio_ars": 440000,
-      "precio_cuota_ars": 250000,
+      "precio_ars": null,
+      "foto": "dj-bw.jpg",
+      "rotulos": {
+        "izq": [
+          [
+            "ASTRONOMY",
+            "ACADEMY"
+          ],
+          [
+            "BUILT BY ARTISTS",
+            "/ FOR ARTISTS"
+          ]
+        ],
+        "der": [
+          [
+            "BEYOND",
+            "REALITY"
+          ]
+        ]
+      },
       "angulos": [
         {
-          "id": "precio",
-          "kicker": "Modo Profesional",
-          "titular": "De tu diagnóstico artístico a tu <em>showcase</em>",
-          "sub": "Ocho módulos, dos meses, en cabina real y 100% práctico.",
+          "id": "que-es",
+          "kicker": "Para el que ya sabe mezclar",
+          "titular": "Nunca tocaste <em>para nadie</em>",
+          "sub": "Sabés mezclar. Falta todo lo que viene después.",
           "bloque": {
-            "tipo": "precio",
-            "periodo": "pago único",
-            "nota": "o en 2 cuotas de $250.000"
+            "tipo": "ninguno"
           },
-          "cta": "Quiero entrar"
+          "cta": "Inscripciones abiertas",
+          "fondo": "foto",
+          "foto": "dj-bw.jpg",
+          "escala": "xl"
         },
         {
           "id": "beneficios",
@@ -329,45 +473,52 @@
               "Diagnóstico artístico inicial",
               "100% práctico, en cabina real",
               "Showcase final en vivo",
-              "Pago único o en 2 cuotas"
+              "Pago único o en cuotas"
             ]
           },
-          "cta": "Ver el programa"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "neon-oscuro.jpg"
         },
         {
           "id": "profe",
-          "kicker": "Modo Profesional",
-          "titular": "El curso para el que ya <em>arrancó</em>",
-          "sub": "No es un curso de iniciación: es el que te deja tocando en vivo.",
+          "kicker": "Quién te enseña",
+          "titular": "Te enseñan DJs que <em>están tocando</em>",
+          "sub": "No es un curso grabado: es cabina real, con alguien al lado tuyo.",
           "bloque": {
             "tipo": "ninguno"
           },
-          "cta": "Quiero entrar"
+          "cta": "Conocé a los profes",
+          "fondo": "foto",
+          "foto": "booth-violeta.jpg"
         },
         {
           "id": "como-funciona",
           "kicker": "Cómo funciona",
-          "titular": "Ocho módulos. Dos meses. Un show.",
-          "sub": "Cada módulo es práctico y el último es tu showcase, en vivo y con público.",
+          "titular": "Ocho módulos. Dos meses. Un <em>show</em>.",
+          "sub": "Cada módulo es práctico. El último es tu showcase, en vivo y con público.",
           "bloque": {
             "tipo": "dato",
-            "numero": "8",
-            "etiqueta": "módulos en 2 meses"
+            "numero": "2",
+            "etiqueta": "meses, de la primera clase al escenario"
           },
-          "cta": "Ver el programa"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "booth-astronauta.jpg"
         },
         {
-          "id": "cta",
+          "id": "contacto",
           "kicker": "Modo Profesional",
           "titular": "Terminás el curso <em>tocando</em>",
-          "sub": "Ocho módulos, dos meses, y un showcase final en vivo.",
+          "sub": "Escribinos por WhatsApp y te pasamos el programa completo.",
           "bloque": {
             "tipo": "ninguno"
           },
-          "cta": "Empezar ahora"
+          "cta": "Escribinos por WhatsApp",
+          "fondo": "foto",
+          "foto": "estudio-teclado.jpg"
         }
-      ],
-      "foto": "dj-bw.jpg"
+      ]
     }
   ]
 }

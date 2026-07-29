@@ -81,3 +81,68 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
 
 (Resuelto 27/07/2026: "Mateo Iní" y "Mateo Guini" eran la misma persona — confirmado
 por Facu. El nombre correcto es **Mateo Guini**; ya está unificado en todos lados.)
+
+## Pauta de Meta — abierto desde el 28/07/2026
+
+**Acceso por API funcionando.** App `astronomy-ads` (ID 2994790630727835, tipo Negocios,
+con API de marketing). Cuenta: `act_628045479472592` (`CP - Astronomy Academy`, USD).
+
+**El token ahora es de usuario del sistema y no vence** (29/07/2026). El anterior era de
+usuario, de 60 días, y se murió antes de tiempo: Facebook lo invalidó cuando Facu cambió
+la contraseña (`OAuthException 190, subcode 460`). El nuevo sale del usuario del sistema
+`facu-os` en el Business Manager, con `expires_at: 0` — no vence y no le afecta un cambio
+de contraseña. Tiene asignados la página, las dos cuentas publicitarias, la app
+`astronomy-ads` y la cuenta de Instagram.
+
+> **Ojo con el rate limit** (`code 17`): subir las 75 placas de una deja la cuenta
+> limitada varios minutos, y en ese estado la API devuelve **listas vacías sin error
+> visible** si no se mira el campo `error`. Un conjunto con cero anuncios es un rate
+> limit hasta que se demuestre lo contrario.
+
+**Lo que se descubrió y contradice supuestos previos:**
+
+- **El gasto real es US$442/mes**, no los US$157 que decía el archivo de finanzas. Faltan
+  US$1.685 sin registrar en 13 meses, concentrados en 5 meses sin ninguna fila de pauta
+  (ago/nov/dic-2025, jun/jul-2026).
+- **La cuenta se degradó 5x en siete meses**: de 375 impresiones por conversación en enero
+  a 1.995 en julio, con el CPM *bajando*. No son medios más caros: la audiencia dejó de
+  responder.
+- **La variable que separa buenos de malos conjuntos es la geografía**, no prospección vs
+  remarketing. Los nombres de los conjuntos mienten: ninguno usa públicos personalizados.
+
+**Cambios aplicados (mismo presupuesto, US$19,56/día):** radio 18→35 km · carrusel de
+Modo Profesional (formato nunca probado en 35 meses) · variante de copy con gancho de
+dolor · anuncio de búsqueda de profesores sacado del conjunto que vende cursos.
+
+**Corriendo desde el 29/07/2026:** `modo-profesional | carrusel | square | dolor | v2 | jul-26`
+(`120248150444820448`), con las 75 placas rehechas — una foto distinta por tarjeta y el
+gancho en la primera. Los dos carruseles viejos, los de las fotos repetidas, quedaron en
+pausa. Detalle del defecto y de los arreglos al generador: `LAB_NOTES.md`, 29/07/2026.
+
+**La decisión de plata que quedó abierta, con fecha:** `3IntW2 Flyer Curso de DJ`
+(`120245002157250448`) se lleva **el 72% del gasto del conjunto a US$2,58 por
+conversación**, mientras `2IntW2 Curso de DJ` (`120248128929530448`) trae a **US$0,83**.
+Mover esos ~US$90/mes compraría ~108 conversaciones en vez de 35. **No se pausó** porque
+`2IntW2` tenía 18 conversaciones de historia, debajo del umbral de 20 de la regla
+operativa: sería apostar US$90/mes a que un número chico aguanta al sextuplicar la
+inversión. **Revisar cuando `2IntW2` pase de 30 conversaciones.**
+
+**Reporte automático:** launchd `com.facu.reporte-pauta`, lunes 10:00 → `~/Desktop/REPORTE_PAUTA.txt`.
+
+**Documentos:** `pauta/PLAN_PAUTA.md` (plan por producto) · `pauta/CAMBIOS_META.md` ·
+`pauta/PLAN_CREATIVOS.md` · `pauta/GANCHOS_Y_CONTENIDO.md` (10 ganchos, 3 guiones, 10 CTAs).
+
+### Pendientes de dato
+
+- **Qué plataforma es el chatbot de WhatsApp.** Es lo único que falta para calcular la
+  tasa de cierre sola (teléfono → `profiles.phone` → `sales.is_first`) y no depender de que
+  nadie cargue nada a mano. Sin ese número, ninguna decisión de presupuesto tiene base.
+- **Resultados reales de alumnos** para la prueba social. La sección quedó vacía a propósito.
+- **Los videos de Modo Profesional.** Facu los va a pasar (29/07/2026). Van como creativo
+  principal de ese producto: el video es el formato que la cuenta menos exploró en 35 meses
+  y el que mejor le rinde a este público. Las placas quedan de banco de rotación.
+- **Quién dicta Modo Profesional.** La tarjeta 4 del carrusel dice "te enseñan DJs que están
+  tocando", genérico, porque no hay fuente. Las placas de `curso-dj` sí nombran a Pastrana y
+  Guini. Con los nombres confirmados, esa tarjeta convierte mejor.
+- **Si el manual de identidad era para Dominé** y no para la Academia (lo dice la portada).
+- Presupuestos de `PLAN_PAUTA.md` escritos sobre US$157/mes: hay que rehacerlos sobre US$442.

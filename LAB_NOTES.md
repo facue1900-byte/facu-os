@@ -8,6 +8,102 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-07-29 · FAIL ✓ — Un token vencido borró el manifiesto de creativos, porque el script escribía pase lo que pase
+
+Facu dio el OK para subir las 75 placas nuevas a Meta. `subir_creativos.py` intentó las 75,
+las 75 fallaron con `OAuthException code 190, subcode 460` —"the session has been
+invalidated because the user changed their password"— y al terminar **escribió el
+manifiesto igual**, dejando `data/pauta/creativos.json` en `{}`. Los hashes de los
+creativos que estaban corriendo se perdieron. `data/` está gitignoreado: no hay historia
+de dónde recuperarlos.
+
+**Causa raíz: el script trataba "no subí nada" como un resultado válido.** Construía
+`manifiesto = {}`, lo llenaba con lo que salía bien, y escribía el diccionario al final
+sin preguntarse si tenía algo adentro. Es el modo de falla del global —*un resultado vacío
+es un error hasta que se demuestre lo contrario*— pero del lado de la escritura, que es
+donde duele: no reportó un total falso, destruyó el dato bueno.
+
+Segundo error, más barato: reintentó 74 veces un error de autenticación. Un token vencido
+no mejora en el intento 75.
+
+**Arreglos:**
+
+- El manifiesto **se mezcla** con el que ya está en disco, no lo reemplaza.
+- Si `manifiesto == previo` (no subió nada nuevo), sale con error y **no escribe**.
+- Un `code == 190` corta la corrida en la primera pieza, con el mensaje de qué hacer.
+- `--send`, apagado por defecto, como manda la regla del repo. No lo tenía y escribía en
+  la cuenta de Meta igual.
+
+**Costo real: cero.** Los hashes viejos apuntaban a las placas viejas, que justamente
+íbamos a reemplazar. Y son recuperables: las imágenes siguen en la biblioteca de la cuenta
+y el anuncio que corre guarda su creativo del lado de Meta —nuestro JSON es solo un índice
+local—, así que con un token válido salen de
+`GET /{ad_id}?fields=creative{object_story_spec}`. El anuncio en producción no se tocó.
+
+**Pendiente de Facu:** generar un `META_ACCESS_TOKEN` nuevo (cambió la contraseña de
+Facebook) y ponerlo en el `.env`. Hasta entonces no se puede subir nada ni crear el
+carrusel.
+
+### 2026-07-29 · FAIL ✓ — El carrusel que pagamos tenía la misma foto cuatro veces, y el gancho no estaba en la imagen
+
+Facu vio el anuncio de Modo Profesional corriendo en su propio Instagram, le sacó cinco
+capturas y dijo: la primera no tiene texto que capte la atención, y la foto de fondo se
+repite mucho. Las dos cosas eran ciertas y las dos venían del generador, no del diseño.
+
+**Causa raíz 1: `foto` era un campo del PRODUCTO, no del ángulo.** En `academy.json` cada
+producto declaraba una sola foto y los cinco ángulos la heredaban. Sobre la grilla de
+Instagram no molesta —las piezas se publican de a una, con semanas de por medio— pero un
+carrusel muestra las cinco juntas y ahí cuatro tarjetas idénticas se leen como que la app
+no cargó bien la imagen. El quinto ángulo (`beneficios`, el de bullets) tenía
+`fondo: "negro"`, y como el texto va anclado abajo, quedaba con el 45% superior del cuadro
+vacío. O sea: de cinco tarjetas, cuatro repetidas y una vacía.
+
+**Causa raíz 2: el mejor gancho estaba escrito, pero en el lugar donde nadie lo lee.** El
+texto del anuncio abría con "Mezclás hace dos años. Nunca tocaste para nadie." — una línea
+que funciona. La tarjeta 1 decía "DE TU DIAGNÓSTICO ARTÍSTICO A TU SHOWCASE": jerga
+interna, seis palabras antes de que signifique algo, y en cuerpo chico sobre una foto
+oscura. En un carrusel la tarjeta 1 es lo único que decide si alguien desliza. El gancho
+estaba en el pie de foto y la jerga en la imagen: al revés.
+
+**Causa raíz 3 (la que no se veía hasta arreglar las otras dos):** el velo era un solo
+gradiente vertical. `dj-bw.jpg` tiene un saco beige claro justo en el tercio inferior
+izquierdo, que es exactamente donde el sistema ancla el titular. "EL CURSO PARA / EL QUE
+YA" caía encima del saco y se perdía.
+
+**Los arreglos, todos en el generador y no a mano sobre los PNG:**
+
+- `foto` ahora es por ángulo (`foto_del_angulo()`), con el del producto como fallback.
+- **`chequear_fotos()` revienta la corrida si una foto se repite dentro de un producto.**
+  Es el chequeo que faltaba: a ojo ya se pasó una vez, y una tanda son 75 piezas.
+- Se importaron 9 fotos nuevas de `Fotos nuevas (Drive)`, elegidas midiendo la luminancia
+  media de la zona donde cae el titular (esquina inferior izquierda, con el mismo
+  `grayscale/brightness` que aplica el CSS). Sirve para descartar antes de renderizar:
+  las cuatro fotos diurnas del exterior daban L=80–120 y no aguantan texto blanco.
+- El velo pasó a dos capas: la horizontal oscurece la columna izquierda y deja limpio el
+  lado derecho de la foto. Más `text-shadow` sobre negro como seguro — no se ve, pero
+  salva el titular cuando abajo pasa un reflejo.
+- `escala: "xl"` para el titular de apertura (7.2rem, 11ch, sin bloque).
+- Ninguna tarjeta queda 100% negra: las densas van sobre foto muy oscura (L≤25).
+- En `crear_carrusel.py`, `titulares` pasó de lista posicional a diccionario por ángulo.
+  Con la lista, cambiar `ORDEN` dejaba cada titular sobre la imagen equivocada **sin que
+  nada fallara** — el bug perfecto: silencioso y pago.
+- `ORDEN` nuevo: gancho → cómo funciona → qué incluye → quién enseña → contacto. Los
+  bullets pasaron de la posición 2 a la 3: la tarjeta 2 todavía tiene que hacer que el
+  otro siga deslizando, y una lista no hace eso.
+
+75/75 piezas OK, los estilos `foto` y `plano` intactos, 24 tests verdes.
+
+**La lección transferible:** un chequeo que solo mira una pieza por vez no ve los defectos
+que aparecen cuando las piezas se muestran juntas. El verificador del skill revisaba
+dimensiones, peso y desborde de cada PNG por separado — y las 75 pasaban. El defecto vivía
+en la *relación* entre cinco de ellas. Cuando el entregable es un conjunto, hay que
+verificar el conjunto.
+
+**Lo que queda abierto:** las placas nuevas están en disco pero **el anuncio que corre
+sigue con los hashes viejos**. Hay que volver a subirlas con `subir_creativos.py` y crear
+el carrusel nuevo. Y `subir_creativos.py` **no tiene flag `--send`** aunque escribe en la
+cuenta de Meta, contra la regla del repo.
+
 ### 2026-07-29 · FAIL ✓ — Pushear a `main` nunca deployó astronomyofficial.com, y verifiqué con un hash que cambia solo
 
 Terminé tres arreglos de `/admin/registro`, commiteé, Facu dijo "dale pushea", pusheé. Y me

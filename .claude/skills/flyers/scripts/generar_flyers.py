@@ -35,9 +35,9 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 # Tamaño, escala tipográfica y márgenes por formato. `base` es el font-size raíz:
 # todo el template está en rem, así que una sola cifra reescala la pieza entera.
 FORMATOS = {
-    "feed":   {"w": 1080, "h": 1350, "base": 16.0, "pad": 5.4, "padx": 4.4},
-    "story":  {"w": 1080, "h": 1920, "base": 17.0, "pad": 9.5, "padx": 4.6},
-    "square": {"w": 1080, "h": 1080, "base": 14.0, "pad": 4.6, "padx": 4.2},
+    "feed":   {"w": 1080, "h": 1350, "base": 16.0, "pad": 5.4, "padx": 4.4, "pad_ed": 3.4, "padx_ed": 3.4},
+    "story":  {"w": 1080, "h": 1920, "base": 17.0, "pad": 9.5, "padx": 4.6, "pad_ed": 5.6, "padx_ed": 3.3},
+    "square": {"w": 1080, "h": 1080, "base": 14.0, "pad": 4.6, "padx": 4.2, "pad_ed": 3.6, "padx_ed": 3.6},
 }
 
 # Debajo de esto un PNG de 1080px es una placa vacía o casi: el render se colgó
@@ -139,13 +139,164 @@ def fondo_y_cabecera(estilo, marca, producto, assets):
     )
 
 
+def bloque_editorial(bloque, producto, planes):
+    """Mismo contenido que `bloque_html`, en el lenguaje de la cuenta: alineado a la
+    izquierda, monocromo, índices mono entre corchetes y planes separados por reglas."""
+    tipo = bloque.get("tipo", "ninguno")
+
+    if tipo == "ninguno":
+        return ""
+
+    if tipo == "precio":
+        # Decisión de Facu (28/07/2026): las piezas de Instagram NO llevan precio en
+        # pesos. Con la inflación, un flyer publicado con un número queda viejo en
+        # semanas. El guard va acá y no en el JSON para que no alcance con editar el
+        # contenido: si alguien vuelve a poner un bloque de precio, el script corta.
+        raise ValueError(
+            f"El producto '{producto['id']}' pide un bloque de precio en pesos, y las "
+            "piezas de Instagram no llevan precio (decisión del 28/07/2026: inflación). "
+            "Usá un bloque `dato` con créditos, clases o módulos, y que el valor del "
+            "mes se pida por DM."
+        )
+
+    if tipo == "bullets":
+        items = "".join(
+            f'<li><span class="i">[{i:02d}]</span><span>{esc(t)}</span></li>'
+            for i, t in enumerate(bloque["items"], 1)
+        )
+        return f'<div class="bloque"><ul class="bullets">{items}</ul></div>'
+
+    if tipo == "dato":
+        return (
+            '<div class="bloque"><div class="dato">'
+            f'<div class="n">{esc(bloque["numero"])}</div>'
+            f'<div class="l">{esc(bloque["etiqueta"])}</div>'
+            "</div></div>"
+        )
+
+    if tipo == "planes":
+        # Sin pesos: lo que diferencia a los planes en la pieza son los CRÉDITOS,
+        # que no se mueven con la inflación. El valor del mes se pide por DM.
+        cards = []
+        for i, pid in enumerate(producto["planes"]):
+            if pid not in planes:
+                raise ValueError(f"El plan '{pid}' no está en precios.json. Corré sync_precios.py.")
+            p = planes[pid]
+            destacado = " destacado" if i == 1 else ""
+            cards.append(
+                f'<div class="plan{destacado}">'
+                f'<div class="n">{esc(p["name"])}</div>'
+                f'<div class="p">{p["monthly_credits"]}</div>'
+                '<div class="c">créditos por mes</div>'
+                "</div>"
+            )
+        return f'<div class="bloque"><div class="planes">{"".join(cards)}</div></div>'
+
+    raise ValueError(f"Tipo de bloque desconocido: {tipo}")
+
+
+def rotulos_html(lineas, alinear_derecha=False):
+    """Cada rótulo es un bloque de 1 o 2 líneas mono; van apilados en la esquina."""
+    clase = "rot der" if alinear_derecha else "rot"
+    return "".join(
+        f'<div class="{clase}">' + "<br>".join(esc(l) for l in bloque) + "</div>"
+        for bloque in lineas
+    )
+
+
+def foto_del_angulo(producto, angulo):
+    """Qué foto le toca a este ángulo. None = fondo negro.
+
+    El ángulo manda sobre el producto: un carrusel con la misma foto en las cinco
+    tarjetas parece un error de carga, no una pieza. Ver `chequear_fotos`.
+    """
+    if angulo.get("fondo") == "negro":
+        return None
+    return angulo.get("foto") or producto.get("foto")
+
+
+def chequear_fotos(productos):
+    """Ninguna foto puede repetirse dentro de un mismo producto.
+
+    Las cinco piezas de un producto se ven juntas —como tarjetas del carrusel de
+    Meta o como fila de la grilla— y ahí la repetición se lee como un bug. Esto
+    salió de un anuncio real (29/07/2026): cuatro de las cinco tarjetas del
+    carrusel de Modo Profesional tenían la misma foto. Se chequea acá y no a ojo
+    porque a ojo ya se pasó una vez.
+    """
+    errores = []
+    for producto in productos:
+        vistas = {}
+        for angulo in producto["angulos"]:
+            foto = foto_del_angulo(producto, angulo)
+            if foto:
+                vistas.setdefault(foto, []).append(angulo["id"])
+        for foto, angulos in vistas.items():
+            if len(angulos) > 1:
+                errores.append(
+                    f"  {producto['id']}: '{foto}' se repite en {', '.join(angulos)}"
+                )
+    if errores:
+        raise ValueError(
+            "Hay fotos repetidas dentro de un mismo producto. Poné `foto` en cada "
+            "ángulo (assets/fotos/):\n" + "\n".join(errores)
+        )
+
+
+def armar_html_editorial(template, marca, producto, angulo, fmt, planes, assets):
+    f = FORMATOS[fmt]
+    rot = {**marca.get("rotulos", {}), **producto.get("rotulos", {})}
+    foto = foto_del_angulo(producto, angulo)
+    if not foto:
+        fondo = ""
+    else:
+        ruta = assets / "fotos" / foto
+        if not ruta.exists():
+            disponibles = sorted(p.name for p in (assets / "fotos").glob("*.jpg"))
+            raise ValueError(f"No existe la foto {ruta}. Están: {disponibles}")
+        fondo = f'<img class="foto" src="{ruta.as_uri()}" alt="">\n<div class="velo"></div>'
+
+    kicker = angulo.get("kicker")
+    sub = angulo.get("sub")
+    cta = angulo.get("cta")
+    reemplazos = {
+        "{{FONT_MONO}}": (assets / "fonts/RobotoMono.ttf").as_uri(),
+        "{{W}}": str(f["w"]),
+        "{{H}}": str(f["h"]),
+        "{{BASE}}": str(f["base"]),
+        "{{PAD}}": str(f["pad_ed"]),
+        "{{PADX}}": str(f["padx_ed"]),
+        "{{FONDO}}": fondo,
+        "{{CLASE_BODY}}": "con-foto" if foto else "sin-foto",
+        "{{ROT_IZQ}}": rotulos_html(rot.get("izq", [])),
+        "{{ROT_DER}}": rotulos_html(rot.get("der", []), alinear_derecha=True),
+        "{{CEJA}}": f'<div class="ceja">({esc(kicker)})</div>' if kicker else "",
+        # `escala: xl` es para la tarjeta que abre un carrusel: titular corto y grande,
+        # sin bloque abajo. Es lo único que frena el scroll.
+        "{{CLASE_TITULAR}}": " xl" if angulo.get("escala") == "xl" else "",
+        "{{TITULAR}}": angulo["titular"],
+        "{{SUB}}": f'<p class="sub">{esc(sub)}</p>' if sub else "",
+        "{{BLOQUE}}": bloque_editorial(angulo["bloque"], producto, planes),
+        "{{TAG}}": f'<div class="tag">[ {esc(cta)} ]</div>' if cta else "<div></div>",
+        "{{FLECHA}}": "&rarr;",
+        # Sin escapar: admite <br> para partirlo en dos líneas, igual que el titular.
+        "{{LEGAL}}": marca["legal_editorial"],
+    }
+    html = template
+    for k, v in reemplazos.items():
+        html = html.replace(k, v)
+    faltantes = re.findall(r"\{\{[A-Z_]+\}\}", html)
+    if faltantes:
+        raise ValueError(f"Quedaron placeholders sin reemplazar: {sorted(set(faltantes))}")
+    return html
+
+
 def armar_html(template, marca, producto, angulo, fmt, planes, assets, estilo):
     f = FORMATOS[fmt]
     kicker = angulo.get("kicker")
     sub = angulo.get("sub")
     clase, fondo, cabecera = fondo_y_cabecera(estilo, marca, producto, assets)
     reemplazos = {
-        "{{FONT}}": (assets / "fonts/Montserrat.ttf").as_uri(),
         "{{CLASE}}": clase,
         "{{FONDO}}": fondo,
         "{{CABECERA}}": cabecera,
@@ -173,8 +324,25 @@ def armar_html(template, marca, producto, angulo, fmt, planes, assets, estilo):
     return html
 
 
-def render(html, destino, fmt):
-    """HTML -> PNG con Chrome headless. Devuelve el veredicto del auto-ajuste."""
+def render(html, destino, fmt, intentos=3):
+    """HTML -> PNG con Chrome headless, con reintento. Devuelve el veredicto del auto-ajuste.
+
+    Con 5 Chrome en paralelo, cada tanto uno se queda colgado y nunca escribe el PNG.
+    No es el contenido —la misma pieza renderiza bien al segundo intento—, así que se
+    reintenta en vez de tumbar la tanda entera. Si se agotan los intentos, revienta:
+    una pieza que no se pudo renderizar no puede quedar como la versión vieja en disco.
+    """
+    ultimo = None
+    for intento in range(1, intentos + 1):
+        try:
+            return _render_una(html, destino, fmt)
+        except subprocess.TimeoutExpired as e:
+            ultimo = e
+            print(f"   (timeout de Chrome en {destino.name}, intento {intento}/{intentos})")
+    raise RuntimeError(f"Chrome se colgó {intentos} veces con {destino}") from ultimo
+
+
+def _render_una(html, destino, fmt):
     f = FORMATOS[fmt]
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="flyer-"))
     try:
@@ -262,14 +430,15 @@ def main():
     ap.add_argument("--productos", help="IDs separados por coma. Default: todos.")
     ap.add_argument("--angulos", help="IDs separados por coma. Default: todos.")
     ap.add_argument("--formatos", default="feed,story,square")
-    ap.add_argument("--estilo", default="foto", choices=["foto", "plano"],
-                    help="foto = fotos del estudio (el look de @astronomy.academy). "
-                         "plano = degradado violeta (el look de la app).")
+    ap.add_argument("--estilo", default="editorial", choices=["editorial", "foto", "plano"],
+                    help="editorial = el sistema real de @astronomy.academy (default). "
+                         "foto / plano = variantes con el lenguaje de la app.")
     ap.add_argument("--jobs", type=int, default=5)
     args = ap.parse_args()
 
     cont = json.loads(pathlib.Path(args.contenido).read_text())
-    template = (SKILL / "templates/flyer.html").read_text()
+    plantilla = "editorial.html" if args.estilo == "editorial" else "flyer.html"
+    template = (SKILL / "templates" / plantilla).read_text()
     assets = SKILL / "assets"
 
     precios_path = SKILL / "contenido/precios.json"
@@ -286,6 +455,11 @@ def main():
     filtro_prod = {p.strip() for p in args.productos.split(",")} if args.productos else None
     filtro_ang = {a.strip() for a in args.angulos.split(",")} if args.angulos else None
 
+    # Se chequea sobre el contenido entero, no sobre lo filtrado: la repetición es
+    # una propiedad del producto, y generar un solo ángulo no la haría desaparecer.
+    if args.estilo == "editorial":
+        chequear_fotos(cont["productos"])
+
     # Cada estilo tiene su carpeta: la idea es poder comparar la tanda entera de uno
     # contra la del otro, no mezclarlas en el mismo directorio.
     salida = pathlib.Path(args.salida) / args.estilo
@@ -298,7 +472,10 @@ def main():
                 continue
             for fmt in formatos:
                 destino = salida / producto["id"] / f"{angulo['id']}__{fmt}.png"
-                html = armar_html(template, cont["marca"], producto, angulo, fmt, planes, assets, args.estilo)
+                if args.estilo == "editorial":
+                    html = armar_html_editorial(template, cont["marca"], producto, angulo, fmt, planes, assets)
+                else:
+                    html = armar_html(template, cont["marca"], producto, angulo, fmt, planes, assets, args.estilo)
                 trabajos.append((html, destino, fmt))
 
     if not trabajos:
