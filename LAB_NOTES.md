@@ -50,10 +50,15 @@ curl -s -H "Authorization: Bearer $T" \
   "https://api.vercel.com/v13/deployments/astronomyofficial.com?teamId=$TID" | jq '.url, .meta.githubCommitSha'
 ```
 
-**Pendiente:** conectar el repo (Settings → Git) requiere primero una **Login Connection con
-GitHub** en la cuenta de Vercel — Facu entró con mail, así que la API devuelve
-`You need to add a Login Connection to your GitHub account first`. Hasta que eso pase, cada
-deploy es un `vercel --prod` a mano.
+**Cerrado el mismo día:** conectar el repo requería primero una **Login Connection con GitHub**
+en la cuenta de Vercel — Facu había entrado con mail, así que la API devolvía
+`You need to add a Login Connection to your GitHub account first`. Lo conectó, linkeé el repo
+por API, y lo probé con un push de prueba: `BUILDING` a los segundos, `READY` en ~60s, dominio
+resolviendo al deployment nuevo. **Ahora pushear a `main` sí deploya.**
+
+El campo que distingue un deploy por push de uno del CLI es `meta.githubDeployment` en la API:
+`1` = vino de un push, ausente = lo corrió alguien a mano. Es el único lugar donde se ven
+distintos; en el dashboard son idénticos.
 
 **La próxima:** verificar contra algo que el sistema **promete** que es estable —un id de
 deployment, un commit sha, una respuesta de la API del proveedor— y nunca contra un artefacto
