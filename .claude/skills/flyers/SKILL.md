@@ -23,7 +23,7 @@ Siempre en dos pasos, y en este orden:
   "/Users/Facu/facu-os/.claude/skills/flyers/scripts/generar_flyers.py"
 ```
 
-Sale todo a `~/Desktop/Productoras/Astronomy/Flyers Academy/<estilo>/<producto>/<angulo>__<formato>.png`,
+Sale todo a `~/Desktop/Productoras/Astronomy/Academia/Flyers Academy/<estilo>/<producto>/<angulo>__<formato>.png`,
 más una `_hoja-de-contacto.jpg` por estilo para revisar las piezas de un vistazo.
 
 Filtros útiles cuando cambia una sola cosa:
@@ -96,8 +96,8 @@ soportado por si alguna vez conviene.
 tarjeta que abre un carrusel: titular corto, sin bloque abajo, porque es lo único
 que frena el scroll.
 
-Las fotos vinieron de `~/Desktop/Productoras/Astronomy/Astronomy Academy/Material para contenido/`
-y de `~/Desktop/Productoras/Astronomy/Fotos nuevas (Drive)/Fotos/`, reescaladas a
+Las fotos vinieron de `~/Desktop/Productoras/Astronomy/Academia/Contenido/Material para contenido/`
+y de `~/Desktop/Productoras/Astronomy/Academia/Fotos del estudio/Fotos/`, reescaladas a
 1800px de lado largo.
 
 **El velo son dos gradientes, no uno.** El vertical solo no alcanza cuando la foto

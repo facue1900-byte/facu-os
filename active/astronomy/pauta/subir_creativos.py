@@ -36,7 +36,7 @@ load_dotenv(RAIZ / ".env")
 TOKEN = os.getenv("META_ACCESS_TOKEN")
 CUENTA = os.getenv("META_AD_ACCOUNT_ID")
 VERSION = os.getenv("META_API_VERSION", "v23.0")
-PLACAS = pathlib.Path.home() / "Desktop/Productoras/Astronomy/Flyers Academy/editorial"
+PLACAS = pathlib.Path.home() / "Desktop/Productoras/Astronomy/Academia/Flyers Academy/editorial"
 DESTINO = RAIZ / "data" / "pauta" / "creativos.json"
 
 

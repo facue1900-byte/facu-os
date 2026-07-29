@@ -26,7 +26,7 @@ import sys
 import urllib.request
 
 SKILL = pathlib.Path(__file__).resolve().parent.parent
-ENV_APP = pathlib.Path.home() / "Desktop/Productoras/Astronomy/astronomy-members/.env.local"
+ENV_APP = pathlib.Path.home() / "Desktop/Productoras/Astronomy/Academia/astronomy-members/.env.local"
 
 
 def leer_env(path):
@@ -98,7 +98,7 @@ def main():
         if prod.get("creditos") is not None:
             prod["creditos"] = por_id[pid]["monthly_credits"]
 
-    cont["_fuente_precios"]["verificado"] = hoy
+    cont["_fuente_datos"]["verificado"] = hoy
 
     snapshot = {"verificado": hoy, "origen": url, "planes": planes}
 

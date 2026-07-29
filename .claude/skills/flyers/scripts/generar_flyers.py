@@ -426,7 +426,7 @@ def contacto(piezas, destino, columnas=6, ancho=300):
 def main():
     ap = argparse.ArgumentParser(description="Genera los flyers de Astronomy Academy.")
     ap.add_argument("--contenido", default=str(SKILL / "contenido/academy.json"))
-    ap.add_argument("--salida", default=str(pathlib.Path.home() / "Desktop/Productoras/Astronomy/Flyers Academy"))
+    ap.add_argument("--salida", default=str(pathlib.Path.home() / "Desktop/Productoras/Astronomy/Academia/Flyers Academy"))
     ap.add_argument("--productos", help="IDs separados por coma. Default: todos.")
     ap.add_argument("--angulos", help="IDs separados por coma. Default: todos.")
     ap.add_argument("--formatos", default="feed,story,square")

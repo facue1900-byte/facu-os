@@ -63,6 +63,30 @@ los cuatro y para el próximo.
 Un skill nuevo se crea **solo después de haber hecho la tarea 3 veces a mano**, y solo
 si Facu lo pide. Un skill que no se usa es deuda.
 
+## Identidad visual de Astronomy Academy
+
+Manual oficial: `active/astronomy/BRANDING_ACADEMY.md` (propuesta final de Lola Gallal y
+Annie Hoffer, julio 2025; PDF en `~/Desktop/Productoras/Astronomy/Marca Astronomy/Branding/`).
+
+| | |
+|---|---|
+| Tipografía primaria | **Aktiv Grotesk** (Light · Regular · Medium · Bold) |
+| Tipografía secundaria | **Roboto Mono** |
+| Paleta | Blanco `#FFFFFF` · Negro `#000000` · Azul marino `#180040` — **tres, nada más** |
+| Isotipo | Estrella de 4 puntas asimétrica que también es una **A** |
+| Logotipo | `ASTRONOMY` en caja alta, **la A sin travesaño** (`Λ`) |
+| Fondo por defecto | Negro puro. El azul marino es acento, no fondo |
+
+> **Esta identidad es de la ACADEMIA, no de los eventos.** Los eventos tienen su propia
+> estética —parecida pero distinta— y además se producen fechas con marcas de terceros
+> ajenas a Astronomy. Nunca aplicar esto a una pieza de evento sin que Facu lo confirme.
+
+Aktiv Grotesk es de pago y no está instalada: se sustituye por **Helvetica Neue**, que ya
+viene en la Mac y es su pariente más cercano (Aktiv Grotesk nació como alternativa a
+Helvetica). El skill `flyers` genera con esa pila en las dos plantillas, así que **las 75
+placas están en marca**. Si algún día se compra la fuente real, se cambia solo la variable
+`--grot`.
+
 ## Subagentes
 
 | Agente | Para qué | Modelo |

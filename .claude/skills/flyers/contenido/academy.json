@@ -1,7 +1,7 @@
 {
   "_fuente_datos": {
     "origen": "tabla `plans` de Supabase (proyecto Astronomy Oficial, qeakrjnseboiulcojlcw)",
-    "verificado": "2026-07-28",
+    "verificado": "2026-07-29",
     "como_refrescar": "scripts/sync_precios.py",
     "regla": "LAS PIEZAS NO LLEVAN PRECIO EN PESOS. Con la inflación argentina un flyer publicado con un número queda viejo en semanas y obliga a rehacer la tanda entera. Lo único numérico que sale es lo que NO se desactualiza: créditos, cantidad de clases, cantidad de módulos — y esos también salen de la base (`monthly_credits`), no se escriben a mano. El que quiere el valor del mes, escribe por DM."
   },

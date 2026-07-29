@@ -11,7 +11,7 @@ operativo y lo que cambió.
 
 **La academia se gestiona con app propia**: `astronomy-members` (Next.js + Supabase +
 Mercado Pago), **en producción en astronomyofficial.com**. Código en
-`~/Desktop/Productoras/Astronomy/astronomy-members/`. El detalle vive en la memoria
+`~/Desktop/Productoras/Astronomy/Academia/astronomy-members/`. El detalle vive en la memoria
 (`membership-system-project`, `reconciliacion-pagos-sistema`, `egresos-sistema`).
 
 ## Datos que ya no son hueco (migrados a la memoria el 27/07/2026)
