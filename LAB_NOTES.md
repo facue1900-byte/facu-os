@@ -8,6 +8,105 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-07-29 · FAIL ✓ — Pushear a `main` nunca deployó astronomyofficial.com, y verifiqué con un hash que cambia solo
+
+Terminé tres arreglos de `/admin/registro`, commiteé, Facu dijo "dale pushea", pusheé. Y me
+quedé mirando producción esperando el deploy que nunca llegó.
+
+**Dos errores encadenados, uno mío y uno del proyecto.**
+
+**El error del proyecto (la causa real):** el proyecto `astronomy` de Vercel tiene
+**`link: null`** — ningún repositorio de GitHub conectado. Pushear a `main` no deploya nada,
+ni hoy ni nunca. Lo que confundía era el dashboard: los deploys aparecen con hash de commit y
+rama `main`, idénticos a un deploy por push. **No lo eran.** Cuando corrés `vercel` desde una
+carpeta con git, el CLI le adjunta los metadatos del commit local al deployment. Todos los
+deploys de este proyecto salieron del CLI y ninguno de un push. Se ve así:
+
+```bash
+curl -s -H "Authorization: Bearer $T" \
+  "https://api.vercel.com/v9/projects/$PID?teamId=$TID" | jq .link
+# null  →  no hay git conectado, pushear no deploya
+```
+
+**El error mío (peor, porque es de método):** para chequear si el build nuevo estaba vivo,
+busqué el chunk de JS que sólo existía con mi código (`grep -rl "No hay pagos que coincidan"
+.next/static/chunks/`) y lo pedí contra producción. Daba 404, y lo reporté como prueba de que
+el deploy no había salido. **Los nombres de chunk de Turbopack no son deterministas.** Borré
+`.next`, recompilé el mismo código sin tocar una coma, y el chunk pasó de `1e3yovzzwil0u.js` a
+`2uf5e7mogwn_6.js`. El 404 no probaba nada: probaba que dos builds distintos nombran distinto.
+
+Sobre esa sonda inventé una hipótesis entera ("el webhook de GitHub no llega"), pusheé un
+commit vacío para forzarlo, y esperé otros seis minutos a que pasara algo que no podía pasar.
+Ese commit quedó en el historial con un mensaje que hoy sabemos falso.
+
+Lo que sí valía era la evidencia del lado del servidor: `vercel ls` no mostraba **ningún
+deployment nuevo** después de los dos pushes. Eso no dependía de ningún hash mío.
+
+**El fix:** `npx vercel --prod` desde la carpeta. Y la verificación buena es preguntarle a
+Vercel **a qué deployment resuelve el dominio**, no adivinarlo desde afuera:
+
+```bash
+curl -s -H "Authorization: Bearer $T" \
+  "https://api.vercel.com/v13/deployments/astronomyofficial.com?teamId=$TID" | jq '.url, .meta.githubCommitSha'
+```
+
+**Pendiente:** conectar el repo (Settings → Git) requiere primero una **Login Connection con
+GitHub** en la cuenta de Vercel — Facu entró con mail, así que la API devuelve
+`You need to add a Login Connection to your GitHub account first`. Hasta que eso pase, cada
+deploy es un `vercel --prod` a mano.
+
+**La próxima:** verificar contra algo que el sistema **promete** que es estable —un id de
+deployment, un commit sha, una respuesta de la API del proveedor— y nunca contra un artefacto
+del build. Un hash de compilación no es una identidad: es una consecuencia. Y el corolario que
+ya me mordió dos veces en dos días (ver la nota de Chrome headless a 500px): **antes de
+construir una hipótesis sobre una medición, verificar que la medición mida lo que creo.**
+
+### 2026-07-28 · FAIL ✓ — El cron que llevaba 197 corridas "exitosas" sin completar una sola respuesta
+
+Arrancamos la sesión con un diagnóstico heredado: *"`sync-sheet` existe pero no lo dispara
+nadie"*. La evidencia parecía sólida — `vercel.json` sólo programa `expire-group-invites` y
+`send-reminders`, no hay GitHub Actions, no hay launchd. De ahí salía la conclusión de que por
+eso Luki seguía cargando pagos a mano.
+
+**Era falso, y las dos mitades estaban mal.**
+
+**Primero:** el scheduler existía, en el único lugar donde no se había mirado — **pg_cron de
+Supabase**, configurado por `supabase/pg_cron.local.sql` (gitignoreado, por eso no aparecía en
+ninguna búsqueda del repo). `active = true`, `0 * * * *`, 197 corridas desde el 20/07. No
+encontrar el scheduler donde uno lo espera no prueba que no haya scheduler.
+
+**Segundo, y peor:** las 197 corridas figuraban como `succeeded` en `cron.job_run_details` y
+**las 197 respuestas HTTP habían muerto por timeout**. `pg_net` corta a los 5000 ms por defecto
+y el endpoint tarda ~20 s. `succeeded` ahí sólo significa que el pedido se **encoló**; el
+resultado real vive en `net._http_response`, donde había 6 filas de `status_code = null` con
+`error_msg = "Timeout of 5000 ms reached"` alternadas con los 200 del otro job.
+
+Y sin embargo la planilla estaba al día. **Andaba de casualidad:** Vercel sigue ejecutando la
+función después de que el cliente se desconecta. El trabajo se hacía, la respuesta se perdía, y
+nadie podía distinguir una corrida sana de una rota.
+
+**Lo que lo cerró** fue una fuente que no era ninguna de las dos: el **historial de revisiones
+de Google Drive** de la planilla. 37 de 38 escrituras en el minuto 0 de cada hora, firmadas por
+la service account. Eso probó que sí completaba, cosa que ni los logs de Vercel ni pg_cron
+podían decir.
+
+**Fix:** `timeout_milliseconds := 120000` en los dos `net.http_get`. Verificado disparando el
+pedido de verdad — `net._http_response` id 494 volvió `200` con el cuerpo entero. Ojo con un
+detalle que cuesta media hora: **pg_net encola y sólo despacha cuando commitea la transacción**,
+así que un `pg_sleep()` en la misma query nunca ve su propia respuesta. Hay que disparar en una
+transacción y consultar en otra.
+
+**El hallazgo de plata que apareció en el camino:** `sales` mezcla dos orígenes sin deduplicar
+—14 filas del webhook de MP y 34 importadas de la planilla con `mp_payment_id` = `sheet:…`— y
+**6 cobros están contados dos veces: $861.120, un 13,2% de facturación inflada**. Se validó por
+dos caminos independientes que dieron el mismo número: cruzar la planilla de Luki contra `sales`,
+y buscar pares dentro de `sales`. Los créditos no se duplicaron.
+
+**La próxima:** antes de creerle al estado verde de una tarea programada, buscar dónde queda
+registrado el **resultado** y no el **despacho**. Y cuando dos análisis distintos tienen que dar
+el mismo número, correr los dos: acá el acuerdo exacto en $861.120 fue lo que convirtió una
+sospecha en un dato.
+
 ### 2026-07-28 · FAIL ✓ — Chrome headless renderiza mínimo a 500px y después recorta: inventé un bug de mobile que no existía
 
 Sacando la vista previa del salón de premios, la captura a `--window-size=390,1500` mostraba
