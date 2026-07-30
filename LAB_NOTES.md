@@ -875,3 +875,43 @@ escribir un helper descartable al lado del que ya estaba resuelto.
 no el anuncio. Facu lo cazó al toque porque se acordaba de haberlo hecho el día anterior.
 **`created_time` no es opcional en un reporte de pauta: sin él, "lleva N días" es una
 invención con formato de dato.**
+
+---
+
+## 30/07/2026 — El 89% de los premios no era del mes, y esperaba un botón
+
+El sistema de premios de la academia tenía **un solo botón**: "cerrar el mes". Adentro de
+ese botón convivían dos cosas de naturaleza distinta, y sólo una era mensual.
+
+Julio 2026, contra la base: **52 premios, 380 créditos**. De esos, **47 premios y 340
+créditos eran hitos y rachas** — metas individuales, sin competencia, cumplidas hacía
+semanas. El podio, lo único donde se compite de verdad, eran **5 premios y 40 créditos**.
+
+Lo delator estaba en el propio código: la clave de un hito es `hito:10:alumno`, **sin
+período**. El mes nunca formó parte de la identidad de un objetivo; sólo lo retenía.
+
+**Lo que se rompió por eso:** el mes en curso no se podía cerrar sin congelar mal el podio,
+así que el 89% de los premios quedaba rehén de un mes que todavía no había terminado. Y la
+"protección" era acordarse de apretar el día correcto.
+
+**El arreglo** (idea de Facu: *"si los premios son más objetivos que premios..."*):
+objetivos entregados por el cron horario apenas se cumplen; podio publicado solo el día 1.
+
+Tres cosas que dejó el camino:
+
+1. **Un desempate puede ser un bug con cara de orden.** El podio ordenaba los empates con
+   `a[0].localeCompare(b[0])` — el **UUID**. Dos alumnos con las mismas clases cobraban 3 y
+   2 créditos según el azar de un identificador interno. Ahora comparten puesto. Si un
+   criterio de orden no se puede explicar en una frase del negocio, no es un criterio.
+2. **Una condición de fecha adentro de una función que escribe no se puede probar.** El
+   guardarraíl salió a `motivoParaNoPublicar(periodo, hoy)`, puro y con `hoy` inyectable.
+   Recién ahí se pudo verificar en verde que julio no se publica el 30 y sí el 1/8.
+3. **Me equivoqué al describir el daño.** Dije que otorgar antes de tiempo dejaría "dos 4°
+   puestos y medallas duplicadas". Falso: la clave del podio es `podio:mes:alumno` **sin el
+   puesto**, justamente para eso. El daño real era otro —el podio se congelaba al revés—
+   y seguía justificando frenar, pero **afirmé un mecanismo sin haber leído `claveDe`**.
+   Cuando el argumento para frenar algo es técnico, el mecanismo hay que leerlo, no
+   deducirlo.
+
+Verificado en producción: 46 objetivos entregados, 320 créditos, 23 alumnos avisados (un
+aviso por alumno, no uno por premio), 0 podios. Segunda corrida: 0 — es idempotente.
