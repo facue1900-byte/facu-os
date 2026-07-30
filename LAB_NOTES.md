@@ -948,3 +948,36 @@ Tres bordes más, todos costaron corridas:
 
 **La lección: una captura headless no es prueba de nada hasta saber a qué viewport
 corresponde.** El tamaño de ventana no es un parámetro de encuadre, es parte del layout.
+
+### 2026-07-30 · Grepear el HTML no prueba que un pixel funcione
+
+Al poner el pixel de Meta en `astronomy-members`, la verificación obvia —bajar la página
+con `curl` y buscar el ID— dio **cero** en producción, en el deploy directo y hasta en el
+build local servido con `next start`. Parecía un deploy roto. No lo era.
+
+**`next/script` con `strategy="afterInteractive"` no deja el snippet en el HTML servido**:
+lo inyecta el bundle del cliente después de hidratar. El HTML prerenderizado en
+`.next/server/app/*.html` sí lo tiene, y el servido no — por eso el primer grep dio
+positivo y el segundo negativo, que fue lo más confuso de todo.
+
+**Cómo se verifica de verdad, en orden de qué tan concluyente es:**
+
+1. **`last_fired_time` del pixel en la Graph API.** Es el único que prueba que Meta
+   *recibió* el evento, no que el navegador lo mandó. Pasó de `2025-07-20` a la hora de la
+   prueba. Cierra el circuito de punta a punta.
+2. **Los pedidos de red del navegador** (`Network.requestWillBeSent` por CDP), mirando
+   `connect.facebook.net/signals/config/<pixel_id>` y los beacons a `facebook.com/tr`.
+   Quedó en `pixel_check.py`.
+3. **El estado de `window.fbq`** (`loaded: true`, `queue: 0`, `version`). Prueba que el
+   snippet corrió, no que salió el evento.
+
+**Un borde de headless:** el `config` del pixel volvió 200 y `fbq` quedó cargado con la
+cola vacía —o sea, `init` y `track` se procesaron— pero **no se vio ningún beacon a
+`/tr`**. Meta detecta automatización. En headless, la ausencia del beacon **no** es
+prueba de que el pixel esté roto; para eso está el punto 1.
+
+**Y una trampa de verificación aparte:** pegarle 40 veces seguidas a
+`astronomyofficial.com` hace que Vercel devuelva un challenge anti-bot
+(`x-vercel-mitigated: challenge`), y ahí el HTML deja de tener el contenido del sitio. Se
+lee como "el deploy borró todo". Hay que pegarle a la URL del deployment, como ya decía
+la memoria `verificar-en-mac`.
