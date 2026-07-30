@@ -12,3 +12,10 @@ __pycache__/
 *.xlsx
 *.pdf
 .venv/
+
+# Cubre .env, .env.bak, .env.local — un .env.bak sin ignorar casi entra a un commit (28/07/2026)
+.env*
+
+# Respaldos de la base de clientes: son datos personales de alumnos (mail, teléfono).
+# archive/ va a git, esto NO. Sin esta línea aparece como untracked y un `git add -A` lo mete.
+archive/base-clientes-*/

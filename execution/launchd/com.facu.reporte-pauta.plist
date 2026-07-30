@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Reporte de pauta de Astronomy Academy — todos los lunes a las 10:00.
+
+  Corre `reporte_pauta.py`, deja el informe en ~/Desktop/REPORTE_PAUTA.txt y avisa
+  con una notificación de macOS. Es de solo lectura: no toca la cuenta publicitaria.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.reporte-pauta.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.reporte-pauta.plist
+    launchctl list | grep facu
+
+  Probar sin esperar al lunes:
+    launchctl start com.facu.reporte-pauta
+    cat ~/Desktop/REPORTE_PAUTA.txt
+
+  Desinstalar:
+    launchctl unload ~/Library/LaunchAgents/com.facu.reporte-pauta.plist
+
+  OJO — el token de Meta vence el 26/09/2026. Cuando venza, este agente va a fallar
+  todos los lunes y el log lo va a decir. Se renueva con la clave secreta que ya está
+  en el .env (META_APP_SECRET), sin volver a pasar por el navegador.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.reporte-pauta</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-lc</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/active/astronomy/pauta/reporte_pauta.py > /Users/Facu/Desktop/REPORTE_PAUTA.txt 2>&amp;1; osascript -e 'display notification "El informe está en el Escritorio: REPORTE_PAUTA.txt" with title "Pauta Astronomy" sound name "Ping"'</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Weekday</key>
+        <integer>1</integer>
+        <key>Hour</key>
+        <integer>10</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/reporte-pauta.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/reporte-pauta.log</string>
+</dict>
+</plist>

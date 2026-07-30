@@ -4,12 +4,13 @@ El repo que ejecuta. Quién es Facu, los negocios y las reglas generales de trab
 en `~/.claude/CLAUDE.md` (global) — **valen acá también, no se repiten**. Este archivo es
 solo la mecánica: dónde vive cada cosa, cómo se corre, qué no se toca.
 
-Negocios: **Astronomy** (eventos, academia, música), **Paseo Nordelta** (paseo comercial),
-**Nordelta Plaza** (predio, NDPL SAS) y **campos** (Chaco, Pergamino).
+Negocios activos: **Astronomy** (eventos, academia, música), **Paseo Nordelta** (paseo
+comercial) y **campos** (Chaco, Pergamino).
 
-> **Paseo Nordelta y Nordelta Plaza son dos negocios distintos.** Otra sociedad, otros
-> socios, otro banco (Macro vs BBVA), otras carpetas. Nunca sumar sus números ni asumir
-> que un dato de uno aplica al otro.
+> **Pendiente: revisar Nordelta Plaza (NDPL SAS) y Noreventos en un futuro con Facu.**
+> Quedó viejo y hoy no se toca — su data cruda sigue en `~/Desktop/Nordelta Plaza/` y
+> `~/Desktop/Noreventos/`. Es **otro negocio** que Paseo Nordelta: otra sociedad, otros
+> socios, otro banco. Nunca sumar sus números con los del Paseo.
 
 ---
 
@@ -33,10 +34,8 @@ Negocios: **Astronomy** (eventos, academia, música), **Paseo Nordelta** (paseo 
 | Qué | Dónde |
 |---|---|
 | Paseo Nordelta (extractos Macro, cierre de mes) | `~/Desktop/Paseo Nordelta/` |
-| Nordelta Plaza (BBVA, contratos, expensas, societario) | `~/Desktop/Nordelta Plaza/` |
-| Noreventos SRL (socio del predio de Nordelta Plaza) | `~/Desktop/Noreventos/` |
 | Guías de traslado de hacienda (Chaco) | `~/Desktop/Chaco/` |
-| Astronomy y Puzzle | `~/Desktop/Productoras/` |
+| Astronomy y Puzzle | `~/Desktop/Productoras/` (Astronomy → `Academia/`, `Eventos/`, `Marca Astronomy/`) |
 | Segundo cerebro (Obsidian) | `~/Obsidian/facu-vault/` |
 
 `~/Claude-Workspace/` es **read-only**: template del curso, otro rubro. Biblioteca de
@@ -165,8 +164,9 @@ sirve headless para launchd). Los tokens ya están cargados en el `.env` (`VERCE
 | GitHub | `facue1900-byte/facu-os` (privado) y `facue1900-byte/astronomy-members` |
 | Google Cloud | Proyecto `astronomy-app-502618`, service account `astronomy-calendar@…` (Sheets + Calendar, impersona `studio@astronomyofficial.com`) |
 
-> Son **dos bases de Supabase distintas**, igual que Paseo Nordelta y Nordelta Plaza son
-> dos negocios distintos. Antes de una migración o un query, confirmar contra cuál.
+> Son **dos bases de Supabase distintas**, una por negocio. Antes de una migración o un
+> query, confirmar contra cuál se está pegando: un `ref` equivocado escribe en el negocio
+> equivocado y no avisa.
 
 Sitios de Netlify de la app del Paseo — un deploy por rol (URLs completas, con sufijo):
 `lucent-buttercream-8ac45a` = Mati · `whimsical-alfajores-91122a` = Inversores ·

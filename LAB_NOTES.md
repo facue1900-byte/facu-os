@@ -801,3 +801,77 @@ compartirlos entre creativos no propaga nada.
 **Y un borde de reporte:** `issues_info` a nivel cuenta devuelve el ruido histórico de
 años de campañas pausadas. Filtrar por anuncios que pertenezcan a conjuntos con
 `effective_status == ACTIVE`, o el informe grita todas las semanas por anuncios de 2024.
+
+### 2026-07-30 · FAIL ✓ — La tabla de `leer_meta.py` escondía la decisión que había que tomar
+
+Al retomar la decisión abierta de pauta (¿pausar `3IntW2`?), la primera corrida de
+`leer_meta.py --nivel ad` salió con la columna NOMBRE **entera en `?`** y con el costo por
+conversación redondeado a `1` y `2`. Con esa tabla la decisión era imposible de tomar, y
+peor: la lectura del 29/07 que quedó en memoria estaba **mal** por culpa de esto.
+
+**Tres causas raíz distintas, las tres en el mismo lugar:**
+
+1. **`CAMPOS_INSIGHTS` no pedía `<nivel>_id` ni `<nivel>_name`.** La Graph API no los
+   devuelve por defecto en `/insights`, así que las filas venían sin identificador y el
+   cruce contra las entidades (`por_id`) fallaba en el 100% de los casos. La fila mostraba
+   `?` en vez de gritar. `reporte_pauta.py` sí los pedía —ahí estaba la pista de que el
+   campo era obligatorio, no opcional. Fix: `campos_insights(nivel)`.
+2. **El formato `,.0f` en gasto, CPM y `$/CONV`.** Un costo de US$0,89 y otro de US$2,38
+   se imprimen los dos como un entero de una cifra y **el 3x desaparece**. Es justamente
+   el número por el que se mueve presupuesto. Fix: dos decimales.
+3. **Homónimos indistinguibles.** Hay **dos anuncios llamados `2IntW2 Curso de DJ`**: el
+   viejo (`…260448`, borrado el 28/07, corría a US$2,29 y se llevó US$382,97 en 30 días) y
+   el nuevo (`…530448`, creado el 28/07, US$0,89). Es el mismo defecto de nombres que ya
+   documentamos para los carruseles, pero acá no había versión que los separara. Encima el
+   viejo **no aparece en `/{cuenta}/ads`** —el listado esconde los borrados— así que su
+   fila quedaba sin entidad y sin estado. Fix: cuando el nombre se repite se le cuelga el
+   final del id, y una fila sin entidad se marca `BORRADO` en vez de dejar el estado vacío.
+
+Y al arreglar los tres apareció un cuarto: **la tabla no cerraba contra sí misma.** La
+fila del conjunto decía US$2,20 por conversación y el TOTAL US$2,00 sobre exactamente el
+mismo gasto, porque `conversaciones()` tomaba el **máximo** de las dos variantes de la
+acción de mensajes para la cantidad (255) y el `cost_per_action_type` que Meta reporta para
+**la otra** variante (232 conversaciones). Dos métricas distintas mezcladas en una fila.
+Fix: se elige una sola variante por fila, en orden de preferencia, y el costo se divide
+acá (`gasto / cantidad`) en vez de leerlo de la API — así cada fila cierra y el total
+cierra con las filas.
+
+**La lección transferible: una fila de reporte que no puede identificar a qué se refiere
+no es un dato, es un error.** Un `?` en la columna que da identidad tiene que romper la
+corrida, no imprimirse. Y un anuncio borrado sigue teniendo gasto histórico: el listado de
+entidades vivas nunca es suficiente para explicar de dónde salió la plata.
+
+**Y el resultado real, que era lo que se buscaba:** medido por día, `3IntW2` ya lo
+desfinanció Meta solo (US$2,10 en 7 días, 1,4% del conjunto). Pausarlo no mueve plata. Lo
+que la mueve es que el carrusel de Modo Profesional lleva 30 días con **US$0,60 y cero
+conversaciones** porque comparte el **único conjunto activo** de la cuenta con un anuncio
+de Curso de DJ que gana: un solo presupuesto, y Meta se lo da todo al ganador.
+
+### 2026-07-30 · FAIL ✓ — Un lifetime de Meta sin paginar dio 4 veces menos gasto del real, sin ningún error
+
+Chequeando fechas de anuncios usé un helper propio de una línea que no seguía la
+paginación. Para el anuncio `2IntW2` borrado devolvió **US$127,40 de gasto de por vida**.
+El real, paginando, es **US$529,54**. Cuatro veces más. La API no avisó nada: devolvió una
+primera página de 25 días perfectamente válida y un `paging.next` que nadie miró.
+
+Peor: el mismo dato ya lo había traído bien un rato antes en otra corrida —US$382,97 en 30
+días— así que **el lifetime era menor que la ventana de 30 días y eso solo ya era
+imposible.** No lo vi hasta comparar los dos números.
+
+`leer_meta.py` sí pagina (`pedir()` sigue `paging.next` hasta el final). El bug fue mío por
+escribir un helper descartable al lado del que ya estaba resuelto.
+
+**Dos reglas:**
+
+- **Ningún total de Meta se reporta desde un helper que no pagine.** Si es de una sola
+  corrida, se usa `pedir()` de `leer_meta.py`, no un `httpx.get` suelto.
+- **Todo lifetime lleva un control de suma.** El que sirve acá: la suma del gasto de los
+  175 anuncios tiene que dar el `amount_spent` de la cuenta. Dio US$7.111,24 contra
+  US$7.110,61 declarado — 0,009%. Sin ese control, un total truncado se reporta como dato.
+
+**Y el error de lectura que esto casi dejó pasar:** dije que el carrusel de Modo Profesional
+"lleva 30 días con US$0,60 y cero conversaciones". Falso. El carrusel **nació el 29/07 a las
+11:06** — tenía **un día**. Lo que tenía 30 días era la ventana del reporte (`--dias 30`),
+no el anuncio. Facu lo cazó al toque porque se acordaba de haberlo hecho el día anterior.
+**`created_time` no es opcional en un reporte de pauta: sin él, "lleva N días" es una
+invención con formato de dato.**

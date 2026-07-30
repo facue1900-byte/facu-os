@@ -119,7 +119,7 @@ marcada en CARGOS ("Cobra por"):
 | Local | Vía | Convención | Estado |
 |---|---|---|---|
 | Fabric | Banco (factura todo) | mes vencido | debe $2.301.918 (esperar extracto jul) |
-| Bigg | mitad factura banco + mitad efectivo; expensas banco | **adelantado** | al día |
+| Bigg | mitad factura banco + mitad efectivo; expensas banco | **adelantado** | debe $961.345 en efectivo (reclamado 28/07) |
 | Boss | efectivo, redondea | mes vencido | al día |
 | Volta + Open | efectivo | mensual | al día · **se va, fecha desconocida** |
 | Peak One | efectivo, solo expensas | mes vencido | al día |
@@ -129,6 +129,52 @@ marcada en CARGOS ("Cobra por"):
 
 IPC: `actualizar_ipc.py` completa la tabla INFLACIÓN desde el dato oficial; las
 pestañas indexan solas (trimestral). Correr en cada cierre (el IPC sale a mitad de mes).
+
+## Bigg — auditoría completa (28/07/2026)
+
+Los **movimientos estaban bien**; lo que estaba mal era la asignación por mes en
+CARGOS. En las pestañas de local, la fila `Diferencia Alquiler (sin iva)` (la mitad
+en efectivo del 50/50) llevaba **el mes anterior** al que corresponde. Invisible
+mientras las dos mitades valían $1.750.000; con el ajuste por IPC a $1.910.386,86
+junio quedó con tres mitades y mayo con una.
+
+**Regla que salió de acá** (aplica a cualquier local, detalle en `LAB_NOTES.md`):
+cada fila de una pestaña pertenece **al mes del bloque donde se paga**, no al mes de
+la etiqueta. El bloque es "expensas del mes anterior + alquiler del mes corriente" y
+cierra contra el pago de ese mes. Reconstruir el pago esperado **por canal** (banco =
+mitad facturada + IVA + expensas del mes anterior; efectivo = mitad sin IVA) dice en
+cinco minutos si el problema está en los cargos o en los pagos.
+
+Aplicado en el sheet, con OK de Facu: `Bigg!A9/A19/A29/A46` reetiquetadas · CARGOS
+mayo $1.750.000→$3.500.000 · junio $5.731.160,59→$3.820.773,73 · fila nueva "cierre
+contrato anterior" (feb, $1.543.855,80) · crédito error de expensas de junio
+(−$269.041,46).
+
+Ene-feb es **contrato viejo** (otro precio, pagaba vencido) y cierra en $0,00. El
+50/50 arranca en marzo. Ajuste IPC trimestral **por vencido**: el de junio usó feb×mar×abr
+(9,1649636%); el próximo rige **desde septiembre** con may×jun×jul, y julio se publica
+alrededor del **15 de agosto**.
+
+Al 28/07 las dos contabilidades reconcilian: pestaña −$961.344,90 vs CUENTA CORRIENTE
+−$960.731,90 sumando el pago en tránsito; los $613 son el redondeo del efectivo del
+17/06 ($911.000 en Cobros vs $910.387 en la pestaña).
+
+## App del Paseo — pestaña "Deuda"
+
+`/ctas-ctes` muestra el **saldo acumulado** por local (Cobros muestra el mes). Se
+alimenta de `src/data/ctas-ctes.json`, que genera `exportar_ctas_ctes.py` — mismas
+convenciones que `radar_deudores.py`: **si una regla cambia, cambia en los dos**.
+La plata ya cobrada que todavía no entró al sheet va en `PENDIENTES_DE_CARGA`: se
+muestra como aviso y **nunca se suma al saldo**. Hoy queda ahí sólo el pago por banco
+de Bigg del 14/07 ($3.796.788), que sale cuando se cargue el extracto.
+
+Publicado el 28/07 en **dancing-elf-c4ed3f.netlify.app** (sitio de Facu/admin).
+Los de Mati e inversores quedaron en su versión anterior, sin tocar.
+
+> **Riesgo abierto:** cada sitio se compila con el usuario y la contraseña de su rol
+> **en texto plano dentro del JS público**. Cualquiera con la URL entra como admin y
+> ve cobros, banco, caja e impuestos. Sacar el auto-login y entrar una vez a mano
+> (la sesión de Supabase persiste) — pendiente de decisión de Facu.
 
 ## Pendiente de dato
 

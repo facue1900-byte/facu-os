@@ -2,7 +2,9 @@
 
 Fecha: 2026-07-28 · **Auditado** por el agente `numeros` contra la fuente, y corregido.
 
-**Fuente de todos los números:** `~/Downloads/Finanzas - Astronomy Academy.xlsx`, hoja
+**Fuente de todos los números:** `~/Desktop/Productoras/Astronomy/Academia/Reporte
+financiero/Finanzas - Astronomy Academy.xlsx` (estaba en `~/Downloads/`, se archivó ahí el
+30/07/2026), hoja
 `Base` (1.123 movimientos con fecha, **ene-2024** a jul-2026). Los montos en USD salen
 de la columna `USD_Ammount` del propio archivo. Tipo de cambio de la hoja `Variables`:
 **oficial 1.445 compra / 1.495 venta / 1.470 promedio**, valor spot cacheado al

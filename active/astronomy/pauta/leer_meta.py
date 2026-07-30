@@ -48,16 +48,29 @@ SALIDA = RAIZ / "data" / "pauta"
 
 # La conversación de WhatsApp iniciada desde un anuncio. Es la conversión que
 # persigue la campaña de Mensajes; Meta la nombra distinto según la ventana de
-# atribución, así que se aceptan las variantes.
+# atribución, así que se aceptan las variantes **en orden de preferencia**.
+#
+# El orden importa y no es cosmético: las dos variantes dan números distintos
+# (`total_messaging_connection` es más amplia y cuenta más). Antes se tomaba el máximo
+# de las dos para la cantidad y el costo que reportaba Meta para la otra, y la tabla
+# quedaba sin cerrar: la fila decía 2,20 por conversación y el total 2,00 sobre el mismo
+# gasto. Se elige **una sola** variante por fila y el costo se calcula sobre esa.
 ACCIONES_MENSAJE = (
     "onsite_conversion.messaging_conversation_started_7d",
     "onsite_conversion.total_messaging_connection",
 )
 
+# El `<nivel>_id` y el `<nivel>_name` hay que pedirlos explícitamente: sin ellos las
+# filas de insights vienen sin identificador y no hay con qué cruzarlas contra las
+# entidades, así que la tabla sale con la columna NOMBRE toda en "?".
 CAMPOS_INSIGHTS = (
     "spend,impressions,reach,frequency,clicks,ctr,cpm,cpc,"
     "actions,cost_per_action_type,date_start,date_stop"
 )
+
+
+def campos_insights(nivel):
+    return f"{nivel}_id,{nivel}_name,{CAMPOS_INSIGHTS}"
 
 CAMPOS_ENTIDAD = {
     "campaign": "id,name,status,effective_status,objective,daily_budget,lifetime_budget,created_time",
@@ -99,16 +112,17 @@ def cuenta_info():
 
 
 def conversaciones(insight):
-    """Cuántas conversaciones de WhatsApp arrancó esta fila, y a qué costo."""
-    cant = 0.0
-    for a in insight.get("actions") or []:
-        if a["action_type"] in ACCIONES_MENSAJE:
-            cant = max(cant, float(a["value"]))
-    costo = None
-    for c in insight.get("cost_per_action_type") or []:
-        if c["action_type"] in ACCIONES_MENSAJE:
-            costo = float(c["value"])
-    return cant, costo
+    """Cuántas conversaciones de WhatsApp arrancó esta fila, y a qué costo.
+
+    El costo se divide acá en vez de leer `cost_per_action_type` para que cantidad y
+    costo salgan siempre de la misma acción y la tabla cierre contra el gasto.
+    """
+    por_tipo = {a["action_type"]: float(a["value"]) for a in insight.get("actions") or []}
+    for tipo in ACCIONES_MENSAJE:
+        if por_tipo.get(tipo):
+            cant = por_tipo[tipo]
+            return cant, float(insight.get("spend", 0)) / cant
+    return 0.0, None
 
 
 def plata(v):
@@ -122,7 +136,7 @@ def traer(nivel, desde, hasta, por_mes):
 
     params = {
         "level": nivel,
-        "fields": CAMPOS_INSIGHTS,
+        "fields": campos_insights(nivel),
         "time_range": json.dumps({"since": desde, "until": hasta}),
         "limit": 500,
     }
@@ -141,14 +155,28 @@ def imprimir(insights, nivel, moneda, por_mes):
         print("  (sin datos de entrega en esa ventana)")
         return
 
+    # Dos entidades pueden llamarse igual —pasó: un anuncio nuevo heredó el nombre del
+    # que reemplazaba— y ahí la tabla muestra dos filas indistinguibles con números muy
+    # distintos. Cuando el nombre se repite, se le cuelga el final del id.
+    repetidos = {}
+    for i in insights:
+        nom = (i["_entidad"].get("name") or i.get(f"{nivel}_name") or "?")
+        repetidos[nom] = repetidos.get(nom, 0) + 1
+
     filas = []
     for i in insights:
         ent = i["_entidad"]
         conv, costo = conversaciones(i)
+        ident = i.get(f"{nivel}_id", "")
+        nombre = ent.get("name") or i.get(f"{nivel}_name") or ident or "?"
+        if repetidos.get(nombre, 0) > 1 and ident:
+            nombre = f"{nombre} …{ident[-6:]}"
         filas.append(
             {
-                "nombre": ent.get("name") or i.get(f"{nivel}_name") or i.get(f"{nivel}_id", "?"),
-                "estado": ent.get("effective_status", ""),
+                "nombre": nombre,
+                # Sin entidad no es un error: el anuncio existió y gastó, pero ya no
+                # aparece en el listado de la cuenta porque está borrado o archivado.
+                "estado": ent.get("effective_status") or ("BORRADO" if ident else ""),
                 "periodo": i["date_start"][:7] if por_mes else "",
                 "gasto": float(i.get("spend", 0)),
                 "impr": int(i.get("impressions", 0)),
@@ -170,17 +198,20 @@ def imprimir(insights, nivel, moneda, por_mes):
     for f in filas:
         nom = f["nombre"][: ancho - 1] + "…" if len(f["nombre"]) > ancho else f["nombre"]
         pre = f"  {nom:<{ancho}}  {f['periodo']:<8}" if por_mes else f"  {nom:<{ancho}}"
-        cc = f"{f['costo_conv']:>9,.0f}" if f["costo_conv"] else f"{'—':>9}"
+        # Dos decimales, no enteros: un costo por conversación de 0,88 y otro de 2,38
+        # redondean los dos a un número de una cifra y la diferencia —que es 3x— se
+        # vuelve invisible. Es exactamente el número por el que se mueve presupuesto.
+        cc = f"{f['costo_conv']:>9,.2f}" if f["costo_conv"] else f"{'—':>9}"
         print(
-            f"{pre}  {f['estado'][:10]:<10} {f['gasto']:>11,.0f} {f['impr']:>9,} "
-            f"{f['ctr']:>6.2f} {f['cpm']:>8,.0f} {f['frec']:>5.2f} {f['conv']:>6,.0f} {cc}"
+            f"{pre}  {f['estado'][:10]:<10} {f['gasto']:>11,.2f} {f['impr']:>9,} "
+            f"{f['ctr']:>6.2f} {f['cpm']:>8,.2f} {f['frec']:>5.2f} {f['conv']:>6,.0f} {cc}"
         )
 
     tot_g = sum(f["gasto"] for f in filas)
     tot_c = sum(f["conv"] for f in filas)
     print("  " + "-" * (ancho + (10 if por_mes else 0) + 70))
-    print(f"  TOTAL: {tot_g:,.0f} {moneda} · {tot_c:,.0f} conversaciones", end="")
-    print(f" · {tot_g / tot_c:,.0f} {moneda} por conversación" if tot_c else " · sin conversaciones atribuidas")
+    print(f"  TOTAL: {tot_g:,.2f} {moneda} · {tot_c:,.0f} conversaciones", end="")
+    print(f" · {tot_g / tot_c:,.2f} {moneda} por conversación" if tot_c else " · sin conversaciones atribuidas")
 
 
 def main():
