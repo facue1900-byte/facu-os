@@ -915,3 +915,36 @@ Tres cosas que dejó el camino:
 
 Verificado en producción: 46 objetivos entregados, 320 créditos, 23 alumnos avisados (un
 aviso por alumno, no uno por premio), 0 podios. Segunda corrida: 0 — es idempotente.
+
+### 2026-07-30 · FAIL ✓ — Chrome headless con ventana alta deforma los `vh` y el recorte cae en otra sección
+
+Para verificar el bloque de precio del landing de Modo Profesional saqué una captura de
+página completa con `--window-size=1440,12000` y recorté por coordenadas. El recorte cayó
+en **"Qué vas a lograr"**, tres secciones antes.
+
+**Causa raíz: el viewport define el `vh`.** Con una ventana de 12000px de alto, el
+`minHeight: 88vh` del hero pasa a medir **10.560px** y se come la página entera. No es que
+el recorte esté mal calculado: es que el layout que se fotografió no existe en ningún
+teléfono ni monitor.
+
+**El fix es fijar el viewport y capturar más allá de él**, que solo se puede por CDP:
+`Emulation.setDeviceMetricsOverride` con un tamaño realista (1440×900, 390×844) y
+`Page.captureScreenshot` con `captureBeyondViewport: true` y el `clip` del
+`getBoundingClientRect()` del elemento. Quedó en `shot.py` (scratchpad de la sesión; si se
+vuelve a usar, graduarlo a `execution/`). El venv ya tiene `websockets`.
+
+Tres bordes más, todos costaron corridas:
+
+- **`--screenshot` no scrollea por el `#hash`.** La captura sale del tope de la página
+  aunque la URL tenga ancla. Hay que scrollear con `Runtime.evaluate` antes de capturar.
+- **`IntersectionObserver` no dispara en headless.** Depende de que el navegador produzca
+  frames. Una barra fija que aparecía por IO nunca se activó, y `getComputedStyle` mostró
+  la clase sin aplicar. **Un elemento que solo se puede verificar con frames no se puede
+  verificar así**: la barra se sacó antes de pushear en vez de mandarla sin probar.
+- **Los procesos se acumulan.** `proc.terminate()` mata al padre y deja los hijos: llegué
+  a **49 procesos de Chrome** y a partir de ahí cada lanzamiento nuevo se colgaba o
+  devolvía `Not attached to an active page`. Hay que matar por patrón entre corridas — y
+  eso también se lleva el Chrome interactivo del usuario, así que se avisa.
+
+**La lección: una captura headless no es prueba de nada hasta saber a qué viewport
+corresponde.** El tamaño de ventana no es un parámetro de encuadre, es parte del layout.
