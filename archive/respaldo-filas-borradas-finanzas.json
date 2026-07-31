@@ -1,0 +1,41 @@
+[
+ {
+  "cuando": "2026-07-31",
+  "planilla": "19N6pPrE6rEM8-ohkYIjwzi4ChZ1I91mfSjTrgaChiJs",
+  "motivo": "fila de test de ARS 10 cargada el 16/07/2026; Facu pidió borrarla",
+  "Base_fila_1124": [
+   "7/16/2026 6:17:14",
+   "7/16/2026 6:17:14",
+   10,
+   0.006578947368421052,
+   "Egreso",
+   "Sueldos",
+   "Test"
+  ],
+  "Responses_fila_819": [
+   "7/16/2026 6:17:14",
+   10,
+   "ARS",
+   "Egreso",
+   "",
+   "Sueldos",
+   "",
+   "",
+   "Vladimir Nadinic",
+   "Julio 2026",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Test"
+  ]
+ }
+]
