@@ -90,3 +90,39 @@ En cada sesión, mirar si apareció algo de esto y **anotarlo**:
 
 Anotar no es construir. Se construye lo que mueve plata este mes o ahorra horas
 repetidas; el resto queda escrito y esperando.
+
+## 7. Análisis 360° — una función nueva nunca vive sola
+
+`v1 · 03/08/2026`. Regla de Facu, textual: **"nunca implementes únicamente lo
+solicitado"**. Cada vez que se crea, cambia o borra una funcionalidad, se revisa el
+ecosistema entero ANTES de darla por terminada. Nunca asumir que el cambio afecta sólo
+al lugar donde se pidió.
+
+El disparador es siempre el mismo: **buscar cómo se llama lo que ya existe y aparecer en
+todos los lugares donde aparece**. En la práctica, un `grep` del hermano mayor de la
+función nueva (¿dónde se enumera `cursodj`?) da el mapa completo en un minuto.
+
+| # | Frente | Qué se pregunta |
+|---|---|---|
+| 1 | **Interfaces** | Alumno, admin, back office, profe, moderador, soporte. ¿Cada rol ve lo que le corresponde? |
+| 2 | **Navegación** | Menús, breadcrumbs, links, accesos rápidos, botones. ¿Se puede *llegar* sin que te pasen el link? |
+| 3 | **Formularios** | Campos, validaciones, errores, mensajes de éxito, placeholders, defaults. |
+| 4 | **Panel admin** | Crear, editar, borrar, activar, desactivar, ordenar, archivar, buscar, filtrar, exportar. **Nunca mostrar un dato que el admin no pueda gestionar.** |
+| 5 | **Filtros** | Filtros, orden, búsqueda, categorías, etiquetas, estados, fechas. Pensado para miles de registros. |
+| 6 | **Estados** | Activo, inactivo, borrador, publicado, archivado, eliminado — y qué acción tiene cada uno. |
+| 7 | **Permisos** | Quién ve, edita, borra, administra. **Nunca de más.** |
+| 8 | **Base de datos** | Tablas, relaciones, índices, restricciones, integridad, migración. **Una sola fuente de verdad por dato.** |
+| 9 | **Automatizaciones** | Qué paso manual se puede evitar. Mails, notificaciones, registros, logs, procesos encadenados. |
+| 10 | **Integraciones** | Pagos, mail, WhatsApp, APIs, calendario, analítica, almacenamiento. |
+| 11 | **UX** | Clics, claridad, accesibilidad, consistencia, feedback. Nadie debería preguntarse qué hacer. |
+| 12 | **UI** | Tamaños, márgenes, alineación, color, tipografía, iconos, responsive, oscuro. Respeta el sistema de diseño. |
+| 13 | **Scroll** | Vertical, horizontal, paginado, sticky, comportamiento en móvil. |
+| 14 | **Responsive** | Desktop, notebook, tablet, celular. Nunca sólo desktop. |
+| 15 | **Rendimiento** | Consultas de más, caché, escala con miles de usuarios. |
+| 16 | **Seguridad** | Validación, permisos, sanitización, autenticación, exposición de datos. |
+| 17 | **Casos límite** | Sin datos, con un millón, sin internet, usuario que abandona, alguien que quiere romperlo. |
+| 18 | **Calidad** | Completo, intuitivo, consistente, mantenible, escalable, documentado. |
+
+**Regla de oro:** implementar además todo lo necesario para que quede integrado con el
+resto de la plataforma —coherente visual, funcional y técnicamente— y pueda crecer sin
+deuda. Lo que falte y no se haga, se dice explícitamente y queda anotado.
