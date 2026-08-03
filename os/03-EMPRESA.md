@@ -98,6 +98,11 @@ Si se mezclan, los documentos se llenan de data vieja y empiezan a mentir.
 | **Reglas** | `~/facu-os/os/` | Lo que vale en toda sesión, todo negocio | "nada sale al mundo sin OK" |
 | **Ejecución** | `~/facu-os/` | Código, skills, estado operativo por frente | `cierre-mes-nordelta`, `active/*/ESTADO.md` |
 | **Estado** | memoria de Claude Code | En qué quedó cada cosa, con fecha | "el podio de julio corrió el 1/8" |
+
+> `~/.claude/` es un repo git desde el 03/08/2026 (local, sin remoto). Versiona
+> `CLAUDE.md`, `settings.json`, `scripts/` y las memorias; el `.gitignore` es lista
+> blanca, así que **lo que se agregue ahí adentro no entra hasta que alguien lo habilite**.
+
 | **Conocimiento** | `~/Obsidian/facu-vault/` | Lo que va a seguir siendo cierto en un año | patrones, aprendizajes destilados |
 | **Data cruda** | `~/Desktop/` | Extractos, exports, PDFs, planillas | por path absoluto, no se mueve |
 
