@@ -1031,3 +1031,52 @@ usa créditos y vence a los 4 meses.
 borra solo.** Sobrevive en la metadata, en el open graph y en la página de al lado — que
 es exactamente donde nadie mira. Y una promesa de más en una página de venta no es un
 typo: es lo que el alumno va a reclamar después de pagar.
+
+### 2026-08-03 · Auditar un módulo de cobros: lo que sólo se ve mirando los datos
+
+Cuatro rondas sobre el módulo de pagos de `astronomy-members`. Ninguno de los hallazgos
+graves salió de leer código: todos salieron de **cruzar la base contra la API del
+proveedor**. Vale para cualquier integración de plata.
+
+**El más caro fue una puerta abierta, no un bug.** La ruta `/prueba` vendía **1000
+créditos por $15** —a precio de Platinum, unos $566.000— y sólo pedía estar logueado. El
+plan estaba oculto de las pantallas por una lista `HIDDEN_PLANS`, y eso da una falsa
+sensación de cierre: **esconder el precio no cierra la puerta**. La guarda tiene que estar
+en la server action, no en la página, porque una action se invoca directo. No la usó nadie
+(0 pagos), pero llevaba meses ahí.
+
+**Un proveedor puede usar DOS ids para la misma cosa.** Mercado Pago identifica un plan con
+un id en la suscripción y con otro en el pago. Una Silver vieja tiene `2c938084…` en una
+punta y `52c8c6d7…` en la otra. Cualquier cruce contra "el id del proveedor" anda para unos
+casos y falla en silencio para otros. **Se cruza por el id NUESTRO**, y la traducción se
+hace en un solo lugar.
+
+**Tres relojes.** Una ventana de tiempo con borde superior estricto (`created_at <=
+fecha_del_pago`) descartaba un registro recién creado, porque Postgres iba **1,4 segundos
+adelante** del otro reloj. En producción los relojes son tres: el del proveedor, el de la
+base y el del server. Toda ventana que cruce sistemas necesita **tolerancia**, y el test de
+punta a punta fue lo que lo encontró — el typecheck no ve esto.
+
+**Los links de pago del proveedor no caducan.** Quedaban 10 vivos, cada uno atado al mail
+con el que se generó. De ahí salía un error que parecía del sitio ("tu e-mail no coincide
+con el de la suscripción"). Si se cancela un intento, hay que cancelarlo **de los dos
+lados**, y primero en el proveedor: si eso falla, la fila propia NO se toca. Una base que
+dice "cancelado" mientras el proveedor sigue cobrando es lo peor de los dos mundos.
+
+**Y la contracara: cancelar con demasiada prisa.** Al empezar a cancelar en el proveedor
+introduje una regresión — alguien con el checkout abierto en otra pestaña se quedaba sin
+link. Toda cancelación automática necesita **gracia**.
+
+**Rechazar una firma inválida no es paranoia, es cuota.** El webhook procesaba igual
+porque "el crédito se valida contra la API". Cierto, pero cada POST falso costaba una
+consulta al proveedor con nuestro token: si nos limitan, los webhooks **reales** dejan de
+acreditar. Se corta antes de hablar con el proveedor. Lo que hace seguro cortar es que hay
+un puente horario que acredita igual: el peor caso es "una hora más tarde", no "nunca".
+De paso, `timingSafeEqual` **tira excepción si los largos difieren** — cualquiera podía
+hacernos devolver 500 mandando una firma corta.
+
+**La conclusión que vale para el OS: una auditoría que se corre a mano se corre una vez.**
+Los once chequeos quedaron en `/admin/conciliacion`. Y la regla al construirlo: **un panel
+que avisa en falso el primer día deja de mirarse**. El primer borrador marcaba 3 planes
+como huérfanos por el problema de los dos ids; encontrarlo antes de mostrarlo fue tan
+importante como el panel.
