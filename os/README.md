@@ -36,4 +36,5 @@ cuando Facu corrigió lo mismo dos veces. No por completitud.
 
 | Fecha | Cambio |
 |---|---|
+| 03/08/2026 | `CONSTITUCION-v2`. Sección **"Cómo crece esto"**: el chequeo de cierre, los tres disparadores de una regla nueva, y a qué capa va cada aprendizaje. Sin eso los tres documentos se congelaban. |
 | 03/08/2026 | `v1`. Sobre el esqueleto que bajó Facu (guardado en `archive/empresa-os-esqueleto-2026-08-03/`), reescrito con sus modos de falla reales, sus KPIs y sus fuentes. |

@@ -1,6 +1,6 @@
 # Constitución — Empresa OS
 
-`CONSTITUCION-v1` · 03/08/2026 · **rige en todas las sesiones, todos los negocios.**
+`CONSTITUCION-v2` · 03/08/2026 · **rige en todas las sesiones, todos los negocios.**
 
 Esto es lo **no negociable**. Es corto a propósito: entra entero en cada sesión.
 
@@ -78,6 +78,40 @@ Van numeradas para poder citarlas. "Me comí la 4" tiene que ser una frase decib
     ahorra horas: se anota, no se construye.
 22. **Un skill se crea recién después de hacer la tarea 3 veces a mano**, y sólo si Facu
     lo pide. Un skill que no se usa es deuda.
+
+## Cómo crece esto
+
+Esto no es un documento que se lee: es uno que **se escribe todas las semanas**. Un OS
+que no cambió en un mes es un OS que dejó de mirar.
+
+**Al cerrar cualquier trabajo sustancial, antes de reportar**, una pregunta: *¿aprendí
+algo que la próxima sesión va a necesitar?* Si la respuesta es sí, se escribe **antes**
+de dar el trabajo por cerrado. No al final del día, no "cuando haya tiempo".
+
+Se escribe una **regla nueva** cuando pasa cualquiera de estas tres:
+
+- Facu corrigió lo mismo **dos veces**. La segunda ya no es olvido, es un agujero.
+- Algo se rompió **en silencio** y nos enteramos tarde.
+- Un número salió mal, o casi sale mal, hacia un tercero.
+
+Y cada cosa va a una sola capa:
+
+| Lo que aprendiste | Dónde va |
+|---|---|
+| Una regla que va a valer siempre | acá, `01-CONSTITUCION.md` |
+| Una forma mejor de ejecutar, un chequeo nuevo | `02-PLAYBOOK.md` |
+| Un KPI, su fuente, un estándar | `03-EMPRESA.md` |
+| En qué quedó algo, con fecha | memoria de Claude Code |
+| Un postmortem completo | `LAB_NOTES.md` |
+| Un patrón que va a seguir siendo cierto en un año | el vault de Obsidian |
+
+Al agregar una regla: **sube la versión** del tag de arriba y se anota en el historial
+del `README.md`. Y se busca si ya existe una que diga lo mismo — dos reglas parecidas se
+contradicen solas.
+
+**Borrar también es crecer.** Una regla que nunca se aplicó en tres meses, o que se
+volvió obvia, se saca. Esto tiene que entrar entero en cada sesión: cada línea que
+sobra le come lugar a una que sirve.
 
 ## Regla final
 
