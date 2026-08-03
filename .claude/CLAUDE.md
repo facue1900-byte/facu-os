@@ -1,8 +1,9 @@
 # facu-os
 
-El repo que ejecuta. Quién es Facu, los negocios y las reglas generales de trabajo viven
-en `~/.claude/CLAUDE.md` (global) — **valen acá también, no se repiten**. Este archivo es
-solo la mecánica: dónde vive cada cosa, cómo se corre, qué no se toca.
+El repo que ejecuta. Quién es Facu y los negocios viven en `~/.claude/CLAUDE.md` (global);
+las reglas de trabajo, en `os/` (Constitución, Playbook, Empresa). **Valen acá también,
+no se repiten.** Este archivo es solo la mecánica: dónde vive cada cosa, cómo se corre,
+qué no se toca.
 
 Negocios activos: **Astronomy** (eventos, academia, música), **Paseo Nordelta** (paseo
 comercial) y **campos** (Chaco, Pergamino).
@@ -18,6 +19,7 @@ comercial) y **campos** (Chaco, Pergamino).
 
 | Qué | Para qué |
 |---|---|
+| `os/` | **El Empresa OS: las reglas.** `01-CONSTITUCION.md` (no negociable, se importa sola en toda sesión), `02-PLAYBOOK.md` (el método) y `03-EMPRESA.md` (KPIs, estándares, dónde se escribe cada cosa). |
 | `.claude/skills/` | Las capacidades. Una subcarpeta por skill (`SKILL.md` + `scripts/`). Se auto-descubren. |
 | `.claude/agents/` | Subagentes de verificación: reportan, no corrigen lo que auditan. |
 | `active/` | Estado operativo por negocio. Un `ESTADO.md` por frente abierto, **con sus pendientes de dato**. |
@@ -223,13 +225,10 @@ en el `SKILL.md` afectado. Si es un patrón transferible, se destila al vault.
 
 ## Las tres capas
 
-| Capa | Dónde | Qué va |
-|---|---|---|
-| Ejecución | este repo | Código y estado operativo. |
-| Estado | memoria de Claude Code (`~/.claude/projects/-Users-Facu-facu-os/memory/`) | En qué quedó cada cosa. |
-| Conocimiento | `~/Obsidian/facu-vault/` | Lo que sigue siendo cierto dentro de un año. |
-
-Si se mezclan, este archivo se llena de data vieja y empieza a mentir.
+Qué se escribe en el repo, qué en la memoria y qué en el vault: la tabla completa vive
+en `os/03-EMPRESA.md` → *Dónde se escribe cada cosa*. Acá va la parte del repo: código,
+skills y estado operativo por frente. Si las capas se mezclan, este archivo se llena de
+data vieja y empieza a mentir.
 
 Modelos por tarea: la política y los IDs viven en el global (Haiku clasifica · Sonnet
 genera · Opus para plata y arquitectura).
