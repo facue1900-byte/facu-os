@@ -981,3 +981,53 @@ prueba de que el pixel esté roto; para eso está el punto 1.
 (`x-vercel-mitigated: challenge`), y ahí el HTML deja de tener el contenido del sitio. Se
 lee como "el deploy borró todo". Hay que pegarle a la URL del deployment, como ya decía
 la memoria `verificar-en-mac`.
+
+### 2026-08-03 · Una fila `pendiente` creada antes de pagar bloquea la venta para siempre
+
+El checkout de Modo Profesional ($440.000) estaba muerto para cualquiera que hubiera
+intentado comprar una vez sin pagar. `buyModoPro` crea la inscripción en `pendiente`
+**antes** de mandar a Mercado Pago —correcto: si el webhook llega antes que el usuario,
+tiene que haber una fila que activar— pero después chequeaba `inscripcionViva`, que
+cuenta `pendiente` como viva, y bloqueaba. El que abandonaba el checkout quedaba
+encerrado, **y nada lo destrababa**: no hay cron que venza las pendientes (a propósito,
+porque un cron que no corre falla en silencio).
+
+Síntoma que reportó Facu: los dos botones de compra "no redirigen a ningún lado". Era
+verdad — redirigían a la misma pantalla, siempre.
+
+**El patrón, que vale para cualquier checkout:** una fila creada *en espera del pago* es
+un borrador, no un compromiso. Tiene que poder **reusarse**, no bloquear. Y la pregunta
+de diseño que hay que hacerse al escribirla es: *¿qué la borra si el usuario nunca
+vuelve?* Si la respuesta es "nada", ya está el bug.
+
+**Reusar la misma fila es mejor que cancelar y crear otra.** El `external_reference` de
+Mercado Pago lleva el id adentro, así que reusando, un link viejo y uno nuevo apuntan al
+mismo lugar y ningún pago queda huérfano. Cancelando y recreando, un pago sobre el link
+viejo activa una fila muerta y quedan dos activas — que el índice único parcial rechaza
+**en silencio**, porque el `UPDATE` del webhook no mira el error.
+
+**Y el corolario que muerde:** si la fila se reusa, sus datos pueden haber cambiado entre
+un checkout y el otro. Acá el `modo`: la fila decía `cuotas` y podía entrar el pago de un
+link de pago único anterior → 4 clases habilitadas por $440.000. La verdad de un pago
+está en **el pago**, no en la fila; por eso el `modo` viaja en el `external_reference` y
+manda mientras la inscripción esté pendiente.
+
+**Aparte, un modo de falla de UX barato de cometer: reciclar un código de error entre dos
+dominios.** El bloqueo redirigía con `e=yatenes`, que en la misma tabla de textos
+significa "ya tenés otra clase reservada en ese mismo horario". Al que quería *comprar*
+le aparecía un error de *agendar*, hablándole de una reserva que nunca hizo. Un
+diccionario de errores compartido entre dos flujos necesita claves con el flujo en el
+nombre, o termina mintiendo con total confianza.
+
+**Lo encontró el Análisis 360° del Playbook** (sección 7), grepeando dónde más aparecía
+lo mismo: la landing prometía un "showcase final de 60 minutos frente a público" que no
+existe —la clase 8 es la grabación del set— y **su propia lista de reglas dos bloques más
+abajo ya decía "grabación"**. La página se contradecía a sí misma y la versión que vendía
+era la que prometía de más. El mismo grep encontró "los 60 créditos de cada una no
+vencen" y "Créditos que no vencen": promesas del curso viejo, sobre un producto que no
+usa créditos y vence a los 4 meses.
+
+**La lección de contenido: cuando un producto reemplaza a otro, el texto viejo no se
+borra solo.** Sobrevive en la metadata, en el open graph y en la página de al lado — que
+es exactamente donde nadie mira. Y una promesa de más en una página de venta no es un
+typo: es lo que el alumno va a reclamar después de pagar.
