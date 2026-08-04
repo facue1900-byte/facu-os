@@ -1,7 +1,31 @@
 # El Sistema Operativo de José
 
-`v1 · 04/08/2026` · Auditoría pantalla por pantalla del back office de Astronomy Academy,
+`v2 · 04/08/2026` · Auditoría pantalla por pantalla del back office de Astronomy Academy,
 desde una sola pregunta: **¿esto la ayuda a hacer su trabajo, o le da software para explorar?**
+
+---
+
+> ## El norte
+>
+> **Astronomy no es un panel de administración. Es el sistema operativo de trabajo del
+> equipo.**
+>
+> Cada persona entra al sistema para hacer su trabajo, no para administrar información. El
+> sistema debe transformar responsabilidades en tareas concretas, guiarlas paso a paso y
+> llevar automáticamente al usuario hasta completarlas.
+>
+> **Si el usuario tiene que decidir qué hacer después, el diseño falló.**
+>
+> — Facu, 04/08/2026. Está también en el `CLAUDE.md` del repo, que se carga en toda sesión.
+
+**José no usa un sistema: José recibe trabajo.** De ahí salen las tres reglas que gobiernan
+todo lo de abajo:
+
+| | |
+|---|---|
+| **El objeto es el trabajo, no el alumno** | `Trabajo → Objetivo → Casos → Resolver → Terminado`. Contactar alumnos, pagar sueldos, conciliar Mercado Pago y cargar efectivo tienen todos esa forma |
+| **"Workflow" es una palabra nuestra** | En el código, `Workflow`. En la pantalla, **tarea**: *"Tarea 2 de 4"*, nunca *"workflow de recuperación de cobranzas"* |
+| **Nada de tiempo en pantalla** | "≈27 min" sirve para decidir si vale la pena construir algo. A quien viene a trabajar sólo le pone un cronómetro adelante |
 
 | Etiqueta | Qué significa |
 |---|---|
@@ -17,19 +41,19 @@ Está en producción. Para que la auditoría se lea contra lo que hay, no contra
 
 | | Antes | Ahora |
 |---|---|---|
-| `/admin` | 623 líneas: 4 estadísticas, 3 tarjetas de alerta, 20 links en 4 cajas, avisos, accesos compartidos, postulaciones, bajas, equipo | Una lista de workflows. Nada más. |
+| `/admin` | 623 líneas: 4 estadísticas, 3 tarjetas de alerta, 20 links en 4 cajas, avisos, accesos compartidos, postulaciones, bajas, equipo | Una lista de tareas. Nada más. |
 | El resto | Delante del trabajo | `/admin/herramientas`, entero y sin cambios |
-| El motor | `lib/tareasHoy.ts`, 3 trabajos, el ítem era siempre una persona | `lib/workflows.ts`, 7 trabajos, el ítem puede ser una persona **o un problema** |
+| El motor | `lib/tareasHoy.ts`, 3 trabajos, el ítem era siempre una persona | `lib/workflows.ts`, 7 trabajos, y el caso puede ser una persona **o un problema** |
 | Quién ve qué | José, Luqui y Facu veían lo mismo | Cada workflow declara su permiso |
 
 **[HECHO] Verificado corriendo el motor real contra la base** (`npm run ver:workflows`):
 
-| Quién | Workflows | Ítems | Tiempo | Plata |
-|---|---|---|---|---|
-| Facu (maestro) | 5 | 10 | ≈37 min | $1.092.899 |
-| **José** | **4** | **9** | **≈27 min** | **$1.092.899** |
-| Luqui | 5 | 10 | ≈37 min | $1.092.899 |
-| Mateo (profe) | 0 | 0 | — | — |
+| Quién | Tareas | Casos | Plata |
+|---|---|---|---|
+| Facu (maestro) | 6 | 11 | $1.092.899 |
+| **José** | **5** | **10** | **$1.092.899** |
+| Luqui | 6 | 11 | $1.092.899 |
+| Mateo (profe) | 0 | 0 | — |
 
 Los sueldos no le aparecen a José y sí a Luqui, sin una línea de lógica de roles: sale del
 permiso `view_salaries`, que ella no tiene.
@@ -49,21 +73,22 @@ ahí, y qué haría.
 
 #### `/admin` — el Home
 **El trabajo:** que José sepa qué hacer sin preguntárselo a nadie.
-**Bien:** ya no contiene lógica. Pide workflows, los ordena por urgencia y plata, y los
-renderiza. Un trabajo nuevo aparece solo.
+**Bien:** ya no contiene lógica. Pide las tareas, las ordena por urgencia y plata, y las
+renderiza. Un trabajo nuevo aparece solo. No muestra tiempo ni montos: acá sólo se elige
+por dónde empezar, y ese orden ya lo resolvió el motor.
 **Mal:** [OPINIÓN] el estado vacío ("Terminaste por hoy") todavía no se ganó nunca. Hasta
 que José lo vea una vez, no sabemos si la lista es alcanzable o es un reproche permanente.
 **Prioridad:** — · **Tiempo:** hecho · **Impacto:** es el único punto de entrada.
 
 #### `/admin/hacer/[id]` — la cola
-**El trabajo:** ejecutar sin decidir. Un ítem, una acción, el siguiente.
-**Bien:** no hay menú, ni tabla, ni filtros. Al terminar un workflow ofrece el que sigue:
-José nunca vuelve al índice.
-**Mal:** [OPINIÓN] **para los ítems que se resuelven en otra pantalla, la cola se rompe.**
+**El trabajo:** ejecutar sin decidir. Un caso, una acción, el siguiente.
+**Bien:** no hay menú, ni tabla, ni filtros. Dice "Tarea 2 de 5" y al terminar ofrece la
+que sigue: José nunca vuelve al índice a elegir.
+**Mal:** [OPINIÓN] **para los casos que se resuelven en otra pantalla, la cola se rompe.**
 José hace click en "Buscar de quién es", cae en `/admin/pagos-sin-asignar`, resuelve, y
 tiene que volver sola. Es el único lugar donde el asistente la suelta.
 **Qué construiría:** que la pantalla de destino, al resolver, vuelva a la cola en vez de a
-sí misma. **Tiempo: 1 h.** **Prioridad: media** — hoy son 0 ítems de ese tipo.
+sí misma. **Tiempo: 1 h.** **Prioridad: media** — hoy es 1 caso de ese tipo.
 
 #### `/admin/herramientas` — todo lo demás
 **El trabajo:** que exista lo que se usa una vez por semana, sin que esté delante de lo que
@@ -78,7 +103,7 @@ se usa todos los días.
 | **`/admin/alumnos/[id]`** | Mirar a alguien antes de escribirle o corregirle algo | **No** — [HECHO] no tiene botón de WhatsApp | **Es la pantalla más importante que le queda.** Construir el botón: el componente ya existe (`waWebLink` + `VencidoActions`). **30 min · alto impacto** |
 | **`/admin/carga-manual`** | Que un pago quede registrado Y acredite créditos | Sí | **Se queda y sube de rango.** Es lo único que acredita: el Google Form no |
 | **`/admin/pagos-sin-asignar`** | Saber de quién es una plata que entró | Sí | **Se queda.** Ya ordena por candidatos y guarda el alias |
-| **`/admin/auditoria-creditos`** | ¿El saldo que ve el alumno es el que pagó? | Sí | **Se queda.** Es donde viven los 9 con créditos de más |
+| **`/admin/auditoria-creditos`** | ¿El saldo que ve el alumno es el que pagó? | Sí | **Se queda, y ahora dice la verdad**: dejó de contar premios, compras sueltas y devoluciones como diferencias. De 9 falsos positivos a 1 caso real |
 | **`/admin/cobros-mes`** | Quién debe la cuota | Sí | **Se queda**, pero degradada: su trabajo ya entra como workflow. Queda para consultar |
 | **`/admin/agenda-manual`** | Agendar una clase por ella | Sí | **Se queda.** Es la acción que cierra la mitad de sus conversaciones |
 | **`/admin/usuarios`** | Encontrar a alguien | Sí | **Se queda.** Es el buscador |
@@ -126,16 +151,26 @@ José va a trabajar así. **Si no la usa dos semanas, esto fue decoración cara.
 
 Y hay un hallazgo que me incomoda más:
 
-> **[HECHO] El workflow de créditos nació vacío.** De 26 alumnos auditados: 0 con crédito
-> faltante, 0 con pago sin producto, **9 con créditos de más**. Construí un workflow para
-> el problema que José dice tener todos los días — *"los créditos no dan"* — y hoy no hay
-> **ni un solo caso**.
+> **[HECHO] El workflow de créditos nació vacío — y la causa era que el detector estaba
+> roto.** De 26 alumnos auditados daba: 0 con crédito faltante, 0 con pago sin producto,
+> **9 con créditos de más**.
 >
-> **[OPINIÓN] Eso significa una de dos, y no sé cuál:** o el problema se arregló cuando se
-> arregló el módulo de pagos, o **lo que ella vive no es lo que la auditoría mide**. Puede
-> que su queja real sean los que tienen créditos de MÁS y después reclaman, o el desfase de
-> las clases de Calendly. **Es una pregunta de dos minutos y hay que hacérsela antes de
-> construir nada más sobre créditos.**
+> **[HECHO] Los 9 eran falsos positivos.** `auditarCreditos` comparaba el saldo real contra
+> *"lo que otorga el plan del último pago"* y nada más, así que todo lo que entra por otra
+> puerta le daba diferencia: Christine +20 = dos premios de 10 · Fernando +20 = una compra
+> suelta · Guadalupe +120 = 60 comprados y 60 de premios · Rochi +60 = la devolución de una
+> clase cancelada.
+>
+> **[INFERENCIA] Y eso no era sólo ruido: podía tapar el caso que buscábamos.** A un alumno
+> con premios al que ADEMÁS le faltan créditos del plan, las dos cosas se le cancelan y
+> queda invisible. **El cero no probaba que no hubiera problema: probaba que el detector no
+> podía verlo.**
+>
+> **Arreglado el 04/08** (`esperado` ahora suma los lotes `premio:`, `buy:` y `refund:`;
+> `manual:` y `admin:` no, porque ésos son la corrección de una falta). **[HECHO] 9
+> diferencias → 1, y la que queda es real:** a Tomás Álvarez el Libro le anota Curso de DJ
+> y Mercado Pago le cobra Silver — 250 créditos a dos meses en vez de 240 a uno, con lo
+> cual su vencimiento real es el 01/10 y no el 01/08. Mismo precio, distinto producto.
 
 ---
 
@@ -160,7 +195,7 @@ esto ahora sería construir la casa antes de saber dónde da el sol.
 | # | Qué | Impacto | Tiempo | Por qué en ese orden |
 |---|---|---|---|---|
 | 1 | **Que José use la cola dos semanas** | Cobranza + retención · $1.092.899 en pantalla | **0 hs** | Es lo único que valida todo lo demás. No hay nada que construir |
-| 2 | **Preguntarle qué es "los créditos no dan"** | Evita construir sobre un problema mal entendido | **2 min** | El workflow nació vacío |
+| 2 | **Resolver el caso de Tomás Álvarez**: ¿Curso de DJ o Silver? | Define si sus créditos vencen el 01/08 o el 01/10 | **5 min** | Ya está en el panel como caso, con la ficha a un click |
 | 3 | **Botón de WhatsApp en la ficha del alumno** | Le saca un copiar-pegar por conversación | **30 min** | El componente ya existe, se copia |
 | 4 | **Que la pantalla de destino vuelva a la cola** | Cierra el único lugar donde el asistente la suelta | **1 h** | Hoy son 0 ítems: no urge |
 | 5 | **Borrar lo muerto** (finanzas no-master, postulaciones, ticketera) | Menos superficie que mantener | **1 h** | Barato y no rompe nada |
@@ -210,3 +245,5 @@ hace en vez de suponerlo.
 | Fecha | Qué cambió | Por qué |
 |---|---|---|
 | 04/08 | v1 — auditoría del back office + el escritorio de José en producción | Pedido de Facu |
+| 04/08 | v2 — el norte arriba · fuera el tiempo y la palabra "workflow" de la interfaz · `ítems` → `casos` | *"José no usa un sistema: José recibe trabajo"* |
+| 04/08 | v2 — **la auditoría de créditos estaba rota**: 9 diferencias eran premios, compras y devoluciones. Arreglada, quedó 1 y es real | Salió de contestar *"¿por qué preguntás?"* |
