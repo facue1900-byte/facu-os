@@ -1562,3 +1562,45 @@ escrito. El reflejo de `git add -A` habría commiteado su trabajo a medio hacer,
 imports a archivos que ella todavía no había commiteado — build roto para todos. Se
 commiteó archivo por archivo y se dejó el compartido afuera. **Antes de `git add -A`,
 mirar si el diff dice algo que uno no escribió.**
+
+---
+
+## 05/08/2026 — Dos tablas de historial son una que miente, y las dos estaban en cero
+
+Se cerró el circuito de ejecución de Incidencias: acciones rápidas, asignación con próximo
+paso y fecha límite, y el reporte ampliado. El diseño venía escrito del 04/08
+(`HANDOFF_INCIDENCIAS.md`), así que la sesión arrancó codeando. **Y el handoff estaba
+incompleto en un punto que habría dolido.**
+
+Decía: "`contact_log` tiene dos ESCRITORES, redirigilos a `incidencia_eventos`". Un grep de
+30 segundos mostró que también tiene **dos lectores**, y no cualquiera: `historial()` en
+`lib/workflows.ts` es la función que decide **a quién NO mostrarle en la cola de trabajo
+porque ya se le escribió**. Si se redirigían sólo los escritores, el resultado no habría
+sido un error: la cola habría empezado a mostrar todos los días a gente ya contactada, y
+José le habría mandado el mismo WhatsApp dos y tres veces a clientes reales. Nada habría
+fallado. **Cuando un handoff dice "redirigí los escritores", la pregunta que falta siempre
+es quién lee.**
+
+Dos hallazgos más, del mismo tipo:
+
+- **El tope de 1000 filas de PostgREST volvió a aparecer, ahora en el peor lugar.** Al
+  quedar UNA sola tabla de historial, la consulta de la cola pasó a leer también los
+  contactos. Cortada en mil, lo que se pierde es **lo más viejo** — o sea las decisiones de
+  "ya no aplica", que son justo las que impiden que alguien vuelva a la lista. No da error:
+  da una lista más larga que parece correcta. Se paginó de verdad ([[postgrest-tope-1000]]).
+- **La verificación escribió en producción y tuvo que dejar la base como estaba.** Las tres
+  tablas están en cero, y ese cero es el dato que Facu va a mirar el 18/08 para decidir si
+  el problema es de software o de adopción (Ley 9). Un script de prueba que deja cuatro
+  filas adentro no rompe nada — **corrompe la medición**. `verificar-circuito.mjs` escribe,
+  lee, borra, y **falla si el conteo no volvió al de partida**.
+
+Y una decisión que vale escribir: **las 9 acciones rápidas no cierran casos.** Ninguna, ni
+siquiera "pago verificado". Cerrar tiene una sola puerta y esa puerta vuelve a mirar la
+base antes de dejar pasar. Dos caminos y uno sin verificación es lo mismo que ninguno
+(Regla 3). Las tres acciones que casi siempre terminan en cierre **abren** el formulario
+con el motivo puesto — un clic más, y ese clic sí verifica.
+
+**Lo que no cambió, y es lo que importa:** las tablas siguen en CERO filas. El circuito
+está construido, verificado y en producción, y eso no es lo mismo que usado. Se le dijo a
+Facu antes de empezar y se le repite acá: **si el 18/08 `incidencias` e `incidencia_eventos`
+siguen en cero, el problema es de adopción y no se escribe una línea más.**
