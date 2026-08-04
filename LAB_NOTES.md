@@ -1216,3 +1216,38 @@ causa. La duda de Facu costó veinte minutos de mediciones y cambió la recomend
 concreta — de *"configurá el panel y listo"* a *"los dos caminos están cerrados y la doc
 miente en uno"*. **Cuando una sola muestra alcanza para el diagnóstico, no alcanza para la
 afirmación.**
+
+### 2026-08-04 (ter) · RESUELTO — el canal que servía era el que estaba vacío, y ahora hay alarma
+
+Facu configuró el webhook a nivel aplicación desde el panel (**por API no se puede**: `PUT`
+y `POST` sobre `/applications/{id}` dan 403 en cinco variantes) y quedó verificado con un
+cobro real de **$15**: MP aprobó a las 11:41:28, el golpe llegó 1,6 s después y los créditos
+y la venta quedaron escritos a los **1,9 s**. El cron corre en punto y esto pasó al minuto
+41: no fue el cron. **El puente pasó de mecanismo a respaldo.**
+
+Dos trampas nuevas, las dos del mismo tipo — herramientas de diagnóstico que mentían:
+
+- **`notifications_topics` de la API queda `[]` aunque los tres eventos estén tildados y
+  llegando.** Es legacy. Casi le digo a Facu que se había olvidado de tildarlos. Un chequeo
+  apoyado en ese campo avisaría "falta configurar" para siempre, y **un chequeo que siempre
+  falla se ignora igual que uno que nunca falla.** Ahora se mira qué topics llegaron de
+  verdad, que además prueba algo más fuerte que una casilla tildada: que MP entrega.
+- **`preapproval/search` ignora el filtro `external_reference`** y devuelve la cuenta
+  entera. Mi script de limpieza filtraba sobre esa lista creyéndola acotada, no encontró
+  nada, imprimió *"0 suscripciones vivas"* y **dejó la suscripción de prueba cobrando $15
+  por mes**. Un limpiador que no limpia y encima dice que sí es peor que no tener ninguno.
+
+Y el veredicto del propio verificador cruzaba registros de **dos pagos distintos**: informó
+2709 segundos de demora sobre un caso que había tardado 2. Ahora el par se arma por
+`payment_id` y se mide contra el `date_approved` de MP — **medirse contra el propio registro
+no prueba nada**.
+
+Sobre pedido de Facu quedó la alarma: `alertarPagosSinWebhook()` en el cron horario avisa si
+hay plata aprobada en MP sin webhook a los 5 minutos. Y **reporta que corrió** en la
+respuesta (`webhook_mudo: {revisados, mudos}`): *"cero pagos mudos"* y *"el chequeo ni
+corrió"* son los dos silencio, y esa indistinguibilidad es exactamente cómo este incidente
+se escondió durante semanas.
+
+**Los $15 del ensayo quedan en el libro.** Criterio de Facu, y es el correcto: la plata
+entró de verdad, MP procesó el cobro, y borrarla sería falsear la caja. Los créditos de
+prueba sí se revirtieron.
