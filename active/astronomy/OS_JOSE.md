@@ -1,31 +1,44 @@
 # El Sistema Operativo de José
 
-`v2 · 04/08/2026` · Auditoría pantalla por pantalla del back office de Astronomy Academy,
+`v3 · 04/08/2026` · Auditoría pantalla por pantalla del back office de Astronomy Academy,
 desde una sola pregunta: **¿esto la ayuda a hacer su trabajo, o le da software para explorar?**
 
 ---
 
-> ## El norte
+> ## El manifiesto
 >
-> **Astronomy no es un panel de administración. Es el sistema operativo de trabajo del
-> equipo.**
+> **Astronomy no es un panel de administración. Es el sistema operativo del equipo.**
 >
-> Cada persona entra al sistema para hacer su trabajo, no para administrar información. El
-> sistema debe transformar responsabilidades en tareas concretas, guiarlas paso a paso y
-> llevar automáticamente al usuario hasta completarlas.
+> Cada persona abre Astronomy para hacer su trabajo, no para administrar información. El
+> sistema transforma responsabilidades en tareas concretas, guía cada tarea paso a paso y
+> nunca obliga al usuario a decidir qué hacer después.
 >
-> **Si el usuario tiene que decidir qué hacer después, el diseño falló.**
+> **Si un usuario tiene que navegar para descubrir su próximo paso, el diseño falló.**
+>
+> **Si una pantalla muestra información que no termina en una acción, esa pantalla no
+> pertenece al escritorio de trabajo.**
 >
 > — Facu, 04/08/2026. Está también en el `CLAUDE.md` del repo, que se carga en toda sesión.
 
-**José no usa un sistema: José recibe trabajo.** De ahí salen las tres reglas que gobiernan
-todo lo de abajo:
+**José no usa un sistema: José recibe trabajo.** Y no se diseña "la pantalla de José" y
+"la pantalla de Luqui": se diseña **un solo sistema operativo con un escritorio por rol**.
 
-| | |
+### Las tres leyes
+
+| | | Cómo se hace cumplir |
+|---|---|---|
+| **Ley 1** | **Toda tarea tiene un dueño. Nunca dos. Nunca cero.** | `dueno` es obligatorio y de tipo cerrado: **una tarea sin dueño no compila**. Y `desalineados()` avisa si el dueño no tiene el permiso que su propia tarea exige — el único modo en que esto se rompe en silencio |
+| **Ley 2** | **Toda tarea contesta tres preguntas:** ¿por qué apareció? · ¿qué significa terminarla? · ¿qué pasa si no hago nada? | Tres campos obligatorios. Si la respuesta a la tercera es "nada", no es una tarea: es una estadística, y va a Herramientas |
+| **Ley 3** | **Nunca se muestra información que no se pueda transformar en una acción.** | Elimina del escritorio dashboards, KPIs, contadores y gráficos. No los borra: los manda a `/admin/herramientas` |
+
+**[HECHO] La Ley 1 rompió lo que había.** `view_payments` lo tienen José, Luqui y Facu, así
+que *"cobrar agosto"* aparecía en los tres escritorios. El permiso dice **qué puede hacer**
+alguien; el dueño dice **de quién es** el trabajo. Con la ley aplicada:
+
+| Trabajo | Dueño |
 |---|---|
-| **El objeto es el trabajo, no el alumno** | `Trabajo → Objetivo → Casos → Resolver → Terminado`. Contactar alumnos, pagar sueldos, conciliar Mercado Pago y cargar efectivo tienen todos esa forma |
-| **"Workflow" es una palabra nuestra** | En el código, `Workflow`. En la pantalla, **tarea**: *"Tarea 2 de 4"*, nunca *"workflow de recuperación de cobranzas"* |
-| **Nada de tiempo en pantalla** | "≈27 min" sirve para decidir si vale la pena construir algo. A quien viene a trabajar sólo le pone un cronómetro adelante |
+| Cobrar el mes · rescatar clases · activar · recuperar · corregir créditos | **José** |
+| Pagos sin dueño (conciliar Mercado Pago) · sueldos | **Luqui** |
 
 | Etiqueta | Qué significa |
 |---|---|
@@ -41,7 +54,7 @@ Está en producción. Para que la auditoría se lea contra lo que hay, no contra
 
 | | Antes | Ahora |
 |---|---|---|
-| `/admin` | 623 líneas: 4 estadísticas, 3 tarjetas de alerta, 20 links en 4 cajas, avisos, accesos compartidos, postulaciones, bajas, equipo | Una lista de tareas. Nada más. |
+| `/admin` | 623 líneas: 4 estadísticas, 3 tarjetas de alerta, 20 links en 4 cajas, avisos, accesos compartidos, postulaciones, bajas, equipo | Número, título con verbo, botón. Nada más. |
 | El resto | Delante del trabajo | `/admin/herramientas`, entero y sin cambios |
 | El motor | `lib/tareasHoy.ts`, 3 trabajos, el ítem era siempre una persona | `lib/workflows.ts`, 7 trabajos, y el caso puede ser una persona **o un problema** |
 | Quién ve qué | José, Luqui y Facu veían lo mismo | Cada workflow declara su permiso |
@@ -50,13 +63,14 @@ Está en producción. Para que la auditoría se lea contra lo que hay, no contra
 
 | Quién | Tareas | Casos | Plata |
 |---|---|---|---|
-| Facu (maestro) | 6 | 11 | $1.092.899 |
+| Facu (maestro, ve el de todos) | 6 | 11 | $1.092.899 |
 | **José** | **5** | **10** | **$1.092.899** |
-| Luqui | 6 | 11 | $1.092.899 |
+| Luqui | 1 | 1 | — |
 | Mateo (profe) | 0 | 0 | — |
 
-Los sueldos no le aparecen a José y sí a Luqui, sin una línea de lógica de roles: sale del
-permiso `view_salaries`, que ella no tiene.
+**Luqui ve UNA tarea, y eso es información, no un error:** su trabajo real —conciliar
+Mercado Pago, cargar el efectivo, revisar la caja— todavía no existe como tarea porque la
+plata que él maneja no está en la app. Es exactamente el punto de partida de su escritorio.
 
 **Lo que el motor encontró y no estaba en ninguna pantalla: [HECHO] 3 alumnos que no
 pagaron agosto — $430.560.** Aracely Juarez, Rochi Mounier y Martín Cañeque. Vivían en una
@@ -246,4 +260,5 @@ hace en vez de suponerlo.
 |---|---|---|
 | 04/08 | v1 — auditoría del back office + el escritorio de José en producción | Pedido de Facu |
 | 04/08 | v2 — el norte arriba · fuera el tiempo y la palabra "workflow" de la interfaz · `ítems` → `casos` | *"José no usa un sistema: José recibe trabajo"* |
+| 04/08 | v3 — el manifiesto y las tres leyes, con la Ley 1 aplicada al reparto de tareas | *"toda tarea tiene un dueño, nunca dos, nunca cero"* |
 | 04/08 | v2 — **la auditoría de créditos estaba rota**: 9 diferencias eran premios, compras y devoluciones. Arreglada, quedó 1 y es real | Salió de contestar *"¿por qué preguntás?"* |
