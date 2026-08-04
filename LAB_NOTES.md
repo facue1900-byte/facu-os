@@ -1402,3 +1402,48 @@ Dos cosas más que salieron de ahí y valen aparte:
   no se actualizaba solo. Es la regla 12 en su forma más cara: la página podía prometer un
   número y Mercado Pago cobrar otro. Ahora la landing lee la misma fila con la que se arma
   el cobro, en cada visita.
+
+---
+
+## 04/08/2026 (II) — Lo que sigue contestando "ok" es lo que hay que revisar
+
+Segunda vuelta sobre lo mismo del Lab Note anterior, después de que Facu preguntara lo
+correcto: *"¿y que no quede hardcodeado otra vez? ¿y los reportes?"*. La respuesta al
+primero fue un catálogo único (`lib/productos.ts`) del que se derivan las catorce listas
+que estaban escritas a mano. La respuesta al segundo fue correr todos los reportes contra
+la base real, y ahí apareció algo peor que lo que buscaba.
+
+**El cron de recordatorios de clase no le avisaba a nadie desde la migración.** Lee
+`bookings` —la tabla de Calendly— que tiene 37 filas y **cero clases futuras**. Las clases
+están en `slot_bookings`: 16 futuras, 5 dentro de su ventana. Corría todos los días, sin
+error, contestando `{ok: true, candidates: 0, sent: 0}`.
+
+Ese `candidates: 0` es todo el problema. **"No hay clases mañana" y "estoy mirando la tabla
+equivocada" producen exactamente la misma salida.** Un endpoint que devuelve un número que
+puede ser cero por dos motivos opuestos no está reportando: está tapando. Por eso ahora
+devuelve `porTabla: {slot_bookings, bookings}` — dos contadores, y uno en cero al lado de
+otro que no lo está es una pregunta que alguien se hace.
+
+Es la tercera vez que el mismo patrón nos muerde: [[cron-que-nunca-fallo]] (pg_cron decía
+`succeeded` porque encoló), el webhook de suscripciones (MP descartaba el `notification_url`
+y todo lo acreditaba el puente una hora tarde), y ahora esto. **Los tres se veían bien desde
+afuera.** Ninguno rompió nunca.
+
+De ahí sale la regla que vale la pena escribir: **una migración de tabla no termina cuando
+la nueva funciona, termina cuando se grepeó `from("<tabla vieja>")` en todo el repo.** Los
+que quedan apuntando a la vieja no son los que explotan — son los que siguen diciendo que
+sí con las manos vacías.
+
+Lo demás que apareció mirando reportes, todo del mismo tipo (funciona, pero sin la
+categoría nueva): con el Curso de DJ se podían reservar beneficios de member —el chequeo
+del server preguntaba por *cualquier* suscripción y contradecía a su propio comentario—, el
+curso más caro no aparecía en el embudo ni en leads, nadie avisaba que un curso pago se
+vencía con clases sin usar, y el buscador del admin no encontraba por categoría: ni
+"Gold". Ninguno de esos daba error tampoco.
+
+Y una nota de método, porque va a volver a pasar: **había otra sesión de Claude editando el
+mismo repo al mismo tiempo.** Se detectó por un `git diff` con 210 líneas que yo no había
+escrito. El reflejo de `git add -A` habría commiteado su trabajo a medio hacer, incluyendo
+imports a archivos que ella todavía no había commiteado — build roto para todos. Se
+commiteó archivo por archivo y se dejó el compartido afuera. **Antes de `git add -A`,
+mirar si el diff dice algo que uno no escribió.**
