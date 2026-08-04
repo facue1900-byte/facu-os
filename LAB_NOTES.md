@@ -1362,3 +1362,43 @@ se escondió durante semanas.
 **Los $15 del ensayo quedan en el libro.** Criterio de Facu, y es el correcto: la plata
 entró de verdad, MP procesó el cobro, y borrarla sería falsear la caja. Los créditos de
 prueba sí se revirtieron.
+
+---
+
+## 04/08/2026 — Un producto puede estar construido y no existir
+
+Modo Profesional estaba **terminado y en producción** desde el 03/08: landing propia,
+checkout, agenda, panel de admin, tests. Y aun así, la app entera lo trataba como si no
+existiera. La razón es que se lo construyó como **producto** y no como **categoría**.
+
+La app enumera sus categorías en muchísimos lugares —filtros, badges, audiencias de avisos,
+conteos, exports, la cola de trabajo— y en cada uno de esos lugares hay una lista escrita a
+mano: `["silver", "gold", "platinum", "djdelivery", "cursodj"]`. Un producto nuevo no rompe
+ninguna: **sigue funcionando, sólo que sin él**. No hay error, no hay test en rojo, no hay
+nada que avise. Se descubre cuando alguien pregunta "¿y este alumno por qué figura
+inactivo?" — que fue exactamente lo que pasó: el que pagó **$449.999** aparecía **inactivo**
+en la base de usuarios, porque "activo" se definía como *tiene membresía o tiene créditos*,
+y el curso no usa ninguna de las dos.
+
+Lo mismo, doce veces: no contaba como alta de alumno nuevo, no recibía los accesos
+compartidos que el pack promete, no entraba en la cola de trabajo (podía pagar, dar dos
+clases y desaparecer cuatro meses sin que nadie se enterara), y se le reclamaba una cuota
+mensual que no existe.
+
+**El patrón, para la próxima:** cuando nace un producto que no encaja en la tabla donde
+viven los demás (`modopro` vive en `pro_enrollments`, no en `subscriptions`), la pregunta no
+es *"¿anda?"* sino **"¿en cuántas listas de categorías falta?"**. Se busca por una de las
+categorías viejas —`grep -rn '"djdelivery"'`— y se recorre cada resultado. Son diez minutos
+y encuentran lo que ningún test encuentra, porque el bug es una **ausencia**, y una ausencia
+no tiene stack trace.
+
+Dos cosas más que salieron de ahí y valen aparte:
+
+- **Un filtro que se arma con el texto que se muestra no filtra.** La columna del curso
+  mostraba "Activo 3/8", así que el desplegable ofrecía una opción por cada contador
+  posible y ninguna que dijera "todos los del curso". El estado y el detalle tienen que ser
+  **dos datos distintos**: uno para filtrar, otro para leer.
+- **El precio vivía en dos lados** (la tabla `plans` y strings en la landing), y el segundo
+  no se actualizaba solo. Es la regla 12 en su forma más cara: la página podía prometer un
+  número y Mercado Pago cobrar otro. Ahora la landing lee la misma fila con la que se arma
+  el cobro, en cada visita.
