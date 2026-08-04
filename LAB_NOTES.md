@@ -8,6 +8,40 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-04 · FAIL ✓ — Cada evento de navegación entraba a la base y devolvía un 500
+
+Instrumentando el rastro de navegación de `astronomy-members` (tabla `lead_events`,
+`app/api/track/route.ts`), el endpoint de ingesta escribía la fila **perfecta** y devolvía
+**HTTP 500**. Las dos cosas a la vez, en todos los casos: los válidos, los rechazados y los
+inválidos.
+
+**Causa raíz: `NextResponse.json(null, { status: 204 })`.** Un 204 significa "recibido, no
+hay nada que devolver" y **no puede llevar cuerpo**; `json()` siempre arma uno. El
+constructor de `Response` tira `TypeError: Invalid response status code 204`, y como el
+`return` estaba adentro del `try`, el error caía en el `catch`… que devolvía **el mismo 204
+imposible**. El catch reproducía el bug que intentaba contener.
+
+```ts
+return NextResponse.json(null, { status: 204 });   // ✗ TypeError → 500
+const sinContenido = () => new NextResponse(null, { status: 204 });  // ✓
+```
+
+**Por qué se iba a descubrir tarde, o nunca:** el cliente que manda estos eventos ignora la
+respuesta a propósito (un error de tracking no puede romperle la navegación a alguien que
+está por comprar). Los datos llegaban bien, la pantalla mostraba todo, y lo único roto era
+un 500 por visita en los logs de Vercel — el lugar exacto donde nadie mira hasta que hay
+otro incendio.
+
+**Lo que lo hizo visible: probar el endpoint mirando el código de estado, no el resultado.**
+La verificación "¿se guardó la fila?" daba verde. Sólo mirar los dos —`204` **y** la fila—
+mostró la contradicción.
+
+**La lección, que ya estaba escrita en este mismo repo:** `app/api/header/route.ts` tiene el
+comentario *"un 204 no puede llevar cuerpo y el cliente espera JSON"*, de una sesión
+anterior. **El conocimiento existía a dos carpetas de distancia y se volvió a pagar igual.**
+Un archivo nuevo no hereda los comentarios del viejo: si la restricción vale para todas las
+rutas, va en un helper compartido, no en un comentario.
+
 ### 2026-08-04 · FAIL ✓ — Las alarmas de `astronomy-members` nunca le llegaron a Facu
 
 Construyendo la alarma de "hace días que nadie carga plata" apareció esto: **la cuenta de
