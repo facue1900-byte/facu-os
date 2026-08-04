@@ -1182,3 +1182,37 @@ firmada real: rebotó por idempotencia, sin doble acreditación.
 **Queda de Facu, y es la causa raíz de verdad:** panel de MP → Tus integraciones → la
 aplicación → Webhooks → URL `https://astronomyofficial.com/api/mp/webhook` con los eventos
 de pagos **y de suscripciones** tildados. Es la única vía que existe para suscripciones.
+
+### 2026-08-04 (bis) · Corrección a la entrada de arriba — eran DOS canales cerrados, y la doc de MP dice lo contrario
+
+Facu marcó, con razón, que *"Mercado Pago descarta el `notification_url`"* era generalizar
+desde **una sola** suscripción. Al medirlo en serio apareció algo mejor y algo peor.
+
+**Mejor: la observación se sostiene, y más fuerte.** La respuesta del **propio POST**
+`/preapproval` ya devuelve `notification_url: null`, con el `back_url` del mismo request
+presente — o sea que el campo se pierde en la creación, no en la lectura. Un `PUT` para
+setearlo tampoco persiste. De 100 suscripciones de la cuenta, **0** lo tienen. En una
+Preference (pago único) el mismo campo sí queda.
+
+**Peor: el segundo canal también estaba cerrado, y eso no lo había mirado.** El webhook a
+nivel aplicación —lo que yo le había dicho a Facu que configurara— estaba **vacío**, y se
+lee por API sin entrar al panel:
+
+```
+GET https://api.mercadopago.com/applications/<app_id>
+notifications_callback_url: ""      notifications_topics: []
+```
+
+Con los dos canales cerrados no había ningún bug que buscar: **no había a dónde avisar.**
+
+**Y la contradicción que hay que dejar anotada:** la documentación oficial de MP dice que
+para Suscripciones la configuración desde "Tus integraciones" **no está disponible**, y que
+hay que usar el `notification_url` de la creación — justo el que no persiste. Doc y
+comportamiento real no coinciden.
+
+**La lección del método, que es la que vale:** yo había verificado una cosa y afirmado
+tres. Un caso confirma que algo *puede* pasar; no confirma la regla, ni el alcance, ni la
+causa. La duda de Facu costó veinte minutos de mediciones y cambió la recomendación
+concreta — de *"configurá el panel y listo"* a *"los dos caminos están cerrados y la doc
+miente en uno"*. **Cuando una sola muestra alcanza para el diagnóstico, no alcanza para la
+afirmación.**
