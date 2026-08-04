@@ -1080,3 +1080,62 @@ Los once chequeos quedaron en `/admin/conciliacion`. Y la regla al construirlo: 
 que avisa en falso el primer día deja de mirarse**. El primer borrador marcaba 3 planes
 como huérfanos por el problema de los dos ids; encontrarlo antes de mostrarlo fue tan
 importante como el panel.
+
+### 2026-08-04 · FAIL ✓ — Arreglar un camino de cobro y dejar los otros tres con el mismo bug
+
+El 03/08 hicimos transaccional la acreditación de un pago (`creditPlan`). La sesión cerró
+con el pendiente bien anotado: "el mismo patrón vive en otros dos caminos". Al ir a
+portarlos aparecieron **cuatro**, y el peor no estaba en la lista de nadie.
+
+**El que no estaba anotado.** El puente horario (`syncPayments`, que rescata lo que el
+webhook no pudo) mandaba los pagos de Modo Profesional a `creditPlan`, como a cualquier
+plan. Y **eso no fallaba**: `modopro` existe en la tabla `plans` con 0 créditos, así que
+la función tomaba el candado de idempotencia, registraba la venta, devolvía OK... y no
+habilitaba una sola clase. Con el candado puesto, el webhook que llegara después rebotaba
+con "ya procesado" y el curso no se activaba nunca. El alumno paga $440.000, la venta
+figura cobrada en el libro, y él no puede agendar nada. **Ni un log lo decía.** El mismo
+agujero estaba en el desplegable de asignación manual, que ofrece "Modo Profesional" entre
+los planes.
+
+**Causa raíz — no es "faltó un caso", es que el ruteo se derivó de la tabla equivocada.**
+El código preguntaba "¿existe este plan?" cuando la pregunta era "¿qué hay que HACER
+cuando entra plata de este plan?". Modo Profesional está en `plans` porque tiene precio,
+no porque se acredite como los demás. Una lista de planes sirve para cobrar; no sirve para
+decidir qué se entrega.
+
+**La regla que queda: cuando un producto se acredita distinto, el ruteo se escribe UNA vez
+y todos los caminos de cobro pasan por ahí.** Acá los caminos eran cuatro —webhook, puente
+horario, asignación manual, carga manual— y sólo uno conocía la excepción. Al agregar un
+producto que no encaja en el molde, la pregunta no es "¿anduvo?" sino **"¿por dónde más
+puede entrar esta misma plata?"**. Se contesta grepeando el id del producto: aparece en
+todos los lugares que hay que tocar.
+
+**Segundo hallazgo: un contador en memoria no es idempotente.** `cuotas_pagadas + 1` se
+calculaba leyendo la fila y escribiendo el resultado. Dos cobros entrando juntos leían el
+mismo valor y escribían el mismo: el alumno pagaba las dos cuotas y le quedaban 4 clases
+de 8. Se arregla con `for update` sobre la inscripción dentro de la transacción, no con un
+reintento. **Todo contador que representa algo que se entrega necesita el lock, no el
+optimismo.**
+
+**Tercero, el más silencioso: un try/catch que no atrapa nada.** El registro del ingreso
+por compra suelta de créditos estaba envuelto en `try { await supabase.insert(...) }
+catch`. El cliente de Supabase **devuelve** el error, no lo tira: ese catch nunca se
+ejecutó ni una vez. Si el insert fallaba, el alumno se quedaba con los créditos y la plata
+desaparecía de Finanzas sin dejar rastro. Un `catch` alrededor de un cliente que devuelve
+errores es una red de seguridad **pintada en el piso**.
+
+**Cuarto: contestar 200 pase lo que pase pierde la plata que no se pudo acreditar.** El
+webhook devolvía éxito siempre, así que un fallo se perdía ahí mismo: Mercado Pago daba la
+notificación por entregada y no volvía a llamar. Y el puente sólo rescata los cobros que
+tienen suscripción — deja afuera justo a los pagos únicos. Ahora un fallo reintentable
+contesta 500 (MP reintenta) y queda en `audit_log`, visible en `/admin`. **Devolver éxito
+a quien te avisó que entró plata, cuando no la pudiste acreditar, es mentirle al único que
+puede volver a intentarlo.**
+
+**Y una del método, que costó un susto:** el test de la acreditación creaba una inscripción
+de prueba y caía, por diseño, en "la inscripción viva del alumno" cuando no encontraba la
+indicada. La cuenta que elegí para probar tenía una inscripción real: el test le activó el
+curso a una persona con un pago que no existía. Se detectó y se revirtió en el momento.
+El script ahora **aborta si la cuenta de prueba tiene una inscripción viva**. Un test que
+escribe en la base de producción necesita su propia precondición verificada, no una cuenta
+"que seguro no tiene nada".
