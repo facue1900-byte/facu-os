@@ -1,6 +1,6 @@
 # El Sistema Operativo de Luqui
 
-`v1 · 04/08/2026` · **La responsabilidad, antes que las pantallas.** Este documento no
+`v1.1 · 04/08/2026` · **La responsabilidad, antes que las pantallas.** Este documento no
 diseña nada: escribe cuál es el trabajo de Luqui y qué parte de ese trabajo el sistema
 puede ver hoy. Las tareas salen de acá, igual que salieron las de José.
 
@@ -38,16 +38,25 @@ nada nuevo que traer.
 | **julio** | **$3.055.273** | 23 | **$192.520** | **2** | **+$2.862.753** |
 | **agosto** | **$143.520** | **1** | **$0** | **0** | **+$143.520** |
 
-**[INFERENCIA] El resultado de julio no es +$2.862.753.** El promedio de egresos de enero a
-junio es **$2.950.801/mes** (17.704.804 ÷ 6). Con ese promedio, julio real ronda **+$105.000
-— unas 27 veces menos.** El supuesto es que julio gastó como el promedio del semestre; el
-número exacto sólo sale de cargar los egresos de verdad.
+### La corrección que me hice antes de sacar la conclusión
 
-> **La asimetría que produce esto es la clave de todo el escritorio de Luqui: los ingresos
-> entran solos porque Mercado Pago avisa; los egresos los carga una persona.** Cuando esa
-> persona deja de cargar, el sistema no se rompe — **empieza a mostrar ganancias que no
-> existen, y no avisa.** Es exactamente la falla que la regla final de la Constitución
-> prohíbe: algo que puede romperse en silencio.
+**Parte del hueco de julio es una convención, no un olvido.** [HECHO, dicho por Facu el
+31/07] **los sueldos de julio se cargan a principios de agosto con fecha de julio**, porque
+se pagan recién ahí. Hoy es 4 de agosto: estamos exactamente dentro de esa ventana, y por
+eso la tarea *"Pagar los sueldos de julio"* está viva en el escritorio de Luqui ahora mismo.
+
+Así que julio **no miente: todavía no está cerrado.** Cuando se carguen los sueldos va a
+bajar fuerte — [INFERENCIA] en junio fueron $2.178.286 de los $3.038.286 de egresos (72%),
+así que julio debería terminar cerca de cero y no en +$2.862.753.
+
+**Lo que la convención NO explica, y es el hallazgo de verdad:**
+
+- **Los INGRESOS también se cortaron el 24/07.** Ninguna convención dice que los ingresos se
+  carguen con retraso: se cargan cuando entran.
+- **[HECHO] Agosto tiene 1 ingreso en la planilla y 8 ventas en la app.** Siete cobros que
+  el Libro no conoce.
+- **[HECHO] El último egreso que no es sueldo es del 16/07.** El alquiler, Splice, la pauta
+  y los insumos de las últimas tres semanas no están en ningún lado.
 
 **[HECHO] Y agosto ya está roto:** la app tiene 8 ventas de Mercado Pago del mes; la
 planilla, 1 ingreso y 0 egresos.
@@ -129,8 +138,8 @@ Cumple la Ley 2 sin problemas:
 
 > **Por qué apareció:** hoy todavía no cargaste los movimientos.
 > **Termina cuando:** cargaste lo que hubo, o dijiste que no hubo nada.
-> **Si no hago nada:** el resultado del mes queda inflado. En julio mostró +$2.862.753
-> cuando el promedio de egresos del semestre es $2.950.801.
+> **Si no hago nada:** el mes queda a medias y parece cerrado. El 24/07 se cortó la carga y
+> nos enteramos once días después.
 
 ---
 
@@ -175,4 +184,5 @@ una semana.
 
 | Fecha | Qué cambió | Por qué |
 |---|---|---|
-| 04/08 | v1 — la responsabilidad de Luqui, la planilla muerta desde el 24/07 y el concepto de tarea de ritmo | *"antes de diseñar Luqui, escribí cuál es exactamente su responsabilidad diaria"* |
+| 04/08 | v1 — la responsabilidad de Luqui, la planilla parada desde el 24/07 y el concepto de tarea de ritmo | *"antes de diseñar Luqui, escribí cuál es exactamente su responsabilidad diaria"* |
+| 04/08 | v1.1 — **corregido**: parte del hueco de julio es la convención de cargar los sueldos a principio del mes siguiente, no un olvido. Lo que no explica: que los INGRESOS también estén parados desde el 24/07 | Me lo corrigió la memoria del 31/07 antes de sacar la conclusión |
