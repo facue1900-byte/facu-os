@@ -8,6 +8,41 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-04 · Dos sesiones sobre el mismo repo, y un `git add -A` que se llevó puesto trabajo ajeno
+
+Construyendo el Centro de Problemas en `astronomy-members`, otra sesión de Claude estaba
+trabajando el mismo repo al mismo tiempo. Se notó tarde y por un síntoma raro: `npx tsc
+--noEmit` había pasado limpio, y diez minutos después fallaba en `lib/leads.ts`, un archivo
+que no había tocado. El número de línea del error incluso se movió entre dos corridas
+seguidas — alguien estaba escribiendo mientras yo compilaba.
+
+**Causa raíz: en un repo compartido, `git add -A` no commitea "mis cambios", commitea el
+estado del disco.** El commit `7c63d8d` de la otra sesión ("Las cards de una lista median
+distinto y el scroll de leads no andaba") se llevó dos archivos míos a mitad de camino
+(`app/actions/conciliacion.ts` y `app/actions/auditoriaCreditos.ts`), que quedaron en la
+historia bajo un mensaje que no los describe. No rompió nada —los cambios estaban completos
+y compilaban— pero el rastro quedó mintiendo: buscar cuándo se refactorizó la corrección de
+saldos lleva a un commit sobre el scroll de una lista.
+
+**Lo que se hizo:**
+
+1. Stagear **por nombre**, nunca `git add -A`, en cuanto `git status` muestra archivos que
+   no toqué.
+2. Antes de pushear, verificar en un árbol que tenga **sólo lo commiteado**:
+   `git worktree add <tmp> HEAD` + `tsc` + `build` ahí adentro. Es la única forma de saber
+   si lo que se va a deployar compila, cuando el árbol de trabajo tiene trabajo ajeno sucio.
+3. Recién con eso en verde, `git push` — que en este repo **deploya solo a producción**.
+
+**La trampa técnica del paso 2:** symlinkear `node_modules` al del repo real no sirve.
+Turbopack corta con `Symlink [project]/node_modules is invalid, it points out of the
+filesystem root` y el build muere. Hay que copiarlo: 437 MB, unos 20 segundos. `tsc` sí
+anda con el symlink; el que no lo tolera es el build.
+
+**Lo que queda abierto:** no hay forma de enterarse de que otra sesión está trabajando el
+mismo repo salvo mirando `git status`. Vale la pena hacerlo **antes de empezar**, no al
+final: si hubiera mirado al arrancar, habría stageado por nombre desde el principio y los
+dos archivos no habrían terminado en el commit equivocado.
+
 ### 2026-08-04 · FAIL ✓ — Reprogramar una clase era una cancelación gratis
 
 Facu pidió auditar si `astronomy-members` cobraba las reprogramaciones hechas con menos de
