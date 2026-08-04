@@ -8,6 +8,42 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-04 · FAIL ✓ — La auditoría de créditos acusaba de deudores a los que habían pagado
+
+El panel `/admin/auditoria-creditos` listaba tres alumnos bajo *"Reservaron más de lo que
+pagaron"* —Fernando Lopez Peña, Guadalupe Merke, Maximiliano Aguirre— y en la **misma
+fila** la columna Dif. decía `✓`. Las dos cosas no pueden ser ciertas a la vez, y ésa fue
+la pista.
+
+**Causa raíz: el chequeo comparaba las clases del ciclo contra `otorga` a secas**, o sea
+los créditos que da el plan del último cobro y nada más. Todo lo que entró por otra puerta
+quedaba afuera del denominador: compras sueltas de créditos, premios, reintegros por
+cancelación y el saldo arrastrado del ciclo anterior. Fernando había **comprado 60
+créditos** el 31/07; Guadalupe, **240 comprados más 60 de premios**. Eran clientes al día,
+y el sistema los mandaba a la lista de los que hay que llamar.
+
+**Lo que lo vuelve estructural y no un off-by-one:** reservar una clase DESCUENTA créditos,
+y `spend_credits` rechaza la reserva si el saldo no alcanza (verificado en los cuatro
+caminos de reserva, incluida la carga manual del admin, que además revierte). **Una clase
+agendada sin créditos atrás no puede existir.** El chequeo, tal como estaba escrito, sólo
+podía producir falsos positivos — nueve el primer día que se midió.
+
+**El costo real de un chequeo que grita de más:** deja de mirarse. Y mientras tanto tapa el
+caso inverso, que sí importa — un alumno con premios al que ADEMÁS le faltan créditos del
+plan: las dos diferencias se cancelan y queda invisible.
+
+**El fix:** el denominador pasó a ser todo lo que el alumno recibió y podía gastar en la
+ventana del ciclo, contado por `amount_granted` de los lotes (no por lo que le queda: un
+lote gastado entero está en 0 justamente porque se usó en las clases que estamos contando).
+Los cuatro casos que había pasaron a 0. Lo que antes salía en rojo como deuda ahora sale en
+gris como dato: *"usó 40 créditos de fuera del plan"*. Y el bloque se renombró a **"Clases
+sin créditos que las cubran"**, con el texto diciendo que si aparece alguien ahí es una
+anomalía real y hay que ir a mirar su historial, no corregirle el saldo.
+
+**La lección transferible:** cuando una pantalla afirma dos cosas contradictorias sobre la
+misma fila, el bug no está en la que se ve mal — está en que dos cálculos distintos usan
+denominadores distintos para la misma pregunta.
+
 ### 2026-07-29 · FAIL ✓ — Un token vencido borró el manifiesto de creativos, porque el script escribía pase lo que pase
 
 Facu dio el OK para subir las 75 placas nuevas a Meta. `subir_creativos.py` intentó las 75,
