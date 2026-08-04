@@ -8,6 +8,47 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-04 · FAIL ✓ — Reprogramar una clase era una cancelación gratis
+
+Facu pidió auditar si `astronomy-members` cobraba las reprogramaciones hechas con menos de
+12hs. **La regla no existía.** No había ni una línea que comparara el momento de la
+reprogramación contra el horario original de la clase.
+
+**Causa raíz: `rescheduleSlot` (`app/actions/availability.ts`) sólo miraba el horario
+DESTINO.** Validaba que el nuevo horario respetara las 12hs de anticipación y después hacía
+`update({ starts_at })`. El horario original —el que el profe tenía bloqueado— no se leía
+para decidir nada, sólo para armar el mail.
+
+Eso convertía la regla de cancelación de 24hs en **opcional**, en dos clics:
+
+1. Clase mañana 10:00, ahora son las 21:00 → faltan 13hs, adentro de la ventana de 24hs.
+   Cancelar ahí cuesta los créditos y el profe cobra.
+2. En vez de cancelar, **reprogramar a +3 días**: pasa el chequeo del destino, gratis.
+3. Ahora faltan 72hs → **cancelar** → `refunded = true` → créditos devueltos y `devenga()`
+   deja al profe en cero.
+
+El alumno recuperaba todo y el profe perdía la hora que ya había bloqueado sin poder
+agendar otra cosa. **Y no se podía ni medir**: `starts_at` se pisaba in-place, sin columna
+de rastro, así que no existía forma de saber cuántas veces había pasado.
+
+**El patrón, que es lo que se transfiere:** una regla de negocio implementada en tres server
+actions distintas —reservar, cancelar, reprogramar— donde cada una chequeaba *una parte*.
+Ninguna estaba mal por sí sola; el agujero estaba en el hueco entre las tres. Una regla
+repartida entre N funciones no es una regla, es N reglas parecidas que van a divergir.
+
+**Fix:** las dos reglas se mudaron a `lib/reglasClase.ts`, puras y sin acceso a base — que es
+lo que permitió escribirles 22 tests que corren sin red (`npm run test:reglas`). Una
+reprogramación tardía ahora **cierra la reserva vieja cobrada** (`refunded = false`, que es
+justo lo que `devenga()` ya leía para pagarle al profe) **y abre una nueva que se cobra
+aparte**. Se agregaron `original_starts_at`, `rescheduled_at`, `reschedule_count` y
+`rescheduled_from` a `slot_bookings`, más la vista `v_reprogramaciones_mes` — porque una
+regla que no se puede contar no se puede verificar (Ley 9).
+
+**Lo que faltó y quedó anotado:** `bookSlot` toma el **precio** de un `<input type="hidden">`
+del formulario y se lo pasa a `spend_credits` sin validarlo contra el catálogo. Un POST con
+`cost=0` reserva una clase sin gastar créditos. Se detectó siguiendo este flujo, no se tocó
+(fuera del alcance pedido), y está sin arreglar.
+
 ### 2026-08-04 · FAIL ✓ — Cada evento de navegación entraba a la base y devolvía un 500
 
 Instrumentando el rastro de navegación de `astronomy-members` (tabla `lead_events`,
