@@ -12,6 +12,23 @@ sola pregunta: *¿qué trabajo hace Luqui, y qué parte de ese trabajo el sistem
 
 ---
 
+> ## ⏸️ ESTADO AL 04/08/2026 (tarde) — leer esto antes que el resto
+>
+> **Los puntos 1, 2 y 3 del §9 están CONSTRUIDOS y en producción**: las dos tareas de ritmo
+> y la alarma de 3 días. `lib/ritmo.ts`, `supabase/ritmo.sql` (tabla aplicada),
+> `app/actions/ritmo.ts`. El resto de este documento describe el análisis previo y sigue
+> siendo válido como razonamiento.
+>
+> **El punto 5 —saldo declarado + "Cerrar la caja"— está CONGELADO hasta el 18/08/2026.**
+> No por falta de diseño: está diseñado y aprobado. Facu congeló **todos** los workflows
+> nuevos de Astronomy hasta ver dos semanas de uso real (**Ley 8**). El próximo trabajo es
+> observar, no construir → `OBSERVACION.md`.
+>
+> El criterio para descongelar no es *"se nos ocurrió otra tarea"*, es evidencia observada
+> de alguien **saliendo del sistema** para hacer su trabajo.
+
+---
+
 ## 0. Las leyes, reconciliadas
 
 Tu último mensaje trae seis leyes; el repo tenía cinco, y no son la misma lista. Las junto

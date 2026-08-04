@@ -1,6 +1,6 @@
 # Constitución — Empresa OS
 
-`CONSTITUCION-v2` · 03/08/2026 · **rige en todas las sesiones, todos los negocios.**
+`CONSTITUCION-v3` · 04/08/2026 · **rige en todas las sesiones, todos los negocios.**
 
 Esto es lo **no negociable**. Es corto a propósito: entra entero en cada sesión.
 
@@ -78,6 +78,12 @@ Van numeradas para poder citarlas. "Me comí la 4" tiene que ser una frase decib
     ahorra horas: se anota, no se construye.
 22. **Un skill se crea recién después de hacer la tarea 3 veces a mano**, y sólo si Facu
     lo pide. Un skill que no se usa es deuda.
+23. **El software crece cuando aparece TRABAJO nuevo, nunca cuando aparece una IDEA
+    nueva.** La única pregunta que autoriza a escribir código: *¿esta persona necesitó
+    **salir del sistema** para hacer su trabajo?* Si no elimina trabajo manual, no evita
+    un error o no reemplaza una herramienta externa, **no se construye**. Nunca "hay que
+    hacer un módulo / una pantalla / una sección": siempre *"apareció un trabajo"*. Si no
+    se puede nombrar el trabajo que hace una persona, no se construye nada.
 
 ## Cómo crece esto
 

@@ -5,7 +5,7 @@ negocio. Valen para agentes de IA y para personas del equipo por igual.
 
 | Archivo | Qué es | Cuándo se lee |
 |---|---|---|
-| `01-CONSTITUCION.md` | Lo no negociable: 22 reglas numeradas + la regla final. | **Siempre.** Se carga sola en cada sesión, importada desde `~/.claude/CLAUDE.md`. |
+| `01-CONSTITUCION.md` | Lo no negociable: 23 reglas numeradas + la regla final. | **Siempre.** Se carga sola en cada sesión, importada desde `~/.claude/CLAUDE.md`. |
 | `02-PLAYBOOK.md` | Cómo se ejecuta: pre-flight, delegación, checklist de cierre, qué hacer cuando algo se rompe. | Antes de cualquier trabajo no trivial. |
 | `03-EMPRESA.md` | Qué se mide (KPIs con su fuente), los estándares y dónde se escribe cada cosa. | Cuando hay un número, un KPI, o duda de dónde guardar algo. |
 
@@ -36,5 +36,6 @@ cuando Facu corrigió lo mismo dos veces. No por completitud.
 
 | Fecha | Cambio |
 |---|---|
+| 04/08/2026 | `CONSTITUCION-v3`. **Regla 23**: el software crece cuando aparece trabajo nuevo, nunca cuando aparece una idea nueva. Salió del sprint del escritorio de Astronomy — Facu la dictó como Ley 8 del repo y vale para los cuatro negocios. La pregunta que autoriza a construir es *¿esta persona necesitó salir del sistema?* |
 | 03/08/2026 | `CONSTITUCION-v2`. Sección **"Cómo crece esto"**: el chequeo de cierre, los tres disparadores de una regla nueva, y a qué capa va cada aprendizaje. Sin eso los tres documentos se congelaban. |
 | 03/08/2026 | `v1`. Sobre el esqueleto que bajó Facu (guardado en `archive/empresa-os-esqueleto-2026-08-03/`), reescrito con sus modos de falla reales, sus KPIs y sus fuentes. |
