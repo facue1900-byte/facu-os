@@ -6,10 +6,27 @@
 finanzas deja de leer la planilla y pasa a leer la app. **Nadie se lo dijo a Luqui.** No
 dejó de cargar por desidia: el lugar donde hay que cargar cambió y no se enteró.
 
-**[HECHO] Y hoy mismo pasó el caso que lo prueba:** cargó en el Form el pago de *Juan Manuel
-Inchausty · Silver · Agosto 2026 · $143.520* (fecha 04/08). Ese pago **no aparece en el
-reporte**: no pasó por Mercado Pago, así que la app no lo tiene, y la planilla ya no se lee
-para agosto. Está cargado y es invisible.
+**[HECHO] Y hoy pasó el caso que lo prueba — con una corrección importante.** El pago de
+*Juan Manuel Inchausty · Silver · $143.520 · transferencia* **Luqui lo cargó bien y en la
+web**: `audit_log` lo registra a las 15:17 UTC del 04/08 desde `/admin/carga-manual`, con
++240 créditos y fecha de pago 31/07. Media hora después, a las 15:46, el cron trajo la copia
+del Form con fecha **04/08**.
+
+**El pago estaba en las dos fuentes con dos fechas distintas — y con el corte en el 01/08 no
+lo contaba ninguna:**
+
+| | Dónde | Fecha | ¿Lo leía el reporte con el corte en 01/08? |
+|---|---|---|---|
+| La web | `sales` (`manual:7cb33a79…`) | 31/07 | **No** — el sistema recién empieza el 01/08 |
+| El Form | `payment_links` | 04/08 | **No** — la planilla sólo se lee antes del 01/08 |
+
+**Mover el corte al 25/07 lo arregló:** ahora se cuenta una vez, por la venta del 31/07.
+**[HECHO] Verificado contra la base el 04/08.**
+
+> **La trampa que deja la doble carga, y que hay que mirar mientras dure:** el mismo pago
+> cargado con **fechas distintas** en los dos lados puede caer de los dos lados del corte.
+> Hoy salió gratis; si la fecha del Form hubiera sido anterior al 25/07 y la de la web
+> posterior, el pago se contaba **dos veces**.
 
 ---
 
@@ -17,10 +34,12 @@ para agosto. Está cargado y es invisible.
 
 > Hola Luqui, te aviso un cambio importante que es culpa nuestra por no habértelo dicho antes.
 >
-> **Desde agosto, la web dejó de leer la planilla de finanzas.** Todo lo que cargues en el
-> Google Form con fecha de agosto en adelante no lo ve nadie: no entra en el reporte del mes.
-> Ya nos pasó hoy con el pago de Juan Manuel Inchausty ($143.520) — está en la planilla y
-> no figura en ningún lado.
+> **Desde fines de julio, el reporte de finanzas dejó de leer la planilla y pasó a leer la
+> web.** Nadie te lo dijo, así que esto no es un reclamo: es información que te faltaba.
+>
+> Arrancá por lo bueno: **la carga de Inchausty de hoy la hiciste perfecto.** Quedó el pago
+> registrado y los 240 créditos acreditados en un solo acto — eso el Form no lo hace, y es
+> justo lo que hacía que algunos alumnos pagaran y se quedaran sin créditos.
 >
 > **Lo que hay que cargar ahora en la web, no en el Form:**
 >
@@ -49,5 +68,7 @@ para agosto. Está cargado y es invisible.
 2. **Decidir qué pasa con el Form.** Si sigue existiendo "por las dudas", va a seguir
    recibiendo cargas que nadie lee. **[OPINIÓN] O se apaga, o se le pone un aviso arriba
    que diga que desde agosto no se usa.**
-3. **El pago de Inchausty hay que cargarlo en la web**, o se pierde. Es el primer caso
-   concreto y sirve para que Luqui haga el flujo una vez acompañado.
+3. **El pago de Inchausty YA ESTÁ BIEN CARGADO** — se corrigió el corte y ahora se cuenta.
+   No hay nada que rehacer, y conviene decírselo así: hizo bien el trabajo.
+4. **[OPINIÓN] Mientras dure la doble carga, que la FECHA sea la misma en los dos lados.**
+   Es lo único que puede hacer que un pago se cuente dos veces.
