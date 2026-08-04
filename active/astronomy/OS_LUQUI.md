@@ -1,6 +1,6 @@
 # El Sistema Operativo de Luqui
 
-`v2 · 04/08/2026` · **Documento de análisis. No hay una línea de código acá.**
+`v3 · 04/08/2026` · **Documento de análisis. No hay una línea de código acá.**
 Recorrido completo del sistema financiero de Astronomy — código y base — para contestar una
 sola pregunta: *¿qué trabajo hace Luqui, y qué parte de ese trabajo el sistema puede ver?*
 
@@ -329,15 +329,80 @@ segundo, el primero se mide mal.
 
 ---
 
-## 10. Lo que necesito de vos antes de construir
+## 10. Las cuatro respuestas de Facu (04/08) y qué cambian
 
-1. **¿El banco entra o no?** Cambia si son 2 tareas o 4. Hoy no existe **nada** bancario.
-2. **¿Luqui carga en la app o sigue con el Google Form?** Si sigue el Form, la tarea 1 no se
-   puede cerrar nunca dentro del sistema y todo esto queda a medias.
-3. **¿Quién tapa el hueco del 25 al 31 de julio?** Son once días sin fuente. Si no, su
-   escritorio arranca con dos semanas de deuda encima.
-4. **[OPINIÓN] Y una que no preguntaste:** ¿Luqui sabe que el corte fue el 1 de agosto? Si
-   nadie se lo dijo, no dejó de cargar por desidia — cambió el lugar y no se enteró.
+### 1. "El banco es MP"
+
+**Simplifica R4 entera.** No hay dos mundos que conciliar: hay **un saldo de Mercado Pago y
+el efectivo en mano**. Dos números, no una integración bancaria. Y saca del roadmap el
+punto 6.
+
+**[HECHO] Pero el saldo de MP no se puede leer solo.** Probado el 04/08 con el token de
+producción: `/users/me` devuelve 200 (cuenta VLADIMIRNADINIC, CUIT 20416627127), y
+**`/users/me/mercadopago_account/balance` devuelve 403 `ForbiddenApiError`.**
+
+Eso es lo que decide el diseño de la tarea: si el saldo se pudiera leer, "cerrar la caja"
+sería una **tarea de evidencia** —el sistema compara solo y no puede mentir—. Como da 403,
+**es una tarea de ritmo**: Luqui abre la app de MP, mira el número y lo escribe. Vale
+preguntar en el panel de MP si es un tema de permisos de la aplicación; si algún día se
+puede leer, esta tarea cambia de categoría y mejora sola.
+
+### 2. "Hace los dos, Form y web, para que no quede nada en el olvido"
+
+**Ésa es la intención, y hay que corregirla contra el dato: hoy no está haciendo ninguno.**
+
+**[HECHO] `manual_payments` tiene 3 filas y las tres las escribió el webhook**, no una
+persona: las tres dicen `loaded_by_email = "Mercado Pago (automático)"` y son compras de
+créditos sueltos. **[HECHO] `expenses` tiene 0 filas y nunca tuvo ninguna.**
+
+| | Última carga humana |
+|---|---|
+| Google Form · ingresos | **24/07** |
+| Google Form · egresos | **16/07** |
+| App · ingresos | **nunca** |
+| App · egresos | **nunca** |
+
+**[OPINIÓN] La doble carga es la mejor decisión posible mientras dure la transición** — no
+la discuto. Lo que hay que mirar es que hoy no está pasando de ningún lado, y eso no se
+arregla pidiéndole que cargue más: se arregla con algo que le diga que le toca.
+
+### 3. "¿Quién tapa qué?" — mi pregunta estaba mal escrita
+
+Me refería a **la semana del 25 al 31 de julio**, que se cae entre las dos fuentes: la
+planilla dejó de cargarse el 24, y el reporte recién empieza a leer la app el 1 de agosto.
+Son dos huecos distintos y sólo uno necesita a una persona:
+
+- **Lo que pasó por Mercado Pago sí existe** en la base: [HECHO] 1 venta de $143.520 y 2
+  compras de créditos por $184.800. **Están guardadas, sólo que el reporte de julio no las
+  mira.** Se arregla con **una línea**: correr el corte del 01/08 al 25/07.
+- **Lo que NO pasó por MP en esa semana no existe en ningún lado**: efectivo,
+  transferencias y todos los gastos. **Eso sí necesita que alguien se acuerde y lo cargue.**
+
+### 4. "¿Qué corte?" — es una línea de código que nadie te contó
+
+`CUTOVER_ISO` (`lib/finanzas.ts`) es la fecha en la que el reporte de finanzas **cambia de
+fuente**: antes lee la planilla, después lee la app.
+
+**[HECHO] Está en `2026-08-01` y lo puso el commit `0619591` del 26/07.** Es decir: se
+decidió hace nueve días, en una sesión de trabajo, y **no llegó a ninguna persona.** Peor:
+el comentario de tres líneas más arriba en ese mismo archivo **todavía dice `2026-07-01`**,
+que es lo que quedó escrito en la memoria y lo que yo mismo creía hasta hoy.
+
+> **[OPINIÓN] Ésta es la respuesta a por qué Luqui dejó de cargar, y no es desidia.** El
+> sistema cambió de fuente de verdad el 1 de agosto y nadie se lo dijo — ni a él ni a vos.
+> Es exactamente lo que prohíbe la regla final de la Constitución: algo que se rompe en
+> silencio. **La lección no es "avisar mejor": es que un corte de fuente tiene que ser
+> visible en la pantalla**, no una constante en un archivo.
+
+---
+
+## 11. Lo que queda por decidir
+
+1. **¿Muevo el corte a 2026-07-25?** Es una línea y recupera $328.320 que ya están en la
+   base pero el reporte de julio no lee. **[OPINIÓN] Sí, salvo que me digas que no.**
+2. **¿Quién carga el efectivo, las transferencias y los gastos del 25 al 31 de julio?** Eso
+   no lo puede recuperar el sistema: hay que acordarse.
+3. **¿Le decimos a Luqui que a partir de agosto la app es la fuente?** Hoy no lo sabe.
 
 ---
 
@@ -348,3 +413,4 @@ segundo, el primero se mide mal.
 | 04/08 | v1 — la responsabilidad de Luqui y el concepto de tarea de ritmo | *"antes de diseñar, escribí cuál es su responsabilidad diaria"* |
 | 04/08 | v1.1 — corregido: parte del hueco de julio es la convención de los sueldos | Me lo corrigió la memoria del 31/07 |
 | 04/08 | v2 — recorrido completo del código y la base · el corte del 01/08 · las leyes reconciliadas en siete | Pedido de análisis exhaustivo antes de diseñar |
+| 04/08 | v3 — las respuestas de Facu · el saldo de MP da **403** · **Luqui no carga en NINGUNO de los dos lados** · el corte lo puso un commit del 26/07 que nadie comunicó | — |
