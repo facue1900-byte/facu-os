@@ -49,6 +49,45 @@ del formulario y se lo pasa a `spend_credits` sin validarlo contra el catálogo.
 `cost=0` reserva una clase sin gastar créditos. Se detectó siguiendo este flujo, no se tocó
 (fuera del alcance pedido), y está sin arreglar.
 
+### 2026-08-04 · FAIL ✓ — El timeline de leads mostraba las 16:24 como "04:24"
+
+Primera corrida del monitoreo de `lead_events` (`scripts/verificar-leads.mjs`), el mismo día
+que se instrumentó el Tracker. El log decía que el último evento había entrado a las
+**04:24:37**. En la base estaba guardado como `19:24:37Z` — o sea las **16:24** de acá.
+
+**Causa raíz: el locale `es-AR` devuelve formato de 12 horas.** Y `toLocaleString("es-AR")`
+sin opciones **ni siquiera agrega el meridiano**:
+
+```js
+new Date("2026-08-04T19:24:37Z").toLocaleString("es-AR")
+// "4/8/2026, 04:24:37"        ← ambiguo: ¿4 de la mañana o 4 de la tarde?
+new Date(...).toLocaleString("es-AR", { hour12: false })
+// "4/8/2026, 16:24:37"        ← lo que hay que escribir
+```
+
+Dónde pegaba, de peor a mejor:
+
+| Dónde | Mostraba | Por qué importa |
+|---|---|---|
+| Log del verificador | `04:24:37` | **Dato falso.** Un monitoreo que miente en la hora no sirve para nada |
+| Pie de `/admin/growth` | `04:24 p. m. hs` | La palabra "hs" promete 24 h y el valor es de 12. Venía de antes |
+| Timeline de `/admin/leads` | `04:24 p. m.` | La columna está dimensionada para `16:24`. En una lista cuyo sentido es leer la secuencia de horas de un vistazo, el meridiano en cada línea es el ruido que la vuelve ilegible |
+
+**Lo que lo hace fácil de repetir:** escribir `hour: "2-digit"` se siente completo. Nadie
+agrega `hour12: false` porque en castellano uno *asume* 24 horas — y el asumido es
+justamente el que no se cumple. En este repo hay **~17 lugares más** con el mismo patrón
+(agenda, reservas, recordatorios); ahí el meridiano al menos se muestra, así que son feos
+pero no ambiguos. **El peligroso es `toLocaleString` sin opciones de hora**, que se come el
+meridiano.
+
+**La lección que se lleva:** una hora sin `hour12` explícito es un bug esperando el turno.
+Si el texto de al lado dice "hs", ya es un bug.
+
+**Y el meta-aprendizaje, que vale más:** esto no lo encontró una revisión de código ni un
+test. Lo encontró **la primera corrida de un verificador mirando datos reales**. La primera
+corrida de cualquier monitoreo es la más valiosa que va a tener — es la única que compara el
+sistema contra la realidad sin que nadie haya ajustado nada todavía.
+
 ### 2026-08-04 · FAIL ✓ — Cada evento de navegación entraba a la base y devolvía un 500
 
 Instrumentando el rastro de navegación de `astronomy-members` (tabla `lead_events`,

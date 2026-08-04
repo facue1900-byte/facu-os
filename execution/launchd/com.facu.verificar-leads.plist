@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Monitoreo del rastro de leads de Astronomy Academy — todos los días a las 9:00.
+
+  Corre `scripts/verificar-leads.mjs` contra la base real y chequea seis cosas: que los
+  eventos lleguen, que ninguna ruta quede sin nombre, que ningún evento quede huérfano de
+  su persona, que nada se registre dos veces, que el puntaje sea la suma de su desglose, y
+  que el volumen no esté por comerse la ventana de 60 días. Sólo lee: no escribe una fila.
+
+  AVISA ÚNICAMENTE CUANDO HAY ALGO ROTO, y es la decisión más importante de este archivo.
+  Un aviso diario que dice "todo bien" entrena a ignorarlo, y el día que diga otra cosa
+  nadie lo va a leer. Si no aparece nada, es que está todo bien.
+
+  Y avisa DOS VECES, por si una falla: una notificación de macOS —que el modo Foco puede
+  tragarse sin dejar rastro— y un archivo `ALERTA_LEADS.txt` en el Escritorio, que queda
+  hasta que el problema se arregle. La corrida que sale limpia lo borra sola: una alerta
+  vieja tirada en el Escritorio es peor que ninguna, porque después nadie le cree.
+
+  Nació el 04/08/2026, el día que se instrumentó el Tracker: la instrumentación es la clase
+  de cosa que falla en silencio —la pantalla sigue cargando perfecto, con menos gente— y lo
+  que se pierde no se puede reconstruir después.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.verificar-leads.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.verificar-leads.plist
+    launchctl list | grep verificar-leads
+
+  Correr ahora sin esperar a mañana:
+    launchctl start com.facu.verificar-leads
+    cat ~/facu-os/data/logs/verificar-leads.log
+
+  El historial de todas las corridas (para ver la evolución día a día):
+    cat ~/facu-os/data/logs/verificar-leads-historico.log
+
+  Desinstalar:
+    launchctl unload ~/Library/LaunchAgents/com.facu.verificar-leads.plist
+
+  OJO — esto tiene fecha de revisión: el 18/08/2026, cuando se corran los contadores de la
+  Ley 9. Si para entonces el CRM se descongela, este verificador se queda; si se decide que
+  nadie lo usa, se descarga junto con el resto.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.verificar-leads</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-lc</string>
+        <string>APP=/Users/Facu/Desktop/Productoras/Astronomy/Academia/astronomy-members; LOG=/Users/Facu/facu-os/data/logs/verificar-leads.log; HIST=/Users/Facu/facu-os/data/logs/verificar-leads-historico.log; ALERTA=/Users/Facu/Desktop/ALERTA_LEADS.txt; mkdir -p /Users/Facu/facu-os/data/logs; cd "$APP" &amp;&amp; node --env-file=.env.local --import ./scripts/_registrar.mjs scripts/verificar-leads.mjs &gt; "$LOG" 2&gt;&amp;1; CODE=$?; cat "$LOG" &gt;&gt; "$HIST"; if [ $CODE -ne 0 ]; then cp "$LOG" "$ALERTA"; osascript -e 'display notification "Hay algo para corregir en el rastro de leads. Dejé el detalle en el Escritorio: ALERTA_LEADS.txt" with title "Leads — algo se rompió" sound name "Basso"'; else rm -f "$ALERTA"; fi</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/Desktop/Productoras/Astronomy/Academia/astronomy-members</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/verificar-leads-launchd.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/verificar-leads-launchd.log</string>
+</dict>
+</plist>
