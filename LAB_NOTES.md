@@ -8,6 +8,47 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-04 · FAIL ✓ — Las alarmas de `astronomy-members` nunca le llegaron a Facu
+
+Construyendo la alarma de "hace días que nadie carga plata" apareció esto: **la cuenta de
+Facu (`facue1900@gmail.com`) no tiene fila en la tabla `staff`.** Es maestro por la variable
+de entorno `ADMIN_EMAILS` (`lib/staff.ts` → `isMasterByEnv`): entra al panel con todos los
+permisos y **no existe como registro**.
+
+Las cinco alarmas del cron armaban su lista de destinatarios así:
+
+```ts
+const { data: staff } = await admin.from("staff").select("user_id, permissions, is_master");
+for (const st of staff) { if (st.is_master || st.permissions.includes("view_payments")) notify(...) }
+```
+
+**Causa raíz: el código asume que todo maestro tiene fila en `staff`, y uno no la tiene.**
+Las campanitas de *"Mercado Pago cobró y no nos avisó"* y *"el puente acreditó"* le llegaban
+a `vladimir.nadinic@gmail.com` (maestro con fila) y a quien tuviera `view_payments` — nunca
+a la cuenta personal de Facu.
+
+**Lo que lo hace peor que un bug suelto: el arreglo ya existía.** `notifyVencidos()` resolvía
+los mails de `ADMIN_EMAILS` con el RPC `user_id_by_email` y agregaba los uuid a mano. Estaba
+escrito ahí adentro, y **ninguna de las otras cuatro funciones se enteró**. Es el costo exacto
+de tener la misma respuesta escrita cinco veces (regla 12): se arregla en una y las otras
+cuatro siguen mintiendo, sin que nada las contradiga.
+
+**Fix:** `lib/destinatarios.ts` → `destinatariosDeAviso(admin)`, único lugar que contesta "¿a
+quién le avisamos?". Devuelve las filas de `staff` más los maestros por env resueltos a uuid.
+Los cinco bucles la usan; ya no queda ningún `from("staff")` a mano en `lib/payments.ts`.
+Verificado contra la base: **7 destinatarios, y `facue1900@gmail.com` aparece con su uuid.
+Antes eran 6 y él no estaba.**
+
+**La lección, y es la regla final de la Constitución:** un aviso que no llega no se distingue
+de "no pasó nada". Al escribir cualquier alerta nueva, la pregunta no es "¿avisa?" sino
+**"¿a quién, y esa lista incluye a la persona que puede hacer algo?"**. Y una alarma se
+prueba mirando a quién le llegó, no viendo que la función no tiró error.
+
+**Bonus del mismo día, misma clase de falla:** la racha de la alarma nueva contaba huecos
+viejos sin preguntar si hoy ya estaba cubierto, así que reportaba *"hace más de 60 días que
+no se carga nada"* de los ingresos que Luqui había cargado **esa misma mañana**. Sólo se vio
+corriéndola de verdad contra la base — `tsc` y `build` estaban limpios.
+
 ### 2026-08-04 · FAIL ✓ — La auditoría de créditos acusaba de deudores a los que habían pagado
 
 El panel `/admin/auditoria-creditos` listaba tres alumnos bajo *"Reservaron más de lo que
