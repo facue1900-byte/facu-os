@@ -1,6 +1,6 @@
 # Constitución — Empresa OS
 
-`CONSTITUCION-v3` · 04/08/2026 · **rige en todas las sesiones, todos los negocios.**
+`CONSTITUCION-v4` · 04/08/2026 · **rige en todas las sesiones, todos los negocios.**
 
 Esto es lo **no negociable**. Es corto a propósito: entra entero en cada sesión.
 
@@ -84,6 +84,12 @@ Van numeradas para poder citarlas. "Me comí la 4" tiene que ser una frase decib
     un error o no reemplaza una herramienta externa, **no se construye**. Nunca "hay que
     hacer un módulo / una pantalla / una sección": siempre *"apareció un trabajo"*. Si no
     se puede nombrar el trabajo que hace una persona, no se construye nada.
+24. **Nada está terminado cuando se programa: está terminado cuando alguien lo usa solo,
+    dos semanas, sin instrucciones.** Deploy en producción ≠ terminado. La pregunta dejó
+    de ser *¿está hecho?* y pasó a ser **¿el trabajo se hizo realmente desde ahí?** — y se
+    contesta con un contador, no con una opinión. Si hace falta un instructivo, eso no es
+    capacitación pendiente: es rediseño pendiente. Si nadie lo usó, **el problema no es de
+    software sino de adopción, y no se escribe una línea más hasta entender por qué.**
 
 ## Cómo crece esto
 

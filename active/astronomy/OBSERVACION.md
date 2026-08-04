@@ -12,6 +12,16 @@ código, es mirar.** Este documento es la herramienta de esas dos mañanas.
 > ### ¿Esta persona necesitó SALIR del sistema para hacer su trabajo?
 >
 > Sí → falta una tarea. No → **no se construye nada.**
+>
+> **LEY 9:** ningún workflow está terminado cuando se programa. Está terminado cuando una
+> persona lo usa **de forma natural durante dos semanas sin necesitar instrucciones**. Por eso
+> el criterio de éxito cambió: ya no es *¿el feature está hecho?* sino **¿el trabajo
+> realmente se hizo desde Astronomy?** Son dos cosas completamente distintas, y la segunda
+> no la contesta un deploy: la contestan las filas de tres tablas.
+
+**Nada de lo que está en producción está terminado.** El escritorio de José y las tareas de
+ritmo de Luqui corren su ventana **del 04/08 al 18/08/2026**. Hasta esa fecha se dice *"en
+producción"*, nunca *"terminado"*.
 
 ---
 
@@ -113,6 +123,37 @@ npm run ver:workflows          # qué ve cada uno HOY, corriendo el motor real
 > **Si el 18/08 los tres siguen en cero, el hallazgo no es "faltan tareas": es que nadie
 > usa esto**, y ninguna tarea nueva lo va a arreglar. Ése sería el resultado más importante
 > de las dos mañanas, y hay que estar dispuesto a escribirlo.
+
+### El chequeo exacto del 18/08 — copiar y pegar
+
+A mano a propósito, no como script: **una utilidad se escribe después de correr la cosa
+tres veces a mano** (regla 22). Si el 18/08 esto se vuelve rutina, ahí se convierte en
+`npm run ver:adopcion` y no antes.
+
+```bash
+cd "/Users/Facu/Desktop/Productoras/Astronomy/Academia/astronomy-members"
+node --env-file=.env.local -e '
+import("@supabase/supabase-js").then(async ({createClient}) => {
+  const a = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
+  for (const t of ["contact_log","ritmo_log","expenses"]) {
+    const { count } = await a.from(t).select("*", { count: "exact", head: true });
+    console.log(`${t.padEnd(13)} ${count} filas`);
+  }
+});'
+```
+
+**Cómo se lee el resultado, decidido de antemano** para no discutirlo con el número
+adelante:
+
+| Resultado | Qué significa | Qué se hace |
+|---|---|---|
+| **Los tres > 0** | La Ley 9 se cumplió. El trabajo se hizo **desde Astronomy** | Se descongela. Lo que se construye sale de lo observado |
+| **Alguno > 0, otros en 0** | Un escritorio prendió y el otro no. **Es el caso más informativo**: el que anduvo dice por qué el otro no | Se ataca **sólo** el que quedó en cero, y mirando, no construyendo |
+| **Los tres en 0** | 🛑 **Sprint 4 SUSPENDIDO.** Ni una línea de código | Se investiga la **adopción**: por qué nadie lo abrió |
+
+> **Ojo con el falso positivo:** una fila puesta por mí en una prueba **no cuenta**. Las de
+> verificación del 04/08 se borraron justamente por eso. Filtrar por `hecho_por` /
+> `loaded_by`: tiene que ser José o Luqui, no la cuenta de servicio ni la de Facu.
 
 ---
 
