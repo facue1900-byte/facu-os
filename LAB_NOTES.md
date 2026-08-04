@@ -1139,3 +1139,46 @@ curso a una persona con un pago que no existía. Se detectó y se revirtió en e
 El script ahora **aborta si la cuenta de prueba tiene una inscripción viva**. Un test que
 escribe en la base de producción necesita su propia precondición verificada, no una cuenta
 "que seguro no tiene nada".
+
+### 2026-08-04 · FAIL ✓ — Mercado Pago descarta el `notification_url` de las suscripciones, y un puente horario lo tapó durante semanas
+
+Un alumno pagó el Curso de DJ a las 9:18. Mercado Pago lo aprobó y le cobró $143.520. La
+web le siguió diciendo **"Pendiente de pago"** con 0 créditos. José, para destrabarlo, le
+dio 240 créditos a mano a las 9:46. A las 10:00 pasó el puente horario y le acreditó los
+240 del pago real: **480 créditos por un solo pago**. A las 10:38 el alumno agendó cuatro
+clases. Con los 480 se habría llevado ocho por un pago de una.
+
+**La causa raíz no es un error: es un campo que se ignora en silencio.** Mandamos
+`notification_url` en el `POST /preapproval` y Mercado Pago lo guarda como `null` — el
+`back_url` del mismo request sí queda. En una Preference (pago único) el mismo campo
+funciona. O sea que **ningún cobro de suscripción notificó nunca a nuestra URL**: ni Curso
+de DJ, ni Silver, Gold o Platinum. `payment_events` tenía 3 filas desde que existe, y las
+3 eran pagos únicos.
+
+**Lo que hizo que no se descubriera antes fue la red de seguridad.** El puente horario
+(`syncPayments`, cron cada hora) acreditaba todo igual leyendo la API de MP. La plata
+entraba, el libro cerraba, los créditos llegaban. Sólo que hasta 60 minutos tarde, y en
+esos 60 minutos el alumno ve que pagó y no tiene nada. **Un rescate que funciona en
+silencio no arregla la falla: la esconde, y te enterás por WhatsApp.**
+
+Y había una segunda capa: aunque mañana se configure el webhook en el panel de MP, no
+habría alcanzado. Los cobros de suscripción llegan con el topic
+`subscription_authorized_payment` —cuyo `data.id` es el del *authorized payment*, no el del
+pago— y ese topic no estaba manejado: llegaba, se contestaba 200 y no pasaba nada.
+
+**El diagnóstico que sirvió, y el que no.** Los logs de Vercel duran ~2 minutos de tráfico:
+inútiles para un pago de hace una hora. `payment_events` se escribe *después* de acreditar,
+así que un webhook que nunca llegó y uno que llegó y falló se ven exactamente igual: nada.
+Lo que cerró el caso fue leer el recurso en la API de MP y comparar dos pagos —uno de
+suscripción y uno de Preference— por el mismo campo. **Cuando la pregunta es "¿me están
+avisando?", la respuesta no está en tus logs sino en lo que el otro sistema guardó.**
+
+Arreglado: tabla `webhook_hits` (todo golpe queda escrito **antes** de procesarlo), la rama
+del topic que faltaba, rescate al volver del checkout (`lib/rescate.ts`, llama al mismo
+puente idempotente sobre una ventana de 2 hs) y un chequeo en `/admin/conciliacion` que
+lista los cobros que entraron sin su webhook. Verificado en producción con una notificación
+firmada real: rebotó por idempotencia, sin doble acreditación.
+
+**Queda de Facu, y es la causa raíz de verdad:** panel de MP → Tus integraciones → la
+aplicación → Webhooks → URL `https://astronomyofficial.com/api/mp/webhook` con los eventos
+de pagos **y de suscripciones** tildados. Es la única vía que existe para suscripciones.
