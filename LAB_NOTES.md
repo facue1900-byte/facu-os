@@ -1987,3 +1987,42 @@ mover $875.691,52 al mes equivocado.
 diferido deja rastro. Un concepto que se saltea en julio y que nadie registra no
 se cobra nunca — es el mismo agujero de siempre con otra causa. Falta la lista de
 diferidos; sin eso la regla es media regla.
+
+## 05/08/2026 (V) — Un cero deliberado y un cero que es un error se escriben igual
+
+Facu pidió que cuando un concepto va en $0 quede aclarado, *"para que el cliente
+note lo que se está ahorrando y no se me queje después con otras cosas"*. Había
+**26 filas de cargo en $0** en las cinco cuentas y **una sola** decía por qué
+(«Mes de gracia», escrita a mano por él). Las otras 25 se leen como un olvido.
+
+**Aclarar un cero exige clasificarlo primero, y ahí está el riesgo.** Escribir
+"Sin IVA" al lado de un cero convierte una omisión en una decisión — y si el cero
+era un error, lo tapa para siempre con cara de intencional. De las 26 filas, dos
+NO son bonificaciones y quedaron sin tocar a propósito: **Bigg FEB'26 «IVA
+Servicios Comunes» en $0**, cuando Bigg sí factura (faltan $97.860), y **Volta
+MAR'26 «Dif alq»**, una fila que sobra por haber copiado la plantilla de Bigg a un
+local sin alquiler partido. El script las lista aparte en vez de anotarlas: **una
+regla que clasifica tiene que tener una salida para "no sé", o clasifica todo mal
+con confianza.**
+
+**Si la fila no existe, no hay nada que ver.** Al bloque de agosto le faltaban 7
+renglones en $0 que los bloques anteriores sí tenían — el IVA de Boss y Volta, y
+el alquiler de Peak One, que es justo el caso que Facu quería mostrar. La
+aclaración no servía de nada sin agregarlos primero.
+
+**Cada insert necesita su propio re-encadenado, no sólo el último.** Esta misma
+sesión ya había dejado escrito que al insertar filas la de abajo sigue colgando
+del saldo viejo. Con dos inserts en la misma pestaña lo apliqué **una sola vez**,
+al último: la cadena quedó cortada en Boss (`G33` arrastraba de la 31, salteando
+la 32) y en Volta (`F40`, de la 38). **Y los cinco saldos verificaron OK**, porque
+las filas nuevas valen $0 — la verificación que había elegido no podía ver este
+error. Lo agarró `auditar_ctas_ctes.py`, que chequea la cadena celda por celda en
+vez de mirar el número final. Una lección escrita no se aplica sola cuando el caso
+cambia de forma: **saber la trampa no es lo mismo que tener el chequeo**.
+
+**Y los inserts iban de abajo hacia arriba.** Los hice en orden inverso para que
+el segundo no corriera al primero — pero las posiciones estaban calculadas sobre
+la numeración *post* primer insert, así que la fila de abajo cayó una más abajo,
+fuera del bloque y debajo del total. En una tabla donde el orden es semántico, el
+orden de los inserts y el sistema de coordenadas de las posiciones tienen que
+decidirse juntos, no por separado.
