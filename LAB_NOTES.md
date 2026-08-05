@@ -1774,3 +1774,52 @@ backup en pantalla, y al arrancar se corta si `B4` no empieza con `=`. Lo encont
 recupero y los servicios comunes de los 8 locales. La lección de los centavos ya estaba
 escrita en este mismo archivo y aplicada a las pestañas, pero no en el lugar donde
 **nace** el número. Arreglar un bug donde se ve no lo arregla donde se origina.
+
+## 05/08/2026 — Un pago sin volcar no es plata reclamada de más
+
+La sesión anterior dejó escrito, en rojo, que faltaban **$20.298.678,78 de pagos** en
+las cuentas corrientes del Paseo y que por eso **"las cuentas reclaman plata que el
+locatario ya pagó"**. Con esa frase adentro no se le podía mandar la cuenta a nadie.
+Era falso, y la forma de medirlo era el error.
+
+**Cómo se midió mal.** Por local: total de la columna de cobros automáticos (Q/R/S, que
+baja de Movimientos) contra total de la columna Ingreso de la cuenta. La resta da un
+número grande y aterrador. Pero las pestañas **no arrancan en el origen del contrato**:
+la de Fabric empieza en `FEB'26`, la de Volta en `MAR'26`. Todo cobro anterior a esa
+primera fila aparece como "sin volcar" — y su **cargo tampoco está**. Cruzando los
+pagos faltantes contra los cargos que el auditor reporta como no reclamados, en el
+mismo local y el mismo período:
+
+| Local | Pagos sin volcar | Cargos sin reclamar | Neto |
+|---|---|---|---|
+| Fabric | $8.376.000,00 | $8.375.950,11 | $49,89 |
+| Bigg | $6.243.895,00 | $6.243.895,00 | $0,00 |
+| Volta | $4.730.000,00 | $4.729.228,51 | $771,49 |
+| | **$19.349.895,00** | **$19.349.073,62** | **$821,38** |
+
+Falta el **bloque entero**, no el pago. El saldo nunca estuvo inflado. **La comparación
+válida es por bloque, no total contra total**: un total contra otro total sólo dice
+"algo no coincide", y en una cuenta que arranca a mitad de camino eso es lo esperable.
+Lo real que quedó abierto son $210.000 de Volta del 29/05 — una fila, no veinte
+millones.
+
+**El chequeo que sí sirve, y es gratis.** Cada bloque de cobro tiene su total, y el
+locatario paga contra ese total. Los cinco pagos de Fabric de julio suman
+$11.930.491,11 contra un bloque de $11.930.490,91; Boss pagó $1.963.000 contra
+$1.962.514,54; Volta $1.880.000 contra $1.883.189,31; Bigg quedó en $1.344,90. **Que
+un pago caiga a centavos sobre el total de un bloque es la verificación de que está
+bien atribuido** — y si no cae sobre ninguno, está mal atribuido y hay que preguntar,
+no acomodar.
+
+**Dos trampas de Sheets al insertar filas en el medio de una cuenta.**
+
+1. `insertDimension` inserta la fila **entera**. En estas pestañas la columna N tiene la
+   escalera de alquiler por IPC (`=N49*(1+O48)`), viva hasta 2029: una fila entera le
+   mete un blanco en el medio y la cadena se corta. Va `insertRange` acotado a **A:H**,
+   que además deja quieto el derrame del `QUERY` de Q/R/S.
+2. **La fila de abajo sigue colgando del saldo viejo.** Sheets ajusta una referencia
+   cuando la celda referenciada se mueve; `G49` no se movió, así que la fórmula que
+   estaba en `G50` viaja a `G55` y sigue diciendo `=+G49+E55-F55`. Se saltea los cinco
+   pagos recién insertados y **el saldo queda perfectamente formado y equivocado** —
+   exactamente el modo de falla que el auditor de la cadena existe para atrapar. Hay
+   que re-encadenar esa fila a mano, y volver a leer los saldos después de escribir.
