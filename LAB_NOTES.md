@@ -1604,3 +1604,47 @@ con el motivo puesto — un clic más, y ese clic sí verifica.
 está construido, verificado y en producción, y eso no es lo mismo que usado. Se le dijo a
 Facu antes de empezar y se le repite acá: **si el 18/08 `incidencias` e `incidencia_eventos`
 siguen en cero, el problema es de adopción y no se escribe una línea más.**
+
+---
+
+## 05/08/2026 — Ctas Ctes: lo que se escribe dos veces no lo dice el saldo
+
+Armar las cuentas corrientes del Paseo eran ~50 filas tipeadas a mano por mes en 8
+pestañas. Se automatizó (`cargos_del_mes.py`) y se escribieron los alquileres de
+agosto. **Escribiendo de verdad aparecieron dos bugs que en dry-run no existían**, los
+dos del tipo que no avisa:
+
+**El dedupe estaba en una punta y no en la otra.** La escritura en CARGOS chequeaba si
+el cargo ya existía; la escritura en la pestaña del local, no. Correr el script dos
+veces escribió agosto dos veces en Fabric, Bigg, Boss y Volta. Y acá está lo peligroso:
+**el saldo de una pestaña es una cadena de fórmulas** (`=G51+E52-F52`), así que el
+bloque duplicado se sumó solo al saldo del local y quedó un número perfectamente
+formado, sin un error, sin una celda roja. Lo que lo detectó fue correrlo dos veces a
+propósito. **Todo script que escribe tiene que ser idempotente en TODAS las tablas que
+toca, no en la principal.**
+
+**Leer el valor formateado se come los centavos.** La celda de Volta muestra `732,672`
+y vale `732671,57`. `FORMATTED_VALUE` devuelve lo que se ve, no lo que hay: el alquiler
+se escribió redondeado y, peor, la verificación posterior comparaba lo escrito contra
+lo mostrado y daba **falso negativo en todo importe con decimales**. La primera corrida
+marcó ⚠ en Fabric y Bigg cuando en realidad estaban bien. Un chequeo que grita donde no
+hay problema entrena a ignorarlo (Regla 3). `UNFORMATTED_VALUE` en las dos puntas.
+
+**Dos hallazgos del negocio, del mismo día:**
+
+- **El reparto de expensas no es margen: es el agujero de los locales vacíos.**
+  `Expensas Predio` prorratea entre los **23** locales pero sólo pagan **6**, así que el
+  total repartido ($14,03M) parece superar el gasto ($12,12M). Leído rápido parece
+  ganancia. Medido: se gastan $12.125.351, entran $7.081.223, y **Facu pone $5.044.128
+  por mes**. Cada alta de la rampa achica esa sangría — La Jaula aporta $594.855/mes.
+- **`Expensas Predio!P4` está clavado a `"mayo 2026"` literal** mientras sus nueve
+  hermanas usan `A3`. Cambiés el mes que cambiés, el retiro de basura reparte mayo÷3.
+  El generador lo avisa en cada corrida hasta que se arregle.
+
+**Y un criterio que ya estaba escrito y nadie había anotado:** las liquidaciones de AVN
+se cargan por **mes de pago, no por su período** — las de la carpeta "Junio 2026" dicen
+período 05-2026 y suman exactamente los $2.599.309,30 cargados como junio. Cierra al
+centavo, así que el criterio es ese. Igual con el ABL: de la liquidación de Tigre sólo
+van a expensas la Tasa por Servicios Municipales y la Contribución Hospital; los
+DERECHOS DE CONSTRUCCIÓN y el PLAN DE PAGOS FONDO Y ÁRIDOS ($25.975.011,50 en agosto)
+son obra y van a Inversiones. La fórmula `D4` (`=935644+44087`) ya lo decía sola.
