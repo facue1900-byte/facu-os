@@ -1944,3 +1944,46 @@ si hay más de una con monto, corta.
 que el `--avn` que ya existía: el dato se pone a mano para calcular, pero el egreso
 entra una sola vez, cuando entre el extracto. Cargarlo ahora en Movimientos para
 "que dé bien" lo duplicaría en julio.
+
+## 05/08/2026 (IV) — "Sueldo Mantenimiento Gastronomia" no es un sueldo
+
+Facu puso la regla: en las expensas del Paseo **todo tiene que estar facturado; si
+no está la factura, el concepto no se anota y se cobra el mes vencido**. Aplicarla
+obligó a preguntar algo que nadie se había preguntado: *¿de qué comprobante sale
+cada renglón?*
+
+**Dos de los tres nombres de la planilla mentían sobre qué son.**
+`Sueldo Mantenimiento Gastronomia` no es un sueldo: es **RHINO** —Sánchez Yanina
+Betsabé, CUIT 27373389973— que factura *Limpieza y mantenimiento* por $1.600.000 +
+IVA = $1.936.000 todos los meses. De ahí salen *Limpieza Baños* (`I4 = monto/2`) y
+*Limpieza Predio*. Buscar el respaldo en `Recibos de Sueldo/` era buscar en el
+cajón equivocado: el recibo de julio que había ahí es de un administrativo y **no
+toca las expensas**. Y `Expensas AVN` no es una factura sino **cuatro
+liquidaciones** distintas de la Asociación Civil. Un nombre de categoría heredado
+manda a buscar el comprobante donde no está.
+
+**El mes de la carpeta es el mes de PAGO, no el período de la factura.** Se
+verificó leyendo las liquidaciones: carpeta *Junio* = período 05-2026, *Julio* =
+06-2026, *Agosto* = 07-2026. Y así las consume el cálculo. Archivarlas "por
+período" hubiera sido más intuitivo y habría roto el cruce.
+
+**El error que la regla encontró en el primer intento.** Las cuatro liquidaciones
+de julio suman **$2.651.057,36** y en el cálculo estaba **$2.650.057,36**: $1.000
+de menos. Peor: unas horas antes yo había despejado ese valor desde dos locales
+independientes, visto que la nota del generador decía otra cosa, y concluido que
+**la nota estaba mal**. Estaba al revés — la nota tenía el número de la factura y
+el valor cargado era el equivocado. **Dos reconstrucciones que coinciden entre sí
+prueban qué número se usó, no que ese número esté bien.** Contra un comprobante
+manda el comprobante, no la coherencia interna.
+
+**Y la regla salvó al renglón que iba a borrar.** Con Rhino sin factura de julio a
+la vista, lo que correspondía era sacar los $1.936.000 y pasarlos a agosto. Antes
+de tocar nada aparecieron en Downloads las facturas **00000011** (01/07) y
+**00000012** (01/08): el renglón de julio estaba bien y el de agosto ya tiene
+respaldo. Buscar el comprobante antes de revertir costó diez minutos y evitó
+mover $875.691,52 al mes equivocado.
+
+**El hueco que la regla todavía tiene.** "No se anota" sólo funciona si lo
+diferido deja rastro. Un concepto que se saltea en julio y que nadie registra no
+se cobra nunca — es el mismo agujero de siempre con otra causa. Falta la lista de
+diferidos; sin eso la regla es media regla.
