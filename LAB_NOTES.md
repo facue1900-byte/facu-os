@@ -1800,8 +1800,10 @@ mismo local y el mismo período:
 Falta el **bloque entero**, no el pago. El saldo nunca estuvo inflado. **La comparación
 válida es por bloque, no total contra total**: un total contra otro total sólo dice
 "algo no coincide", y en una cuenta que arranca a mitad de camino eso es lo esperable.
-Lo real que quedó abierto son $210.000 de Volta del 29/05 — una fila, no veinte
-millones.
+Lo único que quedó para preguntar fueron $210.000 de Volta del 29/05 — una fila, no
+veinte millones — y Facu confirmó el mismo día que la conciliación de junio ya los
+había absorbido: volcarlos habría sido acreditarlos dos veces. **De los veinte millones
+no sobrevivió un peso.**
 
 **El chequeo que sí sirve, y es gratis.** Cada bloque de cobro tiene su total, y el
 locatario paga contra ese total. Los cinco pagos de Fabric de julio suman
