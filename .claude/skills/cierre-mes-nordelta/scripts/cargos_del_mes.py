@@ -309,8 +309,12 @@ def norm_etiqueta(x):
 
 
 def bloque_de_pestania(p, pestania, layout, etiqueta_mes):
-    """Filas de un mes en la pestaña del local: [(fila, detalle, egreso)]."""
-    filas = p.leer(CTAS, f"{pestania}!A1:H400")
+    """Filas de un mes en la pestaña del local: [(fila, detalle, egreso)].
+
+    UNFORMATTED_VALUE y no el formateado: la celda MUESTRA "732,672" pero vale
+    732671.57, y leer lo que se muestra se come los centavos en silencio.
+    """
+    filas = p.leer(CTAS, f"{pestania}!A1:H400", render="UNFORMATTED_VALUE")
     col_det = ord(layout["detalle"]) - ord("A")
     col_egr = ord(layout["egreso"]) - ord("A")
     objetivo = norm_etiqueta(etiqueta_mes)
@@ -469,6 +473,97 @@ def escribir_cargos(p, propuesta, anio, mes):
     return len(filas)
 
 
+def escribir_en_pestania(p, local, cfg, anio, mes, filas_mes):
+    """Agrega el bloque del mes al final de la pestaña del local.
+
+    NO escribe la columna SALDO: las filas de abajo del último bloque ya vienen
+    con la fórmula encadenada copiada (`=G{n-1}+E{n}-F{n}`), así que el saldo se
+    calcula solo. Escribirlo a mano rompería la cadena.
+
+    Sólo toca filas vacías en Mes y Detalle, y verifica releyendo.
+    """
+    if not cfg["pestania"] or not cfg["layout"]:
+        return None, f"{local}: no tiene pestaña con bloques mensuales — sólo CARGOS."
+
+    layout = cfg["layout"]
+    datos = p.leer(CTAS, f"{cfg['pestania']}!A1:H400")
+    col_det = ord(layout["detalle"]) - ord("A")
+
+    # DEDUPE: si el concepto ya está en el bloque de este mes, no se vuelve a
+    # escribir. Sin esto, correr el script dos veces duplica el mes entero en la
+    # pestaña — y como el saldo es una cadena de fórmulas, el duplicado se suma
+    # solo al saldo del local sin que nada avise.
+    etq = etiqueta(anio, mes)
+    ya_estan = {str(r[col_det]).strip().lower()
+                for r in datos
+                if r and norm_etiqueta(r[0]) == norm_etiqueta(etq)
+                and len(r) > col_det}
+    pendientes = [(d, m) for d, m in filas_mes if d.strip().lower() not in ya_estan]
+    if not pendientes:
+        return [], f"{local}: {etq} ya estaba en su pestaña — no escribo nada."
+    if len(pendientes) < len(filas_mes):
+        saltados = len(filas_mes) - len(pendientes)
+        print(f"    ({local}: {saltados} concepto/s de {etq} ya estaban)")
+    filas_mes = pendientes
+
+    # última fila con algo en Mes o Detalle
+    ultima = 0
+    for i, r in enumerate(datos, 1):
+        mes_c = str(r[0]).strip() if r else ""
+        det_c = str(r[col_det]).strip() if len(r) > col_det else ""
+        if mes_c or det_c:
+            ultima = i
+    destino = ultima + 1
+
+    # las filas destino tienen que estar libres en Mes y Detalle
+    for k in range(len(filas_mes)):
+        fila = destino + k
+        r = datos[fila - 1] if fila - 1 < len(datos) else []
+        mes_c = str(r[0]).strip() if r else ""
+        det_c = str(r[col_det]).strip() if len(r) > col_det else ""
+        if mes_c or det_c:
+            return None, (f"{local}: la fila {fila} de su pestaña no está vacía "
+                          f"({mes_c!r} / {det_c!r}) — no escribo nada ahí.")
+
+    escritas = []
+    for k, (detalle, monto) in enumerate(filas_mes):
+        fila = destino + k
+        p.escribir(CTAS, f"{cfg['pestania']}!A{fila}", [[etq]])
+        p.escribir(CTAS, f"{cfg['pestania']}!{layout['detalle']}{fila}", [[detalle]])
+        p.escribir(CTAS, f"{cfg['pestania']}!{layout['egreso']}{fila}", [[monto]])
+        escritas.append((fila, detalle, monto))
+
+    # verificación: releer las filas escritas, sin formato — la celda muestra
+    # "1,670,892" pero vale 1670892.3, y comparar contra lo mostrado da falsos
+    # negativos en todo importe con centavos.
+    rango = f"{cfg['pestania']}!A{destino}:H{destino + len(filas_mes) - 1}"
+    control = p.leer(CTAS, rango, render="UNFORMATTED_VALUE")
+    problemas = []
+    for k, (fila, detalle, monto) in enumerate(escritas):
+        r = control[k] if k < len(control) else []
+        leido_det = str(r[col_det]).strip() if len(r) > col_det else ""
+        col_egr = ord(layout["egreso"]) - ord("A")
+        leido_mon = num(r[col_egr]) if len(r) > col_egr else 0.0
+        if leido_det != detalle or abs(leido_mon - monto) > 0.01:
+            problemas.append(f"fila {fila}: quedó {leido_det!r} {leido_mon}")
+    return escritas, ("; ".join(problemas) if problemas else None)
+
+
+def filas_para_pestania(propuesta, local, anio, mes):
+    """Las filas del mes corriente de un local, en el orden de la pestaña."""
+    orden = ["Diferencia Alquiler (sin iva)", "Alquiler", "Recupero de gastos",
+             "Servicios comunes"]
+    del_mes = [(c, m) for (l, per, c, m, _iva) in propuesta
+               if l == local and per == f"{anio}-{mes:02d}"]
+    del_mes.sort(key=lambda x: orden.index(x[0]) if x[0] in orden else 99)
+    salida = []
+    for concepto, monto in del_mes:
+        salida.append((concepto, monto))
+        if concepto == "Alquiler" and LOCALES[local]["iva"]:
+            salida.append(("IVA Alquiler", monto * IVA))
+    return salida
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("mes", help="AAAA-MM del ALQUILER (las expensas son del mes anterior)")
@@ -519,6 +614,24 @@ def main():
         return
     print("Escribiendo en CARGOS…")
     escribir_cargos(p, propuesta, anio, mes)
+
+    print("\nEscribiendo en las pestañas de cada local…")
+    for local in dict.fromkeys(l for l, *_ in propuesta):
+        filas_mes = filas_para_pestania(propuesta, local, anio, mes)
+        if not filas_mes:
+            continue
+        escritas, problema = escribir_en_pestania(
+            p, local, LOCALES[local], anio, mes, filas_mes)
+        if escritas is None:
+            print(f"  ⚠ {problema}")
+        elif not escritas:
+            print(f"  · {problema}")
+        elif problema:
+            print(f"  ⚠ {local}: escrito pero la relectura NO coincide → {problema}")
+        else:
+            r0, r1 = escritas[0][0], escritas[-1][0]
+            print(f"  ✅ {local}: filas {r0}-{r1} de «{LOCALES[local]['pestania']}» "
+                  f"({len(escritas)} conceptos), verificado.")
 
 
 if __name__ == "__main__":
