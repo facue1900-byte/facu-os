@@ -229,6 +229,31 @@ Queda a mano interpretar (esto sí lo hago yo, leyendo):
   Se lee mirando un bloque viejo de la planilla, no el docstring del script. Por eso el
   dedupe de pestañas va por el par **(mes, concepto)**: "Servicios comunes" aparece
   legítimamente bajo dos etiquetas.
+- **Cada cuenta corriente tiene SUS PROPIAS letras de columna.** No hay un layout único
+  y no se puede asumir ninguno: hay que mirar la fila de encabezado de esa pestaña.
+  Verificado el 05/08/2026 (Facu lo confirmó):
+
+  | Pestaña | Encabezado | Cargo (egreso) | Saldo | Total del bloque |
+  |---|---|---|---|---|
+  | `PLANTILLA` | Fecha·Medio·Concepto·FC·Ingreso·Egreso·Saldo | F | G | — |
+  | Fabric · Bigg · Boss | Mes Origen·UN·Detalle·FC·Ingreso·Egreso·SALDO | **F** | G | **H** |
+  | Peak One | Mes Origen·UN·Detalle·Ingreso·Egreso·SALDO | **E** | F | **G** |
+  | Volta + Open 25 | Mes Origen··Detalle·Ingreso·Egreso·SALDO | **E** | F | **G** |
+
+  Peak One y Volta **no tienen columna FC**, así que todo corre una letra a la izquierda.
+  Escribir en la columna equivocada pisa el SALDO, que es una cadena encadenada.
+- **"Egreso" es lo que hay que COBRARLE al local**, no plata que sale de la caja (Facu,
+  05/08/2026). Ingreso = lo que el local pagó.
+- **Columna B = Medio** (`efectivo` / `banco`): hoy sólo está puesta en algunas filas de
+  pago. Es la que permite saber cuánto se le cobra en efectivo a cada local — lo que
+  necesita Mati en `/caja`.
+- **Los cobros del inquilino NO se cargan a mano: bajan solos a Q·R·S** (Fecha, Monto,
+  Detalle) desde la hoja `Cobros`, que a su vez sale de Movimientos. Nunca inventar ni
+  reescribir un pago: se toma de ahí.
+- **El total del bloque vive al costado, y cada pestaña lo arma distinto**: Fabric y Boss
+  un `TOTAL` en H; Bigg desglosa `Efectivo` y `Total` en H; Volta pone `Banco`/`Efectivo`
+  y el total en G; Peak One un `TOTAL` en G. Son fórmulas escritas a mano que referencian
+  filas concretas — al agregar un bloque nuevo hay que armarle el suyo.
 - **`Salon Multiespacios` NO es una cuenta corriente**: es una pestaña con un `QUERY` en
   `A5` que derrama solo los cobros desde la hoja `Cobros`. No tiene columna de cargos ni
   saldo. Escribir abajo del derrame hace que el próximo cobro choque y tire `#REF!`.
