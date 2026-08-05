@@ -25,12 +25,13 @@ cobra por banco — hoy Fabric entero y la mitad de Bigg (la otra mitad va como
 "Diferencia Alquiler (sin iva)", que es la parte en efectivo).
 """
 
+import datetime
 import re
 import sys
 
 sys.path.insert(0, __file__.rsplit("/", 1)[0])
 from cargos_del_mes import (  # noqa: E402
-    CTAS, LOCALES, Planillas, norm_etiqueta, num, plata,
+    CTAS, LOCALES, Planillas, etiqueta, norm_etiqueta, num, plata,
 )
 
 # La cadena del saldo, tolerante al `+` de más que tienen las filas viejas:
@@ -42,9 +43,62 @@ CADENA = re.compile(
 # Conceptos que llevan IVA cuando el local factura. El resto no debe llevarlo.
 CON_IVA = {"alquiler", "servicios comunes"}
 
+# Nombres viejos que se usaron en las pestañas antes de unificar la nomenclatura
+# (Volta, MAR'26). Mismo concepto, otro rótulo: si no se mapean, el cruce contra
+# CARGOS los reporta como "sobra acá y falta allá" y son la misma plata.
+ALIAS = {
+    "rec gs fc": "recupero de gastos",
+    "alq facturado": "alquiler",
+    "gs comunes": "servicios comunes",
+    "iva alq": "iva alquiler",
+    "dif alq": "diferencia alquiler (sin iva)",
+}
+
+# En un local con el alquiler partido, la pestaña lo muestra en dos filas
+# ("Alquiler" facturado + "Diferencia Alquiler (sin iva)" en efectivo) mientras
+# CARGOS de los meses viejos lo tiene en una sola. Para comparar se suman.
+PARTES_DEL_ALQUILER = {"alquiler", "diferencia alquiler (sin iva)"}
+
+
+def canon(concepto):
+    c = concepto.strip().lower()
+    return ALIAS.get(c, c)
+
 
 def col(letra):
     return ord(letra) - ord("A")
+
+
+def cargos_por_local(p):
+    """CARGOS agrupado en {local: {(etiqueta_mes, concepto): total}}.
+
+    CARGOS es la fuente de lo que hay que cobrarle a cada local; la pestaña es
+    cómo se le presenta. Si no coinciden, uno de los dos miente — y el que se
+    manda al locatario es la pestaña.
+
+    La columna Período es un serial de fecha; se pasa a la etiqueta de la
+    pestaña (`ABR'26`) para poder comparar.
+    """
+    filas = p.leer(CTAS, "CARGOS!A1:H500", render="UNFORMATTED_VALUE")
+    out = {}
+    for r in filas:
+        if len(r) < 4:
+            continue
+        try:
+            serial = int(float(celda(r, 0)))
+        except (TypeError, ValueError):
+            continue
+        fecha = datetime.date(1899, 12, 30) + datetime.timedelta(days=serial)
+        local = str(celda(r, 1)).strip()
+        concepto = str(celda(r, 2)).strip()
+        monto = num(celda(r, 3))
+        if not local or not concepto:
+            continue
+        clave = (norm_etiqueta(etiqueta(fecha.year, fecha.month)),
+                 canon(concepto))
+        out.setdefault(local, {})
+        out[local][clave] = out[local].get(clave, 0.0) + monto
+    return out
 
 
 def celda(fila, idx):
@@ -52,7 +106,7 @@ def celda(fila, idx):
     return "" if v is None else v
 
 
-def auditar_local(p, local, cfg):
+def auditar_local(p, local, cfg, cargos):
     """Devuelve (hallazgos, bloques, saldo_final)."""
     hallazgos = []
     lay = cfg["layout"]
@@ -153,24 +207,56 @@ def auditar_local(p, local, cfg):
                               f"{det!r} por {plata(egr)} — no cae en ningún bloque"))
 
         if es_mes and egr:
-            clave = (norm_etiqueta(etq), det.lower())
-            if clave in vistos:
-                fila_previa, monto_previo = vistos[clave]
-                if abs(monto_previo - egr) < 0.01:
-                    hallazgos.append(
-                        (f"f{i}", "🔴 DUPLICADO EXACTO",
-                         f"{etq} · {det!r} {plata(egr)} ya estaba en la fila "
-                         f"{fila_previa} — se cobra DOS VECES"))
-                else:
-                    hallazgos.append(
-                        (f"f{i}", "🔴 CARGADO DOS VECES CON DISTINTO MONTO",
-                         f"{etq} · {det!r}: f{fila_previa} {plata(monto_previo)} "
-                         f"y f{i} {plata(egr)} — los DOS suman al saldo "
-                         f"({plata(monto_previo + egr)} en total)"))
-            vistos[clave] = (i, egr)
+            # Un concepto puede aparecer DOS VECES bajo el mismo mes de forma
+            # legítima: cuando el cargo se partió (a Volta se le saltó un mes de
+            # expensas y se le cobró doble al siguiente, en dos filas). Por eso
+            # acá sólo se acumula; quién decide si está bien es el cruce contra
+            # CARGOS, que tiene el total que se le debe cobrar al local.
+            clave = (norm_etiqueta(etq), canon(det))
+            previo = vistos[clave][1] if clave in vistos else 0.0
+            vistos[clave] = (i, previo + egr)
             if norm_etiqueta(etq) not in bloques:
                 orden_bloques.append(norm_etiqueta(etq))
             bloques.setdefault(norm_etiqueta(etq), []).append((i, etq, det, egr))
+
+    # ---- EL cruce: la pestaña contra CARGOS ---------------------------------
+    # Lo que se le manda al locatario es la pestaña. Si su total por concepto no
+    # es el de CARGOS, se le está cobrando de más o de menos. Se compara la SUMA
+    # (un cargo partido en dos filas es válido), y se ignoran las filas de IVA:
+    # en CARGOS el IVA va en su propia columna, no como concepto aparte.
+    mios = dict(cargos.get(local, {}))
+    en_pestania = {k: v for k, (_f, v) in vistos.items()
+                   if not k[1].startswith("iva ")}
+    if cfg.get("partido"):
+        # Se colapsan las dos partes en "alquiler" de los dos lados, porque
+        # CARGOS viejo lo tiene entero y el generador nuevo lo parte en dos.
+        for tabla in (mios, en_pestania):
+            for etq_m in {k[0] for k in tabla}:
+                partes = [k for k in tabla
+                          if k[0] == etq_m and k[1] in PARTES_DEL_ALQUILER]
+                if len(partes) > 1:
+                    total = sum(tabla.pop(k) for k in partes)
+                    tabla[(etq_m, "alquiler")] = total
+    for clave in sorted(set(mios) | set(en_pestania)):
+        etq_m, concepto = clave
+        # Los alias viejos de Volta ("Gs comunes", "Alq facturado") no matchean
+        # por nombre; se avisan aparte y no como diferencia de plata.
+        en_c, en_p = mios.get(clave), en_pestania.get(clave)
+        if en_c is not None and en_p is not None:
+            if abs(en_c - en_p) > 0.01:
+                hallazgos.append(
+                    (etq_m, "🔴 NO COINCIDE CON CARGOS",
+                     f"{concepto}: CARGOS dice {plata(en_c)} y la pestaña "
+                     f"{plata(en_p)} — diferencia {plata(en_p - en_c)}"))
+        elif en_c is not None and en_c:
+            hallazgos.append(
+                (etq_m, "🔴 EN CARGOS Y NO EN LA PESTAÑA",
+                 f"{concepto} por {plata(en_c)} — no se le está reclamando"))
+        elif en_p is not None and en_p:
+            hallazgos.append(
+                (etq_m, "⚠ EN LA PESTAÑA Y NO EN CARGOS",
+                 f"{concepto} por {plata(en_p)} — se le cobra algo que CARGOS "
+                 f"no tiene (¿nombre viejo del concepto?)"))
 
     # ---- IVA donde corresponde ----------------------------------------------
     for etq, filas in bloques.items():
@@ -221,13 +307,14 @@ def main():
     print("AUDITORÍA DE CUENTAS CORRIENTES — Paseo Nordelta")
     print("(read-only: no se escribe nada)\n")
 
+    cargos = cargos_por_local(p)
     total_hallazgos = 0
     for local, cfg in LOCALES.items():
         if not cfg.get("pestania"):
             print(f"── {local}: sin pestaña propia (sólo CARGOS) — "
                   f"cobra por {cfg['cobra_por']}\n")
             continue
-        hallazgos, bloques, saldo = auditar_local(p, local, cfg)
+        hallazgos, bloques, saldo = auditar_local(p, local, cfg, cargos)
         estado = "✅ impecable" if not hallazgos else f"⚠ {len(hallazgos)} hallazgo/s"
         print(f"── {local}  «{cfg['pestania']}»  ·  cobra por {cfg['cobra_por']}"
               f"  ·  {'FACTURA' if cfg['iva'] else 'no factura'}")

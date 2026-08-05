@@ -430,10 +430,17 @@ def alquiler_vigente(p, cfg, anio, mes):
 
 
 def cargos_existentes(p, anio, mes):
+    """Los (local, concepto) que YA tienen cargo en CARGOS para ese mes.
+
+    Una fila en **$0 no cuenta**: son placeholders viejos, y tomarlos por cargo
+    real hacía que el dedupe se comiera el cargo del mes en silencio. Le pasó a
+    Boss ($470.167,09) y Peak One ($365.127,75) con los servicios comunes de
+    julio: la pestaña los tenía y CARGOS no.
+    """
     filas = p.leer(CTAS, "CARGOS!A4:I500")
     clave = f"{anio}-{mes:02d}"
     return {(r[1].strip(), r[2].strip()) for r in filas
-            if len(r) >= 3 and str(r[0]).strip() == clave}
+            if len(r) >= 4 and str(r[0]).strip() == clave and num(r[3])}
 
 
 def proponer(p, anio, mes, expensas):
