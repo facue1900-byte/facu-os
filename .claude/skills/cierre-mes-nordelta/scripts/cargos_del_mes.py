@@ -120,6 +120,22 @@ def etiqueta(anio, mes):
     return f"{MESES[mes]}'{anio % 100}"
 
 
+def medio_de(local, concepto):
+    """`efectivo` o `banco`: cómo se cobra ESTE concepto de ESTE local.
+
+    Va a la columna B de la cuenta corriente. Es el dato del que cuelga todo lo
+    demás: **el efectivo no se factura**, y es lo único que Mati ve y cobra.
+
+    Bigg es el único partido: cobra la mitad por banco (la fila "Alquiler", que
+    es la que lleva IVA y se factura) y la otra mitad en efectivo, que es
+    exactamente lo que significa "Diferencia Alquiler (sin iva)".
+    """
+    cobra = LOCALES[local]["cobra_por"].lower()
+    if cobra.startswith("mixto"):
+        return "efectivo" if "sin iva" in concepto.lower() else "banco"
+    return "efectivo" if "efectivo" in cobra else "banco"
+
+
 def mes_anterior(anio, mes):
     return (anio - 1, 12) if mes == 1 else (anio, mes - 1)
 
@@ -589,7 +605,7 @@ def escribir_en_pestania(p, local, cfg, anio, mes, filas_mes):
     etq = etiqueta(anio, mes)
     ya_estan = {(norm_etiqueta(r[0]), str(r[col_det]).strip().lower())
                 for r in datos if r and len(r) > col_det}
-    pendientes = [(e, d, m) for e, d, m in filas_mes
+    pendientes = [(e, med, d, m) for e, med, d, m in filas_mes
                   if (norm_etiqueta(e), d.strip().lower()) not in ya_estan]
     if not pendientes:
         return [], f"{local}: {etq} ya estaba en su pestaña — no escribo nada."
@@ -618,9 +634,13 @@ def escribir_en_pestania(p, local, cfg, anio, mes, filas_mes):
                           f"({mes_c!r} / {det_c!r}) — no escribo nada ahí.")
 
     escritas = []
-    for k, (etq_fila, detalle, monto) in enumerate(filas_mes):
+    for k, (etq_fila, medio, detalle, monto) in enumerate(filas_mes):
         fila = destino + k
-        p.escribir(CTAS, f"{cfg['pestania']}!A{fila}", [[etq_fila]])
+        # A y B van juntas en una sola escritura: son contiguas en TODAS las
+        # pestañas (la B es "Medio"/"UN"), aunque el resto de las letras cambie
+        # de local en local.
+        p.escribir(CTAS, f"{cfg['pestania']}!A{fila}:B{fila}",
+                   [[etq_fila, medio]])
         p.escribir(CTAS, f"{cfg['pestania']}!{layout['detalle']}{fila}", [[detalle]])
         p.escribir(CTAS, f"{cfg['pestania']}!{layout['egreso']}{fila}", [[monto]])
         escritas.append((fila, detalle, monto))
@@ -674,11 +694,14 @@ def filas_para_pestania(propuesta, local, anio, mes):
     salida = []
     for per, concepto, monto, iva in del_mes:
         etq = periodos[per]
-        salida.append((etq, concepto, monto))
+        medio = medio_de(local, concepto)
+        salida.append((etq, medio, concepto, monto))
         if iva:
             # "Servicios comunes" → "IVA Servicios Comunes", como en los
-            # bloques que ya están escritos en las pestañas.
-            salida.append((etq, "IVA Alquiler" if concepto == "Alquiler"
+            # bloques que ya están escritos en las pestañas. El IVA sigue al
+            # concepto que lo generó: si eso se cobra por banco, su IVA también.
+            salida.append((etq, medio,
+                           "IVA Alquiler" if concepto == "Alquiler"
                            else f"IVA {concepto.title()}", iva))
     return salida
 
