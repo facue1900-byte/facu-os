@@ -229,6 +229,14 @@ Queda a mano interpretar (esto sí lo hago yo, leyendo):
   Se lee mirando un bloque viejo de la planilla, no el docstring del script. Por eso el
   dedupe de pestañas va por el par **(mes, concepto)**: "Servicios comunes" aparece
   legítimamente bajo dos etiquetas.
+- **`Salon Multiespacios` NO es una cuenta corriente**: es una pestaña con un `QUERY` en
+  `A5` que derrama solo los cobros desde la hoja `Cobros`. No tiene columna de cargos ni
+  saldo. Escribir abajo del derrame hace que el próximo cobro choque y tire `#REF!`.
+  Va sin pestaña, como La Jaula: sus cargos viven **sólo en CARGOS**. (05/08/2026)
+- **El efectivo no se factura.** Se factura lo que se cobra por banco: hoy Fabric entero
+  y de Bigg sólo la parte "Alquiler" + su IVA — la "Diferencia Alquiler (sin iva)" es
+  justamente la mitad en efectivo. `cobra_por` e `iva` en `LOCALES` ya lo codifican y
+  coinciden uno a uno: los que facturan son los que llevan IVA.
 - **`--avn` desbloquea el cobro cuando el extracto del Macro no está importado.** `B4`
   es un SUMIFS contra Movimientos: sin extracto da $0 y el generador corta. El flag
   escribe el total de las 4 liquidaciones y restaura la fórmula; **no** carga una fila

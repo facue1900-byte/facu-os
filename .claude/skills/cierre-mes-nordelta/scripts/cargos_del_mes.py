@@ -92,8 +92,13 @@ LOCALES = {
         "alquiler": 0, "partido": False,
     },
     "Salón (Alto)": {
-        "pestania": "Salon Multiespacios", "expensas_predio": "Salon Alto",
-        "layout": LAYOUT_CON_FC, "iva": False, "cobra_por": "Efectivo",
+        # «Salon Multiespacios» NO es una cuenta corriente: es una pestaña con un
+        # QUERY en A5 que derrama solo los cobros desde la hoja `Cobros`. No tiene
+        # columna de cargos ni saldo encadenado. Escribir abajo del derrame hace
+        # que el próximo cobro choque y tire #REF!, rompiendo la pestaña entera.
+        # Por eso va sin pestaña, como La Jaula: sus cargos viven sólo en CARGOS.
+        "pestania": None, "expensas_predio": "Salon Alto",
+        "layout": None, "iva": False, "cobra_por": "Efectivo",
         # expensas PACTADAS en $1.000.000, no las de la hoja (Facu 27/07/2026)
         "alquiler": 0, "partido": False, "expensas_pactadas": 1_000_000,
     },
