@@ -8,6 +8,40 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-05 · Un cron le iba a vaciar la cola a José a las 9 de la mañana
+
+Se agregó a `astronomy-members` el detector de **checkouts trabados**: 5 alumnos que
+abrieron el checkout y Mercado Pago frenó en SU pantalla, $846.080/mes que no aparecían en
+ninguna de las 36 pantallas del panel. La fuente natural es `subscriptions.status =
+'pending'` — la fila la escribe nuestro propio checkout justo antes de mandar a MP.
+
+**Lo que casi pasa:** el mismo día se había puesto en producción `cerrarCheckoutsZombie`,
+un barrido que corre con el cron diario de las 09:00 ART y **cancela los checkouts
+abandonados de más de 7 días**, pasando la fila a `cancelled`. Cuatro de los cinco casos
+tenían más de 7 días encima. A la mañana siguiente el detector iba a mostrar 1 en vez de 5,
+**$574.080 desaparecidos**, y el panel lo iba a presentar como *"se apagó solo"*.
+
+**Causa raíz: un detector no puede colgarse de un campo de estado que otro proceso pisa.**
+Un problema que se apaga porque el dato de fondo se arregló no puede mentir; uno que se
+apaga porque un cron cambió el campo que el detector mira, miente siempre. Y acá el caso ni
+siquiera se cierra cuando muere el link: **empeora**, porque desde ahí la persona no puede
+pagar ni queriendo.
+
+**Fix:** el barrido deja el intento escrito en `audit_log` (`checkout_abandonado`, historia
+inmutable) y el detector lee las **dos puntas** —la fila viva y el renglón del log— armando
+**la misma clave** (`alumno:producto:día del intento`). Si la clave cambiara, el caso
+resucitaría con otra identidad y perdería lo que alguien ya decidió sobre él.
+
+**Dos cosas que salieron de probarlo.** Probarlo de verdad exigía cancelar links reales en
+Mercado Pago (regla 10), así que se hizo con un cliente de mentira —
+`npm run verificar:trabados`. Ese chequeo encontró un **error real que la revisión a ojo no
+vio**: la ventana se medía desde el renglón del log y no desde el intento, así que un
+checkout de hace tres meses cerrado ayer entraba a la cola como si fuera nuevo.
+
+**Lo transferible, en una pregunta:** *antes de que un detector lea un campo de estado,
+¿quién más escribe ese campo y cuándo?* Es la misma familia que el detector que leía lo que
+escribía su propia acción (04/08) — ahí se pisaba a sí mismo, acá lo pisa un cron.
+
 ### 2026-08-05 · El bug sobrevivió porque la parte que fallaba no era nuestra
 
 José reportó un lead que al ir a pagar recibe *"tu e-mail no coincide"* y termina
