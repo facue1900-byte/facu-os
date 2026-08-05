@@ -8,6 +8,70 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-05 · El bug sobrevivió porque la parte que fallaba no era nuestra
+
+José reportó un lead que al ir a pagar recibe *"tu e-mail no coincide"* y termina
+preguntando si puede transferir. Facu lo leyó como un error de la web y propuso la
+solución que suena obvia: dejar de usar el mail como identificador de pago y manejar un
+ID único por usuario.
+
+**Ese ID ya existía y ya era el identificador de pago.** `external_reference =
+"<userId>:<planId>"` viaja en cada preapproval y el webhook atribuye por ahí
+(`resolveUser`, prioridad 1), nunca por mail. `user_emails` ya permitía varios mails por
+persona. O sea: la mitad del sistema que Facu quería construir estaba construida, andando,
+y **no tenía nada que ver con el error**.
+
+**Causa raíz: `payer_email` es obligatorio en `POST /preapproval` y Mercado Pago ATA la
+suscripción a la cuenta de ese mail.** El que abre el checkout logueado en MP con otra
+cuenta es rechazado por MP. El chequeo corre en el servidor de Mercado Pago: ningún
+identificador nuestro lo puede pisar. Nosotros mandábamos siempre el mail del registro, y
+el Mercado Pago del alumno suele estar a nombre del padre, de la madre o de una empresa —
+que es la convención de identidad que ya teníamos escrita desde julio y nadie conectó con
+el cobro.
+
+**Lo que dejó pasar el diagnóstico equivocado: NO HABÍA ERROR QUE MIRAR.** Un
+`checkout_error` sólo se escribe si MP nos rechaza a NOSOTROS al crear el preapproval. Acá
+el preapproval se crea perfecto (HTTP 201, con `init_point`), y el rechazo pasa después,
+en la pantalla de MP, donde no tenemos telemetría. Medido: **8 checkouts `pending` sin
+completar y CERO `checkout_error`.** Cinco de personas reales, $846.080/mes de cuotas que
+nunca aparecieron en ningún tablero. La única evidencia de que alguien quiso comprar y no
+pudo era una fila `pending` que había escrito nuestro propio checkout treinta segundos
+antes — el dato estaba, nadie lo leía.
+
+**La lección transferible: cuando el síntoma es "el usuario no puede", preguntar quién
+ejecuta el chequeo que falla.** Si lo corre un tercero, rediseñar nuestro modelo de datos
+no lo toca. Lo que hay que cambiar es **qué le mandamos** a ese tercero.
+
+**Y la segunda: un embudo sin telemetría en el último tramo miente por omisión.** El panel
+decía que todo andaba porque sólo sabía contar lo que había fallado de este lado. La
+pregunta que lo destapa no es *"¿hay errores?"* sino *"¿hay intentos que no terminaron?"*.
+
+**Lo que se hizo** (commit `92645a6` de `astronomy-members`, en producción):
+
+1. `profiles.mp_email` — el alumno declara con qué mail entra a Mercado Pago en
+   `/pagar/mail`, y el checkout se reabre con ése. Lo usan los tres `preapproval`:
+   membresías, Curso de DJ y Modo Profesional en cuotas.
+2. **Ese mail NO atribuye pagos.** No se guarda en `user_emails`, que sí atribuye
+   (prioridad 2 de `resolveUser`): si el alumno pudiera escribir esa tabla, cargar el mail
+   de otra persona alcanzaría para quedarse con sus cobros. La atribución sigue colgando de
+   `external_reference`, que lo escribe el servidor.
+3. `lib/checkoutTrabado.ts` — la fila `pending` con más de 20 minutos es la evidencia, y el
+   panel del alumno le ofrece la salida. Se calla si ya pagó, y **no** se calla porque
+   tenga otra suscripción viva: el que ya es Silver y se traba subiendo a Platinum está
+   igual de trabado y es el que más plata deja sobre la mesa.
+4. `lib/checkoutsZombie.ts` — un preapproval `pending` es un link que **no caduca nunca** y
+   queda atado a un mail; de ahí sale la otra mitad de los *"no coincide"*, cuando alguien
+   reabre un link viejo o reenviado. Se cierran a los 7 días desde el cron diario, primero
+   en MP y sólo después la fila nuestra. La ventana está acoplada a propósito a la del
+   cartel: barrer antes sería sacarle la salida al que la está viendo.
+
+**Una trampa de verificación, de regalo.** El verificador falló en su primera corrida con
+HTTP 500 al crear un preapproval, y la hipótesis inmediata —"es el dominio inventado del
+mail de prueba"— era **falsa**: la corrida siguiente aceptó ese mismo dominio con 201. Es
+la falla por casilla de MP, intermitente, ya documentada desde el 01/08. Quedó escrito en
+el script para que un 500 ahí no se lea nunca más como "el arreglo no sirve" — las ramas
+que prueban el fix no dependen de MP. `npm run verificar:mail-de-pago`.
+
 ### 2026-08-04 · Dos sesiones sobre el mismo repo, y un `git add -A` que se llevó puesto trabajo ajeno
 
 Construyendo el Centro de Problemas en `astronomy-members`, otra sesión de Claude estaba
