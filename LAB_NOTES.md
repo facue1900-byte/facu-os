@@ -1904,3 +1904,43 @@ está en Movimientos (junio: $1.936.000, julio: $0), y de ahí salen *Limpieza B
 (`I4 = sueldo/2`) y *Limpieza Predio* (`K4 = I4`). **Julio se facturó con los dos
 en $0** para todos los locales: con el valor de junio serían ~$939.928 más entre
 los 6 que hoy pagan. Un input que falta no rompe nada — reparte cero y sigue.
+
+## 05/08/2026 (III) — Un input que falta no rompe nada: reparte cero y sigue
+
+Reconstruyendo julio para congelar el detalle de expensas apareció que
+`Sueldo Mantenimiento Gastronomia` no estaba en Movimientos para ese mes (junio:
+$1.936.000, julio: $0). De ahí salen dos conceptos —*Limpieza Baños* (`I4 =
+sueldo/2`) y *Limpieza Predio* (`K4 = I4`)— así que **julio se facturó con los dos
+en $0 para todos los locales**. Nada falló: el `SUMIFS` devolvió cero, los
+porcentajes repartieron cero, cada fórmula dio un número perfectamente formado y
+las expensas salieron **$875.691,52 más baratas** de lo que correspondía. Facu
+confirmó que ese sueldo **repite el del mes anterior**, así que nunca debió quedar
+en cero.
+
+**Un cero calculado y un cero real se escriben igual.** Un dato que falta se nota
+cuando algo se rompe; acá el input faltante entra en una multiplicación y sale por
+el otro lado como una expensa más barata. La única razón por la que se descubrió es
+que el bloque congelado muestra el **detalle concepto por concepto**: con dos
+renglones en `$0` al lado de diez con números, salta a la vista. El total solo no
+lo habría mostrado nunca.
+
+**La corrección hay que hacerla en las cuatro capas, en orden.** El número vive en
+`EXPENSAS HISTORICO` (lo congelado), en `CARGOS` (lo que consume CUENTA CORRIENTE),
+en la fila `JUL'26` de la pestaña de cada local (lo que ve el locatario) y en el
+bloque congelado de `Expensas Predio` (lo que se manda por captura). Se corrigieron
+las tres primeras y recién después se rehizo la cuarta, que **valida contra la
+primera y la tercera** y se habría negado a escribir si alguna no cerraba.
+
+**Y casi duplico un cargo.** `CARGOS` tiene filas placeholder **vacías** con el
+mismo período, local y concepto que la fila buena (f96 Boss y f97 Peak One conviven
+con f150 y f151). El primer `batchUpdate` iba a escribirle el monto a las cuatro:
+CUENTA CORRIENTE las suma solas y a Boss y Peak One les habría aparecido el cargo
+dos veces. Lo delató contar: "7 filas en CARGOS" para 5 locales. **Cuando un
+contador no da redondo contra la cantidad de entidades, hay que mirar antes de
+escribir** — la regla quedó en el script: se toca sólo la fila que ya tiene valor, y
+si hay más de una con monto, corta.
+
+**La palanca correcta es `--sueldo`, no una fila en Movimientos.** Mismo criterio
+que el `--avn` que ya existía: el dato se pone a mano para calcular, pero el egreso
+entra una sola vez, cuando entre el extracto. Cargarlo ahora en Movimientos para
+"que dé bien" lo duplicaría en julio.

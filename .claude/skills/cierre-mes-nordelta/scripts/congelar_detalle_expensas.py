@@ -88,6 +88,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("periodo", help="AAAA-MM del mes a congelar")
     ap.add_argument("--escribir", action="store_true")
+    ap.add_argument("--sueldo", type=float, help=(
+        "Sueldo Mantenimiento Gastronomia del mes, cuando el egreso todavía no está "
+        "en Movimientos porque falta importar el extracto. De ahí salen Limpieza "
+        "Baños (=sueldo/2) y Limpieza Predio: sin esto salen $0 y no se nota. "
+        "Mismo criterio que --avn de cargos_del_mes.py — NO se carga una fila falsa "
+        "en Movimientos, el egreso entra una sola vez cuando entre el extracto."))
     args = ap.parse_args()
     anio, mes = (int(x) for x in args.periodo.split("-"))
     per = serial(anio, mes)
@@ -117,8 +123,12 @@ def main():
 
     # ── inputs de la fila 4 tal como estaban al congelar el mes
     inp = list(fila(4))
-    inp[L["I"]] = sumifs("Sueldo Mantenimiento Gastronomia", per) / 2
-    inp[L["K"]] = inp[L["I"]]                                   # K4 = I4
+    sueldo = args.sueldo if args.sueldo is not None else \
+        sumifs("Sueldo Mantenimiento Gastronomia", per)
+    if args.sueldo is not None:
+        print(f"Sueldo Mantenimiento Gastronomia puesto A MANO: ${sueldo:,.2f}")
+    inp[L["I"]] = sueldo / 2                                    # Limpieza Baños
+    inp[L["K"]] = inp[L["I"]]                                   # Limpieza Predio = I4
     inp[L["J"]] = sumifs("Productos de limpieza", per)
     inp[L["N"]] = sumifs("Fumigación", per)
     # P4 está clavado a "mayo 2026"/3 en la hoja: no depende del mes elegido
