@@ -189,7 +189,7 @@ def expensas_del_historico(p, anio, mes):
             for r in filas if len(r) >= 4 and r[0] == clave}
 
 
-def congelar_expensas(p, anio, mes, agua=None, abl=None, dry_run=True):
+def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None, dry_run=True):
     """Pone la fecha del mes en Expensas Predio, lee, y RESTAURA todo lo tocado.
 
     Devuelve {local_predio: (recupero, servicios_comunes)}.
@@ -204,6 +204,13 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, dry_run=True):
         PLAN DE PAGOS FONDO Y ÁRIDOS de la misma liquidación son obra (CAPEX) y
         NO se le cobran a los locales: van a Inversiones.
 
+    `avn` es la puerta de escape para cuando el extracto del Macro todavía no se
+    importó: B4 es un SUMIFS contra Movimientos, así que sin extracto da $0 y el
+    script corta. Pasando --avn se escribe el total de las liquidaciones (los 4
+    PDFs de `~/Desktop/Paseo Nordelta/Principio de mes/Facturas de Compra/`) y la
+    FÓRMULA SE RESTAURA igual que todo lo demás. No se carga una fila falsa en
+    Movimientos: cuando entre el extracto, el gasto entra una sola vez.
+
     Corta si Expensas AVN del mes da 0: eso significa que las facturas del mes
     no están cargadas en Movimientos y el recupero saldría en cero sin avisar.
     """
@@ -212,16 +219,30 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, dry_run=True):
     a2 = original[0][0] if original and original[0] else ""
     a3 = original[1][0] if len(original) > 1 and original[1] else ""
     fila4 = original[2] if len(original) > 2 else []
+    b4_orig = fila4[1] if len(fila4) > 1 else ""
     c4_orig = fila4[2] if len(fila4) > 2 else ""
     d4_orig = fila4[3] if len(fila4) > 3 else ""
-    if c4_orig == "" or d4_orig == "":
+    if b4_orig == "" or c4_orig == "" or d4_orig == "":
         raise SystemExit(
-            f"CORTO: no pude leer los valores actuales de C4 (Agua) y D4 (ABL) "
-            f"— leí C4={c4_orig!r} D4={d4_orig!r}.\n"
+            f"CORTO: no pude leer los valores actuales de B4 (AVN), C4 (Agua) y "
+            f"D4 (ABL) — leí B4={b4_orig!r} C4={c4_orig!r} D4={d4_orig!r}.\n"
             f"  Sin ellos no puedo restaurarlos después, y escribir arriba los "
             f"perdería para siempre. No toco nada."
         )
+    # B4 tiene que ser el SUMIFS. Si es un número suelto, una corrida anterior
+    # murió a mitad del finally y dejó pisada la fórmula: sin este corte la
+    # próxima corrida "restauraría" ese número como si fuera el original y la
+    # pérdida se volvería permanente, confirmada mes a mes sin que nadie avise.
+    if not str(b4_orig).startswith("="):
+        raise SystemExit(
+            f"CORTO: B4 (Expensas AVN) ya no es una fórmula — vale {b4_orig!r}.\n"
+            f"  Debería ser el SUMIFS contra Movimientos. Alguien la pisó, o una\n"
+            f"  corrida anterior murió a mitad de la restauración. Volvé a poner\n"
+            f"  la fórmula en B4 antes de seguir; el backup de la última corrida\n"
+            f"  está en expensas_predio_backup.json, al lado de este script."
+        )
     print(f"  Expensas Predio está hoy en A2={a2} A3={a3}")
+    print(f"    B4 (AVN)={b4_orig}")
     print(f"    C4 (Agua)={c4_orig}  D4 (ABL)={d4_orig}  — se restaura todo al final")
 
     # El SUMIFS compara Movimientos!I:I contra A3. La columna I es texto
@@ -246,22 +267,47 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, dry_run=True):
     backup = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                           "expensas_predio_backup.json")
     with open(backup, "w", encoding="utf-8") as fh:
-        json.dump({"A2": a2, "A3": a3, "C4": c4_orig, "D4": d4_orig}, fh,
+        json.dump({"A2": a2, "A3": a3, "B4": b4_orig,
+                   "C4": c4_orig, "D4": d4_orig}, fh,
                   ensure_ascii=False, indent=2)
     print(f"  backup de los valores originales en {backup}")
 
     try:
         p.escribir(MASTER, "Expensas Predio!A2:A3", [[fecha_a2], [periodo_texto]])
         p.escribir(MASTER, "Expensas Predio!C4:D4", [[agua, abl]])
-        datos = p.leer(MASTER, "Expensas Predio!A3:R30")
-        avn = num(datos[1][1]) if len(datos) > 1 and len(datos[1]) > 1 else 0.0
-        if avn == 0:
+        if avn is not None:
+            p.escribir(MASTER, "Expensas Predio!B4", [[avn]])
+        # UNFORMATTED_VALUE, no el formateado: de estas columnas salen el
+        # recupero y los servicios comunes que se le cobran a cada local. La
+        # celda MUESTRA "$1.176.363" pero vale 1176362,725 — leerla formateada
+        # redondea la expensa de todos los locales y no avisa.
+        datos = p.leer(MASTER, "Expensas Predio!A3:R30",
+                       render="UNFORMATTED_VALUE")
+        avn_leida = num(datos[1][1]) if len(datos) > 1 and len(datos[1]) > 1 else 0.0
+        if avn_leida == 0:
             raise SystemExit(
                 f"CORTO: Expensas AVN de {periodo_texto} da $0 en Movimientos.\n"
                 f"  Sin esa factura el recupero sale 0 para todos los locales y "
-                f"no avisa. Cargá el movimiento y volvé a correr."
+                f"no avisa. Cargá el movimiento y volvé a correr,\n"
+                f"  o pasá --avn <total de las 4 liquidaciones> si el extracto "
+                f"del Macro todavía no se importó."
             )
-        print(f"  Expensas AVN {periodo_texto}: {plata(avn)}")
+        if avn is not None:
+            # Si el valor a mano no llega entero a la celda, el recupero sale mal
+            # y la única señal sería un total raro. Se compara acá.
+            if abs(avn_leida - avn) > 0.01:
+                raise SystemExit(
+                    f"CORTO: escribí --avn {plata(avn)} en B4 pero la hoja leyó "
+                    f"{plata(avn_leida)}.\n"
+                    f"  No sigo con una diferencia que después nadie ve."
+                )
+            print(f"  Expensas AVN {periodo_texto}: {plata(avn_leida)}  "
+                  f"⚠ A MANO (--avn), NO salió de Movimientos")
+            print(f"    El extracto del Macro de {periodo_texto} no está importado. "
+                  f"El gasto sigue faltando en Movimientos:")
+            print(f"    esto NO lo carga — sólo lo usa para calcular la expensa.")
+        else:
+            print(f"  Expensas AVN {periodo_texto}: {plata(avn_leida)}")
         print(f"  Agua R&S: {plata(agua)} · ABL Municipal: {plata(abl)}")
         # P4 (Retiro de basura) está clavado a "mayo 2026" literal mientras sus
         # nueve hermanas usan A3. Se avisa siempre hasta que se arregle: si no,
@@ -281,20 +327,52 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, dry_run=True):
                 out[fila[0]] = (recupero, servicios)
         return out
     finally:
-        p.escribir(MASTER, "Expensas Predio!A2:A3", [[a2], [a3]])
-        p.escribir(MASTER, "Expensas Predio!C4:D4", [[c4_orig, d4_orig]])
-        print("  Expensas Predio restaurada a como estaba (fecha, Agua y ABL).")
+        # Cada restauración va en su propio try: si la primera falla (timeout,
+        # 429, red), la segunda TIENE que correr igual. Encadenadas, un corte de
+        # red al restaurar la fecha se llevaba puesta la fórmula de B4 para
+        # siempre — el finally que existe para proteger era el que perdía.
+        # B4 se restaura SIEMPRE, se haya pasado --avn o no: volver a escribir
+        # el mismo SUMIFS no cuesta nada, perderlo sí.
+        fallaron = []
+        for rango, valores, que in (
+            ("Expensas Predio!A2:A3", [[a2], [a3]], "la fecha (A2:A3)"),
+            ("Expensas Predio!B4:D4", [[b4_orig, c4_orig, d4_orig]],
+             "AVN, Agua y ABL (B4:D4)"),
+        ):
+            try:
+                p.escribir(MASTER, rango, valores)
+            except Exception as e:      # noqa: BLE001 — hay que seguir igual
+                fallaron.append(f"{que}: {e}")
+        if fallaron:
+            print("\n  ⚠⚠ NO PUDE RESTAURAR Expensas Predio. La hoja quedó con "
+                  "los valores de este mes puestos.")
+            for f in fallaron:
+                print(f"     · {f}")
+            print(f"     Los valores originales están en {backup}:")
+            print(f"       A2={a2!r}  A3={a3!r}")
+            print(f"       B4={b4_orig!r}")
+            print(f"       C4={c4_orig!r}  D4={d4_orig!r}")
+            print("     Ponelos a mano ANTES de volver a correr esto.")
+        else:
+            print("  Expensas Predio restaurada a como estaba "
+                  "(fecha, AVN, Agua y ABL).")
 
 
-def guardar_historico(p, anio, mes, expensas):
+def guardar_historico(p, anio, mes, expensas, nota=None):
+    """`nota` deja escrito en la hoja de dónde salió el número.
+
+    Importa cuando el mes se congeló con --avn: el histórico es definitivo por
+    diseño, así que sin la marca un valor puesto a mano queda indistinguible de
+    uno que salió del extracto, y nadie vuelve a revisarlo.
+    """
     if HOJA_HISTORICO not in p.hojas(CTAS):
         p.crear_hoja(CTAS, HOJA_HISTORICO)
         p.escribir(CTAS, f"{HOJA_HISTORICO}!A1:E1", [[
             "Período", "Local (Expensas Predio)", "Recupero de gastos",
             "Servicios comunes", "Nota"]])
     ya = expensas_del_historico(p, anio, mes)
-    filas = [[f"{anio}-{mes:02d}", local, rec, serv,
-              "congelado por cargos_del_mes.py"]
+    nota = nota or "congelado por cargos_del_mes.py"
+    filas = [[f"{anio}-{mes:02d}", local, rec, serv, nota]
              for local, (rec, serv) in sorted(expensas.items()) if local not in ya]
     if filas:
         p.append(CTAS, f"{HOJA_HISTORICO}!A:E", filas)
@@ -489,21 +567,23 @@ def escribir_en_pestania(p, local, cfg, anio, mes, filas_mes):
     datos = p.leer(CTAS, f"{cfg['pestania']}!A1:H400")
     col_det = ord(layout["detalle"]) - ord("A")
 
-    # DEDUPE: si el concepto ya está en el bloque de este mes, no se vuelve a
-    # escribir. Sin esto, correr el script dos veces duplica el mes entero en la
-    # pestaña — y como el saldo es una cadena de fórmulas, el duplicado se suma
-    # solo al saldo del local sin que nada avise.
+    # DEDUPE por (mes, concepto): si ese concepto ya está bajo esa etiqueta, no
+    # se vuelve a escribir. Sin esto, correr el script dos veces duplica el mes
+    # entero en la pestaña — y como el saldo es una cadena de fórmulas, el
+    # duplicado se suma solo al saldo del local sin que nada avise.
+    # Va por par y no sólo por concepto: un bloque trae dos meses (las expensas
+    # de M y el alquiler de M+1), así que "Servicios comunes" puede aparecer
+    # legítimamente bajo dos etiquetas distintas.
     etq = etiqueta(anio, mes)
-    ya_estan = {str(r[col_det]).strip().lower()
-                for r in datos
-                if r and norm_etiqueta(r[0]) == norm_etiqueta(etq)
-                and len(r) > col_det}
-    pendientes = [(d, m) for d, m in filas_mes if d.strip().lower() not in ya_estan]
+    ya_estan = {(norm_etiqueta(r[0]), str(r[col_det]).strip().lower())
+                for r in datos if r and len(r) > col_det}
+    pendientes = [(e, d, m) for e, d, m in filas_mes
+                  if (norm_etiqueta(e), d.strip().lower()) not in ya_estan]
     if not pendientes:
         return [], f"{local}: {etq} ya estaba en su pestaña — no escribo nada."
     if len(pendientes) < len(filas_mes):
         saltados = len(filas_mes) - len(pendientes)
-        print(f"    ({local}: {saltados} concepto/s de {etq} ya estaban)")
+        print(f"    ({local}: {saltados} concepto/s ya estaban)")
     filas_mes = pendientes
 
     # última fila con algo en Mes o Detalle
@@ -526,9 +606,9 @@ def escribir_en_pestania(p, local, cfg, anio, mes, filas_mes):
                           f"({mes_c!r} / {det_c!r}) — no escribo nada ahí.")
 
     escritas = []
-    for k, (detalle, monto) in enumerate(filas_mes):
+    for k, (etq_fila, detalle, monto) in enumerate(filas_mes):
         fila = destino + k
-        p.escribir(CTAS, f"{cfg['pestania']}!A{fila}", [[etq]])
+        p.escribir(CTAS, f"{cfg['pestania']}!A{fila}", [[etq_fila]])
         p.escribir(CTAS, f"{cfg['pestania']}!{layout['detalle']}{fila}", [[detalle]])
         p.escribir(CTAS, f"{cfg['pestania']}!{layout['egreso']}{fila}", [[monto]])
         escritas.append((fila, detalle, monto))
@@ -550,17 +630,44 @@ def escribir_en_pestania(p, local, cfg, anio, mes, filas_mes):
 
 
 def filas_para_pestania(propuesta, local, anio, mes):
-    """Las filas del mes corriente de un local, en el orden de la pestaña."""
+    """Las filas del BLOQUE de un local, en el orden de la pestaña.
+
+    Un bloque es alquiler del mes M+1 **+ expensas del mes M**: las dos cosas
+    van juntas bajo la misma etiqueta (AGO'26), que es como se le manda al
+    locatario y como están los bloques viejos de la planilla.
+
+    Filtrar sólo por el período del alquiler dejaba las expensas afuera de la
+    pestaña — entraban a CARGOS y el bloque quedaba con el alquiler solo. Como
+    el SALDO de la pestaña es la cadena `saldo anterior + Ingreso − Egreso`, esa
+    expensa no se le reclamaba nunca al locatario, y nada avisaba: el script
+    escribía en CARGOS, decía "verificado" y después "ya estaba, no escribo".
+    Pasó en JUL'26 y AGO'26 de Fabric, Bigg, Boss y Volta.
+
+    El IVA sale de la propuesta, no se recalcula: ahí ya está resuelto qué
+    concepto lleva IVA para cada local.
+    """
     orden = ["Diferencia Alquiler (sin iva)", "Alquiler", "Recupero de gastos",
              "Servicios comunes"]
-    del_mes = [(c, m) for (l, per, c, m, _iva) in propuesta
-               if l == local and per == f"{anio}-{mes:02d}"]
-    del_mes.sort(key=lambda x: orden.index(x[0]) if x[0] in orden else 99)
+    ant_a, ant_m = mes_anterior(anio, mes)
+    # La columna "Mes Origen" de la pestaña lleva el PERÍODO DEL CARGO, no el
+    # del bloque: en JUN'26 de Fabric están el alquiler de junio Y el recupero
+    # de junio. Así que cada fila viaja con su propia etiqueta — las expensas
+    # de julio van bajo JUL'26 aunque se cobren junto al alquiler de agosto.
+    periodos = {f"{anio}-{mes:02d}": etiqueta(anio, mes),
+                f"{ant_a}-{ant_m:02d}": etiqueta(ant_a, ant_m)}
+    del_mes = [(per, c, m, iva) for (l, per, c, m, iva) in propuesta
+               if l == local and per in periodos]
+    del_mes.sort(key=lambda x: (x[0],
+                                orden.index(x[1]) if x[1] in orden else 99))
     salida = []
-    for concepto, monto in del_mes:
-        salida.append((concepto, monto))
-        if concepto == "Alquiler" and LOCALES[local]["iva"]:
-            salida.append(("IVA Alquiler", monto * IVA))
+    for per, concepto, monto, iva in del_mes:
+        etq = periodos[per]
+        salida.append((etq, concepto, monto))
+        if iva:
+            # "Servicios comunes" → "IVA Servicios Comunes", como en los
+            # bloques que ya están escritos en las pestañas.
+            salida.append((etq, "IVA Alquiler" if concepto == "Alquiler"
+                           else f"IVA {concepto.title()}", iva))
     return salida
 
 
@@ -577,6 +684,12 @@ def main():
                     help="ABL Municipal: SOLO Tasa por Servicios + Cont. Hospital. "
                          "Los derechos de construcción y el plan de pagos de la "
                          "misma liquidación son obra y NO van acá.")
+    ap.add_argument("--avn", type=float, default=None,
+                    help="Expensas AVN del mes, a mano, para cuando el extracto "
+                         "del Macro todavía no se importó. Es la suma de las 4 "
+                         "liquidaciones de la carpeta del mes SIGUIENTE (la "
+                         "carpeta es el mes de pago). Sin esto B4 sale del "
+                         "SUMIFS contra Movimientos, que es lo normal.")
     args = ap.parse_args()
 
     anio, mes = parse_mes(args.mes)
@@ -594,9 +707,15 @@ def main():
     elif args.congelar_expensas:
         print(f"Congelando expensas de {MESES_LARGO[ant_m]} {ant_a}…")
         expensas = congelar_expensas(p, ant_a, ant_m, agua=args.agua,
-                                     abl=args.abl, dry_run=not args.escribir)
+                                     abl=args.abl, avn=args.avn,
+                                     dry_run=not args.escribir)
         if expensas and args.escribir:
-            n = guardar_historico(p, ant_a, ant_m, expensas)
+            nota = None
+            if args.avn is not None:
+                nota = (f"congelado por cargos_del_mes.py — AVN {plata(args.avn)} "
+                        f"puesta A MANO (--avn): el extracto del Macro de "
+                        f"{MESES_LARGO[ant_m]} {ant_a} no estaba importado")
+            n = guardar_historico(p, ant_a, ant_m, expensas, nota=nota)
             print(f"  {n} filas guardadas en {HOJA_HISTORICO}.")
     else:
         print(f"Expensas de {ant_a}-{ant_m:02d}: NO están congeladas.")

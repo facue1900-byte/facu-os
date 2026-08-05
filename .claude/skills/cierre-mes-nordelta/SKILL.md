@@ -220,6 +220,20 @@ Queda a mano interpretar (esto sí lo hago yo, leyendo):
 - *Saldo Actual* es un SUMIFS sobre TODO el historial, no el cierre del mes: una
   diferencia ahí puede venir arrastrada de meses viejos. `conciliar.py` la descompone
   (el $0,69 "de junio" era en realidad de marzo, fila 95 de Movimientos).
+- **Un bloque de cobro son DOS períodos** (expensas de M + alquiler de M+1). Filtrar por
+  un solo período dejaba las expensas afuera de la pestaña del local: entraban a CARGOS,
+  el script decía "✅ verificado" y "ya estaba", y **el saldo del locatario no las
+  reclamaba**. Verificar la tabla principal no protege a la secundaria. (05/08/2026)
+- **En la pestaña, la columna "Mes Origen" es el período DEL CARGO, no el del bloque**:
+  las expensas de julio van bajo `JUL'26` aunque se cobren junto al alquiler de agosto.
+  Se lee mirando un bloque viejo de la planilla, no el docstring del script. Por eso el
+  dedupe de pestañas va por el par **(mes, concepto)**: "Servicios comunes" aparece
+  legítimamente bajo dos etiquetas.
+- **`--avn` desbloquea el cobro cuando el extracto del Macro no está importado.** `B4`
+  es un SUMIFS contra Movimientos: sin extracto da $0 y el generador corta. El flag
+  escribe el total de las 4 liquidaciones y restaura la fórmula; **no** carga una fila
+  en Movimientos, así que cuando entre el extracto el gasto entra una sola vez. El mes
+  queda marcado en `EXPENSAS HISTORICO` como puesto a mano.
 
 ## Pendientes
 

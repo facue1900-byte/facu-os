@@ -1648,3 +1648,65 @@ centavo, así que el criterio es ese. Igual con el ABL: de la liquidación de Ti
 van a expensas la Tasa por Servicios Municipales y la Contribución Hospital; los
 DERECHOS DE CONSTRUCCIÓN y el PLAN DE PAGOS FONDO Y ÁRIDOS ($25.975.011,50 en agosto)
 son obra y van a Inversiones. La fórmula `D4` (`=935644+44087`) ya lo decía sola.
+
+---
+
+## 05/08/2026 — Las expensas entraban a CARGOS y nunca a la pestaña del local
+
+**Lo que estaba roto.** `filas_para_pestania()` armaba el bloque de la pestaña con una
+sola línea de filtro: `per == f"{anio}-{mes:02d}"`. Pero un bloque de cobro son **dos
+períodos** — las expensas del mes M más el alquiler del mes M+1. Filtrando por el mes
+del alquiler, las expensas quedaban afuera: entraban a `CARGOS` (esa función no filtra)
+y **nunca llegaban a la pestaña del local**.
+
+Y el saldo del locatario sale de la pestaña, no de CARGOS: es la cadena
+`=G{n-1}+E{n}-F{n}`. O sea que **la expensa no se le reclamaba a nadie**. Pasó en los
+bloques `JUL'26` y `AGO'26` de Fabric, Bigg, Boss y Volta: sólo tenían alquiler, mientras
+`JUN'26` tenía alquiler + Recupero + Servicios Comunes + IVA. Dos meses de expensas sin
+reclamar.
+
+**Por qué no avisó — el patrón que hay que reconocer.** El script decía
+`✅ verificado: las filas están en CARGOS` y después
+`· Fabric: AGO'26 ya estaba en su pestaña — no escribo nada`. Las dos frases eran
+ciertas. La verificación miraba la tabla donde el dato **sí** había entrado, y el dedupe
+confirmaba que el bloque existía sin preguntarse si estaba **completo**. Un chequeo que
+sólo mira la tabla principal no protege a la secundaria — es la misma lección del bloque
+duplicado, del otro lado: aquella vez sobró, esta vez faltó.
+
+**El IVA ya estaba calculado y se tiraba.** La propuesta es
+`(local, período, concepto, monto, iva)` y la función lo desempacaba como `_iva` para
+descartarlo, recalculando después sólo el de Alquiler. Por eso tampoco salía la fila
+`IVA Servicios Comunes`. Ahora sale de la propuesta: el que ya resolvió qué lleva IVA
+es quien tiene que decirlo.
+
+**El error propio, y cómo se encontró.** El primer arreglo escribió las expensas de
+julio bajo la etiqueta `AGO'26` — razonando desde el docstring ("bloque = expensas de M
++ alquiler de M+1") en vez de desde la planilla. Mirando `JUN'26` de Fabric se ve que
+tiene el recupero de **junio** (período 2026-06 en CARGOS, $846.539,07): la columna se
+llama **"Mes Origen"** y lleva el período del cargo, no el del bloque. Cada fila viaja
+ahora con su propia etiqueta, y el dedupe pasó a ser por el par **(mes, concepto)** —
+porque un bloque trae dos meses y "Servicios comunes" aparece legítimamente en los dos.
+Las 13 filas mal etiquetadas se corrigieron verificando detalle y etiqueta antes de
+tocar cada una. **La convención de una planilla se lee en la planilla, no en el
+comentario del código que la escribe.**
+
+**`--avn`, para no esperar al extracto.** `B4` es un `SUMIFS` contra Movimientos, así
+que sin el extracto del Macro importado da $0 y el generador corta — correcto, pero
+dejaba el cobro entero bloqueado. El flag escribe el total de las 4 liquidaciones y
+**restaura la fórmula** igual que el resto. No carga una fila falsa en Movimientos: el
+gasto entra una sola vez, cuando entre el extracto. El mes congelado queda marcado en
+`EXPENSAS HISTORICO` con la nota de que la AVN se puso a mano — sin eso, un valor
+provisorio queda indistinguible de uno definitivo y nadie lo revisa.
+
+**El `finally` que protegía era el que podía perder.** Las dos restauraciones estaban
+encadenadas: si la primera fallaba (timeout, 429, red), la segunda no corría y la
+fórmula de `B4` quedaba pisada por un número, para siempre. Peor: la corrida siguiente
+leía ese número como "el original" y lo volvía a restaurar, **confirmando la corrupción
+mes a mes**. Ahora cada restauración va en su propio `try`, si algo falla se imprime el
+backup en pantalla, y al arrancar se corta si `B4` no empieza con `=`. Lo encontró el
+`code-reviewer`, no yo.
+
+**Y `congelar_expensas` leía formateado.** `A3:R30` sin `render` — de ahí salen el
+recupero y los servicios comunes de los 8 locales. La lección de los centavos ya estaba
+escrita en este mismo archivo y aplicada a las pestañas, pero no en el lugar donde
+**nace** el número. Arreglar un bug donde se ve no lo arregla donde se origina.
