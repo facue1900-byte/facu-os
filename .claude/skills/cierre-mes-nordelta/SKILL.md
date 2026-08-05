@@ -186,6 +186,23 @@ reconstruye: los servicios recalculando los `SUMIFS` contra Movimientos, y la AV
 **despejándola** del recupero congelado de un local y validándola contra los otros
 16. No congela dos veces el mismo mes.
 
+**2-sexies. Deuda en efectivo, para la app de Mati:**
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/deuda_efectivo.py"
+# escribe src/data/deuda-efectivo.json en la app; después: npm run build y deploy
+```
+
+Mati sólo ve `/caja`, y ahí arriba está la tarjeta **«A cobrar en efectivo»** con
+lo que puede salir a buscar hoy. **No es el saldo**: el saldo mezcla banco con
+efectivo. Fabric paga todo por banco y nunca le debe efectivo; Bigg va partido y
+sólo la «Diferencia Alquiler (sin iva)» es en mano. **Tampoco es todo deuda**:
+todos pagan el mes siguiente, así que se separa lo del mes corriente de lo
+vencido cortando por la **última fila de pago** de cada pestaña. Lo que no está
+verificado no se muestra como cobrable (La Jaula dice «a confirmar»). La tarjeta
+se ve aislada en `preview-deuda.html?w=390`, sin login.
+
 **3. Conciliación** — los chequeos deterministas los hace el script; yo interpreto:
 
 ```bash
