@@ -165,6 +165,27 @@ recién cuando Expensas Predio cierra el mes: hasta ahí figuran PENDIENTES, no 
 inventan. **No activar la "generación automática (día 1)" del menú Apps Script**:
 este script la reemplaza con control.
 
+**2-quinquies. Congelar el detalle de expensas** (después de congelar el mes, antes
+de mandarle nada a un locatario):
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/congelar_detalle_expensas.py" \
+  2026-07 --escribir
+```
+
+Facu le manda a cada locatario una **captura del bloque de las filas 40-58 de
+Expensas Predio** (locales en columnas), y eso tiene que dar exactamente lo mismo
+que su cuenta corriente. Pero ese bloque son dos `TRANSPOSE` sobre la tabla viva de
+arriba, **que es de un solo mes**: apenas `A3` vuelve al mes anterior, la captura
+muestra otro número que el de la cuenta. El script escribe abajo un bloque literal
+por mes, sin fórmulas, con el mismo formato — y **se niega a escribir** si el
+detalle no coincide con `EXPENSAS HISTORICO` y con la fila del mes en la pestaña de
+cada local. `EXPENSAS HISTORICO` guarda sólo los dos totales, así que el detalle se
+reconstruye: los servicios recalculando los `SUMIFS` contra Movimientos, y la AVN
+**despejándola** del recupero congelado de un local y validándola contra los otros
+16. No congela dos veces el mismo mes.
+
 **3. Conciliación** — los chequeos deterministas los hace el script; yo interpreto:
 
 ```bash

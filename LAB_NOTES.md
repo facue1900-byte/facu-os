@@ -1859,3 +1859,48 @@ no acomodar.
    pagos recién insertados y **el saldo queda perfectamente formado y equivocado** —
    exactamente el modo de falla que el auditor de la cadena existe para atrapar. Hay
    que re-encadenar esa fila a mano, y volver a leer los saldos después de escribir.
+
+## 05/08/2026 (II) — La captura que le mando al locatario sale de una hoja de un solo mes
+
+Facu le manda a cada locatario una captura del bloque de las filas 40-58 de
+`Expensas Predio` con el detalle de sus expensas, y pidió que eso coincida con la
+cuenta corriente. **No coincidía**, y el motivo es estructural: ese bloque son dos
+fórmulas `TRANSPOSE` sobre la tabla viva de arriba, que **es de un solo mes** —
+todo se recalcula contra la fecha de `A3`. Al generar los cargos, `A3` se pone en
+el mes nuevo y **vuelve al anterior**, así que la captura sacada después muestra el
+mes viejo. Con `A3` en junio, para julio la hoja mostraba a Fabric **$989.867,29**
+de servicios comunes donde su cuenta dice **$821.057,09**: $168.810 de más en un
+número que sale a un tercero.
+
+**Un mirror de una hoja viva no es un registro.** El bloque parecía un archivo
+—tiene el mes escrito arriba— y era una vista. La diferencia sólo se nota cuando
+alguien lo mira un mes después, que es exactamente cuando se manda. Ahora hay un
+bloque **literal, sin fórmulas**, por mes, escrito por
+`congelar_detalle_expensas.py` con el mismo formato del vivo, y que **se niega a
+escribir** si el detalle no coincide contra `EXPENSAS HISTORICO` **y** contra la
+fila del mes en la pestaña de cada local. Dos fuentes, no una.
+
+**Congelar dos totales no alcanza para reconstruir un mes.**
+`--congelar-expensas` guardaba sólo recupero y servicios por local. Julio se pudo
+recuperar igual, pero de casualidad: los servicios se recalculan corriendo los
+`SUMIFS` contra Movimientos, y la AVN —que se había puesto **a mano**, porque el
+extracto del Macro no estaba— se **despeja** del recupero congelado de un local y
+se valida contra los otros 16. Despejada desde Fabric y desde Peak One por
+separado dio el mismo número, $2.650.057,36. De paso: la nota que el propio
+generador dejó escrita dice **$2.651.057,36** — está mal por $1.000. Un valor que
+se anota en prosa y no se vuelve a chequear miente sin que nadie se entere.
+
+**`Movimientos!I` es TEXTO y Sheets lo lee como fecha.** La columna guarda
+`"julio 2026"` y el criterio del `SUMIFS` es `A3`, una fecha. Sheets parsea el
+texto y matchea; Python comparando literal da **$0 en todos los conceptos**, que se
+lee igualito a "no hay datos cargados". Estuve a un paso de reportar que el
+detalle de julio era irrecuperable. **Cuando una réplica en código da todo cero,
+el sospechoso es la réplica, no el dato** — el control que lo destrabó fue correr
+el modelo contra la hoja viva primero: si no reproduce lo que ya está a la vista,
+el modelo está mal y no hay nada que concluir del mes viejo.
+
+**Lo que apareció al reconstruir.** `Sueldo Mantenimiento Gastronomia` de julio no
+está en Movimientos (junio: $1.936.000, julio: $0), y de ahí salen *Limpieza Baños*
+(`I4 = sueldo/2`) y *Limpieza Predio* (`K4 = I4`). **Julio se facturó con los dos
+en $0** para todos los locales: con el valor de junio serían ~$939.928 más entre
+los 6 que hoy pagan. Un input que falta no rompe nada — reparte cero y sigue.
