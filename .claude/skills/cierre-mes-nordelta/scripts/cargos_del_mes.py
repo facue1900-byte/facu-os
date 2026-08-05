@@ -1,0 +1,465 @@
+#!/usr/bin/env python3
+"""
+Generador del bloque mensual de cuentas corrientes — Paseo Nordelta.
+
+Un bloque de cobro es, para cada local:
+
+    expensas del mes M  +  alquiler del mes M+1
+
+que es lo que se le manda junto. Este script lo arma entero.
+
+    cargos_del_mes.py <AAAA-MM del ALQUILER> [--escribir] [--congelar-expensas]
+
+Sin --escribir SOLO propone: imprime la tabla y no toca nada. El generador
+propone, la edición de Facu manda (una expensa de mejoras alta se parte en
+cuotas a mano — eso no lo decide un script).
+
+## Por qué existe "congelar"
+
+Las expensas salen de `Expensas Predio` del Master Plan, que es una hoja de UN
+SOLO MES VIVO: la celda A3 tiene la fecha y todo se recalcula contra ella. Sacar
+julio ahí BORRA junio. Con --congelar-expensas el script cambia la fecha, lee el
+resultado, lo guarda como filas en la hoja `EXPENSAS HISTORICO` de Ctas Ctes y
+**restaura la fecha original** (try/finally). A partir de ahí ningún mes vuelve a
+depender de una hoja viva.
+
+Verificaciones que corre siempre, porque cada una ya falló o puede fallar en
+silencio:
+
+  - Expensas AVN del mes en Movimientos: si da 0, el recupero sale 0 para los 8
+    locales y nadie se entera. Corta.
+  - Columnas por pestaña: Fabric/Bigg/Boss tienen columna FC y Volta/Peak One no,
+    así que el egreso va en F en unas y en E en otras. Escribir en la columna
+    equivocada pisa el SALDO. El layout es por pestaña, nunca asumido.
+  - Dedupe: no escribe un concepto que ya existe para ese local y mes.
+  - Post-escritura: relee lo escrito y lo compara contra lo propuesto.
+"""
+
+import argparse
+import re
+import sys
+
+sys.path.insert(0, "/Users/Facu/facu-os")
+from execution.google_auth import sheets  # noqa: E402
+
+CTAS = "10BDmKvv2wY2M4lVYYab3NiNT04WLh5JjO-EhWI4tnNs"
+MASTER = "1ATiNBHCukPYPn9-poP1HO4SlfsDu5pGXsLz-JvW-IQs"
+HOJA_HISTORICO = "EXPENSAS HISTORICO"
+
+MESES = {1: "ENE", 2: "FEB", 3: "MAR", 4: "ABR", 5: "MAY", 6: "JUN",
+         7: "JUL", 8: "AGO", 9: "SEP", 10: "OCT", 11: "NOV", 12: "DIC"}
+MESES_LARGO = {1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo",
+               6: "junio", 7: "julio", 8: "agosto", 9: "septiembre",
+               10: "octubre", 11: "noviembre", 12: "diciembre"}
+
+# Layout de cada pestaña. Fabric/Bigg/Boss tienen una columna "FC" que Volta y
+# Peak One no tienen, así que ingreso/egreso/saldo caen corridos una columna.
+# Verificado leyendo la fila de encabezado de cada pestaña el 05/08/2026.
+LAYOUT_CON_FC = {"detalle": "C", "ingreso": "E", "egreso": "F", "saldo": "G"}
+LAYOUT_SIN_FC = {"detalle": "C", "ingreso": "D", "egreso": "E", "saldo": "F"}
+
+# local en CARGOS → cómo se llama en cada lado
+LOCALES = {
+    "Fabric": {
+        "pestania": "Fabric", "expensas_predio": "Fabric",
+        "layout": LAYOUT_CON_FC, "iva": True, "cobra_por": "Banco",
+        "alquiler": "del mes anterior", "partido": False,
+    },
+    "Bigg": {
+        "pestania": "Bigg", "expensas_predio": "Bigg",
+        "layout": LAYOUT_CON_FC, "iva": True,
+        "cobra_por": "Mixto (facturado banco + mitad efectivo)",
+        "alquiler": "del mes anterior",
+        # 50% facturado con IVA + 50% "Diferencia Alquiler" en efectivo sin IVA
+        "partido": True,
+    },
+    "Boss": {
+        "pestania": "Boss", "expensas_predio": "Hamburgueseria",
+        "layout": LAYOUT_CON_FC, "iva": False, "cobra_por": "Efectivo",
+        "alquiler": "del mes anterior", "partido": False,
+    },
+    "Volta + Open": {
+        "pestania": "Volta + Open 25", "expensas_predio": "Heladeria",
+        "layout": LAYOUT_SIN_FC, "iva": False, "cobra_por": "Efectivo",
+        "alquiler": "del mes anterior", "partido": False,
+    },
+    "Peak One": {
+        "pestania": "Peak One", "expensas_predio": "Peak One",
+        "layout": LAYOUT_SIN_FC, "iva": False, "cobra_por": "Efectivo",
+        # sin alquiler propio hasta dic-26: solo recupero + servicios
+        "alquiler": 0, "partido": False,
+    },
+    "Salón (Alto)": {
+        "pestania": "Salon Multiespacios", "expensas_predio": "Salon Alto",
+        "layout": LAYOUT_CON_FC, "iva": False, "cobra_por": "Efectivo",
+        # expensas PACTADAS en $1.000.000, no las de la hoja (Facu 27/07/2026)
+        "alquiler": 0, "partido": False, "expensas_pactadas": 1_000_000,
+    },
+    "La Jaula / torneo": {
+        "pestania": None, "expensas_predio": "Contenedor Jaula",
+        "layout": None, "iva": False, "cobra_por": "Efectivo",
+        # primera alta: agosto 2026, $1.000.000 + $798.825 de servicios
+        "alquiler": 1_000_000, "partido": False,
+        "desde": "2026-08", "servicios_pactados": 798_825,
+    },
+    # Escuelita no lleva cargo generado: paga un % de facturación y el ingreso
+    # entra solo por Movimientos.
+}
+
+IVA = 0.21
+
+
+def etiqueta(anio, mes):
+    return f"{MESES[mes]}'{anio % 100}"
+
+
+def mes_anterior(anio, mes):
+    return (anio - 1, 12) if mes == 1 else (anio, mes - 1)
+
+
+def parse_mes(txt):
+    m = re.fullmatch(r"(\d{4})-(\d{2})", txt or "")
+    if not m or not 1 <= int(m.group(2)) <= 12:
+        sys.exit(f"El mes va como AAAA-MM, no {txt!r}.")
+    return int(m.group(1)), int(m.group(2))
+
+
+def plata(x):
+    return f"${x:,.2f}"
+
+
+class Planillas:
+    def __init__(self):
+        self.s = sheets(cuenta="facu")
+
+    def leer(self, sid, rango, render="FORMATTED_VALUE"):
+        return self.s.spreadsheets().values().get(
+            spreadsheetId=sid, range=rango, valueRenderOption=render
+        ).execute().get("values", [])
+
+    def escribir(self, sid, rango, valores):
+        return self.s.spreadsheets().values().update(
+            spreadsheetId=sid, range=rango, valueInputOption="USER_ENTERED",
+            body={"values": valores},
+        ).execute()
+
+    def append(self, sid, rango, filas):
+        return self.s.spreadsheets().values().append(
+            spreadsheetId=sid, range=rango, valueInputOption="USER_ENTERED",
+            insertDataOption="INSERT_ROWS", body={"values": filas},
+        ).execute()
+
+    def hojas(self, sid):
+        meta = self.s.spreadsheets().get(spreadsheetId=sid).execute()
+        return [h["properties"]["title"] for h in meta["sheets"]]
+
+    def crear_hoja(self, sid, titulo):
+        self.s.spreadsheets().batchUpdate(
+            spreadsheetId=sid,
+            body={"requests": [{"addSheet": {"properties": {"title": titulo}}}]},
+        ).execute()
+
+
+def num(x):
+    """Un valor de Sheets a float. '$1,205,581' → 1205581.0, vacío → 0.0."""
+    if x is None or x == "":
+        return 0.0
+    if isinstance(x, (int, float)):
+        return float(x)
+    limpio = str(x).replace("$", "").replace(",", "").replace("−", "-").strip()
+    if limpio.startswith("(") and limpio.endswith(")"):
+        limpio = "-" + limpio[1:-1]
+    try:
+        return float(limpio)
+    except ValueError:
+        return 0.0
+
+
+# ---------------------------------------------------------------- expensas ---
+
+def expensas_del_historico(p, anio, mes):
+    """Lee el mes de EXPENSAS HISTORICO. {local_predio: (recupero, servicios)}."""
+    if HOJA_HISTORICO not in p.hojas(CTAS):
+        return {}
+    filas = p.leer(CTAS, f"{HOJA_HISTORICO}!A2:E500")
+    clave = f"{anio}-{mes:02d}"
+    return {r[1]: (num(r[2]), num(r[3]))
+            for r in filas if len(r) >= 4 and r[0] == clave}
+
+
+def congelar_expensas(p, anio, mes, dry_run=True):
+    """Pone la fecha del mes en Expensas Predio, lee, y RESTAURA la fecha.
+
+    Devuelve {local_predio: (recupero, servicios_comunes)}.
+    Corta si Expensas AVN del mes da 0: eso significa que las facturas del mes
+    no están cargadas en Movimientos y el recupero saldría en cero sin avisar.
+    """
+    original = p.leer(MASTER, "Expensas Predio!A2:A3", render="FORMULA")
+    a2 = original[0][0] if original and original[0] else ""
+    a3 = original[1][0] if len(original) > 1 and original[1] else ""
+    print(f"  Expensas Predio está hoy en A2={a2} A3={a3} (se restaura al final)")
+
+    # El SUMIFS compara Movimientos!I:I contra A3. La columna I es texto
+    # ("junio 2026"), así que se escribe en ese formato y NO como fecha.
+    periodo_texto = f"{MESES_LARGO[mes]} {anio}"
+    fecha_a2 = f"1/{mes}/{anio}"
+
+    if dry_run:
+        print("  [dry-run] no se toca la fecha de Expensas Predio.")
+        return None
+
+    try:
+        p.escribir(MASTER, "Expensas Predio!A2:A3", [[fecha_a2], [periodo_texto]])
+        datos = p.leer(MASTER, "Expensas Predio!A3:R30")
+        avn = num(datos[1][1]) if len(datos) > 1 and len(datos[1]) > 1 else 0.0
+        if avn == 0:
+            raise SystemExit(
+                f"CORTO: Expensas AVN de {periodo_texto} da $0 en Movimientos.\n"
+                f"  Sin esa factura el recupero sale 0 para todos los locales y "
+                f"no avisa. Cargá el movimiento y volvé a correr."
+            )
+        print(f"  Expensas AVN {periodo_texto}: {plata(avn)}")
+        out = {}
+        for fila in datos[4:]:          # los locales arrancan en la fila 7
+            if not fila or not fila[0]:
+                continue
+            recupero = num(fila[4]) if len(fila) > 4 else 0.0
+            servicios = num(fila[16]) if len(fila) > 16 else 0.0
+            if recupero or servicios:
+                out[fila[0]] = (recupero, servicios)
+        return out
+    finally:
+        p.escribir(MASTER, "Expensas Predio!A2:A3", [[a2], [a3]])
+        print("  Expensas Predio restaurada a como estaba.")
+
+
+def guardar_historico(p, anio, mes, expensas):
+    if HOJA_HISTORICO not in p.hojas(CTAS):
+        p.crear_hoja(CTAS, HOJA_HISTORICO)
+        p.escribir(CTAS, f"{HOJA_HISTORICO}!A1:E1", [[
+            "Período", "Local (Expensas Predio)", "Recupero de gastos",
+            "Servicios comunes", "Nota"]])
+    ya = expensas_del_historico(p, anio, mes)
+    filas = [[f"{anio}-{mes:02d}", local, rec, serv,
+              "congelado por cargos_del_mes.py"]
+             for local, (rec, serv) in sorted(expensas.items()) if local not in ya]
+    if filas:
+        p.append(CTAS, f"{HOJA_HISTORICO}!A:E", filas)
+    return len(filas)
+
+
+# ------------------------------------------------------------------ cargos ---
+
+def norm_etiqueta(x):
+    """`JUL' 26` y `JUL'26` son el mismo mes: en Boss está tipeado con espacio."""
+    return str(x or "").upper().replace(" ", "").replace("’", "'").strip()
+
+
+def bloque_de_pestania(p, pestania, layout, etiqueta_mes):
+    """Filas de un mes en la pestaña del local: [(fila, detalle, egreso)]."""
+    filas = p.leer(CTAS, f"{pestania}!A1:H400")
+    col_det = ord(layout["detalle"]) - ord("A")
+    col_egr = ord(layout["egreso"]) - ord("A")
+    objetivo = norm_etiqueta(etiqueta_mes)
+    out = []
+    for i, r in enumerate(filas, 1):
+        if not r or norm_etiqueta(r[0]) != objetivo:
+            continue
+        det = r[col_det].strip() if len(r) > col_det else ""
+        egr = num(r[col_egr]) if len(r) > col_egr else 0.0
+        out.append((i, det, egr))
+    return out, len(filas)
+
+
+def alquiler_vigente(p, cfg, anio, mes):
+    """El alquiler del mes anterior en la pestaña — la verdad operativa de hoy.
+
+    NO aplica ajuste por IPC: el IPC de julio sale ~15/08 y el ajuste trimestral
+    de Bigg rige desde septiembre. Si un local tiene ajuste este mes, se corrige
+    la propuesta a mano. El script nunca inventa un precio nuevo.
+    """
+    ant_a, ant_m = mes_anterior(anio, mes)
+    bloque, _ = bloque_de_pestania(p, cfg["pestania"], cfg["layout"],
+                                   etiqueta(ant_a, ant_m))
+    # En un local partido (Bigg) el alquiler del mes son DOS filas del mismo
+    # monto: la facturada y la "Diferencia" en efectivo. Se suman las dos, y
+    # después proponer() lo vuelve a partir por la mitad.
+    conceptos = ("alquiler", "alq facturado",
+                 "diferencia alquiler (sin iva)", "diferencia alquiler", "dif alq")
+    return sum(e for _, d, e in bloque if d.lower().strip() in conceptos)
+
+
+def cargos_existentes(p, anio, mes):
+    filas = p.leer(CTAS, "CARGOS!A4:I500")
+    clave = f"{anio}-{mes:02d}"
+    return {(r[1].strip(), r[2].strip()) for r in filas
+            if len(r) >= 3 and str(r[0]).strip() == clave}
+
+
+def proponer(p, anio, mes, expensas):
+    """Arma el bloque: expensas del mes anterior + alquiler del mes."""
+    ant_a, ant_m = mes_anterior(anio, mes)
+    propuesta = []
+    avisos = []
+
+    for local, cfg in LOCALES.items():
+        desde = cfg.get("desde")
+        if desde and f"{anio}-{mes:02d}" < desde:
+            continue
+
+        # --- alquiler del mes corriente
+        alq = cfg["alquiler"]
+        if alq == "del mes anterior":
+            if not cfg["pestania"]:
+                avisos.append(f"{local}: sin pestaña, no puedo leer el alquiler.")
+                alq = 0
+            else:
+                alq = alquiler_vigente(p, cfg, anio, mes)
+                if alq == 0:
+                    avisos.append(
+                        f"{local}: no encontré alquiler en {etiqueta(ant_a, ant_m)} "
+                        f"de su pestaña. Va en 0 — confirmá el precio.")
+        if alq:
+            if cfg["partido"]:
+                mitad = alq / 2
+                propuesta.append((local, f"{anio}-{mes:02d}",
+                                  "Diferencia Alquiler (sin iva)", mitad, 0.0))
+                propuesta.append((local, f"{anio}-{mes:02d}", "Alquiler", mitad,
+                                  mitad * IVA if cfg["iva"] else 0.0))
+            else:
+                propuesta.append((local, f"{anio}-{mes:02d}", "Alquiler", alq,
+                                  alq * IVA if cfg["iva"] else 0.0))
+
+        # --- expensas del mes anterior
+        if cfg.get("expensas_pactadas"):
+            propuesta.append((local, f"{ant_a}-{ant_m:02d}", "Servicios comunes",
+                              float(cfg["expensas_pactadas"]), 0.0))
+            continue
+        if cfg.get("servicios_pactados"):
+            propuesta.append((local, f"{anio}-{mes:02d}", "Servicios comunes",
+                              float(cfg["servicios_pactados"]), 0.0))
+            continue
+        if expensas is None:
+            avisos.append(f"{local}: expensas de {ant_a}-{ant_m:02d} sin congelar.")
+            continue
+        clave = cfg["expensas_predio"]
+        if clave not in expensas:
+            avisos.append(f"{local}: no está '{clave}' en Expensas Predio.")
+            continue
+        recupero, servicios = expensas[clave]
+        if recupero:
+            propuesta.append((local, f"{ant_a}-{ant_m:02d}",
+                              "Recupero de gastos", recupero, 0.0))
+        if servicios:
+            propuesta.append((local, f"{ant_a}-{ant_m:02d}", "Servicios comunes",
+                              servicios, servicios * IVA if cfg["iva"] else 0.0))
+
+    return propuesta, avisos
+
+
+def imprimir(propuesta, avisos, anio, mes):
+    ant_a, ant_m = mes_anterior(anio, mes)
+    print(f"\nBLOQUE DE COBRO — alquiler {MESES_LARGO[mes]} {anio} "
+          f"+ expensas {MESES_LARGO[ant_m]} {ant_a}\n")
+    print(f"  {'Local':<20}{'Período':<10}{'Concepto':<32}"
+          f"{'Monto':>16}{'IVA':>14}{'Total':>16}")
+    print("  " + "─" * 108)
+    actual = None
+    tot_general = 0.0
+    for local, per, concepto, monto, iva in propuesta:
+        if local != actual:
+            if actual is not None:
+                print()
+            actual = local
+        total = monto + iva
+        tot_general += total
+        print(f"  {local:<20}{per:<10}{concepto:<32}"
+              f"{plata(monto):>16}{plata(iva) if iva else '—':>14}{plata(total):>16}")
+    print("  " + "─" * 108)
+    print(f"  {'TOTAL A COBRAR':<62}{plata(tot_general):>46}\n")
+    if avisos:
+        print("PENDIENTES (no se inventa nada):")
+        for a in avisos:
+            print(f"  · {a}")
+        print()
+    return tot_general
+
+
+def escribir_cargos(p, propuesta, anio, mes):
+    """Escribe en CARGOS lo que todavía no está, y verifica releyendo."""
+    filas = []
+    for local, per, concepto, monto, iva in propuesta:
+        a, m = (int(x) for x in per.split("-"))
+        ya = cargos_existentes(p, a, m)
+        if (local, concepto) in ya:
+            print(f"  ya estaba: {local} {per} {concepto} — no lo toco")
+            continue
+        cobra = LOCALES[local]["cobra_por"]
+        filas.append([f"1/{m}/{a}", local, concepto, monto, iva, monto + iva,
+                      "", cobra, "cargos_del_mes.py"])
+    if not filas:
+        print("  Nada nuevo para escribir en CARGOS.")
+        return 0
+    p.append(CTAS, "CARGOS!A:I", filas)
+    print(f"  {len(filas)} filas agregadas a CARGOS.")
+
+    # verificación: releer y confirmar que están, con el monto correcto
+    faltan = []
+    for f in filas:
+        a, m = (int(x) for x in (f[0].split("/")[2], f[0].split("/")[1]))
+        if (f[1], f[2]) not in cargos_existentes(p, a, m):
+            faltan.append(f"{f[1]} {f[2]}")
+    if faltan:
+        print("  ⚠ NO quedaron escritas: " + ", ".join(faltan))
+    else:
+        print("  ✅ verificado: las filas están en CARGOS.")
+    return len(filas)
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("mes", help="AAAA-MM del ALQUILER (las expensas son del mes anterior)")
+    ap.add_argument("--escribir", action="store_true",
+                    help="escribe en CARGOS (sin esto solo propone)")
+    ap.add_argument("--congelar-expensas", action="store_true",
+                    help="toca la fecha de Expensas Predio y la restaura")
+    args = ap.parse_args()
+
+    anio, mes = parse_mes(args.mes)
+    ant_a, ant_m = mes_anterior(anio, mes)
+    p = Planillas()
+
+    print(f"Cuentas corrientes — Paseo Nordelta")
+    print(f"Alquiler de {MESES_LARGO[mes]} {anio} + expensas de "
+          f"{MESES_LARGO[ant_m]} {ant_a}\n")
+
+    expensas = expensas_del_historico(p, ant_a, ant_m)
+    if expensas:
+        print(f"Expensas de {ant_a}-{ant_m:02d}: {len(expensas)} locales "
+              f"desde {HOJA_HISTORICO} (ya congeladas).")
+    elif args.congelar_expensas:
+        print(f"Congelando expensas de {MESES_LARGO[ant_m]} {ant_a}…")
+        expensas = congelar_expensas(p, ant_a, ant_m, dry_run=not args.escribir)
+        if expensas and args.escribir:
+            n = guardar_historico(p, ant_a, ant_m, expensas)
+            print(f"  {n} filas guardadas en {HOJA_HISTORICO}.")
+    else:
+        print(f"Expensas de {ant_a}-{ant_m:02d}: NO están congeladas.")
+        print(f"  Corré con --congelar-expensas para traerlas "
+              f"(toca y restaura la fecha del Master Plan).")
+        expensas = None
+    print()
+
+    propuesta, avisos = proponer(p, anio, mes, expensas)
+    imprimir(propuesta, avisos, anio, mes)
+
+    if not args.escribir:
+        print("[SIN --escribir] No toqué nada. Revisá la tabla y volvé a correr "
+              "con --escribir.")
+        return
+    print("Escribiendo en CARGOS…")
+    escribir_cargos(p, propuesta, anio, mes)
+
+
+if __name__ == "__main__":
+    main()
