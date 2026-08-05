@@ -19,3 +19,6 @@ __pycache__/
 # Respaldos de la base de clientes: son datos personales de alumnos (mail, teléfono).
 # archive/ va a git, esto NO. Sin esta línea aparece como untracked y un `git add -A` lo mete.
 archive/base-clientes-*/
+
+# backup transitorio de Expensas Predio (se regenera en cada corrida)
+.claude/skills/cierre-mes-nordelta/scripts/expensas_predio_backup.json
