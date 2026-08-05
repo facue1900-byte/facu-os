@@ -106,6 +106,18 @@ la falla por casilla de MP, intermitente, ya documentada desde el 01/08. Quedó 
 el script para que un 500 ahí no se lea nunca más como "el arreglo no sirve" — las ramas
 que prueban el fix no dependen de MP. `npm run verificar:mail-de-pago`.
 
+**CIERRE (05/08/2026, mismo día).** Se probó con plata real dos veces y quedó prendido en
+producción (`MP_LINK_PERSONAL=1`). La primera prueba pasó la atribución —Facu pagó desde
+`facue1900@gmail.com` un link que pertenecía a otra cuenta y el pago cayó donde debía— pero
+**imprimió `suscripción: ninguna` como un simple mensaje en pantalla, no como un chequeo.**
+Ese renglón era el bloqueante: sin la fila de `subscriptions`, un cambio de plan no da de
+baja el plan anterior y el alumno paga DOS suscripciones. Se vio de casualidad.
+
+**La lección concreta: un dato cuyo modo de falla cuesta plata no puede ser decorado.** Pasó
+a ser cuatro aserciones, y la segunda prueba las pasó todas. Es la misma forma del error que
+esta Lab Note describe arriba —el sistema contestando "ok" mientras algo faltaba— y reapareció
+dentro de la propia herramienta escrita para detectarlo.
+
 ### 2026-08-04 · Dos sesiones sobre el mismo repo, y un `git add -A` que se llevó puesto trabajo ajeno
 
 Construyendo el Centro de Problemas en `astronomy-members`, otra sesión de Claude estaba
