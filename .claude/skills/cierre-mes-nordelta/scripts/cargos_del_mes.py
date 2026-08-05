@@ -36,6 +36,8 @@ silencio:
 """
 
 import argparse
+import json
+import os
 import re
 import sys
 
@@ -187,17 +189,40 @@ def expensas_del_historico(p, anio, mes):
             for r in filas if len(r) >= 4 and r[0] == clave}
 
 
-def congelar_expensas(p, anio, mes, dry_run=True):
-    """Pone la fecha del mes en Expensas Predio, lee, y RESTAURA la fecha.
+def congelar_expensas(p, anio, mes, agua=None, abl=None, dry_run=True):
+    """Pone la fecha del mes en Expensas Predio, lee, y RESTAURA todo lo tocado.
 
     Devuelve {local_predio: (recupero, servicios_comunes)}.
+
+    `agua` y `abl` son los dos números que Facu tipea a mano cada mes (C4 y D4):
+    no salen de Movimientos ni de ningún PDF del Desktop. Si no se pasan, la hoja
+    queda con los del mes anterior y el recupero sale mal — por eso se exigen.
+
+      · Agua R&S      → factura de la prestataria, la pasa Facu
+      · ABL Municipal → liquidación de Tigre: SOLO "Tasa por Servicios
+        Municipales" + "Cont. Esp. Hospital". Los DERECHOS DE CONSTRUCCIÓN y el
+        PLAN DE PAGOS FONDO Y ÁRIDOS de la misma liquidación son obra (CAPEX) y
+        NO se le cobran a los locales: van a Inversiones.
+
     Corta si Expensas AVN del mes da 0: eso significa que las facturas del mes
     no están cargadas en Movimientos y el recupero saldría en cero sin avisar.
     """
-    original = p.leer(MASTER, "Expensas Predio!A2:A3", render="FORMULA")
+    # A2:D4 devuelve TRES filas: la 2, la 3 y la 4. La fila 4 es el índice 2.
+    original = p.leer(MASTER, "Expensas Predio!A2:D4", render="FORMULA")
     a2 = original[0][0] if original and original[0] else ""
     a3 = original[1][0] if len(original) > 1 and original[1] else ""
-    print(f"  Expensas Predio está hoy en A2={a2} A3={a3} (se restaura al final)")
+    fila4 = original[2] if len(original) > 2 else []
+    c4_orig = fila4[2] if len(fila4) > 2 else ""
+    d4_orig = fila4[3] if len(fila4) > 3 else ""
+    if c4_orig == "" or d4_orig == "":
+        raise SystemExit(
+            f"CORTO: no pude leer los valores actuales de C4 (Agua) y D4 (ABL) "
+            f"— leí C4={c4_orig!r} D4={d4_orig!r}.\n"
+            f"  Sin ellos no puedo restaurarlos después, y escribir arriba los "
+            f"perdería para siempre. No toco nada."
+        )
+    print(f"  Expensas Predio está hoy en A2={a2} A3={a3}")
+    print(f"    C4 (Agua)={c4_orig}  D4 (ABL)={d4_orig}  — se restaura todo al final")
 
     # El SUMIFS compara Movimientos!I:I contra A3. La columna I es texto
     # ("junio 2026"), así que se escribe en ese formato y NO como fecha.
@@ -207,9 +232,27 @@ def congelar_expensas(p, anio, mes, dry_run=True):
     if dry_run:
         print("  [dry-run] no se toca la fecha de Expensas Predio.")
         return None
+    if agua is None or abl is None:
+        raise SystemExit(
+            "CORTO: faltan --agua y/o --abl.\n"
+            "  Son los dos números que se tipean a mano (C4 y D4 de Expensas\n"
+            "  Predio). Sin ellos la hoja calcularía el recupero de este mes con\n"
+            "  los importes del mes anterior y nadie se enteraría."
+        )
+
+    # Si el proceso muere entre el escribir y el finally (Ctrl-C, kill, caída de
+    # red), el Master Plan queda con el mes y los importes de otro período
+    # puestos, y eso no avisa. Se deja el backup en disco ANTES de tocar nada.
+    backup = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                          "expensas_predio_backup.json")
+    with open(backup, "w", encoding="utf-8") as fh:
+        json.dump({"A2": a2, "A3": a3, "C4": c4_orig, "D4": d4_orig}, fh,
+                  ensure_ascii=False, indent=2)
+    print(f"  backup de los valores originales en {backup}")
 
     try:
         p.escribir(MASTER, "Expensas Predio!A2:A3", [[fecha_a2], [periodo_texto]])
+        p.escribir(MASTER, "Expensas Predio!C4:D4", [[agua, abl]])
         datos = p.leer(MASTER, "Expensas Predio!A3:R30")
         avn = num(datos[1][1]) if len(datos) > 1 and len(datos[1]) > 1 else 0.0
         if avn == 0:
@@ -219,6 +262,15 @@ def congelar_expensas(p, anio, mes, dry_run=True):
                 f"no avisa. Cargá el movimiento y volvé a correr."
             )
         print(f"  Expensas AVN {periodo_texto}: {plata(avn)}")
+        print(f"  Agua R&S: {plata(agua)} · ABL Municipal: {plata(abl)}")
+        # P4 (Retiro de basura) está clavado a "mayo 2026" literal mientras sus
+        # nueve hermanas usan A3. Se avisa siempre hasta que se arregle: si no,
+        # el concepto viaja congelado de mes en mes sin que nadie lo note.
+        p4 = p.leer(MASTER, "Expensas Predio!P4", render="FORMULA")
+        if p4 and p4[0] and "mayo 2026" in str(p4[0][0]):
+            print("  ⚠ Retiro de basura sigue clavado a \"mayo 2026\" en P4 "
+                  "(las otras 9 columnas usan A3).")
+            print("    Este mes también se reparte mayo÷3. Arreglar la fórmula.")
         out = {}
         for fila in datos[4:]:          # los locales arrancan en la fila 7
             if not fila or not fila[0]:
@@ -230,7 +282,8 @@ def congelar_expensas(p, anio, mes, dry_run=True):
         return out
     finally:
         p.escribir(MASTER, "Expensas Predio!A2:A3", [[a2], [a3]])
-        print("  Expensas Predio restaurada a como estaba.")
+        p.escribir(MASTER, "Expensas Predio!C4:D4", [[c4_orig, d4_orig]])
+        print("  Expensas Predio restaurada a como estaba (fecha, Agua y ABL).")
 
 
 def guardar_historico(p, anio, mes, expensas):
@@ -423,6 +476,12 @@ def main():
                     help="escribe en CARGOS (sin esto solo propone)")
     ap.add_argument("--congelar-expensas", action="store_true",
                     help="toca la fecha de Expensas Predio y la restaura")
+    ap.add_argument("--agua", type=float, default=None,
+                    help="Agua R&S del mes de las expensas (C4, se tipea a mano)")
+    ap.add_argument("--abl", type=float, default=None,
+                    help="ABL Municipal: SOLO Tasa por Servicios + Cont. Hospital. "
+                         "Los derechos de construcción y el plan de pagos de la "
+                         "misma liquidación son obra y NO van acá.")
     args = ap.parse_args()
 
     anio, mes = parse_mes(args.mes)
@@ -439,7 +498,8 @@ def main():
               f"desde {HOJA_HISTORICO} (ya congeladas).")
     elif args.congelar_expensas:
         print(f"Congelando expensas de {MESES_LARGO[ant_m]} {ant_a}…")
-        expensas = congelar_expensas(p, ant_a, ant_m, dry_run=not args.escribir)
+        expensas = congelar_expensas(p, ant_a, ant_m, agua=args.agua,
+                                     abl=args.abl, dry_run=not args.escribir)
         if expensas and args.escribir:
             n = guardar_historico(p, ant_a, ant_m, expensas)
             print(f"  {n} filas guardadas en {HOJA_HISTORICO}.")
