@@ -373,12 +373,40 @@ una pantalla más que nadie abre, que es exactamente el problema que ya tenemos.
 
 ---
 
-# 9 · LO QUE NECESITO DE VOS
+# 9 · LAS TRES PREGUNTAS, CONTESTADAS EL 06/08
 
-1. **El chatbot de Gonza: ¿dónde atiende y qué hace?** ¿Contesta WhatsApp e Instagram, o es
-   sólo de la web? Si atiende los dos, **él es la solución al agujero del CRM** y el diseño
-   cambia entero: no carga José, escribe el bot.
-2. **Los dos Gold que nunca vinieron** (Pacino y Toninelli): están pagando $195.600 y no
-   reciben nada. ¿Los dejamos pagando, les pausamos el plan, o les ofrecemos algo?
-3. **Guini y Valen: ¿querés que puedan manejar su propia agenda?** Hoy dependen de que José
-   o Pastrana se la carguen.
+**1. El chatbot de Gonza atiende WhatsApp.** Confirmado por Facu. Entonces el diseño del CRM
+queda decidido: **el bot escribe el lead, no José.** Cargar a mano sería agregarle trabajo
+manual a la persona más ocupada del equipo, justo al revés de lo que se busca. Lo que hay que
+definir con Gonza es una sola cosa: dónde deja el bot el nombre, el contacto y qué pidió.
+
+**2. Los dos Gold SÍ reciben créditos — mi "no reciben nada" estaba mal.** Corregido:
+
+| | Créditos vigentes | Equivalen a | Vencen |
+|---|---|---|---|
+| Federico Toninelli | 6.960 | **116 clases** | 01/09/2026 |
+| Santiago Pacino | 6.730 | **112 clases** | 01/09/2026 |
+
+Y ahí aparece lo que sí es un problema: **13.690 créditos vencen el 01/09**, en 26 días, y
+**pagar de nuevo no los salva.** `grant_credits` inserta un lote nuevo con su propio
+vencimiento; **no extiende el de los lotes viejos.** O sea que van a pagar agosto y
+septiembre y perder igual todo lo acumulado.
+
+El detector de la cola de José los va a levantar, pero recién el **22/08** — su ventana es de
+10 días. Llega a tiempo por poco.
+
+**Lo que hay que decidir antes es otra cosa: si ese saldo es correcto.** Los dos lotes
+grandes vienen de `recalc-calendly:2026-07-01`, un recálculo de la migración. 116 clases de
+crédito para alguien que nunca tomó ninguna es un número que conviene mirar antes de que
+entre a una cola que va a decir "rescatar $4.176.000".
+
+**3. Guini y Valen YA PUEDEN manejar su disponibilidad. No hay nada que construir.**
+`/profe/horarios` **no pide ningún permiso**: sólo tener `professor_name`, y los dos lo
+tienen. De hecho ya hay franjas cargadas — Guini 2, Valen 5, Pastrana 7.
+
+Y lo de Valen online también está resuelto desde antes: está marcado `online: true` en
+`lib/profes.ts`, con su link de Discord, y `ONLINE_PROFES` significa literalmente *"profes que
+NO se rigen por los horarios del estudio"*. Se adapta a Valen exactamente como se pidió.
+
+**El problema no es de software: es que ninguno de los dos lo sabe.** Cero acciones desde que
+tienen cuenta. Se resuelve con un mensaje, no con código.
