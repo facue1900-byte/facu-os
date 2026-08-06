@@ -2038,3 +2038,62 @@ la numeración *post* primer insert, así que la fila de abajo cayó una más ab
 fuera del bloque y debajo del total. En una tabla donde el orden es semántico, el
 orden de los inserts y el sistema de coordenadas de las posiciones tienen que
 decidirse juntos, no por separado.
+
+## 06/08/2026 — El permiso más chico que existía abría la base entera de alumnos
+
+Lanfran necesitaba entrar al back office de Astronomy para tres cosas: las demos
+del sello, el catálogo de lanzamientos, el calendario y el usuario/clave de DJ
+Delivery. Nada de la academia. El sistema de permisos ya existía y tenía trece
+llaves, y aun así **no había forma de darle eso sin darle de más**.
+
+**Un permiso que sirve para dos trabajos distintos no es un permiso, son dos.**
+El calendario colgaba de `view_students`, que además abre la base de alumnos, las
+fichas, los créditos y las bajas. Y para *leer* el usuario y la contraseña de DJ
+Delivery había que tener `manage_djdelivery`, o sea el botón de *cambiarlos* — en
+una clave que es una sola y la comparten todos los alumnos a la vez. En los dos
+casos el permiso mezclaba "mirar" con "tocar", y la única forma de dar lo primero
+era regalar lo segundo. Se partieron: `view_calendar` y `view_shared_access`.
+
+**El escritorio le decía "hoy no hay nada para hacer" a alguien que sí tiene
+trabajo.** `/admin` es una cola que sale de `lib/workflows.ts`, y ninguno de esos
+workflows es del sello. Para un perfil que entra a cuatro pantallas, esa pantalla
+está vacía todos los días, para siempre. El corte quedó **declarativo** —"si todo
+lo que puede hacer entra en esta lista, mostrale sus herramientas"— y no "si es
+Lanfran": el día que se le dé un permiso de administración, sale del panel simple
+solo, sin que nadie se acuerde de venir a tocarlo.
+
+**El `decodeURIComponent` que rompía justo el caso real.** El alta de un
+lanzamiento resuelve el reproductor sola, pegándole al oEmbed de la plataforma, y
+para SoundCloud saca el id numérico y el `secret_token` del html que devuelve.
+Decodificaba ese html antes de buscar — y `decodeURIComponent` tira `URI
+malformed` con un `%` suelto, que el html de SoundCloud trae de sobra. Explotaba
+con el primer link que se probó, uno de los de Sin City. Lo peor no era el error:
+estaba adentro de un `try/catch` que contesta *"no se pudo hablar con
+SoundCloud"*, así que el lanzamiento se habría guardado sin reproductor
+**culpando a una plataforma que había contestado perfecto**. Decodificar nunca
+hizo falta: los patrones ya aceptaban `%2F` y `/`. Verificado contra los cuatro
+links reales, y los `trackId` que devuelve coinciden con los que estaban
+hardcodeados desde el 05/08 — o sea que el resolvedor reproduce a mano lo que se
+había cargado mirando.
+
+**Esconder el botón no es el permiso.** Publicar un lanzamiento es lo único de
+este perfil que escribe en astronomyofficial.com, así que quedó sólo para la
+cuenta maestra. Se verificó armando el POST a mano con la cookie del perfil
+acotado y el id de la server action sacado del `server-reference-manifest.json`:
+303 a `/admin?denied=1` y `published` siguió en `false`. Sin esa prueba, lo único
+que se sabía era que el botón no se dibujaba.
+
+**La vista previa tiene que recortar de verdad.** Facu pidió ver el panel de
+Lanfran desde su admin. Una maqueta —dibujar esa pantalla con los permisos del que
+mira— muestra botones que el otro no tiene, que es exactamente el error que uno
+está tratando de encontrar al mirar. La cookie hace que `getStaffContext()`
+devuelva los permisos de la otra persona: adentro de la vista previa el maestro
+tampoco entra a los sueldos. Por eso salir **no puede pedir** el permiso que la
+cookie acaba de sacar, y por eso entrar pregunta por `esMaestroReal()`, que ignora
+la cookie — si no, se queda encerrado en la vista previa del primero que eligió.
+
+**Un POST a mano no prueba un server action.** El primer intento mandó
+`Next-Action` como cabecera y Next contestó *"Connection closed"*: parecía un bug
+de la app y era el arnés. La forma que sí funciona es la de un formulario sin
+JavaScript — el `$ACTION_ID_…` como **campo** del multipart, no como header.
+Sirve para probar cualquier server action de este repo por curl.
