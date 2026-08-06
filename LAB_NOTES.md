@@ -2182,3 +2182,65 @@ funciona es deployar en draft y **publicar ese deploy por API** con
 el sitio en vivo**: se puede usar como sonda sin riesgo. Ante un error opaco en
 una herramienta de deploy, buscar primero la variante inocua que aísla si el
 problema es de credenciales, de destino o de la acción concreta.
+
+## 06/08/2026 (II) — El calendario mostraba 21 de 175 clases y parecía un borrado
+
+Lanfran, el día después de estrenar su perfil: *"¿por qué se borran del calendario
+los eventos que ya sucedieron?"*.
+
+**No se borraban: nunca se consultaban.** La consulta pedía `starts_at >= ahora`.
+De las 175 clases activas que había, el calendario mostraba **21** — el 88% del
+historial del estudio era invisible. Y esto es lo que hay que quedarse: **nadie
+lo había reportado en dos meses**, ni José, ni Luqui, ni los profes, ni Facu.
+Hizo falta alguien que entrara por primera vez, sin la costumbre de que "el
+calendario es lo que viene", para que la pregunta apareciera.
+
+**Una ausencia no se ve.** Un dato mal calculado grita: el número no cierra,
+alguien lo cruza contra otra cosa y salta. Un dato que directamente no está no
+tiene contra qué chocar — la pantalla se ve completa, ordenada y correcta.
+`gte("starts_at", ahora)` no es un bug que se pueda encontrar mirando la
+pantalla: sólo se encuentra contando las filas de la base y comparándolas con
+las que se dibujan. Es el mismo mecanismo de la regla 2 (*"un resultado vacío o
+corto es un error hasta que se demuestre lo contrario"*) pero un escalón más
+arriba: acá el resultado no era vacío, era **plausible**.
+
+**El filtro estaba en tres pantallas y sólo se arregló una.** `/member` y
+`/profe` tienen exactamente el mismo `gte("starts_at", nowIso)`: Pastrana no ve
+las 88 clases que dio, Guini no ve 29, y 48 alumnos no ven su historial. Se
+arregló sólo el back office —que es donde se reportó— y las otras dos quedaron
+anotadas para que las decida Facu, porque cambian la pantalla principal del
+alumno. **Escribirlo importa más que arreglarlo rápido**: la próxima sesión que
+abra `/member` tiene que encontrarse con que esto ya se sabe.
+
+**La ventana es de 90 días y no "todo", a propósito.** Hoy el historial completo
+entra (la app arrancó en junio) y traerlo entero funcionaría igual. Pero en un
+año son miles de filas y **PostgREST corta en 1000 sin avisar**: el calendario
+empezaría a perder días viejos en silencio, justo cuando ya nadie se acuerde de
+que esta consulta no tenía tope propio. Un límite que uno elige se puede
+explicar; uno que aparece solo, no. Ver [[postgrest-tope-1000]].
+
+**`pasado` lo decide el servidor.** Calcularlo en el componente era una línea
+menos, pero entonces el reloj y la zona horaria del teléfono de cada uno
+definirían qué clase "ya sucedió". Un solo reloj, el del servidor.
+
+**Y una clase pasada nunca trae acciones, tenga quien mire el permiso que
+tenga.** Reprogramar, cancelar o reasignar algo que ya pasó no significa nada, y
+los tres botones mueven créditos. El corte va en el componente **y** en el
+servidor: los horarios libres y los datos del alumno ni siquiera viajan al
+navegador para una clase con la que no se puede hacer nada.
+
+**Además del gris, dice "ya pasó".** El apagado solo es ambiguo: se lee igual
+que "cancelada", que "no confirmada" o que un bug de contraste. Y los **días**
+pasados se apagan comparando contra la medianoche de hoy, así que hoy nunca se
+apaga aunque ya haya terminado la última clase.
+
+### Lo que se llevó de arrastre
+
+Un `FATAL` de Turbopack sobre `/preview-medallas/page` —una ruta que no existe en
+el árbol— hizo aparecer "2 Issues" en el overlay del dev server y mandó a buscar
+un bug propio que no había. Era otra sesión creando y borrando archivos en el
+mismo repo mientras el HMR corría. **El overlay de `next dev` no distingue un
+error del código de un error del compilador con archivos que se movieron abajo
+suyo:** cuando aparece un issue raro y hay otra sesión trabajando, la
+verificación honesta es un `npm run build` en frío. Ver
+[[dos-sesiones-mismo-repo]].
