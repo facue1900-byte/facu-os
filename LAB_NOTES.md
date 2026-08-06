@@ -8,6 +8,34 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-06 · Cambié una regla en un script y otros dos siguieron diciendo lo viejo
+
+Facu fijó cuatro reglas de cobro nuevas del Paseo: «Escuelita» eran dos cobradores (Beto y
+Meta), La Jaula pasa a cobrarse $372.644 en agosto, y de septiembre en adelante sale del
+precio semestral de `Futbol!AR`. Se aplicaron en `deuda_efectivo.py`, se verificó la tarjeta
+de Mati contra el bundle en vivo y se dio por cerrado.
+
+**Estaba a medias y nada falló.** Las mismas reglas estaban copiadas y pegadas en
+`radar_deudores.py` y en `exportar_ctas_ctes.py`. Media hora después, corriendo el radar por
+otra cosa, apareció el resultado real: la tarjeta de Mati decía **$372.644** y el radar, en
+la misma máquina y sobre la misma planilla, seguía diciendo *«La Jaula: se le cobra recién
+desde agosto 2026 (tenía saldo a favor)»* — sin monto. Y `exportar_ctas_ctes.py`, que
+alimenta la pestaña **Deuda** de la app, lo mismo. Ninguno de los tres tiró un error: cada
+uno era internamente coherente con su propia copia.
+
+Causa raíz: **un `dict` de reglas de negocio duplicado en tres archivos.** No hay chequeo
+posible que lo agarre, porque no hay nada roto que testear — hay tres verdades. Fix:
+`scripts/reglas_locales.py` con `REGLAS`, `PAGAN_POR_BANCO`, `PAGAN_ADELANTADO`,
+`SIN_PESTANA` y `JAULA_AGOSTO`, importado por los tres. Verificado que el refactor no mueve
+ningún número: `deuda_efectivo` sigue dando $6.659.073,11 y el export, exigible
+$2.302.497,48 sobre 8 locales.
+
+Lo que se lleva: **la regla 12 no se cumple sola por escribirla.** Antes de tocar una
+constante de negocio, `grep` del nombre en todo el skill — si aparece en más de un archivo,
+el trabajo no es cambiarla, es unificarla. Y el descubrimiento no vino de una revisión, vino
+de correr *otro* comando y leer el output completo: si el radar no se hubiera corrido ese
+día, la app y el reporte iban a contradecirse durante semanas.
+
 ### 2026-08-06 · La hipótesis anotada era falsa, y el arreglo escrito no hacía nada
 
 Dos bugs de `/label` en `astronomy-members`, distintos, con la misma moraleja: **lo que está
