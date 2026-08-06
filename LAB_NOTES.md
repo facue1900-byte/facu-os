@@ -2272,3 +2272,68 @@ igual en la pantalla pero no dicen lo mismo: el vacío se lee como olvido. Pasar
 a `0` no mueve ningún saldo — se verificó — y es exactamente lo que hace visible
 que ese concepto no se cobra. La aclaración que hacía falta costaba 17 celdas, no
 29 notas.
+
+## 06/08/2026 (III) — La cuenta con la que probás que "la página abre" es la que no rompe
+
+Buscando dónde mostrar el historial de clases apareció otra cosa: **`/member`
+tiraba 500 en producción para todo alumno con una clase agendada.** El panel del
+alumno, la pantalla más visible del negocio, caída.
+
+`editBookings` usa `minLeadMs` y `cancelMs` adentro de un `.map`, y las dos se
+declaraban veinte líneas más abajo. TDZ de manual. Estaba en `main` desde antes
+de esta sesión.
+
+**Por qué sobrevivió: el callback de un `.map` sobre una lista vacía no se
+ejecuta.** Un alumno sin clases entraba perfecto. Y ésa es exactamente la cuenta
+con la que uno prueba que una página abre — la recién creada, la de prueba, la
+que no tiene datos. Medido contra producción: cuenta sin clases → 200, cuenta con
+una clase → 500. **Estaba roto para todos los que tienen algo que ver ahí, y sano
+para el único caso que se testea.**
+
+De acá sale un chequeo, no una anécdota: **una pantalla se prueba con una cuenta
+que tenga datos, no con una recién creada.** La cuenta vacía verifica que la ruta
+resuelve; no verifica la pantalla.
+
+**Y me equivoqué en el medio, dos veces, por el mismo motivo.** Al ver el 500
+stasheé mis cambios, seguí viendo 500 y concluí "no es mío". Después lo probé en
+un worktree en un commit viejo, 500 otra vez, y concluí "es preexistente y lo
+rompió otra sesión" — estuve a punto de reportarle a Facu un incendio ajeno. Las
+dos veces estaba leyendo el mismo error **minificado** (`Cannot access 'aQ'…`),
+que no dice nada, y lo atribuí por contexto. La respuesta apareció en un minuto
+cuando lo corrí en `next dev`, que da el nombre real: `minLeadMs`, y el archivo y
+la línea. **Un error minificado no se diagnostica, se reproduce en dev.** Bisecar
+con un símbolo ilegible es adivinar con pasos intermedios.
+
+### Y de paso, lo que sí se vino a hacer
+
+**El calendario guarda todo y se navega sin límite.** Facu, después del reporte de
+Lanfran: *"que quede todo guardado, desde la primera clase que tomaron, que puedan
+volver el calendario para atrás año por año"*. La ventana fija de 90 días que se
+había puesto a la mañana era el mismo bug corrido de lugar: al salirse de la
+ventana, los días aparecen vacíos aunque haya clases. Ahora el servidor pinta una
+ventana inicial y el componente pide los meses que faltan a `/api/calendario`.
+
+**El ámbito lo decide el endpoint, no quien pregunta.** No hay ningún parámetro
+que diga de quién son las clases: entran dos fechas y nada más. Facu fue
+explícito —*"no está bien que un alumno vea las clases de otro, se mezcla mucho;
+con alquileres de cabina lo mismo"*— y se verificó atacándolo: pidiéndole el
+`user_id` de otro alumno y un `ambito=todos`, devuelve las suyas igual.
+
+**Un registro de "esto ya lo pedí" no va en `useState`.** La primera versión
+guardaba los meses ya traídos en estado: es dependencia del efecto **y** lo
+escribe el propio efecto. Marcar un mes dispara el efecto otra vez. Medido en el
+log del server: **40 pedidos del mismo rango en una visita**. Con `useRef`, uno.
+Y no se descubrió mirando el código —se veía razonable— sino contando las líneas
+del log.
+
+**Cambiar el significado de una variable rompe a los que la leen.**
+`nativeBookings` y `nativo` dejaron de ser "sólo futuras", y había **cinco**
+lugares que dependían de que lo fueran: reasignar una clase, a quién avisarle,
+pedir los horarios libres, mover y cancelar. Sin el corte, el profe le escribe a
+un alumno por una clase que ya tomó. Se nombró `futuras` una vez por archivo en
+vez de repetir el filtro en cinco lados y perderse el sexto.
+
+**El dev server no sirve para medir cuando hay otra sesión editando.** Cada
+guardado ajeno provoca un full reload: 22 cargas de la misma página en una
+corrida, que además parecían un loop mío. La medición limpia salió con
+`npm run build && next start`. Ver [[dos-sesiones-mismo-repo]].
