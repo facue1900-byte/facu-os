@@ -30,6 +30,7 @@ import sys
 
 sys.path.insert(0, "/Users/Facu/facu-os")
 from execution.google_auth import sheets  # noqa: E402
+from reglas_locales import SIN_PESTANA, JAULA_AGOSTO  # noqa: E402
 
 CTAS = "10BDmKvv2wY2M4lVYYab3NiNT04WLh5JjO-EhWI4tnNs"
 SALIDA_DEFAULT = ("/Users/Facu/Desktop/Paseo Nordelta/Paseo Nordelta - CLAUDE/"
@@ -47,43 +48,10 @@ PESTANAS = {
 # Cómo se llama el local para Mati (el de la pestaña es interno)
 ROTULO = {"Volta + Open 25": "Volta + Open 25"}
 
-# ---------------------------------------------------------------------------
-# Los que no tienen pestaña. Sus cargos NO se generan solos, así que cada uno
-# lleva la regla que dijo Facu, con fecha. Los pagos salen siempre de Cobros,
-# matcheando `alias` contra la columna Local.
-#
-#   cta        → cargos de CARGOS menos cobros. El comportamiento viejo.
-#   porcentaje → paga un % de facturación: NO hay cargo fijo, nunca hay nada
-#                que salir a cobrar. Siempre "al día".
-#   fijo       → un monto por mes desde `desde` (inclusive).
-#   jaula      → agosto-26 es un monto puntual dicho por Facu; de septiembre en
-#                adelante sale del precio semestral de la hoja Futbol.
-# ---------------------------------------------------------------------------
-SIN_PESTANA = {
-    "Salón (Alto)": dict(
-        regla="cta", alias=["salon multiespacios"], nota=None),
-    # Facu, 06/08/2026: la deuda vieja de Beto quedó saldada; hoy está al día y
-    # el alquiler de $350.000/mes arranca en septiembre.
-    "Beto": dict(
-        regla="fijo", alias=["beto escuelita"], monto=350_000, desde=(2026, 9),
-        nota="Alquiler $350.000/mes desde septiembre"),
-    "Meta": dict(
-        regla="porcentaje", alias=["meta escuelita"],
-        nota="Paga un % de facturación: no lleva cargo fijo"),
-    # Lavadero de autos. Ingreso nuevo, mismo esquema que Meta.
-    "Pole Position": dict(
-        regla="porcentaje", alias=["pole position"],
-        nota="Lavadero — paga un % de facturación: no lleva cargo fijo"),
-    "La Jaula / torneo": dict(
-        regla="jaula", alias=["la jaula"], desde=(2026, 8),
-        nota=None),
-}
 NO_PAGA_EFECTIVO = "No paga en efectivo"
-
-# La Jaula, agosto-26: dicho por Facu el 06/08/2026. NO es el alquiler pleno —
-# tenían saldo a favor y esto es lo que queda neto para cobrarles este mes.
-JAULA_AGOSTO = 372_644
-# Y no pagan expensas / servicios comunes por ahora (Facu, 06/08/2026): el
+# `SIN_PESTANA` y `JAULA_AGOSTO` viven en reglas_locales.py, junto con las reglas
+# que usan el radar y el export: son la misma verdad y no pueden divergir.
+# La Jaula no paga expensas / servicios comunes por ahora (Facu, 06/08/2026): el
 # precio semestral de la hoja Futbol es TODO lo que se le cobra.
 
 

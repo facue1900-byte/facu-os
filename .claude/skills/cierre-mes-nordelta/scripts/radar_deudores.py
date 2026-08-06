@@ -21,20 +21,7 @@ import openpyxl
 
 # Reglas por local confirmadas por Facu (22/07 y 27/07/2026). Un saldo "raro" en
 # estos locales no es deuda: es una regla del negocio.
-REGLAS = {
-    "Escuelita": "Paga % de facturación: no lleva cargo generado. Sus pagos figuran "
-                 "como saldo a favor — es normal, no es plata a devolver.",
-    "La Jaula / torneo": "Se le cobra recién desde agosto 2026 (tenía saldo a favor).",
-}
-
-# Locales que pagan (parte) por banco: esos pagos NO se ven hasta que el extracto
-# del mes se anota en Movimientos. Su exigible puede estar sobreestimado mientras
-# el mes está abierto (Facu, 27/07/2026).
-PAGAN_POR_BANCO = {"Fabric", "Bigg"}
-
-# Bigg paga POR ADELANTADO (el cargo del mes se paga durante el mismo mes, no el
-# siguiente). Su cargo "por vencer" en realidad ya está corriendo (Facu, 28/07).
-PAGAN_ADELANTADO = {"Bigg"}
+from reglas_locales import REGLAS, PAGAN_POR_BANCO, PAGAN_ADELANTADO  # noqa: E402  (las reglas viven en UN solo lugar)
 
 
 def leer_cuenta_corriente(xlsx):
