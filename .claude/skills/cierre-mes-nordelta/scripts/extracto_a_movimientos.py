@@ -28,6 +28,13 @@ CUENTA = "4-452-0960512147-9"
 REGLAS = [
     (r"SUSHINOR",                        "Fabric",                None),
     (r"RODOLFO SRL|30716281457",         "Bigg",                  None),
+    # Identificados en el extracto de julio 2026 contra las facturas. El CUIT
+    # viaja en la glosa de las TRANSF, así que se matchean solos.
+    (r"20286590994",                     None, "Sueldo Administracion (MB)"),   # Matías Barbagrigia
+    # Oliva Gustavo Alberto — corralón de Tigre, materiales entregados en obra.
+    # Se propone Inversiones porque hasta hoy siempre fue obra; si una compra es
+    # gasto operativo hay que cambiarla a mano ANTES de cargarla.
+    (r"20124767173",                     None, "Inversiones"),
     (r"RET\.? ING\.? BRUTOS SIRCREB",    None, "Ingresos Brutos"),
     (r"DBCR 25413",                      None, "Gastos bancarios"),
     (r"Comision Trf|COMISION",           None, "Gastos bancarios"),
