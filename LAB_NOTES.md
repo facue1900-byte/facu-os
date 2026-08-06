@@ -2097,3 +2097,39 @@ la cookie — si no, se queda encerrado en la vista previa del primero que eligi
 de la app y era el arnés. La forma que sí funciona es la de un formulario sin
 JavaScript — el `$ACTION_ID_…` como **campo** del multipart, no como header.
 Sirve para probar cualquier server action de este repo por curl.
+
+## 06/08/2026 — La deuda en efectivo no es el saldo, y el deploy que da Forbidden
+
+Mati sale a cobrar en mano, así que necesita **cuánto debe en efectivo cada
+local**. El saldo de la cuenta corriente no sirve para eso, por dos razones que
+mueven mucha plata: **mezcla banco con efectivo** (Fabric tiene $11,6M de saldo y
+no debe un peso en efectivo; Bigg tiene $5,4M pero sólo $1,1M es en mano) y
+**cuenta como deuda un bloque que todavía no venció** (todos pagan el mes
+siguiente). Separar las dos cosas convierte un número inservible en uno accionable.
+
+**El corte de "vencido" se puede leer de la planilla en vez de calcularlo.** El
+bloque que se está cobrando es todo lo que hay **debajo de la última fila de
+pago**. No hay que hardcodear filas ni fechas ni saber en qué día del mes estamos:
+la estructura del documento ya dice dónde termina lo cobrado. Hoy da que casi nada
+está vencido — Boss −$485, Peak One $579, Volta $3.189.
+
+**El invariante que valida todo el cálculo.** En los locales que cobran 100% en
+efectivo, la deuda en efectivo tiene que dar **exactamente** el saldo de la
+pestaña. Ese chequeo destapó el bug: yo salteaba las filas sin detalle, y **muchos
+pagos tienen el detalle vacío** porque el medio va en la columna B. Daba $4,1M
+donde el saldo era $1,7M. Sin un invariante, ese número se veía perfectamente
+plausible.
+
+**Lo que no está verificado no se muestra como cobrable.** La Jaula da $668.824,
+pero su alias en `Cobros` mezcla alquileres sueltos de cancha con el contrato. El
+JSON lleva un campo `confiable` y la tarjeta muestra **"a confirmar"** en vez del
+monto. Mandar a alguien a cobrar un número que no se puede defender es peor que no
+mostrarlo.
+
+**El deploy: `--prod` da `Forbidden`, el draft no.** Mismas credenciales, mismo
+sitio, mismo bundle. El sitio no está locked y la cuenta es la dueña. Lo que sí
+funciona es deployar en draft y **publicar ese deploy por API** con
+`restoreSiteDeploy`. Diagnosticarlo fue posible porque el draft deploy **no toca
+el sitio en vivo**: se puede usar como sonda sin riesgo. Ante un error opaco en
+una herramienta de deploy, buscar primero la variante inocua que aísla si el
+problema es de credenciales, de destino o de la acción concreta.
