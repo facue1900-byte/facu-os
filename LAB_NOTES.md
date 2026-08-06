@@ -8,6 +8,55 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-06 · La hipótesis anotada era falsa, y el arreglo escrito no hacía nada
+
+Dos bugs de `/label` en `astronomy-members`, distintos, con la misma moraleja: **lo que está
+escrito en el código no es lo que el navegador ejecuta, y la única forma de saberlo es
+medirlo.**
+
+**1 · El hero que se iba solo al pie.** El 05/08 se revirtió `components/label/HeroCta.tsx`
+porque en el teléfono de Facu la página *"de la nada se va todo para abajo"*. Quedó anotada
+una hipótesis: el `history.replaceState` dejando `#demos` en la URL y algún re-render
+volviendo a saltar al ancla. **Era falsa** — 16 s de página quieta en producción con el hash
+puesto, cero saltos.
+
+La causa real: `app/globals.css` tiene `html{scroll-behavior:smooth}`, y **la forma de dos
+argumentos `window.scrollTo(0, y)` hereda esa curva**. El bucle de `requestAnimationFrame`
+no fijaba la posición: disparaba una animación suave nueva por frame, que se pisaban entre
+sí. Medido en emulación de iPhone: durante el segundo entero la página avanzaba 10 px por
+frame y quedaba en **339 de 1806 px**; recién cuando el bucle terminaba, la última animación
+—ya sin nadie que la interrumpiera— la mandaba al pie en 570 ms. El movimiento llegaba
+cuando Facu ya había soltado el dedo. Fix: `behavior: "instant"`, lo único que ignora el
+CSS, más cancelación por `touchstart`/`wheel`/`pointerdown`/`keydown` y un solo bucle a la
+vez.
+
+De paso apareció otro: `stopPropagation()` **no** saca del medio al listener de
+`components/SmoothScroll.tsx`, porque React delega los eventos en `document`, que es el
+mismo nodo donde ese listener vive. Eran dos `lenis.scrollTo` por un solo clic — medido
+espiando el método. Se resolvió con una marca en el elemento (`data-scroll-propio`).
+
+**2 · El ES/EN que el eclipse tapaba en la vista de compu.** `.lb-bar` tenía
+`z-index: 2` **escrito, comentado y sin efecto**: la regla genérica
+`.theme-label > *:not(.lb-atmos)` pesa (0,2,0) —`:not()` suma la especificidad de su
+argumento— y le ganaba a la clase pelada de (0,1,0). La franja quedaba en el z-index base,
+el mismo que el hero, y a igual altura pinta último el que viene después en el DOM. El
+computado daba `1`. Fix: `.theme-label > .lb-bar { z-index: 2 }`, que empata el peso, en vez
+de un `!important` que habría tapado el agujero sin dejarlo a la vista (regla 3).
+
+**Trampa de método que costó un rato:** `elementFromPoint` decía "no está tapado" porque el
+eclipse es `pointer-events: none`. Tapado *para el clic* y tapado *para el ojo* son dos
+preguntas distintas; la segunda se contesta con el `zIndex` computado o con una captura.
+
+**Lo que queda para la próxima.** Reproducir antes de arreglar valió exactamente lo que
+costó: la hipótesis anotada era plausible y estaba equivocada, y arreglarla no habría movido
+nada. Se manejó Chrome headless por CDP sin instalar dependencias (Node 24 ya trae
+`WebSocket`), envolviendo `window.scrollTo` para registrar *qué se pidió* contra *qué pasó*
+— ahí se vio el desfasaje de un saque. **Falta la verificación que desde esta Mac no se
+puede hacer: abrirlo en el iPhone de verdad**, que es justo donde el bug pasó desapercibido
+la primera vez.
+
+Commit `14cffa7`. Detalle en la memoria: «scroll».
+
 ### 2026-08-05 · Un cron le iba a vaciar la cola a José a las 9 de la mañana
 
 Se agregó a `astronomy-members` el detector de **checkouts trabados**: 5 alumnos que
