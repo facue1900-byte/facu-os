@@ -2244,3 +2244,31 @@ error del código de un error del compilador con archivos que se movieron abajo
 suyo:** cuando aparece un issue raro y hay otra sesión trabajando, la
 verificación honesta es un `npm run build` en frío. Ver
 [[dos-sesiones-mismo-repo]].
+
+## 06/08/2026 — El cero ya era la aclaración
+
+Facu había pedido que cuando un concepto va en $0 "quede aclarado, para que el
+cliente note lo que se está ahorrando". Lo implementé escribiendo notas —«Sin
+IVA», «Sin alquiler hasta dic-26»— en la columna B de Volta y Peak One y en la D
+de Boss. **Estaba mal, y él lo corrigió: se ve feo y la B no es para eso.**
+
+Lo que quería es más simple y ya existía en la estructura: **cada bloque lleva
+siempre los cinco conceptos** —Recupero, Servicios comunes, IVA servicios,
+Alquiler, IVA alquiler— y en la columna de egreso va el monto de cada uno.
+**Si el IVA es 0, se escribe `0`.** El renglón con su cero al lado ya dice que no
+se cobra. La aclaración no era texto nuevo: era **completar la tabla**.
+
+**Dónde me desvié.** Tenía la pieza correcta —"si la fila no existe, no hay nada
+que ver", y agregué los 7 renglones que faltaban— y encima le sumé una capa de
+prosa que no hacía falta. Habiendo entendido que el problema era una tabla
+incompleta, seguí adelante y también inventé un vocabulario de notas, un lugar
+donde ponerlas y una regla distinta por pestaña según qué columna estuviera libre.
+**Que la columna esté vacía no significa que sea para eso**: la B tiene un
+significado —el medio de un INGRESO— que yo mismo había dejado escrito en la
+memoria dos horas antes, y lo pisé igual.
+
+**Y quedaban 17 celdas en blanco donde iba un cero.** Vacío y `0` se ven casi
+igual en la pantalla pero no dicen lo mismo: el vacío se lee como olvido. Pasarlas
+a `0` no mueve ningún saldo — se verificó — y es exactamente lo que hace visible
+que ese concepto no se cobra. La aclaración que hacía falta costaba 17 celdas, no
+29 notas.
