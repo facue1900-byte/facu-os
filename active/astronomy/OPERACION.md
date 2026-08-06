@@ -4,41 +4,66 @@
 Complementa `ASTRONOMY_OS.md` (auditoría técnica, mismo día): aquel dice qué software hay,
 éste dice cómo trabaja la empresa.
 
-Todo está medido contra la base de producción (`qeakrjnseboiulcojlcw`) el 06/08/2026. Donde
-un número no se pudo verificar, lo digo en vez de estimarlo.
+Medido contra producción (`qeakrjnseboiulcojlcw`). Donde un número no se pudo verificar, lo
+digo en vez de estimarlo. **Segunda versión**, con las cuatro respuestas de Facu
+incorporadas: dos de mis números originales estaban mal y están corregidos abajo.
 
 ---
 
-## El hallazgo principal, y no es el que veníamos a buscar
+## El hallazgo principal
 
 Veníamos a arreglar la entrada del embudo: los leads de WhatsApp e Instagram que no se
-registran. Ese agujero es real. Pero medido contra la base, **el desagüe más grande está en
-la otra punta**:
+registran. Ese agujero es real. Pero lo que se mide del otro lado es esto:
 
-> **De 25 alumnos activos con clases, 14 no tienen ninguna clase futura agendada.
-> Tres de ellos pagaron y nunca tomaron una sola clase en su vida.**
+> **De 24 alumnos activos con clases, 8 están dormidos: ni tomaron clase en el último mes
+> ni tienen ninguna agendada. Tres de ellos nunca tomaron una sola clase en su vida.**
 
-| | |
-|---|---|
-| Suscripciones activas | 27 (2 son DJ Delivery, que no lleva clases) |
-| De los 25 restantes, sin próxima clase agendada | **14 (56%)** |
-| Que nunca tomaron ninguna clase | **3** — dos de ellos plan Gold ($195.600) |
-| Bajas registradas en julio | **27** |
-| Personas que pierden créditos en los próximos 30 días | **13** |
+| Quién | Plan | Sin venir |
+|---|---|---|
+| Santiago Pacino | **Gold** | nunca |
+| Federico Toninelli | **Gold** | nunca |
+| Roberto Fernández López | Curso de DJ | nunca |
+| Pedro Fraguas | Curso de DJ | 59 días |
+| Clemente Trejo | Curso de DJ | 44 días |
+| Tomás Álvarez | Silver | 42 días |
+| Javier Basso | Curso de DJ | 35 días |
+| Santiago Romero | Curso de DJ | 34 días |
 
-Los tres que nunca tomaron clase: Santiago Pacino (Gold), Federico Toninelli (Gold),
-Roberto Fernández López (Curso de DJ). Pagaron, y el servicio no se prestó nunca.
+**33% de la base activa.** Y trece personas pierden créditos en los próximos 30 días —
+Clemente, Pedro y Felipe los pierden el 13/08.
 
-Y seis más no pisan el estudio desde junio o principios de julio: Pedro Fraguas (1 clase,
-última el 08/06), Clemente Trejo (3, el 23/06), Tomás Álvarez (4, el 25/06), Javier Basso
-(2, el 02/07), Santiago Romero (3, el 03/07).
+**Esa plata ya entró.** Recuperarla no cuesta pauta ni leads.
 
-**Esa plata ya entró.** Retenerla no cuesta pauta ni cuesta leads: cuesta que alguien
-escriba. Y tres de esos nombres —Clemente, Pedro y Felipe— son justo los que tienen
-créditos venciendo el 13/08.
+### Dos números que corrijo de la primera versión
 
-**Conclusión operativa: la Fase 1 de Academy no es el CRM. Es la retención.** El CRM va
-segundo, y va con los ojos abiertos sobre algo que explico en §3.
+Los pongo primero para que nadie use los viejos.
+
+**1. "14 de 25 sin próxima clase agendada" — la métrica no sirve.** Medí con cuánta
+anticipación se reserva en Astronomy: **la mediana es 2 días**, y 44 de 73 reservas se hacen
+dentro de las 48 horas. Con ese hábito, no tener clase agendada para dentro de una semana es
+lo normal, no una alarma. La métrica que aguanta es la de arriba: **sin clase reciente Y sin
+clase agendada**, las dos juntas.
+
+**2. "27 bajas en julio" — no son bajas reales.** Confirmado por Facu y verificado en la
+base: 22 de ellas se cargaron **el mismo día**, el 22/07, y 25 de las 30 tienen motivo
+"Baja administrativa (dejó de pagar / sin pagos)". Es limpieza de la migración. Además, las
+30 bajas corresponden a sólo 15 personas —hay duplicados— y **4 de esas personas están
+activas hoy**. `cancellations` no sirve como métrica de churn y no hay que usarla.
+
+### Y un dato que cambia el diagnóstico, no el número
+
+Facu: *"a los tres ya los llamamos, pero no vienen."*
+
+**Ese llamado no está registrado en ningún lado.** Lo busqué en las cuatro tablas donde
+podría estar: cero rastro. O sea que yo, con acceso completo a la base, saqué la conclusión
+equivocada —"nadie los llamó"— cuando la verdad era "los llamaron y no funcionó".
+
+**Son dos problemas distintos y necesitan dos acciones opuestas.** Si nadie llamó, se llama.
+Si ya se llamó dos veces y no vienen, se decide otra cosa: pausar el plan, ofrecer clase
+online, o dejarlos ir. Hoy el sistema no permite distinguirlos.
+
+Éste es el mejor argumento que vamos a tener para el registro, y no es teórico: acaba de
+costar una conclusión equivocada en un análisis hecho con la base entera a la vista.
 
 ---
 
@@ -46,215 +71,209 @@ segundo, y va con los ojos abiertos sobre algo que explico en §3.
 
 ## 1.1 La empresa que conoce el sistema
 
-Vos nombraste doce personas. El sistema conoce ocho.
+Doce personas nombradas. El sistema conoce ocho.
 
-| Persona | Rol que le diste | Qué dice el sistema |
+| Persona | Rol | Qué dice el sistema |
 |---|---|---|
 | Facu | Dirección | Maestro **por variable de entorno, sin fila en `staff`** |
 | Vlado | Dirección | Maestro. **Cero acciones en 30 días** |
-| José | Academy Operations | 8 permisos. **54 acciones en 30 días — el que más trabaja del equipo** |
+| José | Academy Operations | 8 permisos. **54 acciones en 30 días — el que más trabaja** |
 | Luqui | Academy Finance | 7 permisos. **4 acciones en 30 días** |
 | Mateo Pastrana | Profesor | Profesor + 6 permisos. 119 clases, 10 acciones |
 | Mateo Guini | Profesor | Profesor. 44 clases. **0 permisos, 0 acciones desde que existe** |
-| Valen Frando | Profesor | Existe **como "Owners of Time"**. 18 clases. 0 permisos, 0 acciones |
-| Lucas Lanfran | Profesor (según vos) | **No es profesor en el sistema: 0 clases.** Tiene sello + calendario en lectura |
+| Valen Frando | Profesor | Cargado **como "Owners of Time"**. 18 clases. 0 permisos, 0 acciones |
+| Lucas Lanfran | Sello + estudio | **Correcto: no da clases** (confirmado). Sello y calendario en lectura |
 | **Annie** | Diseño | **No existe** |
 | **Lola** | Diseño | **No existe** |
 | **Pacha (Fran Otero)** | Marketing | **No existe** |
-| **Persona del chatbot** | Soporte con José | **No existe, ni siquiera tiene nombre acá** |
+| **Gonza** | Programa el chatbot, nada más | **No existe** |
 
-**Cuatro personas trabajan para Astronomy y no están en ningún lado del sistema.** Todo lo
-que hacen se coordina por fuera, y si mañana se van no queda registro de qué hacían.
+**Cuatro personas trabajan para Astronomy y no están en el sistema.**
 
 ## 1.2 La operación de Academy, en números
 
 | | Jun | Jul | Ago (al día 6) |
 |---|---|---|---|
 | Clases dadas | 85 | 97 | 28 |
-| Alumnos distintos con clase | 18 | 18 | 13 |
+| Alumnos distintos con clase | 18 | 17 | 12 |
 | Ventas | 22 | 23 | 13 |
 | De ésas, primeras compras | 20 | 4 | 4 |
 | Facturado | $3.494.240 | $3.457.200 | $1.285.363 |
-| Bajas | — | 27 | 3 |
 
-Carga por profesor en agosto: **Pastrana 16 clases, Guini 9, Valen 2.** Pastrana concentra
-el 59% de la operación docente.
+Carga docente de agosto: **Pastrana 16 clases, Guini 9, Valen 2.** Pastrana concentra el 59%
+de la operación docente.
 
 Planes activos: Curso de DJ 15, Silver 6, Gold 4, DJ Delivery 2.
 
-## 1.3 Qué software hay
-
-Está detallado en `ASTRONOMY_OS.md`. El resumen: 87 pantallas (48 administrativas), 68
-tablas, 16 permisos granulares, un motor de cola de trabajo por persona, un CRM de casos
-con seis estados, y un centro de operaciones con 18 detectores de problemas.
+Ritmo semanal de clases, junio a hoy: entre 13 y 22 por semana, sin caída. **La operación
+docente está estable**; el problema es de composición, no de volumen.
 
 ---
 
 # 2 · QUÉ FUNCIONA
 
-Esto no se toca y conviene decirlo primero, porque es más de lo que parece.
-
-1. **El cobro.** Mercado Pago acredita solo. En 30 días: 37 acreditados, 9 que ya estaban,
-   11 ignorados correctamente. El circuito de plata está sano.
-2. **La agenda.** 210 reservas en el sistema propio, 175 activas. Los profesores tienen
-   calendario, los alumnos reservan, los créditos se descuentan solos.
+1. **El cobro.** En 30 días: 37 pagos acreditados solos, 9 ya estaban, 11 ignorados
+   correctamente. El circuito de plata está sano.
+2. **La agenda.** 175 reservas activas. Los profesores tienen calendario, los alumnos
+   reservan, los créditos se descuentan solos.
 3. **El reparto de trabajo por persona.** El concepto de **dueño** (José / Luqui / Facu)
-   está construido y es correcto: el permiso dice quién *puede*, el dueño dice de quién
-   *es*. Es exactamente la separación de responsabilidades que estás pidiendo.
-4. **El escalamiento José → Luqui que describís ya existe en la base.** La tabla
-   `incidencias` tiene `consulta`, `consulta_para`, `consulta_vence`, `respuesta`,
-   `respuesta_por`. El circuito "José registra → Luqui revisa → Luqui resuelve → José
-   sigue" está modelado. No hay que diseñarlo: hay que hacerlo andar.
-5. **José usa el sistema.** 54 acciones en 30 días, la última el 05/08. Es el único del
-   equipo que lo hace, y es el dato más esperanzador que hay acá.
+   está construido: el permiso dice quién *puede*, el dueño dice de quién *es*. Es la
+   separación de responsabilidades que se está pidiendo.
+4. **El escalamiento José → Luqui ya existe en la base.** `incidencias` tiene `consulta`,
+   `consulta_para`, `consulta_vence`, `respuesta`, `respuesta_por`. El circuito "José
+   registra → Luqui revisa → Luqui resuelve → José sigue" está modelado. No hay que
+   diseñarlo: hay que hacerlo andar.
+5. **José usa el sistema.** 54 acciones en 30 días. Es el único del equipo, y es el dato más
+   esperanzador que hay acá.
 
-> **Aclaración para no sacar conclusiones falsas:** el "último login" de José figura el
-> 17/07. **Eso no significa que no entre.** La sesión no se cierra, así que Supabase no
-> registra un login nuevo aunque entre todos los días. El dato válido de uso es
-> `audit_log`, y ahí José aparece trabajando.
+> **Para no sacar conclusiones falsas:** el "último login" de José figura el 17/07. **Eso no
+> significa que no entre.** La sesión no se cierra, así que no se registra un login nuevo
+> aunque trabaje todos los días. El dato válido de uso es `audit_log`.
 
 ---
 
 # 3 · QUÉ ESTÁ INCOMPLETO
 
-## 3.1 El agujero del CRM es real, pero su tamaño NO se puede medir hoy
+## 3.1 El agujero del CRM es real, y su tamaño no se puede medir hoy
 
-Confirmado: un lead sólo existe si tocó la web. Quien escribe por Instagram o WhatsApp no
-tiene fila en ninguna tabla. **No hay dónde anotarlo, así que el trabajo pasa afuera.**
+Un lead sólo existe si tocó la web. Quien escribe por Instagram o WhatsApp no tiene fila en
+ninguna tabla.
 
-Intenté medir cuánto pesa ese agujero cruzando quiénes pagaron contra quiénes dejaron
-rastro en la web. **El resultado no sirve y lo digo antes de que alguien lo use**: el
-rastreo (`lead_events`) empezó el **04/08/2026**, hace dos días. De los 3 que pagaron desde
-entonces, los 3 tienen rastro. Cualquier número más grande que ése compara gente de junio
-con un sistema que no existía en junio.
+Intenté medir cuánto pesa cruzando quiénes pagaron contra quiénes dejaron rastro web. **El
+resultado no sirve**: el rastreo (`lead_events`) empezó el **04/08/2026**, hace dos días. De
+los 3 que pagaron desde entonces, los 3 tienen rastro. Cualquier número más grande compara
+gente de junio con un sistema que no existía en junio.
 
-**Traducción: sabemos que el agujero existe por construcción, no sabemos si es grande.**
-Y ésa es justamente una pregunta que se contesta gratis, mirando a José una mañana.
+**Sabemos que el agujero existe por construcción; no sabemos si es grande.**
+
+**Y hay una pieza nueva que cambia el diseño: Gonza y el chatbot.** Si el chatbot atiende
+WhatsApp o Instagram, entonces **el chatbot ya tiene los leads** — y la solución no es que
+José los cargue a mano (eso es agregarle trabajo manual, justo al revés de lo que
+queremos), sino que el chatbot los escriba solo. Cambia por completo quién construye qué.
+Es la pregunta 1 de §9.
 
 ## 3.2 Dos profesores tienen cuenta y no pueden hacer nada
 
-Guini da 44 clases y Valen 18. Los dos tienen **cero permisos** y **cero acciones desde que
-existen**. Sus clases las agenda otro. Si el objetivo es que la empresa no dependa de una
+Guini da 44 clases y Valen 18. Los dos con **cero permisos** y **cero acciones desde que
+existen**. Sus agendas las carga otro. Si el objetivo es que la empresa no dependa de una
 persona, hoy la agenda de dos profesores depende de que José o Pastrana la carguen.
 
-## 3.3 Lanfran figura como profesor y no lo es
+## 3.3 Valen está cargado con nombre de artista
 
-Vos lo listás entre los profesores. En el sistema tiene cero clases y ningún permiso de
-enseñanza; tiene el sello y el calendario en lectura. **O da clases y le falta el acceso, o
-no da clases y sobra en la lista.** Es una pregunta de una línea que cambia su alta.
+Aparece como **"Owners of Time"**. Sus 18 clases y su sueldo cuelgan de ese string.
 
-## 3.4 Valen está cargado con nombre de artista
-
-Aparece como **"Owners of Time"**, no como Valen Frando. Sus 18 clases y su sueldo cuelgan
-de ese string. Un profesor nuevo que entre a mirar no sabe quién es.
-
-## 3.5 Las ocho preguntas escaladas vencen mañana y pasado
+## 3.4 Las ocho preguntas escaladas vencen mañana y pasado
 
 Las 8 filas de `incidencias` son consultas que **abrimos nosotros**, no el equipo: cinco
-para Luqui, tres para José. **Ninguna está contestada.** Vencen el 07 y el 08/08.
+para Luqui, tres para José. **Ninguna contestada.** Vencen el 07 y el 08/08. Es el primer
+experimento real de adopción y llega antes que el 18/08.
 
-Ése es el primer experimento real de adopción y llega antes que el 18/08.
+## 3.5 Lo que no existe todavía
 
-## 3.6 Lo que no existe todavía
-
-- **Dominé**: 1 evento cargado, sin producción, sin proveedores, sin gastos, sin Splitwise.
-- **Label**: hay bandeja de demos y lanzamientos; no hay tracks, versiones ni metadata.
-- **Dirección**: no hay ninguna vista que conteste "cómo está cada unidad".
+- **Dominé**: 1 evento cargado, sin producción, proveedores, gastos ni Splitwise.
+- **Label**: bandeja de demos y lanzamientos sí; tracks, versiones y metadata no.
+- **Dirección**: ninguna vista contesta "cómo está cada unidad".
 
 ---
 
 # 4 · QUÉ PROCESOS ESTÁN DESORDENADOS
 
-Ordenados por lo que cuestan, no por lo que molestan.
+### 4.1 Nadie es dueño de que el alumno vuelva
 
-### 4.1 Nadie es dueño de que el alumno vuelva a agendar
-
-Es el desorden más caro. Hoy el sistema detecta al que no pagó, al que se dio de baja y al
-que tiene un problema de plata. **No hay un responsable declarado de que un alumno que pagó
-tome su próxima clase.** Por eso hay 14 alumnos activos sin fecha y tres que nunca vinieron:
-no falló nadie, es que no es tarea de nadie.
+El sistema detecta al que no pagó, al que se dio de baja y al que tiene un problema de
+plata. **No hay responsable declarado de que un alumno que ya pagó siga viniendo.** Por eso
+hay 8 dormidos y 3 que nunca vinieron: no falló nadie, no es tarea de nadie.
 
 ### 4.2 El registro de lo que se habla no ocurre
 
-`incidencia_eventos` tiene **cero filas**. Cada conversación de José con un alumno vive en
-WhatsApp y en su cabeza. Mientras eso siga así, ninguna de las cuatro unidades puede tener
-la propiedad que pediste: *que una persona nueva se incorpore leyendo el sistema.*
+`incidencia_eventos`: **cero filas**. Cada conversación vive en WhatsApp y en la cabeza de
+José. Es lo que acaba de hacerme sacar una conclusión equivocada sobre los tres que nunca
+vinieron. Mientras siga así, ninguna unidad puede tener la propiedad que se pidió: *que una
+persona nueva se incorpore leyendo el sistema.*
 
 ### 4.3 Cuatro personas operan por fuera
 
-Annie, Lola, Pacha y quien maneja el chatbot. Diseño y marketing no tienen dónde recibir un
-pedido ni dónde entregar. Lo que hacen se pide por WhatsApp y se entrega por Drive.
+Annie, Lola, Pacha y Gonza. Diseño, marketing y el chatbot no tienen dónde recibir un pedido
+ni dónde entregar. Se pide por WhatsApp y se entrega por Drive.
 
 ### 4.4 El escalamiento existe y nunca se usó
 
-El circuito José → Luqui está construido y tiene cero uso real. No es un problema de
-software.
+Construido, cero uso real. No es un problema de software.
 
-### 4.5 Dirección no tiene ritual, sólo tiene acceso
+### 4.5 Dirección tiene acceso y no tiene ritual
 
-Vlado es maestro y no entró nunca. "Ver todo" no es un rol: sin una reunión con una agenda
-fija y un lugar donde queden las decisiones, el acceso total se convierte en no mirar nada.
+Vlado es maestro y no entró nunca. "Ver todo" no es un rol: sin una reunión con agenda fija
+y un lugar donde queden las decisiones, el acceso total se convierte en no mirar nada.
 
 ---
 
 # 5 · QUÉ DEBERÍA CAMBIAR
 
-Cada cambio contesta las cuatro preguntas que pediste. Los ordené por plata.
+Cada cambio contesta las cuatro preguntas pedidas. Ordenados por plata.
 
-### Cambio 1 — Un dueño para la retención
+### Cambio 1 — Decidir qué se hace con los 8 dormidos
 
 | | |
 |---|---|
-| Qué problema resuelve | 14 alumnos activos sin próxima clase; 3 que nunca tomaron ninguna |
-| Quién lo usa | José, todos los días |
-| Frecuencia | Diaria |
-| Si no existe | Se siguen yendo callados. Julio ya tuvo 27 bajas |
+| Qué problema resuelve | 8 de 24 activos no vienen; 3 nunca vinieron. Dos son Gold |
+| Quién lo usa | José, y la decisión es de Facu |
+| Frecuencia | Una vez ahora, después semanal |
+| Si no existe | Pagan hasta que se cansan y se van sin avisar |
 
-**No es software todavía.** Es una decisión: *"que cada alumno activo tenga su próxima clase
-agendada es trabajo de José, y se mide todos los días."* Si después de dos semanas eso se
-hace y se nota, entonces sí vale una tarea en el escritorio.
+**No es software.** Los tres que nunca vinieron ya fueron llamados: ahí la decisión no es
+"llamar otra vez", es **elegir qué se les ofrece** — pausar el plan, clase online, o dejarlos
+ir. Los otros cinco llevan entre 34 y 59 días: ésos sí es llamar.
 
-Arrancar hoy a mano con los 14 nombres, que ya están identificados.
+### Cambio 2 — Que quede escrito lo que se habla
 
-### Cambio 2 — Cerrar el circuito de las 8 preguntas
+| | |
+|---|---|
+| Qué problema resuelve | No se puede distinguir "no lo llamamos" de "lo llamamos y no vino" |
+| Quién lo usa | José |
+| Frecuencia | Cada conversación |
+| Si no existe | Cada decisión se toma sobre información que sólo tiene una persona |
+
+**La pantalla ya existe.** Esto es un hábito, no una función. Y es lo que el 18/08 se mide.
+
+### Cambio 3 — Cerrar el circuito de las 8 preguntas
 
 | | |
 |---|---|
 | Qué problema resuelve | El escalamiento existe y nadie lo usó nunca |
 | Quién lo usa | José y Luqui |
 | Frecuencia | Vencen el 07 y 08/08 |
-| Si no existe | El 18/08 no vamos a saber si el sistema no sirve o si nadie lo abrió |
+| Si no existe | El 18/08 no sabremos si el sistema no sirve o si nadie lo abrió |
 
-Cuesta cero. Es el experimento más barato disponible y es el que decide todo lo demás.
+Cuesta cero y decide todo lo demás.
 
-### Cambio 3 — Dar de alta a las cuatro personas que faltan
+### Cambio 4 — Arreglar las fichas mal cargadas
+
+Guini y Valen sin permisos, Valen con nombre de artista, Facu sin fila en `staff`. Media
+hora, y saca tres mentiras del organigrama. **Lanfran ya está bien: no da clases.**
+
+### Cambio 5 — Annie, Lola, Pacha y Gonza
 
 | | |
 |---|---|
-| Qué problema resuelve | Diseño, marketing y chatbot operan sin registro |
-| Quién lo usa | Annie, Lola, Pacha, la persona del chatbot |
+| Qué problema resuelve | Cuatro personas operan sin registro |
+| Quién lo usa | Ellos cuatro |
 | Frecuencia | Semanal |
-| Si no existe | Si alguno se va, no queda rastro de qué hacía ni cómo |
+| Si no existe | Si alguno se va, no queda rastro de qué hacía |
 
-Empezar por lo más chico: una cuenta y el permiso mínimo. No hace falta un módulo de diseño.
+Empezar por lo mínimo: una cuenta y el permiso más chico. **Gonza puede no necesitar
+cuenta** — si sólo programa el chatbot, lo que hay que integrar es el chatbot, no a él.
 
-### Cambio 4 — Arreglar las tres fichas mal cargadas
-
-Guini y Valen sin permisos, Valen con nombre de artista, Lanfran mal clasificado, y Facu
-sin fila en `staff`. Es media hora y saca cuatro mentiras del organigrama.
-
-### Cambio 5 — Recién acá, el CRM de leads externos
+### Cambio 6 — El CRM de leads externos
 
 | | |
 |---|---|
 | Qué problema resuelve | Los leads de WhatsApp e Instagram no tienen dónde anotarse |
-| Quién lo usa | José |
-| Frecuencia | Depende de cuántos lleguen — **y eso no lo sabemos** |
+| Quién lo usa | José — **o el chatbot, que es distinto** |
+| Frecuencia | Desconocida |
 | Si no existe | Se pierden contactos, en cantidad desconocida |
 
-Va quinto y no primero por una razón: es el único de los cinco cuya frecuencia de uso no
-podemos contestar. Eso se contesta mirando a José una mañana, y esa mañana ya está
-planificada.
+Va último de los seis porque es el único cuya frecuencia no podemos contestar, y porque su
+diseño depende de qué hace el chatbot.
 
 ---
 
@@ -262,13 +281,15 @@ planificada.
 
 | No tocar | Por qué |
 |---|---|
-| Mercado Pago, webhook, créditos, acreditación | Sano y con plata real. Módulo congelado por decisión previa |
+| Mercado Pago, webhook, créditos | Sano y con plata real. Módulo congelado por decisión previa |
 | El panel de profesores | Anda y lo usan |
-| El motor de cola (`lib/workflows.ts`) | Es el mejor activo del sistema. Se le agregan tareas, no se rediseña |
-| El modelo de casos (`lib/casos.ts`) | Seis estados que ya funcionan. **No superponerle un embudo nuevo** |
-| Los permisos | Son la única reja real. Los roles con nombre se apoyan encima, no los reemplazan |
-| El Libro anterior al 14/07/2026 | 195 renglones sin confirmar son historia archivada, no deuda. Desde el corte hay 10 |
-| `unassigned_payments` | Los 30 "sin asignar" están en `ignored`: ya se triaron. **No hay backlog. Verificado — la alarma era falsa** |
+| El motor de cola (`lib/workflows.ts`) | El mejor activo del sistema. Se le agregan tareas, no se rediseña |
+| El modelo de casos (`lib/casos.ts`) | Seis estados que funcionan. **No superponerle un embudo nuevo** |
+| Los permisos | La única reja real. Los roles con nombre se apoyan encima |
+| El Libro anterior al 14/07/2026 | 195 renglones sin confirmar son historia archivada. Desde el corte hay 10 |
+| `unassigned_payments` | Los 30 "sin asignar" están en `ignored`: ya triados. **No hay backlog — verificado** |
+| `cancellations` | **No usarla como métrica.** 25 de 30 son limpieza administrativa |
+| La ficha de Lanfran | Está bien como está |
 
 ---
 
@@ -276,104 +297,88 @@ planificada.
 
 ## 7.1 Academy
 
-**Está viva y es la única que produce.** El orden que le falta no es de software:
+Está viva y es la única que produce. Lo que falta no es software:
 
-- Responsable de **venta** → José. Ya está.
-- Responsable de **cobro** → Luqui. Ya está.
-- Responsable de **que el alumno vuelva** → **hoy nadie.** Es el hueco.
-- Responsable de **que el profesor tenga agenda** → hoy José y Pastrana, para tres profes.
+- Responsable de **venta** → José. Está.
+- Responsable de **cobro** → Luqui. Está.
+- Responsable de **que el alumno siga viniendo** → **hoy nadie.** Es el hueco.
+- Responsable de **que el profesor tenga agenda** → José y Pastrana, para tres profes.
 
-Regla que propongo, en una línea: **cada alumno activo tiene una próxima fecha, o tiene un
-motivo escrito de por qué no.** Es la única métrica de Academy que hace falta al principio.
+Métrica única de Academy, para empezar: **alumnos activos dormidos.** Hoy da **8 de 24**.
+Regla en una línea: *un alumno que pasa un mes sin venir tiene una acción registrada, o deja
+de ser un alumno activo.*
 
 ## 7.2 Dominé
 
-**No construir, y coincido.** Pero sí definir ahora dos cosas que no cuestan nada y después
-cuestan caro:
+**No construir, y coincido.** Pero definir ahora dos cosas que después cuestan caro:
 
-1. **Qué es un evento cerrado.** Un evento termina cuando su resultado está calculado y los
-   cuatro socios lo vieron. Sin esa definición, el Splitwise reparte sobre números en
-   discusión.
-2. **Quién paga qué, por defecto.** El Splitwise ordena lo que ya pasó; si no hay una regla
-   previa de quién adelanta, el sistema sólo documenta el desorden más rápido.
+1. **Qué es un evento cerrado.** Termina cuando su resultado está calculado y los cuatro
+   socios lo vieron. Sin esa definición, el Splitwise reparte sobre números en discusión.
+2. **Quién adelanta la plata, por defecto.** El Splitwise ordena lo que ya pasó; sin regla
+   previa, sólo documenta el desorden más rápido.
 
-Los porcentajes (35/35/15/15) van en configuración, no en la base: cambian por acuerdo entre
-socios, no por transacción.
+Los porcentajes (35/35/15/15) van en configuración, no en la base: cambian por acuerdo, no
+por transacción.
 
 ## 7.3 Label
 
-Tu flujo de siete estados contra lo que ya existe:
-
 | Tu estado | Hoy |
 |---|---|
-| Recibido | Existe |
-| En revisión | Existe |
-| Seleccionado | Existe |
-| **Producción** | **Falta** |
-| **Aprobado** | **Falta** |
+| Recibido · En revisión · Seleccionado | Existen |
+| **Producción** · **Aprobado** | **Faltan** |
 | Lanzado | Existe, como release publicado |
 | Rechazado | Existe |
 
 Faltan dos estados y el vínculo demo → release. Es poco trabajo.
 
-**Coincido en que los archivos van a Drive.** Y agrego la regla que lo hace funcionar: *el
-sistema guarda el link, Drive guarda el archivo, y el link vive en la ficha de la demo — no
-en un chat.* Sin eso, "está en Drive" significa "está en el Drive de alguien".
+**De acuerdo con archivos en Drive.** La regla que lo hace funcionar: *el sistema guarda el
+link, Drive guarda el archivo, y el link vive en la ficha de la demo — no en un chat.* Sin
+eso, "está en Drive" significa "está en el Drive de alguien".
 
-Advertencia: `label_demos` tiene **cero filas**. El sello salió ayer, así que es esperable —
-pero ordenar un flujo que todavía no recibió su primera demo es diseñar sin evidencia. Yo
-esperaría a las primeras diez.
+`label_demos` tiene **cero filas** — el sello salió ayer, es esperable. Ordenar un flujo que
+no recibió su primera demo es diseñar sin evidencia. Esperar a las primeras diez.
 
 ## 7.4 Empresa
 
-Lo que falta acá no es un dashboard: es un **ritual**. Un tablero sin reunión se mira dos
-semanas y después no.
+Lo que falta no es un dashboard: es un **ritual**. Un tablero sin reunión se mira dos semanas
+y después no.
 
-Propongo lo mínimo que se sostiene solo:
+- **Reunión quincenal, Facu y Vlado, 30 minutos**, agenda fija: cómo está cada unidad, qué
+  problema está sin dueño, qué decisión está trabada.
+- **Cuatro métricas, ni una más.** Alumnos activos · **alumnos dormidos** · ventas del mes ·
+  problemas abiertos sin responsable.
+- **Las decisiones se escriben donde se toman.** Si no queda escrita, la reunión no ocurrió.
 
-- **Una reunión quincenal, Facu y Vlado, 30 minutos**, con agenda fija: cómo está cada
-  unidad, qué problema está sin dueño, qué decisión está trabada.
-- **Cuatro métricas, ni una más.** Alumnos activos · alumnos con próxima clase agendada ·
-  ventas del mes · problemas abiertos sin responsable.
-- **Las decisiones se escriben donde se toman.** Si una decisión de esa reunión no queda
-  escrita en el sistema, la reunión no ocurrió.
-
-La segunda métrica es la nueva y es la que importa: hoy daría **11 de 25**.
-
-El dashboard de Dirección se construye **después** de que la reunión exista y haya pedido
-algo. Al revés, es una pantalla más que nadie abre — que es exactamente el problema que
-tenemos.
+El tablero se construye **después** de que la reunión exista y haya pedido algo. Al revés es
+una pantalla más que nadie abre, que es exactamente el problema que ya tenemos.
 
 ---
 
 # 8 · EL ORDEN QUE PROPONGO
 
-Cambia el tuyo en un punto: la retención entra antes que el CRM.
-
 | | Qué | Cuándo | Es software |
 |---|---|---|---|
 | 0 | Contestar las 8 preguntas escaladas | 07–08/08 | No |
-| 0 | Escribirle a los 14 sin próxima clase, y a los 3 que nunca vinieron | Esta semana | No |
+| 0 | Decidir qué se hace con los 8 dormidos | Esta semana | No |
 | 0 | Las dos mañanas mirando a José y a Luqui | Antes del 18/08 | No |
-| 1 | Arreglar las fichas mal cargadas del equipo | 30 min | Mínimo |
-| 2 | Alta de Annie, Lola, Pacha y chatbot | 1 día | Mínimo |
-| 3 | Retención como tarea con dueño, en el escritorio | Después del 18/08 | Sí |
-| 4 | CRM de leads externos | Después de la mañana con José | Sí |
-| 5 | Ritual de Dirección, después su tablero | Septiembre | Primero no |
+| 1 | Arreglar las fichas del equipo | 30 min | Mínimo |
+| 2 | Alta de Annie, Lola y Pacha | 1 día | Mínimo |
+| 3 | Dormidos como tarea con dueño en el escritorio | Después del 18/08 | Sí |
+| 4 | Leads externos — **diseño según qué hace el chatbot** | Después de la mañana con José | Sí |
+| 5 | Ritual de Dirección; su tablero después | Septiembre | Primero no |
 | 6 | Label: los dos estados que faltan | Cuando haya 10 demos reales | Sí |
 | 7 | Dominé | Cuando haya un evento | Sí |
 
-**Nada de lo que está en los puestos 0 cuesta una línea de código, y son los cuatro que más
-plata mueven.**
+**Los tres primeros no cuestan una línea de código y son los que más plata mueven.**
 
 ---
 
 # 9 · LO QUE NECESITO DE VOS
 
-1. **Lanfran: ¿da clases o no?** Cambia su alta.
-2. **La persona del chatbot: ¿cómo se llama y qué hace exactamente?** Es la única de las
-   doce que no tiene ni nombre acá.
-3. **Los 3 que nunca tomaron clase** (Pacino, Toninelli, Fernández López): ¿los conocés?
-   ¿Pasó algo o simplemente nadie los llamó?
-4. **Las 27 bajas de julio:** ¿son bajas reales o quedaron de la migración del 14/07?
-   Cambia si el problema de retención es nuevo o viene de antes.
+1. **El chatbot de Gonza: ¿dónde atiende y qué hace?** ¿Contesta WhatsApp e Instagram, o es
+   sólo de la web? Si atiende los dos, **él es la solución al agujero del CRM** y el diseño
+   cambia entero: no carga José, escribe el bot.
+2. **Los dos Gold que nunca vinieron** (Pacino y Toninelli): están pagando $195.600 y no
+   reciben nada. ¿Los dejamos pagando, les pausamos el plan, o les ofrecemos algo?
+3. **Guini y Valen: ¿querés que puedan manejar su propia agenda?** Hoy dependen de que José
+   o Pastrana se la carguen.
