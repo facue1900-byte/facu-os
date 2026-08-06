@@ -200,8 +200,25 @@ efectivo. Fabric paga todo por banco y nunca le debe efectivo; Bigg va partido y
 sólo la «Diferencia Alquiler (sin iva)» es en mano. **Tampoco es todo deuda**:
 todos pagan el mes siguiente, así que se separa lo del mes corriente de lo
 vencido cortando por la **última fila de pago** de cada pestaña. Lo que no está
-verificado no se muestra como cobrable (La Jaula dice «a confirmar»). La tarjeta
-se ve aislada en `preview-deuda.html?w=390`, sin login.
+verificado no se muestra como cobrable. La tarjeta se ve aislada en
+`preview-deuda.html?w=390`, sin login.
+
+Los locales **sin pestaña** no tienen cargo generado, así que cada uno lleva su
+regla explícita en `SIN_PESTANA` (con fecha y con quién la dijo):
+
+| Local | Regla |
+|---|---|
+| Salón (Alto) | cargos de CARGOS menos cobros |
+| **Beto** | fijo, $350.000/mes **desde sep-26**. La deuda vieja quedó saldada |
+| **Meta** · **Pole Position** | % de facturación: **no hay cargo fijo**, nunca hay nada que cobrar en mano |
+| **La Jaula / torneo** | ago-26 = $372.644 (neto del saldo a favor); de sep-26 en adelante, el precio semestral de `Futbol!AR` |
+
+⚠️ **`Futbol!AR` tiene los doce meses, pero sólo se cobra el pintado de verde**
+(marzo y septiembre): el contrato se ajusta por semestre y los meses del medio
+son la cadena que va componiendo el IPC, no un precio. Y la cadena atrasa dos
+meses — el precio de **septiembre necesita el IPC de julio**, que el INDEC
+publica el **15/08**. Si falta en la hoja `INFLACIÓN`, el script lo marca
+provisorio y lo saca del total en vez de darlo por bueno.
 
 **3. Conciliación** — los chequeos deterministas los hace el script; yo interpreto:
 

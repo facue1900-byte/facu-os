@@ -18,7 +18,8 @@ bloque corriente. No hace falta hardcodear filas ni fechas.
 Fuentes, según el local:
   · con pestaña → se camina la pestaña, que es la que Facu verificó y la que ve
     el locatario. Cargos y pagos se clasifican por medio.
-  · sin pestaña (Salón, La Jaula, Escuelita) → CARGOS menos la hoja Cobros.
+  · sin pestaña → cada uno lleva su REGLA explícita (ver `SIN_PESTANA`), porque
+    sus cargos no se generan solos en CARGOS. Los pagos siempre salen de Cobros.
 
 Read-only sobre la planilla. Escribe el JSON que consume la app del Paseo.
 """
@@ -46,16 +47,44 @@ PESTANAS = {
 # Cómo se llama el local para Mati (el de la pestaña es interno)
 ROTULO = {"Volta + Open 25": "Volta + Open 25"}
 
-# Los que no tienen pestaña: sus cargos viven sólo en CARGOS.
-#   alias en Cobros · nota para Mati · si el número es confiable
+# ---------------------------------------------------------------------------
+# Los que no tienen pestaña. Sus cargos NO se generan solos, así que cada uno
+# lleva la regla que dijo Facu, con fecha. Los pagos salen siempre de Cobros,
+# matcheando `alias` contra la columna Local.
+#
+#   cta        → cargos de CARGOS menos cobros. El comportamiento viejo.
+#   porcentaje → paga un % de facturación: NO hay cargo fijo, nunca hay nada
+#                que salir a cobrar. Siempre "al día".
+#   fijo       → un monto por mes desde `desde` (inclusive).
+#   jaula      → agosto-26 es un monto puntual dicho por Facu; de septiembre en
+#                adelante sale del precio semestral de la hoja Futbol.
+# ---------------------------------------------------------------------------
 SIN_PESTANA = {
-    "Salón (Alto)": (["salon multiespacios"], None, True),
-    "Escuelita": (["beto escuelita", "meta escuelita"],
-                  "Paga un % de facturación: no lleva cargo fijo", False),
-    "La Jaula / torneo": (["alquiler cancha / cumpleaños"],
-                          "Arranca en agosto — confirmar el monto con Facu", False),
+    "Salón (Alto)": dict(
+        regla="cta", alias=["salon multiespacios"], nota=None),
+    # Facu, 06/08/2026: la deuda vieja de Beto quedó saldada; hoy está al día y
+    # el alquiler de $350.000/mes arranca en septiembre.
+    "Beto": dict(
+        regla="fijo", alias=["beto escuelita"], monto=350_000, desde=(2026, 9),
+        nota="Alquiler $350.000/mes desde septiembre"),
+    "Meta": dict(
+        regla="porcentaje", alias=["meta escuelita"],
+        nota="Paga un % de facturación: no lleva cargo fijo"),
+    # Lavadero de autos. Ingreso nuevo, mismo esquema que Meta.
+    "Pole Position": dict(
+        regla="porcentaje", alias=["pole position"],
+        nota="Lavadero — paga un % de facturación: no lleva cargo fijo"),
+    "La Jaula / torneo": dict(
+        regla="jaula", alias=["la jaula"], desde=(2026, 8),
+        nota=None),
 }
 NO_PAGA_EFECTIVO = "No paga en efectivo"
+
+# La Jaula, agosto-26: dicho por Facu el 06/08/2026. NO es el alquiler pleno —
+# tenían saldo a favor y esto es lo que queda neto para cobrarles este mes.
+JAULA_AGOSTO = 372_644
+# Y no pagan expensas / servicios comunes por ahora (Facu, 06/08/2026): el
+# precio semestral de la hoja Futbol es TODO lo que se le cobra.
 
 
 def medio_del_cargo(cobra, concepto):
@@ -82,8 +111,90 @@ def num(x):
     return float(x) if isinstance(x, (int, float)) else 0.0
 
 
+def a_fecha(serial):
+    """Sheets guarda las fechas como serial desde el 30/12/1899."""
+    if not isinstance(serial, (int, float)):
+        return None
+    return datetime.date(1899, 12, 30) + datetime.timedelta(days=int(serial))
+
+
+MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+         "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+
+
+def meses_entre(desde, hasta):
+    """Lista de (año, mes) desde `desde` hasta `hasta`, ambos inclusive."""
+    y, m = desde
+    out = []
+    while (y, m) <= hasta:
+        out.append((y, m))
+        y, m = (y + 1, 1) if m == 12 else (y, m + 1)
+    return out
+
+
+def precios_semestrales_jaula(sv):
+    """El alquiler de La Jaula sale de la hoja **Futbol, columna AR**.
+
+    Ojo con la columna: los valores de TODOS los meses están, pero el que se
+    cobra es sólo el del mes pintado de **verde** (marzo y septiembre) — el
+    contrato se ajusta por semestre. Los meses del medio son la cadena que va
+    componiendo el IPC, no un precio a cobrar.
+
+    Y la cadena tiene dos meses de atraso: el valor de un mes es el del mes
+    anterior por (1 + IPC de dos meses antes). O sea que el precio de
+    **septiembre necesita el IPC de julio**, que el INDEC publica el 15/08. Si
+    todavía no está cargado en la hoja INFLACIÓN, el precio no es definitivo y
+    se avisa en vez de darlo por bueno.
+
+    Devuelve [(año, mes, precio, [meses de IPC que faltan])], en orden.
+    """
+    g = sv.get(spreadsheetId=CTAS, ranges=["Futbol!AP7:AS200"],
+               includeGridData=True,
+               fields=("sheets.data.rowData.values("
+                       "effectiveValue,effectiveFormat.backgroundColor)")).execute()
+    filas = g["sheets"][0]["data"][0].get("rowData", [])
+
+    tabla, anio = [], None
+    for fila in filas:
+        cels = (fila.get("values", []) + [{}] * 4)[:4]
+        ev = [c.get("effectiveValue", {}) for c in cels]
+        if ev[0].get("numberValue"):
+            anio = int(ev[0]["numberValue"])
+        mes = str(ev[1].get("stringValue", "")).strip().lower()
+        if anio is None or mes not in MESES:
+            continue
+        bg = cels[2].get("effectiveFormat", {}).get("backgroundColor", {})
+        verde = (round(bg.get("green", 0), 2) > round(bg.get("red", 0), 2)
+                 and round(bg.get("green", 0), 2) > 0.5
+                 and round(bg.get("blue", 0), 2) < round(bg.get("green", 0), 2))
+        tabla.append({"anio": anio, "mes": MESES.index(mes) + 1,
+                      "precio": ev[2].get("numberValue"),
+                      "ipc": ev[3].get("numberValue"),
+                      "verde": verde})
+
+    anclas, anterior = [], 0
+    for i, r in enumerate(tabla):
+        if not r["verde"]:
+            continue
+        # El precio de la fila i se compone desde el ancla anterior usando los
+        # IPC de las filas (anterior-1) .. (i-2). El que falte lo vuelve provisorio.
+        faltan = [MESES[tabla[j]["mes"] - 1] for j in range(max(anterior - 1, 0), max(i - 1, 0))
+                  if tabla[j]["ipc"] is None]
+        anclas.append((r["anio"], r["mes"], r["precio"], faltan))
+        anterior = i
+    return anclas
+
+
+def precio_jaula(anclas, anio, mes):
+    """El precio vigente para un mes es el del último ancla verde <= ese mes."""
+    vigentes = [a for a in anclas if (a[0], a[1]) <= (anio, mes)]
+    return vigentes[-1] if vigentes else None
+
+
 def main():
     salida = sys.argv[1] if len(sys.argv) > 1 else SALIDA_DEFAULT
+    hoy = datetime.date.today()
+    mes_actual = (hoy.year, hoy.month)
     sv = sheets().spreadsheets()
     locales, avisos = [], []
 
@@ -125,21 +236,82 @@ def main():
                                 valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
     cobros_sh = sv.values().get(spreadsheetId=CTAS, range="Cobros!A1:E400",
                                 valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
-    for nombre, (alias, nota, confiable) in SIN_PESTANA.items():
-        c = sum(num(r[5]) for r in (x + [""] * 8 for x in cargos_sh[3:])
-                if str(r[1]).strip() == nombre)
-        p = sum(num(r[2]) for r in (x + [""] * 5 for x in cobros_sh[2:])
-                if str(r[1]).strip().lower() in alias and str(r[3]).strip().lower() == "caja")
-        total = round(c - p, 2)
-        locales.append({"nombre": nombre, "efectivo": total, "delMes": 0.0,
-                        "vencido": total, "nota": nota, "confiable": confiable})
+    anclas = precios_semestrales_jaula(sv)
+
+    def cobrado(alias, desde=None):
+        """Lo que ya pagó en caja. `desde` = (año, mes) para no arrastrar plata
+        de un régimen anterior al que estamos cobrando."""
+        tot = 0.0
+        for r in (x + [""] * 5 for x in cobros_sh[2:]):
+            if str(r[1]).strip().lower() not in alias:
+                continue
+            if str(r[3]).strip().lower() != "caja":
+                continue
+            f = a_fecha(r[0])
+            if desde and (not f or (f.year, f.month) < desde):
+                continue
+            tot += num(r[2])
+        return tot
+
+    for nombre, cfg in SIN_PESTANA.items():
+        regla, alias, nota = cfg["regla"], cfg["alias"], cfg.get("nota")
+        confiable, del_mes = True, 0.0
+
+        if regla == "porcentaje":
+            # No hay cargo fijo: nunca hay nada que salir a cobrar en mano.
+            total = 0.0
+
+        elif regla == "cta":
+            c = sum(num(r[5]) for r in (x + [""] * 8 for x in cargos_sh[3:])
+                    if str(r[1]).strip() == nombre)
+            total = round(c - cobrado(alias), 2)
+
+        elif regla == "fijo":
+            meses = meses_entre(cfg["desde"], mes_actual)
+            del_mes = float(cfg["monto"]) if meses else 0.0
+            total = round(len(meses) * cfg["monto"] - cobrado(alias, cfg["desde"]), 2)
+
+        elif regla == "jaula":
+            cargado = 0.0
+            for (y, m) in meses_entre(cfg["desde"], mes_actual):
+                if (y, m) == (2026, 8):
+                    monto = float(JAULA_AGOSTO)
+                    nota = ("Alquiler de agosto — ya descontado el saldo a favor. "
+                            "No paga expensas")
+                else:
+                    ancla = precio_jaula(anclas, y, m)
+                    if ancla is None or ancla[2] is None:
+                        avisos.append(f"La Jaula {MESES[m-1]} {y}: sin precio en "
+                                      f"Futbol!AR — no se cobra en la tarjeta")
+                        confiable = False
+                        continue
+                    monto = float(ancla[2])
+                    nota = (f"Alquiler semestral de Futbol!AR "
+                            f"({MESES[ancla[1]-1]} {ancla[0]}). No paga expensas")
+                    if ancla[3]:
+                        avisos.append(f"La Jaula: el precio del semestre de "
+                                      f"{MESES[ancla[1]-1]} {ancla[0]} todavía no es "
+                                      f"definitivo, falta el IPC de {', '.join(ancla[3])}")
+                        nota += " — falta cargar IPC, precio provisorio"
+                        confiable = False
+                cargado += monto
+                del_mes = monto
+            total = round(cargado - cobrado(alias, cfg["desde"]), 2)
+
+        else:
+            raise ValueError(f"regla desconocida para {nombre}: {regla}")
+
+        locales.append({"nombre": nombre, "efectivo": total,
+                        "delMes": round(min(del_mes, total), 2) if total > 0 else 0.0,
+                        "vencido": round(total - min(del_mes, total), 2) if total > 0 else total,
+                        "nota": nota, "confiable": confiable})
 
     # Al total sólo entra lo que se puede salir a cobrar de verdad.
     total = round(sum(l["efectivo"] for l in locales
                       if l["confiable"] and l["efectivo"] > 0), 2)
     locales.sort(key=lambda l: (-l["efectivo"], l["nombre"]))
-    doc = {"generado": datetime.date.today().isoformat(),
-           "fuente": "Sheet Ctas Ctes — pestañas por local + CARGOS/Cobros",
+    doc = {"generado": hoy.isoformat(),
+           "fuente": "Sheet Ctas Ctes — pestañas por local + CARGOS/Cobros/Futbol",
            "total": total,
            "cuantosDeben": sum(1 for l in locales if l["confiable"] and l["efectivo"] > 0),
            "locales": locales,
@@ -154,6 +326,10 @@ def main():
         print(f"{l['nombre']:22s} {l['efectivo']:>14,.2f} {l['delMes']:>14,.2f} "
               f"{l['vencido']:>12,.2f}  {l['nota'] or ''}")
     print(f"\nTOTAL a cobrar en efectivo: ${total:,.2f}  ({doc['cuantosDeben']} locales)")
+    print("\nPrecios semestrales de La Jaula (Futbol!AR, en verde):")
+    for a in anclas:
+        falta = f"  ⚠ falta IPC de {', '.join(a[3])}" if a[3] else ""
+        print(f"  {MESES[a[1]-1]:>10} {a[0]}  ${a[2]:,.2f}{falta}")
     for a in avisos:
         print(f"  ⚠ {a}")
 
