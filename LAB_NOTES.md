@@ -8,6 +8,36 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-07 · El archivo que lleva el nombre de la función no tiene su última versión
+
+Carrito de la ticketera: `create_ticket_order` pasaba de vender un nivel a vender varios.
+Abrí `supabase/ticketera_checkout.sql` —el archivo que la crea, el que se llama como el
+tema— y reescribí la función a partir de esa versión. Compiló, se aplicó, devolvió `[]`.
+
+**Tres features desaparecieron sin que nada fallara.** `ticketera_visibilidad.sql`, una
+migración posterior, había hecho su propio `create or replace` de la MISMA función y le
+había agregado las guardas de tandas `hidden`/`rrpp_only` y el modo prueba entero. Mi
+versión, escrita sobre la vieja, las borró: una tanda escondida pasaba a venderse sola por
+la web, y **el modo prueba habría cobrado $50.000 reales en vez de $1**. La ticketera
+seguía vendiendo perfecto — sólo que tres reglas ya no existían.
+
+Lo agarró `verificar:ticketera` con 6 chequeos en rojo, antes de tocar producción.
+
+Y adentro del mismo cambio, la misma clase de silencio otra vez: el `drop function if
+exists` llevaba 14 tipos y la función vieja tiene 15. **Un drop que no matchea no borra
+nada y no avisa** — quedaron las dos versiones vivas al mismo tiempo, que es exactamente
+el "function is not unique" contra el que advertía el archivo original. El `[]` de la
+Management API decía que el SQL corrió, no que hubiera hecho algo.
+
+Causa raíz: **en un directorio de migraciones, el nombre del archivo dice cuándo NACIÓ una
+función, no dónde está su última versión.** Con 90 archivos en `supabase/`, la que manda es
+la última que la reemplazó, y no hay nada en el nombre que lo diga.
+
+Lo que se lleva, y va como chequeo fijo: antes de reescribir un `create or replace`,
+**`grep -l "function public.<nombre>" supabase/`** y partir del último, no del primero. Y
+después de aplicar un `drop`+`create`, **contar cuántas quedan** en `pg_proc` — la firma
+del drop se escribe contando los tipos, uno por uno.
+
 ### 2026-08-07 · El chequeo que falló tenía razón dos veces, por causas opuestas
 
 Se construyó el **Design Engine** de la ticketera (`astronomy-members`, `618fbac`): saca la
