@@ -52,9 +52,12 @@ descubrir pasos que todavía no sabemos automatizar.
    comprobante. Nunca dar por emitido sin verificar; el chequeo bueno es bajar el PDF:
    `PROWEB/facturas/101838/0073/<TIPO> A0002-<NRO>.pdf` — 404 significa que no existe.
 
-## PENDIENTE
+7. **Las Notas de Débito exigen período, y el campo NO es el que parece.** El modal de
+   Datos Adicionales de una ND tiene **dos pares de fechas**:
+   - `DatosAdic_Dscv_FECHADESDE` / `...FECHAHASTA` → *Fecha Desde/Hasta **Servicio***
+   - `DatosAdic_Dscv_FECHADESDEPERIODO` / `...FECHAHASTAPERIODO` → *Fecha Desde/Hasta **Período***
 
-Las **Notas de Débito** exigen período: *"Debe ingresar la Fecha Desde Período o
-seleccionar un comprobante asociado desde Datos Adicionales"*. Cargar las fechas en el
-modal de Datos Adicionales y aceptar **no alcanza** — sigue rechazando. Falta descubrir
-qué hace Facu a mano que el robot no reproduce. Las Facturas no tienen este problema.
+   ARCA pide el **segundo**. Llenar el primero deja el formulario aparentemente completo y
+   la emisión falla igual, con el mensaje *"Debe ingresar la Fecha Desde Período o
+   seleccionar un comprobante asociado desde Datos Adicionales"*. Costó tres emisiones
+   fallidas y se descubrió grabando a Facu hacerlo a mano. Las Facturas no piden período.

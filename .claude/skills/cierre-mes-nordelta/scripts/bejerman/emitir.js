@@ -120,12 +120,14 @@ const die = async (m, c) => { log('!! ' + m); clearTimeout(wd); if (B) await B.c
     await P.waitForTimeout(8000);
     const M = () => P.frames().find(x => x.url().includes('DatoAdicionalComprobante'));
     if (!M()) await die('no abrió Datos adicionales (la ND lo necesita)', 12);
-    for (const [id, val] of [['DatosAdic_Dscv_FECHADESDE', s.desde], ['DatosAdic_Dscv_FECHAHASTA', s.hasta]]) {
+    // OJO: las Notas de Débito piden "Fecha Desde PERIODO", que es un campo DISTINTO
+    // de "Fecha Desde Servicio". Llenar el de Servicio no sirve y ARCA rechaza.
+    for (const [id, val] of [['DatosAdic_Dscv_FECHADESDEPERIODO', s.desde], ['DatosAdic_Dscv_FECHAHASTAPERIODO', s.hasta]]) {
       const el = M().locator('#' + id);
       await el.click({ timeout: 12000 }); await el.fill(''); await el.type(val, { delay: 90 });
       await P.waitForTimeout(700);
     }
-    const per = await M().evaluate(() => ({ d: document.getElementById('DatosAdic_Dscv_FECHADESDE').value, h: document.getElementById('DatosAdic_Dscv_FECHAHASTA').value }));
+    const per = await M().evaluate(() => ({ d: document.getElementById('DatosAdic_Dscv_FECHADESDEPERIODO').value, h: document.getElementById('DatosAdic_Dscv_FECHAHASTAPERIODO').value }));
     if (per.d !== s.desde || per.h !== s.hasta) await die(`período quedó ${per.d}-${per.h}, pedí ${s.desde}-${s.hasta}`, 13);
     log(`   período ${per.d} a ${per.h}`);
     await M().locator('#DatosAdic_aceptar').click({ timeout: 12000 });
