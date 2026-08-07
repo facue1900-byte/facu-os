@@ -2365,3 +2365,51 @@ vez de repetir el filtro en cinco lados y perderse el sexto.
 guardado ajeno provoca un full reload: 22 cargas de la misma página en una
 corrida, que además parecían un loop mío. La medición limpia salió con
 `npm run build && next start`. Ver [[dos-sesiones-mismo-repo]].
+
+## 07/08/2026 — Tres emisiones fiscales fallidas por un sufijo, y una app que confirma y no hace nada
+
+Automatizar la facturación de Paseo Nordelta en **Bejerman Web** (MAHNI MANAGEMENT, punto
+de venta 0002). Seis comprobantes por mes: alquiler del mes corriente, y recupero de gastos
+y servicios comunes del mes anterior, para Fabric y Bigg.
+
+**Cuatro Facturas A salieron bien. La Nota de Débito de Bigg falló tres veces seguidas**,
+siempre con el mismo mensaje: *"Debe ingresar la Fecha Desde Período o seleccionar un
+comprobante asociado desde Datos Adicionales"*. El robot abría Datos Adicionales, escribía
+las fechas, **releía los campos para confirmar que habían quedado escritas**, aceptaba el
+modal — y la emisión fallaba igual.
+
+Causa raíz: **el modal de Datos Adicionales de una Nota de Débito tiene dos pares de fechas
+distintos.** `DatosAdic_Dscv_FECHADESDE` es *Fecha Desde **Servicio***; el que ARCA valida
+es `DatosAdic_Dscv_FECHADESDE**PERIODO***. El robot llenaba el primero. La verificación de
+"quedó escrito" pasaba perfecto porque el campo existía y aceptaba el valor — sólo que era
+el campo equivocado. Las Facturas no piden período, por eso las cuatro pasaron.
+
+**Cómo se encontró: grabando a Facu hacerlo a mano.** Se le inyectó un listener de `click`
+y `change` en todos los frames vía CDP, y el log escupió el id real. Ninguna cantidad de
+lectura del DOM lo hubiera dado, porque los dos campos se ven iguales y el error nombra una
+etiqueta ("Fecha Desde Período") que no coincide con el id que uno prueba primero.
+
+**El segundo hallazgo, más caro que el primero:** en la primera pasada el robot reportó
+`CONFIRMADO` en la ND —había clickeado el "Sí" del modal *"¿Confirma la emisión?"*— y **no
+se creó ningún comprobante**. La app confirma y después falla, dejando un cartel de error
+que nadie mira. Si la verificación hubiera sido "clickeé Sí, listo", habría reportado seis
+facturas emitidas con cinco existiendo. El chequeo bueno resultó ser **bajar el PDF con la
+sesión del navegador**: `PROWEB/facturas/101838/0073/<TIPO> A0002-<NRO>.pdf`, donde 404
+significa que no existe. Sirve en los dos sentidos: también confirma, antes de reintentar
+una emisión fallida, que no quedó nada duplicado.
+
+Otras cuatro trampas de la misma app, todas en el README del robot: tipear "FC" y soltar
+elige sola la **Factura de Crédito MiPyME (201)** en vez de la Factura A; **dos botones
+distintos comparten el id `sales-crud-add-button`**; **"Agregar" registra pero no emite**
+(deja el comprobante sin CAE, que no es una factura válida); y el buscador de conceptos
+**devuelve resultados desfasados una consulta**.
+
+Fix: `.claude/skills/cierre-mes-nordelta/scripts/bejerman/` — `emitir.js` (verifica el
+total en pantalla contra el esperado **antes** de emitir, y frena si un peso no coincide),
+`grabar.js` (el grabador de clicks, que es lo que destrabó esto) y el README con las siete
+trampas. Las seis de agosto quedaron emitidas, con CAE verificado contra el PDF, y
+archivadas en `Facturas de Venta/2026/Agosto 2026/`. Total $15.199.684,81.
+
+**La lección transferible: una verificación que sólo comprueba que *escribiste* algo no
+verifica nada.** Hay que comprobar que el sistema *aceptó* lo que escribiste — y para algo
+irreversible, comprobarlo contra una fuente que el propio sistema no controle.
