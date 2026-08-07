@@ -8,6 +8,43 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-07 · El chequeo que falló tenía razón dos veces, por causas opuestas
+
+Se construyó el **Design Engine** de la ticketera (`astronomy-members`, `618fbac`): saca la
+paleta de cada fecha del flyer y la refina. Al correr el verificador por primera vez, 2 de
+23 chequeos en rojo, los dos por milésimas. La tentación obvia —y equivocada— era la misma
+para los dos: subirle el umbral al chequeo y seguir.
+
+Eran **dos causas distintas**, y sólo una era del código.
+
+1. *"Ningún acento pasa el techo de saturación"* falló con `.1460` contra un techo de
+   `.145`. Ahí el **chequeo estaba mal**: el motor calcula en flotante pero la pantalla
+   tiene 256 escalones por canal, así que el color que realmente se pinta nunca es
+   exactamente el pedido. Medir el hex redondeado contra el ideal es medir el redondeo.
+2. *"Los fondos siguen siendo neutros"* falló con croma `.0124`. Ahí el **código estaba
+   mal**: yo había puesto el croma de las superficies **constante**, y el mismo croma se ve
+   más fuerte cuanto más clara es la superficie — o sea que el teñido crecía justo en las
+   áreas más grandes de la pantalla. Se bajó la constante.
+
+Y hubo una tercera trampa dentro de la misma medición: en un fondo casi negro **el croma de
+OKLCh es puro ruido de cuantización** (`#070403` y `#050505` están a 2 unidades de canal y
+dan `.0124` vs `.0000`). Medir "esto sigue siendo neutro" por croma ahí hace fallar al motor
+por algo que ningún ojo ve. Se cambió por la **separación entre canales R/G/B**, que es la
+definición operativa de "esto es un gris" y no se descompone cerca del negro.
+
+Lo mismo pasó con la primera captura de pantalla: mostraba el contenido cortado a la
+derecha. Podría haberse "arreglado" el CSS. Medido en el navegador, el desborde real a 390px
+era **0**: headless sin emular cae a un viewport de 980 y recorta la imagen a la ventana. El
+bug era del instrumento.
+
+Lo que se lleva: **la regla 3 —no parchear alrededor de un chequeo que falla— no dice que el
+chequeo siempre tenga razón. Dice que hay que averiguar cuál de los dos está mal.** Tres
+veces en la misma sesión el rojo vino del instrumento y no del sistema, y las tres veces la
+única forma de saberlo fue entender qué se estaba midiendo. Un umbral que se mueve para que
+el test pase es un test que se apagó; un umbral que se mueve **porque medía la cosa
+equivocada** es un test que recién ahora sirve — y la diferencia sólo se ve escribiendo por
+qué.
+
 ### 2026-08-06 · Cambié una regla en un script y otros dos siguieron diciendo lo viejo
 
 Facu fijó cuatro reglas de cobro nuevas del Paseo: «Escuelita» eran dos cobradores (Beto y
