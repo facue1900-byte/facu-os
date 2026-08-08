@@ -81,6 +81,42 @@ regla lo agarró, no porque la protección funcione.** Se saca la protección y 
 sigue en verde. La única forma de que valga es apuntarle al camino que se lo comería:
 la petición con la forma exacta que caería en la rama peligrosa.
 
+### Lo que se da por protegido: preguntar por su superficie DIRECTA
+
+Del 08/08/2026, auditando Astronomy. La reja estaba bien escrita y la pared de al lado no
+llegaba al techo. **La pregunta no es "¿quién llama a esto?" sino "¿qué pasa si le pegan
+sin pasar por acá?"**
+
+Supabase publica cosas que el código no menciona. Antes de decir que algo está protegido:
+
+- **Las funciones de la base son endpoints.** PostgREST publica cada función de `public`
+  como `/rest/v1/rpc/<nombre>` y Postgres les da `EXECUTE` a PUBLIC por default. Si además
+  son `SECURITY DEFINER`, corren **por encima de RLS**. Toda función nueva nace con
+  `revoke execute ... from public, anon, authenticated` — a `public` también, o entran por
+  herencia.
+- **RLS filtra filas, NO columnas.** Una política `USING (auth.uid() = id)` correcta más un
+  `GRANT` de UPDATE sobre toda la tabla deja que el usuario se escriba las columnas de
+  control. Hay que leer el `GRANT`, no sólo la política.
+- **Un permiso que se verifica tiene que poder otorgarse.** Si no está en el catálogo, nadie
+  lo tiene, y la salida bajo presión va a ser dar el rol máximo.
+- **La falta de configuración tiene que CERRAR, no abrir.** Nada de `if (secret) { validar }`
+  ni `|| ""` como último recurso: sin secreto se corta. Sin excepción por entorno.
+
+Y el método que las encontró: **atacar de verdad con `curl`**, con la clave pública y sin
+sesión. Las tres estaban en código que ya había leído entero. Leer muestra las puertas;
+sólo pegarle muestra las paredes que faltan.
+
+### Contar filas no es contar hechos
+
+Del mismo día. Una tabla de log guarda **un golpe por reintento**, no un hecho por fila.
+Leer `webhook_hits` como si cada fila fuera un pago dio "7 pagos fallidos" donde había **un
+pago de prueba reintentado 7 veces**, y "13 rechazados" donde había **4** — y salió reportado
+antes de verificarlo.
+
+Es la regla 2 de la Constitución al revés: un resultado **grande** también es un error hasta
+que se demuestre lo contrario, cuando la unidad de la fila no es la unidad del hecho. Antes
+de reportar un número que sale de un log: `count(distinct <la cosa real>)`, no `count(*)`.
+
 ## 5. Cuando algo se rompe
 
 1. **Reproducirlo** antes de teorizar. Un bug que no se reprodujo no se entendió.

@@ -8,6 +8,71 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-08 · Auditar la aplicación no audita la base: la reja estaba bien y la pared no llegaba al techo
+
+Auditoría de seguridad completa de `astronomy-members` (44k líneas, 12 APIs, 45 archivos de
+acciones, 51 pantallas admin). El diagnóstico salió muy bien: RLS activo en las 71 tablas,
+cero secretos en el bundle del navegador, ningún `.env` en la historia de git, el webhook de
+MP validando HMAC y re-preguntándole a MP en vez de creerle al pedido, las 51 pantallas de
+admin protegidas una por una. **Cero vulnerabilidades críticas.**
+
+Y estaba mal. Lo crítico apareció después, remediando, cuando Facu preguntó una cosa que yo
+no me había preguntado: **"¿puedo llamar directamente a las APIs sin pasar por la UI?"**
+
+Sí se podía. PostgREST publica **cada función del esquema `public`** como
+`/rest/v1/rpc/<nombre>`, y el default de Postgres es `EXECUTE` para PUBLIC. Las 15 funciones
+del sistema son `SECURITY DEFINER`, o sea que corren por encima de RLS. Con la sola `anon key`
+—la que viaja en el navegador— y **sin ninguna sesión**, comprobado contra producción:
+`user_id_by_email` devolvía el uuid de cualquiera por su mail, `credit_balance` su saldo
+(3390), `lista_de_puerta` la lista de asistentes con nombres, y `check_in_ticket` quemaba la
+entrada de otro. Sin ejecutarlas porque movían plata real: `grant_credits(p_user, p_amount…)`
+y `pay_ticket_order(...)` estaban a un POST de regalar créditos y entradas.
+
+**La causa raíz no fue una reja mal escrita.** `app/actions/puerta.ts` verifica cuenta,
+permiso `validate_tickets` y una cookie firmada con HMAC timing-safe antes de llamar a
+`check_in_ticket`. Está bien hecho. El problema es que auditar las server actions **muestra
+las puertas y no muestra que la pared de al lado no llega al techo**: hay una superficie
+paralela —PostgREST— que el código de la app no menciona en ningún lado.
+
+El mismo error de método, dos veces más:
+
+- **RLS filtra filas, no columnas.** `profiles` tenía la política correcta y el `GRANT` de
+  UPDATE sobre las 7 columnas: un alumno se sacaba la suspensión y se marcaba `es_interno`
+  —o sea se borraba de la cobranza y de las métricas— desde la consola, sin dejar rastro.
+  Leer la política y darla por buena no alcanza: hay que leer el `GRANT`.
+- **Un permiso que se verifica pero no está en el catálogo no es un agujero: es peor.**
+  `validate_tickets` se exigía y no se podía otorgar, así que el 16/10 con cola en la puerta
+  la salida iba a ser repartir `is_master`. Una verificación que nadie puede satisfacer
+  fabrica la escalada que quería evitar.
+
+**Lecciones, en orden de valor:**
+
+1. **Preguntar por la superficie DIRECTA de cada cosa que se da por protegida.** No "¿quién
+   llama a esto?" sino "¿qué pasa si le pegan sin pasar por acá?". Las tres las encontré
+   atacando de verdad con `curl`, no leyendo código — y el código lo había leído entero.
+2. **Una auditoría de aplicación y una de plataforma son dos trabajos.** Los GRANTs de
+   EXECUTE, los de columna y los defaults del motor no aparecen en ningún `grep`.
+3. **La falta de configuración tiene que CERRAR.** Apareció tres veces: `if (secret)` en los
+   4 crons, `|| ""` en la firma de la cookie de la puerta, `sin-secreto` en el webhook. Un
+   error de configuración no rompía nada visible, sólo sacaba la reja.
+4. **Contar filas no es contar hechos.** `webhook_hits` guarda un golpe por notificación y MP
+   reintenta: leí "7 pagos fallidos" donde había **un pago de prueba reintentado 7 veces**, y
+   "13 rechazados" donde había **4**. Se lo reporté a Facu antes de verificarlo. Es la regla 2
+   de la Constitución al revés — un resultado *grande* también es un error hasta que se
+   demuestre lo contrario, cuando la unidad de la fila no es la unidad del hecho.
+
+**Fixes**, todos verificados atacando antes y después: `revoke execute` en las 15 funciones ·
+`revoke update/insert` en `profiles` · `lib/cronAuth.ts` fail-closed en los 4 crons ·
+`validate_tickets` al catálogo y a `PERMISOS_ACOTADOS` · `check_in_ticket` distingue las
+entradas de prueba (y `lista_de_puerta` también, o el modo offline lo salteaba). Los chequeos
+que impiden la regresión están en `scripts/seguridad-valores.mjs`, y la regla quedó en el
+`CLAUDE.md` del repo.
+
+**Lo que quedó abierto a propósito:** los `merchant_order` se rechazan por firma 4 de 4 —no
+se pierde plata porque el `payment` gemelo acredita, pero es un mecanismo de seguridad
+rechazando tráfico legítimo, y no se toca hasta poder reproducirlo— y el panel cuenta
+webhooks en vez de pagos.
+
 ### 2026-08-08 · Un chequeo de "esto no se toca" que pasaba porque nada lo tocaba
 
 La puerta de la ticketera (`/puerta`) tenía modo offline pero **no service worker**: si el
