@@ -69,6 +69,29 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
   pestaña del plano de mesas **no cierran** con el ingreso — no usar esas.
 
   Pendiente: escribir `wiki/eventos/`, que sigue vacía.
+
+  **Backlog de la puerta (pedido por Facu el 08/08/2026, NO construido).** Lo pidió después
+  de escanear de verdad con `/puerta` en modo avión. Va acá y no al código porque todavía no
+  hay una fecha real que lo necesite — el 16/10 se valida con lo que ya está. Cuando se
+  construya, arranca por lo de abajo, que es lo único que hoy le cuesta plata:
+
+  - 🥇 **La mesa en la pantalla del escáner.** Es lo que más pesa: la mesa es el **52%–60%
+    del ingreso** de una fecha de Puzzle y **el de la puerta hoy no sabe quién tiene mesa ni
+    cuál** — se resuelve preguntando por radio o mandando a la persona a averiguar adentro.
+    Número de mesa y sector al escanear elimina ese ida y vuelta, que es trabajo real de una
+    persona, en la fila, con cola atrás.
+  - 🥈 **Cortesías con color por tipo de invitado** (el caso concreto de Facu: rosa mujeres,
+    azul varones para los ingresos de cortesía). Sirve para dos cosas distintas y conviene no
+    mezclarlas: el **color del QR** en el flyer/mensaje, y el **color del veredicto** al
+    escanear. La segunda es la que hace el trabajo en la puerta.
+  - 🥉 **Color por tipo de entrada** (VIP dorado, etc.). Hoy el nivel ya sale grande y de
+    texto; el color es el paso siguiente, para leerlo sin leerlo.
+  - **Ver de un golpe si un QR está usado o no y de qué sector es** — parte está: el escáner
+    ya dice YA ENTRÓ. Lo que falta es el sector.
+
+  Ojo con el orden: los tres primeros suenan a diseño de QR y en realidad **el trabajo está
+  del lado del escáner**, no del lado de la imagen. Un QR rosa no le sirve a nadie si el
+  cartel del veredicto no dice "MESA 14 · SECTOR B".
 - **Academia** — la app está productiva. Queda: pase de estética final (contra el demo
   aprobado), sitio público etapa 3, y decidir si se reemplaza Calendly por el booking
   nativo (ya está completo y listo).
