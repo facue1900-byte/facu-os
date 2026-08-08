@@ -1,6 +1,6 @@
 # Playbook Operativo
 
-`PLAYBOOK-v1` · 03/08/2026
+`PLAYBOOK-v2` · 08/08/2026
 
 Cómo se ejecuta una tarea. La Constitución dice qué no se negocia; esto dice cómo se
 trabaja. **Se lee antes de cualquier trabajo no trivial** (algo que toque plata, que
@@ -62,11 +62,24 @@ que está bien.
 | ☐ | **¿Está completo?** | Todo el alcance pedido, o dicho explícito qué faltó y por qué. |
 | ☐ | **¿Los números cierran?** | Filas contadas, fuente citada, moneda y fecha del tipo de cambio. |
 | ☐ | **¿Está probado?** | Tests si es código de `execution/`; corrida real si es un skill. |
+| ☐ | **¿El chequeo nuevo falla cuando tiene que fallar?** | Se rompe el código a propósito y se mira si lo agarra. Ver abajo. |
 | ☐ | **¿Falla ruidoso?** | Si se rompe a las 3 AM, ¿alguien se entera? Si no, no está listo. |
 | ☐ | **¿Está documentado?** | `SKILL.md`, `ESTADO.md` o memoria actualizados. |
 | ☐ | **¿Es escalable / se puede automatizar?** | ¿Sirve para los tres negocios o quedó clavado a uno? |
 | ☐ | **¿Genera valor o reduce costo?** | Decir cuál de los dos, con número si se puede. |
 | ☐ | **¿Algo sale al mundo?** | Entonces está frenado esperando el OK. |
+
+### Un chequeo nuevo se rompe a propósito antes de confiar en él
+
+La Constitución dice que un chequeo que nunca falló es sospechoso (regla 3). El método
+para saberlo el mismo día que se escribe: **romper el código a propósito, una cosa por
+vez, y mirar si el chequeo lo agarra.** Se restaura y listo. Cuesta dos minutos.
+
+Y el caso que engaña, del 08/08/2026: un chequeo de *"esto tiene que pasar derecho"*
+—que algo NO se toque, NO se guarde, NO se intercepte— **puede dar verde porque ninguna
+regla lo agarró, no porque la protección funcione.** Se saca la protección y el chequeo
+sigue en verde. La única forma de que valga es apuntarle al camino que se lo comería:
+la petición con la forma exacta que caería en la rama peligrosa.
 
 ## 5. Cuando algo se rompe
 

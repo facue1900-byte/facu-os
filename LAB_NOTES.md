@@ -8,6 +8,37 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-08 · Un chequeo de "esto no se toca" que pasaba porque nada lo tocaba
+
+La puerta de la ticketera (`/puerta`) tenía modo offline pero **no service worker**: si el
+de la puerta recargaba sin señal, no abría nada. Lo construí (`public/puerta-sw.js`) con un
+verificador que lo carga con caché y red de mentira (`npm run verificar:puerta`, 25
+chequeos). El primero de todos era el más importante: **un service worker jamás puede
+tocar un POST**, porque las server actions de Next —validar un código, abrir la fecha— son
+POST a la misma URL. Si las intercepta, la puerta deja de validar CON señal, que es el
+caso normal.
+
+Verde. Después, por costumbre, saqué el filtro por método a propósito para ver si el
+chequeo lo agarraba: **seguía verde.** El POST no pasaba derecho por estar protegido, sino
+porque ninguna de las tres ramas del `fetch` lo agarraba: no era navegación, no era
+`/_next/static/`, y `/puerta` no termina en `.js`. **El chequeo probaba una coincidencia,
+no una protección.**
+
+Y buscando el POST que sí caería en una rama apareció un caso real que no había pensado:
+un `<form>` con server action tocado **antes de que la página hidrate** —3G en la puerta,
+pasa— se manda como POST de **navegación**, y eso sí cae en la rama de la página. Con señal
+se habría comido la respuesta de la acción; sin señal habría contestado el escáner guardado
+como si la fecha se hubiera abierto. Mismo agujero para `/api/qr/E-000043.png` (termina en
+`.png`: cae en la rama de archivos) y para las tapas `.jpg` de Supabase (otro dominio).
+
+Causa raíz: **un chequeo de que algo NO pasa no vale nada si el caso de prueba no tiene la
+forma exacta que caería en la trampa.** Verde por ausencia de coincidencia se lee igual que
+verde por protección.
+
+Los 6 mutantes que probé después caen todos: sin filtro de método, sin filtro de `/api`,
+sin filtro de origen, guardando cualquier HTML, sin borrar lo guardado al cerrar la fecha,
+y caché-primero en vez de red-primero. Quedó como método fijo en el Playbook §4.
+
 ### 2026-08-07 · El archivo que lleva el nombre de la función no tiene su última versión
 
 Carrito de la ticketera: `create_ticket_order` pasaba de vender un nivel a vender varios.
