@@ -73,6 +73,44 @@ se pierde plata porque el `payment` gemelo acredita, pero es un mecanismo de seg
 rechazando tráfico legítimo, y no se toca hasta poder reproducirlo— y el panel cuenta
 webhooks en vez de pagos.
 
+### 2026-08-08 · La puerta rechazaba a quien pagó, y el escáner se moría con una raya
+
+Segunda tanda del mismo día, en `/puerta`. Salí a verificar qué le hacía a la puerta el
+`revoke execute` que otra sesión aplicó a las funciones `SECURITY DEFINER`. El revoke está
+bien —lo verifiqué contra la base, no contra el código: `service_role` conserva `EXECUTE` en
+las 5 funciones de la ticketera y `anon`/`authenticated` la perdieron— pero mirando ese
+camino aparecieron **tres agujeros propios**, los tres invisibles hasta la noche del 16/10.
+
+**1. El escáner se moría con una raya de señal.** `navigator.onLine` dice que hay RED, no que
+haya INTERNET. Con señal débil la server action rechaza, `resolver()` tiraba, el veredicto
+nunca aparecía — y como la pausa del escáner **se suelta tocando el cartel del veredicto**,
+sin cartel no había forma de soltarla: la cámara seguía prendida y no leía nada más, hasta
+recargar. El escenario exacto de Native Beach Club.
+
+**2. "NO EXISTE" en rojo para gente que pagó.** `if (error) return { result: "invalido" }`
+metía en el mismo cartel tres cosas del *teléfono* —sesión vencida, cookie vencida, error de
+la base— disfrazadas de veredicto sobre *la entrada*. Si el revoke de la otra sesión hubiera
+errado un grant, **todas** las entradas válidas decían NO EXISTE sin un solo error a la
+vista. Detalle completo en la memoria `un-error-no-es-un-veredicto`.
+
+**3. El cartel se salía de la pantalla, y venía así desde antes.** Medí en el navegador con
+la Montserrat de producción: a `13vw` en 393px entran 329px, o sea **9 caracteres**.
+`OTRA FECHA` (10) y `FUERA DE HORA` (13) estaban cortadas desde siempre y nadie las había
+visto **porque son los dos casos que todavía no pasaron en una fecha real** — el 16/10, con
+una tanda que corta a las 20:00, `FUERA DE HORA` va a aparecer un montón.
+
+Y acá me comí dos veces la misma trampa de medición. Primero le reporté a la otra sesión que
+`ENTRADA DE PRUEBA` desbordaba (era cierto). Después "vi" desbordar dos textos que en
+realidad entraban: **Chrome headless maqueta a 500px aunque `--window-size` diga 393 y la
+captura salga de 393**, así que `13vw` se calculaba sobre 500 y todo se veía cortado. Lo
+resolví midiendo con canvas y la fuente real, y renderizando **dentro de un iframe de 393px**,
+que es lo único que hace que `vw` valga lo que vale en el teléfono. Lección: una medición en
+el navegador vale por el **viewport que el navegador realmente usó**, no por el que le pediste
+— hay que imprimir `document.documentElement.clientWidth` en la propia captura.
+
+El arreglo de fondo no es el umbral de 9 caracteres: es `overflow-wrap: anywhere` en el
+cartel, que hace imposible que un texto futuro se corte sin que nadie mida nada.
+
 ### 2026-08-08 · Un chequeo de "esto no se toca" que pasaba porque nada lo tocaba
 
 La puerta de la ticketera (`/puerta`) tenía modo offline pero **no service worker**: si el
