@@ -8,6 +8,69 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-09 · FAIL ✓ · La tabla estaba cerrada y la vista era la puerta
+
+Tercera vez que cae el mismo método, un mes después de la auditoría del 08/08. Iba a
+construir la pantalla de mesas de Dominé; antes de escribirla probé la superficie de la
+base, que es lo que aquella auditoría dejó como regla.
+
+`mesas` estaba impecable: RLS prendida, sin policies, y con la anon key PostgREST
+devolvía `[]`. Verificado así el día que se creó, y por eso la memoria decía "las cinco
+tablas con RLS prendida y sin policies", en pasado y con razón. **La vista sobre esa
+misma tabla, `mesas_estado`, devolvía la fila entera**: titular, teléfono, precio y
+saldo.
+
+**Causa raíz — dos defaults que se combinan y ninguno es un error de nadie:**
+
+1. Una vista de Postgres corre con los permisos de su **dueño**, no con los del que
+   consulta. La RLS de las tablas de abajo **no se aplica**. Es el default: hay que
+   pedir `security_invoker = on` explícitamente, y el `.sql` que creó las mesas no lo
+   pedía porque nadie sabe lo que no sabe.
+2. Supabase trae un *default privilege* que le da `select` a `anon` sobre **cada tabla
+   y vista nueva de `public`**. Así que la vista nace publicada como endpoint.
+
+Juntas convierten toda vista en una API pública. Y la anon key viaja en el bundle del
+navegador: no hacía falta ninguna cuenta.
+
+**No era sólo mesas.** Las **ocho** vistas del proyecto estaban abiertas. Medido con
+curl antes de tocar nada — contando filas, porque un `[]` de hoy es una fuga de mañana:
+
+```
+pagos_por_persona          40 filas   nombre y apellido + cuánto pagó cada alumno
+payment_links_pendientes  397 filas   nombre en el concepto + monto de cada pago
+ticket_batch_stats          8 filas   cupo y disponibles de cada tanda
+evento_aportes              3 filas   quién puso plata en una fecha y cuánta
+evento_resultado            2 filas   ingresos, egresos y resultado por fecha
+mesas_estado                1 fila    titular, contacto, precio y saldo
+domine_fijos / v_reprogramaciones_mes  vacías hoy — filtraban igual
+```
+
+**El fix** (`supabase/vistas_no_se_publican.sql`, aplicado por la Management API):
+`security_invoker = on` en las ocho, `revoke all … from anon, authenticated`, y
+`alter default privileges … revoke all on tables from anon` para que la próxima vista
+nazca cerrada. Las ocho se leen sólo del servidor con el service role —verificado
+grepeando: cada `from("<vista>")` cuelga de `createAdminClient()`— así que no rompió
+nada. Después: 401 con la anon key, y el service role sigue leyendo las 40 y las 397.
+
+**Lo que queda para que no vuelva:** el chequeo `[8]` de `scripts/seguridad-valores.mjs`
+le **pega** a cada vista con la anon key y exige 401 — un 200 con `[]` no alcanza. La
+lista sale de los `create view` de `supabase/`, así que una vista nueva entra sola.
+Probado rompiéndolo a propósito: con el `grant` puesto, falla.
+
+**La lección de método, que es la que importa.** Las tres veces el código de la app
+estaba bien y la superficie paralela estaba abierta: funciones RPC (08/08), columnas que
+RLS no filtra (08/08), vistas (hoy). La pregunta "¿está protegida la tabla?" no cubre
+"¿qué más publica PostgREST que apunte a esa tabla?". **Al crear un objeto nuevo en
+`public` —tabla, vista o función— se le pega con la anon key y se cuenta lo que
+devuelve.** Leer el `.sql` no sirve: los dos defaults que causaron esto no están
+escritos en ningún archivo del repo.
+
+De paso apareció un chequeo podrido: el de `beginSubscription` seguía exigiendo
+`EN_VENTA.includes(planId)` cuando el código había pasado a `COMPRABLES` hace días. El
+código estaba bien y el test viejo, y venía fallando sin que nadie lo mirara. Ahora
+prueba la garantía —hay lista blanca, y `test` y `modopro` están afuera— y no el nombre
+de la constante.
+
 ### 2026-08-08 · Auditar la aplicación no audita la base: la reja estaba bien y la pared no llegaba al techo
 
 Auditoría de seguridad completa de `astronomy-members` (44k líneas, 12 APIs, 45 archivos de
