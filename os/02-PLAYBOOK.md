@@ -81,6 +81,27 @@ regla lo agarró, no porque la protección funcione.** Se saca la protección y 
 sigue en verde. La única forma de que valga es apuntarle al camino que se lo comería:
 la petición con la forma exacta que caería en la rama peligrosa.
 
+### Una prueba NUNCA escribe sobre datos reales
+
+**09/08/2026, y costó datos de Facu.** Dos verificadores de pantalla creaban, cobraban
+y **borraban** sobre la Previa de Maceo Plex —una fecha real, con plata real— porque era
+la que estaba a mano cuando se escribieron. Facu estaba en esa misma pantalla cargando
+escalones de comisión: el `limpiar()` del script le borró la categoría por debajo, el
+escalón siguiente reventó con un error de foreign key y desde su lado parecía un bug.
+
+No fue una carrera desafortunada: **era inevitable.** Un script que borra por
+`event_id` y una persona trabajando en ese `event_id` no pueden convivir.
+
+El método, para cualquier verificador que ESCRIBA:
+
+- **Se crea su propio objeto descartable** —una fecha, un alumno, un local— con un
+  nombre que se reconozca (`zz-prueba-<lo-que-prueba>`), lo usa y lo borra entero.
+- **Nace apagado.** Si algo falla y queda colgado, un evento en `draft` o un alumno
+  inactivo no se ve en la web ni le llega a nadie.
+- **Ningún id de producción escrito en un script.** Si hay un uuid real hardcodeado en
+  `scripts/`, eso ya es el bug esperando.
+- Un verificador que sólo LEE puede mirar datos reales: el problema es escribir.
+
 ### Lo que se da por protegido: preguntar por su superficie DIRECTA
 
 Del 08/08/2026, auditando Astronomy. La reja estaba bien escrita y la pared de al lado no

@@ -8,6 +8,39 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-09 · FAIL ✓ · Le borré datos a Facu con mi propio verificador
+
+Escribí dos verificadores de pantalla (`verificar-mesas`, `verificar-comisiones`) que
+aprietan los botones de verdad: crean mesas, cargan pagos, arman categorías de RRPP y
+después limpian. Bien pensados en todo menos en dónde: corrían sobre **la Previa de
+Maceo Plex**, una fecha real, porque era la que estaba a mano cuando los escribí.
+
+Facu estaba en esa misma pantalla cargando los escalones de comisión. Corrí el
+verificador; su `limpiar()` hace `delete rrpp_categorias where event_id = <la Previa>`.
+Le borró la categoría por debajo. El escalón siguiente que él cargó devolvió
+`insert or update on table "rrpp_tramos" violates foreign key constraint
+"rrpp_tramos_categ…"` —cortado a 90 caracteres— y me escribió: *"no me dejó cargar los
+demás escalones"*. Desde su lado era un bug de la pantalla. Era yo.
+
+**Causa raíz: no fue una carrera desafortunada, era inevitable.** Un script que borra
+por `event_id` y una persona trabajando en ese `event_id` no pueden convivir. La
+pregunta que no me hice al escribir el script no es "¿limpia bien?" sino **"¿de quién
+son los datos sobre los que corre?"**.
+
+Lo peor es que el script hacía todo lo demás bien: arrancaba de cero, limpiaba al final,
+verificaba que no quedara nada. Toda esa prolijidad es exactamente lo que lo volvió
+destructivo — un test descuidado que sólo inserta habría dejado basura, no un agujero.
+
+**El fix:** cada verificador se crea su fecha descartable (`eventoDePrueba` en
+`scripts/_pantalla.mjs`), la usa y la borra entera; nace en `draft` para que si queda
+colgada no se vea en la web. Ya no hay un solo uuid de producción escrito en `scripts/`.
+Regla nueva en el Playbook: *una prueba nunca escribe sobre datos reales*.
+
+**Y el segundo error, que es de comunicación:** la pantalla mostró el error crudo de
+Postgres cortado a la mitad. Aunque la causa hubiera sido otra, `violates foreign key
+constraint "rrpp_tramos_categ…"` no le dice nada a nadie. Ahora `guardarTramo` chequea
+que la categoría exista antes de insertar y explica que la borraron desde otro lado.
+
 ### 2026-08-09 · FAIL ✓ · La tabla estaba cerrada y la vista era la puerta
 
 Tercera vez que cae el mismo método, un mes después de la auditoría del 08/08. Iba a
