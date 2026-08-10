@@ -105,6 +105,60 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
   Ojo con el orden: los tres primeros suenan a diseño de QR y en realidad **el trabajo está
   del lado del escáner**, no del lado de la imagen. Un QR rosa no le sirve a nadie si el
   cartel del veredicto no dice "MESA 14 · SECTOR B".
+
+  **El plano del salón al lado de las mesas (pedido por Facu el 10/08/2026, NO construido).**
+  Textual: *"estaría bueno que te dé la opción de agregar una foto al lado de la enumeración
+  de mesas… para tener a mano el mapa de las mesas del boliche, que siempre cambia dependiendo
+  del lugar, y poder enumerarlas en base al número real de la foto"*.
+
+  El trabajo que elimina está nombrado y es real: **hoy el número de mesa del sistema y el
+  número de la mesa en el salón se hacen coincidir de memoria o mirando un plano en otra
+  ventana.** Cada venue tiene su plano y cambia. Con la imagen al costado, numerar y asignar
+  dueño se hace mirando una sola pantalla.
+
+  Cuando se construya, tres decisiones ya tomadas por cómo está el modelo:
+  - **La imagen es del EVENTO, no del sector ni de la mesa.** Un plano por fecha, porque el
+    venue cambia por fecha. Va como `events.plano_url` o similar, al lado de `flyer_url`.
+  - Sube al mismo storage que el flyer y se muestra **al costado de la tabla**, fija mientras
+    se scrollea la lista (es una referencia, no contenido).
+  - **No se intenta mapear coordenadas sobre la foto.** Eso es otro producto: acá el trabajo
+    es *ver el plano mientras se numera*, no dibujar el plano.
+
+- **La ticketera como producto propio, separada de la Academia (pedido por Facu el
+  10/08/2026, NADA construido).** Es un **negocio nuevo**, no una función más: vender la
+  ticketera a otras productoras. Pidió base de datos nueva, panel de comprador y panel de
+  productora, y armarlo *"como si fuese algo nuevo con el mismo link"*.
+
+  Flujo que pidió, textual y en su orden: (a) la productora se crea cuenta, (b) al crear el
+  evento se genera **un ID y una contraseña únicos para los validadores de ESE evento**,
+  (c) se sincroniza **una cuenta de Mercado Pago propia** para recibir los pagos, (d) un
+  camino de datos para nombres, fechas, fotos, (e) recién ahí se crea el evento y después se
+  cargan los públicos.
+
+  **Método que pidió, y manda sobre cualquier plan:** *"vamos de a poco y vamos haciéndolo
+  juntos, paso a paso, botón por botón… vos siempre preguntame después por un botón que
+  quiero que aparezca y lo vamos armando juntos"*. **No se construye de corrido.**
+
+  Lo que ya existe y no se reescribe (Ley 8): ticketera vendiendo desde el 07/08, carrito,
+  design engine que saca la piel del flyer, QR, validador `/puerta` con modo offline, mesas
+  con sectores, comisiones escalonadas, cortesías masivas, panel de RRPP por link privado.
+  Todo eso es **de una sola productora**: lo que falta es el eje de *quién es el dueño de
+  cada dato*.
+
+  ⚠️ **Las tres decisiones que ordenan todo lo demás, sin resolver:**
+  1. **Qué pasa con la Previa del 16/10**, que ya vende y tiene QR en la calle. Recomendación:
+     no se toca, termina en la base actual; la nueva arranca vacía con la fecha siguiente.
+  2. **Base nueva = proyecto Supabase nuevo** (sería el tercero, un negocio una base) o
+     esquema aparte. Facu dijo "base de datos nueva".
+  3. **Cómo cobra cada productora**: MP propio por productora (OAuth) vs Marketplace con
+     split. Define si Astronomy se queda una comisión automática o factura aparte. **Es la
+     decisión de plata del producto y todavía no está tomada.**
+
+  ⚠️ **Y el conflicto con la Ley 9, dicho de frente:** Astronomy está congelado hasta el
+  18/08 esperando el conteo de adopción. Esta obra no genera un peso de la Previa —genera
+  plata sólo si hay **otra productora** que la quiera usar—. Antes de escribir la primera
+  tabla: **¿quién es esa productora y cuándo es su fecha?** Sin nombre y sin fecha, es la
+  idea más caras de las que hay anotadas.
 - **Academia** — la app está productiva. Queda: pase de estética final (contra el demo
   aprobado), sitio público etapa 3, y decidir si se reemplaza Calendly por el booking
   nativo (ya está completo y listo).
