@@ -8,6 +8,40 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-10 · FAIL ✓ · Cinco personas pagaban y la web nunca les mostró lo que compraron
+
+Facu pidió una cuenta de regalo con **sólo DJ Delivery** para un amigo. La creé, verifiqué
+contra la base que estuviera todo bien —suscripción viva, cero créditos, cero premios, el
+acceso compartido apuntándole— y **entré a `/member` con su usuario para mirar la pantalla**.
+No había ningún DJ Delivery. La pantalla decía "Agendar mi clase" y "0 créditos".
+
+**Causa raíz:** `/member` elige entre la pantalla de PRIMERA VEZ y el panel completo con
+una sola pregunta —*¿agendó alguna clase?*— y los accesos compartidos viven **sólo** en el
+panel completo. O sea que el que paga y **no agenda nunca** queda afuera de lo que compró.
+DJ Delivery es el caso puro: se paga por un usuario y una contraseña, no por clases.
+
+Al medirlo contra la base había **cinco personas que pagan** en ese estado: **Josefina
+Rawson y Luca Nacucchio, $16.499/mes cada uno desde 2025**, más dos Gold y un Curso de DJ
+que todavía no habían venido. Ninguna tenía forma de darse cuenta: **no veían un error,
+veían una pantalla prolija que les hablaba de otra cosa.** Nadie reclama un servicio que
+la web nunca le mostró — se da de baja.
+
+**El fix** (`astronomy-members`, commit `bd48a28`): la pantalla de primera vez es para
+quien no agendó **y no paga nada**. De 71 cuentas cambian 6, exactamente las que pagan sin
+haber agendado. Verificado entrando de verdad con las dos caras —un DJ Delivery ve su
+acceso; una cuenta descartable sin suscripción sigue viendo la bienvenida— primero contra
+un build local y después contra producción.
+
+**La lección, que es de método:** verificar contra la base **no es** verificar. Las nueve
+filas estaban perfectas y el resultado igual era cero. Lo que la persona ve no está en una
+tabla: está en una pantalla, y hay que abrirla con su usuario. Y un flag de onboarding que
+además esconde un beneficio pagado está mal puesto: la pregunta no es *¿en qué etapa está?*
+sino **¿qué compró y dónde se lo estoy mostrando?**.
+
+Red contra la reincidencia: `scripts/verificar-accesos-de-quien-paga.mjs`, que recalcula la
+misma condición contra la base y falla si alguien que paga vuelve a caer en la pantalla
+mínima. Esto no podía avisar solo, y por eso necesitaba un chequeo escrito.
+
 ### 2026-08-09 · FAIL ✓ · Le borré datos a Facu con mi propio verificador
 
 Escribí dos verificadores de pantalla (`verificar-mesas`, `verificar-comisiones`) que
