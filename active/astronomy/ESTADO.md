@@ -145,14 +145,35 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
   Todo eso es **de una sola productora**: lo que falta es el eje de *quién es el dueño de
   cada dato*.
 
-  ⚠️ **Las tres decisiones que ordenan todo lo demás, sin resolver:**
-  1. **Qué pasa con la Previa del 16/10**, que ya vende y tiene QR en la calle. Recomendación:
-     no se toca, termina en la base actual; la nueva arranca vacía con la fecha siguiente.
-  2. **Base nueva = proyecto Supabase nuevo** (sería el tercero, un negocio una base) o
-     esquema aparte. Facu dijo "base de datos nueva".
-  3. **Cómo cobra cada productora**: MP propio por productora (OAuth) vs Marketplace con
-     split. Define si Astronomy se queda una comisión automática o factura aparte. **Es la
-     decisión de plata del producto y todavía no está tomada.**
+  ### Decisiones ya tomadas por Facu (10/08/2026)
+
+  1. ✅ **La Previa del 16/10 se borró entera**: era toda de prueba. **La base de eventos
+     arranca vacía**, así que no hay migración ni convivencia de dos sistemas. El 16/10
+     dejó de ser fecha límite. Respaldo en `archive/previa-maceo-plex-borrada-2026-08-10/`.
+  2. ✅ **La productora #2 es Puzzle.** Le pone números reales al diseño en vez de una
+     productora imaginaria: dos fechas conocidas end-to-end (1.293 y 1.163 personas). Lo
+     que falta pedirle a Facu es **cuándo es su próxima fecha** — eso fija el orden.
+  3. ✅ **El alta de una fecha es un camino obligatorio de 4 pasos**: datos → puerta →
+     cobro → publicar. La fecha existe como **borrador** desde el paso 1 (se puede cerrar y
+     volver), y **«Publicar» no se habilita hasta que los tres anteriores estén completos**.
+     El motivo es de plata: sin esto se puede publicar una fecha sin Mercado Pago conectado
+     y la gente compra sin que la plata vaya a ninguna cuenta. El botón de cada paso nombra
+     el siguiente ("Siguiente: la puerta →"), nunca dice sólo "Siguiente".
+  4. ✅ **El ID y la clave de los validadores los genera el sistema**, no la productora.
+     Cortos y dictables por teléfono (`PZL-4821` / `7K9M2Q`), con botón de copiar y de
+     regenerar. Son **por fecha**. El motivo: si los elige la persona termina siendo el
+     nombre del boliche o `1234`, y esa clave abre el escaneo de una fecha con plata adentro.
+
+  ⚠️ **Las dos que faltan, y bloquean escribir la primera tabla:**
+  - **¿Proyecto Supabase nuevo o esquema aparte en el actual?** Facu dijo "base de datos
+     nueva". Un proyecto nuevo sería el tercero (un negocio, una base) y es coherente con
+     cómo está todo lo demás — pero hay que decidirlo antes de la primera migración, porque
+     mueve el `ref` de todos los scripts. Ojo con [[superficie-directa-supabase]]: la base
+     nueva nace con RLS y sin policies, y **se le pega con `curl` para verificarlo**.
+  - **Cómo cobra cada productora**: MP propio por productora (OAuth) vs Marketplace con
+     split automático. Define si Astronomy se queda una comisión sola o factura aparte.
+     **Es la decisión de plata del producto.** El paso 3 del alta no se puede diseñar sin
+     esto.
 
   ⚠️ **Y el conflicto con la Ley 9, dicho de frente:** Astronomy está congelado hasta el
   18/08 esperando el conteo de adopción. Esta obra no genera un peso de la Previa —genera
