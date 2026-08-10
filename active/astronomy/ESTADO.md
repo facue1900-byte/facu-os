@@ -1,6 +1,6 @@
 # Astronomy — estado
 
-Última actualización: 2026-07-28
+Última actualización: 2026-08-09
 
 Participaciones, ramas, equipo y objetivos: en el CLAUDE.md global. Acá va solo lo
 operativo y lo que cambió.
@@ -31,6 +31,19 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
   de verdad de la plata; la comisión de José (closer) sale de ahí.
 
 ## Frentes abiertos
+
+- **Dominé: el back office de una fecha quedó completo (09/08/2026).** Todo dentro de
+  `/admin/eventos/<id>`, una hoja por pregunta. Mesas con sectores, comisiones
+  escalonadas por RRPP, base de ventas filtrable, cortesías masivas pegando dos columnas
+  del Excel, y las fechas que se apagan solas cuando pasan. Detalle y decisiones
+  pendientes en la memoria (`retomar-mesas`).
+
+  ⚠️ **Antes de pagarle una comisión a alguien, Facu tiene que confirmar cómo sube la
+  escalera** (`alcanzado` vs `marginal`): con los mismos tramos y las mismas ventas dan
+  números distintos.
+
+  ⚠️ **Ley 9: nadie lo usó todavía.** El 18/08 se cuentan mesas cargadas y cortesías
+  emitidas desde ahí. Si dan cero, el problema es adopción y no software.
 
 - **Eventos** — lo que más duele: invitaciones. 1) conversión invitado → asistente,
   2) FOMO real, 3) influencers a bajo costo.
