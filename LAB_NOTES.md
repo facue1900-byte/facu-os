@@ -41,6 +41,78 @@ Postgres cortado a la mitad. Aunque la causa hubiera sido otra, `violates foreig
 constraint "rrpp_tramos_categ…"` no le dice nada a nadie. Ahora `guardarTramo` chequea
 que la categoría exista antes de insertar y explica que la borraron desde otro lado.
 
+### 2026-08-10 · FAIL ✓ · Un rango válido puede pisar a otro rango válido
+
+Facu mandó una captura de la escalera de comisiones de mesas con cuatro escalones
+cargados: «0 a 2 al 10%», «3 a 5 al 12%», **«4 a 99999 al 20%»** y «6 a 8 al 14%».
+Con 4 mesas vendidas hay dos escalones que dicen cosas distintas, y lo que se paga sale
+del orden en que se recorren: `tramoDe` ordena por `desde` y devuelve el primero que
+matchea, así que cobra 12%. **La comisión la decidía un `sort`, no un trato.**
+
+**Causa raíz: la validación era completa por escalón y ciega al conjunto.**
+`guardarTramo` chequeaba que el `hasta` fuera mayor que el `desde` y que el % estuviera
+entre 0 y 100 —los dos chequeos correctos— y nunca leía los escalones que ya estaban. Un
+rango bien formado puede solapar otro rango bien formado, y ninguna validación local lo
+ve. Es el mismo modo de falla que un `check` de columna que no puede ver la tabla.
+
+**El fix no fue validar el «desde»: fue dejar de preguntarlo.** La pantalla lo calcula
+(`proximoDesde` = el número siguiente al último cargado) y lo muestra fijo, con la forma
+de un dato y no de un input (`.hj-fijo`). Un campo que no se puede escribir mal no se
+escribe mal. `validarEscalon` lo verifica igual del lado del servidor, porque un
+`<input>` se edita con las herramientas del navegador. La regla, dicha por Facu: *"siempre
+se debe respetar lo que se puso primero"* — así la escalera queda continua y sin huecos
+por construcción.
+
+**Lo ya cargado no se borra solo: se marca.** Los solapes que entraron antes se están
+pagando, y borrarlos es una decisión de plata de Facu. `escalonesPisados` los detecta y la
+fila sale en rojo con «se pisa con el de arriba». Y el `99999` que él usaba para decir
+"infinito" ahora se nombra: `hasta` vacío es «de acá en adelante», y la nota lo dice.
+
+**Efecto colateral que enseña algo:** con el «4 a 99999» cargado, `proximoDesde` propone
+**100000**. El número absurdo delata el dato absurdo — es preferible a proponer 9 y
+esconder que hay un escalón que llega a 99999.
+
+Tests: `npm run test:comisiones` (bloques 6, 7 y 8, con el caso textual de la captura) y
+`npm run verificar:comisiones` (bloque 5b, apretando los botones).
+
+### 2026-08-10 · FAIL ✓ · Comunicar el resultado por la URL es lo que scrollea la pantalla
+
+Facu, dos veces en el mismo mensaje: *"cuando aprieto guardar me manda de vuelta todo para
+arriba y la información aparece abajo"* y *"no quiero que al apretar un botón de guardar me
+mueva de lugar; quiero que se mantenga donde estoy"*.
+
+El 09/08 esto se había "arreglado" agregando un `#ancla` al destino del `redirect()`. Mejoró
+el aterrizaje y **no resolvió el problema**, porque el ancla igual reposiciona la pantalla.
+
+**Causa raíz: las acciones comunicaban el resultado por la query string** (`&ok=tramo`,
+`&e=<motivo>`). Eso obliga a `redirect()`, `redirect()` navega, y navegar mueve el scroll.
+El scroll era el síntoma; el diseño del canal de vuelta era la causa. Las acciones que se
+aprietan repetido —cargar escalones, asignar cupo de cortesías fila por fila— ahora
+**devuelven** `{ok, msg}`, el `revalidatePath` refresca la tabla en el lugar y el mensaje lo
+muestra un componente cliente con `useActionState`. Sin navegación, el navegador no mueve
+nada. Las de crear/borrar categoría siguen redirigiendo a propósito: ahí sí cambia qué se
+está mirando.
+
+Aparte, el botón «Abrir» de una categoría era un `<Link>` sin `scroll={false}`: Next
+scrollea al tope al navegar, y abrir una categoría dejaba la pantalla arriba con los
+escalones fuera de la vista. Ese era el "me manda para arriba y la información aparece
+abajo", literal.
+
+**Lo que rompió y hay que recordar: el arnés de pruebas de pantalla sólo conocía un
+protocolo de form.** Next tiene dos: `<form action={serverAction}>` manda un único
+`$ACTION_ID_<hash>`, y `<form action={deUseActionState}>` manda `$ACTION_REF_n`,
+`$ACTION_n:0` (id + bound), `$ACTION_n:1` (el estado previo) y `$ACTION_KEY`.
+`apretar()` en `scripts/_pantalla.mjs` buscaba sólo el primero, así que el POST llegaba sin
+la referencia, **la action no corría**, y el verificador reportaba "no se cargó el escalón"
+con la pantalla andando bien. Ahora copia todos los hidden que arrancan con `$ACTION` y
+des-escapa las entidades HTML del JSON — que es lo que hace el navegador, y funciona con
+los dos protocolos sin saber cuál es cuál.
+
+**Y un test que pasaba de casualidad:** la marca `name="pct"` identificaba "el formulario de
+agregar escalón", pero hay dos —entradas y mesas— y `apretar` toma el primero. Todo el
+bloque de mesas le pegaba al de entradas y daba verde. Ahora la marca es `value="mesas"`.
+Un test que acierta por casualidad es peor que uno que falla.
+
 ### 2026-08-09 · FAIL ✓ · La tabla estaba cerrada y la vista era la puerta
 
 Tercera vez que cae el mismo método, un mes después de la auditoría del 08/08. Iba a

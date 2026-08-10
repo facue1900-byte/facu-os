@@ -138,6 +138,40 @@ Es la regla 2 de la Constitución al revés: un resultado **grande** también es
 que se demuestre lo contrario, cuando la unidad de la fila no es la unidad del hecho. Antes
 de reportar un número que sale de un log: `count(distinct <la cosa real>)`, no `count(*)`.
 
+### Un dato válido puede pisar a otro dato válido
+
+10/08/2026, la escalera de comisiones. El formulario validaba cada escalón contra sí mismo
+—que el «hasta» fuera mayor que el «desde», que el % estuviera entre 0 y 100— y **nunca
+contra los que ya estaban**. Entraron «3 a 5 al 12%» y «4 a 99999 al 20%»: los dos rangos
+bien formados, y con 4 mesas vendidas la comisión la decidía el orden del `sort`.
+
+Ninguna validación local ve un solape. Cuando un campo nuevo entra en una **colección** que
+ya tiene reglas entre sus miembros (rangos, fechas, tramos, cupos, porcentajes que suman
+100), el chequeo se hace contra el conjunto: se leen los que ya están antes de guardar.
+
+Y la mejor validación es la que no hace falta: **si el valor correcto se puede calcular, no
+se pregunta.** Acá el «desde» pasó a ser el número siguiente al último cargado, mostrado
+fijo y no editable. Un campo que no se puede escribir mal no se escribe mal — y el servidor
+lo verifica igual, porque un `<input>` se edita con las herramientas del navegador.
+
+Lo que ya está cargado mal **no se borra solo**: si es plata, se marca en la pantalla y lo
+decide Facu.
+
+### Si apretar un botón mueve la pantalla, el problema es el canal de vuelta
+
+Mismo día, dos pedidos de Facu sobre el scroll que salta al guardar. El arreglo anterior
+—agregarle un `#ancla` al `redirect()`— era el síntoma: el ancla igual reposiciona.
+
+**La causa era usar la URL para comunicar el resultado.** Un `&ok=…` en la query obliga a
+redirigir, redirigir navega, y navegar mueve el scroll. Un formulario que se aprieta varias
+veces seguidas (una fila por persona, un escalón tras otro) devuelve su resultado en vez de
+navegar, y la pantalla se queda donde está. Se navega cuando **cambia qué se está mirando**,
+no para avisar que algo se guardó.
+
+Corolario para las pruebas: cambiar ese contrato **cambia el protocolo del formulario**, y
+un arnés que conoce un solo protocolo empieza a reportar "no se guardó" con la pantalla
+andando bien. Ver el Lab Note del 10/08/2026.
+
 ## 5. Cuando algo se rompe
 
 1. **Reproducirlo** antes de teorizar. Un bug que no se reprodujo no se entendió.
