@@ -270,12 +270,42 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
      vendía). Cambiar créditos por entradas le sale barato a Astronomy y se siente caro para
      el alumno: es el mejor premio del catálogo.
 
-  **Alternativa más simple que el código, y probablemente mejor:** si el alumno elige la
-  fecha ahí mismo en la web de Astronomy, **no hace falta un código** — Astronomy le pide a
-  la ticketera que emita la entrada y le devuelve el QR. Un paso menos, nada que se pueda
-  filtrar, y el cupo se descuenta en el momento (mata el problema 1). El código sólo hace
-  falta si el alumno tiene que poder **elegir la fecha después** o **pasárselo a otra
-  persona**. Falta que Facu diga cuál de los dos quiere.
+  ✅ **Facu eligió (10/08): el alumno elige la fecha y recibe el QR en el momento.** Nada de
+  códigos. Eso **mata el problema 1** —el cupo se descuenta al canjear, así que no puede pagar
+  con créditos y quedarse afuera— y **mata el 2**, porque no hay ningún string que se pueda
+  reenviar. Queda vivo el **3**: la entrada tiene que quedar rotulada como *canje por
+  créditos* y NO como cortesía, o el margen del evento miente para abajo y el de la academia
+  para arriba.
+
+  **Lo que eso implica construir, y hay que nombrarlo:** la web de Astronomy necesita
+  **preguntarle a la ticketera qué fechas hay con lugar y pedirle que emita**. O sea un
+  endpoint autenticado en la ticketera (dos: `fechas-canjeables` y `emitir-canje`) más la
+  pantalla de canje en `/member`. Es el único punto donde los dos sistemas se tocan: si se
+  mantiene chico, se mantienen separados de verdad.
+
+  ### El nombre: qué dominios están realmente libres (verificado el 10/08/2026)
+
+  ⚠️ **`dig` no sirve para esto y me hizo decir una macana**: reporté `molinete.com` y
+  `pista.com` como libres porque no tienen NS delegados, y **las dos están registradas** (2003
+  y 2002). Para `.com` se verifica con **RDAP de Verisign**, que es el registro oficial:
+  `curl https://rdap.verisign.com/com/v1/domain/<dominio>` → **404 = libre**, 200 = registrado.
+
+  **Todos los `.com` de una palabra en español están tomados** (aforo, palco, pista, entro,
+  cupo, entrada, pase, puerta, lista) y también los inventados cortos (entri, kupo, tikko,
+  palki, tanka, afora, aforado). Lo que quedó libre:
+
+  | Libre | |
+  |---|---|
+  | `aforo.ar` · `cupo.ar` · `palco.ar` · `entro.ar` | sin delegar — **NIC.ar no tiene registro público, hay que confirmar ahí** |
+  | `aforo.com.ar` · `cupo.com.ar` · `tanda.com.ar` · `puerta.com.ar` · `pases.com.ar` | idem, indicio por DNS |
+  | `elaforo.com` · `miaforo.com` · `aforoticket.com` · `tuspases.com` · `entradaslibres.com` | **verificado por RDAP** |
+  | `puntoentrada.com` · `adentroya.com` · `aforate.com` · `vamoentra.com` | **verificado por RDAP** |
+
+  Recomendación que sigue en pie: **Aforo** — es el término técnico de cuánta gente entra, que
+  es lo que la ticketera administra; cinco letras, se dicta sin dudas por teléfono (importa: en
+  la puerta alguien lo va a dictar), y sirve para teatro, congreso o fiesta sin sonar a
+  ninguno. Con `aforo.ar` queda un dominio de 8 caracteres. Si tiene que ser `.com`,
+  **`elaforo.com`** es lo más natural en español.
 
   ### Orden recomendado para construir
 
