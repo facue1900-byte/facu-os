@@ -187,6 +187,24 @@ alter table public.productora_miembros  force row level security;
 alter table public.eventos              force row level security;
 alter table public.compradores          force row level security;
 
+-- ── LOS PERMISOS, EXPLÍCITOS Y NO HEREDADOS ────────────────────────────────
+-- ⚠️ En Supabase, una tabla nueva en `public` **nace con GRANT para `anon` y
+-- `authenticated`** por los default privileges del proyecto. O sea: nace
+-- publicada en PostgREST, y lo único que la tapa es la RLS. Eso es exactamente
+-- lo que dejó 8 tablas abiertas en la academia.
+--
+-- Acá se escribe al revés: se revoca todo y se da sólo lo que hace falta.
+-- `anon` no recibe NADA — ninguna de estas tablas se lee sin sesión. Así, el día
+-- que alguien agregue una policy sin pensar, el GRANT tampoco está: dos rejas y
+-- no una. Lo descubrió el test del esquema, que corría sin permisos.
+revoke all on all tables in schema public from anon, authenticated;
+grant select, insert, update, delete on public.eventos             to authenticated;
+grant select                        on public.productoras          to authenticated;
+grant select                        on public.productora_miembros  to authenticated;
+grant select, insert, update        on public.compradores          to authenticated;
+-- Que se cree una tabla mañana y herede permisos por olvido, no.
+alter default privileges in schema public revoke all on tables from anon, authenticated;
+
 -- ── Quién soy: las dos funciones que usan todas las policies ────────────────
 create or replace function public.mis_productoras()
 returns setof uuid language sql stable security definer set search_path = public as $$

@@ -46,13 +46,44 @@ número que se cambia. Con access tokens pegados a mano, el día que se quiera c
 
 ---
 
+## ✅ El eje está escrito Y PROBADO (10/08/2026)
+
+`probar-esquema.mjs` corre `ESQUEMA_EJE.sql` sobre **Postgres 18 real** (PGlite, en WASM) sin
+Docker y sin gastar un peso: **26 chequeos en verde**. Se corre con
+`cd active/aforo && node probar-esquema.mjs`.
+
+Lo que quedó demostrado, no opinado:
+
+- **El dueño de Puzzle ve 1 fecha, no 2.** No puede leer la clave de puerta de otra
+  productora, ni editarle una fecha, ni crear una a su nombre. Las tres cosas probadas
+  entrando como él, con su uid, igual que hace Supabase.
+- **Una fecha no se publica sin Mercado Pago conectado** (lo garantiza un trigger, no el
+  formulario) y el error lo dice en castellano. Pero **sí se guarda como borrador**: no se
+  pierde lo cargado. Conectando MP, se publica y se sella la fecha sola.
+- Un slug con mayúsculas se rechaza, un fee del 120% se rechaza, dos productoras no comparten
+  slug **pero sí pueden tener cada una su «aniversario»**, y dos fechas no comparten ID de
+  puerta. Una productora con fechas **no se borra de un tirón**.
+
+🔎 **Lo que el test encontró y yo no había visto:** en Supabase, una tabla nueva de `public`
+**nace con GRANT para `anon`** por los default privileges del proyecto — o sea, nace publicada
+en PostgREST y lo único que la tapa es la RLS. El esquema ahora **revoca todo y da sólo lo que
+hace falta**, y revoca los default privileges para las tablas que se creen mañana. Dos rejas y
+no una. Es la tercera cara del mismo bug que ya cayó tres veces en la academia.
+
+⚠️ **Lo que esto NO prueba, y hay que probar en la nube:** PostgREST con la anon key de verdad
+(pegándole con `curl` y contando filas) y Auth. Probado ≠ probado todo.
+
 ## Lo que falta antes de aplicar la primera tabla
 
-1. 🔴 **En qué organización de Supabase va el proyecto.** Hoy hay dos orgs, una por negocio
-   (`Astronomy` y `Paseo Nordelta`), con un proyecto cada una. El free tier permite 2
-   proyectos activos **por organización**, así que probablemente sea gratis — **pero el
-   endpoint de facturación no existe en la API pública y no pude confirmarlo**. No se crea
-   sin OK de Facu: puede facturar (Constitución, regla 6).
+1. 🔴 **US$25/mes: el tercer proyecto de Supabase no entra en el free tier.** El límite es de
+   **2 proyectos free por CUENTA** (no por organización, como suponía) y Facu ya tiene los dos
+   en producción: Astronomy Oficial y Paseo Nordelta. La API lo dijo así al intentar crearlo.
+   La org **`Aforo` ya está creada y vacía** (`sgsaxobnhldomziaklpm`), sin costo. Para poner el
+   proyecto adentro hay que pasar esa org a **Pro: US$25/mes**.
+
+   Y un motivo extra para pagarlo recién al salir a producción, pero pagarlo: **el free tier
+   no tiene backups**. Una base con órdenes pagas y QR emitidos sin backup diario no puede ir
+   a producción.
 2. 🟡 **Repo nuevo o el mismo.** Facu quiere Aforo *"que no tenga nada que ver con la web de
    astronomy"*, y hay un argumento fuerte para **repo y deploy separados**: él pidió *"que
    nunca se caiga la página"*, y con un solo deploy un bug de Aforo tira abajo
