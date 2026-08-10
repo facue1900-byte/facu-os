@@ -1,6 +1,6 @@
 # Astronomy — estado
 
-Última actualización: 2026-08-09
+Última actualización: 2026-08-10
 
 Participaciones, ramas, equipo y objetivos: en el CLAUDE.md global. Acá va solo lo
 operativo y lo que cambió.
@@ -38,12 +38,15 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
   del Excel, y las fechas que se apagan solas cuando pasan. Detalle y decisiones
   pendientes en la memoria (`retomar-mesas`).
 
-  ⚠️ **Antes de pagarle una comisión a alguien, Facu tiene que confirmar cómo sube la
-  escalera** (`alcanzado` vs `marginal`): con los mismos tramos y las mismas ventas dan
-  números distintos.
+  ✅ **La escalera se paga `alcanzado`** (confirmado el 10/08), y desde ese día **no se puede
+  pisar a sí misma**: el «desde» de un escalón lo calcula el sistema, no se pregunta.
+  Guardar tampoco mueve la pantalla, y las cortesías se pueden entregar desde la tabla de
+  cupos y desde el panel del RRPP.
 
-  ⚠️ **Ley 9: nadie lo usó todavía.** El 18/08 se cuentan mesas cargadas y cortesías
-  emitidas desde ahí. Si dan cero, el problema es adopción y no software.
+  ⚠️ **Ley 9: nadie lo usó todavía, y el baseline volvió a cero.** Lo que Facu había cargado
+  el 10/08 (35 mesas, 8 escalones, 5 movimientos) era **todo de prueba** y se borró a su
+  pedido. El 18/08 se cuentan mesas cargadas y cortesías emitidas **por otra persona**. Si
+  dan cero, el problema es adopción y no software.
 
 - **Eventos** — lo que más duele: invitaciones. 1) conversión invitado → asistente,
   2) FOMO real, 3) influencers a bajo costo.
@@ -85,8 +88,8 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
 
   **Backlog de la puerta (pedido por Facu el 08/08/2026, NO construido).** Lo pidió después
   de escanear de verdad con `/puerta` en modo avión. Va acá y no al código porque todavía no
-  hay una fecha real que lo necesite — el 16/10 se valida con lo que ya está. Cuando se
-  construya, arranca por lo de abajo, que es lo único que hoy le cuesta plata:
+  hay una fecha real que lo necesite (**la Previa del 16/10 se borró: era de prueba**).
+  Cuando se construya, arranca por lo de abajo, que es lo único que hoy le cuesta plata:
 
   - 🥇 **La mesa en la pantalla del escáner.** Es lo que más pesa: la mesa es el **52%–60%
     del ingreso** de una fecha de Puzzle y **el de la puerta hoy no sabe quién tiene mesa ni
