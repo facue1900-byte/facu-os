@@ -221,6 +221,62 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
   contando filas**, no leyendo el código: ver [[superficie-directa-supabase]], que ya cayó
   tres veces.
 
+  ### La comisión: 5% en la ticketera, 0% en Astronomy (Facu, 10/08/2026)
+
+  **El fee es POR PRODUCTORA, no global.** Astronomy va en 0 y el resto en 5% por defecto.
+  Eso confirma el `application_fee` del OAuth de Marketplace: se setea por conexión, así que
+  el modelo aguanta que cada productora tenga el suyo (una grande podría negociar 3%).
+
+  ### Astronomy NO se muda a la ticketera: son dos webs, y hay un puente
+
+  Facu, 10/08: *"haría la productora dentro de astronomy como única y haría otra ticketera
+  aparte que no tenga nada que ver con la web de astronomy"*. O sea que la web de Astronomy
+  sigue vendiendo sus propias fechas, y la ticketera nueva es para las demás productoras.
+
+  ⚠️ **Esto cambia el punto 1 de antes:** ya no hay "una sola cuenta para todo", porque son
+  dos webs distintas. La cuenta única sigue valiendo **dentro de la ticketera** (un
+  comprador, todas las productoras de ahí), y **Astronomy queda afuera de ese padrón**.
+
+  **La pregunta que abrió Facu: ¿se pueden canjear los créditos de los members por
+  entradas?** Su idea: comprar en la web de Astronomy y recibir *"un código de descuento
+  único sincronizado con la ticketera"* del 100%.
+
+  **Sí se puede, y el código es el patrón correcto** para unir dos sistemas sin fusionar sus
+  bases: lo único que cruza es un string. Pero hay cuatro cosas que resolver, y una es grave:
+
+  1. 🔴 **El cupo.** Si el crédito se descuenta en Astronomy y la entrada se emite recién al
+     canjear, puede pasar que el alumno **pague con créditos y después no haya lugar**. Es lo
+     peor posible: pagó y no entra. El código **no puede emitirse sin que la ticketera aparte
+     el lugar** en ese momento. Y si nunca se canjea, la reserva tiene que liberarse sola o
+     queda un lugar muerto.
+  2. 🔴 **Un código de 100% es una entrada gratis suelta.** Si se reenvía por WhatsApp, entra
+     otro. Va: **un solo uso, atado al mail del alumno, con vencimiento, e invalidable**.
+  3. 🟡 **No es una cortesía, y la plata está en el otro negocio.** El alumno pagó con
+     créditos que compró en la Academia. Si en la ticketera entra como cortesía a $0, la
+     fecha muestra una entrada regalada y **el ingreso quedó en Academy**: el margen del
+     evento miente para abajo y el de la academia para arriba. Hay que rotularla distinto de
+     una cortesía y registrar el cruce (Constitución, regla 8: cada número con su negocio).
+  4. 🟡 **Cuántos créditos vale una entrada** — decisión de Facu. La cuenta, con el catálogo
+     verificado: **1 crédito ≈ $561** (Silver $574 · Gold $543 · Platinum $567). Entonces:
+
+     | Entrada | Créditos | Comparación |
+     |---|---|---|
+     | $15.000 | ~27 | menos de media clase |
+     | $25.000 | ~45 | tres cuartos de una clase |
+     | $30.000 | ~53 | casi una clase (60) |
+
+     **Y el dato que hace bueno el canje:** una clase de 60 créditos tiene costo marginal
+     real (el profe cobra); una entrada de ~45 cuesta **casi cero** (un lugar que quizá no se
+     vendía). Cambiar créditos por entradas le sale barato a Astronomy y se siente caro para
+     el alumno: es el mejor premio del catálogo.
+
+  **Alternativa más simple que el código, y probablemente mejor:** si el alumno elige la
+  fecha ahí mismo en la web de Astronomy, **no hace falta un código** — Astronomy le pide a
+  la ticketera que emita la entrada y le devuelve el QR. Un paso menos, nada que se pueda
+  filtrar, y el cupo se descuenta en el momento (mata el problema 1). El código sólo hace
+  falta si el alumno tiene que poder **elegir la fecha después** o **pasárselo a otra
+  persona**. Falta que Facu diga cuál de los dos quiere.
+
   ### Orden recomendado para construir
 
   1. **El nombre y el dominio** (decisión de Facu, un minuto).
