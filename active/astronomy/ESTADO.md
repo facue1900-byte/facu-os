@@ -164,16 +164,75 @@ Fuente: la web y la app en producción (verificado 09-24/07/2026).
      regenerar. Son **por fecha**. El motivo: si los elige la persona termina siendo el
      nombre del boliche o `1234`, y esa clave abre el escaneo de una fecha con plata adentro.
 
-  ⚠️ **Las dos que faltan, y bloquean escribir la primera tabla:**
-  - **¿Proyecto Supabase nuevo o esquema aparte en el actual?** Facu dijo "base de datos
-     nueva". Un proyecto nuevo sería el tercero (un negocio, una base) y es coherente con
-     cómo está todo lo demás — pero hay que decidirlo antes de la primera migración, porque
-     mueve el `ref` de todos los scripts. Ojo con [[superficie-directa-supabase]]: la base
-     nueva nace con RLS y sin policies, y **se le pega con `curl` para verificarlo**.
-  - **Cómo cobra cada productora**: MP propio por productora (OAuth) vs Marketplace con
-     split automático. Define si Astronomy se queda una comisión sola o factura aparte.
-     **Es la decisión de plata del producto.** El paso 3 del alta no se puede diseñar sin
-     esto.
+  ### El modelo, dicho por Facu el 10/08/2026
+
+  **Una sola cuenta para todo.** Textual: *"no quiero que se tengan que crear una cuenta en
+  un link nuevo y después otra para Astronomy, quiero que sea sólo en uno"*. El que se hace
+  cuenta puede comprar entradas de Astronomy **y de cualquier productora**, incluso externas.
+  O sea: **la base de compradores es UNA, de la plataforma, compartida entre todas las
+  productoras** — no una base por productora. Astronomy es una productora más adentro del
+  sistema, no el dueño de la puerta de entrada.
+
+  ⚠️ **Y acá hay una tensión técnica que hay que resolver antes de prometer dominios.** La
+  sesión vive en una cookie y **las cookies no cruzan dominios**:
+
+  | Forma | ¿Una sola cuenta? | Costo |
+  |---|---|---|
+  | `laplataforma.com/puzzle` | **Sí, gratis** | ninguno |
+  | `puzzle.laplataforma.com` | **Sí**, cookie en `.laplataforma.com` | bajo |
+  | `entradasdepuzzle.com.ar` (dominio de la productora) | **No** — otra cookie, otra sesión | **alto: hay que hacer SSO** |
+
+  Recomendación: **dominio propio de la plataforma con path o subdominio por productora.**
+  El dominio propio de una productora se deja para cuando alguna lo pida, y ahí se paga el
+  SSO. Prometerlo antes es prometer el trabajo más caro del producto.
+
+  **Gratis para la productora, y el activo son los contactos.** Textual: *"quiero que la
+  productora tenga la plataforma gratis pero yo quedarme con todos los contactos, base de
+  datos y eso"*. En el futuro, con cientos de productoras, **cobrar un % al que compra la
+  entrada** — y **el valor de la entrada va directo a la cuenta del productor**.
+
+  ⚠️ **La decisión técnica que hay que tomar HOY para no pagarla carísima después:** que la
+  plata vaya directo al productor y que la plataforma pueda cobrar un % **no son opciones
+  excluyentes**. Con el **OAuth de Marketplace de Mercado Pago**, la productora conecta su
+  cuenta, la plata cae en **su** cuenta, y la plataforma retiene un `application_fee`
+  **automático** que hoy puede quedar en **0**. Si en cambio cada productora pega su access
+  token pelado, el día que se quiera cobrar el % hay que **reconectar a todas** una por una.
+  **Conectar por OAuth con fee en 0 cuesta lo mismo hoy y deja la puerta abierta.**
+
+  Y `events.service_fee_pct` / `service_fee_mode` **ya existen** en la tabla: el fee al
+  comprador ya está modelado, no hay que inventarlo (Ley 8).
+
+  **Lo que hay que escribir y todavía no está:** si el activo son los contactos de gente que
+  compró a una productora ajena, eso va **en los términos** — qué ve la productora de esos
+  contactos y qué se queda la plataforma. Es dato personal de terceros y no se resuelve con
+  código.
+
+  ⚠️ **Lo único que falta para escribir la primera tabla: EL NOMBRE Y EL DOMINIO DE LA
+  PLATAFORMA.** Facu lo quiere *"nada que ver a Astronomy"*, así que la ticketera necesita
+  marca propia y es una decisión suya. Bloquea todo lo público: las rutas, los mails que
+  salen, el QR y los términos.
+
+  Ya resuelto por descarte: **proyecto Supabase nuevo** (el tercero — un negocio, una base),
+  porque la base de compradores es compartida entre productoras y no tiene nada que ver con
+  la de alumnos. Nace con RLS y sin policies, y **se verifica pegándole con `curl` y
+  contando filas**, no leyendo el código: ver [[superficie-directa-supabase]], que ya cayó
+  tres veces.
+
+  ### Orden recomendado para construir
+
+  1. **El nombre y el dominio** (decisión de Facu, un minuto).
+  2. **El eje de dueño**: proyecto nuevo + `productoras`, `productora_miembros` y
+     `events.productora_id`. Es la única obra estructural: todo lo demás ya existe y hoy
+     está clavado a una sola productora.
+  3. **El paso 3 del alta: conectar Mercado Pago por OAuth de Marketplace, con fee en 0.**
+     Es lo único verdaderamente nuevo y riesgoso del producto, y es lo que decide si el
+     negocio se puede cobrar en el futuro sin reconectar a todos.
+  4. Recién después: panel del comprador y panel de la productora, que son vistas de datos
+     que ya van a existir.
+
+  **Y el dato que sigue faltando: cuándo es la próxima fecha de Puzzle.** Sin esa fecha
+  cualquier orden parece igual de bueno y se construye lo más divertido en vez de lo que
+  hace falta.
 
   ⚠️ **Y el conflicto con la Ley 9, dicho de frente:** Astronomy está congelado hasta el
   18/08 esperando el conteo de adopción. Esta obra no genera un peso de la Previa —genera
