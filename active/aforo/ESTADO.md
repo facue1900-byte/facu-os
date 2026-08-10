@@ -11,10 +11,28 @@ lugar, que es lo que la ticketera administra. Cinco letras, se dicta por teléfo
 —importa: alguien lo va a dictar en una puerta a las 3 AM— y sirve para una fiesta, un
 teatro o un congreso sin sonar a ninguno de los tres.
 
-**Dominio: pendiente de registrar.** `aforo.ar` (8 caracteres) es la primera opción y
-`aforo.com.ar` la segunda; las dos aparecen sin delegar pero **NIC.ar no tiene registro
-público, hay que confirmarlo ahí**. Si tiene que ser `.com`, `elaforo.com` está **libre
-verificado por RDAP**. Todos los `.com` de una palabra en español están tomados.
+**Dominio: LIBRES LOS DOS, verificado el 10/08/2026 contra el registro oficial.** NIC.ar sí
+tiene RDAP público —`https://rdap.nic.ar/domain/<dominio>`, 404 = libre— y el endpoint se
+comprobó primero contra `mercadolibre.com.ar`, `google.com.ar`, `nic.ar` y `afip.gob.ar`,
+que devuelven 200 con datos. Sobre esa base:
+
+| Dominio | Estado | Arancel NIC.ar (registro y renovación, por año) |
+|---|---|---|
+| `aforo.com.ar` | **libre** | **$8.500** |
+| `aforo.ar` | **libre** | **$25.500** |
+| `aforo.net.ar` · `elaforo.com.ar` | libres | $8.500 c/u |
+
+**Recomendación: registrar los dos** ($34.000/año), con **`aforo.com.ar` como el principal**
+—el que se dicta, se imprime y se manda— y `aforo.ar` redirigiendo. El motivo no es estética:
+en Argentina el que escucha "aforo punto a-erre" tipea `aforo.com.ar` por reflejo, y si ese
+lo tiene otro, el tráfico se le regala. $8.500 más por año es barato al lado de eso.
+
+Falta confirmar una sola cosa, y sólo NIC.ar la puede contestar al intentar el alta: que
+`aforo` no esté en su lista de términos reservados. **El registro lo tiene que hacer Facu**
+con su CUIT y clave fiscal de AFIP.
+
+Si algún día tiene que ser `.com`, `elaforo.com` está libre verificado por RDAP de Verisign.
+Todos los `.com` de una palabra en español están tomados.
 
 > ⚠️ **Cómo se verifica un dominio, porque me equivoqué el 10/08:** `dig` NO sirve —
 > reporté `molinete.com` y `pista.com` como libres y estaban registradas desde 2003 y 2002,
@@ -72,6 +90,29 @@ no una. Es la tercera cara del mismo bug que ya cayó tres veces en la academia.
 
 ⚠️ **Lo que esto NO prueba, y hay que probar en la nube:** PostgREST con la anon key de verdad
 (pegándole con `curl` y contando filas) y Auth. Probado ≠ probado todo.
+
+## Dónde se prueba la app entera (decidido el 10/08/2026)
+
+**Supabase local con Docker.** Es gratis, se resetea a cero en segundos —y el plan es correr
+el test de punta a punta N veces— y sobre todo **da lo único que PGlite no dio: PostgREST con
+la anon key de verdad y Auth**, que es exactamente lo que quedó sin probar del eje.
+
+Las otras dos se descartaron por motivos, no por precio:
+
+- **La base de Astronomy con un esquema aparte, NO.** Ya está decidido que la base de
+  compradores no comparte nada con la de alumnos, y el riesgo no es teórico: hay dos refs de
+  Supabase parecidos y un `ref` equivocado escribe en el negocio equivocado sin avisar. Meterle
+  tablas nuevas a la base que hoy cobra membresías, para probar, es la peor combinación.
+- **US$25/mes ahora, tampoco:** se pagaría por algo que todavía no existe. Ese gasto arranca el
+  día que Aforo salga a producción — y ahí **sí o sí**, porque el free tier no tiene backups y
+  una base con órdenes pagas y QR emitidos no puede vivir sin backup diario.
+
+**Lo único que no se puede probar 100% local** es el OAuth de Mercado Pago y sus webhooks:
+necesitan una URL pública para el callback. Se resuelve con un túnel a localhost
+(`cloudflared tunnel --url http://localhost:3000`), gratis y sin cuenta.
+
+Docker Desktop es **gratis** para empresas de menos de 250 empleados y menos de US$10M de
+facturación. La Mac es **Apple Silicon (M1)**: va el build `arm64`.
 
 ## Lo que falta antes de aplicar la primera tabla
 
