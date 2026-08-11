@@ -2,7 +2,7 @@
 """
 Cuánto debe EN EFECTIVO cada local — lo único que Mati puede ir a cobrar.
 
-    deuda_efectivo.py [salida.json]
+    deuda_efectivo.py [salida.json] [--cobros-en-planilla]
 
 **No es el saldo.** El saldo mezcla lo que se cobra por banco con lo que se cobra
 en mano: Fabric paga todo por banco y nunca le debe efectivo a Mati, y Bigg va
@@ -15,6 +15,15 @@ que siempre hay un bloque en la calle que **no está vencido**. Se separa:
 El corte es la **última fila de pago** de cada pestaña: lo que hay debajo es el
 bloque corriente. No hace falta hardcodear filas ni fechas.
 
+**Esto es una FOTO, no el saldo de hoy.** Los cobros que Mati carga en la app van
+a Supabase y a la hoja Movimientos del Master Plan, pero NO a Ctas Ctes: la
+planilla la actualiza Facu a mano. La app le resta a esta foto los cobros en
+efectivo posteriores a `cobrosDesde`, y por eso esa fecha **no se mueve sola**:
+si avanzara con cada corrida, un cobro cargado en la app y todavía no volcado a
+la planilla dejaría de descontarse y la deuda se inflaría de nuevo en silencio.
+Recién cuando los cobros están volcados a Ctas Ctes se corre con
+`--cobros-en-planilla`, que la adelanta a hoy.
+
 Fuentes, según el local:
   · con pestaña → se camina la pestaña, que es la que Facu verificó y la que ve
     el locatario. Cargos y pagos se clasifican por medio.
@@ -26,11 +35,12 @@ Read-only sobre la planilla. Escribe el JSON que consume la app del Paseo.
 
 import datetime
 import json
+import os
 import sys
 
 sys.path.insert(0, "/Users/Facu/facu-os")
 from execution.google_auth import sheets  # noqa: E402
-from reglas_locales import SIN_PESTANA, JAULA_AGOSTO  # noqa: E402
+from reglas_locales import SIN_PESTANA, JAULA_AGOSTO, ORIGEN_APP  # noqa: E402
 
 CTAS = "10BDmKvv2wY2M4lVYYab3NiNT04WLh5JjO-EhWI4tnNs"
 SALIDA_DEFAULT = ("/Users/Facu/Desktop/Paseo Nordelta/Paseo Nordelta - CLAUDE/"
@@ -159,8 +169,35 @@ def precio_jaula(anclas, anio, mes):
     return vigentes[-1] if vigentes else None
 
 
+def origen_app(nombre, avisos):
+    """Con qué matchea la app un cobro de este local. Si falta, la tarjeta no le
+    puede descontar nada: se avisa en vez de dejarlo pasar."""
+    o = ORIGEN_APP.get(nombre)
+    if not o:
+        avisos.append(f"{nombre}: no está en ORIGEN_APP (reglas_locales.py) — la "
+                      f"tarjeta de Mati NO le va a descontar los cobros de la app")
+    return o
+
+
+def cobros_desde_previo(salida, hoy, ya_en_planilla):
+    """La fecha desde la que la app descuenta cobros. Se arrastra del JSON
+    anterior salvo que se declare que la planilla ya los tiene."""
+    if ya_en_planilla:
+        return hoy.isoformat()
+    if os.path.exists(salida):
+        try:
+            with open(salida, encoding="utf-8") as fh:
+                previo = json.load(fh)
+            return previo.get("cobrosDesde") or previo.get("generado") or hoy.isoformat()
+        except (json.JSONDecodeError, OSError):
+            pass
+    return hoy.isoformat()
+
+
 def main():
-    salida = sys.argv[1] if len(sys.argv) > 1 else SALIDA_DEFAULT
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    ya_en_planilla = "--cobros-en-planilla" in sys.argv[1:]
+    salida = args[0] if args else SALIDA_DEFAULT
     hoy = datetime.date.today()
     mes_actual = (hoy.year, hoy.month)
     sv = sheets().spreadsheets()
@@ -193,6 +230,7 @@ def main():
         total = round(cargos - pagos, 2)
         locales.append({
             "nombre": ROTULO.get(tab, tab),
+            "origen": origen_app(ROTULO.get(tab, tab), avisos),
             "efectivo": total,
             "delMes": round(del_mes, 2),
             "vencido": round(total - del_mes, 2),
@@ -269,7 +307,8 @@ def main():
         else:
             raise ValueError(f"regla desconocida para {nombre}: {regla}")
 
-        locales.append({"nombre": nombre, "efectivo": total,
+        locales.append({"nombre": nombre, "origen": origen_app(nombre, avisos),
+                        "efectivo": total,
                         "delMes": round(min(del_mes, total), 2) if total > 0 else 0.0,
                         "vencido": round(total - min(del_mes, total), 2) if total > 0 else total,
                         "nota": nota, "confiable": confiable})
@@ -279,6 +318,8 @@ def main():
                       if l["confiable"] and l["efectivo"] > 0), 2)
     locales.sort(key=lambda l: (-l["efectivo"], l["nombre"]))
     doc = {"generado": hoy.isoformat(),
+           # De acá en adelante los cobros los tiene la app, no la planilla.
+           "cobrosDesde": cobros_desde_previo(salida, hoy, ya_en_planilla),
            "fuente": "Sheet Ctas Ctes — pestañas por local + CARGOS/Cobros/Futbol",
            "total": total,
            "cuantosDeben": sum(1 for l in locales if l["confiable"] and l["efectivo"] > 0),
@@ -294,6 +335,10 @@ def main():
         print(f"{l['nombre']:22s} {l['efectivo']:>14,.2f} {l['delMes']:>14,.2f} "
               f"{l['vencido']:>12,.2f}  {l['nota'] or ''}")
     print(f"\nTOTAL a cobrar en efectivo: ${total:,.2f}  ({doc['cuantosDeben']} locales)")
+    print(f"Foto de la planilla al {doc['generado']}. La app le descuenta los cobros "
+          f"posteriores al {doc['cobrosDesde']}.")
+    if doc["cobrosDesde"] != doc["generado"]:
+        print("  → cuando vuelques esos cobros a Ctas Ctes, corré con --cobros-en-planilla")
     print("\nPrecios semestrales de La Jaula (Futbol!AR, en verde):")
     for a in anclas:
         falta = f"  ⚠ falta IPC de {', '.join(a[3])}" if a[3] else ""

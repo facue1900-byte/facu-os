@@ -75,3 +75,29 @@ SIN_PESTANA = {
 # La Jaula, agosto-26: dicho por Facu el 06/08/2026. NO es el alquiler pleno —
 # tenían saldo a favor y esto es lo que queda neto para cobrarles este mes.
 JAULA_AGOSTO = 372_644
+
+# ---------------------------------------------------------------------------
+# Con qué se matchea, en la APP, un cobro de cada local.
+#
+# La tarjeta de Mati resta de la foto de la planilla los cobros que él va
+# cargando en la app; para eso tiene que saber que la pestaña «Volta + Open 25»
+# y el local `volta` son el mismo. Sin esto, un local que ya pagó sigue
+# figurando como deudor hasta que alguien toque la planilla a mano.
+#
+# El valor es el `localId` de la app (tabla `locales`), o la etiqueta de
+# categoría cuando NO es un local (Meta cobra aparte pero comparte el renglón
+# «Escuelita» con Beto). Tiene que coincidir con `ORIGENES_COBRO` de
+# `src/lib/categorias.ts`: si se agrega un local allá, se agrega acá.
+# ---------------------------------------------------------------------------
+ORIGEN_APP = {
+    "Fabric": "fabric",
+    "Bigg": "bigg",
+    "Boss": "boss",
+    "Volta + Open 25": "volta",
+    "Peak One": "apex",
+    "Salón (Alto)": "salon",
+    "Beto": "escuelita",
+    "Meta": "Meta Escuelita",       # no es un local de la app: viaja por categoría
+    "Pole Position": "pole-position",
+    "La Jaula / torneo": "lajaula",
+}
