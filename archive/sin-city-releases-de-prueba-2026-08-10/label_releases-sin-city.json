@@ -1,0 +1,71 @@
+[
+    {
+        "id": "bitch-were-not-the-same",
+        "artista": "Sin City",
+        "track": "Bitch We're Not The Same",
+        "fecha": "2026-03-27",
+        "artwork": "/label/sin-city-bitch-were-not-the-same.jpg",
+        "links": {
+            "soundcloud": "https://soundcloud.com/sin-city-331265813/bitch-were-not-the-same/s-CgsOqelZjWh"
+        },
+        "embed": {
+            "tipo": "soundcloud",
+            "secreto": "s-CgsOqelZjWh",
+            "trackId": "2291835794"
+        },
+        "orden": 0,
+        "published": true,
+        "created_at": "2026-08-06 00:19:09.015457+00",
+        "created_by": null,
+        "created_email": null,
+        "updated_at": "2026-08-06 00:19:09.015457+00",
+        "published_at": null,
+        "published_email": null
+    },
+    {
+        "id": "space-miami",
+        "artista": "Sin City",
+        "track": "Space Miami",
+        "fecha": "2026-03-27",
+        "artwork": null,
+        "links": {
+            "soundcloud": "https://soundcloud.com/sin-city-331265813/space-miami/s-tuvejFL2cQe"
+        },
+        "embed": {
+            "tipo": "soundcloud",
+            "secreto": "s-tuvejFL2cQe",
+            "trackId": "2291837831"
+        },
+        "orden": 1,
+        "published": true,
+        "created_at": "2026-08-06 00:19:09.015457+00",
+        "created_by": null,
+        "created_email": null,
+        "updated_at": "2026-08-06 00:19:09.015457+00",
+        "published_at": null,
+        "published_email": null
+    },
+    {
+        "id": "go-back",
+        "artista": "Sin City",
+        "track": "Go Back",
+        "fecha": "2026-03-27",
+        "artwork": null,
+        "links": {
+            "soundcloud": "https://soundcloud.com/sin-city-331265813/sin-city-go-back/s-DfYhejSL4Zs"
+        },
+        "embed": {
+            "tipo": "soundcloud",
+            "secreto": "s-DfYhejSL4Zs",
+            "trackId": "2291837204"
+        },
+        "orden": 2,
+        "published": true,
+        "created_at": "2026-08-06 00:19:09.015457+00",
+        "created_by": null,
+        "created_email": null,
+        "updated_at": "2026-08-06 00:19:09.015457+00",
+        "published_at": null,
+        "published_email": null
+    }
+]
