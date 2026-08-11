@@ -1,0 +1,510 @@
+[
+ {
+  "json_agg": [
+   {
+    "id": "ef09ffa0-ce5e-4449-9158-aac3fc2cfd72",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 250,
+    "type": "grant",
+    "description": "Simulación — pago Silver aprobado",
+    "created_at": "2026-07-13T19:02:15.175179+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "82823ddc-efb6-47bf-aa0f-84248ada07f4",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Reserva: Curso de DJ con Mateo Pastrana",
+    "created_at": "2026-07-14T01:14:20.076398+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "5dc103a6-7feb-4f26-833e-6f82569f2664",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Reserva: Producción Musical Presencial con Guini",
+    "created_at": "2026-07-14T01:14:57.550326+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "734131df-cce3-4727-ad24-975cb00151a7",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Reserva: Producción Musical Online",
+    "created_at": "2026-07-14T01:37:04.26971+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "9e3bc2f2-a439-466a-8788-797f8779908b",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Reserva: Producción Musical Presencial con Mateo Pastrana",
+    "created_at": "2026-07-14T04:09:53.36778+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "78e7948e-5a4a-4eb6-b4f1-6029f29952e6",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 60,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Curso de DJ con Mateo Pastrana",
+    "created_at": "2026-07-14T04:10:50.378532+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "0710d248-b534-4d78-a4e9-ac17798c6c21",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 60,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Producción Musical Presencial con Guini",
+    "created_at": "2026-07-14T04:11:00.729388+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "6dd9bdad-08e3-4721-9f3d-b58e8a523b50",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 60,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Producción Musical Online",
+    "created_at": "2026-07-14T04:13:08.749352+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "0b616866-ecc9-456a-a25d-4620f5b2dae0",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Reserva: Producción Musical Presencial con Mateo Pastrana",
+    "created_at": "2026-07-14T04:19:02.518696+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "9efc1a9e-d5ed-4241-bc15-473638cf552e",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Reserva: Producción Musical Presencial con Guini",
+    "created_at": "2026-07-14T04:38:23.533088+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "b67f7163-271d-48a3-9f9a-26fb84716d40",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 60,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Producción Musical Presencial con Guini",
+    "created_at": "2026-07-14T04:38:47.006586+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "dea221d7-c5ce-4d88-af54-f209457cd3da",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 1000,
+    "type": "grant",
+    "description": "1000 créditos de cortesía (dueño)",
+    "created_at": "2026-07-14T06:35:32.501248+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "4f7ed050-95dc-4381-a0e6-c5b9280444d7",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 1000,
+    "type": "grant",
+    "description": "Membresía Prueba — pago aprobado",
+    "created_at": "2026-07-14T06:44:13.443704+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "d9c99476-bb8c-4cfc-a463-613b82728c10",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -50,
+    "type": "spend",
+    "description": "Clase grupal: Clase Grupal de DJ con Mateo Pastrana",
+    "created_at": "2026-07-14T15:21:11.088685+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "b27081d3-ad71-4b23-9859-c45c86f0a568",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 50,
+    "type": "grant",
+    "description": "Reintegro clase grupal: Clase Grupal de DJ con Mateo Pastrana",
+    "created_at": "2026-07-14T15:21:52.933178+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "e0b9bdd2-53e2-4f3a-b3d7-050adfbafc11",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -50,
+    "type": "spend",
+    "description": "Clase grupal: Clase Grupal de DJ con Mateo Pastrana",
+    "created_at": "2026-07-14T16:19:19.616281+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "93ad4ece-bc6c-4907-ad44-f75fa790ff0d",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Reserva: Producción Musical Presencial con Guini",
+    "created_at": "2026-07-14T16:19:51.395183+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "940a5953-9673-4639-ae16-7984ff8d44d2",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 60,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Producción Musical Presencial con Guini",
+    "created_at": "2026-07-14T16:30:00.751839+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "a42e46c0-90a0-49b5-b21b-3da45fa760d3",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 50,
+    "type": "grant",
+    "description": "Reintegro clase grupal: Clase Grupal de DJ con Mateo Pastrana",
+    "created_at": "2026-07-14T16:30:02.844203+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "2638fb9e-abbb-4a41-abc5-26c1af9198dd",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Reserva: Curso de DJ con Mateo Pastrana",
+    "created_at": "2026-07-14T19:58:21.776797+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "432acc43-9559-4d8c-8b83-eccec943a0c5",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 60,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Curso de DJ con Mateo Pastrana",
+    "created_at": "2026-07-14T20:20:03.886812+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "8b8316b5-d4ba-439f-a70e-135a7fd11c71",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -50,
+    "type": "spend",
+    "description": "Clase grupal: Clase Grupal de DJ con Mateo Guini",
+    "created_at": "2026-07-14T21:16:58.084209+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "6ab3950d-7980-4501-b833-55602b2519b5",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 50,
+    "type": "grant",
+    "description": "Reintegro clase grupal: Clase Grupal de DJ con Mateo Guini",
+    "created_at": "2026-07-14T21:17:37.127236+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "b5b71b44-2537-413f-bca9-2e381d5fa478",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Reserva: Curso de DJ con Guini",
+    "created_at": "2026-07-14T21:41:34.942954+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "cdf10c5c-3d7e-4d23-8c06-a5f4d8d33498",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 60,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Curso de DJ con Guini",
+    "created_at": "2026-07-14T21:49:57.900488+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "9ba1cdf3-3f0b-43af-94ae-18cfb261839c",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Reserva: Producción Musical Presencial con Mateo Pastrana",
+    "created_at": "2026-07-14T22:38:46.565592+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "879a90d1-dca6-4f5a-994b-44ad6f9d1e17",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase con Mateo Pastrana",
+    "created_at": "2026-07-15T17:03:37.148635+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "3d9a9a00-9c27-4c8b-8652-3a352ff8a29d",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase con Mateo Pastrana",
+    "created_at": "2026-07-15T17:03:40.719658+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "b8fae624-a9c6-4c88-a401-803bf1bbe477",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase con Mateo Pastrana",
+    "created_at": "2026-07-15T17:03:46.330688+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "d4af4620-c332-42a1-b9e8-68d313b9a0d3",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase con Mateo Pastrana",
+    "created_at": "2026-07-15T17:03:50.515324+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "438ea3f0-1681-483c-ac84-b091d58176c9",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase con Mateo Pastrana",
+    "created_at": "2026-07-15T17:04:01.232589+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "cf5a8447-0417-4ff3-b860-8e6a01fd2a21",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase con Mateo Pastrana",
+    "created_at": "2026-07-15T17:26:12.763351+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "b2ad93d6-099e-4136-a3d3-bc5bd8386060",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase con Mateo Pastrana",
+    "created_at": "2026-07-15T17:49:18.393999+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "946476c6-b8e8-414b-b688-6f6a3fb7ef25",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase con Mateo Pastrana",
+    "created_at": "2026-07-15T17:49:51.740834+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "40df91bd-59a9-4038-8880-50ebad91c55b",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase de DJ con Mateo Pastrana",
+    "created_at": "2026-07-15T18:05:53.403495+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "4f79d00c-07ca-4c37-aaea-7659d6b44406",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase de Producción con Mateo Pastrana",
+    "created_at": "2026-07-15T18:35:00.563298+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "1b881c03-214d-4c5c-a33b-83fe599a4bfb",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase de Producción con Mateo Pastrana",
+    "created_at": "2026-07-15T18:35:14.842132+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "936d761d-88b9-42e6-a5f6-9a1cfd6809fc",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -50,
+    "type": "spend",
+    "description": "Clase grupal de DJ con Mateo Pastrana",
+    "created_at": "2026-07-15T18:53:35.974925+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "b23f2d33-3a22-4f52-a808-58174eecdae4",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase de Producción con Owners of Time",
+    "created_at": "2026-07-15T18:54:02.203666+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "b2f8d7e5-09f2-4a09-987e-5fd2b2463e04",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -100,
+    "type": "spend",
+    "description": "Penalización: prueba (por facue1900@gmail.com)",
+    "created_at": "2026-07-15T19:29:07.221487+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "8f07e6ca-defe-4379-a2b6-8215c2277db3",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 300,
+    "type": "grant",
+    "description": "error de acreditacion (prueba) (por facue1900@gmail.com)",
+    "created_at": "2026-07-15T19:29:26.708009+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "0d192dd0-6d47-48d6-a597-010cc5b358f9",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -50,
+    "type": "spend",
+    "description": "Clase grupal de DJ con Mateo Pastrana",
+    "created_at": "2026-07-15T19:57:09.445017+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "717dff56-d97b-4f18-8c4a-a95aa98ac1e7",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase de Producción con Owners of Time",
+    "created_at": "2026-07-16T18:44:22.074275+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "cc9777b1-0b16-4083-847b-96f2c69fe7af",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 60,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Clase de Producción con Owners of Time",
+    "created_at": "2026-07-16T18:58:58.479038+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "33eb08a6-20f1-4f0c-91e9-1e1fd41ca87c",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase de Producción con Mateo Guini",
+    "created_at": "2026-07-16T23:34:51.130488+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "38588cec-114f-4c6f-930a-7fc4452e47c4",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 60,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Clase de Producción con Mateo Guini",
+    "created_at": "2026-07-17T17:07:06.850209+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "e615a92c-823e-49c3-8f93-3048e81f93aa",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase de DJ con Mateo Pastrana",
+    "created_at": "2026-07-17T21:44:22.335224+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "79f51499-dcbf-4dda-9526-fec47f95e41b",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -60,
+    "type": "spend",
+    "description": "Clase de Producción con Mateo Guini",
+    "created_at": "2026-07-17T21:53:27.237601+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "c8dd0f23-1916-449a-a45c-d447778a078e",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 60,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Clase de DJ con Mateo Pastrana",
+    "created_at": "2026-07-19T00:17:49.882768+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "117d5fb8-fee8-4e52-adec-ae115a5596ed",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -40,
+    "type": "spend",
+    "description": "Alquiler de cabina",
+    "created_at": "2026-07-21T03:01:40.273796+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "7d0a8bfd-cb95-4e5e-a7fd-78850a751340",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 40,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Alquiler de cabina",
+    "created_at": "2026-07-21T15:30:18.207985+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "2cada99e-af58-45bf-aaf1-3a7368cc7325",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": -40,
+    "type": "spend",
+    "description": "Alquiler de cabina",
+    "created_at": "2026-07-25T21:38:40.151179+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "53a520a8-7710-4b94-b2c5-75fe9238942b",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 40,
+    "type": "grant",
+    "description": "Reintegro por cancelación: Alquiler de cabina",
+    "created_at": "2026-07-25T21:40:43.467133+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "f80390a6-88d0-45b3-a8e3-b470406f6b2d",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 1000,
+    "type": "grant",
+    "description": "Prueba — 1000 créditos",
+    "created_at": "2026-08-04T14:41:29.890863+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "659f45eb-e304-4266-bbc3-cc8ba220901d",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 1000,
+    "type": "grant",
+    "description": "Prueba — 1000 créditos",
+    "created_at": "2026-08-05T17:00:11.722458+00:00",
+    "full_name": "Facundo Estevez"
+   },
+   {
+    "id": "70b96451-cf8f-4df4-af8c-400b8932aefc",
+    "user_id": "e73de2cf-d249-48a3-8a9d-09419d519a93",
+    "delta": 1000,
+    "type": "grant",
+    "description": "Prueba — 1000 créditos",
+    "created_at": "2026-08-06T07:00:04.005541+00:00",
+    "full_name": "Facundo Estevez"
+   }
+  ]
+ }
+]
