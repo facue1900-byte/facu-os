@@ -8,6 +8,56 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-11 · FAIL ✓ · La planilla publicaba 3.630 créditos que no eran de ningún alumno
+
+Facu pidió sacar del medio lo que se hizo de prueba: *"todo lo que sea de prueba excluilo de
+calcular cálculo de plata o créditos o movimientos"*. La primera pregunta no era qué borrar
+sino **dónde el cálculo no está excluyendo**, y la respuesta estaba en un cron.
+
+**Causa raíz:** la pestaña espejo de `app/api/cron/sync-sheet/route.ts` filtraba por la tabla
+**`staff`** y no por **`es_interno`**. Son dos conjuntos distintos: `staff` tiene 7 filas y
+`es_interno` 13. Los 6 de diferencia —las dos cuentas de Facu, Annie, Lola, Josefina e Ian
+Salmi— se escribían en la planilla **como alumnos, con sus créditos adentro**: 3.390 de la
+cuenta de pruebas de Facu y 240 de Annie, sobre 23.120 vigentes. **Uno de cada seis créditos
+de la planilla no era de un alumno.** Y como esa cuenta tiene una suscripción Gold
+`authorized`, la planilla la mostraba con membresía **"Activa"**.
+
+Lo escribe un cron cada hora. Nadie lo mira. El modo de falla silencioso de siempre.
+
+**El fix** (`astronomy-members`, commit `2ad3fbd`): se excluye la **unión** de los dos
+conjuntos, no se reemplaza uno por el otro — hoy los 7 de `staff` están todos marcados
+`es_interno`, pero el día que alguien sume un profe a `staff` y se olvide del flag, el cron
+no tiene que empezar a publicarlo. `lib/internos.ts` ya existía para esto y su propio
+comentario describe el bug: *"el problema no era el hardcodeo sino que cada pantalla nueva se
+olvidaba de mirarlas"*. Era una pantalla nueva más.
+
+**El hallazgo de costado, que es peor:** borrar los lotes no habría servido de nada. La
+cuenta de Facu está **hardcodeada en 5 scripts** (`acreditacion-atomica.mjs`,
+`acreditacion-modopro.mjs`, `escenarios-pagos.mjs`, `probar-webhook-suscripcion.mjs`,
+`e2e-plan-b.mjs`), y los tres primeros son lo que corre `npm run test:pagos`. **Cada corrida
+de los tests de pagos le vuelve a inyectar créditos de prueba a la cuenta de Facu** — de ahí
+los `mp:test:*` del 05/08 y 06/08. Es la misma lección del 2026-08-09: un test no usa una
+cuenta real, se crea la suya descartable. Pendiente de arreglar.
+
+**Dos correcciones que me hice a mí mismo en el camino, las dos por no contar antes de
+afirmar:**
+1. Reporté que Luki le había pagado $305.000 de más a los profes "en silencio". El
+   `audit_log` lo registra explícito —*"CORREGIDO A MANO: el sistema calculaba $572000"*—
+   con su mail y la hora. No es un agujero del software, es una decisión suya. Y lo que está
+   verificado es que **se registró** el pago, no que la transferencia haya salido del banco.
+2. Dije que la pantalla de auditoría de créditos también contaba a Facu como alumno. **Falso:**
+   se alimenta de `payment_links` y ninguna cuenta interna tiene filas ahí, así que el bucle
+   nunca le llega. El filtro por `staff` está igual de mal, pero es riesgo latente, no daño
+   activo. Afirmarlo sin contar habría mandado a Facu a mirar una pantalla que está bien.
+
+**La lección de método:** cuando el pedido es "excluí lo de prueba", el reflejo es borrar
+filas. Borrar es irreversible, rompe el historial y **no arregla el cálculo**: el ruido vuelve
+en la próxima corrida de tests. Lo que se arregla es **quién filtra y por qué campo**, y eso
+se busca cruzando "quién toca créditos" contra "quién mira `es_interno`" — dos greps que
+dieron 14 archivos y 20 archivos, con 12 en la intersección vacía. De esos 12, la mayoría son
+consultas **por usuario** donde filtrar sería el bug; el único que agregaba y publicaba era
+el cron.
+
 ### 2026-08-10 · FAIL ✓ · Cinco personas pagaban y la web nunca les mostró lo que compraron
 
 Facu pidió una cuenta de regalo con **sólo DJ Delivery** para un amigo. La creé, verifiqué
