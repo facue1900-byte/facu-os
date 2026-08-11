@@ -1,6 +1,28 @@
 # Astronomy — estado
 
-Última actualización: 2026-08-10
+Última actualización: 2026-08-11
+
+## 🎛 LO PRÓXIMO: la fecha real del 19/09 — palabra clave «dominé»
+
+**Pedido de Facu, 11/08/2026.** Hay un **evento real el sábado 19 de septiembre** y se
+vende con la ticketera propia. Textual: *"armame todas las páginas desde «crear evento»
+hasta el final y que yo solo tenga que completar los datos del evento, públicas, rrpps,
+fotos, comisiones, etc. Vos dejame todo listo para completar"*.
+
+**No es construir la ticketera —ya existe—: es armar el camino de alta de punta a punta y
+dejar cada pantalla esperando datos.** La fecha ya está creada: **"Dominé 001"**, slug
+`domine-001`, `draft`, 10% de comisión de RRPP. **Todo lo demás está en cero**, medido en
+la base el 11/08: `rrpp_categorias` 0 · `rrpp_tramos` 0 · `rrpp_cortesias` 0 · `mesas` 0 ·
+`ticket_orders` 0 · `tickets` 0.
+
+⚠️ Hay `rrpps` 2, `mesa_sectores` 5, `ticket_batches` 4 y `ticket_tiers` 2: **verificar de
+qué evento cuelgan antes de tocarlos** — son restos de la Previa borrada.
+
+El detalle y el orden de trabajo, en la memoria `retomar-domine`.
+
+> **Aforo queda pausado** por la misma decisión: *"dejemos Aforo para un futuro"*. Su app
+> corre local en `~/Desktop/Aforo/aforo-app` y está commiteada; el estado, en
+> `active/aforo/ESTADO.md`. No se registró ningún dominio ni se pagó nada.
 
 Participaciones, ramas, equipo y objetivos: en el CLAUDE.md global. Acá va solo lo
 operativo y lo que cambió.
