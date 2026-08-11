@@ -42,6 +42,29 @@ Por año: 2022 (2) · 2023 (158) · 2024 (121) · 2025 (115) · 2026 (92 hasta j
 Ojo: `Lista 22 de Julio AUTOGESTIONADOS.xlsx` está traspapelado en `~/Desktop/Chaco/` —
 es la lista de precios de whisky de la barra de eventos, no del campo.
 
+## IVA de Sucesores de Ricardo Estevez — 11/08/2026
+
+Link para cargar facturas A por foto y que el IVA se anote solo en una planilla,
+separando neto de IVA, para netear compras contra ventas y saber cuánto pagar.
+Vive en `~/Desktop/Chaco/App IVA Estevez/` (repo git propio, ver su `README.md`).
+
+**Arranca de cero: no hay ninguna factura cargada todavía.** Empieza en agosto 2026.
+
+| | |
+|---|---|
+| Planilla | `1YD0-ujMDjmcM9cJ6Omf3L_ZWlEdLB69mP3fXcF4Tcz4` (creada, con Config, Resumen IVA y la hoja 2026-08) |
+| Backend | Apps Script dentro de la planilla — **falta desplegarlo** |
+| Pantalla | `web/` verificada, y `apps-script/Pantalla.html` como alternativa sin hosting |
+| Sitio Netlify | `iva-estevez-chaco` creado, **sin deployar** |
+
+**Bloqueante: falta el CUIT de la empresa.** Sin ese dato el sistema no puede saber
+si un comprobante es compra o venta —lo deduce del CUIT, no se marca a mano— ni si
+la factura es de la empresa. Frena todo lo que llega. Va en la hoja `Config`.
+
+Decisiones que ya están tomadas y probadas: el modelo transcribe y el código
+calcula; nada entra al cálculo del IVA sin que una persona lo confirme; las
+percepciones van aparte porque no son crédito fiscal; sólo las facturas A pasan.
+
 ## Automatizaciones que quiere Facu
 
 1. Conteos y negociaciones.
