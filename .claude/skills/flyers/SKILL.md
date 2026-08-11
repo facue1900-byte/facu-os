@@ -9,6 +9,37 @@ Un producto × N ángulos de venta × M formatos, generados de una. El copy vive
 `contenido/academy.json` y los créditos salen de la base de la app. **Las piezas no
 llevan precio en pesos** — ver más abajo.
 
+## La placa de DISPONIBILIDAD (Modo Profesional)
+
+Va aparte porque no es un flyer de producto: es **el inventario del curso, dibujado**.
+La grilla de 5 días × 5 horas con los bloques vendidos tachados.
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/flyers/scripts/disponibilidad.py"
+# --formatos story,feed,square   · --cohorte sep-2026   · --sin-foto
+```
+
+Sale a `~/Desktop/Productoras/Astronomy/Academia/Flyers Academy/disponibilidad/`.
+
+**Los bloques se tachan solos.** La grilla se lee de las mismas tablas con las que la web
+cobra (`pro_cohort_slots` + `pro_enrollments`), con el mismo criterio de "tomado" que usa
+la app —una `pendiente` con el hold vencido no ocupa—. Por eso la placa y el checkout no se
+pueden separar: si un casillero está tachado, ese lugar está vendido de verdad.
+
+Se regenera **cada vez que se vende un lugar**, antes de postear. Tachar a mano es
+exactamente el trabajo que esto vino a sacar: vuelve con cada venta, y el día que alguien
+se olvida la story ofrece un horario que ya no existe.
+
+| Casillero | Qué significa |
+|---|---|
+| Vacío | Libre. Un cupo sin profe asignado se muestra libre: el alumno compra el día y la hora |
+| Cruz blanca | Vendido |
+| Cruz apagada | Fuera de venta en esta edición |
+
+Si la consulta vuelve vacía, el script **corta**: una grilla sin filas daría una placa con
+los 25 bloques libres, que es la mentira más cara de publicar.
+
 ## Correr
 
 Siempre en dos pasos, y en este orden:
