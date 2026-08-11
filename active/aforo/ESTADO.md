@@ -91,6 +91,44 @@ no una. Es la tercera cara del mismo bug que ya cayó tres veces en la academia.
 ⚠️ **Lo que esto NO prueba, y hay que probar en la nube:** PostgREST con la anon key de verdad
 (pegándole con `curl` y contando filas) y Auth. Probado ≠ probado todo.
 
+## ✅ La app se puede mirar y tocar ENTERA, sin base y sin gastar un peso (10/08/2026)
+
+Repo: **`~/Desktop/Aforo/aforo-app`** (Next.js 16). Se levanta con
+`npm run build && PORT=3200 npm run start` y se abre en `http://localhost:3200`.
+No hay Supabase, no hay dominio, no hay Mercado Pago y no se gastó un peso.
+
+**La decisión de arquitectura que lo permite:** `lib/datos.ts` es el único archivo que
+sabe de dónde salen los datos. Hoy salen de `lib/seed.ts` (inventado); el día que haya
+base se reescribe ese archivo **y no cambia un solo componente**. Los tipos de
+`lib/tipos.ts` son las tablas de `ESQUEMA_EJE.sql`, campo por campo y con los mismos
+nombres. Las funciones están partidas en `publico*` y `panel*`, y las públicas **nunca**
+devuelven `puerta_id` ni `puerta_clave`.
+
+Se puede recorrer: la página de una fecha con la compra, la cartelera de una productora,
+el panel con sus fechas y el alta de 4 pasos. **La fecha de Nocturna está trabada en el
+paso 3 a propósito**, para ver el momento que más importa: no se publica sin cobro.
+
+El alta **se calcula**, no se guarda: no hay columna `paso_actual`. Una columna así
+empieza a mentir el día que alguien le borra el venue a una fecha "completa".
+
+**Estética: Aforo es el marco, la productora es el contenido.** El chrome es blanco y
+negro y el color lo pone cada fecha, sacado de su flyer (hoy del slug, estable). Si Aforo
+tuviera su violeta, todas las productoras se verían igual de Aforo.
+
+### Dos scripts que valen para cada iteración
+
+- `node scripts/mirar.mjs [--ancho 1280]` — capturas fijando el viewport por CDP
+  (`Emulation.setDeviceMetricsOverride`, nunca `--window-size`) e **imprime el `<h1>` de
+  lo que capturó**.
+- `node scripts/medir.mjs /ruta` — le pregunta al navegador lo que una captura no puede
+  contestar: alineación, huecos, texto cortado, si la barra fija tapa el final, y
+  **contraste de cada texto contra su fondo real**.
+
+**Encontraron tres cosas que mirando no se veían:** el shorthand de `.section` pisaba el
+padding lateral de `.wrap-sm` y todo el contenido estaba pegado al borde; la barra de
+compra tapaba el final de la página; y `--faint` daba **4,05:1** cuando yo había escrito
+"4,6:1" en el comentario **sin medirlo**.
+
 ## Dónde se prueba la app entera (decidido el 10/08/2026)
 
 **Supabase local con Docker.** Es gratis, se resetea a cero en segundos —y el plan es correr
