@@ -8,6 +8,55 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-11 · FAIL ✓ · La tarjeta de Mati le pedía plata a un local que ya había pagado
+
+**Dónde:** app del Paseo, `src/components/DeudaEfectivo.tsx` +
+`.claude/skills/cierre-mes-nordelta/scripts/deuda_efectivo.py`.
+
+Lo vio Facu en una captura: Boss le pagó **$1.400.000 el 10/08**, el cobro estaba cargado
+en la app, y la tarjeta seguía diciendo que debía **$1.767.518**. No era un redondeo ni un
+desfase: la tarjeta **no restaba nada**.
+
+**Causa raíz — dos sistemas que no se hablan, y un pie de tarjeta que decía que sí.** El
+JSON `deuda-efectivo.json` es una **foto** de la planilla Ctas Ctes al día que se generó
+(06/08). Los cobros que Mati carga en la app van a Supabase y a la hoja `Movimientos` del
+Master Plan; **a Ctas Ctes no llega ninguno** — esa planilla la actualiza Facu a mano. O
+sea que la foto envejece sola desde el segundo cero. Verificado: el saldo de Boss en la
+pestaña seguía siendo `1767518.2527…` el 11/08, idéntico al del 06/08.
+
+Lo que lo volvía invisible es que el componente **importaba el JSON y lo renderizaba
+directo**, y abajo imprimía *"Se actualiza a medida que anotás los cobros"*. Una frase que
+no era un bug de código sino una **promesa sin implementación**: describía lo que el
+componente debería hacer, y nadie la contrastó con lo que hacía. Cuatro cobros
+($3.130.000) quedaron afuera del número que Mati usa para salir a cobrar.
+
+**Fix:** `src/lib/deudaEfectivo.ts` — deuda de hoy = foto − cobros en efectivo posteriores
+a `cobrosDesde`. Cada local del JSON lleva un `origen` (el `localId`, o la etiqueta de
+categoría para los que no son locales de la app) y el script avisa si a alguno le falta, en
+vez de descontarle cero en silencio.
+
+**Lo no obvio: `cobrosDesde` no puede avanzar sola.** El instinto era usar `generado` como
+corte. Pero regenerar el JSON por cualquier otro motivo (el precio de La Jaula, un local
+nuevo) movería el corte a hoy, los cobros de la app dejarían de descontarse **y la deuda se
+inflaría de vuelta**, otra vez sin error. Así que `cobrosDesde` se arrastra del JSON
+anterior y sólo se adelanta a mano con `--cobros-en-planilla`, cuando los cobros ya están
+volcados a Ctas Ctes. **El corte no lo define el script: lo define un hecho del mundo.**
+
+De paso, un segundo agujero que todavía no había costado plata: un cobro de **Meta** le
+cancelaba la deuda a **Beto**. Comparten el renglón «Escuelita» y en `parseCaja.ts` el
+nombre del local le ganaba a la palabra clave. Beto arranca a pagar **$350.000/mes en
+septiembre**, así que el mes que viene se notaba.
+
+Verificado contra los **449 movimientos reales de la base**: 21 chequeos, incluidos que un
+cobro mayor a la deuda deja el local en cero y no en negativo, que no le baja la deuda a
+los demás, y que un egreso de caja o un cobro por banco no tocan la deuda en efectivo. El
+total pasa de $6.659.073 a **$3.529.073**.
+
+**La lección transferible: una foto con fecha no es un saldo, y un texto que promete que
+algo se actualiza solo es una afirmación a verificar como cualquier otra.** Si un dato se
+calcula en un lado y se consume en otro, la pregunta no es si el número está bien: es
+**cuándo fue verdad por última vez**.
+
 ### 2026-08-11 · OK · Un chequeo que daba verde con el código roto entero
 
 **Dónde:** `astronomy-members`, el curso por cupos de Modo Profesional
