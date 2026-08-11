@@ -75,6 +75,18 @@ La Constitución dice que un chequeo que nunca falló es sospechoso (regla 3). E
 para saberlo el mismo día que se escribe: **romper el código a propósito, una cosa por
 vez, y mirar si el chequeo lo agarra.** Se restaura y listo. Cuesta dos minutos.
 
+**Y hay que romper LA LÍNEA QUE ESE CHEQUEO DICE PROTEGER, no cualquier cosa.** Del
+11/08/2026: un chequeo de *"ninguna hora del curso se ofrece a los members"* daba verde, y
+**siguió dando verde con la protección sacada entera** — pasaba por otro motivo (las horas
+estaban ocupadas por las reservas del alumno, no por el código nuevo). Si sacás la
+protección y el chequeo no se pone rojo, el chequeo mide otra cosa: hay que buscar el caso
+donde la protección sea la **única** explicación posible del resultado. Ahí fue "un cupo que
+todavía no compró nadie", que no tiene reservas atrás.
+
+Y antes de todo eso: **contar cuántos casos evaluó.** Cero casos también da verde. Si el
+escenario que probás cae fuera del rango que el código genera —un horizonte de 28 días, un
+tope de 200 filas— el chequeo no falla: no corre. Eso lleva su propio chequeo del chequeo.
+
 Y el caso que engaña, del 08/08/2026: un chequeo de *"esto tiene que pasar derecho"*
 —que algo NO se toque, NO se guarde, NO se intercepte— **puede dar verde porque ninguna
 regla lo agarró, no porque la protección funcione.** Se saca la protección y el chequeo

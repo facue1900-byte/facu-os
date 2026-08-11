@@ -8,6 +8,50 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-11 · OK · Un chequeo que daba verde con el código roto entero
+
+**Dónde:** `astronomy-members`, el curso por cupos de Modo Profesional
+(`lib/slots.ts`, `scripts/modopro-cohorte.mjs`).
+
+**Qué pasó.** El curso pasó a venderse por cupos: se compra un día y una hora fijos por 8
+semanas. La pieza que no puede fallar es que un cupo **bloquee la cabina desde que se
+ofrece**, no desde que se vende — si no, un member agenda dentro de la ventana del curso,
+después se vende ese horario, y las dos reservas son válidas por separado. Nadie ve un
+error; alguien tiene que llamar por teléfono.
+
+Escribí el chequeo *"ninguna hora del curso se ofrece a los members"*. Dio verde. Después,
+siguiendo el Playbook, rompí el código a propósito: saqué **el bloqueo entero**. **El
+chequeo siguió en verde.**
+
+**Causa raíz.** El chequeo medía otra cosa. Las horas no aparecían libres porque el alumno
+de prueba ya tenía sus 8 reservas creadas —y una reserva ocupa la cabina por sí sola—, no
+porque el código nuevo las apartara. El verde venía de la consecuencia, no de la causa. La
+protección podía no existir y el test no se enteraba.
+
+**El chequeo que sí sirve** es el de un cupo que **todavía no compró nadie**: sin reservas
+atrás, el único motivo posible de que esas horas no estén libres es el código nuevo. Con el
+bloqueo sacado, ése se pone rojo (`7 de 8 seguían libres`).
+
+**Y una segunda capa del mismo problema.** El chequeo nuevo también daba verde en vacío: la
+grilla se genera con un horizonte de 28 días y la cohorte de prueba arranca en 2027, así que
+esas horas ni se generaban. Hubo que parametrizar el horizonte **y** el tope de 200 turnos
+de `getSlotsByProf` (defaults intactos, producción idéntica) y agregar un chequeo del
+chequeo: *"la grilla larga llega hasta marzo de 2027"*. Cero casos evaluados también da
+verde.
+
+**De yapa, la prueba encontró un dato real:** el 24/03/2027 está cargado como feriado del
+estudio y hacía fallar una aserción con razón. Eso llevó a mirar los feriados de la ventana
+del curso de septiembre: **el lunes 12/10/2026 es feriado nacional y NO está cargado** en
+`studio_holidays`. Los 5 cupos de lunes tendrían clase ese día, prolija, en un estudio
+cerrado. El panel avisa sólo si el feriado está cargado.
+
+**La lección, que es un matiz del método que ya teníamos.** El Playbook dice romper el
+código a propósito antes de confiar en un chequeo. Faltaba el detalle: **no alcanza con
+romper cualquier cosa — hay que romper exactamente la línea que el chequeo dice proteger**,
+y si sigue en verde, el chequeo mide otra cosa. Hay que buscar el caso donde la protección
+sea la **única** explicación posible del resultado. Anotado en `02-PLAYBOOK.md` y en la
+memoria (`chequeo-verde-con-el-codigo-roto`).
+
 ### 2026-08-11 · FAIL ✓ · La planilla publicaba 3.630 créditos que no eran de ningún alumno
 
 Facu pidió sacar del medio lo que se hizo de prueba: *"todo lo que sea de prueba excluilo de
