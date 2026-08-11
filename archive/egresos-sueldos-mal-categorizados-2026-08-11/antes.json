@@ -1,0 +1,66 @@
+[
+ {
+  "json_agg": [
+   {
+    "id": "2c0ae5c2-8a3b-4da8-980a-bdf8b74fbd1d",
+    "paid_at": "2026-08-07T15:00:00+00:00",
+    "category": "equipos",
+    "concept": "Sueldo Annie",
+    "amount": 350000,
+    "method": "transferencia",
+    "note": null,
+    "loaded_by": "d4ad9996-1614-4239-af4b-671fb61fd362",
+    "loaded_by_email": "lucasalvarezo.99@gmail.com",
+    "created_at": "2026-08-11T11:35:05.213004+00:00",
+    "unidad": "academy",
+    "event_id": null,
+    "currency": "ARS",
+    "amount_orig": null,
+    "fx_rate": null,
+    "fx_date": null,
+    "payer": null,
+    "mesa_id": null
+   },
+   {
+    "id": "1f1e507f-f5a6-435a-ab10-48b09cbf4673",
+    "paid_at": "2026-08-07T15:00:00+00:00",
+    "category": "equipos",
+    "concept": "Sueldo Lola",
+    "amount": 350000,
+    "method": "transferencia",
+    "note": null,
+    "loaded_by": "d4ad9996-1614-4239-af4b-671fb61fd362",
+    "loaded_by_email": "lucasalvarezo.99@gmail.com",
+    "created_at": "2026-08-11T11:35:38.458591+00:00",
+    "unidad": "academy",
+    "event_id": null,
+    "currency": "ARS",
+    "amount_orig": null,
+    "fx_rate": null,
+    "fx_date": null,
+    "payer": null,
+    "mesa_id": null
+   },
+   {
+    "id": "cad25295-99a8-4f14-a689-6c4704ce387e",
+    "paid_at": "2026-08-07T15:00:00+00:00",
+    "category": "equipos",
+    "concept": "Sueldo Pacha",
+    "amount": 226500,
+    "method": "transferencia",
+    "note": null,
+    "loaded_by": "d4ad9996-1614-4239-af4b-671fb61fd362",
+    "loaded_by_email": "lucasalvarezo.99@gmail.com",
+    "created_at": "2026-08-11T11:36:10.062515+00:00",
+    "unidad": "academy",
+    "event_id": null,
+    "currency": "ARS",
+    "amount_orig": null,
+    "fx_rate": null,
+    "fx_date": null,
+    "payer": null,
+    "mesa_id": null
+   }
+  ]
+ }
+]
