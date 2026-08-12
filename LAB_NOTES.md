@@ -8,6 +8,42 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-12 · FAIL ✓ · El espejo del contador se había despegado de la base
+
+**Dónde:** app del Paseo (`src/state/data.tsx`, `supabase/apps-script-sync.gs`).
+
+Salió de dar de alta Pole Position y partir «Escuelita» en Beto y Meta. Al mirar
+cómo llega un cobro al Sheet del contador aparecieron **tres agujeros encadenados**,
+los tres invisibles:
+
+1. **`LOCAL_MAP` traduce el `local_id` a la fila exacta del Dashboard.** Un id que
+   no esté ahí escribe la columna Local **vacía** y el `SUMIFS` no lo suma: el
+   cobro entra a la planilla y no lo cuenta nadie. Los ids nuevos (`meta`,
+   `pole-position`) no estaban. Además el `.gs` **no se deploya con la app**: hay
+   que pegarlo a mano, así que agregar un local en la app no alcanza.
+2. **456 de 460 filas del Sheet estaban sin el id de la app en la columna K.** El
+   id salía de un `select` posterior al insert y viajaba `undefined`. Sin id, el
+   script no encuentra la fila: **un `update` apenda una fila nueva en vez de
+   pisar la vieja y un `delete` no borra nada.** Evidencia: la fila de prueba de
+   **$1 del 22/07 que decía «se borra sola»** seguía viva, y agosto cerraba con
+   **$93.468 de diferencia** contra la base.
+3. **«La Jaula / torneo» se reconocía por la palabra «la»**, con `includes`. O sea
+   que *"recibí del lavadero"* —y cualquier texto con "la"— le imputaba el cobro a
+   La Jaula. Ahora el match es por la primera palabra de ≥4 letras y como palabra
+   completa.
+
+**Fix:** el id lo genera la app (`crypto.randomUUID()`) y viaja siempre; si el
+insert falla ya no se espeja al Sheet una fila que no existe en la base, y el
+error se ve en pantalla en vez de morir en la consola. Backfill de la columna K:
+443 de 460 filas quedaron marcadas (las 17 restantes se habían cargado a mano
+directamente en la hoja). Chequeo nuevo y permanente:
+`scripts/reconciliar_hoja.py`, que saca el **neto por mes** — tiene que dar cero.
+
+**La lección: dos sistemas que se copian datos necesitan una llave, y hay que
+verificar que la llave viaje.** No alcanza con que el código la mande: acá el
+campo existía, el `if (r.id)` estaba escrito, y sin embargo llegaba vacío el 99%
+de las veces. Lo que lo delató no fue leer el código sino **contar** — 4 de 460.
+
 ### 2026-08-11 · FAIL ✓ · La tarjeta de Mati le pedía plata a un local que ya había pagado
 
 **Dónde:** app del Paseo, `src/components/DeudaEfectivo.tsx` +
