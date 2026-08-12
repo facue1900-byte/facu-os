@@ -84,6 +84,7 @@ def main():
                       "medio": str(r[2]).strip(), "local": str(r[3]).strip(),
                       "cat": str(r[4]).strip(),
                       "monto": float(r[5]) if isinstance(r[5], (int, float)) else 0.0,
+                      "moneda": (str(r[6]).strip() or "ARS").upper(),
                       "obs": str(r[7]).strip(), "mes": str(r[8]).strip(),
                       "id": str(r[10]).strip()})
 
@@ -175,8 +176,9 @@ def main():
         evaluados[tipo] += 1
         for medio, j in cols.items():
             visto = float(r[j]) if len(r) > j and isinstance(r[j], (int, float)) else 0.0
+            # los renglones del dashboard son de PESOS: los dólares van a la fila 7
             calc = sum(f["monto"] for f in filas if f["mes"] == etiqueta and f["medio"] == medio
-                       and f["tipo"] == tipo
+                       and f["tipo"] == tipo and f["moneda"] == "ARS"
                        and (f["local"] if tipo == "Ingreso" else f["cat"]) == etiq)
             if visto or calc:
                 con_plata += 1
@@ -193,6 +195,20 @@ def main():
         print("  ✗ no comparé alguno de los dos lados: el verde no significa nada")
     elif peor <= 0.01:
         print("  ✓ todos los renglones del dashboard dan exactamente la suma de sus filas")
+
+    # ---- los dólares no se cuelan entre los pesos: van a la fila 7 «u$s»
+    print("\n4 · DÓLARES (fila 7 «u$s»)")
+    usd = [f for f in filas if f["moneda"] != "ARS"]
+    if not usd:
+        print(f"  · no hubo movimientos en dólares en {etiqueta}")
+    for medio, j in cols.items():
+        visto = float(dash[6][j]) if len(dash[6]) > j and isinstance(dash[6][j], (int, float)) else 0.0
+        calc = sum((1 if f["tipo"] == "Ingreso" else -1) * f["monto"]
+                   for f in usd if f["medio"] == medio and f["mes"] == etiqueta)
+        estado = "✓" if abs(visto - calc) < 0.01 else "✗"
+        if estado == "✗":
+            fallas += 1
+        print(f"  {estado} {medio}: dashboard US${visto:,.2f} · movimientos US${calc:,.2f}")
 
     print("\n" + ("TODO OK" if not fallas else f"{fallas} PROBLEMAS"))
     sys.exit(1 if fallas else 0)
