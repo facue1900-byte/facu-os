@@ -96,8 +96,11 @@ ORIGEN_APP = {
     "Volta + Open 25": "volta",
     "Peak One": "apex",
     "Salón (Alto)": "salon",
+    # Beto y Meta comparten el renglón «Escuelita» en la planilla pero en la app
+    # son dos locales (12/08/2026). El id de Beto sigue siendo `escuelita`: los
+    # cobros ya cargados y el mapa del sync cuelgan de ese id.
     "Beto": "escuelita",
-    "Meta": "Meta Escuelita",       # no es un local de la app: viaja por categoría
+    "Meta": "meta",
     "Pole Position": "pole-position",
     "La Jaula / torneo": "lajaula",
 }
