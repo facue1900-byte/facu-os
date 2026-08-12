@@ -8,6 +8,52 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-12 · FAIL ✓ · Una hora de fin mal cargada apagaba la venta antes de la fiesta
+
+**Dónde:** ticketera (`app/actions/eventos.ts`, `lib/eventoEstado.ts`), repo
+`astronomy-members`.
+
+Facu creó la primera fecha real (**«Astronomy - TH», sábado 19/09/2026 23:59,
+Panthera Pilar**) desde `/admin/eventos`. Quedó guardada con **hora de fin el lunes
+14/09 a las 07:00: cinco días ANTES de que arranque**. Ninguna pantalla lo dijo.
+
+**Por qué importa:** `yaTermino()` sólo mira `ends_at` — la fecha se apaga
+**calculada**, sin cron, que es la decisión correcta del 09/08. Pero con ese dato,
+desde el 14/09 a las 07:00 la fecha figuraba «Terminado» y **dejaba de vender
+entradas cinco días antes de la fiesta**, sin un error, sin un mail, sin nada. La
+primera fecha que cobra plata de verdad.
+
+**Causa raíz:** el alta y la edición corregían solas un fin anterior al inicio
+**sumándole 24 horas**. Esa regla existe por un motivo bueno —la fiesta que arranca
+23:00 y termina 06:00 termina al día siguiente, y obligar a escribir a mano la
+fecha del día siguiente todas las veces es fricción sobre el caso más común—, pero
+**rodar un día sólo arregla diferencias de horas**. Un fin cargado días antes sigue
+quedando antes después de rodar, y se guardaba igual.
+
+**El patrón, que ya apareció antes acá:** una corrección automática que arregla el
+caso común **se traga el caso roto** y lo hace pasar por bueno. Cuando un dato se
+corrige solo, la corrección tiene que verificar que el resultado quedó bien; si no
+quedó, es un error de carga y hay que decirlo, no guardar algo intermedio.
+
+**Fix:** `rodarUnDia()` vive ahora en `lib/eventoEstado.ts`, con la lógica de
+horarios, y rueda un día **sólo si con eso el fin queda después del inicio**. Si ni
+así alcanza, corta con un mensaje en castellano, igual que ya se hacía con la hora
+de apertura de puertas. Vale para el alta y para la hoja «La fecha». No podía ir en
+`app/actions/eventos.ts` porque un archivo `"use server"` sólo puede exportar
+funciones async.
+
+**Verificación:** siete chequeos nuevos en `npm run test:fin-de-evento`, incluido el
+caso real de los cinco días. **Probado que muerden**: sacándole la guarda, dos se
+ponen rojos. Más `npm run verificar:fecha` (71 chequeos apretando el formulario de
+verdad) en verde, `tsc` limpio y build de producción OK. El dato de la fecha real se
+limpió a vacío = 8 horas, y **falta que Facu cargue la hora real de fin**.
+
+**De paso:** se borró el evento de prueba `domine-001` que Facu pidió sacar —lo había
+escrito un script el 24/07 y parecía real—, con sus 4 tandas y 2 niveles. Cero
+entradas, cero órdenes, cero plata. Respaldo en
+`archive/domine-001-respaldo-12-08-2026.json`. Antes de borrar se grepeó el id: no
+hay semilla que lo republique (sólo aparece como placeholder en dos inputs).
+
 ### 2026-08-12 · FAIL ✓ · El espejo del contador se había despegado de la base
 
 **Dónde:** app del Paseo (`src/state/data.tsx`, `supabase/apps-script-sync.gs`).
