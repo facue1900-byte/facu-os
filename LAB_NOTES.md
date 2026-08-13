@@ -67,12 +67,30 @@ los tres invisibles:
    cobro entra a la planilla y no lo cuenta nadie. Los ids nuevos (`meta`,
    `pole-position`) no estaban. Además el `.gs` **no se deploya con la app**: hay
    que pegarlo a mano, así que agregar un local en la app no alcanza.
-2. **456 de 460 filas del Sheet estaban sin el id de la app en la columna K.** El
-   id salía de un `select` posterior al insert y viajaba `undefined`. Sin id, el
-   script no encuentra la fila: **un `update` apenda una fila nueva en vez de
-   pisar la vieja y un `delete` no borra nada.** Evidencia: la fila de prueba de
-   **$1 del 22/07 que decía «se borra sola»** seguía viva, y agosto cerraba con
+2. **456 de 460 filas del Sheet estaban sin el id de la app en la columna K.** Sin
+   id, el script no encuentra la fila: **un `update` apenda una fila nueva en vez
+   de pisar la vieja y un `delete` no borra nada.** Evidencia: la fila de prueba
+   de **$1 del 22/07 que decía «se borra sola»** seguía viva, y agosto cerraba con
    **$93.468 de diferencia** contra la base.
+
+   ⚠️ **La causa que anoté acá primero era la equivocada.** Escribí que el id
+   salía de un `select` posterior al insert y viajaba `undefined` — plausible,
+   leído del código del cliente, y falso. La causa real apareció recién al
+   **pegarle al script publicado y mirar qué contestaba**: `err: You can't set
+   the number format of cells in a typed column`. La columna A de `Movimientos`
+   es una columna tipada, y el orden era `appendRow` → `formatoFecha` → escribir
+   el id: el error de formato se llevaba puesto el id. Por eso las 4 filas que sí
+   lo tienen son del 20-21/07, justo antes de que esa columna pasara a ser
+   tipada. Arreglado el 12/08: primero el id, después el formato y en `try/catch`
+   porque es cosmético. Verificado contra el script publicado — tres cargas de
+   prueba con fecha 2030 (para no tocar ningún mes real), encontradas **por id**
+   y borradas dejando la hoja en las mismas 488 filas.
+
+   **Y esto es lo que hay que llevarse:** el fix del cliente que hice antes
+   (generar el id en la app) era necesario pero **no** era el que arreglaba nada.
+   Lo hubiera sabido tres horas antes preguntándole al sistema en vez de al
+   código. La app manda el sync con `mode: "no-cors"`: el `err:` volvía en cada
+   una de las 456 cargas y **nadie lo leyó nunca**.
 3. **«La Jaula / torneo» se reconocía por la palabra «la»**, con `includes`. O sea
    que *"recibí del lavadero"* —y cualquier texto con "la"— le imputaba el cobro a
    La Jaula. Ahora el match es por la primera palabra de ≥4 letras y como palabra
