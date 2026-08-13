@@ -8,6 +8,87 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-13 · FAIL ✓ · La alerta avisaba por 7 cobros y faltaban 17, y Luqui la creía falsa
+
+**Dónde:** `lib/cobrosFueraDelLibro.ts`, `lib/workflows.ts`, `app/admin/hacer/[id]/page.tsx`,
+repo `astronomy-members`. Commit `559fa0d`.
+
+Luqui mandó tres audios: *"cada vez que entro a la web me salta que hay siete cobros que
+faltan, pero todos los cobros ya están vinculados… y cuando toco «Abrir el Libro» me abre el
+libro general, no me manda a qué es lo que tengo que hacer. Y no sé cómo ir a la tarea 2 y
+3."* Y un dato que resultó ser la punta: *"antes me aparecían cinco, ahora siete."*
+
+**Lo que encontramos:** la planilla del Libro **no tenía una fila desde el 31/07**. Agosto
+entero sin cargar — 17 cobros por **$2.289.958** contra 1 renglón. El panel avisaba por 7
+($1.004.640). O sea: la alerta tenía razón y **subcontaba $1.285.318**.
+
+**Causa raíz — el detector preguntaba por la persona equivocada.** Preguntaba *"¿este ALUMNO
+tiene alguna fila en el Libro, de cualquier fecha?"* en vez de *"¿este COBRO tiene renglón?"*.
+La elección estaba documentada y era deliberada (evitar acusar a alguien de no cargar algo
+que cargó), pero se calibró contra 6 casos el 05/08 y para el 13/08 escondía 10: todos los
+alumnos que ya venían pagando de junio o julio tenían filas viejas, así que su cobro de
+agosto no contaba.
+
+**Por qué ella creía que era falsa, y no era culpa suya.** La pantalla que abría para
+chequear —*pagos sin asignar*— contesta **otra pregunta**: "¿hay plata sin dueño?". Y ahí
+estaba todo bien de verdad, 0 pendientes. Dos preguntas distintas, y la que tenía a mano le
+contestaba que sí con toda razón. El botón, encima, la dejaba en `/admin/libro`, que es el
+espejo de lo ya cargado: una pantalla sin trabajo posible. Los pasos existían escritos, pero
+en `/admin/problemas`, que no es donde ella trabaja.
+
+**El bloqueo que nadie vio:** *"Tarea 1 de 3"* era un **rótulo, no navegación**. La única
+forma de llegar a la 2 era que la 1 desapareciera. Con la 1 trabada, *"Contestar 6
+preguntas"* y *"Cargar los gastos de hoy"* quedaron inalcanzables tres días — y desde el
+panel tampoco se llegaba, porque los ítems "en espera" son texto sin link.
+
+**El fix de fondo no fue arreglar la alerta: fue borrar el trabajo.** El webhook de Mercado
+Pago ya había escrito los cinco datos que había que tipear. Copiarlos a mano a una planilla
+para que un cron los lea de vuelta no es trabajo, es transcripción. Ahora un botón escribe
+los renglones —con `user_id` y `mp_payment_id` puestos desde el nacimiento, cuando hoy el
+**64% del Libro tiene `user_id` en null** y por eso existe una pantalla entera de atribuir a
+mano.
+
+**Cuatro cosas que salieron de verificarlo y valen para cualquier detector:**
+
+1. **Una venta con `mp_payment_id` que empieza con `sheet:` nació EN la planilla.**
+   Preguntarle si tiene renglón es el Libro acusándose a sí mismo. Excluirlas sacó los **2
+   únicos falsos positivos** que quedaban (junio y julio pasaron a cero). *Antes de comparar
+   dos fuentes, preguntar si una de las dos es copia de la otra.*
+2. **Un hash de deduplicación necesita su desambiguador.** El `fingerprint` salía de
+   `dia|concepto|monto`; dos cobros reales del mismo alumno, mismo día, mismo producto y
+   monto colisionaban, y con `ignoreDuplicates` el segundo se descartaba **sin error** — y el
+   resumen lo contaba como *"ya estaba"*. El sync de al lado ya lo resolvía con el sufijo
+   `#n` desde siempre. **Copiar el formato, no inventar uno.**
+3. **Un resumen no supone: pregunta.** Decía `intentadas - escritas = "ya estaban"`. Eso es
+   una inferencia, y era la peor posible: afirmaba que estaba cargado lo que se había
+   perdido. Ahora relee la base y **falla ruidoso, con nombre y monto**, si alguno no entró.
+4. **Un emparejamiento greedy tiene que elegir el más cercano, no el primero.** Con cuotas
+   mensuales (~30 días) y ventana de ±20, las ventanas se solapan: el cobro viejo se llevaba
+   el renglón del nuevo y el nuevo se reportaba como faltante teniendo fila.
+
+**Y una de fecha:** `sales.paid_at` es un timestamp con zona y `payment_links.paid_on` un
+DATE pelado. Tomar el día en UTC adelantó un día 2 de los 17 renglones (los cobrados después
+de las 21:00 ART). No movía el total del mes, pero un corte diario daba distinto. Van dos
+funciones separadas y escrito por qué: convertir a hora argentina un DATE que ya viene sin
+hora lo corre un día **para atrás**, el error contrario.
+
+**Lo que quedó abierto y no toqué:** el Libro histórico registra **$134.981 donde Mercado
+Pago cobró $143.520** — 5,95% de diferencia, consistente en junio y julio. No es la comisión
+(`mp_net` da $132.058, 7,99%). MP confirmó por API que el `transaction_amount` fue $143.520.
+Es un problema de plata sin resolver y es de Facu.
+
+**Verificación:** `npm run verificar:cobros-libro` (lectura; `--escribir` para cargar) y
+`npm run verificar:boton-cobros`, que **entra como Luqui y aprieta el botón de verdad** —
+borra un renglón que el propio botón escribió para recrear un caso real, lo aprieta, y
+comprueba que la fila vuelve idéntica campo por campo. Nunca fabrica datos y repone lo que
+saca pase lo que pase.
+
+**Un tropiezo del propio verificador, que vale anotar:** la primera corrida dio 8 fallas y
+todas eran mentira — `entrar()` genera el magic link pero **no lo canjea**, así que las
+pantallas de admin contestan **200 con el login adentro**. Ahora el script se corta con un
+mensaje explícito si la sesión no quedó abierta: ocho rojos por el motivo equivocado mandan
+a arreglar lo que no está roto.
+
 ### 2026-08-12 · FAIL ✓ · Una hora de fin mal cargada apagaba la venta antes de la fiesta
 
 **Dónde:** ticketera (`app/actions/eventos.ts`, `lib/eventoEstado.ts`), repo
