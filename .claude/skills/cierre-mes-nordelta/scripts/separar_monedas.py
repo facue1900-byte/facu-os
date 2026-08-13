@@ -32,7 +32,9 @@ from execution.google_auth import sheets  # noqa: E402
 MP = "1ATiNBHCukPYPn9-poP1HO4SlfsDu5pGXsLz-JvW-IQs"
 DASH = "Dashboard Mensual"
 # Los dos bloques de renglones que suman desde Movimientos
-BLOQUES = [(9, 42, "Ingreso"), (46, 76, "Egreso")]
+# hasta la 78: las filas 77 y 78 son los slots libres del bloque de egresos y
+# el TOTAL PAGADO (=SUM(B46:B78)) ya las suma. La 77 se me escapó la primera vez.
+BLOQUES = [(9, 42, "Ingreso"), (46, 78, "Egreso")]
 MES_VIEJA, MES_NUEVA = "I6", "I2"
 FORMULA_MES = '=ARRAYFORMULA(IF(A{0}:A="","",TEXT(A{0}:A,"mmmm yyyy")))'
 
