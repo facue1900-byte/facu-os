@@ -8,6 +8,42 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-14 · LEARN · Una carpeta de "seleccionados" que copiaba los bytes: 26 GB
+
+**Dónde:** `~/Desktop/Productoras/Astronomy/Eventos/Marcadas por Facu/`.
+
+Facu pidió ordenar el Escritorio. Tenía 274 GB, y 217 de esos eran `Eventos/`. Adentro,
+una carpeta `Marcadas por Facu/` con los 4 eventos grandes repetidos (Showcase CRETA,
+Theatre, Yatch Party, Mansion) y 158 archivos: **el 100% de los nombres también existía
+en la carpeta del evento**, y `sha256` confirmó que eran copias byte a byte. 25,7 GB
+duplicados.
+
+**La causa raíz no es "se duplicó un archivo": es que se usó el sistema de archivos para
+guardar una decisión.** Lo que valía ahí era *cuáles eligió Facu*, que son 9 KB de texto.
+Copiar los videos enteros para expresar eso cuesta 25,7 GB y encima abre la puerta a que
+las dos copias se separen — si mañana alguien recorta un video, hay dos verdades y ninguna
+dice cuál gana.
+
+Se reemplazó por `Eventos/MARCADAS POR FACU.md`: una tabla con los 158 nombres y la ruta
+del original de cada uno.
+
+**El orden de las operaciones es la parte que importa, y no se invierte:** primero se ubica
+el original de cada copia y se verifica el hash, después se escribe la lista, después se
+relee la lista del disco para confirmar que los 158 quedaron adentro, y **recién ahí** se
+borra. Un solo archivo sin original idéntico frena todo y no borra nada. Escribir la lista
+después de borrar habría sido apostar a que el `rmtree` no falle a la mitad.
+
+**La próxima:** cuando una carpeta se llama "marcadas", "seleccionadas", "finales" o
+"favoritas", la pregunta no es si está ordenada — es si copia bytes para expresar una
+decisión. Si la respuesta es sí, va una lista, no una copia.
+
+**El daño colateral del mismo patrón:** una carpeta `_duplicados-revisar/` que había dejado
+una sesión anterior tenía 8 archivos, 5 duplicados reales y **3 que no lo eran**. Uno era
+`Astronomy - Demo Membresias.html`, que la memoria documenta como la fuente de verdad de la
+demo, en `Productoras/Astronomy/`. Estuvo un mes guardado en una carpeta de descarte, con la
+ruta documentada rota y sin que nada avisara. Una carpeta de pendientes que nadie cierra no
+es una lista de tareas: es un lugar donde se pierden cosas. Se devolvió a su ruta.
+
 ### 2026-08-13 · FAIL ✓ · La alerta avisaba por 7 cobros y faltaban 17, y Luqui la creía falsa
 
 **Dónde:** `lib/cobrosFueraDelLibro.ts`, `lib/workflows.ts`, `app/admin/hacer/[id]/page.tsx`,
