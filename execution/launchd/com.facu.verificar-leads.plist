@@ -12,9 +12,16 @@
   nadie lo va a leer. Si no aparece nada, es que está todo bien.
 
   Y avisa DOS VECES, por si una falla: una notificación de macOS —que el modo Foco puede
-  tragarse sin dejar rastro— y un archivo `ALERTA_LEADS.txt` en el Escritorio, que queda
-  hasta que el problema se arregle. La corrida que sale limpia lo borra sola: una alerta
-  vieja tirada en el Escritorio es peor que ninguna, porque después nadie le cree.
+  tragarse sin dejar rastro— y un archivo `ALERTA_LEADS.txt` que queda hasta que el
+  problema se arregle. La corrida que sale limpia lo borra sola: una alerta vieja tirada
+  es peor que ninguna, porque después nadie le cree.
+
+  OJO — el 14/08/2026 ese archivo se movió del Escritorio a
+  `Academia/Alertas/ALERTA_LEADS.txt`, al ordenar las carpetas. La redundancia bajó de
+  precio: antes la alerta se veía sola con mirar la pantalla, ahora hay que abrir la
+  carpeta. En la práctica el canal que avisa pasó a ser la notificación, y el archivo es
+  el detalle que queda para leer después. Si alguna vez una alerta pasa desapercibida,
+  la causa es ésta y el fix es volver a copiarla al Escritorio.
 
   Nació el 04/08/2026, el día que se instrumentó el Tracker: la instrumentación es la clase
   de cosa que falla en silencio —la pantalla sigue cargando perfecto, con menos gente— y lo
@@ -48,7 +55,7 @@
     <array>
         <string>/bin/bash</string>
         <string>-lc</string>
-        <string>APP=/Users/Facu/Desktop/Productoras/Astronomy/Academia/astronomy-members; LOG=/Users/Facu/facu-os/data/logs/verificar-leads.log; HIST=/Users/Facu/facu-os/data/logs/verificar-leads-historico.log; ALERTA=/Users/Facu/Desktop/ALERTA_LEADS.txt; mkdir -p /Users/Facu/facu-os/data/logs; cd "$APP" &amp;&amp; node --env-file=.env.local --import ./scripts/_registrar.mjs scripts/verificar-leads.mjs &gt; "$LOG" 2&gt;&amp;1; CODE=$?; cat "$LOG" &gt;&gt; "$HIST"; if [ $CODE -ne 0 ]; then cp "$LOG" "$ALERTA"; osascript -e 'display notification "Hay algo para corregir en el rastro de leads. Dejé el detalle en el Escritorio: ALERTA_LEADS.txt" with title "Leads — algo se rompió" sound name "Basso"'; else rm -f "$ALERTA"; fi</string>
+        <string>APP=/Users/Facu/Desktop/Productoras/Astronomy/Academia/astronomy-members; LOG=/Users/Facu/facu-os/data/logs/verificar-leads.log; HIST=/Users/Facu/facu-os/data/logs/verificar-leads-historico.log; ALERTA=/Users/Facu/Desktop/Productoras/Astronomy/Academia/Alertas/ALERTA_LEADS.txt; mkdir -p /Users/Facu/facu-os/data/logs "$(dirname "$ALERTA")"; cd "$APP" &amp;&amp; node --env-file=.env.local --import ./scripts/_registrar.mjs scripts/verificar-leads.mjs &gt; "$LOG" 2&gt;&amp;1; CODE=$?; cat "$LOG" &gt;&gt; "$HIST"; if [ $CODE -ne 0 ]; then cp "$LOG" "$ALERTA"; osascript -e 'display notification "Hay algo para corregir en el rastro de leads. El detalle está en Astronomy/Academia/Alertas: ALERTA_LEADS.txt" with title "Leads — algo se rompió" sound name "Basso"'; else rm -f "$ALERTA"; fi</string>
     </array>
 
     <key>WorkingDirectory</key>

@@ -408,7 +408,9 @@ Mover esos ~US$90/mes compraría ~108 conversaciones en vez de 35. **No se paus�
 operativa: sería apostar US$90/mes a que un número chico aguanta al sextuplicar la
 inversión. **Revisar cuando `2IntW2` pase de 30 conversaciones.**
 
-**Reporte automático:** launchd `com.facu.reporte-pauta`, lunes 10:00 → `~/Desktop/REPORTE_PAUTA.txt`.
+**Reporte automático:** launchd `com.facu.reporte-pauta`, lunes 10:00 →
+`~/Desktop/Productoras/Astronomy/Academia/Pauta/REPORTE_PAUTA.txt` (estaba suelto en el
+Escritorio hasta el 14/08/2026). Ya no se ve solo: **el aviso es la notificación de macOS**.
 
 **Documentos:** `pauta/PLAN_PAUTA.md` (plan por producto) · `pauta/CAMBIOS_META.md` ·
 `pauta/PLAN_CREATIVOS.md` · `pauta/GANCHOS_Y_CONTENIDO.md` (10 ganchos, 3 guiones, 10 CTAs).

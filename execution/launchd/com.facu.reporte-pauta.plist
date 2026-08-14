@@ -2,8 +2,14 @@
 <!--
   Reporte de pauta de Astronomy Academy — todos los lunes a las 10:00.
 
-  Corre `reporte_pauta.py`, deja el informe en ~/Desktop/REPORTE_PAUTA.txt y avisa
-  con una notificación de macOS. Es de solo lectura: no toca la cuenta publicitaria.
+  Corre `reporte_pauta.py`, deja el informe en
+  ~/Desktop/Productoras/Astronomy/Academia/Pauta/REPORTE_PAUTA.txt y avisa con una
+  notificación de macOS. Es de solo lectura: no toca la cuenta publicitaria.
+
+  El informe vivía suelto en el Escritorio y se movió a la carpeta de Pauta el
+  14/08/2026, junto a los exports de Meta. Como el aviso ya no se ve de reojo al
+  mirar el Escritorio, LA NOTIFICACIÓN PASÓ A SER EL ÚNICO CANAL: si se toca el
+  osascript de abajo, el reporte se vuelve invisible.
 
   Instalar:
     cp ~/facu-os/execution/launchd/com.facu.reporte-pauta.plist ~/Library/LaunchAgents/
@@ -12,7 +18,7 @@
 
   Probar sin esperar al lunes:
     launchctl start com.facu.reporte-pauta
-    cat ~/Desktop/REPORTE_PAUTA.txt
+    cat ~/Desktop/Productoras/Astronomy/Academia/Pauta/REPORTE_PAUTA.txt
 
   Desinstalar:
     launchctl unload ~/Library/LaunchAgents/com.facu.reporte-pauta.plist
@@ -30,7 +36,7 @@
     <array>
         <string>/bin/bash</string>
         <string>-lc</string>
-        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/active/astronomy/pauta/reporte_pauta.py > /Users/Facu/Desktop/REPORTE_PAUTA.txt 2>&amp;1; osascript -e 'display notification "El informe está en el Escritorio: REPORTE_PAUTA.txt" with title "Pauta Astronomy" sound name "Ping"'</string>
+        <string>DEST=/Users/Facu/Desktop/Productoras/Astronomy/Academia/Pauta; mkdir -p "$DEST" || exit 1; /Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/active/astronomy/pauta/reporte_pauta.py > "$DEST/REPORTE_PAUTA.txt" 2>&amp;1; osascript -e 'display notification "El informe de la semana está en Astronomy/Academia/Pauta: REPORTE_PAUTA.txt" with title "Pauta Astronomy" sound name "Ping"'</string>
     </array>
 
     <key>WorkingDirectory</key>
