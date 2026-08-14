@@ -1,6 +1,6 @@
 # Campos — Chaco y Pergamino
 
-Última actualización: 2026-07-28
+Última actualización: 2026-08-14
 
 ## Qué es
 
@@ -19,11 +19,25 @@ falló.
 
 ## Dónde está todo
 
-`~/Desktop/Chaco/` — **650 archivos** (646 PDFs de guías de traslado + 4 xlsx).
+`~/Desktop/Chaco/`. **Ordenado el 14/08/2026** — los 650 PDFs estaban sueltos en una
+sola carpeta y ahora están separados por tipo:
+
+| Carpeta | Qué hay |
+|---|---|
+| `Guias de traslado/<año>/` | **540 guías** de SENASA, por año |
+| `Reportes historicos/` | **108** reportes de stock e históricos por campo — no son movimientos |
+| `Otros/` | 2 PDFs que no son del campo (`Comunicado IMPORTANTE`, `Crew Passport`) |
+| raíz | `stock_ganadero.xlsx` y `RENSPA ESTEVEZ por campo.xlsx` |
+
 Nomenclatura de los PDFs: `<cantidad y categoría> <Origen> - <Destino> (DD:MM:AAAA).pdf`
 (ej. `100 vacas Fortin Cocherek - El Colmena (16:03:2025).pdf`).
 
-Por año: 2022 (2) · 2023 (158) · 2024 (121) · 2025 (115) · 2026 (92 hasta julio).
+**Guías por año:** 2022 (61) · 2023 (152) · 2024 (104) · 2025 (124) · 2026 (99).
+
+De las 540, **474 traían la fecha en el nombre y 66 no**: esas se dataron por fecha de
+modificación del archivo, que se verificó contra las 504 que sí la tienen y coincide en
+**502 (99,6%)**. Casi todas las sin fecha son de 2022, cuando todavía no existía la
+convención de nombres. **Un parser nuevo tiene que recorrer recursivo**, no `Chaco/*.pdf`.
 
 **Los 646 nombres ya están parseados** (27/07/2026). El conocimiento permanente quedó en
 `~/Obsidian/facu-vault/wiki/campo/` — seis notas. Lo esencial:
@@ -39,8 +53,10 @@ Por año: 2022 (2) · 2023 (158) · 2024 (121) · 2025 (115) · 2026 (92 hasta j
 - **La Brava concentra el riesgo**: 159 guías y 5.097 cabezas, más de la mitad de todo.
   El segundo (Agua Viva) tiene 35. Frigorífico en Corrientes, CUIT 30-70781069-2.
 
-Ojo: `Lista 22 de Julio AUTOGESTIONADOS.xlsx` está traspapelado en `~/Desktop/Chaco/` —
-es la lista de precios de whisky de la barra de eventos, no del campo.
+~~Ojo: `Lista 22 de Julio AUTOGESTIONADOS.xlsx` está traspapelado en `~/Desktop/Chaco/`~~
+→ **movido el 14/08/2026** a `~/Desktop/Productoras/Astronomy/Eventos/Barra/`. Es la
+lista de precios de whisky de la barra de eventos. **Falta confirmar si es de Astronomy
+o de Puzzle**; quedó en Astronomy por descarte.
 
 ## IVA de Sucesores de Ricardo Estevez — 11/08/2026
 
@@ -74,7 +90,7 @@ percepciones van aparte porque no son crédito fiscal; sólo las facturas A pasa
 
 ## Oportunidad ya cuantificada
 
-Esos 650 PDFs son **cuatro años de movimientos de hacienda ya registrados** y nadie los
+Esas 540 guías son **cuatro años de movimientos de hacienda ya registrados** y nadie los
 lee. Un parser de nombres de archivo (sin abrir un solo PDF) daría el histórico de qué
 salió de qué campo, cuándo y cuánto — la base para los tres puntos de arriba. Es el
 próximo candidato a skill después de que `cierre-mes-nordelta` esté rodando.
