@@ -22,9 +22,20 @@ Facu pidió borrarlas. Antes de hacerlo se leyeron las cinco y se cruzó cada da
 contra el repo. **Cuatro datos no estaban en ningún otro lado, y uno de ellos toca plata
 y se contradice con lo que dice el repo.** Borrar sin dejar copia habría perdido eso.
 
-### ⚠️ Sin resolver: los $300.000 de Mati
+### ✅ Resuelto por Facu el 14/08/2026: los $300.000 de Mati
 
-Las dos versiones existen y **dicen cosas distintas**:
+> *«Esos 300.000 era efectivo que le debía yo a la caja de efectivo que maneja Mati, porque
+> la tenía yo en mi Mercado Pago.»* — Facu, 14/08/2026
+
+**Era una deuda real de Facu a la caja física.** La plata existía, estaba del lado
+equivocado: la tenía Facu en su Mercado Pago y le correspondía a la caja que cuenta Mati.
+No fue un error de anotación. Gana la versión de `01-principio-de-mes.md`; la de
+`paseo-nordelta-app.md:43` queda muerta.
+
+Lo que sigue valiendo en la práctica: **el asiento «recibí de Facu $300.000» no se carga en
+Movimientos**, porque el Dashboard ya lo tenía contabilizado.
+
+Las dos versiones que había escritas, para el registro:
 
 - **`01-principio-de-mes.md` línea 44** — es una deuda real ya contabilizada:
   > "el Dashboard ya incluía $300.000 que Facu le debía dar a Mati (estaban contabilizados
@@ -38,10 +49,9 @@ Las dos versiones existen y **dicen cosas distintas**:
   > $300k bajo del 10/7 en adelante; se quitó el ajuste (por eso el saldo subió de $76.995 a
   > $376.995)."
 
-**No se resolvió cuál es la buena: es plata y la decide Facu.** Las dos coinciden en el
-riesgo práctico, que es el que importa: ese asiento **no se vuelve a cargar en Movimientos**,
-porque en cualquiera de las dos lecturas quedaría contado dos veces. Ver
-`paseo-deuda-efectivo-mati` en la memoria.
+**Por qué esto valió la pena:** las dos versiones vivían en archivos distintos, ninguna decía
+cuál mandaba, y la del Escritorio estaba por borrarse. Si se borraba, quedaba en pie la
+equivocada. Ver `paseo-deuda-efectivo-mati` en la memoria.
 
 ### Los otros tres: IDs de Sheets viejos
 

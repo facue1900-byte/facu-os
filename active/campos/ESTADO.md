@@ -54,9 +54,8 @@ convención de nombres. **Un parser nuevo tiene que recorrer recursivo**, no `Ch
   El segundo (Agua Viva) tiene 35. Frigorífico en Corrientes, CUIT 30-70781069-2.
 
 ~~Ojo: `Lista 22 de Julio AUTOGESTIONADOS.xlsx` está traspapelado en `~/Desktop/Chaco/`~~
-→ **movido el 14/08/2026** a `~/Desktop/Productoras/Astronomy/Eventos/Barra/`. Es la
-lista de precios de whisky de la barra de eventos. **Falta confirmar si es de Astronomy
-o de Puzzle**; quedó en Astronomy por descarte.
+→ **borrado el 14/08/2026.** Era la lista de precios de whisky de la barra de eventos, de
+**julio de 2022**: cuatro años, sin un precio vigente. Lo confirmó Facu.
 
 ## IVA de Sucesores de Ricardo Estevez — 11/08/2026
 
