@@ -8,6 +8,60 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-22 · FAIL ✓ · El chequeo que probaba que el flyer NO tapaba el carrito medía en el único lugar donde no tapa
+
+**Dónde:** `astronomy-members`, `app/ui.css` y `scripts/verificar-banner.mjs`. Commit
+`055e53c`. Verificado en producción sobre la fecha real «obsession».
+
+Facu mandó una captura del iPhone: el flyer del final de la página pintado **encima** de
+la barra del carrito, tapando el total y el botón de pagar. El 14/08 esto ya se había
+mirado y el comentario del CSS decía, textual: *"no es que el flyer tape por z-index —el
+botón sigue recibiendo el toque, se midió— es que se come toda la atención"*. Y había un
+chequeo automático en verde respaldándolo.
+
+**Las dos cosas eran falsas, cada una por su motivo.**
+
+**1. La medición estaba mal hecha.** Se usó `elementFromPoint` sobre el botón de comprar.
+Eso contesta *quién recibe el toque*, que es hit-testing, no *qué se ve pintado arriba*.
+Son dos preguntas distintas y ya nos había mentido antes (memoria
+`regla-generica-pisa-el-zindex`). Tapado para el dedo y tapado para el ojo no son lo mismo.
+
+**2. El chequeo automático medía con el scroll ABAJO DE TODO.** Ahí el flyer ya terminó
+—hay 53px entre su borde y la barra— así que daba verde con el bug vivo. Facu lo vio
+pasando **por el medio** del flyer, que es el único momento en que el arte y la barra
+comparten píxeles. *Un chequeo que corre en la única posición donde el bug no existe no
+mide nada, y encima da confianza.*
+
+**La causa raíz es de apilado y estaba a la vista desde el 06/08.** En `ui.css` hay
+`.theme-domine > *:not(.tk-atmos) { position: relative; z-index: 1 }`, que le da un
+z-index a todos los hijos directos del `<main>`. Con eso `.tk-wrap` **pasa a ser un
+contexto de apilado**, y la barra del carrito —que vive adentro con `z-index: 40`— hacia
+afuera vale lo que valga su contenedor: 1. `.tk-poster` es su hermano, vale 1 también y
+viene después en el DOM. A igual z-index gana el último: el flyer.
+
+**Lo transferible, y es más general que el z-index:** un `position: fixed` que tiene que
+flotar sobre toda la página **no puede vivir dentro de un contexto de apilado**. Su
+z-index deja de compararse con el resto de la página y pasa a compararse sólo con sus
+hermanos. Es un modo de falla silencioso porque el CSS del elemento se lee correcto —dice
+`z-index: 40`— y lo que lo rompe está a doscientas líneas, en un selector que no lo nombra.
+
+**El fix:** `.theme-domine > .tk-wrap { z-index: 2 }` — mismo peso de selector que la regla
+genérica (0,2,0) y después en el archivo, así que gana. Sube la columna de compra entera,
+no sólo la barra: cualquier sección a sangre que se agregue mañana al final de la página se
+iba a pintar sobre el checkout igual.
+
+**El chequeo nuevo se rompe a propósito adentro del propio verificador**: mide, después le
+devuelve a `.tk-wrap` el z-index viejo por JS, vuelve a medir y **exige que dé rojo**. Con
+el bug devuelve `IMG,IMG,IMG` y con el fix `barra,barra,barra`. Sin esa contracara, el
+primer intento de este mismo chequeo daba verde por una razón tonta —el flyer de la fecha
+de prueba no llegaba a cruzar la barra— y se habría guardado como "probado".
+
+**La próxima:** un chequeo de solape se corre en la posición donde el solape ocurre, y hay
+que **demostrar que la posición es esa** antes de creerle al verde. Y el apilado se mide con
+`getComputedStyle(...).zIndex` sobre el elemento y sobre su contenedor, no leyendo el CSS.
+
+---
+
 ### 2026-08-14 · LEARN · Una carpeta de "seleccionados" que copiaba los bytes: 26 GB
 
 **Dónde:** `~/Desktop/Productoras/Astronomy/Eventos/Marcadas por Facu/`.
