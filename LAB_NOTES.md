@@ -8,6 +8,89 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-27 · FAIL ✓ · «Me aparece libre y no me deja agendar»: eran TRES bugs distintos que se veían como uno
+
+**Dónde:** `astronomy-members`. `components/AgendaManualForm.tsx`, `lib/slots.ts`,
+`app/actions/availability.ts`, `app/admin/calendario/page.tsx`, `components/ClassCalendar.tsx`,
+`components/StaffMoveCard.tsx`. Verificador nuevo: `npm run verificar:agenda-manual`.
+
+José, por WhatsApp, a las 11:08 de la mañana: *"me dice que no hay un horario que quiere
+agendar disponible, pero a mí me aparece libre… y no me deja agendarle manual. Antes me
+dejaba agendar para días que vienen, ahora sólo me deja hasta hoy"*. Y de paso: *"tampoco
+sé cómo cancelar una clase manualmente"* — la clase del día anterior de una alumna, que no
+se dio. Facu confirmó: *"a mí tampoco me deja"*.
+
+Sonaba a **un** calendario roto. Eran **tres cosas sin relación entre sí** que se
+manifestaban en la misma pantalla y en la misma media hora.
+
+**1. `/admin/agenda-manual` tenía `max={hoy}` en el selector de fecha.** Todos los días
+futuros salían `disabled`: en gris, sin responder al click y sin decir por qué. El
+servidor **nunca** tuvo ese límite — `agendarManual` ya distinguía futuro de pasado (sólo
+el futuro manda la invitación de Google Calendar). Era una restricción escrita únicamente
+en la pantalla, heredada de cuando esa pantalla servía sólo para anotar clases ya dadas.
+
+**2. Modo Profesional tenía apartada la cabina y NINGÚN calendario lo dibujaba.** Un cupo
+del curso reserva su hora durante las 8 semanas de la cohorte *desde que se ofrece*, no
+desde que se vende (decisión de Facu del 11/08, y es correcta: si no, se vende un cupo
+sobre una cabina que ya tiene un member adentro). Pero ese apartado **no es una fila de
+`slot_bookings`**: es el cruce de `pro_cohorts` con `pro_cohort_slots`, calculado al vuelo
+dentro de `getSlotsByProf`. El calendario de `/admin` lee `slot_bookings` y nada más.
+
+Resultado: la cohorte `sep-2026` se lleva **200 horas de cabina** (17 a 22, lunes a
+viernes, del 07/09 al 09/10) y esas 200 horas se veían **vacías** en el panel. José miraba
+el miércoles a las 19, lo veía libre, y la web le decía a la alumna que no estaba
+disponible. **Los dos tenían razón y ninguno de los dos podía verlo.**
+
+**3. No existía forma de cancelar una clase desde el panel.** `cancelSlotBooking` filtra
+por `user_id = el usuario logueado`: sólo el alumno dueño puede cancelar la suya. Y el
+calendario cortaba antes con *"una clase que ya pasó nunca trae acciones"*. La única salida
+era editar la base a mano.
+
+**La lección que se repite y esta vez costó una mañana de dos personas:**
+**un horario que el sistema bloquea tiene que ser un horario que alguien pueda VER
+bloqueado.** El bloqueo existía, era correcto y estaba bien calculado — pero vivía sólo
+dentro de una función. Un dato que decide algo y no se dibuja en ninguna parte no es un
+dato: es una superstición. Y no falla ruidosamente, falla haciendo que dos personas
+discutan sobre cuál de las dos pantallas miente.
+
+**La segunda, sobre las reglas escritas de más:** el corte del 06/08 se escribió como *"una
+clase pasada nunca trae acciones"* cuando lo que la justificaba era *"una clase pasada no
+se mueve"*. Reprogramar al futuro algo que ya sucedió no significa nada; cancelarlo
+significa muchísimo — es, de hecho, el trabajo que aparece **siempre** al día siguiente.
+Una regla más amplia que su motivo se lleva puesto un caso de uso real, y lo hace en
+silencio: nadie reporta un botón que no existe.
+
+**Lo que se hizo:**
+- Fuera el `max`. La pantalla agenda a futuro y a pasado, y lo dice.
+- `queOcupa()` en `lib/slots.ts`: contesta, para un instante y un (profe, espacio), qué lo
+  ocupa **en castellano**. Mira las mismas tres fuentes que la grilla de `/reservar`
+  (profe, espacio, cupo de Modo Profesional). Agendar a mano hacia el futuro pasa por
+  ahí — sin eso, abrir el futuro era poder meter dos alumnos en la única cabina a la misma
+  hora con las dos invitaciones ya mandadas. Hacia atrás no se chequea, a propósito.
+- `bloquesModoProfesional()`: las horas que el curso aparta, dibujadas en el calendario del
+  panel en gris, con cohorte, semana y profe. Las 200.
+- `staffCancelBooking()`: cancelar desde el panel, también una clase pasada. El staff elige
+  **explícitamente** si se devuelve, en vez de deducirlo de la hora — porque el caso típico
+  del staff es justo el que la regla automática se traga: *la clase no se dio*, y encima ya
+  pasó, así que "hace menos de 24hs" daría sin reintegro sobre algo que no fue culpa del
+  alumno. `refunded` decide dos cosas a la vez (créditos del alumno **y** sueldo del profe,
+  ver `lib/salaries.ts`), así que los dos botones dicen las dos.
+- De paso: `toLocaleTimeString("es-AR")` sin `hour12: false` mostraba **"02:00 p. m. hs"**
+  en 11 lugares, calendario y mails del alumno incluidos. Y `/profe/alumnos` además no le
+  pasaba `timeZone`, así que en producción imprimía la hora **del servidor de Vercel: 3
+  horas corridas**. Los 12 arreglados.
+
+**Verificado:** `npm run verificar:agenda-manual` (4 bloques; probado que da **rojo** con
+el código roto a propósito, en los dos sentidos), `npm run test:reglas` (40 OK),
+`tsc --noEmit`, `next build`, cero errores de lint nuevos, y las tres pantallas abiertas en
+Chrome contra la base real. **Lo que NO se probó de punta a punta: la ejecución real de una
+cancelación** — escribe créditos y manda mail al alumno y al profe (regla 10). El botón
+queda listo; la primera la aprieta Facu o José sobre una clase de verdad.
+
+**Lo que esto destapó y NO es un bug:** la cohorte `sep-2026` arranca el 07/09, aparta esas
+200 horas de la franja más pedida, y **no vendió un solo cupo** (`pro_enrollments`: una
+cancelada y una `pendiente` cuyo hold venció el 12/08). Decisión de Facu, no del código.
+
 ### 2026-08-22 · FAIL ✓ · El chequeo que probaba que el flyer NO tapaba el carrito medía en el único lugar donde no tapa
 
 **Dónde:** `astronomy-members`, `app/ui.css` y `scripts/verificar-banner.mjs`. Commit
