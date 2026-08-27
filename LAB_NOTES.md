@@ -90,10 +90,23 @@ queda listo; la primera la aprieta Facu o José sobre una clase de verdad.
 **Lo que esto destapó y NO es un bug:** la cohorte `sep-2026` arranca el 07/09, aparta esas
 200 horas de la franja más pedida, y no vendió un solo cupo (`pro_enrollments`: una
 cancelada y una `pendiente` cuyo hold venció el 12/08). Se propuso cerrarlos hasta la
-primera venta. **Facu dijo que no, el mismo día:** *"Nono, Modo Profesional todavía no
-vendimos nada, son dos cosas distintas"*. Queda como está. Anotado acá para que no se
-vuelva a proponer: el estado del curso y el bug del calendario son frentes separados, y
-haberlos mezclado fue del reporte, no de los hechos.
+primera venta. **Facu separó las dos cosas** —*"Nono, Modo Profesional todavía no vendimos
+nada, son dos cosas distintas"*— y después decidió lo que sí correspondía, que no era
+cerrar cupos sino **cambiar cuándo aparta la cabina un cupo**: *"dejalo libres hasta que
+alguien compre Modo Profesional y agende. Si nadie compra, por el momento dejalo para que
+puedan agendar los members y todos."*
+
+Desde el 27/08 un cupo aparta la cabina **cuando tiene una inscripción viva encima**, no
+cuando está a la venta (`cuposApartados` en `lib/slots.ts`). La franja 17-22 volvió entera:
+el miércoles 19hs existe de nuevo desde el 09/09. **El riesgo que el modelo nuevo acepta
+—que alguien compre sobre una cabina que un member ya agendó— no rompe en silencio:**
+`buyModoPro` detecta el choque, lo audita y le manda campanita al staff con nombre, fecha y
+hora. La venta no se frena: vale mucho más que una clase, y frenarla dejaría el cupo
+invendible por una clase de dentro de siete semanas.
+
+**La lección del reporte, aparte de la del código:** haber presentado el bug del calendario
+y la salud comercial del curso en el mismo párrafo llevó a proponer la acción equivocada
+(cerrar cupos). Eran dos frentes, y el correcto no era ninguno de los dos que planteé.
 
 ### 2026-08-22 · FAIL ✓ · El chequeo que probaba que el flyer NO tapaba el carrito medía en el único lugar donde no tapa
 
