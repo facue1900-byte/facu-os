@@ -88,8 +88,12 @@ cancelación** — escribe créditos y manda mail al alumno y al profe (regla 10
 queda listo; la primera la aprieta Facu o José sobre una clase de verdad.
 
 **Lo que esto destapó y NO es un bug:** la cohorte `sep-2026` arranca el 07/09, aparta esas
-200 horas de la franja más pedida, y **no vendió un solo cupo** (`pro_enrollments`: una
-cancelada y una `pendiente` cuyo hold venció el 12/08). Decisión de Facu, no del código.
+200 horas de la franja más pedida, y no vendió un solo cupo (`pro_enrollments`: una
+cancelada y una `pendiente` cuyo hold venció el 12/08). Se propuso cerrarlos hasta la
+primera venta. **Facu dijo que no, el mismo día:** *"Nono, Modo Profesional todavía no
+vendimos nada, son dos cosas distintas"*. Queda como está. Anotado acá para que no se
+vuelva a proponer: el estado del curso y el bug del calendario son frentes separados, y
+haberlos mezclado fue del reporte, no de los hechos.
 
 ### 2026-08-22 · FAIL ✓ · El chequeo que probaba que el flyer NO tapaba el carrito medía en el único lugar donde no tapa
 
