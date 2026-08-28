@@ -8,6 +8,93 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-08-28 · FAIL ✓ · «No me anda la web»: no era la web, era el panel pidiendo sus once cosas en fila
+
+**Dónde:** `astronomy-members`. `lib/workflows.ts`, función `workflowsDeHoy()`. Commit `7e539d9`.
+
+José, 11:52 de la mañana: *"che no me anda la web… no me deja ir al panel"*. Media hora
+después: *"hago clic y no me apreta, no me lleva a nada"*. Y cuando Facu le pidió un video:
+*"no te puedo mandar porq no hay nada para mostrar"* — que es exactamente el problema. A las
+12:47 se arregló solo: *"listo ahí me anduvo, pero como q tarda"*.
+
+**No había ningún botón roto y no se cayó nada.** Producción respondía 200 todo el tiempo.
+
+**La medición, que es lo que desarma la hipótesis equivocada.** Sobre la Mac de Facu, con
+fibra, entrando a `/admin`:
+
+| | |
+|---|---|
+| Cabecera de la respuesta (TTFB) | 403 ms |
+| **El HTML terminó de salir** | **5.436 ms** |
+| Primer píxel pintado | 6.276 ms |
+| React terminó de hidratar | 7.267 ms |
+
+El servidor manda los headers a los 400 ms y después **se queda cinco segundos con la
+conexión abierta sin escribir nada**. Ningún recurso arranca antes de los 5.255 ms: el
+navegador no puede empezar a bajar el CSS ni el JS hasta que el HTML no termina. Son 29 KB
+de HTML: no es ancho de banda, es el servidor esperando.
+
+**Cómo se ve eso desde afuera, que es lo único que importa.** Durante ~7 segundos la
+pantalla está vacía, y después está dibujada pero muerta: el HTML llegó, React todavía no.
+Los clicks no hacen absolutamente nada y **no hay un error, ni un spinner, ni un cartel**.
+Para el que la usa, eso no se llama "lento": se llama *"no me anda la web"*. Y no se puede
+filmar, porque no hay nada que mostrar. Hermano de
+`chequeo-verde-con-el-codigo-roto`: el sistema no falla, simplemente no contesta.
+
+**La causa raíz.** `workflowsDeHoy()` arma la cola del panel con once detectores (clases por
+vencer, checkouts trabados, cobros sin renglón, el espejo de MP, sueldos, ritmo, etc.). El
+bloque de arriba ya pedía sus once cosas en paralelo — pero después venían **once bloques
+más, cada uno con su propio `await`, uno detrás del otro**. Once viajes de ida y vuelta a
+Supabase esperándose entre sí.
+
+Ninguno depende del otro: todos leen la misma foto de arriba y devuelven sus casos. Y
+ninguna consulta suelta es lenta — las tablas son chicas (74 perfiles, 255 reservas, 63
+lotes de crédito). **El tiempo era latencia acumulada y nada más.** Medido una por una,
+cada consulta tarda ~230 ms; el problema nunca fue *qué* se pregunta sino *de a cuántas*.
+
+**El arreglo.** Las once se piden juntas en un solo `Promise.all` antes de los bloques, y
+cada bloque consume el valor ya resuelto. El orden de la lista lo sigue dando el orden de
+los bloques, no el de las respuestas. Las rejas de permiso quedan iguales: lo que alguien
+no puede ver, tampoco se pregunta. Y si una revienta sigue reventando la página — a
+propósito, porque un detector que se cae callado deja un escritorio que parece al día y no
+lo está.
+
+**Cómo se verificó, que es la parte que vale.** Se corrió la versión vieja y la nueva contra
+la base real, **para los 7 miembros del staff con sus permisos de verdad**, comparando la
+salida serializada:
+
+```
+josemeyrellest@gmail.com       perms=8   viejo 3.933 ms → nuevo 1.704 ms   wf=7   idéntico
+lucasalvarezo.99@gmail.com     perms=7   viejo 4.276 ms → nuevo 2.152 ms   wf=5   idéntico
+vladimir.nadinic@gmail.com     master    viejo   889 ms → nuevo   740 ms   wf=2   idéntico
+matpastra@gmail.com            perms=6   viejo   958 ms → nuevo   807 ms   wf=0   idéntico
+lucaslanfranconi685@gmail.com  perms=4   viejo 1.051 ms → nuevo   770 ms   wf=0   idéntico
+guinimateon@gmail.com          perms=0   viejo 1.248 ms → nuevo 1.055 ms   wf=0   idéntico
+valen.dj.pvp@gmail.com         perms=0   viejo 1.042 ms → nuevo   790 ms   wf=0   idéntico
+```
+
+Byte-idéntico en los siete. **Un refactor de performance se prueba comparando la salida
+vieja contra la nueva sobre datos reales, no mirando si la página sigue abriendo** — y se
+prueba con cada perfil de permisos, porque las rejas son las que deciden qué se pide.
+
+**En producción, después del deploy:** HTML completo 5.436 → **2.645 ms**, primer píxel
+6.276 → **2.780 ms**, hidratado 7.267 → **4.342 ms**.
+
+**Lo que NO quedó resuelto, y hay que decirlo.** `/admin` no tiene `loading.tsx` ni
+`<Suspense>`: la página sigue sin mandar **nada** hasta que los once detectores terminaron.
+La ventana de clicks muertos se achicó a la mitad, **no desapareció** — y en un celular con
+4G sigue siendo de varios segundos. Mientras el saludo y la barra no salgan por streaming,
+cualquier detector nuevo que se agregue a `workflowsDeHoy()` vuelve a empujar esto para
+arriba. El arreglo de fondo es envolver la lista en `<Suspense>` para que el esqueleto salga
+e hidrate mientras la cola carga. Pendiente, con el OK de Facu.
+
+**La lección transferible:** *el trabajo del servidor antes del primer byte se paga en
+clicks que no responden.* Cuando alguien reporta "no me anda" y no hay error en ningún lado,
+lo primero que hay que mirar no es el código de la pantalla sino **cuándo terminó de salir
+el HTML** — `performance.getEntriesByType('navigation')[0].responseEnd`. Si el primer
+recurso de la página arranca varios segundos después del TTFB, no hay bug de UI: hay un
+`await` de más en el servidor.
+
 ### 2026-08-27 · FAIL ✓ · «Me aparece libre y no me deja agendar»: eran TRES bugs distintos que se veían como uno
 
 **Dónde:** `astronomy-members`. `components/AgendaManualForm.tsx`, `lib/slots.ts`,
