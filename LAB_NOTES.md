@@ -3482,3 +3482,50 @@ archivadas en `Facturas de Venta/2026/Agosto 2026/`. Total $15.199.684,81.
 **La lección transferible: una verificación que sólo comprueba que *escribiste* algo no
 verifica nada.** Hay que comprobar que el sistema *aceptó* lo que escribiste — y para algo
 irreversible, comprobarlo contra una fuente que el propio sistema no controle.
+
+---
+
+## 01/09/2026 — El detector que molestaba era el único que sabía la regla
+
+José reportó "hay tareas que no me andan"; Pastrana, que su panel decía "Tenés 82 clases
+por delante" con 15. Ninguno de los dos era el bug que parecía.
+
+**El de Pastrana:** el 06/08 la consulta del panel se amplió a 45 días **para atrás**,
+para que el profe viera las clases que ya había dado. El contador del cartel siguió sumando
+la ventana entera: 82 = 66 dadas + 16 por delante. El campo que distingue pasado de futuro
+se había agregado ese mismo día, en la línea de al lado, y ahí no se usaba. **Se amplía una
+fuente y un consumidor se queda con el significado viejo** — nada falla, el número miente,
+y encima hacia arriba, que es la dirección que nadie cuestiona.
+
+**El de José:** sus 7 tareas abrían perfecto. El escritorio le mostraba una sola con botón
+y las otras seis como texto gris sin link. "No me deja abrirlas" era literal y era la Ley 4
+llevada un paso más lejos de lo que decía: el sistema propone una tarea, no tiene por qué
+volver pared a las demás.
+
+**Y abajo de eso, lo caro.** La tarea nº1 de José —la única con botón— pedía corregir
+créditos por **$8.124.052**, con casos absurdos: "a Federico Toninelli le faltan 6.840
+créditos" (19 meses de plan Gold). Al mismo tiempo, otro detector le preguntaba a Luqui por
+el mismo alumno: "tiene 120 créditos **de más**". **Dos detectores diciendo lo opuesto de la
+misma persona.**
+
+Diagnostiqué que el ruidoso estaba roto y empecé a arreglarlo para que dejara de reclamar
+créditos vencidos. **Facu me frenó a tiempo:** *"si sigue pagando sí se suman los créditos.
+Los créditos vencen cuando deja de pagar"*. La auditoría aplicaba esa regla bien; el que no
+la cumplía era el motor, que vence cada lote a los 2 meses de otorgado sin mirar si el
+alumno sigue al día. **Mi "arreglo" habría dado por bueno el saldo apagado y enterrado el
+problema.** Eran 13.930 créditos (~$7,58M a precio de venta) de tres alumnos al día:
+Toninelli 6.960, Pacino 6.730, Tomás Álvarez 240 — los dos primeros vencidos ese mismo día,
+y ya anotados hacía semanas como "13.690 vencen el 01/09", como si fuera lo normal.
+
+Fix: `extender_vencimientos_por_pago` en Supabase, llamada desde `acreditar_pago_mp` — un
+pago corre el vencimiento de los lotes que seguían vivos cuando se pagó (si dejó de pagar y
+vuelve tres meses después, lo del medio no revive). Los saldos volvieron: Toninelli 1.080 →
+8.040, Pacino 360 → 7.090. Probada con rollback en cuatro casos, incluido que el Curso de DJ
+—que renueva— no se toque.
+
+**La lección transferible: antes de silenciar un detector que molesta, preguntar cuál es la
+regla del negocio.** Un detector ruidoso puede ser el único componente que la conoce, y
+apagarlo no arregla nada: esconde la diferencia entre lo que la empresa promete y lo que el
+software hace. **Cuando dos detectores dicen lo opuesto del mismo caso, uno de los dos está
+leyendo una regla que el otro no implementa — y esa contradicción es el hallazgo, no el
+ruido.**
