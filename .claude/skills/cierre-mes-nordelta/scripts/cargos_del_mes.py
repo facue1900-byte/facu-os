@@ -105,8 +105,10 @@ LOCALES = {
     "La Jaula / torneo": {
         "pestania": None, "expensas_predio": "Contenedor Jaula",
         "layout": None, "iva": False, "cobra_por": "Efectivo",
-        # primera alta: agosto 2026, $1.000.000 + $798.825 de servicios
-        "alquiler": 1_000_000, "partido": False,
+        # primera alta: agosto 2026, $1.000.000 + $798.825 de servicios.
+        # Desde entonces el precio sale del ancla SEMESTRAL de `Futbol` (marzo
+        # y septiembre), no de este número — que queda sólo como arranque.
+        "alquiler": 1_000_000, "partido": False, "tabla_ipc": "Futbol",
         "desde": "2026-08", "servicios_pactados": 798_825,
     },
     # Escuelita no lleva cargo generado: paga un % de facturación y el ingreso
@@ -176,6 +178,24 @@ class Planillas:
             insertDataOption="INSERT_ROWS", body={"values": filas},
         ).execute()
 
+    def fondos(self, sid, rango):
+        """Colores de fondo de un rango, fila por fila. [[{r,g,b}, ...], ...].
+
+        Va por `spreadsheets().get(includeGridData=True)` porque `values()` no
+        devuelve formato: el ancla de alquiler de cada contrato está marcada
+        pintando la celda de verde, y ese dato NO existe en los valores.
+        """
+        meta = self.s.spreadsheets().get(
+            spreadsheetId=sid, ranges=[rango], includeGridData=True,
+            fields="sheets/data/rowData/values/effectiveFormat/backgroundColor",
+        ).execute()
+        datos = meta.get("sheets", [{}])[0].get("data", [{}])[0]
+        out = []
+        for fila in datos.get("rowData", []):
+            out.append([c.get("effectiveFormat", {}).get("backgroundColor", {})
+                        for c in fila.get("values", [])])
+        return out
+
     def hojas(self, sid):
         meta = self.s.spreadsheets().get(spreadsheetId=sid).execute()
         return [h["properties"]["title"] for h in meta["sheets"]]
@@ -214,7 +234,8 @@ def expensas_del_historico(p, anio, mes):
             for r in filas if len(r) >= 4 and r[0] == clave}
 
 
-def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None, dry_run=True):
+def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
+                      basura=None, dry_run=True):
     """Pone la fecha del mes en Expensas Predio, lee, y RESTAURA todo lo tocado.
 
     Devuelve {local_predio: (recupero, servicios_comunes)}.
@@ -236,11 +257,20 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None, dry_run=True)
     FÓRMULA SE RESTAURA igual que todo lo demás. No se carga una fila falsa en
     Movimientos: cuando entre el extracto, el gasto entra una sola vez.
 
+    `basura` es la misma puerta para P4 (Retiro de basura). P4 estuvo clavado a
+    `"mayo 2026"` literal mientras sus nueve hermanas usaban A3, así que cobraba
+    mayo÷3 = $1.568.483,63 todos los meses, para siempre. Con --basura se escribe
+    el total de la factura de Transportes Olivos ("TODSE") del mes y la fórmula
+    se restaura igual que B4. Igual que la AVN: no carga nada en Movimientos, así
+    que cuando el pago entre por el extracto, el gasto entra una sola vez.
+
     Corta si Expensas AVN del mes da 0: eso significa que las facturas del mes
     no están cargadas en Movimientos y el recupero saldría en cero sin avisar.
     """
     # A2:D4 devuelve TRES filas: la 2, la 3 y la 4. La fila 4 es el índice 2.
     original = p.leer(MASTER, "Expensas Predio!A2:D4", render="FORMULA")
+    p4_leida = p.leer(MASTER, "Expensas Predio!P4", render="FORMULA")
+    p4_orig = p4_leida[0][0] if p4_leida and p4_leida[0] else ""
     a2 = original[0][0] if original and original[0] else ""
     a3 = original[1][0] if len(original) > 1 and original[1] else ""
     fila4 = original[2] if len(original) > 2 else []
@@ -269,6 +299,18 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None, dry_run=True)
     print(f"  Expensas Predio está hoy en A2={a2} A3={a3}")
     print(f"    B4 (AVN)={b4_orig}")
     print(f"    C4 (Agua)={c4_orig}  D4 (ABL)={d4_orig}  — se restaura todo al final")
+    print(f"    P4 (Basura)={p4_orig}")
+    # Incondicional, igual que el de B4: si una corrida con --basura murió antes
+    # del finally, P4 quedó con un número pisado. Chequearlo SÓLO cuando se pasa
+    # --basura deja que las corridas siguientes lo "restauren" como si fuera el
+    # original — el mismo mes congelado para siempre que motivó el flag.
+    if not str(p4_orig).startswith("="):
+        raise SystemExit(
+            f"CORTO: P4 (Retiro de basura) ya no es una fórmula — vale "
+            f"{p4_orig!r}.\n"
+            f"  Una corrida anterior murió antes de restaurarla. Volvé a poner "
+            f"la fórmula\n  (está en expensas_predio_backup.json) antes de "
+            f"seguir.")
 
     # El SUMIFS compara Movimientos!I:I contra A3. La columna I es texto
     # ("junio 2026"), así que se escribe en ese formato y NO como fecha.
@@ -293,7 +335,7 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None, dry_run=True)
                           "expensas_predio_backup.json")
     with open(backup, "w", encoding="utf-8") as fh:
         json.dump({"A2": a2, "A3": a3, "B4": b4_orig,
-                   "C4": c4_orig, "D4": d4_orig}, fh,
+                   "C4": c4_orig, "D4": d4_orig, "P4": p4_orig}, fh,
                   ensure_ascii=False, indent=2)
     print(f"  backup de los valores originales en {backup}")
 
@@ -302,6 +344,8 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None, dry_run=True)
         p.escribir(MASTER, "Expensas Predio!C4:D4", [[agua, abl]])
         if avn is not None:
             p.escribir(MASTER, "Expensas Predio!B4", [[avn]])
+        if basura is not None:
+            p.escribir(MASTER, "Expensas Predio!P4", [[basura]])
         # UNFORMATTED_VALUE, no el formateado: de estas columnas salen el
         # recupero y los servicios comunes que se le cobran a cada local. La
         # celda MUESTRA "$1.176.363" pero vale 1176362,725 — leerla formateada
@@ -337,11 +381,24 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None, dry_run=True)
         # P4 (Retiro de basura) está clavado a "mayo 2026" literal mientras sus
         # nueve hermanas usan A3. Se avisa siempre hasta que se arregle: si no,
         # el concepto viaja congelado de mes en mes sin que nadie lo note.
-        p4 = p.leer(MASTER, "Expensas Predio!P4", render="FORMULA")
-        if p4 and p4[0] and "mayo 2026" in str(p4[0][0]):
-            print("  ⚠ Retiro de basura sigue clavado a \"mayo 2026\" en P4 "
-                  "(las otras 9 columnas usan A3).")
-            print("    Este mes también se reparte mayo÷3. Arreglar la fórmula.")
+        basura_leida = (num(datos[1][15])
+                        if len(datos) > 1 and len(datos[1]) > 15 else 0.0)
+        if basura is not None:
+            if abs(basura_leida - basura) > 0.01:
+                raise SystemExit(
+                    f"CORTO: escribí --basura {plata(basura)} en P4 pero la hoja "
+                    f"leyó {plata(basura_leida)}.\n"
+                    f"  No sigo con una diferencia que después nadie ve.")
+            print(f"  Retiro de basura: {plata(basura_leida)}  "
+                  f"⚠ A MANO (--basura), NO salió de Movimientos")
+        else:
+            p4 = p.leer(MASTER, "Expensas Predio!P4", render="FORMULA")
+            if p4 and p4[0] and "mayo 2026" in str(p4[0][0]):
+                print("  ⚠ Retiro de basura sigue clavado a \"mayo 2026\" en P4 "
+                      "(las otras 9 columnas usan A3).")
+                print(f"    Este mes también reparte mayo÷3 = "
+                      f"{plata(basura_leida)}. Pasá --basura con la factura de "
+                      f"Transportes Olivos del mes, o arreglá la fórmula.")
         out = {}
         for fila in datos[4:]:          # los locales arrancan en la fila 7
             if not fila or not fila[0]:
@@ -363,6 +420,7 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None, dry_run=True)
             ("Expensas Predio!A2:A3", [[a2], [a3]], "la fecha (A2:A3)"),
             ("Expensas Predio!B4:D4", [[b4_orig, c4_orig, d4_orig]],
              "AVN, Agua y ABL (B4:D4)"),
+            ("Expensas Predio!P4", [[p4_orig]], "Retiro de basura (P4)"),
         ):
             try:
                 p.escribir(MASTER, rango, valores)
@@ -377,10 +435,11 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None, dry_run=True)
             print(f"       A2={a2!r}  A3={a3!r}")
             print(f"       B4={b4_orig!r}")
             print(f"       C4={c4_orig!r}  D4={d4_orig!r}")
+            print(f"       P4={p4_orig!r}")
             print("     Ponelos a mano ANTES de volver a correr esto.")
         else:
             print("  Expensas Predio restaurada a como estaba "
-                  "(fecha, AVN, Agua y ABL).")
+                  "(fecha, AVN, Agua, ABL y Basura).")
 
 
 def guardar_historico(p, anio, mes, expensas, nota=None):
@@ -431,13 +490,103 @@ def bloque_de_pestania(p, pestania, layout, etiqueta_mes):
     return out, len(filas)
 
 
-def alquiler_vigente(p, cfg, anio, mes):
-    """El alquiler del mes anterior en la pestaña — la verdad operativa de hoy.
+# El ancla de cada contrato está PINTADA en la tabla de IPC de su pestaña.
+# `#D9EAD3` — el mismo verde en las seis. Verificado el 01/09/2026.
+VERDE_ANCLA = (0.8509804, 0.91764706, 0.827451)
+MESES_TABLA = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+               "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 
-    NO aplica ajuste por IPC: el IPC de julio sale ~15/08 y el ajuste trimestral
-    de Bigg rige desde septiembre. Si un local tiene ajuste este mes, se corrige
-    la propuesta a mano. El script nunca inventa un precio nuevo.
+
+def es_verde(color):
+    return all(abs(color.get(k, 0.0) - v) < 0.02
+               for k, v in zip(("red", "green", "blue"), VERDE_ANCLA))
+
+
+def ancla_de_la_tabla(p, pestania, anio, mes):
+    """El alquiler VIGENTE en <anio>-<mes> según la tabla de IPC de la pestaña.
+
+    Los contratos ajustan por período, no todos los meses: la celda del mes en
+    que ajustan está pintada de verde (marzo/junio/septiembre/diciembre en los
+    cinco locales, marzo y septiembre en La Jaula, que es semestral). Los meses
+    del medio son la cadena `=N(m-1)*(1+O(m-2))` que va componiendo el IPC —
+    **no un precio a cobrar**. Se cobra el ancla verde más reciente, que puede
+    ser de un mes de OTRO año (enero cobra el ancla de diciembre).
+
+    La tabla es una sola columna corrida con un bloque de 12 meses por año, y el
+    año vive en la columna de la IZQUIERDA de "Mes", escrito sólo en la fila de
+    enero. Leer las primeras 12 filas y nada más devolvía el precio de 2026 para
+    cualquier año que se pidiera, sin fallar.
+
+    Devuelve (monto, "<mes> <año>") o (None, motivo) si no se pudo leer.
     """
+    grilla = p.leer(CTAS, f"'{pestania}'!A1:BZ80", render="UNFORMATTED_VALUE")
+    hdrs = [(i, j) for i, fila in enumerate(grilla)
+            for j, celda in enumerate(fila) if str(celda).strip() == "Mes"]
+    if not hdrs:
+        return None, f"{pestania}: no encontré la tabla de IPC (celda 'Mes')"
+    if len(hdrs) > 1:
+        # Quedarse con la última en silencio es cómo se cobra el precio de la
+        # tabla equivocada sin que nada falle.
+        donde = ", ".join(f"{colnum_a_letra(j+1)}{i+1}" for i, j in hdrs)
+        return None, (f"{pestania}: hay {len(hdrs)} tablas de IPC (celda 'Mes' "
+                      f"en {donde}). No adivino cuál es la del contrato.")
+    i0, j0 = hdrs[0]
+    col = colnum_a_letra(j0 + 2)          # la columna Alquiler, a la derecha
+
+    # Recorrer el bloque entero, arrastrando el año de la columna anterior.
+    filas, anio_actual, esperado = [], None, None
+    for k in range(i0 + 1, len(grilla)):
+        fila = grilla[k]
+        nombre = str(fila[j0]).strip().lower() if len(fila) > j0 else ""
+        if nombre not in MESES_TABLA:
+            break                          # se terminó la tabla
+        num_mes = MESES_TABLA.index(nombre) + 1
+        marca = fila[j0 - 1] if j0 >= 1 and len(fila) > j0 - 1 else None
+        if isinstance(marca, (int, float)) and 2000 < marca < 2100:
+            anio_actual = int(marca)
+        if anio_actual is None:
+            return None, (f"{pestania}: la tabla arranca en {nombre!r} sin año "
+                          f"a la izquierda; no sé de qué año es ese precio.")
+        if esperado is not None and (anio_actual, num_mes) != esperado:
+            return None, (f"{pestania}: la fila {k+1} dice {nombre} "
+                          f"{anio_actual}, esperaba {MESES_TABLA[esperado[1]-1]} "
+                          f"{esperado[0]}. La tabla no viene en orden.")
+        esperado = (anio_actual + 1, 1) if num_mes == 12 else (anio_actual,
+                                                               num_mes + 1)
+        valor = num(fila[j0 + 1]) if len(fila) > j0 + 1 else 0.0
+        filas.append((anio_actual, num_mes, valor, k + 1))
+
+    if not filas:
+        return None, f"{pestania}: la tabla de IPC no tiene meses debajo de 'Mes'"
+    r_ini, r_fin = filas[0][3], filas[-1][3]
+    colores = p.fondos(CTAS, f"'{pestania}'!{col}{r_ini}:{col}{r_fin}")
+    if len(colores) != len(filas):
+        return None, (f"{pestania}: leí {len(filas)} meses pero {len(colores)} "
+                      f"colores. No arriesgo a desalinear el ancla.")
+
+    # Hacia atrás desde el mes pedido: la primera verde es la que rige.
+    for idx in range(len(filas) - 1, -1, -1):
+        a, m, valor, _ = filas[idx]
+        if (a, m) > (anio, mes):
+            continue
+        verde = colores[idx][0] if colores[idx] else {}
+        if es_verde(verde):
+            return valor, f"{MESES_TABLA[m-1]} {a}"
+    return None, (f"{pestania}: ninguna celda verde hasta "
+                  f"{MESES_TABLA[mes-1]} {anio}")
+
+
+def colnum_a_letra(n):
+    """1 → A, 27 → AA. La tabla de IPC vive en M/N/O o en AQ/AR/AS."""
+    s = ""
+    while n:
+        n, r = divmod(n - 1, 26)
+        s = chr(65 + r) + s
+    return s
+
+
+def alquiler_del_mes_anterior(p, cfg, anio, mes):
+    """Lo que se cobró el mes pasado. Se usa sólo para CONTRASTAR el ancla."""
     ant_a, ant_m = mes_anterior(anio, mes)
     bloque, _ = bloque_de_pestania(p, cfg["pestania"], cfg["layout"],
                                    etiqueta(ant_a, ant_m))
@@ -447,6 +596,30 @@ def alquiler_vigente(p, cfg, anio, mes):
     conceptos = ("alquiler", "alq facturado",
                  "diferencia alquiler (sin iva)", "diferencia alquiler", "dif alq")
     return sum(e for _, d, e in bloque if d.lower().strip() in conceptos)
+
+
+def alquiler_vigente(p, cfg, anio, mes, avisos):
+    """El alquiler a cobrar: el ANCLA de la tabla de IPC de la pestaña.
+
+    Antes esto copiaba el alquiler del mes anterior. En un mes de ajuste eso
+    cobra el precio viejo y no falla: septiembre 2026 era ancla en los seis a la
+    vez y se habrían cobrado $1.004.358,61 de menos por mes, tres meses seguidos.
+    Ahora el precio sale del ancla y **el mes anterior queda como contraste**:
+    si difieren, se dice cuánto y por qué, en vez de elegir en silencio.
+    """
+    anterior = alquiler_del_mes_anterior(p, cfg, anio, mes)
+    ancla, detalle = ancla_de_la_tabla(p, cfg["pestania"], anio, mes)
+    if ancla is None:
+        avisos.append(f"{cfg['pestania']}: no pude leer el ancla ({detalle}). "
+                      f"Uso el alquiler del mes anterior, {plata(anterior)} — "
+                      f"verificalo a mano contra la tabla de IPC.")
+        return anterior
+    if abs(ancla - anterior) > 0.01:
+        avisos.append(
+            f"{cfg['pestania']}: AJUSTA este mes. El ancla de {detalle} vale "
+            f"{plata(ancla)} y el mes pasado se cobró {plata(anterior)} "
+            f"({plata(ancla - anterior)} de diferencia). Va el ancla.")
+    return ancla
 
 
 def cargos_existentes(p, anio, mes):
@@ -481,12 +654,33 @@ def proponer(p, anio, mes, expensas):
                 avisos.append(f"{local}: sin pestaña, no puedo leer el alquiler.")
                 alq = 0
             else:
-                alq = alquiler_vigente(p, cfg, anio, mes)
+                alq = alquiler_vigente(p, cfg, anio, mes, avisos)
                 if alq == 0:
                     avisos.append(
                         f"{local}: no encontré alquiler en {etiqueta(ant_a, ant_m)} "
                         f"de su pestaña. Va en 0 — confirmá el precio.")
-        if alq:
+        elif cfg.get("tabla_ipc"):
+            # Sin pestaña de cuenta corriente, pero con tabla de IPC propia:
+            # La Jaula, que ajusta SEMESTRAL en la hoja `Futbol`. El monto de
+            # arranque de `alquiler` sólo vale hasta su primera ancla.
+            ancla, detalle = ancla_de_la_tabla(p, cfg["tabla_ipc"], anio, mes)
+            if ancla is None:
+                avisos.append(f"{local}: no pude leer su ancla ({detalle}). "
+                              f"Queda el monto de arranque, {plata(alq)}.")
+            elif abs(ancla - alq) > 0.01:
+                avisos.append(
+                    f"{local}: AJUSTA este mes. El ancla de {detalle} en "
+                    f"'{cfg['tabla_ipc']}' vale {plata(ancla)} y venía "
+                    f"{plata(alq)} ({plata(ancla - alq)} de diferencia). "
+                    f"Va el ancla.")
+                alq = ancla
+            else:
+                alq = ancla
+        # El renglón del alquiler va aunque valga 0 —Peak One no tiene alquiler
+        # propio hasta dic-26— siempre que el local tenga pestaña: su bloque
+        # lleva los cinco conceptos igual, con el cero escrito. Los que no tienen
+        # pestaña (Salón, La Jaula) sólo viven en CARGOS y ahí un 0 sería ruido.
+        if alq or cfg["pestania"]:
             if cfg["partido"]:
                 mitad = alq / 2
                 propuesta.append((local, f"{anio}-{mes:02d}",
@@ -682,6 +876,10 @@ def filas_para_pestania(propuesta, local, anio, mes):
     """
     orden = ["Diferencia Alquiler (sin iva)", "Alquiler", "Recupero de gastos",
              "Servicios comunes"]
+    # Los dos conceptos que SIEMPRE llevan su renglón de IVA debajo, tengan o no
+    # importe. «Recupero de gastos» va exento y «Diferencia Alquiler (sin iva)»
+    # es la mitad en efectivo: ésos no llevan.
+    con_fila_iva = {"Alquiler", "Servicios comunes"}
     ant_a, ant_m = mes_anterior(anio, mes)
     # La columna "Mes Origen" de la pestaña lleva el PERÍODO DEL CARGO, no el
     # del bloque: en JUN'26 de Fabric están el alquiler de junio Y el recupero
@@ -697,7 +895,12 @@ def filas_para_pestania(propuesta, local, anio, mes):
     for per, concepto, monto, iva in del_mes:
         etq = periodos[per]
         salida.append((etq, concepto, monto))
-        if iva:
+        if concepto in con_fila_iva:
+            # El renglón va aunque el IVA sea 0: "un bloque lleva SIEMPRE los 5
+            # conceptos, y el $0 se escribe 0" (Facu, 06/08/2026). Escribirlo
+            # sólo cuando hay importe dejaba a Boss, Volta y Peak One —los que
+            # no facturan— con bloques de 3 renglones, y el dedupe por (mes,
+            # concepto) después decía "ya estaba" y no los completaba nunca.
             # "Servicios comunes" → "IVA Servicios Comunes", como en los
             # bloques que ya están escritos en las pestañas.
             salida.append((etq, "IVA Alquiler" if concepto == "Alquiler"
@@ -718,6 +921,10 @@ def main():
                     help="ABL Municipal: SOLO Tasa por Servicios + Cont. Hospital. "
                          "Los derechos de construcción y el plan de pagos de la "
                          "misma liquidación son obra y NO van acá.")
+    ap.add_argument("--basura", type=float, default=None,
+                    help="Retiro de basura del mes de las expensas (P4): el "
+                         "total de la factura de Transportes Olivos. Sin esto, "
+                         "P4 sigue repartiendo mayo 2026 ÷ 3.")
     ap.add_argument("--avn", type=float, default=None,
                     help="Expensas AVN del mes, a mano, para cuando el extracto "
                          "del Macro todavía no se importó. Es la suma de las 4 "
@@ -742,6 +949,7 @@ def main():
         print(f"Congelando expensas de {MESES_LARGO[ant_m]} {ant_a}…")
         expensas = congelar_expensas(p, ant_a, ant_m, agua=args.agua,
                                      abl=args.abl, avn=args.avn,
+                                     basura=args.basura,
                                      dry_run=not args.escribir)
         if expensas and args.escribir:
             nota = None
@@ -749,6 +957,15 @@ def main():
                 nota = (f"congelado por cargos_del_mes.py — AVN {plata(args.avn)} "
                         f"puesta A MANO (--avn): el extracto del Macro de "
                         f"{MESES_LARGO[ant_m]} {ant_a} no estaba importado")
+            # Todo lo que se puso a mano queda escrito en el histórico: el mes se
+            # congela para siempre y después nadie puede reconstruir de dónde
+            # salió cada número mirando la hoja viva.
+            a_mano = [("Agua R&S", args.agua), ("ABL Municipal", args.abl),
+                      ("Retiro de basura", args.basura)]
+            puestos = " · ".join(f"{q} {plata(v)} a mano"
+                                 for q, v in a_mano if v is not None)
+            if puestos:
+                nota = f"{nota} · {puestos}" if nota else puestos
             n = guardar_historico(p, ant_a, ant_m, expensas, nota=nota)
             print(f"  {n} filas guardadas en {HOJA_HISTORICO}.")
     else:

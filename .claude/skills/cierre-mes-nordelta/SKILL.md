@@ -156,6 +156,27 @@ el mes a mes).
 # ... y con --escribir corrige/agrega en CARGOS (no pisa nada con valor)
 ```
 
+El bloque entero (alquiler del mes + expensas del anterior) lo arma
+`cargos_del_mes.py`. Los cuatro números que dependen de un tercero van por flag,
+cada uno con su factura archivada en `Facturas de Compra/2026/<Mes>/`:
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/cargos_del_mes.py" \
+  2026-09 --congelar-expensas \
+  --agua 592225.96 --abl 978731 --avn 2694956.61 --basura 1295041.59 --escribir
+```
+
+| Flag | Qué es | De dónde sale |
+|---|---|---|
+| `--agua` | Agua R&S (C4) | factura de **Redes y Servicios**, dice "Club de Futbol" |
+| `--abl` | Municipal (D4) | liquidación de Tigre: **sólo** Tasa Servicios + Cont. Hospital |
+| `--avn` | Expensas AVN (B4) | las **4** liquidaciones de la carpeta del mes |
+| `--basura` | Retiro de basura (P4) | factura de **Transportes Olivos** ("TODSE") |
+
+**El mes de la factura es el de PAGO**, no el que dice adentro: la expensa del mes M
+toma lo que se paga en M, que es lo emitido en M−1.
+
 La fuente de verdad de cada cargo es la **pestaña del local** (alquiler indexado por
 IPC, expensas desde Expensas Predio); CARGOS es lo que consume CUENTA CORRIENTE
 (pura fórmula, no hay Apps Script que correr). Regla de contrato Bigg: 50%
@@ -317,6 +338,26 @@ Queda a mano interpretar (esto sí lo hago yo, leyendo):
   y de Bigg sólo la parte "Alquiler" + su IVA — la "Diferencia Alquiler (sin iva)" es
   justamente la mitad en efectivo. `cobra_por` e `iva` en `LOCALES` ya lo codifican y
   coinciden uno a uno: los que facturan son los que llevan IVA.
+- 🚨 **El alquiler NO sube todos los meses: sube en su ANCLA, que está pintada de
+  verde** (`#D9EAD3`) en la tabla de IPC de cada pestaña. Fabric, Bigg, Boss, Volta y
+  Peak One ajustan **por trimestre** (marzo · junio · septiembre · diciembre); La Jaula
+  **por semestre** (marzo · septiembre, en la hoja `Futbol`, columna AR). Los meses del
+  medio son la cadena `=N(m-1)*(1+O(m-2))` que va componiendo el IPC — **no un precio a
+  cobrar**. Y la cadena atrasa dos meses: septiembre necesita el IPC de julio, que el
+  INDEC publica ~el 15/08 y Facu carga en la hoja `INFLACIÓN`.
+  Hasta el 01/09/2026 `alquiler_vigente()` copiaba el alquiler del mes anterior, que es
+  correcto **en todos los meses menos los de ancla** — y en un mes de ancla cobraba el
+  precio viejo sin que nada fallara. Septiembre 2026 era ancla en los seis a la vez:
+  **$1.004.358,61 por mes, tres meses seguidos**. Ahora el precio sale del ancla y el mes
+  anterior queda como contraste: si difieren, el script dice cuánto y por qué.
+- **`--basura` es el gemelo de `--avn` para P4** (Retiro de basura), que estaba clavado a
+  `"mayo 2026"` literal y repartía $4.705.450,90 ÷ 3 = $1.568.483,63 todos los meses.
+  «TODSE» es **Transportes Olivos S.A.** Sin el flag, el script avisa y dice cuánto está
+  repartiendo de más.
+- **Una etiqueta de mes se compara normalizada.** En las pestañas conviven `JUL'26`,
+  `JUL' 26` y `jul'26`. Un chequeo que comparaba el texto crudo reportó "a Boss no se le
+  cobró julio" sobre un alquiler que estaba cobrado: **un faltante de plata se confirma
+  mirando la pestaña antes de decirlo.**
 - **`--avn` desbloquea el cobro cuando el extracto del Macro no está importado.** `B4`
   es un SUMIFS contra Movimientos: sin extracto da $0 y el generador corta. El flag
   escribe el total de las 4 liquidaciones y restaura la fórmula; **no** carga una fila

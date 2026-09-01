@@ -94,6 +94,20 @@ def main():
         "Baños (=sueldo/2) y Limpieza Predio: sin esto salen $0 y no se nota. "
         "Mismo criterio que --avn de cargos_del_mes.py — NO se carga una fila falsa "
         "en Movimientos, el egreso entra una sola vez cuando entre el extracto."))
+    # Los tres inputs de la fila 4 que se tipean a mano. La hoja se RESTAURA
+    # después de congelar el mes, así que al reconstruir el detalle sus celdas
+    # ya tienen los valores del mes anterior: sin estos flags el detalle sale
+    # con otros números que la cuenta corriente y el chequeo corta. Tienen que
+    # ser los MISMOS que se le pasaron a cargos_del_mes.py para ese mes —
+    # quedaron escritos en la nota de EXPENSAS HISTORICO.
+    ap.add_argument("--agua", type=float, help=(
+        "Agua R&S del mes (C4), el mismo que se pasó a cargos_del_mes.py."))
+    ap.add_argument("--abl", type=float, help=(
+        "ABL Municipal del mes (D4): sólo Tasa por Servicios + Cont. Hospital."))
+    ap.add_argument("--basura", type=float, help=(
+        "Retiro de basura del mes (P4): el total de la factura de Transportes "
+        "Olivos. Sin esto se reconstruye con la fórmula clavada a mayo 2026 ÷ 3, "
+        "que es lo que la hoja tiene puesto pero NO lo que se cobró."))
     args = ap.parse_args()
     anio, mes = (int(x) for x in args.periodo.split("-"))
     per = serial(anio, mes)
@@ -131,8 +145,19 @@ def main():
     inp[L["K"]] = inp[L["I"]]                                   # Limpieza Predio = I4
     inp[L["J"]] = sumifs("Productos de limpieza", per)
     inp[L["N"]] = sumifs("Fumigación", per)
-    # P4 está clavado a "mayo 2026"/3 en la hoja: no depende del mes elegido
-    inp[L["P"]] = sumifs("Retiro de Residuos", serial(2026, 5)) / 3
+    # P4 está clavado a "mayo 2026"/3 en la hoja: no depende del mes elegido.
+    # Si el mes se congeló con --basura, se reconstruye con ESE número.
+    if args.basura is not None:
+        inp[L["P"]] = args.basura
+        print(f"Retiro de basura puesto A MANO: ${args.basura:,.2f}")
+    else:
+        inp[L["P"]] = sumifs("Retiro de Residuos", serial(2026, 5)) / 3
+    for flag, celda, que in (("agua", "C", "Agua R&S"),
+                             ("abl", "D", "ABL Municipal")):
+        v = getattr(args, flag)
+        if v is not None:
+            inp[L[celda]] = v
+            print(f"{que} puesto A MANO: ${v:,.2f}")
 
     locales = [(i, fila(i)[0]) for i in range(7, 30) if fila(i)[0]]
     porc = {loc: fila(i) for i, loc in locales}
