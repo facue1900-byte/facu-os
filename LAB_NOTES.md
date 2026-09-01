@@ -8,6 +8,71 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-09-01 · FAIL ✓ · Tres preguntas de Luqui, tres bugs distintos y uno que no existía
+
+**Dónde:** `astronomy-members`. Commits `675bc50` (espejo de MP) y `ae2b82e` (sueldos fijos).
+
+Luqui, a las 8:18 de la mañana, arrancando la liquidación: (1) a una alumna le
+descontaron créditos «con fecha de hoy pero con horario 10am, y acá son las 8»; (2) desde
+`/admin/mp` no puede sumar créditos, así que carga cada pago dos veces; (3) en los egresos
+de agosto no figuran los sueldos.
+
+**Lo importante: sólo dos de los tres eran bugs, y el tercero no era ninguno.**
+
+**1. Los créditos: no había bug, había un reloj mintiendo.** Verificado contra la base: las
+5 reservas de Christine Bell se crearon el 01/09 entre las **07:37 y las 07:40** hora
+argentina, y los 5 débitos tienen esa misma hora al minuto. El descuento es sincrónico al
+agendar y no existe ningún cron que toque créditos. Lo que estaba mal era **la hora que
+mostraba la ficha**: `toLocaleString("es-AR", …)` **sin `timeZone`** se renderiza en el huso
+del servidor, y en Vercel eso es UTC → **3 horas adelantada**. Reproducido: el mismo instante
+daba `10:40` con el código viejo y `07:40` con el nuevo. Estaban mal **12 pantallas**, y las
+otras sí declaraban el huso: convivían dos horas distintas del mismo hecho. Ahora sale de
+`lib/hora.ts`, un solo lugar.
+
+**La primera explicación fue equivocada, y vale anotarla:** supuse que Luqui estaba en otro
+huso y que la hora era correcta. Facu lo corrigió (*«mandó el mensaje a las 8:18 ARG»*) y
+recién ahí apareció el bug real. **Una explicación que cierra no es una explicación
+verificada.**
+
+**2. El doble trabajo en MP era una herramienta que faltaba, no un descuido.** Un cobro sin
+identificar tenía una sola salida de carga —escribir un renglón suelto en `expenses`, sin
+alumno y sin créditos— así que Luqui lo cargaba en `/admin/carga-manual` y dejaba el
+movimiento intacto, porque cerrarlo se lo duplicaba. **La opción honesta no existía**: por eso
+`mp_decisiones` estaba literalmente vacía y había 89 movimientos colgados.
+
+**3. Los sueldos de agosto sí estaban cargados; el problema era de MES.** Se imputan al mes
+**devengado**, `/admin/sueldos` abre en el mes **anterior** y `/admin/libro` en el **actual**.
+Luqui liquidó julio, fue al Libro, vio agosto y no encontró nada. Nada falló. Ahora la
+pantalla dice a qué mes va lo que marcás, con el link a **ese** mes.
+
+**Lo que casi se rompe en silencio, y lo agarró la auditoría, no el código:**
+
+| | |
+|---|---|
+| Sin `source_id` se acreditaba con un id interno del espejo | el webhook acreditaba **el mismo pago de nuevo** más tarde: créditos duplicados, sin error |
+| El fijo con `valid_from` el día 1 se colaba en el mes anterior | junio de Pastrana daba **$774.000** sobre $484.000 pagados |
+| `expenses` y `salary_payments` se suman sin cruzarse | marcar pagados los sueldos de diseño **inflaba el mes $926.500** |
+| `ORIGEN_SENSIBLE` copiado a mano en dos archivos | un origen nuevo **no falla: filtra**. El sueldo de diseño quedaba a la vista de cualquiera |
+
+**Las tres lecciones que quedan:**
+
+1. **Un reporte de usuario suele traer más de un bug, y alguno no es bug.** «No figuran los
+   sueldos» era una pantalla mirando otro mes; «10am» era un huso; el doble trabajo era una
+   funcionalidad que faltaba. Tratarlos como uno solo lleva a arreglar el que no era.
+2. **Un pago de más recurrente es un trato que el sistema no conoce.** Los $290.000 de
+   Pastrana estuvieron anotados un mes como error de Luqui y eran su sueldo fijo. **Sigue
+   abierto el mismo patrón con Owners of Time: $15.000 de más en julio, sin explicar.**
+3. **Una constante copiada en dos archivos no falla cuando se agrega un caso: filtra.** Es
+   peor que un error, porque no avisa.
+
+**Chequeo nuevo:** `npm run test:sueldo-fijo`. Verificado que **falla** con las dos versiones
+rotas del cálculo de vigencia — no alcanza con que dé verde.
+
+**Restricción del entorno que costó tiempo:** la Management API de Supabase está detrás de
+Cloudflare y rechaza el `User-Agent` de `urllib` con un **403 «error code: 1010»**, un error
+que no dice nada del token y manda a buscar el problema donde no está. `execution/supabase_sql.py`
+manda uno propio.
+
 ### 2026-08-28 · FAIL ✓ · «No me anda la web»: no era la web, era el panel pidiendo sus once cosas en fila
 
 **Dónde:** `astronomy-members`. `lib/workflows.ts`, función `workflowsDeHoy()`. Commit `7e539d9`.
