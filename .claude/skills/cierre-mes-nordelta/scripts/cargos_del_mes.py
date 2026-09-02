@@ -103,13 +103,24 @@ LOCALES = {
         "alquiler": 0, "partido": False, "expensas_pactadas": 1_000_000,
     },
     "La Jaula / torneo": {
-        "pestania": None, "expensas_predio": "Contenedor Jaula",
-        "layout": None, "iva": False, "cobra_por": "Efectivo",
-        # primera alta: agosto 2026, $1.000.000 + $798.825 de servicios.
-        # Desde entonces el precio sale del ancla SEMESTRAL de `Futbol` (marzo
-        # y septiembre), no de este número — que queda sólo como arranque.
+        # Su cuenta corriente es la pestaña `Futbol`, que NO se escribe fila por
+        # fila: es una sola fórmula en A5 que junta los cobros de `Cobros` con
+        # los cargos que se escriban en el bloque de input `I:K`
+        # (Fecha · Concepto · Monto) y calcula el saldo sola.
+        "pestania": "Futbol", "expensas_predio": "Contenedor Jaula",
+        "layout": None, "bloque_input": "Futbol!I:K",
+        "iva": False, "cobra_por": "Efectivo",
+        # El precio sale del ancla SEMESTRAL de `Futbol!AR`: sólo la celda VERDE
+        # (marzo y septiembre). Los meses del medio son la cadena del IPC, no un
+        # precio a cobrar. Ver `paseo-jaula-precio-semestral`.
         "alquiler": 1_000_000, "partido": False, "tabla_ipc": "Futbol",
-        "desde": "2026-08", "servicios_pactados": 798_825,
+        "desde": "2026-08",
+        # NO paga expensas ni servicios comunes (Facu, 06/08/2026 y 02/09/2026).
+        # Esto estaba como `servicios_pactados: 798_825` y contradecía a
+        # `reglas_locales.REGLAS`, que ya decía «No pagan expensas por ahora».
+        # Generó $798.825 de más en ago-26 y en sep-26. No volver a ponerlo
+        # sin cambiar también reglas_locales.py.
+        "sin_expensas": True,
     },
     # Escuelita no lleva cargo generado: paga un % de facturación y el ingreso
     # entra solo por Movimientos.
@@ -692,6 +703,12 @@ def proponer(p, anio, mes, expensas):
                                   alq * IVA if cfg["iva"] else 0.0))
 
         # --- expensas del mes anterior
+        # Hay locales que directamente NO pagan expensas (La Jaula). Esto va
+        # ANTES de todos los caminos de abajo: sin un corte explícito, sacarle
+        # el monto pactado no lo deja sin cargo — lo manda al camino genérico
+        # de Expensas Predio, que le cobra el reparto del predio entero.
+        if cfg.get("sin_expensas"):
+            continue
         if cfg.get("expensas_pactadas"):
             propuesta.append((local, f"{ant_a}-{ant_m:02d}", "Servicios comunes",
                               float(cfg["expensas_pactadas"]), 0.0))

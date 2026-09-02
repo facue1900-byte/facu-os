@@ -1,15 +1,30 @@
 #!/usr/bin/env python3
 """
-Extracto Macro -> filas listas para pegar en Movimientos.
+Extracto Macro -> Movimientos del Master Plan.
 
 Lee el PDF del extracto (CC Especial en Pesos 4-452-0960512147-9), identifica cada
-crédito y débito, y escupe las filas en el orden de columnas de la pestaña
+crédito y débito, y arma las filas en el orden de columnas de la pestaña
 Movimientos: Fecha, Tipo, Medio, Local, Categoria, Monto, Moneda, Observaciones.
 
-    python3 extracto_a_movimientos.py "Junio 2026.pdf" [master.xlsx]
+    # sólo mirar
+    extracto_a_movimientos.py "Julio 2026.pdf" --facturas "…/Julio 2026"
+    # escribir de verdad
+    extracto_a_movimientos.py "Julio 2026.pdf" --facturas "…/Julio 2026" --escribir
 
-Si se pasa el master.xlsx, marca cuáles de esos movimientos YA están cargados
-(match por fecha + monto en Banco) para no duplicar.
+`--facturas` es lo que evita el trabajo a mano. Varios débitos del extracto
+salen como «N/D Transf. MacrOnline E-set D/T» sin CUIT ni nombre: la glosa no
+dice a quién se le pagó. En vez de que alguien abra las facturas del mes y las
+cruce de a una, el script indexa los PDF de la carpeta, saca CUIT y total de
+cada uno y **matchea por importe** (el banco redondea al peso, por eso la
+tolerancia de $1). El CUIT decide la categoría.
+
+`--escribir` es el único que toca la planilla, y **se planta si queda un solo
+renglón sin resolver**: un movimiento sin categoría entra igual a Movimientos,
+no rompe nada y desaparece de todos los SUMIFS. Es exactamente la falla que
+deja una expensa más barata sin que nadie se entere.
+
+El dedupe compara (año, mes, monto) contra lo que ya está cargado con Medio
+«Banco»: Facu a veces carga un movimiento con fecha distinta a la del extracto.
 
 La columna I (Mes) es ArrayFormula: NO se emite y no hay que tocarla.
 """
@@ -19,9 +34,28 @@ import re
 import datetime
 import unicodedata
 
+import argparse
+import os
+import glob
+
 import fitz
 
+sys.path.insert(0, "/Users/Facu/facu-os/execution")
+
 CUENTA = "4-452-0960512147-9"
+MASTER_PLAN = "1ATiNBHCukPYPn9-poP1HO4SlfsDu5pGXsLz-JvW-IQs"
+
+# CUIT del proveedor -> (nombre corto, categoría de Movimientos).
+# El CUIT sale del nombre del archivo de la factura (convención de AFIP,
+# `CUIT_pv_tipo_nro.pdf`) o del texto del PDF. Un CUIT que no esté acá deja el
+# movimiento SIN resolver a propósito: se agrega el renglón, no se adivina.
+CUIT_CATEGORIA = {
+    "27373389973": ("Rhino (Sánchez Yanina)", "Sueldo Mantenimiento Gastronomia"),
+    "30690741691": ("Andersen materiales",    "Inversiones"),
+    "30517431431": ("Transportes Olivos",     "Retiro de Residuos"),
+    "30718796136": ("Estudio Giaccio",        "Contador"),
+    "20124767173": ("Oliva (corralón)",       "Inversiones"),
+}
 
 # Glosa del extracto -> (Local, Categoria). Local para ingresos, Categoria para egresos.
 # El orden importa: gana la primera que matchea.
@@ -35,6 +69,11 @@ REGLAS = [
     # Se propone Inversiones porque hasta hoy siempre fue obra; si una compra es
     # gasto operativo hay que cambiarla a mano ANTES de cargarla.
     (r"20124767173",                     None, "Inversiones"),
+    # Transferencia entre cuentas propias para cubrir el resumen de la VISA en
+    # la CC Bancaria. NO es plata que se queda adentro: del otro lado sale a la
+    # tarjeta. En junio 2026 se cargó como Inversiones («cubre VISA luces») y se
+    # sigue ese precedente. Si el consumo del mes no fue obra, hay que cambiarla.
+    (r"TRANSF AUT SDO MISMO TIT",        None, "Inversiones"),
     (r"RET\.? ING\.? BRUTOS SIRCREB",    None, "Ingresos Brutos"),
     (r"DBCR 25413",                      None, "Gastos bancarios"),
     (r"Comision Trf|COMISION",           None, "Gastos bancarios"),
@@ -163,40 +202,207 @@ def agrupar(movs):
     return sueltos + sorted(bolsas.values(), key=lambda x: x["obs"])
 
 
-def main():
-    if len(sys.argv) < 2:
-        sys.exit(__doc__)
-    crudos = parsear(sys.argv[1])
-    movs = agrupar(crudos)
-    cargados = ya_cargados(sys.argv[2]) if len(sys.argv) > 2 else set()
+# ---------------------------------------------------------------------------
+# Cruce contra las facturas de la carpeta del mes
+# ---------------------------------------------------------------------------
+# Cada proveedor escribe el importe distinto: AFIP saca «1936000,00» sin
+# separador de miles, Andersen imprime «$ 599,251.55» en formato yanqui y las
+# liquidaciones usan «1.234,56». Se captura crudo y se normaliza abajo.
+NUM = r"[\d][\d.,]{2,18}[\d]"
+ETIQ = r"(?:TOTAL|Importe Total)"
+# La etiqueta puede ir ANTES del número (AFIP) o DESPUÉS (Andersen: el texto
+# sale «… NETO: $ 599,251.55 TOTAL:» porque la tabla se extrae por columnas).
+# Se guardan TODOS los candidatos y gana el que matchee un débito del extracto
+# al peso: un candidato de más no inventa nada, sólo no matchea.
+TOTAL_PDF = re.compile(rf"{ETIQ}[^0-9\-]{{0,40}}({NUM})", re.I)
+TOTAL_PDF_ATRAS = re.compile(rf"({NUM})[^0-9\-]{{0,20}}{ETIQ}", re.I)
+CUIT_PDF = re.compile(r"\b(\d{11})\b")
+# El CUIT del EMISOR, no el nuestro: Mahni aparece en todas las facturas.
+CUIT_PROPIO = "30719012503"
 
-    nuevos = [m for m in movs
-              if (m["fecha"].year, m["fecha"].month, round(m["monto"], 2))
-              not in cargados]
+
+def plata_libre(s):
+    """Un importe escrito en cualquiera de los tres formatos -> float.
+
+    El separador DECIMAL es el último punto o coma que quede seguido de
+    exactamente dos dígitos al final. Todo lo anterior es separador de miles y
+    se tira. Sin esto, «599,251.55» se lee como $599,25.
+    """
+    s = s.strip()
+    if not re.search(r"[.,]\d{2}$", s):
+        return float(re.sub(r"[.,]", "", s))
+    entero, dec = s[:-3], s[-2:]
+    return float(re.sub(r"[.,]", "", entero) + "." + dec)
+
+
+def indexar_facturas(carpeta):
+    """[(cuit, nombre_archivo, total)] de cada PDF de la carpeta.
+
+    El CUIT sale primero del nombre del archivo (convención de AFIP) y, si el
+    archivo no la respeta, del texto. Un PDF sin total legible se saltea con
+    aviso: mejor que un match inventado.
+    """
+    facturas, ilegibles = [], []
+    for ruta in sorted(glob.glob(os.path.join(carpeta, "*.pdf"))):
+        base = os.path.basename(ruta)
+        try:
+            texto = fitz.open(ruta)[0].get_text()
+        except Exception as e:
+            ilegibles.append(f"{base}: no se pudo abrir ({e})")
+            continue
+        m = re.match(r"(\d{11})_", base)
+        cuit = m.group(1) if m else next(
+            (c for c in CUIT_PDF.findall(texto) if c != CUIT_PROPIO), None)
+        totales = sorted({plata_libre(t) for t in
+                          TOTAL_PDF.findall(texto) + TOTAL_PDF_ATRAS.findall(texto)})
+        if not totales:
+            ilegibles.append(f"{base}: no le encontré el total")
+            continue
+        facturas.append((cuit, base, totales))
+    return facturas, ilegibles
+
+
+def resolver_con_facturas(movs, facturas):
+    """Le pone categoría a los egresos que la glosa del banco no identifica.
+
+    Matchea por importe con tolerancia de $1: el banco redondea al peso
+    (Andersen facturó $599.251,55 y el débito salió $599.251,00).
+    """
+    resueltos = []
+    for m in movs:
+        if m["local"] or m["categoria"] or m["tipo"] != "Egreso":
+            continue
+        cand = [f for f in facturas
+                if any(abs(t - m["monto"]) < 1.0 for t in f[2])]
+        if len(cand) != 1:
+            if len(cand) > 1:
+                m["ambiguo"] = [c[1] for c in cand]
+            continue
+        cuit, archivo, totales = cand[0]
+        total = min(totales, key=lambda t: abs(t - m["monto"]))
+        if cuit not in CUIT_CATEGORIA:
+            m["ambiguo"] = [f"{archivo} (CUIT {cuit} no está en CUIT_CATEGORIA)"]
+            continue
+        nombre, categoria = CUIT_CATEGORIA[cuit]
+        m["categoria"] = categoria
+        m["obs"] = f"{m['obs']} — {nombre} {archivo.replace('.pdf', '')}"
+        resueltos.append((m, nombre, total))
+    return resueltos
+
+
+# ---------------------------------------------------------------------------
+# La planilla
+# ---------------------------------------------------------------------------
+def movimientos_del_sheet():
+    from google_auth import sheets
+    return sheets().spreadsheets().values().get(
+        spreadsheetId=MASTER_PLAN, range="Movimientos!A1:H2000",
+        valueRenderOption="UNFORMATTED_VALUE").execute().get("values", [])
+
+
+def ya_cargados_sheet(filas):
+    """(año, mes, monto) de lo que ya está cargado con Medio «Banco»."""
+    out = set()
+    for r in filas[1:]:
+        r = list(r) + [""] * (8 - len(r))
+        if str(r[2]).strip().lower() != "banco":
+            continue
+        try:
+            f = datetime.date(1899, 12, 30) + datetime.timedelta(days=float(r[0]))
+            out.add((f.year, f.month, round(float(r[5] or 0), 2)))
+        except (ValueError, TypeError):
+            continue
+    return out
+
+
+def escribir(filas_nuevas, cantidad_actual):
+    """Appendea al final de Movimientos y RELEE para confirmar."""
+    from google_auth import sheets
+    s = sheets()
+    s.spreadsheets().values().append(
+        spreadsheetId=MASTER_PLAN, range="Movimientos!A:H",
+        valueInputOption="USER_ENTERED", insertDataOption="INSERT_ROWS",
+        body={"values": filas_nuevas}).execute()
+    despues = movimientos_del_sheet()
+    agregadas = len(despues) - cantidad_actual
+    if agregadas != len(filas_nuevas):
+        sys.exit(f"ERROR: quise escribir {len(filas_nuevas)} filas y la planilla "
+                 f"creció {agregadas}. Revisá Movimientos a mano.")
+    return agregadas
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("pdf", help="el PDF del extracto del Macro")
+    ap.add_argument("--facturas", help="carpeta de Facturas de Compra del mes")
+    ap.add_argument("--escribir", action="store_true",
+                    help="escribe en Movimientos (por defecto NO toca nada)")
+    ap.add_argument("--forzar", action="store_true",
+                    help="escribe aunque queden renglones sin categoría")
+    args = ap.parse_args()
+
+    crudos = parsear(args.pdf)
+    movs = agrupar(crudos)
+
     # El neto se controla contra el extracto CRUDO, no contra el agrupado.
     ing = sum(m["monto"] for m in crudos if m["tipo"] == "Ingreso")
     egr = sum(m["monto"] for m in crudos if m["tipo"] == "Egreso")
-
     print(f"# {len(movs)} movimientos en el extracto — "
           f"ingresos ${ing:,.2f} · egresos ${egr:,.2f} · neto ${ing - egr:,.2f}")
-    if cargados:
-        print(f"# {len(movs) - len(nuevos)} ya estaban cargados, "
-              f"{len(nuevos)} para agregar")
-    print("#")
-    print("# Fecha\tTipo\tMedio\tLocal\tCategoria\tMonto\tMoneda\tObservaciones")
 
+    if args.facturas:
+        facturas, ilegibles = indexar_facturas(args.facturas)
+        resueltos = resolver_con_facturas(movs, facturas)
+        print(f"# {len(facturas)} facturas indexadas en la carpeta, "
+              f"{len(resueltos)} débitos identificados por importe")
+        for m, nombre, total in resueltos:
+            print(f"#   ${m['monto']:,.2f} → {nombre} (la factura dice "
+                  f"${total:,.2f})")
+        for x in ilegibles:
+            print(f"#   ⚠ {x}")
+
+    filas_sheet = movimientos_del_sheet()
+    cargados = ya_cargados_sheet(filas_sheet)
+    nuevos = [m for m in movs
+              if (m["fecha"].year, m["fecha"].month, round(m["monto"], 2))
+              not in cargados]
+    print(f"# {len(movs) - len(nuevos)} ya estaban cargados, "
+          f"{len(nuevos)} para agregar")
+    print("#")
+
+    filas = []
+    sin_resolver = []
     for m in nuevos:
-        falta = " ← COMPLETAR" if not (m["local"] or m["categoria"]) else ""
-        print("\t".join([
+        falta = not (m["local"] or m["categoria"])
+        if falta:
+            sin_resolver.append(m)
+        filas.append([
             m["fecha"].strftime("%-d/%-m/%Y"),
-            m["tipo"],
-            "Banco",
-            m["local"] or "",
-            m["categoria"] or "",
-            f"{m['monto']:.2f}",
-            "ARS",
-            f"{m['obs']} - {MESES[m['fecha'].month]} {m['fecha'].year}{falta}",
-        ]))
+            m["tipo"], "Banco",
+            m["local"] or "", m["categoria"] or "",
+            round(m["monto"], 2), "ARS",
+            f"{m['obs']} - {MESES[m['fecha'].month]} {m['fecha'].year}",
+        ])
+        marca = "  ← SIN CATEGORIA" if falta else ""
+        if m.get("ambiguo"):
+            marca = f"  ← {len(m['ambiguo'])} facturas posibles: {m['ambiguo']}"
+        print(f"{filas[-1][0]}\t{m['tipo']}\tBanco\t{m['local'] or ''}\t"
+              f"{m['categoria'] or ''}\t{m['monto']:.2f}\tARS\t"
+              f"{filas[-1][7]}{marca}")
+
+    if not args.escribir:
+        print(f"\n[SIN --escribir] No toqué nada. {len(filas)} filas listas.")
+        return
+    if sin_resolver and not args.forzar:
+        sys.exit(f"\nFRENO: {len(sin_resolver)} movimiento(s) sin categoría. "
+                 f"Entrarían a Movimientos y desaparecerían de todos los SUMIFS "
+                 f"sin fallar. Resolvelos (agregá el CUIT a CUIT_CATEGORIA o la "
+                 f"glosa a REGLAS) o corré con --forzar si de verdad van vacíos.")
+    if not filas:
+        print("\nNada nuevo para escribir.")
+        return
+    n = escribir(filas, len(filas_sheet))
+    print(f"\n✅ {n} filas escritas en Movimientos y verificadas releyendo.")
 
 
 if __name__ == "__main__":
