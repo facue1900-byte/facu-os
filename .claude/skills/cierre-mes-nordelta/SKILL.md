@@ -218,7 +218,20 @@ reconstruye: los servicios recalculando los `SUMIFS` contra Movimientos, y la AV
 Mati sólo ve `/caja`, y ahí arriba está la tarjeta **«A cobrar en efectivo»** con
 lo que puede salir a buscar hoy. **No es el saldo**: el saldo mezcla banco con
 efectivo. Fabric paga todo por banco y nunca le debe efectivo; Bigg va partido y
-sólo la «Diferencia Alquiler (sin iva)» es en mano. **Tampoco es todo deuda**:
+sólo la «Diferencia Alquiler (sin iva)» es en mano.
+
+> 🔴 **El pendiente se camina EN ORDEN, no se restan totales** (03/09/2026). Un
+> pago en efectivo cancela primero lo que se debe en mano y **lo que sobra se
+> derrama a los cargos de banco**. Restar `Σ cargos − Σ pagos` asume que cada
+> peso en efectivo pagó un cargo de efectivo, y en marzo-26 Bigg canceló en mano
+> su *Diferencia Alquiler* **más** el recupero y los servicios comunes de
+> febrero: ese excedente quedaba descontado para siempre y le regalaba
+> **$812.444**. El derrame corre **sólo en locales `mixto`** — en uno 100%
+> efectivo un negativo es un saldo a favor real, y su deuda tiene que seguir
+> dando el saldo de la pestaña. La validación: el cálculo reproduce los siete
+> cartuchos «Efectivo» que Facu escribió a mano en la pestaña de Bigg.
+
+**Tampoco es todo deuda**:
 todos pagan el mes siguiente, así que se separa lo del mes corriente de lo
 vencido cortando por la **última fila de pago** de cada pestaña. Lo que no está
 verificado no se muestra como cobrable. La tarjeta se ve aislada en
@@ -240,6 +253,29 @@ son la cadena que va componiendo el IPC, no un precio. Y la cadena atrasa dos
 meses — el precio de **septiembre necesita el IPC de julio**, que el INDEC
 publica el **15/08**. Si falta en la hoja `INFLACIÓN`, el script lo marca
 provisorio y lo saca del total en vez de darlo por bueno.
+
+**2-septies. Lo que se le manda a Mati por WhatsApp:** una captura de la cuenta
+corriente por local, y el detalle de sus expensas.
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  ".../scripts/capturas_ctas_ctes.py"  2026-09          # la cta cte del mes
+/Users/Facu/facu-os/.venv/bin/python \
+  ".../scripts/detalle_expensas.py"    2026-08          # las expensas que se cobran ahí
+```
+
+Ojo el mes de cada uno: **las expensas de agosto se cobran en el bloque de
+septiembre**, así que van juntas en la carpeta de septiembre. `detalle_expensas.py`
+sale del bloque **CONGELADO** de `Expensas Predio` —nunca del vivo de arriba, que
+se recalcula al cambiar `A3`— y **frena sin escribir nada** si el recupero o los
+servicios comunes de algún local no cierran al peso contra los cargos de su
+pestaña de cuenta corriente. La Jaula y Salón (Alto) no llevan detalle: una no
+paga expensas y el otro paga $1.000.000 pactado.
+
+⚠️ **Se mandan como DOCUMENTO, no como foto.** Un PNG por el campo de adjuntos que
+WhatsApp Web deja a mano se envía como **sticker**: llega diminuto e ilegible y no
+se puede ampliar. Como documento conserva el nombre del local y la calidad, y Mati
+puede reenviarle a cada locatario el suyo.
 
 **3. Conciliación** — los chequeos deterministas los hace el script; yo interpreto:
 
