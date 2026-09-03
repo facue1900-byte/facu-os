@@ -31,6 +31,22 @@ Un input en blanco no se toma como 0: el mes se reporta como **no
 reconstruible** y se dice qué factura falta. Un 0 se reparte entre los locales y
 sale una expensa más barata sin que nadie se entere; es la falla que facturó
 $875.691,52 de menos en julio.
+
+⚠️ **Limitación conocida: los porcentajes NO están congelados por mes.** Los
+inputs sí (viven en `INPUTS EXPENSAS`, un renglón por mes), pero la grilla de
+`AE:AS` se lee **como está hoy**. Si alguien cambia un porcentaje o unos metros
+cuadrados, todos los meses viejos dejan de reproducir de golpe aunque su cobro
+haya estado perfecto.
+
+Pasó el 03/09/2026: los m² de Peak One pasaron de 600 a 750 (el predio, de 1.807
+a 1.957) y los dos meses que estaban en verde se pusieron en rojo en 9 locales
+cada uno, con el total del mes intacto — la marca de que se **redistribuyó**, no
+de que falte plata. Facu confirmó que el cambio rige **de septiembre en
+adelante**, así que julio y agosto quedaron como estaban.
+
+Cómo se lee: si el TOTAL del mes coincide y lo que difiere es el reparto entre
+locales, el problema son los porcentajes, no los inputs. Congelarlos por mes es
+el próximo paso — hoy no está hecho.
 """
 
 import sys
@@ -203,6 +219,14 @@ def main():
         fallados.append(mes)
         print(f"✗ {mes} — {len(difs)} de {len(esperados)} locales no "
               f"reproducen.")
+        # Acá la tolerancia no puede ser el centavo: sobre $14M, redondear 17
+        # locales deja centavos de sobra. Un peso de diferencia sobre el total
+        # ya dice "coincide" cuando el reparto por local difiere en miles.
+        if abs(t_calc - t_real) <= max(1.0, abs(t_real) * 1e-7):
+            print("    OJO: el TOTAL del mes coincide y lo que cambió es el "
+                  "reparto entre locales. Eso es la grilla de porcentajes "
+                  "(AE:AS de Expensas Predio), no los inputs — y los "
+                  "porcentajes NO se congelan por mes. No falta plata.")
         print(f"    total desde los inputs {plata(t_calc)} · se cobró "
               f"{plata(t_real)} · diferencia {plata(t_calc - t_real)}")
         print(f"    {'local':<20}{'recupero calc':>16}{'cobrado':>16}"
