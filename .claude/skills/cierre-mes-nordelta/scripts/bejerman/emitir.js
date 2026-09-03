@@ -88,27 +88,56 @@ const die = async (m, c) => { log('!! ' + m); clearTimeout(wd); if (B) await B.c
   log(`   número: ${nro}`);
 
   // renglón
-  let hay = false;
-  for (let i = 0; i < 3 && !hay; i++) {
+  // OJO: acá había un `waitForTimeout(5000)` fijo y, si el renglón tardaba más,
+  // se volvía a clickear "Agregar" y quedaban DOS. Los dos comparten el id
+  // `itemsConcepts`, así que `getElementById` seguía dando verde y el segundo
+  // renglón vacío se colaba hasta la emisión. Ahora se espera hasta 30s
+  // POLLEANDO, y se cuenta cuántos quedaron.
+  const cuantosRenglones = () => F().evaluate(() => document.querySelectorAll('#itemsConcepts').length);
+  let hay = await cuantosRenglones();
+  for (let i = 0; i < 2 && hay === 0; i++) {
     await F().evaluate(() => { const a=[...document.querySelectorAll('button')].find(e=>e.offsetParent&&(e.innerText||'').trim()==='Agregar'); if(a)a.click(); });
-    await P.waitForTimeout(5000);
-    hay = await F().evaluate(() => !!document.getElementById('itemsConcepts'));
+    for (let t = 0; t < 30 && hay === 0; t++) { await P.waitForTimeout(1000); hay = await cuantosRenglones(); }
   }
-  if (!hay) await die('no pude agregar el renglón', 7);
+  if (hay === 0) await die('no pude agregar el renglón', 7);
+  if (hay > 1) await die(`quedaron ${hay} renglones en el comprobante y sólo va uno. Cancelá el borrador a mano y volvé a correr.`, 15);
   await combo('#itemsConcepts', s.buscaConc, s.pickConc, s.espConc);
 
+  // Las celdas del renglón no tienen id: se toman por posición entre los inputs
+  // visibles SIN id. 0 = descripción, 1 = cantidad, 2 = precio.
+  const celdas = () => F().evaluate(() =>
+    [...document.querySelectorAll('input')].filter(e => e.offsetParent && !e.id).map(e => e.value));
+
+  // 🔴 Vaciar con el setter nativo + `new Event('input')` hace que Angular
+  // RE-RENDERICE el input: el nodo al que se le había hecho focus deja de
+  // existir y los caracteres siguientes se pierden. El precio $8.451.909
+  // quedaba en "9" —el último— y el robot frenaba por total distinto.
+  // Se limpia como lo haría una persona: seleccionar el contenido y borrarlo
+  // con la tecla. Sin eventos sintéticos, sin re-render, el foco sobrevive.
   const celda = async (n, valor) => {
-    await F().evaluate((i) => {
-      const v = [...document.querySelectorAll('input')].filter(e => e.offsetParent && !e.id);
-      const e = v[i]; if (!e) return;
-      e.focus();
-      const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
-      setter.call(e, ''); e.dispatchEvent(new Event('input', { bubbles: true }));
-    }, n);
-    await P.waitForTimeout(600);
-    await P.keyboard.type(String(valor), { delay: 70 });
-    await P.keyboard.press('Tab');
-    await P.waitForTimeout(2500);
+    for (let intento = 1; intento <= 3; intento++) {
+      const ok = await F().evaluate((i) => {
+        const v = [...document.querySelectorAll('input')].filter(e => e.offsetParent && !e.id);
+        const e = v[i]; if (!e) return false;
+        e.focus(); e.setSelectionRange(0, e.value.length); return true;
+      }, n);
+      if (!ok) await die(`no encontré la celda ${n} del renglón`, 16);
+      await P.waitForTimeout(400);
+      await P.keyboard.press('Backspace');
+      await P.waitForTimeout(300);
+      await P.keyboard.type(String(valor), { delay: 70 });
+      await P.waitForTimeout(700);
+      // leer ANTES del Tab: el campo todavía no tiene el formato de miles
+      const crudo = (await celdas())[n];
+      if (crudo === String(valor)) {
+        await P.keyboard.press('Tab');
+        await P.waitForTimeout(2500);
+        return;
+      }
+      log(`   (celda ${n} quedó "${crudo}", esperaba "${valor}" — reintento ${intento})`);
+      await P.waitForTimeout(1500);
+    }
+    await die(`no pude cargar la celda ${n} con "${valor}" en 3 intentos`, 17);
   };
   await celda(0, s.desc);
   await celda(2, s.precio);

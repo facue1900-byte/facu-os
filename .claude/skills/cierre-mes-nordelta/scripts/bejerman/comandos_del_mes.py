@@ -23,6 +23,7 @@ Dos cosas que no se pueden hacer a ojo y por eso se calculan acá:
 """
 
 import sys
+import calendar
 import datetime
 
 sys.path.insert(0, "/Users/Facu/facu-os/execution")
@@ -36,11 +37,21 @@ MESES = {1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio"
 
 # local en CARGOS -> (nombre del cliente en Bejerman, código, alias)
 CLIENTES = {"Fabric": ("SUSHINOR", "000001"), "Bigg": ("RODOLFO SRL", "000002")}
-# concepto en CARGOS -> (código Bejerman, plantilla de descripción, lleva IVA)
+# concepto en CARGOS -> (código, descripción, lleva IVA, tipo de comprobante)
+#
+# 🔴 El recupero NO es una Factura: va como **Nota de Débito**. Se ve en la
+# grilla de Bejerman —los recuperos de julio y agosto salieron como `ND A 0002`—
+# y una ND además **exige el período**, que es un campo distinto del de servicio
+# y hace fallar la emisión si falta. Emitirlo como FC entra igual y queda mal
+# tipificado ante ARCA.
 CONCEPTOS = {
-    "Alquiler": ("015", "Alquiler {mes} {anio}", True),
-    "Recupero de gastos": ("EXE", "Recupero de Gastos {mes} {anio}", False),
-    "Servicios comunes": ("008", "Servicios y Expensas {mes} {anio}", True),
+    "Alquiler": ("015", "Alquiler {mes} {anio}", True, "FC"),
+    "Servicios comunes": ("008", "Servicios y Expensas {mes} {anio}", True, "FC"),
+    "Recupero de gastos": ("EXE", "Recupero de Gastos {mes} {anio}", False, "ND"),
+}
+TIPOS = {
+    "FC": ("FC", "FC - Factura", "Factura"),
+    "ND": ("ND", "ND - Nota de", "Nota de d"),
 }
 
 
@@ -78,8 +89,7 @@ def main():
             encontrado.setdefault((r[1], clave[1]), []).append(
                 (clave[0], float(r[3] or 0)))
 
-    faltan = [(loc, c) for loc in CLIENTES for _, c in
-              [(0, "Alquiler"), (0, "Recupero de gastos"), (0, "Servicios comunes")]
+    faltan = [(loc, c) for loc in CLIENTES for c in CONCEPTOS
               if (loc, c) not in encontrado]
     if faltan:
         sys.exit("FRENO — faltan cargos en CARGOS para " +
@@ -97,21 +107,29 @@ def main():
     total_general = 0.0
     for loc, (busca, codigo) in CLIENTES.items():
         print(f"# ---------- {loc} ({busca}, cliente {codigo}) ----------")
-        for concepto, (conc, plantilla, lleva_iva) in CONCEPTOS.items():
+        for concepto, (conc, plantilla, lleva_iva, tipo) in CONCEPTOS.items():
             periodo, neto = encontrado[(loc, concepto)][0]
             f = datetime.date(*(int(x) for x in periodo.split("-")), 1)
             precio = round(neto)
             total = precio * (1 + IVA) if lleva_iva else float(precio)
             total_general += total
             desc = plantilla.format(mes=MESES[f.month], anio=f.year)
-            print(f"# {concepto}: neto ${neto:,.2f} → precio ${precio:,} · "
+            bt, pt, et = TIPOS[tipo]
+            periodo = ""
+            if tipo == "ND":
+                # El período de una ND es el mes que se está recuperando, entero.
+                ult = calendar.monthrange(f.year, f.month)[1]
+                periodo = (f',"desde":"01/{f.month:02d}/{f.year}",'
+                           f'"hasta":"{ult}/{f.month:02d}/{f.year}"')
+            print(f"# {concepto}: {tipo} · neto ${neto:,.2f} → precio ${precio:,} · "
                   f"{'IVA 21%' if lleva_iva else 'EXENTO'} → total ${total:,.2f}")
             print("node emitir.js '" + (
                 '{"buscaCli":"%s","pickCli":"%s","espCli":"%s",'
-                '"buscaTipo":"FC","pickTipo":"FC - Factura","espTipo":"Factura",'
+                '"buscaTipo":"%s","pickTipo":"%s","espTipo":"%s",'
                 '"buscaConc":"%s","pickConc":"%s","espConc":"%s",'
-                '"desc":"%s","precio":"%d","total":"%s"}'
-            ) % (busca, codigo, busca, conc, conc, conc, desc, precio, ar(total))
+                '"desc":"%s","precio":"%d","total":"%s"%s}'
+            ) % (busca, codigo, busca, bt, pt, et, conc, conc, conc,
+                 desc, precio, ar(total), periodo)
                   + "'")
             print()
     print(f"# TOTAL de los 6 comprobantes: ${total_general:,.2f}")
