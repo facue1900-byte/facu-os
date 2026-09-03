@@ -3529,3 +3529,41 @@ apagarlo no arregla nada: esconde la diferencia entre lo que la empresa promete 
 software hace. **Cuando dos detectores dicen lo opuesto del mismo caso, uno de los dos está
 leyendo una regla que el otro no implementa — y esa contradicción es el hallazgo, no el
 ruido.**
+
+---
+
+## 03/09/2026 — Una fórmula que arrastra "lo que quedó" arrastra también lo que no es suyo
+
+Facu: *"todas las cuentas corrientes están bien menos la de BiG, que tiene efectivo de
+más"*. El cartucho `Efectivo` de la cuenta corriente de Bigg decía **$6.128.483** donde
+el efectivo real es **$2.591.035**.
+
+La fórmula era `=F64-G60`: la *Diferencia Alquiler (sin iva)* del mes **más el saldo que
+quedó impago del bloque anterior**. Ese patrón se venía copiando desde marzo y había dado
+bien **seis bloques seguidos** — porque Bigg siempre pagaba el bloque completo y el saldo
+previo llegaba en cero. En septiembre no: quedaron $4.099.179 de agosto sin pagar, y ahí
+adentro había **$3.537.447 de banco** (alquiler, IVA, recupero, servicios comunes). La
+fórmula no distingue: arrastra el saldo, y el saldo mezcla los dos medios.
+
+**Una fórmula que nunca falló porque su caso malo nunca ocurrió no está validada: está sin
+estrenar.** El día que el supuesto implícito ("el bloque anterior se paga entero") deja de
+valer, no falla — devuelve un número plausible.
+
+El invariante que lo agarra no es el que ya teníamos. Para los locales 100% efectivo
+(Boss, Volta, Peak One) el chequeo es "deuda en efectivo = saldo de la pestaña", y por eso
+Bigg —el único partido entre banco y efectivo— quedaba afuera de toda verificación. El que
+sirve para él: **efectivo + banco = saldo**. Con el número corregido da $9.850.409 contra
+un saldo de −9.850.410; con el viejo daba $13.387.857.
+
+Dos hallazgos de arrastre:
+
+1. 🚨 **`deuda_efectivo.py` sub-declara $812.444 de Bigg**, y es el número que Mati ve en
+   `/caja` para salir a cobrar. Cuenta como efectivo sólo la `Diferencia Alquiler`, pero en
+   febrero el recupero y los servicios comunes ($1.081.486) se pagaron en mano; y el pago
+   «a favor (error de expensas)» de $269.041 no lleva medio y se cuenta como banco — aviso
+   que el propio script viene imprimiendo desde agosto y que nadie levantó. **Queda abierto:
+   define un criterio de negocio, no es un bug de código.**
+2. 📄 **Una nota de celda sale impresa en el PDF.** Una sesión anterior dejó un `SUMIF` en
+   `Bigg!H64` con una nota explicándolo; Sheets imprime las notas al pie y el export pasó a
+   salir en dos páginas, cortando `capturas_ctas_ctes.py`. En una pestaña que se exporta
+   hacia un tercero no van notas de celda.
