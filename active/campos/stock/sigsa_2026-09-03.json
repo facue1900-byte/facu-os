@@ -1,23 +1,42 @@
 {
   "fecha": "2026-09-03",
+  "hora_lectura": "17:00 aprox",
   "fuente": "SIGSA — Existencias > Historico > Stock a determinada fecha",
   "titular": "SUCESORES DE RICARDO A ESTEVEZ (30-71025631-0)",
+  "nota": "Lectura POSTERIOR al traslado de 155 vacas Victorina->Sabalo y al cambio de categoria de 40 terneras a vaquillonas en La Victorina.",
   "campos": [
-    {
-      "campo": "Victorina",
-      "establecimiento": "LA VICTORINA",
-      "renspa": "05.023.0.00178/00",
-      "captura": "~/Desktop/Chaco/Stock/stock_LA_VICTORINA_03092026.jpg",
-      "bovinos": {"Vaca": 1505, "Toro": 39, "Novillo": null, "Novillito": 0, "Vaquillona": 120, "Ternera": 40, "Ternero": 35, "Torito/MEJ": 10},
-      "otros": {"Yegua": 2}
-    },
-    {
-      "campo": "Magdalena",
-      "establecimiento": "LA MAGDALENA",
-      "renspa": "05.023.0.00195/00",
-      "captura": "~/Desktop/Chaco/Stock/stock_LA_MAGDALENA_03092026.jpg",
-      "bovinos": {"Vaca": 1028, "Toro": 43, "Novillo": null, "Novillito": 76, "Vaquillona": 294, "Ternera": 0, "Ternero": 0, "Torito/MEJ": 4},
-      "otros": {"Chivo": 0, "Cabra": 0, "Padrillo": 1, "Caballo": 5, "Yegua": 15, "Potrillo/a": 11, "Novillito (bubalino)": 0}
-    }
+    {"campo":"Victorina","establecimiento":"LA VICTORINA","renspa":"05.023.0.00178/00",
+     "bovinos":{"Vaca":1350,"Toro":39,"Novillo":0,"Novillito":0,"Vaquillona":160,"Ternera":0,"Ternero":35,"Torito/MEJ":10},
+     "otros":{"Yegua":2}},
+    {"campo":"Magdalena","establecimiento":"LA MAGDALENA","renspa":"05.023.0.00195/00",
+     "bovinos":{"Vaca":1028,"Toro":43,"Novillo":0,"Novillito":76,"Vaquillona":294,"Ternera":0,"Ternero":0,"Torito/MEJ":4},
+     "otros":{"Padrillo":1,"Caballo":5,"Yegua":15,"Potrillo/a":11}},
+    {"campo":"Camila","establecimiento":"LA CAMILA","renspa":"05.023.0.00198/00",
+     "bovinos":{"Vaca":0,"Toro":3,"Novillo":223,"Novillito":907,"Vaquillona":0,"Ternera":0,"Ternero":81,"Torito/MEJ":0},
+     "otros":{"Padrillo":2,"Caballo":41,"Yegua":23,"Potrillo/a":10}},
+    {"campo":"Sabalo","establecimiento":"EL SABALO","renspa":"05.023.0.00118/00",
+     "bovinos":{"Vaca":562,"Toro":13,"Novillo":0,"Novillito":0,"Vaquillona":60,"Ternera":24,"Ternero":2,"Torito/MEJ":0},
+     "otros":{"Caballo":5,"Yegua":8,"Potrillo/a":3}},
+    {"campo":"Patroncito","establecimiento":"EL PATRONCITO","renspa":"05.023.0.00196/00",
+     "bovinos":{"Vaca":1311,"Toro":0,"Novillo":0,"Novillito":2,"Vaquillona":10,"Ternera":70,"Ternero":0,"Torito/MEJ":0},
+     "otros":{}},
+    {"campo":"Cañada Rica","establecimiento":"CAÑADA RICA","renspa":"05.023.0.00009/00",
+     "bovinos":{"Vaca":512,"Toro":30,"Novillo":0,"Novillito":0,"Vaquillona":1,"Ternera":8,"Ternero":12,"Torito/MEJ":19},
+     "otros":{"Chivo":2,"Cabra":47,"Cabrillas/Chivitos":4,"Padrillo":1,"Caballo":2,"Yegua":24,"Potrillo/a":12}},
+    {"campo":"Fortin Cocherek","establecimiento":"FORTIN COCHERECK","renspa":"05.023.0.00010/00",
+     "bovinos":{"Vaca":425,"Toro":1,"Novillo":0,"Novillito":0,"Vaquillona":0,"Ternera":15,"Ternero":19,"Torito/MEJ":0},
+     "otros":{"Padrillo":1,"Caballo":9,"Yegua":20,"Potrillo/a":3}},
+    {"campo":"Horquilla","establecimiento":"LA HORQUILLA","renspa":"05.023.0.00231/00",
+     "bovinos":{"Vaca":490,"Toro":24,"Novillo":0,"Novillito":0,"Vaquillona":12,"Ternera":42,"Ternero":8,"Torito/MEJ":6},
+     "otros":{"Padrillo":1,"Caballo":8,"Yegua":7,"Potrillo/a":9}},
+    {"campo":"Galicia","establecimiento":"EL GALICIA","renspa":"05.023.0.00192/00",
+     "bovinos":{"Vaca":0,"Toro":0,"Novillo":0,"Novillito":682,"Vaquillona":0,"Ternera":0,"Ternero":0,"Torito/MEJ":0},
+     "otros":{}},
+    {"campo":"Colmena","establecimiento":"EL COLMENA","renspa":"05.023.0.00181/00",
+     "bovinos":{"Vaca":0,"Toro":0,"Novillo":0,"Novillito":545,"Vaquillona":0,"Ternera":0,"Ternero":0,"Torito/MEJ":0},
+     "otros":{"Caballo":3,"Yegua":2}},
+    {"campo":"Facundo","establecimiento":"EL FACUNDO","renspa":"05.023.0.00197/00",
+     "bovinos":{"Vaca":350,"Toro":26,"Novillo":0,"Novillito":0,"Vaquillona":2,"Ternera":35,"Ternero":35,"Torito/MEJ":0},
+     "otros":{}}
   ]
 }
