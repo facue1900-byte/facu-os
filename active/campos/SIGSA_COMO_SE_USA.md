@@ -188,3 +188,36 @@ Resumen administrativo.
   se **registra el arribo** para cerrar un DT-e. En `Consultar movimientos` los DT-e vigentes
   tienen dos íconos en Acciones (un ojo y una flecha) que todavía no se probaron.
 - **Cómo se declara una caravana** en `Nueva Declaración`, y de dónde salen los números.
+
+## La boleta de pago de un DT-e (aprendido el 03/09/2026)
+
+**Emitir el DT-e no genera la boleta.** Queda `Código SIGAD: SIN PAGO` en *Resumen
+administrativo* y no hay PDF que mandar. Se genera con el botón **Pagar** del DT-e.
+
+> ⚠️ El modal «Pagar movimiento» abre con **«Débito CBU» preseleccionado**, y eso
+> **debita la plata de la cuenta**. Cambiar *Medio de pago* a **«Boleta»** (la tercera
+> opción es Interbanking): ahí desaparece el campo CBU y sólo emite el cupón impago.
+> Richi confirmó «Boleta» como la opción correcta.
+
+El select nativo no responde al teclado del navegador (Enter cierra el modal): se cambia
+por DOM, seteando `value` y disparando un evento `change`.
+
+**Reimprimir una boleta ya emitida:** `Administración → Consultar Pagos` → buscar por
+Código SIGAD → ojo → **Imprimir**. La pantalla del pago muestra también «La boleta aún no
+está paga» y el botón rojo **Anular**, que no se toca.
+
+**Bajar el PDF lo tiene que hacer Facu**: las descargas desde la pestaña que maneja
+Claude no llegan al disco (probado con el botón del visor, `<a download>` y fetch —
+`/sigsa/reportePdf` devuelve **500** fuera del iframe y se sirve una sola vez). Chrome lo
+guarda en la última carpeta usada; para encontrarlo, mirar la tabla `downloads` de
+`~/Library/Application Support/Google/Chrome/Default/History`.
+
+**Para adjuntarlo en WhatsApp Web el nombre no puede llevar `:`**: con `(03:09:2026)`
+contesta *"1 file you tried adding is not supported"* y descarta el adjunto. Se manda una
+copia con guiones; el original conserva la nomenclatura de la carpeta.
+
+### Ejemplo real — DT-e 032517913-9
+
+1 toro + 35 novillitos, La Victorina → La Camila, emitido 03/09/2026 18:37, vence
+**07/09/2026**. Boleta N° **69124868** (O. de Pago 48605346): SA007-B $12.056,40 +
+SA013 $404,17 = **$12.460,57**, impaga. Mandada a Richi el 03/09 a las 20:09.
