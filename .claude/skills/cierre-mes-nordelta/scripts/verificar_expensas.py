@@ -102,14 +102,26 @@ def porcentajes(s):
 def inputs_por_mes(s):
     """{'AAAA-MM': {concepto: valor o None}} desde INPUTS EXPENSAS."""
     v = s.spreadsheets().values().get(
-        spreadsheetId=MASTER_PLAN, range="'INPUTS EXPENSAS'!A3:O40",
+        spreadsheetId=MASTER_PLAN, range="'INPUTS EXPENSAS'!A1:P40",
         valueRenderOption="UNFORMATTED_VALUE").execute().get("values", [])
-    hdr = [str(x).strip() for x in v[0]]
+    # La fila de encabezados se BUSCA en vez de hardcodearse: la hoja tiene
+    # arriba un título y una leyenda, y si alguien agrega un renglón de texto
+    # un índice fijo lee la fila equivocada y no falla, sólo da otra cosa.
+    hdr = None
+    for i, fila in enumerate(v):
+        if fila and str(fila[0]).strip() == "Período":
+            hdr = [str(x).strip() for x in fila]
+            v = v[i:]
+            break
+    if hdr is None:
+        sys.exit("No encontré la fila de encabezados ('Período') en INPUTS EXPENSAS.")
     out = {}
     for fila in v[1:]:
         fila = list(fila) + [""] * len(hdr)
-        if not fila[0]:
-            continue
+        # La tabla de meses termina donde arranca el bloque de reparto por
+        # local: la primera fila cuyo período no es una fecha corta la lectura.
+        if num(fila[0]) is None:
+            break
         f = desde_serial(fila[0])
         out[f"{f.year}-{f.month:02d}"] = {
             c: num(fila[hdr.index(c)]) for c, _, _ in RECUPERO + SERVICIOS
