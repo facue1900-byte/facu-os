@@ -209,7 +209,13 @@ def main():
         # el bloque que se cobra ahora es todo lo que hay DEBAJO del último pago
         ult_pago = max((i for i, r in enumerate(vals, 1)
                         if i >= 6 and len(r) > cin and num(r[cin])), default=5)
-        cargos = pagos = del_mes = 0.0
+        # El pendiente en efectivo se camina EN ORDEN, no como cargos-menos-pagos:
+        # un pago en efectivo cancela primero lo que se debe en efectivo, y lo que
+        # sobra fue a cancelar cargos de banco (Bigg, marzo-26: $2.831.486 en mano
+        # pagaron la Diferencia Alquiler Y el recupero + servicios comunes de
+        # febrero). Restar los totales le regala a Bigg ese excedente para siempre:
+        # daba $1.778.591 donde la deuda verificada es $2.591.035.
+        pend = del_mes = 0.0
         for i, r in enumerate(vals, 1):
             r = r + [""] * 10
             if i < 6:
@@ -217,17 +223,26 @@ def main():
             det, eg, ing = str(r[cd]).strip(), num(r[ceg]), num(r[cin])
             if eg:                                            # CARGO
                 if medio_del_cargo(cobra, det) == "efectivo":
-                    cargos += eg
+                    pend += eg
                     if i > ult_pago:
                         del_mes += eg
             elif ing:                                         # PAGO
                 m = medio_del_pago(r, cd)
-                if m == "efectivo" or (m is None and cobra == "efectivo"):
-                    pagos += ing
-                elif m is None and cobra == "mixto":
+                if m == "banco" or cobra == "banco":
+                    continue      # Fabric no paga nada en mano: nada que descontar
+                if m is None and cobra == "mixto":
+                    # Un pago sin medio se imputa a lo que se debe en mano, que es
+                    # como Facu lo tiene escrito en el cartucho de la pestaña (el
+                    # «a favor (error de expensas)» de $269.041 de julio-26).
                     avisos.append(f"{tab} f{i}: pago de ${ing:,.2f} sin medio "
-                                  f"({det!r}) — se contó como banco")
-        total = round(cargos - pagos, 2)
+                                  f"({det!r}) — se imputó al efectivo")
+                pend -= ing
+                # Sólo en un local partido el excedente se va a cargos de banco. En
+                # uno 100% efectivo no hay dónde derramar: el negativo es un saldo
+                # a favor real y tiene que seguir dando el saldo de la pestaña.
+                if cobra == "mixto":
+                    pend = max(0.0, pend)
+        total = round(pend, 2)
         locales.append({
             "nombre": ROTULO.get(tab, tab),
             "origen": origen_app(ROTULO.get(tab, tab), avisos),

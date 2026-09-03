@@ -3567,3 +3567,52 @@ Dos hallazgos de arrastre:
    `Bigg!H64` con una nota explicándolo; Sheets imprime las notas al pie y el export pasó a
    salir en dos páginas, cortando `capturas_ctas_ctes.py`. En una pestaña que se exporta
    hacia un tercero no van notas de celda.
+
+## 03/09/2026 — Restar totales no es imputar pagos
+
+Corregido `deuda_efectivo.py`, que es el número con el que Mati sale a cobrar. Para Bigg
+—el único local partido entre banco y efectivo— calculaba **Σ cargos en efectivo − Σ pagos
+en efectivo**. Daba $1.778.591 donde la deuda verificada es **$2.591.035**: le regalaba
+**$812.444**.
+
+La resta de totales asume que cada peso pagado en efectivo canceló un cargo de efectivo, y
+eso no pasó: en marzo-26 Bigg pagó $2.831.486 en mano, y con eso canceló su *Diferencia
+Alquiler* **más** el recupero y los servicios comunes de febrero ($1.081.486), que son
+cargos de banco. Ese excedente quedó descontado del efectivo para siempre.
+
+Ahora el pendiente se camina **en orden**: un pago en efectivo cancela primero lo que se
+debe en mano, y **lo que sobra se derrama a los cargos de banco** (`pend = max(0, pend −
+ing)`). El derrame corre sólo en locales `mixto`: en uno 100% efectivo un negativo es un
+saldo a favor real, y taparlo con un `max(0, …)` rompía el invariante de que su deuda tiene
+que dar el saldo de la pestaña.
+
+**El algoritmo reproduce los siete cartuchos «Efectivo» que Facu escribió a mano** en la
+pestaña de Bigg, bloque por bloque (0 · 100.000 · 0 · 0 · 1.345 · 561.732 · 2.591.035). Esa
+es la validación: no es una fórmula nueva, es la que él viene aplicando.
+
+Dos cosas que se llevó puestas el cambio y hay que recordar:
+
+1. **Un local 100% banco no descuenta nada.** La primera versión restaba los pagos sin
+   medio de cualquier local y Fabric pasó de $0 a **−$44,4M**. Se ve enseguida porque es
+   absurdo, pero el mismo error en un local chico pasa desapercibido.
+2. **El aviso cambió de sentido.** El pago «a favor (error de expensas)» de $269.041 no
+   lleva medio; antes se contaba como banco y ahora se imputa al efectivo, que es como Facu
+   lo tenía en su cartucho de agosto. Sigue avisando en cada corrida.
+
+## 03/09/2026 — Un detalle que no cuadra con lo cobrado es peor que no mandar nada
+
+Nuevo `detalle_expensas.py`: el desglose de expensas de cada local en PNG, para WhatsApp.
+Sale del bloque **CONGELADO** del mes en `Expensas Predio`, nunca del bloque vivo de arriba,
+que se recalcula al cambiar `A3` y ya no coincide con lo cobrado.
+
+Antes de escribir un solo archivo compara, local por local, el «Rec. de Gastos Total» y el
+«Servicios comunes Total» contra los cargos `Recupero de gastos` y `Servicios comunes` de su
+pestaña de cuenta corriente. **Si uno no cierra al peso, frena y no genera nada.** Los cinco
+cerraron a la primera. Mandarle a un locatario un desglose que no suma lo que se le cobró es
+peor que no mandarle nada: obliga a discutir dos números en vez de cobrar uno.
+
+Detalle de implementación que costó un rato: la fila de encabezado del bloque congelado es
+una **fecha**, así que con `UNFORMATTED_VALUE` no matchea ningún texto de mes. Van las dos
+lecturas: rótulos con `FORMATTED_VALUE`, montos con `UNFORMATTED_VALUE`. Parsear los montos
+formateados es peor todavía — vienen en formato US (`$483,596`) y un parser argentino los
+lee como $483,60.
