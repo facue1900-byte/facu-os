@@ -156,6 +156,32 @@ página era la nuestra. El origen sí lista sólo los propios, y por eso engaña
 > Elegir el homónimo equivocado manda la hacienda al RENSPA de un desconocido, en una
 > declaración jurada.
 
+### El rodeo a las caravanas: pasarlos a novillitos primero
+
+Silvio, 03/09/2026: *"Tenés que pasar a novillitos primero y trasladar novillitos"* ·
+*"Hacé cambio de categoría y después trasladá"*. **Funciona**: el control de
+identificación electrónica es **sólo para terneros/as**, así que una novedad de
+`Cambio de categoría` **Ternero → Novillito** destraba el traslado.
+
+Hecho ese día: novedad `004906728` (35 terneros → novillitos en La Victorina) y después
+el DT-e **032517913-9**, 1 toro + 35 novillitos Victorina → La Camila.
+
+### Páginas 3 a 5 y la emisión
+
+| Paso | Qué pide |
+|---|---|
+| **Datos Específicos** | Consignatario ONCCA, razas (Europeos/Lecheros/Índicos-Cebuinas/Cruzas) y TRI. **Todo opcional**: pasa vacío |
+| **Datos de transporte** | Fechas (vienen solas), **Tipo de transporte — el ÚNICO obligatorio**, y empresa, CUIT, chofer, marca, patentes y precintos, que pasan vacíos |
+| **Resumen** | Origen, destino, vacunación y animales movidos. Botón **Guardar y Emitir** |
+| **DT-e emitido** | Nº, estado VIGENTE, vencimiento y **fecha caduca** (una semana más que el vencimiento) |
+
+> **Tipo de transporte: siempre «Camión»** (regla de Facu). No existe opción de arreo a pie.
+
+En la pantalla del DT-e emitido hay: **Emitir Guía Provincial** (el aviso rojo la pide),
+`Constancias` (sin arribo · de cierre · de anulación de cierre), **Pagar**, Copiar
+Movimiento, Eliminar y Cerrar. Y los paneles Caravanas · Datos Transporte ·
+Resumen administrativo.
+
 ## Pendiente de aprender
 
 - **La página 3 en adelante del alta** (transporte, emisión y la pantalla de pagar), y cómo
