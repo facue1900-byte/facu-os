@@ -120,7 +120,45 @@ Columnas: DTe · Origen · Destino · Tipo · **Estado** · Emisión · Carga ·
 
 **Un DT-e vigente vence a los 4 días de emitido.**
 
+### Páginas 2 y 3, y el freno de las caravanas (03/09/2026)
+
+**Página 2 — Stock.** Tabla `Especie · Categoría · Cuenta Corriente · Cantidad a mover`,
+una fila por categoría con existencia. Se escribe cuánto de cada una. Abajo:
+`Seleccionar A.Estratégica` · `Cargar novedad` · `Volver` · `Siguiente`.
+
+Al pasar de la página 1 salta una **Advertencia**: desde el **03/08/2026** SIGSA exige
+identificación electrónica para mover **terneros/as**.
+
+🚫 **Y no es un aviso: es una pared.** Al apretar Siguiente en la página 2 con 35
+terneros cargados, SIGSA cortó con
+
+> *"El origen no posee suficientes caravanas declaradas para los terneros/as que intenta
+> mover. Debe declarar las caravanas antes de emitir."*
+
+**No se puede emitir un DT-e con terneros hasta declarar sus caravanas**, en
+`Existencias → Dispositivos de Identificación → Nueva Declaración`. Ese submenú tiene
+además `Nueva Reidentificación`, `Nuevos Microchips`, `Dispositivos declarados`
+(consulta, con `Exportar Dispositivos`), `Trazabilidad individual` y
+`Consultar cambios de radicación`.
+
+**Declarar caravanas necesita los números físicos de las caravanas**, que salen del
+campo. No es un dato que esté en ningún archivo de la Mac.
+
+### ⚠️ El destino no filtra por titular
+
+Buscar el destino por nombre trae **los establecimientos homónimos de todo el país**:
+«CAMILA» devolvió La Camila de Rueda, de Mariotto, de González… y ninguna de la primera
+página era la nuestra. El origen sí lista sólo los propios, y por eso engaña.
+
+**Se busca por `Cod. estab.`**, que acepta los dígitos de corrido y los enmascara solo
+(`05023000198` → `05.023.0.00198`). El campo `Titular` no retiene lo que se tipea.
+
+> Elegir el homónimo equivocado manda la hacienda al RENSPA de un desconocido, en una
+> declaración jurada.
+
 ## Pendiente de aprender
 
-- **Las páginas 2 en adelante del alta de un movimiento**, y cómo se **registra el arribo**
-  para cerrar un DT-e. Facu lo va a mostrar con una guía real.
+- **La página 3 en adelante del alta** (transporte, emisión y la pantalla de pagar), y cómo
+  se **registra el arribo** para cerrar un DT-e. En `Consultar movimientos` los DT-e vigentes
+  tienen dos íconos en Acciones (un ojo y una flecha) que todavía no se probaron.
+- **Cómo se declara una caravana** en `Nueva Declaración`, y de dónde salen los números.
