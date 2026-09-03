@@ -153,3 +153,27 @@ Correr `node grabar.js /tmp/registro.log`, pedirle a Facu que haga **un** compro
 mano, y leer el log. Registra cada click con el id del elemento y cada campo con su valor,
 en todos los frames y todas las pestañas. Es lo que destrabó el bug de las Notas de Débito
 después de tres emisiones fallidas.
+
+## Paso 5 — mandarlos por mail (desde Bejerman, no desde Gmail)
+
+Facu, 03/09/2026: *"se manda desde Bejerman: Ventas → Facturación → Enviar, ponés
+las facturas y se manda automático a cada uno"*. Bejerman ya tiene el mail de cada
+cliente, así que no hay que saberlo ni armar nada en Gmail.
+
+```bash
+# primero mirar, después mandar
+node $B/enviar_mail.js 03/09/2026 "FC A 0002 00000013" "FC A 0002 00000014" "ND A 0002 00000008" \
+                                  "FC A 0002 00000015" "FC A 0002 00000016" "ND A 0002 00000009"
+node $B/enviar_mail.js 03/09/2026 ... --enviar
+```
+
+Filtra por **fecha de ingreso** desde/hasta, tilda **sólo** los comprobantes
+pedidos (frena si falta alguno), tilda **"Agrupar por cliente"** (un mail por
+local con todos sus comprobantes) y confirma los dos modales. El resultado
+esperado es el alert «Se han enviado N correos con sus correspondientes
+comprobantes», con N = cantidad de clientes. El asunto por defecto de Bejerman
+es «Comprobantes Electrónicos»; el script pone `ASUNTO` (env) o
+«Paseo Nordelta - Comprobantes».
+
+La grilla es Wijmo: el checkbox vive en otra columna que la fila y **sólo se
+empareja bien por posición real en pantalla** (detalle en el header del script).
