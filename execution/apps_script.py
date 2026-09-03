@@ -38,7 +38,10 @@ SCOPES = [
 ]
 
 
-def credenciales():
+def credenciales(forzar_navegador=False):
+    """`forzar_navegador` sólo lo manda `--setup`, que ES el pedido de autorizar.
+    Sin eso no se abre el navegador nunca: un `run_local_server()` disparado desde
+    launchd no falla, se queda esperando un click que no llega, con el log vacío."""
     creds = None
     if TOKEN.exists():
         creds = Credentials.from_authorized_user_file(str(TOKEN), SCOPES)
@@ -47,7 +50,7 @@ def credenciales():
     if creds and creds.expired and creds.refresh_token:
         creds.refresh(Request())
     else:
-        if not sys.stdin.isatty():
+        if not (forzar_navegador or sys.stdin.isatty()):
             sys.exit("Falta autorizar: corré  apps_script.py --setup  desde una terminal.")
         creds = InstalledAppFlow.from_client_secrets_file(
             str(CREDENCIALES), SCOPES).run_local_server(port=0)
@@ -122,7 +125,7 @@ def push(script_id, archivo, nombre=None, descripcion="actualizado desde facu-os
 def main():
     args = sys.argv[1:]
     if not args or args[0] == "--setup":
-        credenciales()
+        credenciales(forzar_navegador=True)
         print(f"OK — autorizado. Token en {TOKEN}")
         return
     if args[0] == "--ver":
