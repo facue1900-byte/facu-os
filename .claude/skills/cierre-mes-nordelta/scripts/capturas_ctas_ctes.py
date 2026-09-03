@@ -11,10 +11,12 @@ los pagos que hizo, lo que se le cobra y el TOTAL al costado**. Se guarda en
 
 Sin navegador: se exporta la pestaña a PDF con el token de `google_auth`
 (`…/export?format=pdf&gid=&range=`) y se rasteriza con PyMuPDF. Sale idéntico a
-la planilla. Se exportan DOS rangos y se apilan: el encabezado `A1:H5` y el
-bloque del mes, que arranca en la primera fila de pago posterior al cartucho
-del bloque anterior (así se ven los pagos que cerraron ese bloque) y termina en
-el último renglón con datos.
+la planilla. Se exporta UN solo rango: el bloque del mes, que arranca en la
+primera fila de pago posterior al cartucho del bloque anterior (así se ven los
+pagos que cerraron ese bloque) y termina en el último renglón con datos. **El
+encabezado (CTA CTE — LOCAL, Rubro, CUIT, la fila azul) viene solo**: son las
+filas congeladas de la pestaña y Sheets las repite en cada export. Apilarle
+encima `A1:H5` lo duplicaba — pasó el 03/09/2026.
 
 Google contesta 429 si las exportaciones van seguidas: 4 s entre una y otra, y
 reintento con espera creciente. Nunca pisa una captura existente.
@@ -83,18 +85,27 @@ def exportar(token, gid, rango, dpi=200):
 
 
 def rango_del_bloque(filas, col_total):
-    """Desde el primer pago después del cartucho anterior hasta la última fila con datos."""
-    ct = ord(col_total) - 65
-    ult = max(i for i, r in enumerate(filas, 1) if any(str(c).strip() for c in (list(r) + [""])[:6]))
-    # cartuchos: filas con algo en la columna del total (TOTAL, Efectivo, Banco, o la fórmula)
-    cartuchos = [i for i, r in enumerate(filas, 1) if len(r) > ct and str(r[ct]).strip()]
-    anteriores = [i for i in cartuchos if i < ult - 1]
-    if not anteriores:
-        return 6, ult
-    fin_anterior = max(anteriores)
-    # el primer pago (fecha en A) después de ese cartucho; si no hay, arranca ahí
-    ini = next((i for i in range(fin_anterior + 1, ult + 1)
-                if serial_a_fecha((list(filas[i - 1]) + [""])[0])), fin_anterior - 1)
+    """Desde el primer pago que cerró el bloque anterior hasta el último cargo.
+
+    Se lee la estructura, no los cartuchos: desde el final hacia arriba, primero
+    los CARGOS del bloque corriente (filas con etiqueta de mes en A, sin fecha) y
+    después los PAGOS que los preceden (filas con fecha en A). Buscar «el último
+    cartucho» fallaba en Bigg, cuyo cartucho tiene cuatro celdas y quedaba
+    adentro del propio bloque.
+    """
+    def con_dato(r):
+        r = list(r) + [""] * 3
+        return bool(str(r[0]).strip() or str(r[2]).strip())   # A o Detalle, NO el saldo:
+    # la columna de saldo arrastra la fórmula cientos de filas hacia abajo (Volta llegaba a la 337)
+    ult = max(i for i, r in enumerate(filas, 1) if con_dato(r))
+    es_pago = lambda i: serial_a_fecha((list(filas[i - 1]) + [""])[0]) is not None
+    i = ult
+    while i > 6 and not es_pago(i):
+        i -= 1
+    fin_pagos = i
+    while i > 6 and es_pago(i):
+        i -= 1
+    ini = i + 1 if fin_pagos > 6 else 6
     return ini, ult
 
 
@@ -122,7 +133,7 @@ def main():
             rangos = [f"A1:G{ult}"]
         else:
             ini, ult = rango_del_bloque(filas, col_total)
-            rangos = ["A1:H5", f"A{ini}:H{ult}"]
+            rangos = [f"A{ini}:H{ult}"]   # las filas congeladas 1-5 vienen solas
         partes = []
         for rg in rangos:
             partes.append(exportar(cr.token, gids[tab], rg))
