@@ -1,0 +1,23 @@
+{
+  "fecha": "2026-09-03",
+  "fuente": "SIGSA — Existencias > Historico > Stock a determinada fecha",
+  "titular": "SUCESORES DE RICARDO A ESTEVEZ (30-71025631-0)",
+  "campos": [
+    {
+      "campo": "Victorina",
+      "establecimiento": "LA VICTORINA",
+      "renspa": "05.023.0.00178/00",
+      "captura": "~/Desktop/Chaco/Stock/stock_LA_VICTORINA_03092026.jpg",
+      "bovinos": {"Vaca": 1505, "Toro": 39, "Novillo": null, "Novillito": 0, "Vaquillona": 120, "Ternera": 40, "Ternero": 35, "Torito/MEJ": 10},
+      "otros": {"Yegua": 2}
+    },
+    {
+      "campo": "Magdalena",
+      "establecimiento": "LA MAGDALENA",
+      "renspa": "05.023.0.00195/00",
+      "captura": "~/Desktop/Chaco/Stock/stock_LA_MAGDALENA_03092026.jpg",
+      "bovinos": {"Vaca": 1028, "Toro": 43, "Novillo": null, "Novillito": 76, "Vaquillona": 294, "Ternera": 0, "Ternero": 0, "Torito/MEJ": 4},
+      "otros": {"Chivo": 0, "Cabra": 0, "Padrillo": 1, "Caballo": 5, "Yegua": 15, "Potrillo/a": 11, "Novillito (bubalino)": 0}
+    }
+  ]
+}
