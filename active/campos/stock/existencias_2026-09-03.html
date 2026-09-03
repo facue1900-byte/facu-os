@@ -1,0 +1,314 @@
+<title>Existencias Chaco al 3/9</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#F2F4F0; --surface:#FBFCFA; --ink:#191E19; --muted:#666E64;
+    --line:#D6DBD2; --line-soft:#E4E8E0;
+    --ok:#2E6B4A; --ok-bg:#E3EDE6;
+    --warn:#8C5F0D; --warn-bg:#F3EBDA;
+    --bad:#93332A; --bad-bg:#F5E3E0;
+    --display:"Bitter",Georgia,"Times New Roman",serif;
+    --body:"Source Sans 3","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#141713; --surface:#1C201B; --ink:#E7EBE4; --muted:#98A093;
+      --line:#2E342C; --line-soft:#242A23;
+      --ok:#7CBE97; --ok-bg:#1D2E24;
+      --warn:#D6A33F; --warn-bg:#31281450;
+      --bad:#E58A80; --bad-bg:#33201D;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#141713; --surface:#1C201B; --ink:#E7EBE4; --muted:#98A093;
+    --line:#2E342C; --line-soft:#242A23;
+    --ok:#7CBE97; --ok-bg:#1D2E24;
+    --warn:#D6A33F; --warn-bg:#31281450;
+    --bad:#E58A80; --bad-bg:#33201D;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:var(--body); font-size:16px; line-height:1.55;
+    margin:0; padding:0 18px 72px;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:720px; margin:0 auto}
+
+  /* ---- encabezado ---- */
+  header{padding:34px 0 22px; border-bottom:2px solid var(--ink)}
+  .eyebrow{
+    font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted); margin:0 0 10px;
+  }
+  h1{
+    font-family:var(--display); font-weight:700; font-size:clamp(28px,7vw,40px);
+    line-height:1.1; margin:0; text-wrap:balance; letter-spacing:-.01em;
+  }
+  .sub{margin:12px 0 0; color:var(--muted); font-size:15px; max-width:56ch}
+
+  /* ---- cifras de cabecera ---- */
+  .cifras{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:1px; background:var(--line); border:1px solid var(--line);
+    margin:26px 0 0;
+  }
+  .cifra{background:var(--surface); padding:14px 16px}
+  .cifra dt{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--muted); margin:0 0 4px;
+  }
+  .cifra dd{
+    margin:0; font-family:var(--display); font-weight:600; font-size:26px;
+    font-variant-numeric:tabular-nums; line-height:1.15;
+  }
+  .cifra dd small{font-family:var(--body); font-size:13px; font-weight:400; color:var(--muted)}
+
+  /* ---- secciones ---- */
+  section{padding:34px 0 0}
+  h2{
+    font-family:var(--display); font-weight:600; font-size:20px;
+    margin:0 0 4px; letter-spacing:-.005em;
+  }
+  .lede{color:var(--muted); font-size:14.5px; margin:0 0 18px; max-width:62ch}
+  p{max-width:62ch}
+
+  /* ---- el hallazgo ---- */
+  .hallazgo{
+    background:var(--surface); border:1px solid var(--line);
+    border-left:4px solid var(--ok); padding:18px 20px; margin:0 0 4px;
+  }
+  .hallazgo p{margin:0 0 10px}
+  .hallazgo p:last-child{margin:0}
+  .archivo{
+    font-family:var(--mono); font-size:12.5px; background:var(--ground);
+    border:1px solid var(--line-soft); padding:3px 7px; display:inline-block;
+    word-break:break-word;
+  }
+
+  /* ---- verificacion ---- */
+  .checks{list-style:none; margin:0; padding:0; display:grid; gap:1px; background:var(--line); border:1px solid var(--line)}
+  .checks li{
+    background:var(--surface); padding:12px 16px; display:flex;
+    flex-wrap:wrap; gap:4px 10px; align-items:baseline; font-size:14.5px;
+  }
+  .checks b{font-family:var(--display); font-weight:600; min-width:88px}
+  .checks .calc{font-family:var(--mono); font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums}
+  .checks .si{color:var(--ok); font-weight:600; margin-left:auto; font-size:13px; white-space:nowrap}
+
+  /* ---- lista de campos ---- */
+  .campos{display:grid; gap:1px; background:var(--line); border:1px solid var(--line)}
+  .campo{
+    background:var(--surface); padding:13px 16px 13px 15px;
+    border-left:4px solid var(--line);
+    display:grid; grid-template-columns:1fr auto; gap:2px 14px; align-items:baseline;
+  }
+  .campo.sigsa{border-left-color:var(--ok)}
+  .campo.deriv{border-left-color:var(--warn)}
+  .campo.roto{border-left-color:var(--bad)}
+  .campo .nom{font-family:var(--display); font-weight:600; font-size:16px}
+  .campo .tot{
+    font-family:var(--display); font-weight:600; font-size:19px;
+    font-variant-numeric:tabular-nums; text-align:right;
+  }
+  .campo .det{
+    grid-column:1/-1; font-size:13px; color:var(--muted);
+    font-variant-numeric:tabular-nums; padding-top:3px;
+  }
+  .campo .det .mov{color:var(--warn); font-weight:600}
+  .campo .det .neg{color:var(--bad); font-weight:600}
+  .chip{
+    font-family:var(--mono); font-size:9.5px; letter-spacing:.1em;
+    text-transform:uppercase; padding:2px 6px; margin-left:8px;
+    border:1px solid currentColor; white-space:nowrap; vertical-align:2px;
+  }
+  .chip.ok{color:var(--ok); background:var(--ok-bg)}
+  .chip.wr{color:var(--warn); background:var(--warn-bg)}
+  .chip.bd{color:var(--bad); background:var(--bad-bg)}
+  .total-fila{
+    background:var(--surface); padding:14px 16px; border-left:4px solid var(--ink);
+    display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+  }
+  .total-fila .nom{font-family:var(--display); font-weight:700; font-size:16px}
+  .total-fila .tot{font-family:var(--display); font-weight:700; font-size:22px; font-variant-numeric:tabular-nums}
+
+  /* ---- marcas / pendientes ---- */
+  .marcas{list-style:none; margin:0; padding:0; display:grid; gap:14px}
+  .marcas li{
+    background:var(--surface); border:1px solid var(--line);
+    border-left:4px solid var(--warn); padding:15px 18px;
+  }
+  .marcas li.critico{border-left-color:var(--bad)}
+  .marcas h3{
+    font-family:var(--display); font-weight:600; font-size:15.5px; margin:0 0 6px;
+  }
+  .marcas p{margin:0; font-size:14.5px; color:var(--muted)}
+  .marcas p + p{margin-top:8px}
+  .marcas strong{color:var(--ink)}
+
+  .faltan{
+    display:flex; flex-wrap:wrap; gap:7px; margin:14px 0 0; padding:0; list-style:none;
+  }
+  .faltan li{
+    font-family:var(--mono); font-size:12.5px; padding:5px 9px;
+    background:var(--surface); border:1px dashed var(--line);
+  }
+
+  .freno{
+    margin-top:34px; padding:18px 20px; border:2px solid var(--ink);
+    background:var(--surface);
+  }
+  .freno h2{margin:0 0 6px}
+  .freno p{margin:0; font-size:14.5px}
+
+  footer{
+    margin-top:40px; padding-top:16px; border-top:1px solid var(--line);
+    font-family:var(--mono); font-size:11.5px; color:var(--muted); line-height:1.7;
+  }
+  footer code{font-size:11.5px; word-break:break-all}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Sucesores de Ricardo A. Estévez &middot; 30-71025631-0</p>
+    <h1>Existencias Chaco al 3/9</h1>
+    <p class="sub">Los once campos, con qué número está verificado contra SENASA y cuál todavía no. Preparado para Silvio y Richie — <strong>sin mandar</strong>.</p>
+
+    <dl class="cifras">
+      <div class="cifra"><dt>Total bovinos</dt><dd>9.738</dd></div>
+      <div class="cifra"><dt>Verificado en SIGSA</dt><dd>2 <small>de 11 campos</small></dd></div>
+      <div class="cifra"><dt>Vendidos desde el 3/6</dt><dd>376 <small>cabezas</small></dd></div>
+    </dl>
+  </header>
+
+  <section>
+    <h2>Las 135 vacas de La Magdalena no se vendieron</h2>
+    <p class="lede">Era la pregunta abierta: SIGSA daba 1.028 vacas donde la planilla decía 1.163.</p>
+    <div class="hallazgo">
+      <p>La diferencia está explicada por una sola guía, y sigue en el disco:</p>
+      <p><span class="archivo">135 vacas Magdalena - Sabalo (11:08:2026).pdf</span></p>
+      <p>El destino es <strong>El Sábalo, que es campo propio</strong>. Las 135 vacas no salieron del negocio: cambiaron de campo. La planilla <code>stock_ganadero.xlsx</code> quedó vieja, no hay faltante.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Por qué se le puede creer al resto</h2>
+    <p class="lede">El método es planilla del 3/6 + las guías posteriores. Se probó contra los dos únicos campos donde hoy hay verdad de SIGSA, y da clavado en los dos.</p>
+    <ul class="checks">
+      <li><b>Magdalena</b> <span class="calc">1.163 − 135 = 1.028</span> <span class="si">SIGSA: 1.028 ✓</span></li>
+      <li><b>Victorina</b> <span class="calc">1.505, sin movimientos = 1.505</span> <span class="si">SIGSA: 1.505 ✓</span></li>
+    </ul>
+    <p style="font-size:14px;color:var(--muted);margin-top:14px">Segundo control, independiente: la planilla daba 10.114 cabezas y hoy dan 9.738. La diferencia son 376, exactamente las 376 que salieron a frigorífico según las guías.</p>
+  </section>
+
+  <section>
+    <h2>Los once campos</h2>
+    <p class="lede">Verde: leído hoy en SIGSA. Ámbar: derivado de planilla + guías, todavía sin confirmar. Gris: sin movimientos desde el 3/6, vale el número de la planilla.</p>
+
+    <div class="campos">
+      <div class="campo sigsa">
+        <span class="nom">La Victorina<span class="chip ok">SIGSA</span></span>
+        <span class="tot">1.749</span>
+        <span class="det">1.505 vacas · 39 toros · 120 vaquillonas · 40 terneras · 35 terneros · 10 toritos</span>
+      </div>
+      <div class="campo sigsa">
+        <span class="nom">La Magdalena<span class="chip ok">SIGSA</span></span>
+        <span class="tot">1.445</span>
+        <span class="det">1.028 vacas · 43 toros · 76 novillitos · 294 vaquillonas · 4 toritos <span class="mov">(−135 vacas)</span></span>
+      </div>
+      <div class="campo deriv">
+        <span class="nom">El Patroncito<span class="chip wr">derivado</span></span>
+        <span class="tot">1.393</span>
+        <span class="det">1.321 vaquillonas · 70 terneras · 2 novillitos <span class="mov">(+10 vaquillonas)</span></span>
+      </div>
+      <div class="campo roto">
+        <span class="nom">La Camila<span class="chip bd">revisar</span></span>
+        <span class="tot">1.163</span>
+        <span class="det">907 novillitos · 191 novillos · 75 terneros · 3 toros · <span class="neg">−13 vacas</span> <span class="mov">(−208 novillos, −2 toros)</span></span>
+      </div>
+      <div class="campo deriv">
+        <span class="nom">El Sábalo<span class="chip wr">derivado</span></span>
+        <span class="tot">689</span>
+        <span class="det">590 vacas · 60 vaquillonas · 24 terneras · 13 toros · 2 terneros <span class="mov">(+89 vacas)</span></span>
+      </div>
+      <div class="campo">
+        <span class="nom">El Galicia<span class="chip">planilla</span></span>
+        <span class="tot">682</span>
+        <span class="det">682 novillitos</span>
+      </div>
+      <div class="campo deriv">
+        <span class="nom">Cañada Rica<span class="chip wr">derivado</span></span>
+        <span class="tot">582</span>
+        <span class="det">512 vacas · 30 toros · 19 toritos · 12 terneros · 8 terneras · 1 vaquillona <span class="mov">(−10 vaquillonas)</span></span>
+      </div>
+      <div class="campo">
+        <span class="nom">La Horquilla<span class="chip">planilla</span></span>
+        <span class="tot">582</span>
+        <span class="det">490 vacas · 42 terneras · 24 toros · 12 vaquillonas · 8 terneros · 6 toritos</span>
+      </div>
+      <div class="campo">
+        <span class="nom">El Colmena<span class="chip">planilla</span></span>
+        <span class="tot">545</span>
+        <span class="det">545 novillitos</span>
+      </div>
+      <div class="campo deriv">
+        <span class="nom">Fortín Cocherek<span class="chip wr">derivado</span></span>
+        <span class="tot">460</span>
+        <span class="det">425 vacas · 19 terneros · 15 terneras · 1 toro <span class="mov">(−107 vacas)</span></span>
+      </div>
+      <div class="campo">
+        <span class="nom">El Facundo<span class="chip">planilla</span></span>
+        <span class="tot">448</span>
+        <span class="det">350 vacas · 35 terneras · 35 terneros · 26 toros · 2 vaquillonas</span>
+      </div>
+      <div class="total-fila">
+        <span class="nom">Total</span>
+        <span class="tot">9.738</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tres cosas que quedan marcadas</h2>
+    <p class="lede">Ninguna se tapó con una estimación.</p>
+    <ul class="marcas">
+      <li class="critico">
+        <h3>La Camila queda con −13 vacas</h3>
+        <p>La planilla le anota <strong>cero vacas</strong>, pero el 30/06 salieron <strong>13 vacas de La Camila hacia La Brava</strong>. Un stock no puede ser negativo: o la planilla nunca cargó las vacas de La Camila, o esa guía tiene mal el campo de origen.</p>
+        <p>Se resuelve solo cuando leamos La Camila en SIGSA.</p>
+      </li>
+      <li>
+        <h3>La boleta de hoy no está reflejada</h3>
+        <p><span class="archivo">Boleta 155 vacas Victorina - Sabalo (03:09:2026).pdf</span></p>
+        <p>Es de hoy, y la captura de SIGSA se sacó a las 10:25 con La Victorina todavía en 1.505. Si esas 155 ya se movieron, <strong>Victorina baja a 1.594 y El Sábalo sube a 844</strong>. El total de 9.738 no cambia, porque es un traslado entre campos propios.</p>
+      </li>
+      <li>
+        <h3>Una guía anulada con gemela sin anular</h3>
+        <p>Existen las dos: <span class="archivo">30 vacas El Sabalo - Riachuelo (08:01:2026).pdf</span> y la misma con <strong>ANULADA</strong> en el nombre. Se contó la que no está anulada. Es de enero, así que no afecta ningún número de arriba.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Lo que falta para poder mandarlo</h2>
+    <p class="lede">Nueve campos hay que leerlos en SIGSA. Son los que hoy figuran en ámbar o gris.</p>
+    <ul class="faltan">
+      <li>La Camila</li><li>El Sábalo</li><li>El Patroncito</li><li>Cañada Rica</li>
+      <li>Fortín Cocherek</li><li>La Horquilla</li><li>El Galicia</li><li>El Colmena</li><li>El Facundo</li>
+    </ul>
+  </section>
+
+  <div class="freno">
+    <h2>Esto no salió a nadie</h2>
+    <p>Ni a Silvio ni a Richie. Nueve de los once campos son derivados, no leídos, y La Camila tiene un número imposible. Falta la compu para entrar a SIGSA con tu clave fiscal.</p>
+  </div>
+
+  <footer>
+    Fuentes: SIGSA — Existencias &gt; Histórico &gt; Stock a determinada fecha, capturas del 03/09/2026 10:25 en <code>~/Desktop/Chaco/Stock/</code> · <code>stock_ganadero.xlsx</code> (3/6/2026) · 104 archivos de <code>~/Desktop/Chaco/Guias de traslado/2026/</code>, que son 63 traslados reales una vez descontadas las «Salida de provincia» duplicadas y la anulada.<br>
+    Se rehace con <code>active/campos/scripts/leer_guias.py</code> y <code>consolidar_stock.py</code>.
+  </footer>
+
+</div>
