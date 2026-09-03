@@ -1,0 +1,85 @@
+== RESUMEN ==
+  BORRAR      131 items  12.7 GB
+  FUSIONAR      1 items  879 MB
+  IGNORAR       1 items  0 MB
+  MOVER       681 items  33.1 GB
+  PREGUNTAR     6 items  575 MB
+
+== MOVER por destino ==
+     2       0 MB  Chaco/Stock
+    15    17.6 GB  Facu/DJ/Musica
+    85     2.3 GB  Facu/DJ/Sin clasificar
+    20      16 MB  Facu/Documentos
+    24       3 MB  Facu/Documentos/AFIP
+     9       5 MB  Facu/Documentos/Auto NFV983
+     3      32 MB  Facu/E-COMMERCE $$$
+     4     329 MB  Facu/Formación
+     7      23 MB  Facu/Fotos
+     6       0 MB  Facu/Inversiones
+     4     501 MB  Facu/PRODUCCIÓN /Instaladores
+     1       0 MB  Facu/PRODUCCIÓN /SAMPLE PACKS
+     4     199 MB  Facu/SIN CITY
+    10       0 MB  Nordelta Plaza/BBVA movimientos
+    31       1 MB  Nordelta Plaza/Comprobantes de pago
+    28      33 MB  Nordelta Plaza/Contratos Locatarios
+     1       0 MB  Nordelta Plaza/Eventos
+     4       0 MB  Nordelta Plaza/Informes ND Plaza
+     1      85 MB  Nordelta Plaza/Logotipos Nordelta Plaza
+    18       1 MB  Nordelta Plaza/Principio de mes/Cuentas Corrientes 
+    21       1 MB  Nordelta Plaza/Principio de mes/Facturas & Rec de Gastos
+     1       0 MB  Nordelta Plaza/Principio de mes/Facturas & Rec de Gastos/2025
+    11      11 MB  Noreventos
+     1       0 MB  Noreventos/Extracto bancario Noreventos
+     4       2 MB  Noreventos/Liquidaciones Nordelta
+     2       0 MB  Paseo Nordelta/Documentación
+     1       0 MB  Paseo Nordelta/Documentación/Balances/2026
+     8       6 MB  Paseo Nordelta/Documentación/Contratos
+     1       0 MB  Paseo Nordelta/Documentación/Estatuto & Cuit
+    10      16 MB  Paseo Nordelta/Documentación/Municipales
+    28     134 MB  Paseo Nordelta/Documentación/Obra 
+    11       6 MB  Paseo Nordelta/Documentación/Obra /PLANOS
+     6       0 MB  Paseo Nordelta/Principio de mes/Comprobantes de pago/2026/Agosto 2026
+     1       0 MB  Paseo Nordelta/Principio de mes/Comprobantes de pago/2026/Septiembre 2026
+     1       0 MB  Paseo Nordelta/Principio de mes/Facturas de Compra/2025/Octubre 2025
+     5       0 MB  Paseo Nordelta/Principio de mes/Facturas de Compra/2026/Abril 2026
+     2       0 MB  Paseo Nordelta/Principio de mes/Facturas de Compra/2026/Agosto 2026
+     3       0 MB  Paseo Nordelta/Principio de mes/Facturas de Compra/2026/Enero 2026
+     1       0 MB  Paseo Nordelta/Principio de mes/Facturas de Compra/2026/Febrero 2026
+     1       0 MB  Paseo Nordelta/Principio de mes/Facturas de Compra/2026/Marzo 2026
+     1       0 MB  Paseo Nordelta/Principio de mes/Facturas de Compra/2026/Mayo 2026
+    48      26 MB  Paseo Nordelta/Principio de mes/Facturas de Compra/Edenor/2025
+    14       8 MB  Paseo Nordelta/Principio de mes/Facturas de Compra/Edenor/Enero 2026
+    14       8 MB  Paseo Nordelta/Principio de mes/Facturas de Compra/Edenor/Febrero 2026
+     1       0 MB  Paseo Nordelta/Principio de mes/Facturas de Venta/2026/Agosto 2026
+     2       0 MB  Paseo Nordelta/Principio de mes/Impuestos del mes/2025
+     4       0 MB  Paseo Nordelta/Principio de mes/Impuestos del mes/2026
+     1       0 MB  Paseo Nordelta/Principio de mes/Recibos de Sueldo/2026/Agosto 2026
+     1       0 MB  Paseo Nordelta/Principio de mes/Recibos de Sueldo/2026/Julio 2026
+     9     1.9 GB  Paseo Nordelta/Youtube
+    12       2 MB  Productoras/Astronomy/Academia/Capturas app
+     2       0 MB  Productoras/Astronomy/Academia/Comercial
+     8     133 MB  Productoras/Astronomy/Academia/Contenido
+     1       0 MB  Productoras/Astronomy/Academia/Contenido/The Bunker
+    12      84 MB  Productoras/Astronomy/Academia/Fotos del estudio
+     1       0 MB  Productoras/Astronomy/Academia/Pauta
+     2       0 MB  Productoras/Astronomy/Academia/Reporte financiero
+    12     574 MB  Productoras/Astronomy/Eventos/Boiler Room (Futura:Big Fett) 
+     1       0 MB  Productoras/Astronomy/Eventos/Dark Mansion
+     7      10 MB  Productoras/Astronomy/Eventos/House n Bells
+     6     1.5 GB  Productoras/Astronomy/Eventos/Mansion
+     4       7 MB  Productoras/Astronomy/Eventos/Obsession
+     2       0 MB  Productoras/Astronomy/Eventos/Private Boat Party
+     1       5 MB  Productoras/Astronomy/Eventos/Theatre
+   104     7.6 GB  Productoras/Astronomy/Eventos/_sin-evento-asignado
+     3       0 MB  Productoras/Astronomy/Marca Astronomy/Contratos y propuestas
+     6      28 MB  Productoras/Astronomy/Marca Astronomy/Logos
+     4       2 MB  Productoras/Astronomy/Marca Astronomy/Logos/Prototipos : Ideas
+     2       0 MB  Productoras/Puzzle
+
+== PREGUNTAR ==
+     74 MB  Bitch We're Not The Same (Super Virginia Cigarette Master).wav  — 3 masters .wav (mar 2026): ¿tracks tuyos? ¿van a PRODUCCIÓN o a Sin City?
+      8 MB  CamScanner 10-17-2022 19.59.pdf  — escaneo de 10 páginas de 2022, sin texto
+    394 MB  IMG_5714.MOV  — audio/video grande sin contexto
+     25 MB  clip_01KS0GRC6SRD8MS7NC68JXB0WR.mp4  — video de 25 MB generado con IA (may 2026): ¿para qué era?
+     75 MB  facundo  Estevez.m4a  — audio/video grande sin contexto
+      0 MB  google5c6095a0ba26e6d7.html  — token de verificación de Google Search Console: ¿ya está subido al sitio?
