@@ -221,3 +221,47 @@ copia con guiones; el original conserva la nomenclatura de la carpeta.
 1 toro + 35 novillitos, La Victorina → La Camila, emitido 03/09/2026 18:37, vence
 **07/09/2026**. Boleta N° **69124868** (O. de Pago 48605346): SA007-B $12.056,40 +
 SA013 $404,17 = **$12.460,57**, impaga. Mandada a Richi el 03/09 a las 20:09.
+
+## Cerrar un DT-e (registrar el arribo) — 05/09/2026
+
+`Movimientos → Consultar movimientos` → ojo → botón azul **Cerrar**. El formulario pide:
+
+| Campo | Qué va |
+|---|---|
+| **Código cierre** | **6 dígitos, del DT-e impreso**: recuadro *CONFORMIDAD DE RECEPCIÓN*, renglón «Código de CIERRE en Destino», arriba del código de barras |
+| Fecha arribo | del calendario |
+| Recibidos | por categoría; el total tiene que cerrar contra Despachados |
+| **Patente chasis** | **siempre `BSA 001`** — SIGSA avisa *«no se encuentra hab. por DNSA Res.503/22»* y se le da **Continuar** |
+
+> ⚠️ **No confundir con el número de 4 dígitos que está bajo «Control DT-e»**, al lado
+> del 0800-999-SENASA. Ese no es el código de cierre: devuelve *«El código de cierre es
+> inválido»*.
+
+> 🚨 **Un DT-e viejo no se puede reimprimir.** Sus pantallas no muestran el botón
+> *Imprimir* y el servidor contesta **«No tiene permitido imprimir el DTe»**
+> (`POST /sigsa/seam/resource/rest/movimientos/imprimir` con `{nrodte}`). Por eso
+> **hay que guardar el PDF del DT-e apenas se emite**, no sólo la boleta de pago: es la
+> única ventana. Si ya pasó, el código lo tiene quien recibió la hacienda o se pide al
+> 0800-999-SENASA.
+
+> ⚠️ **«Emitir Guía Provincial» queda justo donde estaba «Cerrar»** cuando la página
+> termina de cargar. Sacar la captura inmediatamente antes de cada click.
+
+Cerrado así el **032517913-9** (1 toro + 35 novillitos Victorina→Camila): arribo
+05/09/2026, 36 de 36, código **316324**.
+
+## Leer las existencias de los 11 campos
+
+`Existencias → Histórico → Stock a determinada fecha` → **Buscar** (al lado de Unidad
+productiva) → **Nombre estab.** con una sola palabra (`VICTORINA`, `RICA`, `FORTIN`) →
+Buscar → ✓ de la fila → **Buscar**. Leer con el texto de la página, no con la captura.
+
+⚠️ El cartel rojo *«Ha ocurrido un error / Contáctese con el Administrador»* aparece
+**siempre** al pie de estas pantallas y no significa nada.
+⚠️ Si el nombre no llegó a tipearse, el listado sale vacío y el ciclo sigue sin avisar:
+verificar que el *Establecimiento* del resultado sea el que se pidió.
+
+Resultado al 05/09/2026 (los once, leídos): Victorina 1.558 · Patroncito 1.393 ·
+Magdalena 1.376 · Camila 1.250 · Galicia 682 · Sábalo 662 · Cañada Rica 582 ·
+Horquilla 582 · Colmena 545 · Fortín Cocherek 460 · Facundo 448 = **9.538 bovinos**,
+más **224 en tránsito** = rodeo **9.762**.
