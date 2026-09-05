@@ -265,3 +265,21 @@ Resultado al 05/09/2026 (los once, leídos): Victorina 1.558 · Patroncito 1.393
 Magdalena 1.376 · Camila 1.250 · Galicia 682 · Sábalo 662 · Cañada Rica 582 ·
 Horquilla 582 · Colmena 545 · Fortín Cocherek 460 · Facundo 448 = **9.538 bovinos**,
 más **224 en tránsito** = rodeo **9.762**.
+
+### 🔑 Si SIGSA no deja imprimir el DT-e, es porque la boleta está IMPAGA
+
+Corrección a lo de arriba, verificada el 05/09/2026: **no es que un DT-e viejo no se
+pueda reimprimir**. Con la boleta sin pagar, la pantalla no muestra *Imprimir* y el
+servidor contesta *"No tiene permitido imprimir el DTe"*. **Apenas se paga, el mismo
+endpoint devuelve `ok:true` y el botón vuelve.** Lo dedujo Facu; antes de salir a buscar
+el papel, mirar si la boleta está paga.
+
+Para leer el código sin el papel, ya pagada la boleta: `POST` a
+`/sigsa/seam/resource/rest/movimientos/imprimir` con `{nrodte}` y luego `GET`
+`/sigsa/reportePdf` (devuelve el PDF). Chrome deja bajar **uno solo** por pestaña de
+forma automática; para el resto, montar el blob en un `<iframe>` propio con `#zoom=55`
+y leerlo por captura — el visor del modal de SIGSA no scrollea.
+
+Los tres del 03/09 quedaron **CERRADOS el 05/09**, completos y con arribo 05/09:
+032517913-9 código **316324** (36) · 032517462-5 código **899142** (69) ·
+032514716-4 código **340655** (155).
