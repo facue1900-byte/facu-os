@@ -419,6 +419,27 @@ Pago cobró $143.520** — 5,95% de diferencia, consistente en junio y julio. No
 (`mp_net` da $132.058, 7,99%). MP confirmó por API que el `transaction_amount` fue $143.520.
 Es un problema de plata sin resolver y es de Facu.
 
+> **RESUELTO el 08/09/2026 — lo contestó Josefina, no el código.** Los pagos se anotaban
+> por un **Google Form con una fórmula que descontaba 5,95% fijo** de "comisión MP". El
+> monto real en la planilla es **$134.980,56**, con decimales: la firma de un cálculo, no
+> de alguien tipeando. `143.520 × (1 − 0,0595) = 134.980,56`, cierra al peso.
+>
+> Contado contra la fuente (`Finanzas - Astronomy Academy`, hoja `Base`): **70 renglones**,
+> no los que se creían — **61 «Venta de Curso» + 9 «Membership»**, del **24/02 al 24/07/2026**,
+> todos con bruto $143.520. Corta justo antes del `CUTOVER_ISO` del 25/07.
+>
+> **El Libro anotó de MÁS, no de menos**: la comisión real de MP no es fija, va de **7,99%
+> a 10,99%** (promedio 8,79%, medido sobre 43 ventas de $143.520 en `sales`). La diferencia
+> acumulada cae entre **$205.000 y $506.000** — **los tres números son estimaciones**, el
+> dato real sale sólo de pedirle el `mp_fee` de esos 70 pagos a la API de MP. `sales` no
+> sirve: arranca el 02/06/2026 y no tiene ningún renglón a ese monto.
+>
+> **La lección:** un monto raro y repetido no es un error de carga, **es una fórmula**, y
+> los decimales la delatan. Antes de auditar a la persona que cargó, buscar la planilla o
+> el formulario que calculaba solo. Un porcentaje clavado a mano se desactualiza en
+> silencio: MP subió la comisión y el Form siguió en 5,95%. Ver la memoria
+> `los-134981-eran-el-forms-con-595`.
+
 **Verificación:** `npm run verificar:cobros-libro` (lectura; `--escribir` para cargar) y
 `npm run verificar:boton-cobros`, que **entra como Luqui y aprieta el botón de verdad** —
 borra un renglón que el propio botón escribió para recrear un caso real, lo aprieta, y
