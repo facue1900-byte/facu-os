@@ -182,6 +182,30 @@ En la pantalla del DT-e emitido hay: **Emitir Guía Provincial** (el aviso rojo 
 Movimiento, Eliminar y Cerrar. Y los paneles Caravanas · Datos Transporte ·
 Resumen administrativo.
 
+### La serología de brucelosis frena la venta a un campo de reproducción (09/09/2026)
+
+Simulado sin emitir, a pedido de Silvio. Mismo movimiento `EST - EST`, motivo
+**Invernada (2)**, 32 vacas desde La Victorina:
+
+- **Destino tercero que hace reproducción** (El Trompezón `05.001.0.00503/02`): al pasar
+  de la página 2 salta la advertencia del **Certificado de Seronegatividad para el
+  Movimiento (CSM)** — Res. SENASA 67/2019, arts. 16 y 17 — y en la página 3 aparece
+  *"Se requiere adjuntar serología de Brucelosis"*. **Siguiente corta**:
+  *"Debe adjuntar un certificado de serología de brucelosis"*. No hay forma de seguir.
+- **Destino campo propio** (El Sábalo `05.023.0.00118/00`): pasa derecho hasta la pantalla
+  de emisión del DUT.
+
+**El disparador es el destino**, no la categoría ni el motivo. Se cancela con
+**Cancelar movimiento** en la pantalla del DUT: `Consultar movimientos` del 08 y 09/09
+quedó en *Ningún resultado*, o sea que una simulación cancelada no deja rastro.
+
+⚠️ **Los `<select>` de la página 1 no responden al teclado ni al typeahead**: escribir en
+el textbox del código elige la opción equivocada (un `2` en Motivo puso *Traslado de
+O.A.G.M. (209)*). Se setean con `form_input` sobre el ref del combo.
+
+⚠️ **A la página 1 no se entra por URL directa**: `nuevoMovimiento_pagina1.seam` sin el
+`cid` tira `NullPointerException`. Siempre por `Movimientos → Nuevo movimiento`.
+
 ## Pendiente de aprender
 
 - **La página 3 en adelante del alta** (transporte, emisión y la pantalla de pagar), y cómo
