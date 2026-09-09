@@ -62,6 +62,11 @@ CUIT_CATEGORIA = {
     # abono mensual que factura Giaccio Business Consulting SRL (30718796136).
     # Los dos son el contador.
     "20081049980": ("Giaccio Mariano Jesús",  "Contador"),
+    # GEVGE S.R.L., el proveedor que factura como «Electro 927»: materiales
+    # eléctricos e iluminación para la obra. Identificado el 09/09/2026 leyendo
+    # con OCR las facturas escaneadas del grupo de WhatsApp «Facturas Paseo
+    # Nordelta» — sus PDF no tienen texto, así que el CUIT no salía de ningún lado.
+    "30710063474": ("GEVGE (Electro 927)",    "Inversiones"),
 }
 
 # Glosa del extracto -> (Local, Categoria). Local para ingresos, Categoria para egresos.
@@ -81,6 +86,8 @@ REGLAS = [
     # agosto 2026 el CUIT vino en la glosa («TRANSF 30517431431 VAR»), que no
     # pasa por ahí. Con la regla se resuelve por los dos caminos.
     (r"30517431431",                     None, "Retiro de Residuos"),
+    # GEVGE («Electro 927»): igual que Oliva y Andersen, materiales de obra.
+    (r"30710063474",                     None, "Inversiones"),
     # Transferencia entre cuentas propias para cubrir el resumen de la VISA en
     # la CC Bancaria. NO es plata que se queda adentro: del otro lado sale a la
     # tarjeta. En junio 2026 se cargó como Inversiones («cubre VISA luces») y se

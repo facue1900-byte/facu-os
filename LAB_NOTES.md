@@ -3680,3 +3680,28 @@ los 470 PDF de Paseo Nordelta): 5/8 $299.820,00 (ref 87010248) y 13/8 $136.879,3
 identificador que ya comparten. El importe parece un identificador y no lo es: se le
 suman comisiones, se redondea, y falla en silencio por diferencias chicas que nadie
 mira. Acá el número estaba impreso en los dos lados desde siempre.
+
+## 09/09/2026 — El CUIT que faltaba estaba en un PDF sin texto
+
+**Contexto.** El cierre de agosto dejó dos débitos sin identificar. Uno era
+`TRANSF 30710063474 VAR 832700` por $136.879,36. Ese CUIT no estaba en ninguna factura
+archivada, ni en ningún extracto anterior, ni lo encontró un `grep` sobre los **470 PDF**
+de toda la carpeta de Paseo Nordelta. Tampoco lo devolvió una búsqueda web.
+
+**Cómo apareció.** Bajando las facturas del grupo de WhatsApp «Facturas Paseo Nordelta»
+y leyéndolas con OCR (`execution/gemini.py` → `leer_imagen()` sobre un render a 170 dpi).
+Las facturas de «Electro 927» son **escaneos: `get_text()` devuelve 0 caracteres**. El
+emisor es **GEVGE S.R.L., CUIT 30-71006347-4**, y la factura `FC-0005-00020793` del
+12/08/2026 dice **$136.879,36** — el importe exacto del débito, al centavo.
+
+**Lección transferible.** Un `grep` que no encuentra nada en una carpeta de PDF **no
+prueba que el dato no esté**: prueba que los PDF *con texto* no lo tienen. Un escaneo es
+invisible para cualquier búsqueda textual y no avisa que lo es. Cuando una búsqueda sobre
+documentos da vacío, el primer chequeo es cuántos de esos documentos tienen texto — si
+hay escaneos, la búsqueda nunca los miró.
+
+**De paso.** El inventario del grupo mostró que la gran mayoría de lo que se manda ahí son
+**fotos de las facturas de Edenor, duplicadas** de los PDF originales que se bajan del
+portal. De 21 PDF reenviados, 14 ya estaban archivados. Archivar el grupo entero habría
+metido decenas de duplicados en peor calidad. Detalle en
+`memory/grupo-whatsapp-facturas-paseo.md`.
