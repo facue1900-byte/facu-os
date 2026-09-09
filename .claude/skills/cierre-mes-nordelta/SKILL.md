@@ -394,6 +394,24 @@ Queda a mano interpretar (esto sí lo hago yo, leyendo):
   `JUL' 26` y `jul'26`. Un chequeo que comparaba el texto crudo reportó "a Boss no se le
   cobró julio" sobre un alquiler que estaba cobrado: **un faltante de plata se confirma
   mirando la pestaña antes de decirlo.**
+- 🔑 **Los débitos «N/D Transf. MacrOnline» se cruzan por NÚMERO DE REFERENCIA, no por
+  importe.** El comprobante de pago del Macro trae un «Nro. de Referencia» de 8 dígitos
+  que es el mismo que el banco imprime en la glosa del débito (`… E-set D/T 87135856`):
+  identidad exacta, sin tolerancias. Hace falta porque **el importe del comprobante NO es
+  el del extracto**: el «Importe total» suma $100 de comisión + $21 de IVA que el banco
+  debita en un renglón aparte. En agosto 2026 esos $121 dejaron seis pagos sin identificar
+  ($4,86M) con el match por importe. Se usa el «IMPORTE A TRANSFERIR», que coincide al
+  centavo, y se sigue exigiendo como control cruzado: si la referencia matchea pero la
+  plata no, el script no lo resuelve solo.
+- **Los comprobantes de pago viven en `Facturas de Compra/<mes>/Pagos/`**, así que el
+  indexador es recursivo. Es la única fuente que identifica esos débitos: el importe
+  pagado casi nunca coincide con una factura del mes, porque se pagan facturas viejas
+  (en agosto se pagó Redes y Servicios por $2,98M contra una factura del mes de $521.232,85).
+- **`--saltear-sin-categoria` carga sólo los renglones resueltos** y lista los que dejó
+  afuera con su importe. Para cuando falta identificar un pago y no se quiere frenar el
+  resto del mes. **No es `--forzar`**: los sin categoría no entran, así que ninguno se
+  pierde de los SUMIFS. Cuando se sepa qué son, se vuelve a correr y el dedupe por
+  (año, mes, monto) los mete una sola vez.
 - **`--avn` desbloquea el cobro cuando el extracto del Macro no está importado.** `B4`
   es un SUMIFS contra Movimientos: sin extracto da $0 y el generador corta. El flag
   escribe el total de las 4 liquidaciones y restaura la fórmula; **no** carga una fila

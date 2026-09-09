@@ -55,6 +55,13 @@ CUIT_CATEGORIA = {
     "30517431431": ("Transportes Olivos",     "Retiro de Residuos"),
     "30718796136": ("Estudio Giaccio",        "Contador"),
     "20124767173": ("Oliva (corralón)",       "Inversiones"),
+    # Agregados con el extracto de agosto 2026, cada uno contra su comprobante
+    # de pago de la subcarpeta «Pagos/».
+    "30707845682": ("Redes y Servicios",      "Redes y Servicios"),
+    # Giaccio Mariano Jesús, persona física: factura el balance anual aparte del
+    # abono mensual que factura Giaccio Business Consulting SRL (30718796136).
+    # Los dos son el contador.
+    "20081049980": ("Giaccio Mariano Jesús",  "Contador"),
 }
 
 # Glosa del extracto -> (Local, Categoria). Local para ingresos, Categoria para egresos.
@@ -69,6 +76,11 @@ REGLAS = [
     # Se propone Inversiones porque hasta hoy siempre fue obra; si una compra es
     # gasto operativo hay que cambiarla a mano ANTES de cargarla.
     (r"20124767173",                     None, "Inversiones"),
+    # Transportes Olivos («TODSE»): ya estaba en CUIT_CATEGORIA, pero eso sólo
+    # sirve cuando el débito se matchea contra una factura de la carpeta. En
+    # agosto 2026 el CUIT vino en la glosa («TRANSF 30517431431 VAR»), que no
+    # pasa por ahí. Con la regla se resuelve por los dos caminos.
+    (r"30517431431",                     None, "Retiro de Residuos"),
     # Transferencia entre cuentas propias para cubrir el resumen de la VISA en
     # la CC Bancaria. NO es plata que se queda adentro: del otro lado sale a la
     # tarjeta. En junio 2026 se cargó como Inversiones («cubre VISA luces») y se
@@ -217,6 +229,15 @@ ETIQ = r"(?:TOTAL|Importe Total)"
 TOTAL_PDF = re.compile(rf"{ETIQ}[^0-9\-]{{0,40}}({NUM})", re.I)
 TOTAL_PDF_ATRAS = re.compile(rf"({NUM})[^0-9\-]{{0,20}}{ETIQ}", re.I)
 CUIT_PDF = re.compile(r"\b(\d{11})\b")
+# Comprobantes de pago del Macro (subcarpeta «Pagos/»). Traen el mismo «Nro. de
+# Referencia» de 8 dígitos que el banco después imprime en la glosa del débito
+# («N/D Transf. MacrOnline E-set D/T 87135856»), así que el cruce es por
+# IDENTIDAD y no por importe. Hace falta porque esos débitos salen sin CUIT y
+# porque el importe del comprobante NO es el del extracto: el «Importe total»
+# suma $100 de comisión + $21 de IVA que el banco debita en un renglón aparte.
+# Se usa el «IMPORTE A TRANSFERIR», que sí coincide al centavo.
+REF_PAGO = re.compile(r"(\d{8})\s*\n\s*Nro\. de Referencia")
+IMPORTE_TRANSFERIDO = re.compile(r"IMPORTE A TRANSFERIR\s*\n\s*\$\s*([\d.,]+)")
 # El CUIT del EMISOR, no el nuestro: Mahni aparece en todas las facturas.
 CUIT_PROPIO = "30719012503"
 
@@ -243,8 +264,12 @@ def indexar_facturas(carpeta):
     aviso: mejor que un match inventado.
     """
     facturas, ilegibles = [], []
-    for ruta in sorted(glob.glob(os.path.join(carpeta, "*.pdf"))):
-        base = os.path.basename(ruta)
+    # Recursivo: los comprobantes de pago viven en la subcarpeta «Pagos/» y son
+    # los únicos que identifican los débitos «N/D Transf. MacrOnline», que salen
+    # del banco sin CUIT en la glosa. El importe pagado casi nunca coincide con
+    # una factura del mes (se pagan facturas viejas), pero sí con su comprobante.
+    for ruta in sorted(glob.glob(os.path.join(carpeta, "**", "*.pdf"), recursive=True)):
+        base = os.path.relpath(ruta, carpeta)
         try:
             texto = fitz.open(ruta)[0].get_text()
         except Exception as e:
@@ -253,32 +278,55 @@ def indexar_facturas(carpeta):
         m = re.match(r"(\d{11})_", base)
         cuit = m.group(1) if m else next(
             (c for c in CUIT_PDF.findall(texto) if c != CUIT_PROPIO), None)
+        # Comprobante de pago del Macro: manda la referencia, y el importe bueno
+        # es el transferido (sin la comisión que el banco debita por separado).
+        ref = REF_PAGO.search(texto)
+        transferido = IMPORTE_TRANSFERIDO.search(texto)
+        if ref and transferido:
+            facturas.append((cuit, base, [plata_libre(transferido.group(1))],
+                             ref.group(1)))
+            continue
         totales = sorted({plata_libre(t) for t in
                           TOTAL_PDF.findall(texto) + TOTAL_PDF_ATRAS.findall(texto)})
         if not totales:
             ilegibles.append(f"{base}: no le encontré el total")
             continue
-        facturas.append((cuit, base, totales))
+        facturas.append((cuit, base, totales, None))
     return facturas, ilegibles
 
 
 def resolver_con_facturas(movs, facturas):
     """Le pone categoría a los egresos que la glosa del banco no identifica.
 
-    Matchea por importe con tolerancia de $1: el banco redondea al peso
-    (Andersen facturó $599.251,55 y el débito salió $599.251,00).
+    Primero por «Nro. de Referencia»: los comprobantes de pago del Macro traen
+    el mismo número de 8 dígitos que el banco imprime en la glosa del débito,
+    así que el cruce es exacto y no depende del importe. El importe se sigue
+    exigiendo como control: si la referencia matchea pero la plata no, no se
+    resuelve solo — eso es algo para mirar.
+
+    Si no hay referencia, cae al match por importe con tolerancia de $1: el
+    banco redondea al peso (Andersen facturó $599.251,55 y el débito salió
+    $599.251,00).
     """
     resueltos = []
     for m in movs:
         if m["local"] or m["categoria"] or m["tipo"] != "Egreso":
             continue
         cand = [f for f in facturas
-                if any(abs(t - m["monto"]) < 1.0 for t in f[2])]
+                if f[3] and re.search(rf"\b{f[3]}\b", m["obs"])]
+        if len(cand) == 1 and not any(abs(t - m["monto"]) < 1.0 for t in cand[0][2]):
+            m["ambiguo"] = [f"{cand[0][1]} (referencia {cand[0][3]} coincide pero "
+                            f"el importe no: comprobante {cand[0][2][0]:,.2f} vs "
+                            f"extracto {m['monto']:,.2f})"]
+            continue
+        if not cand:
+            cand = [f for f in facturas
+                    if any(abs(t - m["monto"]) < 1.0 for t in f[2])]
         if len(cand) != 1:
             if len(cand) > 1:
                 m["ambiguo"] = [c[1] for c in cand]
             continue
-        cuit, archivo, totales = cand[0]
+        cuit, archivo, totales, _ref = cand[0]
         total = min(totales, key=lambda t: abs(t - m["monto"]))
         if cuit not in CUIT_CATEGORIA:
             m["ambiguo"] = [f"{archivo} (CUIT {cuit} no está en CUIT_CATEGORIA)"]
@@ -339,6 +387,12 @@ def main():
                     help="escribe en Movimientos (por defecto NO toca nada)")
     ap.add_argument("--forzar", action="store_true",
                     help="escribe aunque queden renglones sin categoría")
+    ap.add_argument("--saltear-sin-categoria", action="store_true",
+                    help="escribe SÓLO los renglones resueltos y deja afuera los "
+                         "que no tienen categoría (los lista al final). Para "
+                         "cuando falta identificar un pago y no se quiere frenar "
+                         "el resto del mes: los salteados entran después, y el "
+                         "dedupe por (año, mes, monto) evita cargarlos dos veces")
     args = ap.parse_args()
 
     crudos = parsear(args.pdf)
@@ -390,10 +444,18 @@ def main():
               f"{m['categoria'] or ''}\t{m['monto']:.2f}\tARS\t"
               f"{filas[-1][7]}{marca}")
 
+    if sin_resolver and args.saltear_sin_categoria:
+        sin = {id(m) for m in sin_resolver}
+        filas = [f for m, f in zip(nuevos, filas) if id(m) not in sin]
+        print(f"\n[--saltear-sin-categoria] Dejo AFUERA {len(sin_resolver)} "
+              f"movimiento(s) sin identificar, por ${sum(m['monto'] for m in sin_resolver):,.2f}:")
+        for m in sin_resolver:
+            print(f"    {m['fecha'].strftime('%-d/%-m/%Y')}  ${m['monto']:,.2f}  {m['obs']}")
+        print("  Cuando se sepan qué son, se vuelve a correr y entran solos.")
     if not args.escribir:
         print(f"\n[SIN --escribir] No toqué nada. {len(filas)} filas listas.")
         return
-    if sin_resolver and not args.forzar:
+    if sin_resolver and not args.forzar and not args.saltear_sin_categoria:
         sys.exit(f"\nFRENO: {len(sin_resolver)} movimiento(s) sin categoría. "
                  f"Entrarían a Movimientos y desaparecerían de todos los SUMIFS "
                  f"sin fallar. Resolvelos (agregá el CUIT a CUIT_CATEGORIA o la "

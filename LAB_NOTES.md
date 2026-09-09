@@ -3637,3 +3637,46 @@ una **fecha**, así que con `UNFORMATTED_VALUE` no matchea ningún texto de mes.
 lecturas: rótulos con `FORMATTED_VALUE`, montos con `UNFORMATTED_VALUE`. Parsear los montos
 formateados es peor todavía — vienen en formato US (`$483,596`) y un parser argentino los
 lee como $483,60.
+
+## 09/09/2026 — Seis pagos del extracto de agosto no matcheaban por $121 cada uno
+
+**Síntoma.** El extracto de agosto 2026 del Macro dejó 9 de 21 movimientos sin
+categoría. Seis eran débitos «N/D Transf. MacrOnline E-set D/T», que salen del banco
+sin CUIT ni nombre: la glosa no dice a quién se le pagó.
+
+**Causa raíz.** Dos cosas encadenadas:
+
+1. `indexar_facturas()` sólo miraba `*.pdf` en la raíz de la carpeta del mes, y los
+   comprobantes de pago viven en la subcarpeta `Pagos/`. Nunca los leyó.
+2. Aun leyéndolos, el match por importe fallaba por **exactamente $121 en los seis**.
+   El comprobante del Macro imprime `Importe total = IMPORTE A TRANSFERIR + $100 de
+   comisión + $21 de IVA`, y el extracto debita el importe a transferir: la comisión
+   sale en un renglón aparte. El script tomaba el total con comisión y se pasaba de la
+   tolerancia de $1.
+
+Y un tercer detalle: el importe pagado casi nunca coincide con una factura del mes,
+porque se pagan facturas viejas. En agosto se le pagaron $2,98M a Redes y Servicios
+contra una factura del mes de $521.232,85. Matchear pagos contra facturas del mes es
+estructuralmente frágil.
+
+**Arreglo.** El comprobante trae un **«Nro. de Referencia» de 8 dígitos que es el mismo
+que el banco imprime en la glosa del débito**. Se pasó a cruzar por ese número —
+identidad exacta, sin tolerancias— usando el «IMPORTE A TRANSFERIR» como control
+cruzado: si la referencia matchea pero la plata no, no se resuelve solo. Más el
+indexador recursivo, dos CUIT nuevos en `CUIT_CATEGORIA` (Redes y Servicios, Giaccio
+Mariano Jesús) y una regla de glosa para Transportes Olivos, que venía con el CUIT en
+la glosa y no pasaba por el cruce con facturas.
+
+**Verificación.** 19 de 21 resueltos. Regresión sobre julio y junio: 17 y 23 ya
+cargados, 0 para agregar, y el match por importe de Andersen ($599.251,55 factura vs
+$599.251,00 débito) sigue funcionando. La conciliación de agosto cierra al centavo: los
+3 ⚠ que quedan son los mismos dos pagos sin identificar.
+
+**Lo que quedó abierto.** Dos débitos sin comprobante en ninguna carpeta (escaneados
+los 470 PDF de Paseo Nordelta): 5/8 $299.820,00 (ref 87010248) y 13/8 $136.879,36
+(CUIT 30710063474, que no aparece en ningún extracto anterior). Facu los averigua.
+
+**Lección transferible.** Cuando dos sistemas tienen que cruzarse, buscar primero el
+identificador que ya comparten. El importe parece un identificador y no lo es: se le
+suman comisiones, se redondea, y falla en silencio por diferencias chicas que nadie
+mira. Acá el número estaba impreso en los dos lados desde siempre.
