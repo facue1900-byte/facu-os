@@ -6,11 +6,15 @@ Mejoras es gasto operativo; Inversiones es obra, que la financian los socios con
 su capital. Cuando una fila de obra queda en Mejoras, el resultado del mes baja
 por una plata que no es gasto del negocio.
 
-    reporte: .../recategorizar_mejoras.py            (no toca nada, solo muestra)
-    aplicar: .../recategorizar_mejoras.py --aplicar
+    reporte: .../recategorizar_mejoras.py 2026-07            (no toca nada)
+    aplicar: .../recategorizar_mejoras.py 2026-07 --aplicar
 
-Por defecto solo mueve los pagos a Daniel, que hace la obra nueva — la regla ya
-estaba escrita en el OS. Para sumar otros conceptos, agregalos a PATRONES.
+Mueve TODAS las Mejoras del mes indicado. Facu, 10/09/2026, sobre julio: "esos 6M
+metelos todo en inversion" — la obra de julio (Daniel, materiales y los oficios que
+la ejecutaron) se cargo entera como Mejoras.
+
+Sin mes, solo mueve los pagos a Daniel de todo el ano, que es la regla que ya
+estaba escrita en el OS: Daniel hace la obra nueva.
 """
 import sys, re, datetime as dt
 
@@ -31,8 +35,19 @@ def plata(n):
     return f"{n:,.0f}".replace(",", ".")
 
 
+def mes_de(fecha_txt):
+    """'17/7/2026' -> '2026-07'. La hoja escribe D/M/AAAA."""
+    try:
+        d, m, a = [int(x.strip(" .")) for x in str(fecha_txt).split("/")]
+        return f"{a}-{m:02d}"
+    except Exception:
+        return None
+
+
 def main():
     aplicar = "--aplicar" in sys.argv
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    mes = args[0] if args else None
     sv = sheets("facu")
     v = sv.spreadsheets().values().get(spreadsheetId=SHEET, range=RANGO).execute().get("values", [])
     if len(v) < 2:
@@ -43,14 +58,20 @@ def main():
         r = list(fila) + [""] * (12 - len(fila))
         if r[1] != "Egreso" or r[4] != "Mejoras":
             continue
-        for etiqueta, pat in PATRONES:
-            if pat.search(str(r[7])):
-                objetivo.append((i, etiqueta, r[0], r[5], str(r[7])[:45]))
-                break
+        if mes:
+            # todas las Mejoras de ese mes
+            if mes_de(r[0]) != mes:
+                continue
+            objetivo.append((i, "obra del mes", r[0], r[5], str(r[7])[:45]))
+        else:
+            for etiqueta, pat in PATRONES:
+                if pat.search(str(r[7])):
+                    objetivo.append((i, etiqueta, r[0], r[5], str(r[7])[:45]))
+                    break
 
     if not objetivo:
-        sys.exit("No encontre ninguna fila de Mejoras que matchee. Reviso PATRONES "
-                 "antes de dar esto por hecho.")
+        sys.exit(f"No encontre ninguna fila de Mejoras{' en ' + mes if mes else ''}. "
+                 f"No doy esto por hecho sin mirar.")
 
     total = 0.0
     print(f"{'FILA':<7}{'FECHA':<12}{'MONTO':>14}  CONCEPTO")
