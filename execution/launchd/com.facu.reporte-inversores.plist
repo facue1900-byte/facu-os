@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.reporte-inversores</string>
+
+    <!-- Reporte mensual del Paseo para los inversores.
+         Corre el 16 de cada mes: para esa fecha el extracto del Macro del mes
+         anterior ya entro (llega alrededor del 15), asi que el saldo de banco
+         y los gastos pagados por banco estan completos.
+         DEJA EL BORRADOR EN GMAIL. No manda nada: lo manda Facu (regla 10). -->
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-lc</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/reporte_inversores.py --borrador</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Day</key>
+        <integer>16</integer>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>7</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/reporte-inversores.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/reporte-inversores.err</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+</dict>
+</plist>

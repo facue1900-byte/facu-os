@@ -22,3 +22,4 @@ archive/base-clientes-*/
 
 # backup transitorio de Expensas Predio (se regenera en cada corrida)
 .claude/skills/cierre-mes-nordelta/scripts/expensas_predio_backup.json
+data/reportes-inversores/
