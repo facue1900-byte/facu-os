@@ -27,6 +27,25 @@ from pathlib import Path
 sys.path.insert(0, "/Users/Facu/facu-os")
 
 SHEET_MASTER_PLAN = "1ATiNBHCukPYPn9-poP1HO4SlfsDu5pGXsLz-JvW-IQs"
+# El capital NO sale del Master Plan: sale de Gastos Obra, que es lo que cada socio
+# PUSO (aportes + obra que pago de su bolsillo). El Master Plan solo tiene lo que
+# entro por la caja o el banco del Paseo, que es menos. Son dos cosas distintas,
+# no dos versiones de la misma -> memoria [[donde-va-un-aporte-de-capital]].
+SHEET_GASTOS_OBRA = "1wxaXia5lvoYk9lPZ_2Ie9imhxexUqmaU0wFqryNjIDY"
+# Facu, 10/09/2026: al inversor van estos tres. Mariana, Soledad y Tomas figuran
+# en Gastos Obra solo en USD y no entran en este reporte.
+SOCIOS_DEL_REPORTE = ["Richi", "Facundo", "Paseo Nordelta"]
+
+# Aclaraciones que van en el PDF de un mes puntual, cuando un numero necesita
+# contexto para no enganar. Sin esto el lector ve la ganancia y no la razon.
+NOTAS_DEL_MES = {
+    "2026-08": ("Expensas AVN, que ven\u00eda entre $2,1M y $3,3M por mes, no se pag\u00f3 "
+                "en julio ni en agosto: est\u00e1 retenida a prop\u00f3sito mientras se "
+                "resuelve una deuda que AVN tiene con el Paseo. Son unos $5,6M que "
+                "hoy siguen en la caja y que van a salir cuando se destrabe, as\u00ed "
+                "que el resultado de esos dos meses no es comparable con el de los "
+                "anteriores."),
+}
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 SALIDA = Path("/Users/Facu/facu-os/data/reportes-inversores")
 
@@ -56,6 +75,84 @@ def bajar_master_plan(destino):
     from execution.google_auth import bajar_xlsx
     bajar_xlsx(SHEET_MASTER_PLAN, str(destino))
     return destino
+
+
+def capital_de_gastos_obra(cierre):
+    """Lo que cada socio puso, cortado a la misma fecha que el resto del reporte.
+
+    Columnas: A fecha, B persona, H monto en ARS, I monto en USD (la conversion al
+    dolar del dia, no un aporte aparte). El acumulado que la planilla trae en L:N
+    es "hasta hoy", por eso se suma fila por fila.
+    """
+    from execution.google_auth import sheets
+    v = (sheets("facu").spreadsheets().values()
+         .get(spreadsheetId=SHEET_GASTOS_OBRA, range="Hoja 1!A5:I1000")
+         .execute().get("values", []))
+
+    def num(x):
+        x = str(x or "").replace("$", "").replace(",", "").strip()
+        try:
+            return float(x)
+        except ValueError:
+            return 0.0
+
+    ars = collections.defaultdict(float)
+    usd = collections.defaultdict(float)
+    solo_aportes = collections.defaultdict(float)
+    leidas = ilegibles = 0
+    for r in v:
+        r = list(r) + [""] * (9 - len(r))
+        f = str(r[0]).strip()
+        if not f:
+            continue
+        try:
+            # hay fechas tipeadas "20/05./2026": el punto de mas no puede tirar
+            # una fila de plata afuera del total en silencio
+            d, m, a = [int(x.strip(" .")) for x in f.split("/")]
+            fecha = dt.date(a, m, d)
+        except Exception:
+            ilegibles += 1
+            print(f"     !! fecha ilegible en Gastos Obra: {f!r} ({r[1]}, {r[3]})")
+            continue
+        if fecha > cierre:
+            continue
+        persona = str(r[1]).strip()
+        ars[persona] += num(r[7])
+        usd[persona] += num(r[8])
+        if "aporte de capital" in str(r[2]).strip().lower():
+            solo_aportes[persona] += num(r[7])
+        leidas += 1
+
+    if leidas == 0:
+        sys.exit("ERROR: Gastos Obra vino vacia. No reporto un capital de cero.")
+    if ilegibles:
+        sys.exit(f"ERROR: {ilegibles} fila(s) de Gastos Obra con fecha ilegible. "
+                 f"Arreglalas en la planilla: si no, ese aporte no entra en el total.")
+    return ({k: ars[k] for k in SOCIOS_DEL_REPORTE if ars.get(k)},
+            {k: usd[k] for k in SOCIOS_DEL_REPORTE if usd.get(k)},
+            dict(solo_aportes), leidas)
+
+
+def capital_cuadra(cap_mp, aportes_go, tol=1000.0):
+    """El capital sale al inversor SOLO si las dos fuentes dicen lo mismo.
+
+    Master Plan tiene lo que entro por la caja o el banco del Paseo; Gastos Obra
+    tiene lo que cada socio pago (aportes + obra de su bolsillo). Si los aportes
+    de una no son los de la otra, hay un dato que vive en dos lados y uno miente:
+    no se manda a un inversor hasta resolverlo.
+
+    Al 31/08/2026 no cuadraban por $15.384.058, sobre todo por la fila del
+    16/07/2026 de Gastos Obra: -$51.793.000 en Richi, "ingreso aporte de facu en
+    acciones" — un traspaso entre socios que el Master Plan no registra.
+    """
+    alias = {"Richi": "Richi", "Facundo": "Facu"}
+    difs = []
+    for socio in SOCIOS_DEL_REPORTE:
+        mp = cap_mp.get(alias.get(socio, socio), 0.0)
+        go = aportes_go.get(socio, 0.0)
+        if abs(mp - go) > tol:
+            difs.append((socio, mp, go, mp - go))
+    return difs
 
 
 def leer(xlsx):
@@ -193,42 +290,42 @@ CSS = """
 body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
        color: #111; margin: 0; font-size: 11px; background: #fff; }
 .cuerpo { padding: 0 12mm 14mm; }
-.tapa { background: #000; color: #fff; padding: 26px 12mm 22px; margin-bottom: 24px; }
+.tapa { background: #000; color: #fff; padding: 20px 12mm 17px; margin-bottom: 16px; }
 .tapa .logo { font-size: 17px; letter-spacing: .22em; font-weight: 600; }
 .tapa .sub { font-size: 9px; letter-spacing: .18em; color: #999; margin-top: 5px; }
-.hero { text-align: center; margin: 26px 0 30px; }
+.hero { text-align: center; margin: 18px 0 20px; }
 .hero .lbl { font-size: 9px; letter-spacing: .2em; color: #777; }
-.hero .big { font-size: 52px; font-weight: 700; margin: 6px 0 4px; letter-spacing: -.02em; }
+.hero .big { font-size: 44px; font-weight: 700; margin: 6px 0 4px; letter-spacing: -.02em; }
 .hero .det { font-size: 11px; color: #555; }
 .pos { color: #1a7f37; } .neg { color: #b42318; }
-h2 { font-size: 12px; letter-spacing: .1em; margin: 26px 0 8px;
+h2 { font-size: 12px; letter-spacing: .1em; margin: 17px 0 7px;
      border-bottom: 1.5px solid #111; padding-bottom: 5px; }
 table { width: 100%; border-collapse: collapse; }
-.barras td { padding: 4px 0; vertical-align: middle; }
+.barras td { padding: 2.5px 0; vertical-align: middle; }
 .barras .mes { width: 42px; color: #444; }
 .barras .val { width: 74px; font-weight: 600; text-align: right; padding-right: 12px; }
 .bar { height: 13px; border-radius: 2px; }
 .bar.p { background: #a9d5b4; } .bar.n { background: #eab6b0; }
 .bar.hoy { background: #1a7f37; }
 .nota { font-size: 10px; color: #555; margin-top: 7px; }
-.caja { background: #f2f8f4; border-left: 3px solid #1a7f37; padding: 11px 14px;
-        margin: 14px 0; font-size: 11px; }
+.caja { background: #f2f8f4; border-left: 3px solid #1a7f37; padding: 8px 12px;
+        margin: 9px 0; font-size: 10.5px; line-height: 1.4; }
 .caja b { color: #1a7f37; }
 .caja.gris { background: #f6f6f6; border-left-color: #999; }
 .caja.gris b { color: #333; }
 .tiles { display: flex; gap: 10px; margin-top: 10px; }
-.tile { flex: 1; background: #f6f6f6; border-radius: 4px; padding: 12px 14px; }
+.tile { flex: 1; background: #f6f6f6; border-radius: 4px; padding: 9px 12px; }
 .tile .k { font-size: 8px; letter-spacing: .14em; color: #777; }
-.tile .v { font-size: 19px; font-weight: 700; margin-top: 4px; }
-.lineas td { padding: 5px 0; border-bottom: 1px solid #eee; }
+.tile .v { font-size: 17px; font-weight: 700; margin-top: 4px; }
+.lineas td { padding: 3.5px 0; border-bottom: 1px solid #eee; }
 .lineas td.n { text-align: right; font-variant-numeric: tabular-nums; }
 .lineas tr.tot td { font-weight: 700; border-bottom: 2px solid #111; }
-.pie { margin-top: 26px; padding-top: 9px; border-top: 1px solid #ddd;
+.pie { margin-top: 16px; padding-top: 9px; border-top: 1px solid #ddd;
        font-size: 8px; letter-spacing: .1em; color: #888; text-align: center; }
 """
 
 
-def html(d, anio, mes_corte):
+def html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None):
     m, mm = d["meses"], d["meses"][mes_corte]
     acum = sum(m[i]["res"] for i in m)
     tope = max(abs(m[i]["res"]) for i in m) or 1
@@ -245,15 +342,12 @@ def html(d, anio, mes_corte):
             f'<td class="val {"pos" if r>0 else "neg"}">{millones(r)}</td>'
             f'<td><div class="bar {cls}" style="width:{ancho:.1f}%"></div></td></tr>')
 
-    cap = d["capital"]
-    cap_tot = sum(cap.values())
-    cap_usd = sum(d["capital_usd"].values())
+    cap_tot = sum(cap_ars.values())
+    usd_tot = sum(cap_usd.values())
     lineas_cap = "".join(
-        f'<tr><td>Aporte de {s}</td><td class="n">${plata(v)}</td></tr>'
-        for s, v in sorted(cap.items(), key=lambda x: -x[1]))
-    if cap_usd:
-        lineas_cap += (f'<tr><td>Aportes en dólares (Richi, ene-26)</td>'
-                       f'<td class="n">US$ {plata(cap_usd)}</td></tr>')
+        f'<tr><td>{s}</td><td class="n">${plata(v)}</td>'
+        f'<td class="n" style="color:#777">US$ {plata(cap_usd.get(s, 0))}</td></tr>'
+        for s, v in sorted(cap_ars.items(), key=lambda x: -x[1]))
 
     caja = d["saldos"].get(("Caja", "ARS"), 0)
     banco = d["saldos"].get(("Banco", "ARS"), 0)
@@ -283,6 +377,17 @@ def html(d, anio, mes_corte):
         f'{millones(mm["res"])}.</b><br>Los ingresos de los locales no alcanzaron '
         f'a cubrir los gastos de operación del mes.</div>')
 
+    bloque_capital = "" if not cap_ars else f"""
+<h2>LO QUE PUSIERON LOS SOCIOS &middot; AL CIERRE DE {nombre_mes}</h2>
+<table class="lineas">
+  {lineas_cap}
+  <tr class="tot"><td>Total puesto por los socios</td><td class="n">${plata(cap_tot)}</td>
+    <td class="n" style="color:#777">US$ {plata(usd_tot)}</td></tr>
+</table>
+<div class="nota">Incluye los aportes de capital <b>y</b> la obra que cada uno pag\u00f3
+  de su bolsillo. Sale de la planilla <b>Gastos Obra</b>, cortado al
+  {d['cierre'].strftime('%d/%m/%Y')}.</div>"""
+
     return f"""<meta charset="utf-8"><style>{CSS}</style>
 <div class="tapa">
   <div class="logo">PASEO NORDELTA</div>
@@ -306,6 +411,7 @@ def html(d, anio, mes_corte):
 
 {veredicto}
 {bloque_no_op}
+{f'<div class="caja gris">{nota_mes}</div>' if nota_mes else ''}
 
 <h2>SALDOS AL CIERRE &middot; {nombre_mes} {anio}</h2>
 <div class="tiles">
@@ -315,19 +421,10 @@ def html(d, anio, mes_corte):
 </div>
 <div class="nota">Total disponible ${plata(caja+banco)} en pesos, al {d['cierre'].strftime('%d/%m/%Y')}.</div>
 
-<h2>CAPITAL Y OBRA &middot; AL CIERRE DE {nombre_mes}</h2>
-<table class="lineas">
-  {lineas_cap}
-  <tr class="tot"><td>Capital aportado (total)</td><td class="n">${plata(cap_tot)}
-    {f'+ US$ {plata(cap_usd)}' if cap_usd else ''}</td></tr>
-  <tr><td>Invertido en obra y equipamiento</td><td class="n neg">${plata(d['obra'])}
-    {f'+ US$ {plata(d["obra_usd"])}' if d['obra_usd'] else ''}</td></tr>
-</table>
-<div class="nota">La obra se financia con el capital aportado por los socios, aparte
-  del resultado del negocio. Las dos cifras están cortadas al {d['cierre'].strftime('%d/%m/%Y')}.</div>
-
-<div class="pie">PASEO NORDELTA &nbsp;&middot;&nbsp; CIERRE {nombre_mes} {anio}
-  &nbsp;&middot;&nbsp; FUENTE: MASTER PLAN, HOJA MOVIMIENTOS
+{bloque_capital}
+<div class="pie">
+PASEO NORDELTA &nbsp;&middot;&nbsp; CIERRE {nombre_mes} {anio}
+  &nbsp;&middot;&nbsp; {"FUENTES: MASTER PLAN (MOVIMIENTOS) Y GASTOS OBRA" if cap_ars else "FUENTE: MASTER PLAN, HOJA MOVIMIENTOS"}
   &nbsp;&middot;&nbsp; CIFRAS EN PESOS (ARS) SALVO ACLARACIÓN</div>
 </div>
 """
@@ -338,14 +435,17 @@ def html(d, anio, mes_corte):
 DESTINATARIOS = ["re1900@gmail.com", "facue1900@gmail.com"]
 
 
-def cuerpo_mail(d, anio, mes_corte):
+def cuerpo_mail(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None):
     m, mm = d["meses"], d["meses"][mes_corte]
     acum = sum(m[i]["res"] for i in m)
     racha = rachas(m, mes_corte)
     nm = MESES[mes_corte - 1]
-    cap = sum(d["capital"].values())
-    cap_usd = sum(d["capital_usd"].values())
-    usd_txt = f" m\u00e1s US$ {plata(cap_usd)}" if cap_usd else ""
+    cap = sum(cap_ars.values())
+    parr_cap = ("" if not cap_ars else
+                f"\nLa obra se financia aparte, con lo que pusieron los socios "
+                f"\u2014 aportes de capital m\u00e1s la obra que cada uno pag\u00f3 de su "
+                f"bolsillo \u2014, que al cierre de {nm} suma ${plata(cap)} "
+                f"(US$ {plata(sum(cap_usd.values()))}).\n")
 
     signo = "un resultado positivo de" if mm["res"] > 0 else "un resultado negativo de"
     seguido = (f" Es el {racha}\u00ba mes consecutivo en positivo y deja"
@@ -362,11 +462,10 @@ En {nm} el negocio cerr\u00f3 con {signo} {millones(mm['res'])}: los locales fac
 ${plata(mm['ing'])} y los gastos operativos fueron ${plata(mm['egr'])}.{seguido} \
 el acumulado del a\u00f1o en {millones(acum)}, {cierra}.
 
-La obra se financia aparte, con el capital aportado por los socios, que al cierre \
-de {nm} suma ${plata(cap)}{usd_txt}.
+{parr_cap}{(nota_mes + chr(10)) if nota_mes else ''}
 
-El detalle completo est\u00e1 en el PDF adjunto. Todos los n\u00fameros salen del Master \
-Plan (hoja Movimientos), cortados al {d['cierre'].strftime('%d/%m/%Y')}.
+El detalle completo est\u00e1 en el PDF adjunto. Los n\u00fameros salen del Master Plan \
+(hoja Movimientos), cortados al {d['cierre'].strftime('%d/%m/%Y')}.
 
 Quedo a disposici\u00f3n. Saludos,
 
@@ -451,10 +550,27 @@ def main():
         print("     Si falta cargarlos, el resultado del mes esta INFLADO por esa plata.")
         print("     Confirmalo antes de mandar el reporte.")
 
+    print("\n  Capital: leyendo Gastos Obra...")
+    cap_ars, cap_usd, aportes_go, nfilas = capital_de_gastos_obra(d["cierre"])
+    print(f"     {nfilas} filas hasta el corte | " +
+          " | ".join(f"{k} ${plata(v)}" for k, v in cap_ars.items()))
+    difs = capital_cuadra(d["capital"], aportes_go)
+    if difs:
+        print("\n  !! EL CAPITAL NO CUADRA entre Master Plan y Gastos Obra:")
+        for socio, mp, go, dif in difs:
+            print(f"     - {socio}: Master Plan ${plata(mp)} vs Gastos Obra "
+                  f"${plata(go)}  ({dif:+,.0f})".replace(",", "."))
+        print("     El bloque de capital NO va en el reporte: un dato que vive en dos")
+        print("     lados y no coincide no sale a un inversor. El resultado del mes y")
+        print("     los saldos si van: esos salen de una sola fuente y estan verificados.")
+        cap_ars, cap_usd = {}, {}
+
+    nota_mes = NOTAS_DEL_MES.get(f"{anio}-{mes_corte:02d}")
+
     base = f"Paseo_Nordelta_Inversores_{anio}-{mes_corte:02d}"
     fh = SALIDA / f"{base}.html"
     fp = SALIDA / f"{base}.pdf"
-    fh.write_text(html(d, anio, mes_corte), encoding="utf-8")
+    fh.write_text(html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes), encoding="utf-8")
 
     if not os.path.exists(CHROME):
         sys.exit(f"No encontre Chrome en {CHROME}: queda el HTML en {fh}")
@@ -466,7 +582,7 @@ def main():
     print(f"\nPDF: {fp}  ({fp.stat().st_size/1024:.0f} KB)")
 
     asunto = f"Paseo Nordelta \u2014 Reporte para inversores \u00b7 {MESES[mes_corte-1].capitalize()} {anio}"
-    cuerpo = cuerpo_mail(d, anio, mes_corte)
+    cuerpo = cuerpo_mail(d, anio, mes_corte, cap_ars, cap_usd, nota_mes)
     (SALIDA / f"{base}_mail.txt").write_text(
         f"Para: {', '.join(DESTINATARIOS)}\nAsunto: {asunto}\n\n{cuerpo}", encoding="utf-8")
 
