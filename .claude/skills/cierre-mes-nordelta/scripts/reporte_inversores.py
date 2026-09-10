@@ -217,7 +217,7 @@ def html(d, anio, mes_corte):
         f'<tr><td>Aporte de {s}</td><td class="n">${plata(v)}</td></tr>'
         for s, v in sorted(cap.items(), key=lambda x: -x[1]))
     if cap_usd:
-        lineas_cap += (f'<tr><td>Aportes en dolares (Richi, ene-26)</td>'
+        lineas_cap += (f'<tr><td>Aportes en dólares (Richi, ene-26)</td>'
                        f'<td class="n">US$ {plata(cap_usd)}</td></tr>')
 
     caja = d["saldos"].get(("Caja", "ARS"), 0)
@@ -241,12 +241,12 @@ def html(d, anio, mes_corte):
 
     veredicto = (
         f'<div class="caja"><b>El negocio operativo se sostiene solo.</b><br>'
-        f'Los alquileres y expensas de los locales cubren los gastos de operacion, '
+        f'Los alquileres y expensas de los locales cubren los gastos de operación, '
         f'y en {MESES[mes_corte-1]} dejaron {millones(mm["res"])} en el mes.</div>'
         if mm["res"] > 0 and acum > 0 else
-        f'<div class="caja gris"><b>Atencion: {MESES[mes_corte-1]} cerro en '
+        f'<div class="caja gris"><b>Atención: {MESES[mes_corte-1]} cerró en '
         f'{millones(mm["res"])}.</b><br>Los ingresos de los locales no alcanzaron '
-        f'a cubrir los gastos de operacion del mes.</div>')
+        f'a cubrir los gastos de operación del mes.</div>')
 
     return f"""<meta charset="utf-8"><style>{CSS}</style>
 <div class="tapa">
@@ -265,8 +265,8 @@ def html(d, anio, mes_corte):
 <h2>EL NEGOCIO, MES A MES</h2>
 <table class="barras">{''.join(filas)}</table>
 <div class="nota"><b class="{'pos' if acum>0 else 'neg'}">{millones(acum)}</b>
-  acumulado en el a&ntilde;o (enero&ndash;{MESES[mes_corte-1]})
-  {f'&middot; {racha}&ordm; mes seguido en positivo' if racha > 1 else ''}</div>
+  acumulado en el año (enero&ndash;{MESES[mes_corte-1]})
+  {f'&middot; {racha}º mes seguido en positivo' if racha > 1 else ''}</div>
 
 {veredicto}
 {bloque_no_op}
@@ -274,7 +274,7 @@ def html(d, anio, mes_corte):
 <h2>SALDOS AL CIERRE &middot; {nombre_mes} {anio}</h2>
 <div class="tiles">
   <div class="tile"><div class="k">EFECTIVO (CAJA)</div><div class="v">${plata(caja)}</div></div>
-  <div class="tile"><div class="k">DOLARES</div><div class="v">US$ {plata(usd)}</div></div>
+  <div class="tile"><div class="k">DÓLARES</div><div class="v">US$ {plata(usd)}</div></div>
   <div class="tile"><div class="k">BANCO</div><div class="v">${plata(banco)}</div></div>
 </div>
 <div class="nota">Total disponible ${plata(caja+banco)} en pesos, al {d['cierre'].strftime('%d/%m/%Y')}.</div>
@@ -288,11 +288,11 @@ def html(d, anio, mes_corte):
     {f'+ US$ {plata(d["obra_usd"])}' if d['obra_usd'] else ''}</td></tr>
 </table>
 <div class="nota">La obra se financia con el capital aportado por los socios, aparte
-  del resultado del negocio. Las dos cifras estan cortadas al {d['cierre'].strftime('%d/%m/%Y')}.</div>
+  del resultado del negocio. Las dos cifras están cortadas al {d['cierre'].strftime('%d/%m/%Y')}.</div>
 
 <div class="pie">PASEO NORDELTA &nbsp;&middot;&nbsp; CIERRE {nombre_mes} {anio}
   &nbsp;&middot;&nbsp; FUENTE: MASTER PLAN, HOJA MOVIMIENTOS
-  &nbsp;&middot;&nbsp; CIFRAS EN PESOS (ARS) SALVO ACLARACION</div>
+  &nbsp;&middot;&nbsp; CIFRAS EN PESOS (ARS) SALVO ACLARACIÓN</div>
 </div>
 """
 
