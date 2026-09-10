@@ -78,6 +78,7 @@ def calcular(filas, anio, mes_corte):
     es_aporte = lambda l: bool(l) and str(l).startswith("Aporte de Capital")
     m = {i: dict(ing=0.0, egr=0.0, reparto=0.0, descuadre=0.0, obra=0.0, aporte=0.0)
          for i in range(1, mes_corte + 1)}
+    porcat = collections.defaultdict(lambda: collections.defaultdict(float))
 
     capital = collections.defaultdict(float)      # ARS por socio, hasta el corte
     capital_usd = collections.defaultdict(float)
@@ -124,6 +125,7 @@ def calcular(filas, anio, mes_corte):
                 m[i]["descuadre"] += f["monto"]
             else:
                 m[i]["egr"] += f["monto"]
+            porcat[f["cat"]][i] += f["monto"]
 
     for i in m:
         m[i]["res"] = m[i]["ing"] - m[i]["egr"]
@@ -137,7 +139,40 @@ def calcular(filas, anio, mes_corte):
 
     return dict(meses=m, capital=dict(capital), capital_usd=dict(capital_usd),
                 obra=obra_total, obra_usd=obra_usd, saldos=dict(saldos),
-                cierre=cierre, fuera_moneda=fuera_moneda)
+                cierre=cierre, fuera_moneda=fuera_moneda,
+                porcat={k: dict(v) for k, v in porcat.items()})
+
+
+def gastos_que_desaparecieron(porcat, mes_corte, minimo=3, piso=500_000):
+    """Categorias que se pagaban con regularidad y ahora estan en cero.
+
+    Es el agujero mas caro de este reporte: un gasto fijo que falta cargar no da
+    error, sube el resultado y hace que el mes parezca mejor de lo que fue.
+    Expensas AVN corrio $2,1M-$3,3M de enero a junio 2026 y aparecio en $0 en
+    julio Y agosto: $5,6M de gasto que el reporte no mostraba.
+
+    Por eso NO se piden meses seguidos hasta el corte (cuando el gasto lleva dos
+    meses faltando, el mes anterior ya esta en cero y esa cuenta da 0): se pide
+    que se haya pagado en al menos `minimo` de los meses previos.
+    """
+    avisos = []
+    for cat, meses in porcat.items():
+        if cat in NO_OPERATIVO or meses.get(mes_corte, 0.0) > 0:
+            continue
+        pagados = [meses[i] for i in range(1, mes_corte) if meses.get(i, 0.0) > 0]
+        if len(pagados) < minimo:
+            continue
+        # hace cuantos meses que no se paga
+        seco = 0
+        for i in range(mes_corte, 0, -1):
+            if meses.get(i, 0.0) > 0:
+                break
+            seco += 1
+        prom = sum(pagados) / len(pagados)
+        if prom < piso:      # ruido: gastos chicos que se pagan cuando caen
+            continue
+        avisos.append((cat, len(pagados), mes_corte - 1, prom, seco))
+    return sorted(avisos, key=lambda x: -x[3])
 
 
 def rachas(m, mes_corte):
@@ -258,14 +293,15 @@ def html(d, anio, mes_corte):
 <div class="hero">
   <div class="lbl">RESULTADO DEL NEGOCIO &middot; {nombre_mes}</div>
   <div class="big {'pos' if mm['res']>0 else 'neg'}">{millones(mm['res'])}</div>
-  <div class="det">Ingresos ${plata(mm['ing'])} &nbsp;&minus;&nbsp;
+  <div class="det">${plata(mm['res'])} exactos &nbsp;&middot;&nbsp;
+       ingresos ${plata(mm['ing'])} &nbsp;&minus;&nbsp;
        gastos operativos ${plata(mm['egr'])}</div>
 </div>
 
 <h2>EL NEGOCIO, MES A MES</h2>
 <table class="barras">{''.join(filas)}</table>
 <div class="nota"><b class="{'pos' if acum>0 else 'neg'}">{millones(acum)}</b>
-  acumulado en el año (enero&ndash;{MESES[mes_corte-1]})
+  (${plata(acum)}) acumulado en el año (enero&ndash;{MESES[mes_corte-1]})
   {f'&middot; {racha}º mes seguido en positivo' if racha > 1 else ''}</div>
 
 {veredicto}
@@ -399,12 +435,21 @@ def main():
                     for f in filas if f["medio"] == "Banco"
                     and (f["fecha"].date() if isinstance(f["fecha"], dt.datetime)
                          else f["fecha"]) <= d["cierre"])
-    if (d["cierre"] - ult_banco).days > 7:
+    if (d["cierre"] - ult_banco).days > 3:
         print(f"\n  !! OJO: el ultimo movimiento de BANCO es del {ult_banco:%d/%m/%Y}, "
               f"{(d['cierre']-ult_banco).days} dias antes del cierre ({d['cierre']:%d/%m/%Y}).")
         print("     El extracto del Macro puede no estar cargado entero: el saldo de banco")
         print("     y los gastos pagados por banco pueden estar incompletos. Verificalo")
         print("     antes de mandar el reporte.")
+
+    faltantes = gastos_que_desaparecieron(d["porcat"], mes_corte)
+    if faltantes:
+        print(f"\n  !! GASTOS QUE SE PAGABAN SEGUIDO Y ESTE MES ESTAN EN CERO:")
+        for cat, n, de, prom, seco in faltantes:
+            print(f"     - {cat}: se pago en {n} de los {de} meses previos "
+                  f"(promedio ${plata(prom)}/mes) y lleva {seco} mes/es en $0.")
+        print("     Si falta cargarlos, el resultado del mes esta INFLADO por esa plata.")
+        print("     Confirmalo antes de mandar el reporte.")
 
     base = f"Paseo_Nordelta_Inversores_{anio}-{mes_corte:02d}"
     fh = SALIDA / f"{base}.html"
