@@ -36,6 +36,13 @@ SHEET_GASTOS_OBRA = "1wxaXia5lvoYk9lPZ_2Ie9imhxexUqmaU0wFqryNjIDY"
 # en Gastos Obra solo en USD y no entran en este reporte.
 SOCIOS_DEL_REPORTE = ["Richi", "Facundo", "Paseo Nordelta"]
 
+# Facu, 10/09/2026: quiere el desglose de lo invertido por cada uno en el mail.
+# Va desde Gastos Obra, que mide "lo que puso cada uno" (aportes + obra pagada de
+# su bolsillo) — NO es el "aporte de capital" del Master Plan, que solo tiene lo
+# que entro por la caja o el banco del Paseo. Las dos cifras no coinciden y no
+# tienen por que: el PDF aclara cual esta mostrando.
+MOSTRAR_CAPITAL = True
+
 # Aclaraciones que van en el PDF de un mes puntual, cuando un numero necesita
 # contexto para no enganar. Sin esto el lector ve la ganancia y no la razon.
 # Cuando un reporte ya enviado se corrige, el que lo recibio tiene que entender
@@ -399,7 +406,8 @@ def html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None):
     <td class="n" style="color:#777">US$ {plata(usd_tot)}</td></tr>
 </table>
 <div class="nota">Incluye los aportes de capital <b>y</b> la obra que cada uno pag\u00f3
-  de su bolsillo. Sale de la planilla <b>Gastos Obra</b>, cortado al
+  de su bolsillo. <b>Paseo Nordelta</b> no es un socio: es la obra que se pag\u00f3 con
+  plata del propio negocio. Sale de la planilla <b>Gastos Obra</b>, cortado al
   {d['cierre'].strftime('%d/%m/%Y')}.</div>"""
 
     return f"""<meta charset="utf-8"><style>{CSS}</style>
@@ -456,10 +464,14 @@ def cuerpo_mail(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None, correccion=
     nm = MESES[mes_corte - 1]
     cap = sum(cap_ars.values())
     parr_cap = ("" if not cap_ars else
-                f"\nLa obra se financia aparte, con lo que pusieron los socios "
+                f"La obra se financia aparte, con lo que pusieron los socios "
                 f"\u2014 aportes de capital m\u00e1s la obra que cada uno pag\u00f3 de su "
                 f"bolsillo \u2014, que al cierre de {nm} suma ${plata(cap)} "
-                f"(US$ {plata(sum(cap_usd.values()))}).\n")
+                f"(US$ {plata(sum(cap_usd.values()))}): "
+                + ", ".join(f"{k} ${plata(v)}" for k, v in
+                            sorted(cap_ars.items(), key=lambda x: -x[1]))
+                + ". Paseo Nordelta no es un socio: es la obra que se pag\u00f3 con "
+                  "plata del propio negocio.\n\n")
 
     signo = "un resultado positivo de" if mm["res"] > 0 else "un resultado negativo de"
     seguido = (f" Es el {racha}\u00ba mes consecutivo en positivo y deja"
@@ -480,8 +492,9 @@ el acumulado del a\u00f1o en {millones(acum)}, {cierra}.
 
 {parr_cap}{(nota_mes + chr(10)) if nota_mes else ''}
 
-El detalle completo est\u00e1 en el PDF adjunto. Los n\u00fameros salen del Master Plan \
-(hoja Movimientos), cortados al {d['cierre'].strftime('%d/%m/%Y')}.
+El detalle completo est\u00e1 en el PDF adjunto. El resultado y los saldos salen del \
+Master Plan y lo invertido, de la planilla Gastos Obra; todo cortado al \
+{d['cierre'].strftime('%d/%m/%Y')}.
 
 Quedo a disposici\u00f3n. Saludos,
 
@@ -571,7 +584,7 @@ def main():
     print(f"     {nfilas} filas hasta el corte | " +
           " | ".join(f"{k} ${plata(v)}" for k, v in cap_ars.items()))
     difs = capital_cuadra(d["capital"], aportes_go)
-    if difs:
+    if difs and not MOSTRAR_CAPITAL:
         print("\n  !! EL CAPITAL NO CUADRA entre Master Plan y Gastos Obra:")
         for socio, mp, go, dif in difs:
             print(f"     - {socio}: Master Plan ${plata(mp)} vs Gastos Obra "
