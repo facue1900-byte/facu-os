@@ -27,7 +27,7 @@ Desde un skill:
     ws = sheets().spreadsheets().values().get(...)
 """
 
-import argparse
+import argparse, json
 import pathlib
 import sys
 
@@ -63,7 +63,7 @@ SCOPES = [
 ]
 
 
-def credenciales(cuenta=CUENTA_DEFAULT, interactivo=None):
+def credenciales(cuenta=CUENTA_DEFAULT, interactivo=None, forzar=False):
     """Devuelve credenciales válidas de `cuenta`, refrescando o pidiendo login.
 
     `interactivo` se autodetecta: si no hay terminal (launchd, cron), NO abre el
@@ -77,6 +77,19 @@ def credenciales(cuenta=CUENTA_DEFAULT, interactivo=None):
     creds = None
     if token.exists():
         creds = Credentials.from_authorized_user_file(str(token), SCOPES)
+
+    # Un token guardado antes de que SCOPES creciera NO sirve, pero `creds.valid`
+    # dice que si: google-auth no compara los scopes que pedimos contra los que
+    # el token realmente tiene. Sin este chequeo el token viejo se reusa para
+    # siempre y la API contesta 403 mucho despues, lejos de la causa.
+    if creds and not forzar and not set(SCOPES).issubset(scopes_del_token(cuenta)):
+        faltan = sorted(set(SCOPES) - scopes_del_token(cuenta))
+        print(f"El token de '{cuenta}' no tiene {[s.rsplit('/',1)[-1] for s in faltan]}: "
+              f"hay que reautorizar.", file=sys.stderr)
+        creds = None
+
+    if forzar:
+        creds = None
 
     if creds and creds.valid:
         return creds
@@ -126,6 +139,24 @@ def credenciales(cuenta=CUENTA_DEFAULT, interactivo=None):
     token.write_text(creds.to_json())
     print(f"Token de '{cuenta}' guardado en {token.name} → {email}")
     return creds
+
+
+def scopes_del_token(cuenta):
+    """Los scopes REALES que Google otorgo, leidos del JSON.
+
+    OJO: no sirve mirar `creds.scopes` de un Credentials cargado con
+    from_authorized_user_file(archivo, SCOPES): ese constructor le ASIGNA los
+    scopes que uno le pasa, asi que comparar contra SCOPES es compararse contra
+    si mismo y siempre da que esta todo bien. La verdad esta en la clave
+    "scopes" del archivo.
+    """
+    t = token_de(cuenta)
+    if not t.exists():
+        return set()
+    try:
+        return set(json.loads(t.read_text()).get("scopes") or [])
+    except Exception:
+        return set()
 
 
 def _email_de(creds):
@@ -203,10 +234,17 @@ def main():
                 print(f"  {c:<10} → TOKEN ROTO: {e}")
         return
 
-    credenciales(args.cuenta)
+    creds = credenciales(args.cuenta, forzar=args.setup)
     perfil = gmail(args.cuenta).users().getProfile(userId="me").execute()
     print(f"Cuenta '{args.cuenta}' autenticada como {perfil['emailAddress']}")
-    print(f"Scopes: {', '.join(s.rsplit('/', 1)[-1] for s in SCOPES)}")
+    # Los scopes del TOKEN, no la constante: si imprimo SCOPES digo que tengo
+    # permisos que quiza no me dieron.
+    reales = scopes_del_token(args.cuenta)
+    print(f"Scopes del token: {', '.join(sorted(s.rsplit('/', 1)[-1] for s in reales))}")
+    faltan = sorted(set(SCOPES) - reales)
+    if faltan:
+        print(f"FALTAN: {', '.join(s.rsplit('/', 1)[-1] for s in faltan)}  "
+              f"→ corré --setup para reautorizar")
 
 
 if __name__ == "__main__":
