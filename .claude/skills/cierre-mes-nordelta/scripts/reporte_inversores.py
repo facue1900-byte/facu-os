@@ -38,6 +38,20 @@ SOCIOS_DEL_REPORTE = ["Richi", "Facundo", "Paseo Nordelta"]
 
 # Aclaraciones que van en el PDF de un mes puntual, cuando un numero necesita
 # contexto para no enganar. Sin esto el lector ve la ganancia y no la razon.
+# Cuando un reporte ya enviado se corrige, el que lo recibio tiene que entender
+# que cambio y por que. Un segundo mail con otros numeros y sin explicacion es
+# peor que no mandarlo.
+CORRECCIONES = {
+    "2026-08": ("Va de nuevo el reporte de agosto, con una correcci\u00f3n sobre el que "
+                "te mand\u00e9 hace un rato. Revisando los movimientos vimos que la obra "
+                "de julio \u2014 $6.210.228 entre mano de obra y materiales \u2014 estaba "
+                "cargada como gasto de operaci\u00f3n cuando en realidad es inversi\u00f3n en "
+                "el paseo, que se financia con el capital de los socios y no con los "
+                "alquileres. Corregido, julio cierra en +$14,8M en vez de +$8,6M y el "
+                "acumulado del a\u00f1o pasa de +$24,1M a +$30,3M. Los n\u00fameros de agosto "
+                "no cambian."),
+}
+
 NOTAS_DEL_MES = {
     "2026-08": ("Expensas AVN, que ven\u00eda entre $2,1M y $3,3M por mes, no se pag\u00f3 "
                 "en julio ni en agosto: est\u00e1 retenida a prop\u00f3sito mientras se "
@@ -435,7 +449,7 @@ PASEO NORDELTA &nbsp;&middot;&nbsp; CIERRE {nombre_mes} {anio}
 DESTINATARIOS = ["re1900@gmail.com", "facue1900@gmail.com"]
 
 
-def cuerpo_mail(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None):
+def cuerpo_mail(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None, correccion=None):
     m, mm = d["meses"], d["meses"][mes_corte]
     acum = sum(m[i]["res"] for i in m)
     racha = rachas(m, mes_corte)
@@ -454,9 +468,11 @@ def cuerpo_mail(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None):
               if acum > 0 else
               "as\u00ed que la operaci\u00f3n todav\u00eda no se cubre sola en el a\u00f1o")
 
+    apertura = correccion if correccion else f"Va el reporte de {nm} {anio} del Paseo."
+
     return f"""Hola,
 
-Va el reporte de {nm} {anio} del Paseo.
+{apertura}
 
 En {nm} el negocio cerr\u00f3 con {signo} {millones(mm['res'])}: los locales facturaron \
 ${plata(mm['ing'])} y los gastos operativos fueron ${plata(mm['egr'])}.{seguido} \
@@ -581,8 +597,11 @@ def main():
         sys.exit(f"Chrome no genero un PDF valido:\n{r.stderr[-500:]}")
     print(f"\nPDF: {fp}  ({fp.stat().st_size/1024:.0f} KB)")
 
-    asunto = f"Paseo Nordelta \u2014 Reporte para inversores \u00b7 {MESES[mes_corte-1].capitalize()} {anio}"
-    cuerpo = cuerpo_mail(d, anio, mes_corte, cap_ars, cap_usd, nota_mes)
+    correccion = CORRECCIONES.get(f"{anio}-{mes_corte:02d}")
+    asunto = (f"Paseo Nordelta \u2014 Reporte para inversores \u00b7 "
+              f"{MESES[mes_corte-1].capitalize()} {anio}"
+              + (" (corregido)" if correccion else ""))
+    cuerpo = cuerpo_mail(d, anio, mes_corte, cap_ars, cap_usd, nota_mes, correccion)
     (SALIDA / f"{base}_mail.txt").write_text(
         f"Para: {', '.join(DESTINATARIOS)}\nAsunto: {asunto}\n\n{cuerpo}", encoding="utf-8")
 
