@@ -3705,3 +3705,38 @@ hay escaneos, la búsqueda nunca los miró.
 portal. De 21 PDF reenviados, 14 ya estaban archivados. Archivar el grupo entero habría
 metido decenas de duplicados en peor calidad. Detalle en
 `memory/grupo-whatsapp-facturas-paseo.md`.
+
+## 10/09/2026 — El débito que no matcheaba pagaba dos facturas juntas
+
+**Síntoma.** El débito del 05/08/2026 por $299.820,00 sobrevivió a dos vueltas de
+conciliación de agosto sin identificarse. No matcheaba contra ninguna factura del mes, no
+tenía comprobante de pago archivado, y buscar el importe adentro de los 470 PDF del Paseo
+sólo lo encontraba en el extracto.
+
+**Causa raíz.** No era un pago: eran **dos**. GEVGE (Electro 927) facturó
+`00005-00020710` el 31/07 por $253.085,77 y `00005-00020734` el 04/08 por $46.733,83.
+Suman **$299.819,60**, y el banco redondeó al peso: $299.820,00, $0,40 de diferencia.
+
+`extracto_a_movimientos.py` cruza **un débito contra una factura** — por importe con
+tolerancia de $1, o por número de referencia. Un pago agrupado no matchea con nada, y
+como el total pagado **no está escrito en ninguna factura**, ninguna búsqueda textual lo
+encuentra. El dato existía sólo en la cabeza de Facu.
+
+**Cómo se resolvió.** Facu dijo que la suma de dos facturas daba ese total. Se verificó
+contra las dos facturas: cierra con $0,40 de redondeo, el mismo patrón que Andersen
+($599.251,55 facturado → $599.251,00 debitado, $0,55).
+
+**Qué quedó.** La 20734 archivada en `Agosto 2026` (es una **foto**, no hay PDF); la
+observación del movimiento corregida en Movimientos para que diga qué dos facturas paga;
+agosto sigue cerrando al centavo. Y quedó anotado que la categoría es Inversiones, que
+ahora se confirma sola: es el mismo proveedor de materiales eléctricos de obra, no un
+electricista distinto.
+
+**Mejora pendiente del script.** Ante un débito sin match, probar **sumas de 2 o 3
+facturas impagas del mismo proveedor** anteriores a la fecha del pago, con la tolerancia
+de $1 aplicada **sobre la suma** (el banco redondea el total una sola vez, no factura por
+factura). Hoy hay que hacerlo a mano.
+
+**Lección transferible.** Cuando un importe no aparece en ningún documento, la hipótesis
+siguiente no es "falta el documento": es **"este número no es de un documento solo"**.
+Un total que sólo existe del lado del banco es señal de agrupación, no de faltante.
