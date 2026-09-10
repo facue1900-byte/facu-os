@@ -49,13 +49,16 @@ CUENTA_DEFAULT = "facu"
 def token_de(cuenta=CUENTA_DEFAULT):
     return RAIZ / f"token-{cuenta}.json"
 
-# Lectura y escritura de Sheets, lectura de Drive, y enviar mails.
+# Lectura y escritura de Sheets, lectura de Drive, y mails.
 # No pedimos gmail.modify ni drive full: si un script se vuelve loco, que no
 # pueda borrar nada.
+# gmail.compose es para DEJAR BORRADORES (el reporte a inversores). No amplia el
+# riesgo: gmail.send, que ya estaba, ya permitia mandar.
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.readonly",
     "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/gmail.compose",
     "https://www.googleapis.com/auth/gmail.readonly",
 ]
 
