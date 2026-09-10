@@ -176,6 +176,49 @@ def capital_cuadra(cap_mp, aportes_go, tol=1000.0):
     return difs
 
 
+def obra_del_negocio(cierre):
+    """Obra que se pago con plata del propio negocio, segun Gastos Obra."""
+    from execution.google_auth import sheets
+    v = (sheets("facu").spreadsheets().values()
+         .get(spreadsheetId=SHEET_GASTOS_OBRA, range="Hoja 1!A5:I300")
+         .execute().get("values", []))
+    tot = 0.0
+    for r in v:
+        r = list(r) + [""] * (9 - len(r))
+        if not str(r[0]).strip() or str(r[1]).strip() != "Paseo Nordelta":
+            continue
+        if "aporte de capital" in str(r[2]).lower():
+            continue
+        try:
+            d, m, a = [int(x.strip(" .")) for x in str(r[0]).split("/")]
+            f = dt.date(a, m, d)
+        except Exception:
+            continue
+        if f <= cierre:
+            tot += float(str(r[7] or "0").replace("$", "").replace(",", "").strip() or 0)
+    return tot
+
+
+def comprobacion(d, obra_pn):
+    """Las dos cuentas que tienen que sumar la caja real.
+
+    Es la respuesta a "como se corrobora que lo invertido por cada uno esta bien":
+    la ganancia que el negocio no reinvirtio, mas los aportes que los socios
+    todavia no gastaron, tienen que ser exactamente la plata que hay.
+    """
+    m = d["meses"]
+    gan = sum(m[i]["res"] for i in m) - sum(m[i]["reparto"] + m[i]["descuadre"] for i in m)
+    aportes = sum(d["capital"].values())
+    obra = d["obra"]
+    caja = d["saldos"].get(("Caja", "ARS"), 0) + d["saldos"].get(("Banco", "ARS"), 0)
+    del_negocio = gan - obra_pn
+    de_socios = aportes - (obra - obra_pn)
+    return dict(gan=gan, obra_pn=obra_pn, del_negocio=del_negocio, aportes=aportes,
+                obra_socios=obra - obra_pn, de_socios=de_socios,
+                suma=del_negocio + de_socios, caja=caja,
+                cierra=abs(del_negocio + de_socios - caja) < 1)
+
+
 def leer(xlsx):
     import openpyxl
     wb = openpyxl.load_workbook(xlsx, data_only=True)
@@ -307,46 +350,47 @@ def rachas(m, mes_corte):
 
 CSS = """
 @page { size: A4; margin: 0; }
+@media print { h2 { break-after: avoid; } table { break-inside: avoid; } }
 * { box-sizing: border-box; }
 body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
        color: #111; margin: 0; font-size: 11px; background: #fff; }
-.cuerpo { padding: 0 12mm 14mm; }
-.tapa { background: #000; color: #fff; padding: 20px 12mm 17px; margin-bottom: 16px; }
+.cuerpo { padding: 0 12mm 6mm; }
+.tapa { background: #000; color: #fff; padding: 16px 12mm 13px; margin-bottom: 11px; }
 .tapa .logo { font-size: 17px; letter-spacing: .22em; font-weight: 600; }
 .tapa .sub { font-size: 9px; letter-spacing: .18em; color: #999; margin-top: 5px; }
-.hero { text-align: center; margin: 18px 0 20px; }
+.hero { text-align: center; margin: 9px 0 11px; }
 .hero .lbl { font-size: 9px; letter-spacing: .2em; color: #777; }
-.hero .big { font-size: 44px; font-weight: 700; margin: 6px 0 4px; letter-spacing: -.02em; }
+.hero .big { font-size: 34px; font-weight: 700; margin: 6px 0 4px; letter-spacing: -.02em; }
 .hero .det { font-size: 11px; color: #555; }
 .pos { color: #1a7f37; } .neg { color: #b42318; }
-h2 { font-size: 12px; letter-spacing: .1em; margin: 17px 0 7px;
+h2 { font-size: 11px; letter-spacing: .1em; margin: 11px 0 4px;
      border-bottom: 1.5px solid #111; padding-bottom: 5px; }
 table { width: 100%; border-collapse: collapse; }
-.barras td { padding: 2.5px 0; vertical-align: middle; }
+.barras td { padding: 1.8px 0; vertical-align: middle; }
 .barras .mes { width: 42px; color: #444; }
 .barras .val { width: 74px; font-weight: 600; text-align: right; padding-right: 12px; }
 .bar { height: 13px; border-radius: 2px; }
 .bar.p { background: #a9d5b4; } .bar.n { background: #eab6b0; }
 .bar.hoy { background: #1a7f37; }
-.nota { font-size: 10px; color: #555; margin-top: 7px; }
-.caja { background: #f2f8f4; border-left: 3px solid #1a7f37; padding: 8px 12px;
-        margin: 9px 0; font-size: 10.5px; line-height: 1.4; }
+.nota { font-size: 9.5px; color: #555; margin-top: 5px; line-height: 1.35; }
+.caja { background: #f2f8f4; border-left: 3px solid #1a7f37; padding: 6px 10px;
+        margin: 6px 0; font-size: 10px; line-height: 1.35; }
 .caja b { color: #1a7f37; }
 .caja.gris { background: #f6f6f6; border-left-color: #999; }
 .caja.gris b { color: #333; }
 .tiles { display: flex; gap: 10px; margin-top: 10px; }
-.tile { flex: 1; background: #f6f6f6; border-radius: 4px; padding: 9px 12px; }
+.tile { flex: 1; background: #f6f6f6; border-radius: 4px; padding: 7px 10px; }
 .tile .k { font-size: 8px; letter-spacing: .14em; color: #777; }
 .tile .v { font-size: 17px; font-weight: 700; margin-top: 4px; }
-.lineas td { padding: 3.5px 0; border-bottom: 1px solid #eee; }
+.lineas td { padding: 2.4px 0; border-bottom: 1px solid #eee; }
 .lineas td.n { text-align: right; font-variant-numeric: tabular-nums; }
 .lineas tr.tot td { font-weight: 700; border-bottom: 2px solid #111; }
-.pie { margin-top: 16px; padding-top: 9px; border-top: 1px solid #ddd;
+.pie { margin-top: 8px; padding-top: 9px; border-top: 1px solid #ddd;
        font-size: 8px; letter-spacing: .1em; color: #888; text-align: center; }
 """
 
 
-def html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None):
+def html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None, comp=None):
     m, mm = d["meses"], d["meses"][mes_corte]
     acum = sum(m[i]["res"] for i in m)
     tope = max(abs(m[i]["res"]) for i in m) or 1
@@ -410,6 +454,20 @@ def html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None):
   plata del propio negocio. Sale de la planilla <b>Gastos Obra</b>, cortado al
   {d['cierre'].strftime('%d/%m/%Y')}.</div>"""
 
+    bloque_comp = "" if not comp else f"""
+<h2>C\u00d3MO SE COMPRUEBA &middot; AL CIERRE DE {nombre_mes}</h2>
+<table class="lineas">
+  <tr><td>Ganancia acumulada del negocio</td><td class="n">${plata(comp['gan'])}</td></tr>
+  <tr><td>menos la obra que el negocio reinvirti\u00f3</td><td class="n">&minus;${plata(comp['obra_pn'])}</td></tr>
+  <tr><td><b>= le queda al negocio</b></td><td class="n"><b>${plata(comp['del_negocio'])}</b></td></tr>
+  <tr><td style="padding-top:9px">Aportes de capital de los socios</td><td class="n" style="padding-top:9px">${plata(comp['aportes'])}</td></tr>
+  <tr><td>menos la obra pagada con esos aportes</td><td class="n">&minus;${plata(comp['obra_socios'])}</td></tr>
+  <tr><td><b>= les queda sin gastar</b></td><td class="n"><b>${plata(comp['de_socios'])}</b></td></tr>
+  <tr class="tot"><td>Suma de las dos</td><td class="n">${plata(comp['suma'])}</td></tr>
+  <tr><td>Efectivo + banco que hay de verdad</td><td class="n">${plata(comp['caja'])}</td></tr>
+</table>
+<div class="nota">{'Las dos cuentas dan exactamente la plata que hay: cada peso que entr\u00f3 est\u00e1 o gastado o en la caja.' if comp['cierra'] else '<b>NO CIERRA</b> por $' + plata(abs(comp['suma'] - comp['caja'])) + ': hay obra atribuida a alguien que no la pag\u00f3, o plata que entr\u00f3 y no est\u00e1 anotada.'}</div>"""
+
     return f"""<meta charset="utf-8"><style>{CSS}</style>
 <div class="tapa">
   <div class="logo">PASEO NORDELTA</div>
@@ -444,6 +502,7 @@ def html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None):
 <div class="nota">Total disponible ${plata(caja+banco)} en pesos, al {d['cierre'].strftime('%d/%m/%Y')}.</div>
 
 {bloque_capital}
+{bloque_comp}
 <div class="pie">
 PASEO NORDELTA &nbsp;&middot;&nbsp; CIERRE {nombre_mes} {anio}
   &nbsp;&middot;&nbsp; {"FUENTES: MASTER PLAN (MOVIMIENTOS) Y GASTOS OBRA" if cap_ars else "FUENTE: MASTER PLAN, HOJA MOVIMIENTOS"}
@@ -599,7 +658,12 @@ def main():
     base = f"Paseo_Nordelta_Inversores_{anio}-{mes_corte:02d}"
     fh = SALIDA / f"{base}.html"
     fp = SALIDA / f"{base}.pdf"
-    fh.write_text(html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes), encoding="utf-8")
+    comp = comprobacion(d, obra_del_negocio(d["cierre"]))
+    if not comp["cierra"]:
+        print(f"\n  !! LA COMPROBACION NO CIERRA por "
+              f"${plata(abs(comp['suma'] - comp['caja']))}: hay obra atribuida a "
+              f"alguien que no la pago, o plata que entro y no esta anotada.")
+    fh.write_text(html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes, comp), encoding="utf-8")
 
     if not os.path.exists(CHROME):
         sys.exit(f"No encontre Chrome en {CHROME}: queda el HTML en {fh}")
