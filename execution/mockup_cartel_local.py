@@ -23,12 +23,17 @@ def asset(name):
 ISO, LOGO = asset("isotipo-blanco.png"), asset("logotipo-blanco.png")
 
 def place(pieces):
-    """pieces: (img, centro_x, top, alto) -> mascara L del cartel completo"""
+    """pieces: (img, centro_x, top, alto) -> mascara L del cartel completo.
+
+    El ancho se fuerza impar: con ancho par el centro de una pieza cae medio pixel
+    al costado del eje, y dos piezas de distinta paridad quedan desalineadas entre si.
+    """
     m = Image.new("L", SZ, 0)
     for img, cx, top, h in pieces:
         w = max(1, round(h * img.width / img.height))
+        w += 1 - w % 2
         r = img.resize((w, h), Image.LANCZOS).split()[3]
-        m.paste(r, (round(cx - w / 2), top), r)
+        m.paste(r, (cx - (w - 1) // 2, top), r)
     return m
 
 # --- helpers de luz --------------------------------------------------------
@@ -186,10 +191,14 @@ def noche(mask, out, seed=7):
     night.save(out, quality=94)
 
 if __name__ == "__main__":
-    # v3: estrella mas grande, ASTRONOMY mas chico
-    v3 = place([(ISO, 458, 620, 166), (LOGO, 472, 811, 42)])
+    # EJE = centro real de la pared de madera, medido en las filas que no tapan las
+    # palmeras (620, 640, 660 y 740): 456 +-3 px. Las dos piezas van sobre el mismo
+    # eje, si no el conjunto se lee torcido aunque cada pieza este bien puesta.
+    EJE = 456
+    # v3: la estrella al maximo que da la pared, el logotipo bien chico debajo
+    v3 = place([(ISO, EJE, 617, 172), (LOGO, EJE, 804, 35)])
     # v4: ASTRONOMY de punta a punta en la pared, estrella chica en la viga
-    v4 = place([(LOGO, 455, 668, 64), (ISO, 472, 806, 32)])
+    v4 = place([(LOGO, EJE, 668, 64), (ISO, EJE, 806, 32)])
 
     for nombre, m in (("v3", v3), ("v4", v4)):
         dia(m, f"{W}/{nombre}_dia.jpg")
