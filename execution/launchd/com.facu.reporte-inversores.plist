@@ -9,13 +9,16 @@
          Corre el 16 de cada mes: para esa fecha el extracto del Macro del mes
          anterior ya entro (llega alrededor del 15), asi que el saldo de banco
          y los gastos pagados por banco estan completos.
+         Corre cierre_mensual.sh, que hace DOS cosas: sincroniza a Supabase lo
+         que solo esta en el Master Plan (sin eso la app muestra meses
+         incompletos) y despues arma el reporte.
          DEJA EL BORRADOR EN GMAIL. No manda nada: lo manda Facu (regla 10). -->
 
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
         <string>-lc</string>
-        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/reporte_inversores.py --borrador</string>
+        <string>/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/cierre_mensual.sh</string>
     </array>
 
     <key>StartCalendarInterval</key>
