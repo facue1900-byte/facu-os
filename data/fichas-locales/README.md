@@ -59,10 +59,9 @@ Qué es cada letra del plano, dicho por Facu el 11/09/2026:
 
 ## Lo que el script NO hace
 
-**No calcula plata.** Alquiler y expensas salen tal cual del JSON. Si un monto
-no está confirmado, va la palabra en vez del número — como en la pizzería, que
-dice "Según liquidación" porque nadie tiene cargada su expensa. Constitución,
-regla 6.
+**No calcula plata.** Alquiler y expensas salen tal cual del JSON; el script
+sólo los maqueta. Si un monto no está confirmado, la regla es poner la palabra
+en vez del número antes que inventarlo. Constitución, regla 6.
 
 ## Chequeos
 
@@ -100,9 +99,10 @@ dos cortaron con el mensaje correcto.
 
 ## Abierto
 
-- **La expensa del local chico de la pizzería no existe en ninguna fuente.** Las
-  tres que hay son de otros locales. Hasta que Facu la cierre, la ficha dice
-  "Según liquidación".
+- ⚠️ **La expensa de la pizzería la fijó Facu en $700.000 el 11/09/2026**, y con
+  eso va publicada. Queda anotado que ese número viene de la fila del local de
+  **83,6 m²** del Master Plan, no del chico: si algún día hay que defenderlo
+  contra la liquidación, la fuente es una decisión de Facu, no un cálculo.
 - 🚨 **Los m² de la pizzería no cierran entre dos planos del mismo arquitecto.**
   El plano general acota el bloque LOCAL 13 + COCINA 14 en 2,00 arriba, 7,13
   abajo y 7,30 de alto: **33,3 m²**, o ~40 m² sumando el semicubierto de 1,00 m.
