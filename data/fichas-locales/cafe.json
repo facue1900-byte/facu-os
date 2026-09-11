@@ -7,22 +7,42 @@
   "portada_img": "senderos",
   "portada_alt": "Los senderos del Paseo Nordelta con los jacarandás en flor",
   "portada_meta": [
-    { "k": "Superficie", "v": "130 + 52 + 39 m²" },
-    { "k": "Frente", "v": "13 m" },
-    { "k": "Entrega", "v": "Obra en gris" }
+    {
+      "k": "Superficie",
+      "v": "130 + 52 + 39 m²"
+    },
+    {
+      "k": "Frente",
+      "v": "13 m"
+    },
+    {
+      "k": "Entrega",
+      "v": "Obra en gris"
+    }
   ],
-
   "h_local": "130 m² cubiertos.<br>13 m de frente.",
   "superficies": [
-    { "n": "130", "u": "m²", "l": "Cubiertos", "acc": true },
-    { "n": "52", "u": "m²", "l": "Galería semicubierta al frente" },
-    { "n": "39", "u": "m²", "l": "Deck descubierto — ampliación prevista" }
+    {
+      "n": "130",
+      "u": "m²",
+      "l": "Cubiertos",
+      "acc": true
+    },
+    {
+      "n": "52",
+      "u": "m²",
+      "l": "Galería semicubierta al frente"
+    },
+    {
+      "n": "39",
+      "u": "m²",
+      "l": "Deck descubierto — ampliación prevista"
+    }
   ],
   "plano": {
-    "tipo": "img",
-    "src": "plano-cafe",
-    "alt": "Planta del sector café: salón principal, dos ambientes de apoyo, galería y deck",
-    "cap": "Planta — Arq. Max Elewaut · escala 1:100 · plano preliminar"
+    "tipo": "svg",
+    "svg": "<svg class=\"pl pl--alto\" viewBox=\"0 0 438 522\" role=\"img\" aria-label=\"Planta del sector cafe: 130 metros cuadrados cubiertos, 52 de galeria semicubierta y 39 de deck\"><defs><pattern id=\"galc\" width=\"7\" height=\"7\" patternTransform=\"rotate(45)\" patternUnits=\"userSpaceOnUse\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"7\" stroke=\"#c4622d\" stroke-width=\"1\" opacity=\".5\"/></pattern><marker id=\"flc\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto\"><path d=\"M0 3.5 L7 1.5 L7 5.5 Z\" fill=\"#7d766b\"/></marker></defs><rect x=\"70.0\" y=\"409.0\" width=\"338.0\" height=\"78.0\" fill=\"none\" stroke=\"#7d766b\" stroke-width=\"1.2\" stroke-dasharray=\"5 4\"/><rect x=\"70.0\" y=\"305.0\" width=\"338.0\" height=\"104.0\" fill=\"url(#galc)\" stroke=\"#c4622d\" stroke-width=\"1.2\" stroke-dasharray=\"5 4\"/><rect x=\"70.0\" y=\"45.0\" width=\"338.0\" height=\"260.0\" class=\"loc libre\"/><line x1=\"167.5\" y1=\"45.0\" x2=\"167.5\" y2=\"305.0\" stroke=\"#d97742\" stroke-width=\"1.4\" opacity=\".75\"/><line x1=\"70.0\" y1=\"199.7\" x2=\"167.5\" y2=\"199.7\" stroke=\"#d97742\" stroke-width=\"1.4\" opacity=\".75\"/><rect x=\"283.6\" y=\"107.8\" width=\"7\" height=\"7\" class=\"loc\"/><rect x=\"283.6\" y=\"214.4\" width=\"7\" height=\"7\" class=\"loc\"/><line x1=\"110.0\" y1=\"305.0\" x2=\"368.0\" y2=\"305.0\" stroke=\"#c4622d\" stroke-width=\"5\"/><line x1=\"70.0\" y1=\"28\" x2=\"408.0\" y2=\"28\" class=\"cl\" marker-start=\"url(#flc)\" marker-end=\"url(#flc)\"/><text x=\"239.0\" y=\"21\" class=\"cot\" text-anchor=\"middle\">13,00</text><line x1=\"52\" y1=\"45.0\" x2=\"52\" y2=\"305.0\" class=\"cl\" marker-start=\"url(#flc)\" marker-end=\"url(#flc)\"/><text x=\"42\" y=\"175.0\" class=\"cot\" text-anchor=\"middle\" transform=\"rotate(-90 42 175.0)\">10,00</text><line x1=\"52\" y1=\"305.0\" x2=\"52\" y2=\"409.0\" class=\"cl\" marker-start=\"url(#flc)\" marker-end=\"url(#flc)\"/><text x=\"42\" y=\"357.0\" class=\"cot\" text-anchor=\"middle\" transform=\"rotate(-90 42 357.0)\">4,00</text><line x1=\"52\" y1=\"409.0\" x2=\"52\" y2=\"487.0\" class=\"cl\" marker-start=\"url(#flc)\" marker-end=\"url(#flc)\"/><text x=\"42\" y=\"448.0\" class=\"cot\" text-anchor=\"middle\" transform=\"rotate(-90 42 448.0)\">3,00</text><text x=\"287.8\" y=\"163.0\" class=\"big\" text-anchor=\"middle\">130 m&#178;</text><text x=\"287.8\" y=\"184.0\" class=\"sub\" text-anchor=\"middle\">cubiertos</text><text x=\"287.8\" y=\"205.0\" class=\"mini\" text-anchor=\"middle\">SAL&#211;N 9,25 &#215; 9,60</text><text x=\"118.8\" y=\"122.4\" class=\"cot\" text-anchor=\"middle\" transform=\"rotate(-90 118.8 122.4)\">apoyo 5,95</text><text x=\"118.8\" y=\"252.4\" class=\"cot\" text-anchor=\"middle\" transform=\"rotate(-90 118.8 252.4)\">apoyo 3,45</text><text x=\"239.0\" y=\"362.0\" class=\"acc\" text-anchor=\"middle\">52 m&#178; de galer&#237;a semicubierta</text><text x=\"239.0\" y=\"453.0\" class=\"sub\" text-anchor=\"middle\">39 m&#178; de deck &#8212; ampliaci&#243;n prevista</text><text x=\"70.0\" y=\"513.0\" class=\"acc\">el frente de 13 m da al sendero principal</text></svg>",
+    "cap": "Planta — sobre el plano preliminar del Arq. Max Elewaut · medidas en metros"
   },
   "puntos": [
     "<b>Frente de 13 m</b> sobre el sendero principal, el eje que conecta el acceso con la plaza.",
@@ -32,35 +52,65 @@
     "<b>Deck de 13 × 3 m</b> dibujado en el proyecto como ampliación posible.",
     "<b>Obra en gris:</b> la terminación se define con el locatario."
   ],
-
   "h_cierre": "Entre el salón<br>y la plaza central.",
-  "pin": { "n": "9", "l": "36%", "t": "55%" },
-  "pines_ctx": [
-    { "n": "1", "l": "47%", "t": "17%" },
-    { "n": "3", "l": "78%", "t": "19%" },
-    { "n": "4", "l": "67%", "t": "42%" },
-    { "n": "5", "l": "47%", "t": "41%" },
-    { "n": "6", "l": "20%", "t": "32%" },
-    { "n": "7", "l": "86%", "t": "65%" }
-  ],
-  "mapa_ref": "9 La cafetería · 1 La Jaula · 3 Wellness · 4 Plaza · 5 Fabric · 6 BIGG · 7 Market",
+  "mapa_ref": "Sector 9 · sobre el sendero principal, entre el salón multiespacios y la plaza central",
   "condiciones": [
-    { "k": "Alquiler", "v": "$3.500.000", "n": "Por mes, en pesos. Los alquileres del paseo ajustan por IPC, trimestralmente." },
-    { "k": "Expensas", "v": "$1.050.000", "n": "Aproximadas. Se liquidan todos los meses según el gasto real del predio, en proporción a los m² del local." },
-    { "k": "Entrega", "v": "Obra en gris", "n": "El local se entrega terminado en gris. La puesta a punto se acuerda con el locatario." },
-    { "k": "Disponible", "v": "Hoy", "n": "El local está libre y entregable de inmediato." }
+    {
+      "k": "Alquiler",
+      "v": "$3.500.000",
+      "n": "Por mes, en pesos. Los alquileres del paseo ajustan por IPC, trimestralmente."
+    },
+    {
+      "k": "Expensas",
+      "v": "$1.050.000",
+      "n": "Aproximadas. Se liquidan todos los meses según el gasto real del predio, en proporción a los m² del local."
+    },
+    {
+      "k": "Entrega",
+      "v": "Obra en gris",
+      "n": "El local se entrega terminado en gris. La puesta a punto se acuerda con el locatario."
+    },
+    {
+      "k": "Disponible",
+      "v": "Hoy",
+      "n": "El local está libre y entregable de inmediato."
+    }
   ],
   "nota": "El paseo ya funciona: La Jaula y las escuelas de fútbol, BIGG, Fabric y el Wellness Center traen gente de lunes a lunes, no sólo el fin de semana. La cafetería queda sobre el sendero que cruzan todos. Medidas del plano preliminar del Arq. Max Elewaut — se verifican en obra.",
-
   "story": {
     "titulo": "Buscamos<br>cafetería.",
     "bajada": "130 m² cubiertos, 52 de galería y un deck de 39. Frente de 13 m sobre el sendero principal del paseo.",
     "datos": [
-      { "n": "130", "u": "m²", "l": "Cubiertos" },
-      { "n": "52", "u": "m²", "l": "Galería" },
-      { "n": "13", "u": "m", "l": "De frente" }
+      {
+        "n": "130",
+        "u": "m²",
+        "l": "Cubiertos"
+      },
+      {
+        "n": "52",
+        "u": "m²",
+        "l": "Galería"
+      },
+      {
+        "n": "13",
+        "u": "m",
+        "l": "De frente"
+      }
     ],
     "cta_l": "Mandanos tu propuesta a",
     "bajada_plano": ""
+  },
+  "ubicador": {
+    "img": "aerea-wellness",
+    "x": "36%",
+    "y": "55%",
+    "rx": "9.0%",
+    "ry": "16.5%",
+    "tag": "Acá está la cafetería",
+    "alt": "Vista aérea del paseo con la cafetería iluminada"
+  },
+  "story2": {
+    "titulo": "Sobre el sendero<br>principal.",
+    "bajada": "La cafetería queda entre el salón multiespacios y la plaza central, en el eje que cruza todo el que entra al paseo."
   }
 }

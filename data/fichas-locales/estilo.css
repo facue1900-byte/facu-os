@@ -111,6 +111,30 @@ h3{font-weight:500; font-size:11.5pt; margin:0; letter-spacing:-.005em;}
   width:5px; height:5px; border-radius:50%; background:var(--corten);}
 .puntos b{color:var(--ink); font-weight:500;}
 
+/* ---------- Ubicador: la aerea apagada con el local encendido ----------
+   No es un plano dibujado: es la MISMA aerea, en gris y oscura, con un foco
+   circular que devuelve el color solo encima del local. La geometria es la
+   real del render; lo unico agregado es el foco. Dibujar un plano del predio a
+   ojo seria inventarle al locatario una planta que nadie midio. */
+.loca{position:relative; line-height:0; border:1px solid var(--line);
+  overflow:hidden; margin-top:6mm; width:148mm; max-width:100%;}
+.loca img{width:100%; height:auto; display:block;}
+.loca__base{filter:grayscale(1) brightness(.42) contrast(1.05);}
+.loca__hi{position:absolute; inset:0; filter:saturate(1.05) brightness(1.06);}
+.loca__vela{position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(circle at var(--x) var(--y),
+    rgba(196,98,45,.24) 0%, rgba(196,98,45,.1) 55%, rgba(23,22,20,0) 78%);}
+.loca__aro{position:absolute; transform:translate(-50%,-50%);
+  border:2px solid var(--corten-hi); border-radius:50%;
+  box-shadow:0 0 0 1px rgba(23,22,20,.55), 0 0 22px rgba(196,98,45,.5);}
+.loca__tag{position:absolute; transform:translate(-50%,0);
+  font-family:var(--mono); font-size:8pt; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink); white-space:nowrap;
+  background:rgba(23,22,20,.82); border:1px solid var(--corten);
+  padding:2mm 3.5mm; border-radius:999px; line-height:1;}
+.loca__pie{font-family:var(--mono); font-size:8pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); margin:4mm 0 0;}
+
 /* ---------- Mapa ---------- */
 .mapa{position:relative; line-height:0; border:1px solid var(--line);
   margin-top:6mm; width:148mm; max-width:100%;}

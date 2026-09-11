@@ -96,14 +96,31 @@ def hoja_local(d: dict) -> str:
 </section>"""
 
 
+def ubicador(d: dict, clase: str = "loca") -> str:
+    """La aerea apagada con un foco de color encima del local.
+
+    Dos copias de la MISMA imagen: la de abajo en gris y oscura, la de arriba a
+    color recortada con un circulo sobre el local. La geometria es la del
+    render; lo unico agregado es el foco, el aro y la etiqueta.
+    """
+    u = d["ubicador"]
+    x, y, rx, ry = u["x"], u["y"], u["rx"], u["ry"]
+    foco = f"ellipse({rx} {ry} at {x} {y})"
+    return f"""
+<div class="{clase}" style="--x:{x}; --y:{y}">
+  <img class="loca__base" src="{datauri(u['img'])}" alt="">
+  <img class="loca__hi" src="{datauri(u['img'])}"
+       style="clip-path:{foco}; -webkit-clip-path:{foco}"
+       alt="{esc(u['alt'])}">
+  <span class="loca__vela"></span>
+  <span class="loca__aro" style="left:{x}; top:{y};
+        width:calc({rx} * 2); height:calc({ry} * 2)"></span>
+  <span class="loca__tag"
+        style="left:clamp(22%, {x}, 78%); top:calc({y} + {ry} + 4%)">{esc(u['tag'])}</span>
+</div>"""
+
+
 def hoja_cierre(d: dict) -> str:
-    pines = "".join(
-        f'<span class="pin pin--off" style="left:{p["l"]};top:{p["t"]}">{p["n"]}</span>'
-        for p in d.get("pines_ctx", [])
-    )
-    pin = d["pin"]
-    pines += (f'<span class="pin" style="left:{pin["l"]};top:{pin["t"]}">'
-              f'{pin["n"]}</span>')
     filas = "".join(
         f'<div class="cond__row"><p class="cond__k">{esc(c["k"])}</p>'
         f'<p class="cond__v">{c["v"]}</p><p class="cond__n">{c["n"]}</p></div>'
@@ -115,11 +132,8 @@ def hoja_cierre(d: dict) -> str:
   <div class="hoja__body">
     <p class="eyebrow">D&oacute;nde est&aacute;</p>
     <h2>{d['h_cierre']}</h2>
-    <div class="mapa">
-      <img src="{datauri('aerea-wellness')}" alt="Vista a&eacute;rea del Paseo Nordelta">
-      {pines}
-    </div>
-    <p class="mapa__ref">{esc(d['mapa_ref'])}</p>
+    {ubicador(d)}
+    <p class="loca__pie">{esc(d['mapa_ref'])}</p>
     <div class="cond">{filas}</div>
     <p class="nota">{d['nota']}</p>
     <div class="cta">
@@ -175,6 +189,28 @@ def historia_html(d: dict) -> str:
 </div></body></html>"""
 
 
+def historia_ubicacion_html(d: dict) -> str:
+    """Segunda historia: solo donde esta el local dentro del paseo."""
+    css = (BASE / "story.css").read_text()
+    s = d["story2"]
+    return f"""<!doctype html><html lang="es"><head><meta charset="utf-8">
+<title>{esc(d['nombre'])} &middot; d&oacute;nde est&aacute;</title><style>{css}</style></head><body>
+<div class="story">
+  <div class="s-bg"><img src="{datauri(d['portada_img'])}" alt=""></div>
+  <div class="s-body s-body--loca">
+    <img class="s-logo" src="{datauri('logo')}" alt="Paseo Nordelta">
+    <p class="s-chip">D&oacute;nde est&aacute;</p>
+    <h1 class="s-h1">{s['titulo']}</h1>
+    <p class="s-lede">{s['bajada']}</p>
+    {ubicador(d, "s-loca s-loca--grande")}
+    <div class="s-cta">
+      <p class="s-cta__l">{esc(d['story']['cta_l'])}</p>
+      <p class="s-cta__v">{CONTACTO['mail']}</p>
+    </div>
+  </div>
+</div></body></html>"""
+
+
 # ---------------------------------------------------------------- render
 
 def chrome(args: list[str], destino: pathlib.Path) -> None:
@@ -215,9 +251,16 @@ def main(slugs: list[str]) -> None:
         chrome(["--window-size=1080,1920", "--force-device-scale-factor=1",
                 f"--screenshot={png}", shtml.as_uri()], png)
 
+        s2html = SALIDA / f"{slug}-story-2.html"
+        s2html.write_text(historia_ubicacion_html(d))
+        png2 = SALIDA / f"{slug}-story-2.png"
+        chrome(["--window-size=1080,1920", "--force-device-scale-factor=1",
+                f"--screenshot={png2}", s2html.as_uri()], png2)
+
         verificar(pdf, png, slug)
-        print(f"{slug:<10} {pdf.name:<16} {pdf.stat().st_size/1024:>6.0f} KB")
-        print(f"{'':<10} {png.name:<16} {png.stat().st_size/1024:>6.0f} KB")
+        verificar_historia(png2, f"{slug} (historia 2)")
+        for f in (pdf, png, png2):
+            print(f"{slug:<10} {f.name:<22} {f.stat().st_size/1024:>6.0f} KB")
 
 
 def verificar(pdf: pathlib.Path, png: pathlib.Path, slug: str) -> None:
@@ -238,13 +281,18 @@ def verificar(pdf: pathlib.Path, png: pathlib.Path, slug: str) -> None:
             sys.exit(f"{slug}: la hoja {i} salió casi sin texto")
     doc.close()
 
+    verificar_historia(png, slug)
+
+
+def verificar_historia(png: pathlib.Path, quien: str) -> None:
+    import fitz
     pix = fitz.Pixmap(str(png))
     if (pix.width, pix.height) != (1080, 1920):
-        sys.exit(f"{slug}: la historia mide {pix.width}x{pix.height}, no 1080x1920")
+        sys.exit(f"{quien}: la historia mide {pix.width}x{pix.height}, no 1080x1920")
     muestra = {pix.pixel(x, y) for x in range(0, pix.width, 60)
                for y in range(0, pix.height, 60)}
     if len(muestra) < 50:
-        sys.exit(f"{slug}: la historia salió casi lisa ({len(muestra)} colores)")
+        sys.exit(f"{quien}: la historia salió casi lisa ({len(muestra)} colores)")
 
 
 if __name__ == "__main__":

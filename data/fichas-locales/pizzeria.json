@@ -7,15 +7,32 @@
   "portada_img": "galeria",
   "portada_alt": "La galería gastronómica del Paseo Nordelta con los frentes vidriados",
   "portada_meta": [
-    { "k": "Superficie", "v": "47,9 m²" },
-    { "k": "Destino", "v": "Gastronómico" },
-    { "k": "Entrega", "v": "Obra en gris" }
+    {
+      "k": "Superficie",
+      "v": "47,9 m²"
+    },
+    {
+      "k": "Destino",
+      "v": "Gastronómico"
+    },
+    {
+      "k": "Entrega",
+      "v": "Obra en gris"
+    }
   ],
-
   "h_local": "47,9 m² a estrenar,<br>con cocina propia.",
   "superficies": [
-    { "n": "47,9", "u": "m²", "l": "A estrenar, con cocina prevista en el proyecto", "acc": true },
-    { "n": "7,60", "u": "m", "l": "De frente sobre la galería semicubierta" }
+    {
+      "n": "47,9",
+      "u": "m²",
+      "l": "A estrenar, con cocina prevista en el proyecto",
+      "acc": true
+    },
+    {
+      "n": "7,60",
+      "u": "m",
+      "l": "De frente sobre la galería semicubierta"
+    }
   ],
   "plano": {
     "tipo": "svg",
@@ -30,34 +47,65 @@
     "<b>Los vecinos ya están:</b> Fabric se muda al local de al lado y Shock BA toma el tercero.",
     "<b>Disponible después de la Obra 1</b>, aproximadamente en tres meses."
   ],
-
   "h_cierre": "En la galería nueva,<br>sobre el acceso.",
-  "pin": { "n": "10", "l": "9%", "t": "23%" },
-  "pines_ctx": [
-    { "n": "1", "l": "47%", "t": "17%" },
-    { "n": "3", "l": "78%", "t": "19%" },
-    { "n": "4", "l": "67%", "t": "42%" },
-    { "n": "6", "l": "20%", "t": "32%" },
-    { "n": "9", "l": "36%", "t": "55%" }
-  ],
-  "mapa_ref": "10 La galería nueva · 1 La Jaula · 3 Wellness · 4 Plaza · 6 BIGG · 9 Cafetería",
+  "mapa_ref": "Sector 10 · la galería gastronómica nueva, sobre el acceso al paseo",
   "condiciones": [
-    { "k": "Alquiler", "v": "$2.250.000", "n": "Por mes, en pesos. Los alquileres del paseo ajustan por IPC, trimestralmente." },
-    { "k": "Expensas", "v": "Según liquidación", "n": "Se liquidan todos los meses según el gasto real del predio, en proporción a los m² del local." },
-    { "k": "Entrega", "v": "Obra en gris", "n": "El local se entrega terminado en gris. La puesta a punto se acuerda con el locatario." },
-    { "k": "Disponible", "v": "~3 meses", "n": "Al terminar la Obra 1 de la galería nueva." }
+    {
+      "k": "Alquiler",
+      "v": "$2.250.000",
+      "n": "Por mes, en pesos. Los alquileres del paseo ajustan por IPC, trimestralmente."
+    },
+    {
+      "k": "Expensas",
+      "v": "Según liquidación",
+      "n": "Se liquidan todos los meses según el gasto real del predio, en proporción a los m² del local."
+    },
+    {
+      "k": "Entrega",
+      "v": "Obra en gris",
+      "n": "El local se entrega terminado en gris. La puesta a punto se acuerda con el locatario."
+    },
+    {
+      "k": "Disponible",
+      "v": "~3 meses",
+      "n": "Al terminar la Obra 1 de la galería nueva."
+    }
   ],
   "nota": "La galería nueva son tres locales gastronómicos juntos, sobre el acceso al paseo. Dos ya tienen dueño — Fabric se muda a uno y Shock BA toma el otro — y queda éste. El paseo funciona de lunes a lunes: La Jaula y las escuelas de fútbol, BIGG y el Wellness Center traen gente todos los días. Cotas del proyecto validado; se verifican en obra.",
-
   "story": {
     "titulo": "Buscamos<br>pizzería.",
     "bajada": "47,9 m² a estrenar en la galería gastronómica nueva, con cocina prevista y frente vidriado de 7,60 m sobre la galería.",
     "datos": [
-      { "n": "47,9", "u": "m²", "l": "A estrenar" },
-      { "n": "7,60", "u": "m", "l": "De frente" },
-      { "n": "1", "u": "de 3", "l": "Local libre en la galería" }
+      {
+        "n": "47,9",
+        "u": "m²",
+        "l": "A estrenar"
+      },
+      {
+        "n": "7,60",
+        "u": "m",
+        "l": "De frente"
+      },
+      {
+        "n": "1",
+        "u": "de 3",
+        "l": "Local libre en la galería"
+      }
     ],
     "cta_l": "Mandanos tu propuesta a",
     "bajada_plano": ""
+  },
+  "ubicador": {
+    "img": "aerea-wellness",
+    "x": "11%",
+    "y": "23%",
+    "rx": "9.0%",
+    "ry": "16.5%",
+    "tag": "Acá está el local",
+    "alt": "Vista aérea del paseo con la galería nueva iluminada"
+  },
+  "story2": {
+    "titulo": "En la galería<br>nueva.",
+    "bajada": "Tres locales gastronómicos juntos sobre el acceso al paseo. Dos ya tienen dueño; queda éste."
   }
 }
