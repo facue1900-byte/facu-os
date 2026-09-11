@@ -40,9 +40,16 @@ def foco(cx, cy, rx, ry, dureza=2.2):
     return np.clip(1 - d, 0, 1) ** dureza
 
 def sumar(img, luz, color, fuerza=1.0):
-    """suma de luz que respeta el blanco: nunca quema, aclara lo que queda oscuro"""
+    """la fuente misma: el bulbo y su halo en el aire. Nunca quema."""
     l = (luz * fuerza)[..., None] * np.array(color, np.float32)
     return img + l * (1 - img)
+
+def iluminar(img, day, luz, color, fuerza=1.0):
+    """una superficie iluminada devuelve SU color, no el de la lampara.
+    Por eso la luz sobre materia se multiplica por la foto de dia en vez de
+    sumarse en blanco: sumando, el arbusto verde termina gris claro."""
+    l = (luz * fuerza)[..., None] * np.array(color, np.float32)
+    return np.clip(img + day * l, 0, 1)
 
 # --- cielo -----------------------------------------------------------------
 def mascara_cielo(rgb):
@@ -57,34 +64,22 @@ def mascara_cielo(rgb):
                  .filter(ImageFilter.GaussianBlur(1.0)), np.float32) / 255
     return m
 
-def cielo_estrellado(rng):
-    g = np.linspace(0, 1, SZ[1], dtype=np.float32)[:, None]
-    arriba = np.array([0.022, 0.031, 0.070], np.float32)
-    horizonte = np.array([0.090, 0.115, 0.180], np.float32)
-    cielo = arriba + (horizonte - arriba) * (g ** 1.6)
-    cielo = np.repeat(cielo[:, None, :], SZ[0], 1) if cielo.ndim == 3 else cielo
-    cielo = np.broadcast_to(cielo.reshape(SZ[1], 1, 3), (SZ[1], SZ[0], 3)).copy()
+def cielo_nocturno(rng):
+    """azul profundo con degrade, no negro: asi se ve un cielo de barrio iluminado"""
+    g = (np.linspace(0, 1, SZ[1], dtype=np.float32) ** 1.5).reshape(SZ[1], 1, 1)
+    arriba = np.array([0.030, 0.050, 0.105], np.float32)
+    horizonte = np.array([0.085, 0.125, 0.205], np.float32)
+    cielo = np.broadcast_to(arriba + (horizonte - arriba) * g, (SZ[1], SZ[0], 3)).copy()
 
-    # polvo de estrellas lejanas
-    capa = Image.new("L", SZ, 0)
-    d = ImageDraw.Draw(capa)
-    for _ in range(620):
-        x, y = rng.integers(0, SZ[0]), rng.integers(0, 900)
-        b = int(rng.integers(45, 150) * (1 - y / 1400))
-        d.point((x, y), fill=max(b, 0))
-    # estrellas con cuerpo
-    brillo = Image.new("L", SZ, 0)
-    db = ImageDraw.Draw(brillo)
-    for _ in range(90):
-        x, y = rng.integers(0, SZ[0]), rng.integers(0, 760)
-        r = rng.choice([0, 0, 1, 1, 2])
-        b = int(rng.integers(150, 255) * (1 - y / 1500))
-        db.ellipse([x - r, y - r, x + r, y + r], fill=b)
-    halo = brillo.filter(ImageFilter.GaussianBlur(3.5))
-    est = (np.array(capa, np.float32) + np.array(brillo, np.float32)
-           + np.array(halo, np.float32) * 0.85) / 255
-    cielo = cielo + np.clip(est, 0, 1.4)[..., None] * np.array([0.85, 0.88, 1.0], np.float32)
-    return np.clip(cielo, 0, 1)
+    est = Image.new("L", SZ, 0)
+    d = ImageDraw.Draw(est)
+    for _ in range(120):
+        x, y = rng.integers(0, SZ[0]), rng.integers(0, 620)
+        d.point((x, y), fill=int(rng.integers(35, 105) * (1 - y / 1100)))
+    e = np.array(est, np.float32) / 255
+    e = e + np.array(Image.fromarray((e * 255).astype(np.uint8))
+                     .filter(ImageFilter.GaussianBlur(1.4)), np.float32) / 255 * 0.6
+    return np.clip(cielo + e[..., None] * np.array([0.9, 0.93, 1.0], np.float32), 0, 1)
 
 # --- render ----------------------------------------------------------------
 def dia(mask, out):
@@ -95,55 +90,79 @@ def dia(mask, out):
     base.save(out, quality=94)
 
 def noche(mask, out, seed=7):
+    """La noche no es la foto apagada: es contraste. Negro donde no llega nada,
+    y calido saturado en todo lo que tiene una luminaria cerca."""
     rng = np.random.default_rng(seed)
     day = np.array(Image.open(BASE).convert("RGB"), np.float32) / 255
 
-    # 1. cielo nocturno con estrellas, detras de palmeras y edificio
+    # 1. cielo
     sky = mascara_cielo(day)[..., None]
-    img = day * (1 - sky) + cielo_estrellado(rng) * sky
+    img = day * (1 - sky) + cielo_nocturno(rng) * sky
 
-    # 2. resplandor de ciudad sobre el horizonte, para que el cielo no sea negro plano
-    img = sumar(img, foco(470, 700, 700, 260, 2.4) * sky[..., 0], (0.42, 0.34, 0.26), 0.30)
+    # nada ilumina la copa de las palmeras ni la hoja seca que cuelga a 8 m. Sin este
+    # tope quedan flotando en amarillo contra el cielo, y ademas los uplights del piso
+    # les llegarian como si la luz no perdiera fuerza con la altura.
+    bajo = np.clip((YY - 530) / 140, 0, 1).astype(np.float32)
 
-    # 3. la escena a oscuras: se conserva el contraste y se enfria la sombra.
-    #    lo alto (copas, palma seca, poste) cae casi a silueta contra el cielo;
-    #    el piso, que de noche igual recibe luz, se oscurece bastante menos.
+    # 2. la escena arranca casi a oscuras; la luz se agrega despues, luminaria
+    #    por luminaria, en vez de dejar la foto de dia con menos exposicion
     lum = img.mean(2, keepdims=True)
-    silueta = (0.26 + 0.74 * np.clip((YY - 340) / 470, 0, 1))[..., None]
-    escena = img * (0.24 + 0.15 * lum) * silueta \
-        + np.array([0.018, 0.025, 0.048], np.float32) * (0.35 + 0.65 * lum) * silueta
-    img = escena * (1 - sky * 0.94) + img * (sky * 0.94)
+    altura = (0.34 + 0.66 * bajo)[..., None]
+    img = (img * (0.17 + 0.13 * lum) * altura
+           + np.array([0.014, 0.022, 0.042], np.float32) * (0.3 + 0.7 * lum)) * (1 - sky * 0.96) \
+        + img * (sky * 0.96)
 
-    # 4. reflectores del poste de la cancha
+    # lo que responde a la luz: la vegetacion y las superficies claras
+    veg = np.clip((day[..., 1] - (day[..., 0] + day[..., 2]) / 2) * 5.0, 0, 1)
+    sup = np.clip((day.mean(2) - 0.10) * 2.4, 0, 1)
+    CALIDO, AMBAR = (1.0, 0.74, 0.40), (1.0, 0.84, 0.55)
+
+    # 3. reflectores de la cancha: lejanos y frios, apenas un punto y su halo
     for cx, cy in ((74, 320), (8, 372), (80, 378)):
-        img = sumar(img, foco(cx, cy, 16, 12, 1.6), (1.0, 0.98, 0.92), 0.95)
-        img = sumar(img, foco(cx, cy, 120, 100, 2.6), (0.72, 0.80, 1.0), 0.30)
-    img = sumar(img, foco(60, 640, 340, 620, 3.0), (0.60, 0.70, 0.95), 0.13)
+        img = sumar(img, foco(cx, cy, 10, 8, 1.5), (1.0, 0.98, 0.94), 0.85)
+        img = sumar(img, foco(cx, cy, 55, 46, 2.8), (0.74, 0.82, 1.0), 0.14)
+    img = iluminar(img, day, foco(450, 960, 560, 130, 2.0) * veg, (0.72, 0.86, 0.68), 0.50)
 
-    # 5. interior del local: luz calida que se derrama al deck
-    interior = foco(450, 985, 310, 160, 1.3) * np.clip((day.mean(2) - 0.08) * 3.0, 0, 1)
-    img = sumar(img, interior, (1.0, 0.78, 0.48), 1.00)
-    img = sumar(img, foco(450, 950, 250, 120, 2.2), (1.0, 0.72, 0.40), 0.30)
-    img = sumar(img, foco(455, 1120, 280, 80, 2.0), (1.0, 0.76, 0.46), 0.34)
+    # 4. uplights: las palmeras encendidas desde el pie, no siluetas negras
+    for cx, cy in ((28, 830), (872, 810)):
+        img = iluminar(img, day, foco(cx, cy, 230, 360, 1.5) * veg * bajo, (1.5, 1.30, 0.72), 1.45)
+        img = iluminar(img, day, foco(cx, cy + 150, 170, 130, 2.0) * sup * bajo, AMBAR, 0.80)
 
-    # 6. bolardo del camino + el charco de luz en los adoquines
-    img = sumar(img, foco(430, 1224, 13, 22, 1.3), (1.0, 0.88, 0.65), 1.0)
-    img = sumar(img, foco(430, 1224, 70, 80, 2.4), (1.0, 0.82, 0.55), 0.38)
-    img = sumar(img, foco(430, 1360, 190, 70, 2.2), (1.0, 0.84, 0.60), 0.34)
-    img = sumar(img, foco(430, 1290, 430, 130, 2.8), (0.95, 0.85, 0.70), 0.14)
+    # 5. el interior es la luz principal de la escena, y se derrama al deck
+    dentro = foco(450, 980, 340, 175, 1.0) * np.clip((day.mean(2) - 0.03) * 2.6, 0, 1)
+    img = iluminar(img, day, dentro, (2.60, 1.95, 1.15), 2.30)
+    img = sumar(img, dentro, (1.0, 0.74, 0.42), 0.42)
+    img = sumar(img, foco(450, 1000, 320, 170, 2.0), (1.0, 0.68, 0.34), 0.22)
+    img = iluminar(img, day, foco(455, 1122, 310, 90, 1.7) * sup, (1.7, 1.25, 0.72), 1.30)
+    img = iluminar(img, day, foco(455, 1160, 440, 130, 2.4), (1.3, 0.95, 0.55), 0.55)
 
-    # 7. letras corporeas: la luz escapa por detras, el frente queda opaco
+    # 6. cantero del frente
+    arb = np.clip(foco(195, 1140, 200, 85, 1.5) + foco(755, 1140, 200, 85, 1.5), 0, 1)
+    img = iluminar(img, day, arb * veg, (1.6, 1.45, 0.80), 1.40)
+    img = iluminar(img, day, arb * sup, AMBAR, 0.55)
+
+    # 7. bolardo del camino y su charco de luz sobre los adoquines
+    img = sumar(img, foco(430, 1224, 11, 19, 1.3), (1.0, 0.92, 0.74), 0.90)
+    img = sumar(img, foco(430, 1224, 46, 54, 2.6), (1.0, 0.86, 0.62), 0.20)
+    img = iluminar(img, day, foco(430, 1340, 190, 85, 1.8) * sup, (1.45, 1.20, 0.80), 1.25)
+    img = iluminar(img, day, foco(430, 1300, 460, 150, 2.6), (1.1, 0.92, 0.66), 0.40)
+    img = iluminar(img, day, foco(430, 1460, 290, 145, 2.2) * veg, (1.4, 1.25, 0.70), 0.85)
+
+    # 8. letras corporeas: la luz escapa por detras, el frente queda opaco
     glow = np.zeros(SZ[::-1], np.float32)
-    for radio, peso in ((6, 0.50), (14, 0.40), (34, 0.26), (80, 0.16)):
+    for radio, peso in ((5, 0.42), (12, 0.28), (26, 0.15), (58, 0.08)):
         d = mask.filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.GaussianBlur(radio))
         glow += np.array(d, np.float32) / 255 * peso
-    img = sumar(img, np.clip(glow, 0, 1), (0.96, 0.97, 1.0), 1.05)
+    img = sumar(img, np.clip(glow, 0, 1), (0.97, 0.97, 1.0), 0.95)
 
+    grano = rng.normal(0, 0.010, img.shape[:2])[..., None].astype(np.float32)
+    img = np.clip(img + grano * (1.1 - img), 0, 1)
     night = Image.fromarray(np.clip(img * 255, 0, 255).astype(np.uint8))
+
     cuerpo = mask.filter(ImageFilter.MinFilter(3))
     canto = ImageChops.subtract(mask, cuerpo)
-    night.paste(Image.new("RGB", SZ, (52, 53, 60)), (0, 0), cuerpo)
-    night.paste(Image.new("RGB", SZ, (236, 240, 255)), (0, 0),
+    night.paste(Image.new("RGB", SZ, (48, 49, 56)), (0, 0), cuerpo)
+    night.paste(Image.new("RGB", SZ, (216, 222, 240)), (0, 0),
                 canto.filter(ImageFilter.GaussianBlur(0.6)))
     night.save(out, quality=94)
 
