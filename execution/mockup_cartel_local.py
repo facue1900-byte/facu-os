@@ -148,22 +148,41 @@ def noche(mask, out, seed=7):
     img = iluminar(img, day, foco(430, 1300, 460, 150, 2.6), (1.1, 0.92, 0.66), 0.40)
     img = iluminar(img, day, foco(430, 1460, 290, 145, 2.2) * veg, (1.4, 1.25, 0.70), 0.85)
 
-    # 8. letras corporeas: la luz escapa por detras, el frente queda opaco
-    glow = np.zeros(SZ[::-1], np.float32)
-    for radio, peso in ((5, 0.42), (12, 0.28), (26, 0.15), (58, 0.08)):
-        d = mask.filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.GaussianBlur(radio))
-        glow += np.array(d, np.float32) / 255 * peso
-    img = sumar(img, np.clip(glow, 0, 1), (0.97, 0.97, 1.0), 0.95)
+    # 8. letras corporeas retroiluminadas.
+    #    El halo no es una mancha blanca apoyada encima de la pared: es la PARED
+    #    iluminada. Por eso va multiplicativo y se le sigue viendo la veta a la
+    #    madera, igual que en una corporea real se ven las juntas del ladrillo
+    #    dentro del resplandor. Solo una fraccion chica se suma, que es la luz
+    #    dispersa en el aire.
+    letra = np.array(mask, np.float32) / 255
+    halo = np.zeros(SZ[::-1], np.float32)
+    for radio, peso in ((2, 0.80), (5, 0.62), (12, 0.40), (28, 0.20), (72, 0.07)):
+        halo += np.array(mask.filter(ImageFilter.GaussianBlur(radio)), np.float32) / 255 * peso
+    # curva: el resplandor casi quema pegado a la letra y cae rapido, no se difumina
+    # parejo en una bruma gris
+    halo = np.clip(halo, 0, 1) ** 0.70 * (1 - letra)   # la luz sale por detras: la letra tapa
+    img = iluminar(img, day, halo, (7.8, 7.6, 7.2), 1.0)
+    img = sumar(img, halo ** 1.5, (1.0, 0.985, 0.95), 0.72)
+
+    # la corporea esta separada de la pared unos centimetros: contra la luz queda
+    # una linea de sombra pegada al borde de abajo
+    sombra = np.array(ImageChops.subtract(
+        mask.filter(ImageFilter.GaussianBlur(2)),
+        ImageChops.offset(mask, 0, -3)), np.float32) / 255
+    img = np.clip(img * (1 - sombra[..., None] * 0.55 * (1 - letra)[..., None]), 0, 1)
 
     grano = rng.normal(0, 0.010, img.shape[:2])[..., None].astype(np.float32)
     img = np.clip(img + grano * (1.1 - img), 0, 1)
     night = Image.fromarray(np.clip(img * 255, 0, 255).astype(np.uint8))
 
-    cuerpo = mask.filter(ImageFilter.MinFilter(3))
-    canto = ImageChops.subtract(mask, cuerpo)
-    night.paste(Image.new("RGB", SZ, (48, 49, 56)), (0, 0), cuerpo)
-    night.paste(Image.new("RGB", SZ, (216, 222, 240)), (0, 0),
-                canto.filter(ImageFilter.GaussianBlur(0.6)))
+    # el frente de la letra es opaco. No se enciende: apenas recibe el rebote de la
+    # pared, y un poco mas sobre el canto. Un contorno brillante dibujado alrededor
+    # es lo que hace que un cartel se lea como neon en vez de como corporea.
+    borde = ImageChops.subtract(mask, mask.filter(ImageFilter.MinFilter(5)))
+    night.paste(Image.new("RGB", SZ, (62, 62, 66)), (0, 0), mask)
+    night.paste(Image.new("RGB", SZ, (100, 99, 100)), (0, 0),
+                borde.point(lambda v: int(v * 0.55)).filter(ImageFilter.GaussianBlur(0.4)))
+
     night.save(out, quality=94)
 
 if __name__ == "__main__":
