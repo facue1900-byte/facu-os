@@ -24,12 +24,14 @@ terminan juntos**:
 | Martes | 06/10 | 24/11 | |
 | Miércoles | 07/10 | 25/11 | |
 | Jueves | 08/10 | 26/11 | |
-| Viernes | 09/10 | **04/12** | asume que el 20/11 el estudio cierra |
+| Viernes | 09/10 | 27/11 | el 20/11 el estudio ABRE (Facu, 11/09) |
 
-🔴 **Dato que falta: el 20/11/2026 (Día de la Soberanía, viernes).** No está en
-`studio_holidays`. Si el estudio abre, los viernes terminan el **27/11**; si cierra, el
-**04/12**. Es una fecha que se le promete al alumno por mail: **no se vende un cupo de
-viernes hasta que Facu lo defina.**
+✅ **El 20/11/2026 (Día de la Soberanía, viernes) SE TRABAJA.** Decisión de Facu del
+11/09/2026: el estudio abre. **No se carga en `studio_holidays`**, y los viernes terminan el
+**27/11**. Los cupos de viernes se pueden vender.
+
+Así que **el único feriado del curso es el 12/10**, y sólo corre a los lunes: los otros
+cuatro días terminan entre el 24 y el 27/11, y los lunes el 30/11.
 
 > Los feriados se pasan en los **cuatro** lugares que calculan o muestran fechas (crear las
 > clases, apartar la cabina, la grilla de compra, el panel). Si uno se olvida, la pantalla
@@ -138,9 +140,30 @@ antes de abrir la venta, no después.
 ## Estado: ESCRITO, NO CONSTRUIDO
 
 Al 11/09/2026 **no se tocó una línea de código.** El repo `astronomy-members` vive en
-`~/Desktop/Productoras/Astronomy/Academia/` y esta Mac **no le da permiso de Desktop** a la
-terminal: `ls`, `Read` y el sandbox desactivado devuelven los tres `Operation not
-permitted`.
+`~/Desktop/Productoras/Astronomy/Academia/astronomy-members/` y la sesión no lo pudo leer.
 
-**Se destraba en Ajustes del Sistema → Privacidad y seguridad → Acceso a disco completo**,
-habilitando la app desde la que corre Claude Code y reiniciándola.
+**El diagnóstico, para no repetir el camino largo:**
+
+- ❌ **No era el Acceso a disco completo.** Antigravity IDE ya lo tenía prendido, y TCC
+  tiene el Escritorio en `auth 2` para `com.google.antigravity-ide` **y** para el node que
+  corre Claude (`/Users/Facu/.local/node/bin/node`). Se lee en
+  `~/Library/Application Support/com.apple.TCC/TCC.db`, tabla `access`, servicio
+  `kTCCServiceSystemPolicyDesktopFolder`.
+- ✅ **Parte era el clasificador de `autoMode`**, que denegaba con motivo
+  `[Auto-Mode Bypass]`. Se resolvió agregando a `autoMode.allow` de
+  `~/.claude/settings.json` una regla acotada a **ese repo** (no a todo el Escritorio).
+  ⚠️ Ese archivo **Claude no lo puede editar solo**: el clasificador lo bloquea con motivo
+  `[Self-Modification]`. Lo tiene que pegar Facu.
+- ⏳ **Lo que quedó**: `readdir` sobre `~/Desktop` seguía dando `EPERM` mientras `stat`
+  sobre la misma carpeta andaba, y `~/Downloads`, `~/Documents`, `~/Movies` y `~/Pictures`
+  se leían bien. Es TCC negándole en caliente a un proceso que arrancó con otro estado
+  cacheado. **Se destraba reiniciando Antigravity IDE con ⌘Q** (que salga el proceso, no
+  la ventana).
+
+**Para retomar**, con el IDE ya reiniciado:
+
+```
+cd ~/Desktop/Productoras/Astronomy/Academia/astronomy-members && claude --continue
+```
+
+Lo primero: confirmar que se lee `lib/modoproCohorte.ts`, y verificar `RESEND_API_KEY`.
