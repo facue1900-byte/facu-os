@@ -1,0 +1,63 @@
+{
+  "slug": "pizzeria",
+  "nombre": "Local gastronómico",
+  "titulo": "Un local<br>a estrenar.",
+  "bajada": "47,9 m² en la galería gastronómica nueva, con la cocina prevista en el proyecto y el frente sobre la galería semicubierta. Buscamos pizzería.",
+  "disponibilidad": "Post obra 1 · ~3 meses",
+  "portada_img": "galeria",
+  "portada_alt": "La galería gastronómica del Paseo Nordelta con los frentes vidriados",
+  "portada_meta": [
+    { "k": "Superficie", "v": "47,9 m²" },
+    { "k": "Destino", "v": "Gastronómico" },
+    { "k": "Entrega", "v": "Obra en gris" }
+  ],
+
+  "h_local": "47,9 m² a estrenar,<br>con cocina propia.",
+  "superficies": [
+    { "n": "47,9", "u": "m²", "l": "A estrenar, con cocina prevista en el proyecto", "acc": true },
+    { "n": "7,60", "u": "m", "l": "De frente sobre la galería semicubierta" }
+  ],
+  "plano": {
+    "tipo": "svg",
+    "svg": "<svg class=\"pl\" viewBox=\"-46 0 666 420\" role=\"img\" aria-label=\"Planta del local disponible de 47,9 metros cuadrados\"><defs><pattern id=\"gal\" width=\"7\" height=\"7\" patternTransform=\"rotate(45)\" patternUnits=\"userSpaceOnUse\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"7\" stroke=\"#c4622d\" stroke-width=\"1\" opacity=\".5\"/></pattern><marker id=\"fl\" markerWidth=\"7\" markerHeight=\"7\" refX=\"3.5\" refY=\"3.5\" orient=\"auto\"><path d=\"M0 3.5 L7 1.5 L7 5.5 Z\" fill=\"#7d766b\"/></marker></defs><path d=\"M76,40 L76,291 L23,291 L23,40 Z\" fill=\"url(#gal)\" stroke=\"#c4622d\" stroke-width=\"1.2\" stroke-dasharray=\"5 4\"/><polygon points=\"76,40 142,40 437,291 76,291\" class=\"loc libre\"/><line x1=\"76\" y1=\"85\" x2=\"76\" y2=\"253\" stroke=\"#c4622d\" stroke-width=\"5\"/><line x1=\"-2.8\" y1=\"40\" x2=\"-2.8\" y2=\"290.8\" class=\"cl\" marker-start=\"url(#fl)\" marker-end=\"url(#fl)\"/><text x=\"-13.8\" y=\"165\" class=\"cot\" text-anchor=\"middle\" transform=\"rotate(-90 -13.8 165)\">7,60</text><line x1=\"76\" y1=\"22\" x2=\"142\" y2=\"22\" class=\"cl\" marker-start=\"url(#fl)\" marker-end=\"url(#fl)\"/><text x=\"109\" y=\"15\" class=\"cot\" text-anchor=\"middle\">2,00</text><line x1=\"76\" y1=\"320.8\" x2=\"437.35\" y2=\"320.8\" class=\"cl\" marker-start=\"url(#fl)\" marker-end=\"url(#fl)\"/><text x=\"257\" y=\"337.8\" class=\"cot\" text-anchor=\"middle\">10,95</text><text x=\"228\" y=\"190\" class=\"big\" text-anchor=\"middle\">47,9 m²</text><text x=\"228\" y=\"211\" class=\"sub\" text-anchor=\"middle\">a estrenar</text><text x=\"23\" y=\"375\" class=\"acc\">galería semicubierta — el frente da al sendero</text></svg>",
+    "cap": "Planta — cotas del proyecto validado, en metros · el trazo naranja es el frente vidriado"
+  },
+  "puntos": [
+    "<b>Local a estrenar:</b> nunca se ocupó, se entrega en obra en gris.",
+    "<b>Cocina prevista en el proyecto</b> — los tres locales de la galería nacieron gastronómicos.",
+    "<b>Frente de 7,60 m</b> vidriado sobre la galería semicubierta.",
+    "<b>Galería propia al frente</b> para mesas afuera, cubierta de sol y lluvia.",
+    "<b>Los vecinos ya están:</b> Fabric se muda al local de al lado y Shock BA toma el tercero.",
+    "<b>Disponible después de la Obra 1</b>, aproximadamente en tres meses."
+  ],
+
+  "h_cierre": "En la galería nueva,<br>sobre el acceso.",
+  "pin": { "n": "10", "l": "9%", "t": "23%" },
+  "pines_ctx": [
+    { "n": "1", "l": "47%", "t": "17%" },
+    { "n": "3", "l": "78%", "t": "19%" },
+    { "n": "4", "l": "67%", "t": "42%" },
+    { "n": "6", "l": "20%", "t": "32%" },
+    { "n": "9", "l": "36%", "t": "55%" }
+  ],
+  "mapa_ref": "10 La galería nueva · 1 La Jaula · 3 Wellness · 4 Plaza · 6 BIGG · 9 Cafetería",
+  "condiciones": [
+    { "k": "Alquiler", "v": "$2.250.000", "n": "Por mes, en pesos. Los alquileres del paseo ajustan por IPC, trimestralmente." },
+    { "k": "Expensas", "v": "Según liquidación", "n": "Se liquidan todos los meses según el gasto real del predio, en proporción a los m² del local." },
+    { "k": "Entrega", "v": "Obra en gris", "n": "El local se entrega terminado en gris. La puesta a punto se acuerda con el locatario." },
+    { "k": "Disponible", "v": "~3 meses", "n": "Al terminar la Obra 1 de la galería nueva." }
+  ],
+  "nota": "La galería nueva son tres locales gastronómicos juntos, sobre el acceso al paseo. Dos ya tienen dueño — Fabric se muda a uno y Shock BA toma el otro — y queda éste. El paseo funciona de lunes a lunes: La Jaula y las escuelas de fútbol, BIGG y el Wellness Center traen gente todos los días. Cotas del proyecto validado; se verifican en obra.",
+
+  "story": {
+    "titulo": "Buscamos<br>pizzería.",
+    "bajada": "47,9 m² a estrenar en la galería gastronómica nueva, con cocina prevista y frente vidriado de 7,60 m sobre la galería.",
+    "datos": [
+      { "n": "47,9", "u": "m²", "l": "A estrenar" },
+      { "n": "7,60", "u": "m", "l": "De frente" },
+      { "n": "1", "u": "de 3", "l": "Local libre en la galería" }
+    ],
+    "cta_l": "Mandanos tu propuesta a",
+    "bajada_plano": ""
+  }
+}

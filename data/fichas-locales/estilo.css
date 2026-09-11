@@ -1,0 +1,154 @@
+/* Ficha de local del Paseo Nordelta.
+   Misma identidad que el deck y que paseonordelta.com: negro cálido, cal, acero Corten.
+   Neue Haas Display vive en el Desktop y el proceso no lo puede leer (TCC de macOS),
+   así que la pila arranca en Helvetica Neue, que es su pariente directo y está en la Mac. */
+:root{
+  --ground:#171614; --ground-2:#1e1c19; --card:#211f1b;
+  --ink:#f2ece1; --ink-2:#b9b1a4; --ink-3:#7d766b;
+  --corten:#c4622d; --corten-hi:#d97742;
+  --line:rgba(242,236,225,.13); --line-2:rgba(242,236,225,.07);
+  --grot:"Neue Haas Display","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0; background:#0d0c0b; color:var(--ink); font-family:var(--grot);
+  font-weight:400; line-height:1.5; -webkit-font-smoothing:antialiased;}
+
+/* ---------- La hoja ---------- */
+.hoja{
+  width:210mm; height:297mm; background:var(--ground); position:relative;
+  overflow:hidden; display:flex; flex-direction:column;
+  margin:0 auto 8mm; page-break-after:always; break-after:page;
+}
+.hoja:last-child{page-break-after:auto; break-after:auto; margin-bottom:0;}
+.hoja__body{position:relative; padding:16mm 15mm 14mm; display:flex;
+  flex-direction:column; flex:1; min-height:0;}
+
+/* La cota: una línea de plano que corre por el borde izquierdo. */
+.cota{position:absolute; left:6mm; top:0; bottom:0; width:1px; background:var(--line);
+  display:flex; align-items:center; justify-content:center; z-index:2;}
+.cota span{font-family:var(--mono); font-size:8pt; letter-spacing:.14em; color:var(--ink-3);
+  background:var(--ground); padding:9px 0; writing-mode:vertical-rl; transform:rotate(180deg);}
+.hoja--foto .cota{background:rgba(242,236,225,.3);}
+.hoja--foto .cota span{background:transparent; color:rgba(242,236,225,.8);}
+
+.pie{position:absolute; left:15mm; right:15mm; bottom:7mm; display:flex;
+  justify-content:space-between; gap:10px; font-family:var(--mono); font-size:7.5pt;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3);}
+
+/* ---------- Tipografía ---------- */
+.eyebrow{font-family:var(--mono); font-size:9pt; font-weight:500; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--corten); margin:0 0 6mm;}
+h1,h2{font-weight:300; letter-spacing:-.025em; margin:0; text-wrap:balance;}
+h1{font-size:46pt; line-height:.98;}
+h2{font-size:28pt; line-height:1.05;}
+h3{font-weight:500; font-size:11.5pt; margin:0; letter-spacing:-.005em;}
+.lede{font-size:12.5pt; font-weight:300; line-height:1.5; color:var(--ink-2);
+  max-width:58ch; margin:6mm 0 0;}
+.body{font-size:10pt; color:var(--ink-2); line-height:1.55; margin:0;}
+
+/* ---------- Portada ---------- */
+.hoja--foto{padding:0; justify-content:flex-end;}
+.foto{position:absolute; inset:0;}
+.foto img{width:100%; height:100%; object-fit:cover; display:block;}
+.foto::after{content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(23,22,20,.66) 0%,rgba(23,22,20,.16) 34%,rgba(23,22,20,.95) 86%);}
+.portada__body{position:relative; padding:16mm 15mm 16mm; margin-top:auto;}
+.portada__logo{width:52mm; height:auto; display:block; margin-bottom:9mm;}
+.chip{display:inline-flex; align-items:center; gap:8px; font-family:var(--mono);
+  font-size:8.5pt; letter-spacing:.14em; text-transform:uppercase; color:var(--ink);
+  border:1px solid var(--corten); background:rgba(196,98,45,.18);
+  padding:5px 12px; border-radius:999px; margin-bottom:7mm;}
+.chip i{width:6px; height:6px; border-radius:50%; background:var(--corten-hi); flex:none;}
+.portada__meta{display:flex; flex-wrap:wrap; gap:4mm 8mm; margin-top:9mm; padding-top:6mm;
+  border-top:1px solid rgba(242,236,225,.24); font-family:var(--mono); font-size:9pt;
+  letter-spacing:.05em; color:var(--ink-3);}
+.portada__meta span{display:flex; gap:2.5mm;}
+.portada__meta b{font-weight:500; color:#fff; letter-spacing:.02em;}
+
+/* ---------- Números ---------- */
+.stats{display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--line-2); border:1px solid var(--line-2); margin-top:7mm;}
+.stats--2{grid-template-columns:repeat(2,1fr);}
+.stat{background:var(--ground); padding:6mm 5mm;}
+.stat__n{font-weight:300; font-size:26pt; line-height:1; letter-spacing:-.035em;
+  font-variant-numeric:tabular-nums; margin:0;}
+.stat__n small{font-family:var(--mono); font-size:.34em; letter-spacing:.02em;
+  color:var(--ink-3); margin-left:.45em; vertical-align:.4em;}
+.stat__l{font-size:9pt; color:var(--ink-3); margin:4mm 0 0; line-height:1.4;}
+.stat--acc .stat__n{color:var(--corten-hi);}
+
+/* ---------- Plano ---------- */
+/* El plano manda el alto de la hoja: si crece libre, empuja los puntos afuera
+   y el PDF sale con la lista cortada. Se le pone techo y se centra. */
+.plano{background:#f2ece1; padding:6mm; border:1px solid var(--line); margin-top:6mm;
+  display:flex; align-items:center; justify-content:center;}
+.plano img{max-width:100%; max-height:112mm; width:auto; height:auto;
+  display:block; mix-blend-mode:multiply;}
+.plano__cap{font-family:var(--mono); font-size:8pt; letter-spacing:.12em;
+  text-transform:uppercase; color:#7d766b; margin:5mm 0 0;}
+.pl{width:100%; max-width:150mm; max-height:112mm; height:auto;
+  display:block; margin:4mm auto 0;}
+.loc{fill:rgba(242,236,225,.055); stroke:var(--ink); stroke-width:2.2; stroke-linejoin:round;}
+.loc.libre{fill:rgba(196,98,45,.16); stroke:var(--corten-hi); stroke-width:2.6;}
+.loc.off{fill:rgba(242,236,225,.03); stroke:var(--ink-3); stroke-width:1.6;}
+.cl{stroke:var(--ink-3); stroke-width:1;}
+.cot{font-family:var(--mono); font-size:12px; fill:var(--ink-3); letter-spacing:.04em;}
+.big{font-family:var(--grot); font-weight:300; font-size:28px; fill:var(--ink); letter-spacing:-.02em;}
+.sub{font-family:var(--grot); font-size:13px; fill:var(--ink-3);}
+.acc{font-family:var(--grot); font-size:13px; fill:var(--corten-hi);}
+.mini{font-family:var(--mono); font-size:10px; fill:var(--ink-3); letter-spacing:.16em;}
+
+/* ---------- Listas ---------- */
+.puntos{list-style:none; margin:6mm 0 0; padding:0; display:grid; flex:none;
+  grid-template-columns:1fr 1fr; gap:4mm 8mm;}
+/* El punto va posicionado, NO como celda de grilla: con grid, el texto suelto
+   que sigue al <b> se vuelve un item anonimo, cae en la columna de 5px y baja
+   una palabra por renglon. Ya paso una vez; el PDF salia ilegible. */
+.puntos li{position:relative; padding-left:15px; font-size:9.5pt;
+  color:var(--ink-2); line-height:1.45;}
+.puntos li::before{content:""; position:absolute; left:0; top:5.5px;
+  width:5px; height:5px; border-radius:50%; background:var(--corten);}
+.puntos b{color:var(--ink); font-weight:500;}
+
+/* ---------- Mapa ---------- */
+.mapa{position:relative; line-height:0; border:1px solid var(--line);
+  margin-top:6mm; width:148mm; max-width:100%;}
+.mapa img{width:100%; height:auto; display:block;}
+.pin{position:absolute; transform:translate(-50%,-50%); width:8mm; height:8mm;
+  border-radius:50%; background:var(--ink); color:var(--ground);
+  border:2px solid var(--corten); font-family:var(--mono); font-size:9pt; font-weight:500;
+  display:flex; align-items:center; justify-content:center; line-height:1;
+  box-shadow:0 2px 12px rgba(0,0,0,.6);}
+.pin--off{background:rgba(23,22,20,.72); color:rgba(242,236,225,.85);
+  border-color:rgba(242,236,225,.45); width:6mm; height:6mm; font-size:7pt;}
+.mapa__ref{font-family:var(--mono); font-size:8pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); margin:4mm 0 0;}
+
+/* ---------- Condiciones ---------- */
+.cond{margin-top:5mm; border-top:1px solid var(--line);}
+.cond__row{display:grid; grid-template-columns:minmax(0,34mm) minmax(0,1fr) minmax(0,1.25fr);
+  gap:6mm; align-items:baseline; padding:3.6mm 0; border-bottom:1px solid var(--line-2);}
+.cond__k{font-family:var(--mono); font-size:8.5pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--corten);}
+.cond__v{font-size:15pt; font-weight:300; letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums; margin:0;}
+.cond__n{font-size:9pt; color:var(--ink-3); line-height:1.45; margin:0;}
+.nota{font-size:8.5pt; color:var(--ink-3); line-height:1.5; margin:4.5mm 0 0; max-width:78ch;}
+
+/* ---------- Contacto ---------- */
+/* El contacto cierra la hoja. margin-top:auto lo empujaba contra el pie cuando
+   el resto crecia: ahora va con separacion fija y el alto se controla arriba. */
+.cta{margin-top:5.5mm; padding-top:5mm; border-top:1px solid var(--line);
+  display:flex; flex-wrap:wrap; gap:4mm 9mm; align-items:flex-end;
+  justify-content:space-between;}
+.cta__l{font-family:var(--mono); font-size:7.5pt; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 2.2mm;}
+.cta__v{font-size:12pt; font-weight:300; margin:0; letter-spacing:-.01em;}
+.cta__v a{color:var(--ink); text-decoration:none;}
+
+@page{size:A4 portrait; margin:0;}
+@media print{
+  body{background:var(--ground);}
+  .hoja{margin:0; box-shadow:none;}
+}

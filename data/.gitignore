@@ -1,0 +1,13 @@
+# Ignorar todo menos el .gitkeep
+*
+!.gitkeep
+
+# El generador de fichas de locales SI va a git: es codigo y son numeros que
+# salen a un tercero. Lo que queda afuera son los renders (img/) y las piezas
+# compiladas (salida/), que se rehacen corriendo build.py.
+!fichas-locales/
+fichas-locales/*
+!fichas-locales/README.md
+!fichas-locales/build.py
+!fichas-locales/*.css
+!fichas-locales/*.json

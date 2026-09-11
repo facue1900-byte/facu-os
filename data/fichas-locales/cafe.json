@@ -1,0 +1,66 @@
+{
+  "slug": "cafe",
+  "nombre": "Cafetería",
+  "titulo": "La cafetería<br>del paseo.",
+  "bajada": "130 m² cubiertos con 13 m de frente sobre el sendero principal, 52 m² de galería semicubierta y un deck de 39 m² ya previsto como ampliación. Se entrega en obra en gris.",
+  "disponibilidad": "Disponible hoy",
+  "portada_img": "senderos",
+  "portada_alt": "Los senderos del Paseo Nordelta con los jacarandás en flor",
+  "portada_meta": [
+    { "k": "Superficie", "v": "130 + 52 + 39 m²" },
+    { "k": "Frente", "v": "13 m" },
+    { "k": "Entrega", "v": "Obra en gris" }
+  ],
+
+  "h_local": "130 m² cubiertos.<br>13 m de frente.",
+  "superficies": [
+    { "n": "130", "u": "m²", "l": "Cubiertos", "acc": true },
+    { "n": "52", "u": "m²", "l": "Galería semicubierta al frente" },
+    { "n": "39", "u": "m²", "l": "Deck descubierto — ampliación prevista" }
+  ],
+  "plano": {
+    "tipo": "img",
+    "src": "plano-cafe",
+    "alt": "Planta del sector café: salón principal, dos ambientes de apoyo, galería y deck",
+    "cap": "Planta — Arq. Max Elewaut · escala 1:100 · plano preliminar"
+  },
+  "puntos": [
+    "<b>Frente de 13 m</b> sobre el sendero principal, el eje que conecta el acceso con la plaza.",
+    "<b>Salón de 9,25 × 9,60 m</b> en una sola pieza, con dos columnas centrales.",
+    "<b>Dos ambientes de apoyo</b> sobre el lateral, de 5,95 y 3,45 m de profundidad.",
+    "<b>Galería semicubierta de 52 m²</b> (13 × 4 m) al frente, para mesas al aire libre.",
+    "<b>Deck de 13 × 3 m</b> dibujado en el proyecto como ampliación posible.",
+    "<b>Obra en gris:</b> la terminación se define con el locatario."
+  ],
+
+  "h_cierre": "Entre el salón<br>y la plaza central.",
+  "pin": { "n": "9", "l": "36%", "t": "55%" },
+  "pines_ctx": [
+    { "n": "1", "l": "47%", "t": "17%" },
+    { "n": "3", "l": "78%", "t": "19%" },
+    { "n": "4", "l": "67%", "t": "42%" },
+    { "n": "5", "l": "47%", "t": "41%" },
+    { "n": "6", "l": "20%", "t": "32%" },
+    { "n": "7", "l": "86%", "t": "65%" }
+  ],
+  "mapa_ref": "9 La cafetería · 1 La Jaula · 3 Wellness · 4 Plaza · 5 Fabric · 6 BIGG · 7 Market",
+  "condiciones": [
+    { "k": "Alquiler", "v": "$3.500.000", "n": "Por mes, en pesos. Los alquileres del paseo ajustan por IPC, trimestralmente." },
+    { "k": "Expensas", "v": "$1.050.000", "n": "Aproximadas. Se liquidan todos los meses según el gasto real del predio, en proporción a los m² del local." },
+    { "k": "Entrega", "v": "Obra en gris", "n": "El local se entrega terminado en gris. La puesta a punto se acuerda con el locatario." },
+    { "k": "Disponible", "v": "Hoy", "n": "El local está libre y entregable de inmediato." }
+  ],
+  "nota": "El paseo ya funciona: La Jaula y las escuelas de fútbol, BIGG, Fabric y el Wellness Center traen gente de lunes a lunes, no sólo el fin de semana. La cafetería queda sobre el sendero que cruzan todos. Medidas del plano preliminar del Arq. Max Elewaut — se verifican en obra.",
+
+  "story": {
+    "titulo": "Buscamos<br>cafetería.",
+    "bajada": "130 m² cubiertos, 52 de galería y un deck de 39. Frente de 13 m sobre el sendero principal del paseo.",
+    "datos": [
+      { "n": "130", "u": "m²", "l": "Cubiertos" },
+      { "n": "52", "u": "m²", "l": "Galería" },
+      { "n": "13", "u": "m", "l": "De frente" }
+    ],
+    "cta_l": "Mandanos tu propuesta a",
+    "bajada_plano": ""
+  }
+}
