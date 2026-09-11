@@ -21,7 +21,8 @@ import sys
 
 BASE = pathlib.Path(__file__).parent
 IMG = BASE / "img"
-SALIDA = BASE / "salida"
+SALIDA = BASE / "salida"      # solo las piezas finales
+TRABAJO = BASE / ".build"     # el HTML intermedio, fuera de la vista
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 MIME = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"}
@@ -233,25 +234,26 @@ def chrome(args: list[str], destino: pathlib.Path) -> None:
 
 def main(slugs: list[str]) -> None:
     SALIDA.mkdir(exist_ok=True)
+    TRABAJO.mkdir(exist_ok=True)
     for slug in slugs:
         fuente = BASE / f"{slug}.json"
         if not fuente.exists():
             sys.exit(f"FALTA el JSON del local: {fuente}")
         d = json.loads(fuente.read_text())
 
-        html = SALIDA / f"{slug}.html"
+        html = TRABAJO / f"{slug}.html"
         html.write_text(ficha_html(d))
         pdf = SALIDA / f"{slug}.pdf"
         chrome(["--print-to-pdf-no-header", f"--print-to-pdf={pdf}",
                 html.as_uri()], pdf)
 
-        shtml = SALIDA / f"{slug}-story.html"
+        shtml = TRABAJO / f"{slug}-story.html"
         shtml.write_text(historia_html(d))
         png = SALIDA / f"{slug}-story.png"
         chrome(["--window-size=1080,1920", "--force-device-scale-factor=1",
                 f"--screenshot={png}", shtml.as_uri()], png)
 
-        s2html = SALIDA / f"{slug}-story-2.html"
+        s2html = TRABAJO / f"{slug}-story-2.html"
         s2html.write_text(historia_ubicacion_html(d))
         png2 = SALIDA / f"{slug}-story-2.png"
         chrome(["--window-size=1080,1920", "--force-device-scale-factor=1",
