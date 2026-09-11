@@ -358,23 +358,23 @@ body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 .tapa { background: #000; color: #fff; padding: 16px 12mm 13px; margin-bottom: 11px; }
 .tapa .logo { font-size: 17px; letter-spacing: .22em; font-weight: 600; }
 .tapa .sub { font-size: 9px; letter-spacing: .18em; color: #999; margin-top: 5px; }
-.hero { text-align: center; margin: 9px 0 11px; }
+.hero { text-align: center; margin: 7px 0 9px; }
 .hero .lbl { font-size: 9px; letter-spacing: .2em; color: #777; }
-.hero .big { font-size: 34px; font-weight: 700; margin: 6px 0 4px; letter-spacing: -.02em; }
+.hero .big { font-size: 31px; font-weight: 700; margin: 6px 0 4px; letter-spacing: -.02em; }
 .hero .det { font-size: 11px; color: #555; }
 .pos { color: #1a7f37; } .neg { color: #b42318; }
-h2 { font-size: 11px; letter-spacing: .1em; margin: 11px 0 4px;
+h2 { font-size: 11px; letter-spacing: .1em; margin: 9px 0 3px;
      border-bottom: 1.5px solid #111; padding-bottom: 5px; }
 table { width: 100%; border-collapse: collapse; }
-.barras td { padding: 1.8px 0; vertical-align: middle; }
+.barras td { padding: 1.3px 0; vertical-align: middle; }
 .barras .mes { width: 42px; color: #444; }
 .barras .val { width: 74px; font-weight: 600; text-align: right; padding-right: 12px; }
 .bar { height: 13px; border-radius: 2px; }
 .bar.p { background: #a9d5b4; } .bar.n { background: #eab6b0; }
 .bar.hoy { background: #1a7f37; }
 .nota { font-size: 9.5px; color: #555; margin-top: 5px; line-height: 1.35; }
-.caja { background: #f2f8f4; border-left: 3px solid #1a7f37; padding: 6px 10px;
-        margin: 6px 0; font-size: 10px; line-height: 1.35; }
+.caja { background: #f2f8f4; border-left: 3px solid #1a7f37; padding: 5px 9px;
+        margin: 5px 0; font-size: 9.5px; line-height: 1.3; }
 .caja b { color: #1a7f37; }
 .caja.gris { background: #f6f6f6; border-left-color: #999; }
 .caja.gris b { color: #333; }
@@ -382,7 +382,7 @@ table { width: 100%; border-collapse: collapse; }
 .tile { flex: 1; background: #f6f6f6; border-radius: 4px; padding: 7px 10px; }
 .tile .k { font-size: 8px; letter-spacing: .14em; color: #777; }
 .tile .v { font-size: 17px; font-weight: 700; margin-top: 4px; }
-.lineas td { padding: 2.4px 0; border-bottom: 1px solid #eee; }
+.lineas td { padding: 2px 0; border-bottom: 1px solid #eee; }
 .lineas td.n { text-align: right; font-variant-numeric: tabular-nums; }
 .lineas tr.tot td { font-weight: 700; border-bottom: 2px solid #111; }
 .pie { margin-top: 8px; padding-top: 9px; border-top: 1px solid #ddd;
@@ -466,7 +466,8 @@ def html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None, comp=None):
   <tr class="tot"><td>Suma de las dos</td><td class="n">${plata(comp['suma'])}</td></tr>
   <tr><td>Efectivo + banco que hay de verdad</td><td class="n">${plata(comp['caja'])}</td></tr>
 </table>
-<div class="nota">{'Las dos cuentas dan exactamente la plata que hay: cada peso que entr\u00f3 est\u00e1 o gastado o en la caja.' if comp['cierra'] else '<b>NO CIERRA</b> por $' + plata(abs(comp['suma'] - comp['caja'])) + ': hay obra atribuida a alguien que no la pag\u00f3, o plata que entr\u00f3 y no est\u00e1 anotada.'}</div>"""
+<div class="nota">{'Las dos cuentas dan exactamente la plata que hay: cada peso que entr\u00f3 est\u00e1 o gastado o en la caja.' if comp['cierra'] else '<b>NO CIERRA</b> por $' + plata(abs(comp['suma'] - comp['caja'])) + ': hay obra atribuida a alguien que no la pag\u00f3, o plata que entr\u00f3 y no est\u00e1 anotada.'}
+  {('<br><b>El renglón del negocio da en negativo</b> porque a esta fecha reinvirtió en obra ' + plata(abs(comp['del_negocio'])) + ' m\u00e1s de lo que hab\u00eda generado: esa diferencia la adelantaron los socios y el negocio la cubre con la ganancia de los meses siguientes.') if comp['del_negocio'] < 0 else ''}</div>"""
 
     return f"""<meta charset="utf-8"><style>{CSS}</style>
 <div class="tapa">
