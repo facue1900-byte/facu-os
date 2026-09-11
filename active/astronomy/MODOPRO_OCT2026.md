@@ -30,8 +30,17 @@ terminan juntos**:
 11/09/2026: el estudio abre. **No se carga en `studio_holidays`**, y los viernes terminan el
 **27/11**. Los cupos de viernes se pueden vender.
 
+🚨 **Y el 23/11 TAMBIÉN abre** (Facu, 11/09/2026). El Día de la Soberanía de 2026 se
+traslada del viernes 20 al **lunes 23**, y así estaba cargado en `studio_holidays` — nadie
+lo había mirado. Con ese feriado adentro los lunes salteaban DOS semanas y terminaban el
+**14/12**: quien comprara un lunes terminaba en diciembre, no en noviembre. Se saca.
+
 Así que **el único feriado del curso es el 12/10**, y sólo corre a los lunes: los otros
 cuatro días terminan entre el 24 y el 27/11, y los lunes el 30/11.
+
+✅ **Verificado con `clasesDelCupo` contra la base**, sin el 23/11: los cinco días dan 8
+clases. Lunes 05/10→30/11 · martes 06/10→24/11 · miércoles 07/10→25/11 · jueves
+08/10→26/11 · viernes 09/10→27/11 (con el 20/11 adentro).
 
 > Los feriados se pasan en los **cuatro** lugares que calculan o muestran fechas (crear las
 > clases, apartar la cabina, la grilla de compra, el panel). Si uno se olvida, la pantalla
@@ -45,7 +54,11 @@ cinco días = **los 25 cupos**. La última clase arranca 21:00 porque el estudio
 Los 25 son 25 porque **la cabina es una sola**: no existe un cupo 26 salvo otra cabina. El
 inventario **es** la grilla `pro_cohort_slots`, nunca un contador.
 
-## 3. 🔄 La cabina ya NO se aparta al ofrecer el cupo
+## 3. ✅ La cabina ya NO se aparta al ofrecer el cupo — YA ESTABA CONSTRUIDO
+
+> **11/09/2026: esto no hay que hacerlo, ya está hecho desde el 27/08.** `cuposApartados`
+> en `lib/slots.ts` aparta sólo por cupo COMPRADO (`pro_enrollments` viva), no por cupo
+> ofrecido, y el código cita la decisión textual. El plan lo daba por pendiente.
 
 **Cambio de fondo respecto de `sep-2026`.** Antes, los 25 cupos apartaban la cabina desde
 que se ofrecían: durante las 8 semanas ningún member podía agendar DJ después de las 17.
@@ -59,7 +72,13 @@ membresía. Eso devuelve ~7,6 clases de cabina por semana a la franja 17–22.
 otro lado. El candado del cupo (índice único `pro_enrollments_un_cupo_por_horario`) **sigue
 intacto**: eso no se toca.
 
-## 4. 🚨 Modo Profesional PISA al member. Siempre.
+## 4. 🟡 Modo Profesional PISA al member. Siempre. — A MEDIAS
+
+> **11/09/2026, medido en `app/actions/buyModoPro.ts`:** el choque ya se **detecta** al
+> vender (chequea las 8 fechas, filtra sólo cabina, notifica a todo el staff y deja
+> `audit_log` con `modopro.cupo_pisado`), y la venta no se frena. **Falta lo de abajo:**
+> cancelar la clase del member, devolverle el crédito, y que quede una tarea CONTABLE —
+> hoy es una campanita, y una campanita no se puede contar como cerrada.
 
 Consecuencia directa del punto 3: un member puede agendar el lunes 19:00 del 09/11, y
 después alguien compra el cupo "lunes 19:00". Dos reservas válidas, una sola cabina.
@@ -137,7 +156,31 @@ antes de abrir la venta, no después.
 
 ---
 
-## Estado: ESCRITO, NO CONSTRUIDO
+## Estado al 11/09/2026 (tarde): EN MARCHA
+
+El IDE reiniciado destrabó el acceso al repo. Lo hecho y verificado:
+
+| | |
+|---|---|
+| ✅ `RESEND_API_KEY` | **está en Vercel** (production + preview). El pendiente rojo del 11/08 queda cerrado |
+| ✅ Punto 3 (la cabina) | ya estaba construido desde el 27/08 |
+| 🟡 Punto 4 (el choque) | detecta y avisa; falta cancelar + crédito + tarea contable |
+| ✅ La vitrina | `cohorteEnVenta` ahora aplica `cohorteAbierta` — commit `5bbc5c8` |
+| ✅ `test:cohorte` | **57 en verde**, con prueba de mutación. Los 2 rojos eran de la regla derogada el 27/08 |
+| ⏸ `oct-2026` | `scripts/crear-cohorte.mjs` listo y corrido en seco. **Falta el OK de Facu para `--send`** |
+| ❌ Punto 5 (cuotas 4+4) | sin tocar |
+
+### El bug que estaba en la calle
+
+`cohorteEnVenta` miraba sólo `estado = "abierta"`, así que el 11/09 la landing publicaba
+"ARRANCA EL 7 DE SEPTIEMBRE · QUEDAN 25 LUGARES · Elegir mi horario" con el curso arrancado
+hacía cuatro días. **Nadie podía pagar** —`buyModoPro` sí chequeaba y rebotaba con
+`?e=cerrada`—, y por eso no había error que ver: la guarda existía, con su test en verde
+desde el 11/08, y ningún camino público la llamaba.
+
+---
+
+## Estado anterior: ESCRITO, NO CONSTRUIDO
 
 Al 11/09/2026 **no se tocó una línea de código.** El repo `astronomy-members` vive en
 `~/Desktop/Productoras/Astronomy/Academia/astronomy-members/` y la sesión no lo pudo leer.
