@@ -8,6 +8,48 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-09-11 · FAIL ✓ · El historial de las demos sólo registraba al primero que abría
+
+**Dónde:** `astronomy-members`, bandeja de Astronomy Records (`/admin/label`).
+
+Facu pidió ver en cada demo quién la abrió, quién la tickeó y quién puso el veredicto, con
+un círculo de iniciales y un color por persona. Al construir la columna apareció el bug de
+abajo — no se estaba buscando: **el dato que la columna iba a mostrar no existía**.
+
+**El síntoma fue un número demasiado prolijo.** La tabla `label_demo_events` tenía 30
+eventos `kind = "vista"` para 30 demos. Uno por demo, ni uno de más, con cuatro personas
+entrando a la bandeja desde agosto.
+
+**Causa raíz:** el `anotarEvento({ kind: "vista" })` estaba escrito adentro del `if` que
+gana el candado de la primera apertura (`update … .is("first_seen_at", null)`). O sea que
+sólo se anotaba la vista **del primero que entraba**; el segundo y el tercero no dejaban
+rastro. Son dos preguntas distintas metidas en un mismo `if`: *¿quién fue el primero?* se
+contesta una vez, *¿quién la abrió?* se contesta una vez **por persona**. Con dos personas
+en el equipo las dos respuestas coinciden y el bug no existe; con seis —Facu autorizó a los
+tres profes el mismo día— la pregunta que importa se queda sin respuesta.
+
+**Fix:** la regla salió de la página y se fue a `registrarApertura()` en
+`lib/label/demos.ts`, que pregunta por `(demo, persona)` antes de anotar. La ficha la llama
+y **el verificador corre exactamente esa función**, como ya se hacía con `aplicarVeredicto`.
+El candado de `first_seen_at` no se tocó: sigue diciendo quién llegó primero y sigue siendo
+el que dispara New → Listening (verificado: dos aperturas, un solo pase de estado).
+
+**Lo que evita que vuelva:** dos verificadores nuevos. `npm run verificar:firmas` prueba la
+regla contra Postgres con una demo descartable, y `npm run verificar:firmas-pantalla` abre
+**la misma ficha con dos sesiones distintas** por magic link y cuenta los círculos de la
+fila. El segundo es el que importa: la regla puede estar perfecta y la columna mostrar una
+sola cara igual. Los dos se probaron en rojo —se reintrodujo el bug a mano y fallaron 4
+chequeos— antes de darlos por buenos ([[chequeo-verde-con-el-codigo-roto]]).
+
+**Lo que se aprendió, transferible:** una línea de auditoría hay que preguntarse de qué es
+única, si del hecho o de la persona. Y un chequeo que cuenta filas no protege esto: "hay 30
+eventos" da verde con el bug puesto. Hay que contar caras.
+
+**De paso:** el directorio de personas sale de `destinatariosDeAviso()` y no de un
+`from("staff")`, por el agujero ya documentado — Facu es maestro por `ADMIN_EMAILS`, no
+tiene fila en `staff`, y es quien más demos abrió: recorriendo la tabla se quedaba sin cara
+justo él.
+
 ### 2026-09-01 · FAIL ✓ · Tres preguntas de Luqui, tres bugs distintos y uno que no existía
 
 **Dónde:** `astronomy-members`. Commits `675bc50` (espejo de MP) y `ae2b82e` (sueldos fijos).
