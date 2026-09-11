@@ -117,23 +117,20 @@ h3{font-weight:500; font-size:11.5pt; margin:0; letter-spacing:-.005em;}
    real del render; lo unico agregado es el foco. Dibujar un plano del predio a
    ojo seria inventarle al locatario una planta que nadie midio. */
 .loca{position:relative; line-height:0; border:1px solid var(--line);
-  overflow:hidden; margin-top:6mm; width:148mm; max-width:100%;}
+  overflow:hidden; width:100%;}
 .loca img{width:100%; height:auto; display:block;}
-.loca__base{filter:grayscale(1) brightness(.42) contrast(1.05);}
-.loca__hi{position:absolute; inset:0; filter:saturate(1.05) brightness(1.06);}
-.loca__vela{position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(circle at var(--x) var(--y),
-    rgba(196,98,45,.24) 0%, rgba(196,98,45,.1) 55%, rgba(23,22,20,0) 78%);}
-.loca__aro{position:absolute; transform:translate(-50%,-50%);
-  border:2px solid var(--corten-hi); border-radius:50%;
-  box-shadow:0 0 0 1px rgba(23,22,20,.55), 0 0 22px rgba(196,98,45,.5);}
 .loca__tag{position:absolute; transform:translate(-50%,0);
   font-family:var(--mono); font-size:8pt; letter-spacing:.12em;
   text-transform:uppercase; color:var(--ink); white-space:nowrap;
   background:rgba(23,22,20,.82); border:1px solid var(--corten);
   padding:2mm 3.5mm; border-radius:999px; line-height:1;}
-.loca__pie{font-family:var(--mono); font-size:8pt; letter-spacing:.1em;
-  text-transform:uppercase; color:var(--ink-3); margin:4mm 0 0;}
+.loca__pie{font-family:var(--mono); font-size:7.5pt; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink-3); margin:3.5mm 0 0; line-height:1.5;}
+
+/* La hoja 3: el plano a la izquierda y las condiciones al lado. El plano es
+   casi cuadrado, asi que a todo el ancho de la hoja no entraba con el resto. */
+.cierre{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.92fr);
+  gap:7mm; align-items:start; margin-top:6mm;}
 
 /* ---------- Mapa ---------- */
 .mapa{position:relative; line-height:0; border:1px solid var(--line);
@@ -150,14 +147,13 @@ h3{font-weight:500; font-size:11.5pt; margin:0; letter-spacing:-.005em;}
   text-transform:uppercase; color:var(--ink-3); margin:4mm 0 0;}
 
 /* ---------- Condiciones ---------- */
-.cond{margin-top:5mm; border-top:1px solid var(--line);}
-.cond__row{display:grid; grid-template-columns:minmax(0,34mm) minmax(0,1fr) minmax(0,1.25fr);
-  gap:6mm; align-items:baseline; padding:3.6mm 0; border-bottom:1px solid var(--line-2);}
-.cond__k{font-family:var(--mono); font-size:8.5pt; letter-spacing:.1em;
-  text-transform:uppercase; color:var(--corten);}
+.cond{margin-top:0; border-top:1px solid var(--line);}
+.cond__row{padding:3.4mm 0; border-bottom:1px solid var(--line-2);}
+.cond__k{font-family:var(--mono); font-size:8pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--corten); margin:0 0 1.8mm;}
 .cond__v{font-size:15pt; font-weight:300; letter-spacing:-.02em;
   font-variant-numeric:tabular-nums; margin:0;}
-.cond__n{font-size:9pt; color:var(--ink-3); line-height:1.45; margin:0;}
+.cond__n{font-size:8.5pt; color:var(--ink-3); line-height:1.45; margin:1.6mm 0 0;}
 .nota{font-size:8.5pt; color:var(--ink-3); line-height:1.5; margin:4.5mm 0 0; max-width:78ch;}
 
 /* ---------- Contacto ---------- */

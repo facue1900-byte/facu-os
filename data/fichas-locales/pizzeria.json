@@ -96,13 +96,8 @@
     "bajada_plano": ""
   },
   "ubicador": {
-    "img": "aerea-wellness",
-    "x": "11%",
-    "y": "23%",
-    "rx": "9.0%",
-    "ry": "16.5%",
     "tag": "Acá está el local",
-    "alt": "Vista aérea del paseo con la galería nueva iluminada"
+    "alt": "Plano general del Paseo Nordelta con el local marcado"
   },
   "story2": {
     "titulo": "En la galería<br>nueva.",

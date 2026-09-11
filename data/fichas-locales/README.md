@@ -22,9 +22,40 @@ que cambie el diseño.
    tres datos de cabecera.
 2. **El local** — los m² como números grandes, el plano, y seis puntos de lo que
    tiene.
-3. **Dónde está y cuánto sale** — la aérea con el pin del local (los pines salen
-   del mapa de 12 sectores del deck, que Facu corrigió a mano el 25/08/2026),
-   las condiciones y el contacto.
+3. **Dónde está y cuánto sale** — a la izquierda el plano general de Max con
+   este local encendido, a la derecha las condiciones, y abajo el contacto.
+
+## El ubicador
+
+`plano_ubicador.py` toma `plano-general.pdf` (el `reunion facu-PLANTAS.pdf` del
+arquitecto) y **lo copia tal cual**: no redibuja nada, sólo cambia el color.
+Todo el predio baja a un trazo apagado sobre el negro del paseo, y el
+rectángulo del local queda a full en Corten, con halo y marco.
+
+Escupe dos versiones y `ubicadores.json` con dónde quedó el centro de cada
+local en %, que es lo que usa la ficha para colgar la etiqueta:
+
+| Archivo | Dónde se usa | Por qué |
+|---|---|---|
+| `img/ubicador-<slug>.png` | la historia 2 | el plano entero, que en 1080×1920 se lee |
+| `img/ubicador-<slug>-zoom.png` | la hoja 3 del PDF | a 85 mm el plano entero no se lee: el local queda del tamaño de una uña |
+
+**El rectángulo de cada local está a mano en `LOCALES`, y se verifica mirando
+el recorte** (`page.get_pixmap(clip=rect)`) antes de darlo por bueno. Tiene que
+entrar el local entero y nada del vecino. El plano numera **ambientes**, no
+locales comerciales: el `LOCAL 9` del plano no es el "sector 9" del deck.
+
+Qué es cada letra del plano, dicho por Facu el 11/09/2026:
+
+| | | | |
+|---|---|---|---|
+| Cafetería | SALON 28 + OFICINA 29/30 + GALERIA + deck | Pizzería | LOCAL 13 + COCINA 14 |
+| Futuro Fabric | LOCAL 11 + COCINA 12 | Heladería Shock BA | LOCAL 9 + COCINA 10 |
+| BIGG | SALON 16/17 + COCINA 18 (el gris al costado es el Fabric de hoy, futura parrilla) | Wellness | GIMNASIO 3 |
+| Market | SUPERMERCADO 1 | Los 7 de servicios | la tira de LOCAL 2 |
+| Salón multiespacios | SALON 32 | Oficinas | OFICINA 31 |
+| Hamburguesería | LOCAL 8 + COCINA 15 | Astronomy | LOCAL 8 (centro-derecha) |
+| Sin dueño | los dos LOCAL 8 del centro (contenedores) | Futuro lavadero | LOCAL 8 de arriba |
 
 ## Lo que el script NO hace
 
@@ -63,7 +94,8 @@ dos cortaron con el mensaje correcto.
 | Café: $3.500.000 + $1.050.000 | tabla de precios de Facu, 11/09/2026 |
 | Pizzería: 47,9 m², cotas 2,00 / 10,95 / 7,60 | proyecto validado, medido en `propuesta 16-07.pdf` |
 | Pizzería: $2.250.000 | Facu, 11/09/2026 |
-| Pines del mapa | `data/presentacion-paseo/deck.template.html`, lámina 05 |
+| Qué local es cada ambiente del plano | Facu, 11/09/2026 |
+| La cafetería es el bloque de SALON 28 | el plano trae `9,60`, `3,45`, `5,95`, `GALERIA 13,00` y `Deck madera descubierto` — las mismas cotas que el plano del café de Max |
 | Contacto | `paseonordelta@gmail.com` · @paseonordelta · Av. de los Colegios 160 |
 
 ## Abierto
@@ -71,9 +103,16 @@ dos cortaron con el mensaje correcto.
 - **La expensa del local chico de la pizzería no existe en ninguna fuente.** Las
   tres que hay son de otros locales. Hasta que Facu la cierre, la ficha dice
   "Según liquidación".
-- **Frente de la pizzería: 7,60 m o 6,60 m.** El dibujo validado mide 7,60 y con
-  ese número el área cierra en ~49 m²; la nota vieja del deck dice 6,60 para los
-  tres locales y con ese número no cierra. Las fichas van con **7,60**.
+- 🚨 **Los m² de la pizzería no cierran entre dos planos del mismo arquitecto.**
+  El plano general acota el bloque LOCAL 13 + COCINA 14 en 2,00 arriba, 7,13
+  abajo y 7,30 de alto: **33,3 m²**, o ~40 m² sumando el semicubierto de 1,00 m.
+  La ficha publica **47,9 m²**, medido sobre `propuesta 16-07.pdf`. Los otros dos
+  dan 65,7 y 96,4 contra 88,3 y 123,7 — la misma proporción, distinto tamaño, así
+  que **son dos plantas distintas, no un error de medición**. Hasta que Facu diga
+  cuál rige, el número que sale a un tercero no está confirmado.
+- **Frente de la pizzería: 7,60 · 7,30 · 6,60.** El dibujo validado mide 7,60; el
+  plano general acota 7,30; la nota vieja del deck decía 6,60. Las fichas van con
+  **7,60**, que es con el que cierra el área publicada.
 - **La tipografía real es Neue Haas Display** y vive en el Desktop, que este
   proceso no puede leer (TCC de macOS). Se renderiza con Helvetica Neue, su
   pariente directo. Si algún día se puede leer la carpeta, se embebe y listo.

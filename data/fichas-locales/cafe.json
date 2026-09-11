@@ -101,13 +101,8 @@
     "bajada_plano": ""
   },
   "ubicador": {
-    "img": "aerea-wellness",
-    "x": "36%",
-    "y": "55%",
-    "rx": "9.0%",
-    "ry": "16.5%",
     "tag": "Acá está la cafetería",
-    "alt": "Vista aérea del paseo con la cafetería iluminada"
+    "alt": "Plano general del Paseo Nordelta con la cafetería marcada"
   },
   "story2": {
     "titulo": "Sobre el sendero<br>principal.",

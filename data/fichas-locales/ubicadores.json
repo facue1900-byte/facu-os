@@ -1,0 +1,28 @@
+{
+  "cafe": {
+    "entero": {
+      "x": "40.98%",
+      "y": "29.27%",
+      "alto_caja": "10.37%"
+    },
+    "zoom": {
+      "x": "50.04%",
+      "y": "50.04%",
+      "alto_caja": "24.73%"
+    },
+    "que": "Deck + GALERIA 13,00 + OFICINA 29 + OFICINA 30 + SALON 28"
+  },
+  "pizzeria": {
+    "entero": {
+      "x": "69.75%",
+      "y": "49.94%",
+      "alto_caja": "6.71%"
+    },
+    "zoom": {
+      "x": "50.06%",
+      "y": "50.13%",
+      "alto_caja": "29.03%"
+    },
+    "que": "SEMICUBIERTO + LOCAL 13 + COCINA 14"
+  }
+}

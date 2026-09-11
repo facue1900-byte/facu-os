@@ -98,26 +98,24 @@ def hoja_local(d: dict) -> str:
 
 
 def ubicador(d: dict, clase: str = "loca") -> str:
-    """La aerea apagada con un foco de color encima del local.
+    """El plano general de Max, apagado, con este local encendido.
 
-    Dos copias de la MISMA imagen: la de abajo en gris y oscura, la de arriba a
-    color recortada con un circulo sobre el local. La geometria es la del
-    render; lo unico agregado es el foco, el aro y la etiqueta.
+    La imagen la arma `plano_ubicador.py` a partir del PDF del arquitecto: el
+    plano va copiado tal cual, sin redibujar nada. Acá sólo se le pone encima la
+    etiqueta, en el centro del local, para que el texto quede vectorial.
     """
-    u = d["ubicador"]
-    x, y, rx, ry = u["x"], u["y"], u["rx"], u["ry"]
-    foco = f"ellipse({rx} {ry} at {x} {y})"
+    slug = d["slug"]
+    cual = "entero" if clase.startswith("s-loca") else "zoom"
+    u = json.loads((BASE / "ubicadores.json").read_text())[slug][cual]
+    alto = u["alto_caja"]
+    sufijo = "" if cual == "entero" else "-zoom"
     return f"""
-<div class="{clase}" style="--x:{x}; --y:{y}">
-  <img class="loca__base" src="{datauri(u['img'])}" alt="">
-  <img class="loca__hi" src="{datauri(u['img'])}"
-       style="clip-path:{foco}; -webkit-clip-path:{foco}"
-       alt="{esc(u['alt'])}">
-  <span class="loca__vela"></span>
-  <span class="loca__aro" style="left:{x}; top:{y};
-        width:calc({rx} * 2); height:calc({ry} * 2)"></span>
+<div class="{clase}">
+  <img src="{datauri('ubicador-' + slug + sufijo)}"
+       alt="{esc(d['ubicador']['alt'])}">
   <span class="loca__tag"
-        style="left:clamp(22%, {x}, 78%); top:calc({y} + {ry} + 4%)">{esc(u['tag'])}</span>
+        style="left:clamp(26%, {u['x']}, 74%);
+               top:calc({u["y"]} + {alto} / 2 + 3.6%)">{esc(d['ubicador']['tag'])}</span>
 </div>"""
 
 
@@ -133,9 +131,13 @@ def hoja_cierre(d: dict) -> str:
   <div class="hoja__body">
     <p class="eyebrow">D&oacute;nde est&aacute;</p>
     <h2>{d['h_cierre']}</h2>
-    {ubicador(d)}
-    <p class="loca__pie">{esc(d['mapa_ref'])}</p>
-    <div class="cond">{filas}</div>
+    <div class="cierre">
+      <div class="cierre__plano">
+        {ubicador(d)}
+        <p class="loca__pie">{esc(d['mapa_ref'])}</p>
+      </div>
+      <div class="cond">{filas}</div>
+    </div>
     <p class="nota">{d['nota']}</p>
     <div class="cta">
       <div><p class="cta__l">Escribinos</p>

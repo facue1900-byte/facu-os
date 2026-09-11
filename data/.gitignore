@@ -8,6 +8,6 @@
 !fichas-locales/
 fichas-locales/*
 !fichas-locales/README.md
-!fichas-locales/build.py
+!fichas-locales/*.py
 !fichas-locales/*.css
 !fichas-locales/*.json
