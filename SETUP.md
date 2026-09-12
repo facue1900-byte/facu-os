@@ -45,6 +45,42 @@ esperando algo que **solo podés hacer vos** (un login, una key, un permiso).
 - [x] **Vercel, Supabase y Netlify** — CLIs instalados y tokens verificados contra las
       cuentas reales.
 
+## Inventario de infraestructura
+
+Verificado con los tokens el 27/07/2026. **Esto vive acá y no en `CLAUDE.md`: envejece,
+y un dato viejo en un archivo que se carga en toda sesión miente en todas.**
+
+| Plataforma | Qué hay |
+|---|---|
+| Vercel | Team `astronomyofficial` · proyecto `astronomy` → **astronomyofficial.com** en producción. **Push a `main` deploya solo.** |
+| Supabase | **Dos** proyectos, uno por negocio: `qeakrjnseboiulcojlcw` (Astronomy) y `wujutradczplokjrgmdo` (**Paseo Nordelta**) |
+| GitHub | `facue1900-byte/facu-os` (privado), `facue1900-byte/astronomy-members`, `facue1900-byte/app-paseo-nordelta-` |
+| Google Cloud | Proyecto `astronomy-app-502618`, service account `astronomy-calendar@…` (Sheets + Calendar, impersona `studio@astronomyofficial.com`) |
+
+> Son **dos bases de Supabase distintas**. Antes de una migración o un query, confirmar
+> contra cuál se está pegando: un `ref` equivocado escribe en el negocio equivocado y no
+> avisa.
+
+**Vercel y Supabase van por token, no por login interactivo** (el login de navegador no
+sirve headless para launchd). Los tokens ya están en el `.env` (`VERCEL_TOKEN`,
+`SUPABASE_ACCESS_TOKEN`). Netlify ya autenticado (team Astronomy).
+
+Sitios de Netlify de la app del Paseo — **un deploy por rol** (URLs completas, con
+sufijo): `lucent-buttercream-8ac45a` = Mati · `whimsical-alfajores-91122a` = Inversores ·
+`dancing-elf-c4ed3f` = Admin. (`dapper-cajeta-537756` es de Astronomy, **no tocar**.)
+
+## Estado de cada skill
+
+| Skill | Estado |
+|---|---|
+| `cierre-mes-nordelta` | Productivo — `scripts/conciliar.py` hace los chequeos deterministas |
+| `triage-inbox` | Productivo. **Etiquetar en Gmail bloqueado**: faltan los scopes `gmail.modify` / `gmail.labels` |
+| `grabacion-a-tareas` | Productivo |
+| `consenso` | Productivo |
+| `propuestas` | Productivo — genera y frena, no manda |
+| `flyers` | Productivo — precios desde Supabase, render con Chrome headless |
+| `prospectar-gmaps` | **Bloqueado**: falta `APIFY_API_TOKEN` |
+
 ## Bloqueado esperándote (en orden de lo que más desbloquea)
 
 ### ~~1. Credenciales de Google~~ ✅ HECHO (27/07/2026)

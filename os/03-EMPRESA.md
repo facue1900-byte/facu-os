@@ -10,10 +10,9 @@ duplica (regla 12: una sola fuente de verdad). Acá va lo que ese archivo no tie
 
 ## Objetivos — próximos 3 a 6 meses
 
-1. **Más plata, mes a mes.** Todo lo que genere ingresos este mes va primero.
-2. **Menos horas de Facu en tareas de bajo valor**, para usar el tiempo pensando cómo
-   hacer más plata.
-3. Todo lo demás es interesante y va al backlog, no a la agenda.
+Fuente única: `~/.claude/CLAUDE.md` → *Objetivos*, que se carga en toda sesión. En una
+línea: **más plata mes a mes**, después **menos horas de Facu en tareas de bajo valor**,
+y lo demás al backlog.
 
 ## KPIs — el tablero
 
