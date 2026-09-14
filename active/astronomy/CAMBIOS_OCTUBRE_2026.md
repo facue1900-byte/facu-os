@@ -65,6 +65,66 @@ reconozca ese mensaje ("Hola! Completé la encuesta de…") y no conteste precio
 Sigue abierto: **las preguntas de la encuesta de Carrera Profesional** (el PDF sólo trae
 las de producción; en la previa va una propuesta) y **el tiempo de respuesta de José**.
 
+## El catálogo de octubre, para confirmar (paso previo a los escenarios del bot)
+
+Facu, 14/09: **antes de escribir los escenarios del bot para Gonza, se cierra el catálogo
+entero.** Lo que está en **negrita con ❓** falta confirmar.
+
+### 1 · DJ: membresías (autoservicio: precio visible, pago por Mercado Pago)
+
+| | Silver | Gold | Platinum |
+|---|---|---|---|
+| Precio/mes (`plans`, 14/09) | $143.520 | $195.600 | $272.000 |
+| Créditos/mes | 240 | 360 | 480 |
+| Clases de DJ (60 cr) | sí | sí | sí |
+| Clases de producción en Ableton | — | sí | sí |
+| Alquiler de cabina y estudio (40 cr) | — | sí | sí |
+| Clases grupales (50 cr) | — | — | sí |
+| Grabación de live sets | — | sí | sí, con cámaras |
+| Mixing & mastering · comunidad y tracks inéditos | — | — | sí |
+| DJ Delivery | sí | sí | sí |
+| Acumula créditos | no | sí | sí |
+
+❓ **¿Producción presencial existe sólo dentro de Gold y Platinum?**
+
+### 2 · Producción Online (encuesta → José)
+
+4 clases por mes, se paga por mes. Precio según experiencia: $200.000 / $250.000 /
+$280.000 (no figura en la web). Profe: Valen Frando.
+❓ **¿Individual o grupal? ¿Cuánto dura la clase? ¿Horario fijo o se agenda? ¿Cómo se
+cobra: suscripción de Mercado Pago o link por mes? ¿Las 4 clases vencen a fin de mes?
+¿Hay otro profe además de Valen?**
+
+### 3 · Carrera Profesional (encuesta → José)
+
+8 semanas, una clase de una hora por semana en su día y horario fijo, presencial en
+cabina. $449.999 en un pago o 2 de $247.500 (no figura en la web). Se vende y se
+arranca. Incluye presskit, set final de 60 min con cámara, DJ Delivery y unreleased
+tracks.
+❓ **¿Siguen las franjas de lunes a viernes de 17 a 22? ¿Qué profes? ¿Sigue la regla de una
+reprogramación por curso, con +24 hs? ¿Qué se le ofrece cuando termina (Gold)?**
+
+### 4 · Lo que deja de venderse o no está definido
+
+- **Curso de DJ mensual**: deja de venderse. Los 14 activos pasan a Silver el 01/11.
+- ❓ **DJ Delivery suelto** ($16.499/mes, 2 activos): ¿sigue?
+- ❓ **Bronze** ($71.760, oculto pero con `/bronze` vendible): ¿se da de baja?
+- ❓ **Clase suelta o alquiler sin membresía**: ¿existe?
+
+## Leads de la encuesta (Facu, 14/09)
+
+**Todo el que empiece la encuesta y deje un contacto le tiene que aparecer a José**,
+aunque no la termine o no apriete WhatsApp.
+
+- **El contacto se pide en el paso 2**, después de la primera respuesta (que es un click).
+  Hoy está al final: el que abandona en la pregunta 4 no deja nada que José pueda usar.
+- **Desde ahí, cada respuesta se guarda al momento.** A José le aparece en `/admin/leads`
+  con nombre, WhatsApp, curso, respuestas y **hasta dónde llegó**: "3 de 6", "completó",
+  "abrió WhatsApp".
+- **El que se va antes de dejar contacto no se puede contactar**, pero se cuenta. El embudo
+  queda así: abrió la encuesta → respondió la 1 → dejó contacto → completó → apretó
+  WhatsApp. Con eso se ve dónde se cae la gente (Ley 9: se mide con un contador).
+
 ## Calendario propuesto
 
 | Cuándo | Qué |
