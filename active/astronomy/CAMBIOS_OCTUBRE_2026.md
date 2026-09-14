@@ -19,7 +19,7 @@ Mateo Pastrana. **Esto es para definir: todavía no se construyó nada fuera de 
   Incluye presskit, set final de 60 minutos grabado con cámara, DJ Delivery y unreleased
   tracks de Astronomy Members. Es para el que ya mezcla.
 - **Producción Online**: Ableton Live, con Valen Frando (Owners of Time). Temario
-  adaptado por encuesta previa y CTA "Quiero mi clase de prueba".
+  adaptado por encuesta previa.
 - **Cuándo** (Facu, 14/09): los cambios salen **a principio de octubre**. La migración de
   los alumnos actuales va **con un mes de aviso como mínimo**.
 
@@ -30,27 +30,39 @@ nuevo exacto. Los **14** alumnos activos del Curso de DJ pasan a Silver sin perd
 suman DJ Delivery. Los que **pierden** son los **9** Silver actuales: producción,
 alquiler, acumulación y 10 créditos. Son $1.291.680/mes (9 × $143.520).
 
-## Lo que falta definir (con la recomendación)
+## Respuestas de Mateo Pastrana (14/09/2026, pasadas por Facu)
 
-| # | Decisión | Recomendación |
+| # | Tema | Decisión |
 |---|---|---|
-| 1 | Precio de **Profesional** | Hoy $449.999 único o 2×$247.500, y vendió 0. Revisarlo pensando en que el público ahora es más chico: el que ya mezcla |
-| 2 | Precio de **Producción Online** | Falta el número ("proponer valor $$$" en el PDF) |
-| 3 | **Clase de prueba**: ¿gratis o paga? | Paga y descontable del primer mes: gratis, cada lead le cuesta una hora a Valen |
-| 4 | **Profesional**: ¿ediciones con fecha o arrancás la semana que quieras? | Arrancás cualquier semana. Con fecha fija, el lead de la pauta espera y se enfría. La `oct-2026` del 05/10 no llega a venderse si la web cambia a principio de octubre |
-| 5 | **Silver actuales (9)**: ¿qué les pasa? | Aviso con un mes, más oferta para pasar a Gold. Alternativa: que mantengan lo que tienen |
-| 6 | **Créditos acumulados** del Silver actual | Se respetan hasta su vencimiento (2 meses), y lo nuevo deja de acumular |
-| 7 | **Gold sin grupales**: ¿a propósito? | Confirmar con Pastrana: el Gold viejo las tenía |
-| 8 | **Nombre del Silver** en la web | "Curso de DJ · Silver": "curso de DJ" es lo que busca la gente |
-| 9 | **Tracks** para la landing de producción | 3 o 4, de alumnos si hay |
+| 1 | Precio de Profesional | **Se mantiene** ($449.999 único o 2×$247.500), pero **no se muestra en la web**. Primero la encuesta, y el vendedor pasa el precio según la respuesta |
+| 2 | Producción Online | Igual: encuesta, y **precio según el nivel del prospecto**: Inicial **$200.000** · Avanzado **$250.000** · Profesional **$280.000**. La encuesta está para que el vendedor sepa qué venderle a cada uno |
+| 3 | Clase de prueba | **Se borra.** La encuesta es la primera interacción |
+| 4 | Profesional: ¿ediciones o cualquier semana? | **Se vende y se arranca**: cuando paga, se agendan sus 8 clases fijas. No puede chocar con las clases de las membresías |
+| 5 | Silver actuales | Aviso con un mes, más oferta para pasar a Gold |
+| 6 | Créditos acumulados del Silver | Se respetan hasta su vencimiento |
+| 7 | Clases grupales | **Sólo Platinum** |
+| 8 | Vidriera | DJ (con las membresías adentro) · Producción Online · **Carrera Profesional** o Profesional |
+| 9 | Tracks de producción | Tracks del profe, de Vlado, de referencia y de alumnos que pasaron por Astronomy |
+
+## Lo que queda abierto
+
+| # | Pregunta | Recomendación |
+|---|---|---|
+| A | Los $200.000/$250.000/$280.000 de producción: ¿son por mes o por curso? ¿Cuántas clases incluyen? | Falta el dato: no se escribe un precio sin eso |
+| B | Nombre: ¿"Carrera Profesional" o "Profesional"? | **Carrera Profesional**. "Profesional" ya es un nivel del precio de producción, y el cruce confunde al vendedor y al prospecto |
+| C | ¿Adónde va la encuesta cuando alguien la termina? | Se guarda como lead en `/admin/leads` (ya existe, con estado y responsable) **y** abre WhatsApp con las respuestas ya escritas, así la charla arranca en el momento. 232 conversaciones/mes dan 1,3% de conversión: si el vendedor tarda horas, el lead se enfría |
+| D | ¿Quién contesta los leads de la encuesta, y en cuánto tiempo? | Falta definir: José o Luqui |
+| E | Profesional sin chocar con las membresías | Al comprar, la grilla **ofrece sólo horarios con las 8 semanas libres**. Así ningún member pierde una clase y no hay que llamar a nadie. Después de la compra, la cabina queda ocupada y los members no pueden reservar ahí: eso **ya lo hace** `lib/slots.ts`. Si hay mucha demanda, franjas exclusivas para el curso |
+| F | Membresías: ¿el precio queda visible y se pagan solas por MP? | Sí: son el producto de autoservicio. La encuesta sólo va en los dos cursos |
+| G | Tracks de referencia | Embebidos (SoundCloud/YouTube) y rotulados como **referencia**: que no parezcan hechos en Astronomy |
 
 ## Calendario propuesto
 
 | Cuándo | Qué |
 |---|---|
-| hasta el 25/09 | Cerrar las 9 decisiones de arriba |
+| hasta el 25/09 | Cerrar las preguntas A a G |
 | 26/09 al 30/09 | Construir: planes y créditos por plan en la base, acumulación por plan, la web real y la landing de producción |
-| **01/10** | Web nueva y productos nuevos **sólo para altas nuevas**. Cambiar la pauta que apunta a `/curso-profesional-dj` |
+| **01/10** | Web nueva, encuesta y productos nuevos **sólo para altas nuevas**. Cambiar la pauta que apunta a `/curso-profesional-dj` |
 | **01/10** | Aviso a los alumnos actuales. Se prepara entero y **lo manda Facu** (regla 10) |
 | **01/11** | Migración efectiva de Silver y Curso de DJ, al mes del aviso |
 
