@@ -44,23 +44,26 @@ alquiler, acumulación y 10 créditos. Son $1.291.680/mes (9 × $143.520).
 | 8 | Vidriera | DJ (con las membresías adentro) · Producción Online · **Carrera Profesional** o Profesional |
 | 9 | Tracks de producción | Tracks del profe, de Vlado, de referencia y de alumnos que pasaron por Astronomy |
 
-## Lo que queda abierto
+## Segunda vuelta (Facu y Mateo, 14/09/2026)
 
-| # | Pregunta | Recomendación |
+| # | Tema | Decisión |
 |---|---|---|
-| A | Los $200.000/$250.000/$280.000 de producción: ¿son por mes o por curso? ¿Cuántas clases incluyen? | Falta el dato: no se escribe un precio sin eso |
-| B | Nombre: ¿"Carrera Profesional" o "Profesional"? | **Carrera Profesional**. "Profesional" ya es un nivel del precio de producción, y el cruce confunde al vendedor y al prospecto |
-| C | ¿Adónde va la encuesta cuando alguien la termina? | Se guarda como lead en `/admin/leads` (ya existe, con estado y responsable) **y** abre WhatsApp con las respuestas ya escritas, así la charla arranca en el momento. 232 conversaciones/mes dan 1,3% de conversión: si el vendedor tarda horas, el lead se enfría |
-| D | ¿Quién contesta los leads de la encuesta, y en cuánto tiempo? | Falta definir: José o Luqui |
-| E | Profesional sin chocar con las membresías | Al comprar, la grilla **ofrece sólo horarios con las 8 semanas libres**. Así ningún member pierde una clase y no hay que llamar a nadie. Después de la compra, la cabina queda ocupada y los members no pueden reservar ahí: eso **ya lo hace** `lib/slots.ts`. Si hay mucha demanda, franjas exclusivas para el curso |
-| F | Membresías: ¿el precio queda visible y se pagan solas por MP? | Sí: son el producto de autoservicio. La encuesta sólo va en los dos cursos |
-| G | Tracks de referencia | Embebidos (SoundCloud/YouTube) y rotulados como **referencia**: que no parezcan hechos en Astronomy |
+| A | Precio de producción | **4 clases, se paga por mes.** $200.000 / $250.000 / $280.000 por mes según la experiencia |
+| B | Niveles de producción | **No figuran en la página.** Los ve sólo el vendedor, que ofrece el nivel según la encuesta (ej.: "ya sé bastante, quiero aprenderlo desde otro punto de vista" → Profesional $280.000). La vidriera usa **Carrera Profesional** (recomendación, sin confirmar) |
+| C | Adónde va la encuesta | A un lugar donde el vendedor vea **las respuestas y el contacto** del lead: `/admin/leads` |
+| D | Quién contesta | **José** |
+| E | Profesional sin choque | La grilla ofrece sólo horarios con las 8 semanas libres |
+| F | Membresías | El precio queda visible y se pagan solas por Mercado Pago. La encuesta sólo va en los dos cursos |
+| G | Tracks | **Sin tracks de referencia.** Van los del profe, los de Vlado y los de alumnos |
+
+Sigue abierto: **las preguntas de la encuesta de Carrera Profesional** (el PDF sólo trae
+las de producción; en la previa va una propuesta) y **el tiempo de respuesta de José**.
 
 ## Calendario propuesto
 
 | Cuándo | Qué |
 |---|---|
-| hasta el 25/09 | Cerrar las preguntas A a G |
+| hasta el 25/09 | Aprobar las preguntas de la encuesta de Carrera Profesional |
 | 26/09 al 30/09 | Construir: planes y créditos por plan en la base, acumulación por plan, la web real y la landing de producción |
 | **01/10** | Web nueva, encuesta y productos nuevos **sólo para altas nuevas**. Cambiar la pauta que apunta a `/curso-profesional-dj` |
 | **01/10** | Aviso a los alumnos actuales. Se prepara entero y **lo manda Facu** (regla 10) |
