@@ -35,7 +35,7 @@ alquiler, acumulación y 10 créditos. Son $1.291.680/mes (9 × $143.520).
 | # | Tema | Decisión |
 |---|---|---|
 | 1 | Precio de Profesional | **Se mantiene** ($449.999 único o 2×$247.500), pero **no se muestra en la web**. Primero la encuesta, y el vendedor pasa el precio según la respuesta |
-| 2 | Producción Online | Igual: encuesta, y **precio según el nivel del prospecto**: Inicial **$200.000** · Avanzado **$250.000** · Profesional **$280.000**. La encuesta está para que el vendedor sepa qué venderle a cada uno |
+| 2 | Producción Online | Igual: encuesta, y **precio según la experiencia del prospecto**: Inicial **$200.000** · Avanzado **$250.000** · Profesional **$280.000**. La encuesta está para que el vendedor sepa qué venderle a cada uno |
 | 3 | Clase de prueba | **Se borra.** La encuesta es la primera interacción |
 | 4 | Profesional: ¿ediciones o cualquier semana? | **Se vende y se arranca**: cuando paga, se agendan sus 8 clases fijas. No puede chocar con las clases de las membresías |
 | 5 | Silver actuales | Aviso con un mes, más oferta para pasar a Gold |
