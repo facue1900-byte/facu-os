@@ -22,8 +22,8 @@ Salió de revisar el WhatsApp Business de Academy en la web (ver memoria
 >    a humano, nunca el error.
 >
 > **Importante:**
-> 4. **Bucles de "no entendí".** A un contacto le respondió 10 veces "no entendí". Después de
->    2 seguidos, que derive a humano y deje de contestar.
+> 4. **Bucles de "no entendí".** A uno que escribía cualquier cosa ("Jg", "Is0s") le respondió
+>    10 veces "no entendí". Después de 2 seguidos sin sentido, que deje de contestar.
 > 5. **"Solo proceso mensajes de texto y audio"** sale aunque la persona haya mandado texto
 >    (ej: después de "Buenísimo gracias"). Y cuando mandan audio tampoco lo entiende. Si no
 >    procesa audio, que derive a humano.
