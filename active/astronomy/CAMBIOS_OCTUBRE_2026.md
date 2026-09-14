@@ -56,6 +56,12 @@ alquiler, acumulación y 10 créditos. Son $1.291.680/mes (9 × $143.520).
 | F | Membresías | El precio queda visible y se pagan solas por Mercado Pago. La encuesta sólo va en los dos cursos |
 | G | Tracks | **Sin tracks de referencia.** Van los del profe, los de Vlado y los de alumnos |
 
+**Cierre de la encuesta** (Facu y Mateo, 14/09): el prospecto ve un cierre genérico, sin
+nombrar a José, y un botón **abre WhatsApp al número de Academy con sus respuestas ya
+escritas**. Lo manda él. Para la versión real: **guardar el lead antes** de abrir WhatsApp,
+así si no aprieta enviar José lo tiene igual, y **que Gonza configure el bot** para que
+reconozca ese mensaje ("Hola! Completé la encuesta de…") y no conteste precios.
+
 Sigue abierto: **las preguntas de la encuesta de Carrera Profesional** (el PDF sólo trae
 las de producción; en la previa va una propuesta) y **el tiempo de respuesta de José**.
 
