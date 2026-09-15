@@ -8,7 +8,7 @@ _(Av. de los Colegios 160)_
 
 *Mié 16/09 · 11 hs*
 Moira Sigal — *SlabCake Bakery*
-Pastelería. Buscaba 60-80 m², así que la cafetería le queda grande. Viene a verla igual.
+Pastelería. Busca 60-80 m², así que la cafetería le queda grande. Le ofrecimos verla igual.
 
 *Vie 18/09 · 11 hs*
 Diego Pérez Ariosto — *Ariosto*
@@ -22,7 +22,7 @@ Tiene 2 locales en Núñez y abre Colegiales y Bajo Belgrano. Ya mandó renders 
 Pedro Arenas — *La Vicente López*
 Confitería. Quiere ver el local antes de mandar la propuesta.
 
-_Las del viernes y la del lunes las propusimos nosotros; falta que confirmen el horario._
+_Todavía ninguno confirmó el horario por escrito._
 
 *🏷 MARCAS GRANDES*
 • *Café Martínez* — Laura Ramírez, de Expansión. Trabajan con franquicia y contratos 5+5. Ya tienen los valores de referencia.
