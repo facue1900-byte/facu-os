@@ -3782,3 +3782,9 @@ factura). Hoy hay que hacerlo a mano.
 **Lección transferible.** Cuando un importe no aparece en ningún documento, la hipótesis
 siguiente no es "falta el documento": es **"este número no es de un documento solo"**.
 Un total que sólo existe del lado del banco es señal de agrupación, no de faltante.
+
+## 2026-09-15 — Un "Send" de Gmail mandó el borrador equivocado (Paseo, paseonordelta@)
+
+**Qué pasó:** Facu autorizó mandar UN mail (a Juanita, con el link del Meet). El `find` devolvió "Send (⌘Enter)" y el click salió por la ventana de redacción de OTRO borrador que Gmail había dejado abierto: el de Nancy Pelozo (Maian Viajes), que Facu había dicho que NO se mandara. Salió a las 18:46. El de Juanita quedó como borrador y se mandó después.
+**Causa raíz:** Gmail restaura las ventanas de redacción abiertas al volver a la bandeja, así que en el DOM conviven varios botones "Send". Un `find`/click por texto no dice a qué borrador pertenece el botón.
+**Regla:** antes de clickear Send, resolver el botón DESDE el cuerpo del mensaje que se quiere mandar (`body.closest(...)` → el Send de ese contenedor) y confirmar destinatario + primeras palabras del cuerpo en el mismo contenedor. Después de mandar, verificar en Enviados que salió ESE y ningún otro. Antes de trabajar borradores, cerrar todas las ventanas de redacción abiertas.
