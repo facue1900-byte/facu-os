@@ -3788,3 +3788,49 @@ Un total que sólo existe del lado del banco es señal de agrupación, no de fal
 **Qué pasó:** Facu autorizó mandar UN mail (a Juanita, con el link del Meet). El `find` devolvió "Send (⌘Enter)" y el click salió por la ventana de redacción de OTRO borrador que Gmail había dejado abierto: el de Nancy Pelozo (Maian Viajes), que Facu había dicho que NO se mandara. Salió a las 18:46. El de Juanita quedó como borrador y se mandó después.
 **Causa raíz:** Gmail restaura las ventanas de redacción abiertas al volver a la bandeja, así que en el DOM conviven varios botones "Send". Un `find`/click por texto no dice a qué borrador pertenece el botón.
 **Regla:** antes de clickear Send, resolver el botón DESDE el cuerpo del mensaje que se quiere mandar (`body.closest(...)` → el Send de ese contenedor) y confirmar destinatario + primeras palabras del cuerpo en el mismo contenedor. Después de mandar, verificar en Enviados que salió ESE y ningún otro. Antes de trabajar borradores, cerrar todas las ventanas de redacción abiertas.
+
+## 16/09/2026 — Dos chequeos verdes que no podían ponerse rojos
+
+Revisando las cuentas corrientes del Paseo aparecieron, el mismo día, dos
+verificaciones que daban bien por construcción. Las dos llevaban meses en verde.
+
+**1. El «CIERRA» de `comprobar_capital.py`.** Imprime dos cuentas y verifica que
+sumen la caja real. Escrita, la suma es:
+
+    (gan - obra_pn) + (aporte - (obra - obra_pn))  =  gan + aporte - obra
+
+`obra_pn` —la obra atribuida a Paseo Nordelta en la hoja Gastos Obra— **se
+cancela**. Lo que queda sale entero de Movimientos, así que la igualdad es una
+identidad contable: da «CIERRA» aunque Gastos Obra esté vacío. El script existe
+justamente para corroborar la atribución, y era lo único que no miraba. Hoy hay
+**$144.128.078 de obra sin aportante** y decía CIERRA igual.
+
+Lección: cuando un chequeo compara dos expresiones, **desarrollarlas**. Si el
+término que se quiere validar se simplifica, el chequeo no lo está mirando.
+
+**2. El auditor de cuentas corrientes.** Daba 82 hallazgos, de los cuales ~40
+eran correctos por diseño: marcaba «fila de IVA que sobra en $0» en los locales
+que no facturan, que es exactamente la regla que Facu pidió el 06/08 (el bloque
+lleva sus cinco conceptos y el que no se cobra va con su cero al lado). El propio
+docstring del script decía que un informe con falsos positivos «entrena a
+ignorar el informe». Eso estaba pasando: el hallazgo real de Bigg —$466.000 de
+Servicios Comunes sin su fila de IVA— vivía entre 40 avisos falsos.
+
+La causa: `num("")` y `num(0)` valen los dos 0, así que el script no distinguía
+una celda **vacía** (que no dice nada, y es un error) de un **0 escrito** (que es
+la regla). Al separarlos quedaron 40 hallazgos, todos reales, y sobró lugar para
+el chequeo que faltaba: IVA con importe a un local que no factura.
+
+**Y lo que casi hago mal.** `obra_a_gastos_obra.py` reportaba $45.865.973 de obra
+«sin anotar» en agosto y septiembre, y estuve a punto de reportarlo como un
+agujero. No lo era: esa plata la puso Richi y ya está anotada del lado del
+**aporte** ($26.000.000 el 10/08 y $26.000.000 el 07/09, contra $25.975.012 y
+$25.975.013 de municipales pagados esos mismos días). Anotarla además como obra
+la contaba dos veces. El filtro que lo evitaba iba por el texto del concepto, con
+el nombre que tenía en julio, así que «Municipal - Fondo y Aridos sept 2026» se
+colaba solo.
+
+Lección: un filtro por substring sobre un texto que lo escribe una persona cada
+mes es un chequeo que se rompe callado. Y el comentario decía «Facu no pidió
+anotarlas todavía», que no era el motivo real — un comentario que explica mal el
+porqué es peor que no tenerlo: invita a sacar el filtro.
