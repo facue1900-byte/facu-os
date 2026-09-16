@@ -314,6 +314,13 @@ def main():
             print(f"── {local}: sin pestaña propia (sólo CARGOS) — "
                   f"cobra por {cfg['cobra_por']}\n")
             continue
+        if not cfg.get("layout"):
+            # Mismo criterio que `escribir_en_pestania`: sin layout no se sabe
+            # qué columna es cuál, y adivinarlo audita la columna equivocada.
+            # La Jaula vive en `Futbol` con su propio bloque (`bloque_input`).
+            print(f"── {local} «{cfg['pestania']}»: NO AUDITADA — la pestaña no "
+                  f"tiene el layout de cuenta corriente. Se revisa a mano.\n")
+            continue
         hallazgos, bloques, saldo = auditar_local(p, local, cfg, cargos)
         estado = "✅ impecable" if not hallazgos else f"⚠ {len(hallazgos)} hallazgo/s"
         print(f"── {local}  «{cfg['pestania']}»  ·  cobra por {cfg['cobra_por']}"

@@ -179,18 +179,35 @@ def origen_app(nombre, avisos):
     return o
 
 
-def cobros_desde_previo(salida, hoy, ya_en_planilla):
+def cobros_desde_previo(salida, hoy, ya_en_planilla, avisos=None):
     """La fecha desde la que la app descuenta cobros. Se arrastra del JSON
-    anterior salvo que se declare que la planilla ya los tiene."""
+    anterior salvo que se declare que la planilla ya los tiene.
+
+    Sin JSON previo cae en HOY, y eso no es neutro: la app deja de descontar
+    todos los cobros que Mati cargó y que todavía no se volcaron a Ctas Ctes, y
+    la deuda se infla sin que nada falle. Pasa cuando se genera a una ruta
+    nueva, que es justo cuando nadie lo está mirando. Por eso avisa.
+    """
     if ya_en_planilla:
         return hoy.isoformat()
     if os.path.exists(salida):
         try:
             with open(salida, encoding="utf-8") as fh:
                 previo = json.load(fh)
-            return previo.get("cobrosDesde") or previo.get("generado") or hoy.isoformat()
+            fecha = previo.get("cobrosDesde") or previo.get("generado")
+            if fecha:
+                return fecha
         except (json.JSONDecodeError, OSError):
             pass
+        if avisos is not None:
+            avisos.append(f"{salida}: no pude leerle `cobrosDesde` — arranca en "
+                          f"HOY y la app NO va a descontar los cobros de la app "
+                          f"que falten volcar a Ctas Ctes. NO publicar así.")
+    elif avisos is not None:
+        avisos.append(f"no existe {salida}: `cobrosDesde` arranca en HOY. Si este "
+                      f"JSON se publica, la app deja de descontar los cobros que "
+                      f"Mati ya cargó y la deuda sale INFLADA. Para publicar, "
+                      f"generá sobre el JSON de la app (sin argumento de salida).")
     return hoy.isoformat()
 
 
@@ -202,6 +219,7 @@ def main():
     mes_actual = (hoy.year, hoy.month)
     sv = sheets().spreadsheets()
     locales, avisos = [], []
+    desde = cobros_desde_previo(salida, hoy, ya_en_planilla, avisos)
 
     for tab, (cobra, cd, cin, ceg, csal, signo) in PESTANAS.items():
         vals = sv.values().get(spreadsheetId=CTAS, range=f"{tab}!A1:H200",
@@ -334,7 +352,7 @@ def main():
     locales.sort(key=lambda l: (-l["efectivo"], l["nombre"]))
     doc = {"generado": hoy.isoformat(),
            # De acá en adelante los cobros los tiene la app, no la planilla.
-           "cobrosDesde": cobros_desde_previo(salida, hoy, ya_en_planilla),
+           "cobrosDesde": desde,
            "fuente": "Sheet Ctas Ctes — pestañas por local + CARGOS/Cobros/Futbol",
            "total": total,
            "cuantosDeben": sum(1 for l in locales if l["confiable"] and l["efectivo"] > 0),
