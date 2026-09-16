@@ -29,11 +29,25 @@ XLSX = "/Users/Facu/facu-os/data/reportes-inversores/_master_plan.xlsx"
 QUIEN = "Paseo Nordelta"
 ULTIMA_FILA_CON_FORMULA = 130
 
-# Egresos que YA estaban en Inversiones antes de la recategorizacion del 10/09/2026
-# y que Facu no pidio anotar todavia. Las cuotas municipales son un plan de pagos
-# que ademas aparece con los mismos importes en julio, agosto y septiembre: hay
-# que mirarlo antes de sumarlo a lo invertido.
-EXCLUIR = ["derechos de construccion", "plan de pagos fondo y aridos",
+# Lo municipal NO se anota como obra, y el motivo no es que "falte decidirlo":
+# esa plata la puso Richi y YA esta anotada del lado del APORTE.
+#
+# Facu, 16/09/2026: "las tasas municipales fueron todo aporte de capital de
+# Richie... despues no importa cuanto realmente se gasto en la tasa municipal, lo
+# que importa es cuanto aporto Richie". Y los numeros lo confirman: el 10/08
+# entraron tres aportes de Richi por $26.000.000 y ese mismo dia salieron
+# $25.975.012 de tasas; el 07/09 entro un aporte de $26.000.000 y ese mismo dia
+# salieron $25.975.013 de derechos de construccion + fondo y aridos.
+#
+# Anotarlas ademas como obra las cuenta DOS VECES: sube "lo invertido" ~$26M por
+# mes y rompe `comprobar_capital.py`, que hoy cierra al peso. Si algun dia hay que
+# anotar una, se hace con `--quien Richi` sobre el APORTE, no sobre el gasto.
+#
+# El filtro va por el TEXTO del concepto y el concepto cambia de nombre todos los
+# meses ("Primera cuota (1/6) Plan de pagos fondo y aridos" en julio,
+# "Municipal - Fondo y Aridos sept 2026" en septiembre), asi que cada variante
+# tiene que estar aca o se cuela sola.
+EXCLUIR = ["derechos de construccion", "fondo y aridos", "tasas municipales",
            "pague daniel 700.000"]
 
 

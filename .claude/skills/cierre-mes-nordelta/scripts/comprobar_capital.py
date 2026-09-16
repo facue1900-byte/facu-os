@@ -58,9 +58,14 @@ def main():
 
     obra_pn = 0.0
     obra_pn_mes = collections.defaultdict(float)
+    obra_atribuida = 0.0   # obra con nombre y apellido en Gastos Obra, de cualquiera
     for r in v:
         r = list(r) + [""] * 9
-        if not str(r[0]).strip() or str(r[1]).strip() != "Paseo Nordelta":
+        if not str(r[0]).strip():
+            continue
+        if "aporte de capital" not in str(r[2]).lower():
+            obra_atribuida += num(r[7])
+        if str(r[1]).strip() != "Paseo Nordelta":
             continue
         if "aporte de capital" in str(r[2]).lower():
             continue
@@ -141,6 +146,31 @@ def main():
               f"({p(peor[1])}).")
         print("   Esa obra la adelantaron los socios: no es un error, es capital de")
         print("   trabajo que el negocio devolvio despues con su ganancia.")
+
+    # 4) EL CHEQUEO QUE SI PUEDE FALLAR
+    #
+    # Ojo con el "CIERRA" de arriba: la suma es
+    #     (gan - obra_pn) + (aporte - (obra - obra_pn))  =  gan + aporte - obra
+    # o sea `obra_pn` SE CANCELA. Esa identidad sale entera de Movimientos y da
+    # bien aunque Gastos Obra este vacio: no valida la atribucion, y un chequeo
+    # que no puede fallar no es un chequeo (Constitucion, regla 3).
+    #
+    # Lo que si puede fallar es esto: cada peso de obra que salio de la caja
+    # tendria que tener un renglon en Gastos Obra diciendo QUIEN lo puso. Lo que
+    # falta no rompe la caja — rompe "Quien puso la plata", que es la pantalla
+    # que ve el inversor.
+    sin_atribuir = obra - obra_atribuida
+    print("4) LA OBRA TIENE QUE TENER UN APORTANTE")
+    print(f"   Obra pagada (Inversiones en Movimientos)      {p(obra):>18}")
+    print(f"   Obra con aportante en Gastos Obra            -{p(obra_atribuida):>18}")
+    print(f"   = sin atribuir a nadie                        {p(sin_atribuir):>18}")
+    if abs(sin_atribuir) < 1:
+        print("   TODA LA OBRA TIENE APORTANTE\n")
+    else:
+        print(f"   *** {p(sin_atribuir)} DE OBRA SIN APORTANTE ***")
+        print("   El reparto entre Richi, Facu y el negocio esta incompleto:")
+        print("   'Quien puso la plata' le muestra al inversor menos de lo que puso.")
+        print("   La caja cierra igual — por eso hay que mirarlo aca y no alla.\n")
 
     if not ok:
         sys.exit(1)

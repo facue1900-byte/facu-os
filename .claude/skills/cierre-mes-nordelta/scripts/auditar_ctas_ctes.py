@@ -188,15 +188,25 @@ def auditar_local(p, local, cfg, cargos):
         # viene como serial. Sólo los cargos entran a los bloques.
         es_mes = bool(etq) and not str(etq).replace(".", "").isdigit()
 
-        if det and not ing and not egr:
-            if det.lower().startswith("iva ") and not factura:
-                hallazgos.append(
-                    (f"f{i}", "fila de IVA que sobra",
-                     f"{etq} · {det!r} en $0 — {local} cobra por "
-                     f"{cfg['cobra_por']} y no factura"))
-            else:
-                hallazgos.append((f"f{i}", "FILA SIN IMPORTE",
-                                  f"{etq or '(sin mes)'} · {det!r}"))
+        # Un `0` ESCRITO no es una fila sin importe: es la regla de Facu del
+        # 06/08/2026 — el bloque lleva siempre sus cinco conceptos y el que no se
+        # cobra va con su cero al lado, que es lo que lo deja explicado. Marcarlo
+        # daba 30+ avisos correctos-por-diseño y entrenaba a ignorar el informe.
+        # Lo que sí es un hallazgo es la celda VACÍA, que no dice nada.
+        vacias = (str(celda(r, c_ing)).strip() == ""
+                  and str(celda(r, c_egr)).strip() == "")
+        if det and not ing and not egr and vacias:
+            hallazgos.append(
+                (f"f{i}", "FILA SIN IMPORTE",
+                 f"{etq or '(sin mes)'} · {det!r} — la celda está vacía; si ese "
+                 f"concepto no se cobra va un 0 escrito"))
+        # Al revés sí es plata mal cobrada: IVA CON IMPORTE a un local que no
+        # factura. Antes no lo miraba nadie porque el aviso de al lado tapaba todo.
+        if egr and det.lower().startswith("iva ") and not factura:
+            hallazgos.append(
+                (f"f{i}", "🔴 IVA COBRADO A QUIEN NO FACTURA",
+                 f"{etq} · {det!r} por {plata(egr)} — {local} cobra por "
+                 f"{cfg['cobra_por']} y no factura"))
         if (ing or egr) and not det:
             que = "PAGO SIN DESCRIPCIÓN" if ing else "CARGO SIN DESCRIPCIÓN"
             hallazgos.append(

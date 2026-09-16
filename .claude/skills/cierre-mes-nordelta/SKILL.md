@@ -207,6 +207,38 @@ reconstruye: los servicios recalculando los `SUMIFS` contra Movimientos, y la AV
 **despejándola** del recupero congelado de un local y validándola contra los otros
 16. No congela dos veces el mismo mes.
 
+**2-quinquies. Volcar a las pestañas los cobros que Mati ya cargó:**
+
+```bash
+/Users/Facu/facu-os/.venv/bin/python \
+  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/volcar_cobros.py"
+#   sin --escribir sólo propone; con --escribir escribe y verifica cada local
+```
+
+Los cobros de la app bajan solos a la hoja `Cobros`, **pero no a la pestaña del
+local**, que es lo que ve el locatario y de donde sale la deuda de Mati. Un pago
+que está en Cobros y no en la pestaña deja al local figurando con un mes que ya
+pagó. Se hacía a mano (julio el 05/08, agosto el 03/09) y cada vez aparecían las
+mismas trampas.
+
+> **Va al final, no en el medio.** Los pagos del mes cancelan el ÚLTIMO bloque, y
+> las filas vacías de abajo **ya traen la cadena del saldo copiada**: se appendea
+> y el saldo se recalcula solo. Insertar en el medio es lo que cortó la cadena en
+> agosto.
+>
+> **El signo se LEE de la fórmula de cada pestaña, no se asume**: en Fabric un
+> pago suma (saldo negativo = debe) y en Bigg, Boss, Volta y Peak One resta
+> (positivo = debe). El medio va en la B, salvo Bigg que lo tiene en el detalle.
+>
+> **El pareo es por CONTEO por monto dentro de la ventana, no "buscá uno
+> parecido"**: con una ventana de ±5 días, dos pagos reales del mismo importe
+> —acá son moneda corriente— hacían que el segundo matcheara contra el primero
+> ya volcado y **se descartara un pago real sin decir nada**.
+>
+> Avisa de lo que NO puede volcar: cobros cuyo local no es ninguna pestaña
+> (Beto, Salón, La Jaula, Meta) y pagos en la pestaña sin cobro que los explique.
+> Después de volcar hay que correr `deuda_efectivo.py --cobros-en-planilla`.
+
 **2-sexies. Deuda en efectivo, para la app de Mati:**
 
 ```bash
