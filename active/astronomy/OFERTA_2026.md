@@ -42,7 +42,7 @@ alumno elige según el servicio que quiere.
 | Clases de producción | ✅ |
 | Producción online (Valen Frando) | — |
 | Alquiler de cabina | — |
-| DJ Delivery | 🔴 add-on pago |
+| DJ Delivery | add-on pago, **$25.000/mes** |
 | Unreleased tracks | — |
 | Carrera Profesional | — |
 
@@ -218,7 +218,12 @@ incentivo para que se transformen de Silver a Gold, o que paguen el DJ Delivery 
 hace la cuenta sube a Gold; el que no la hace, igual paga $25.000 que hoy no paga. Los dos
 resultados sirven. Y convierte la quita en una decisión del alumno en vez de un castigo.
 
-🔴 A confirmar el precio del add-on.
+✅ **Confirmado por Facu el 17/09/2026 a la noche: $25.000/mes.** Ya está en la landing
+(`app/academy/preview/oferta.ts` → `ADDON_DJ_DELIVERY`).
+
+⚠️ Ojo: en la tabla `plans` hay un plan `djdelivery` a **$16.499 con 3 suscripciones vivas**.
+Si es el mismo producto, hay que actualizarlo — mientras no coincidan, la web promete
+$25.000 y el sistema cobra $16.499. Lo marca `npm run verificar:oferta`.
 
 ---
 
@@ -242,7 +247,6 @@ hay que ganarle de mano. Detalle completo en `COMPETENCIA_2026.md`.
 
 ## 🔴 Lo que falta definir
 
-1. **Precio del add-on de DJ Delivery para Silver.** Propuesta: $25.000/mes.
 2. **Confirmar cuánto cobra Ari** por la instalación, y si es por instalación o por hora.
 3. **Medir la disponibilidad real de los profes** contra la tabla `availability`, para cerrar
    el techo de clases por mes (hoy es un estimado: ~152).
