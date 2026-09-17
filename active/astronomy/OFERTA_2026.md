@@ -1,7 +1,7 @@
 # Oferta 2026 — Astronomy Academy
 
-**Borrador de trabajo.** Dictado por Facu y Mateo el 17/09/2026. Todavía tiene decisiones
-abiertas, marcadas con 🔴. **Nada de acá sale a un alumno hasta que Facu lo apruebe.**
+**Borrador de trabajo.** Dictado por Facu y Mateo el 17/09/2026, segunda pasada.
+Lo que sigue abierto está marcado con 🔴. **Nada de acá sale a un alumno hasta el OK de Facu.**
 
 Esta es la **fuente única de verdad** de la oferta. De acá se derivan, en este orden:
 la landing, el árbol del bot, los guiones de pauta, `lib/productos.ts` y la tabla `plans`.
@@ -14,18 +14,22 @@ Si algo dice un precio distinto al de este archivo, está mal ese otro lado.
 **La membresía es el único producto.** Se discontinúan como productos sueltos:
 
 - **Modo Profesional** ($449.999, cohorte oct-2026). Cero ventas en toda su historia, y
-  bloquea la franja 17-22 de la cabina las 8 semanas. Se absorbe dentro de Platinum, en
-  formato más chico (4 clases, no 8).
+  bloquea la franja 17-22 de la cabina las 8 semanas. **No se elimina: se incrusta dentro
+  de Platinum**, con el mismo contenido (8 clases), repartido en 2 meses.
 - **Curso de DJ mensual** (240 cr que se resetean). Los 14 activos pasan a Silver.
 
-Motivo, en palabras de Facu: *"si ya tenemos un producto que funciona, que son las
-membresías, ¿por qué queremos crear más cursos que no sabemos si funcionan? No vendimos
-nada y nos quita tiempo para ofrecer nuestro producto. Mezclamos a José, a Luqui, las
-finanzas, el bot."*
+Facu: *"si ya tenemos un producto que funciona, que son las membresías, ¿por qué queremos
+crear más cursos que no sabemos si funcionan? No vendimos nada y nos quita tiempo para
+ofrecer nuestro producto. Mezclamos a José, a Luqui, las finanzas, el bot."*
 
-**Los créditos se mantienen.** Facu: *"podemos jugar con la inflación, tenemos nuestra
-propia economía interna."* Ver la sección *La economía del crédito* más abajo: esa palanca
-tiene un costo que hay que decidir a ojos abiertos.
+Y sobre por qué el curso va adentro y no al lado: *"la idea es potenciar esta venta de
+membresías, que no tengamos tantas cosas y que no se entienda."*
+
+**Los créditos se mantienen** como moneda interna.
+
+**Las membresías NO son nivelatorias** (Facu, 17/09). Nadie queda excluido de un plan por
+su nivel: el alumno elige según el servicio que quiere. A mayor membresía, más cosas puede
+hacer — pero no hay un examen ni un portero.
 
 ---
 
@@ -33,93 +37,132 @@ tiene un costo que hay que decidir a ojos abiertos.
 
 | | **Silver** | **Gold** | **Platinum** |
 |---|---|---|---|
-| Créditos/mes | **240** | 🔴 360 (a confirmar) | 🔴 720 (a confirmar) |
-| Clases de DJ | ✅ nivel inicial | ✅ | ✅ |
-| Clases de producción | ✅ nivel inicial | ✅ | ✅ |
+| Créditos/mes | **240** | 🔴 **360** (a confirmar) | **540** |
+| Clases de DJ | ✅ | ✅ | ✅ |
+| Clases de producción | ✅ | ✅ | ✅ |
 | Producción online (Valen Frando / Owners Of Time) | — | ✅ | ✅ |
 | Alquiler de cabina | — | ✅ | ✅ |
-| DJ Delivery | — | ✅ | ✅ |
+| DJ Delivery | 🔴 add-on pago | ✅ | ✅ |
 | Unreleased tracks | — | ✅ | ✅ |
-| **Curso Profesional** (4 clases, temario, horario fijo) | — | — | ✅ |
-| Presskit (si no tiene) | — | — | ✅ |
-| Instalación de Ableton / plugins | — | — | ✅ |
+| **Carrera Profesional** (8 clases en 2 meses) | — | — | ✅ |
+| Presskit | — | — | ✅ al completar las 8 clases |
+| Instalación de Ableton / plugins | — | — | ✅ a pedido, 🔴 cuesta créditos |
 
 Los créditos **acumulan** mientras el alumno siga pagando, y **vencen a 2 meses del último
-pago** (regla dictada el 04/08/2026, sin cambios).
+pago** (regla del 04/08/2026, sin cambios).
 
-### Silver — la puerta de entrada
-240 créditos, canjeables **sólo por clases** de DJ o de producción, **nivel inicial**.
-Sin cabina, sin DJ Delivery, sin producción online. Es el nivel que hoy consume 130% de su
-plan y tiene 69% de churn: la apuesta es que un Silver más definido empuje a subir a Gold
-en vez de irse.
+### Silver — sólo clases
+240 créditos = 4 clases de DJ o de producción. Sin cabina, sin producción online, sin
+tracks inéditos. Es el nivel que hoy consume 130% de su plan y tiene 69% de churn.
 
 ### Gold — el estudio
-Todo lo de Silver **más**: producción online con Valen Frando, alquiler de cabina,
-DJ Delivery y tracks inéditos. Es el nivel que hoy consume 65% de su plan y casi no se va.
+Todo lo de Silver **más** producción online con Valen Frando, alquiler de cabina,
+DJ Delivery y tracks inéditos. Hoy consume 65% de su plan y casi no se va: es el nivel sano.
 
 ### Platinum — el ecosistema
-Todo lo de Gold **más**:
-
-- **Curso Profesional.** 4 clases que valen **el doble de créditos** que una normal
-  (120 cr cada una, 480 en total). Con temario. **Horario fijo semanal**: se elige un día y
-  una hora y se respetan las 4 semanas. **Se cobra por adelantado** — la idea es
-  justamente que no se falte, porque ya está pago. Si se paga en 2 cuotas, al acreditarse
-  la segunda se agendan las clases restantes en el mismo día y horario, o el alumno puede
-  elegir cambiarlo.
-- **Presskit**, para el que no tiene.
-- **Instalación de Ableton, plugins y demás**, para productores.
-- **Mínimo 2 meses de permanencia.** 🔴 Ver pregunta 5.
+Todo lo de Gold **más** la **Carrera Profesional**, el presskit y la instalación.
 
 ---
 
-## La economía del crédito
+## La Carrera Profesional, dentro de Platinum
 
-Hoy: **1 clase = 60 créditos**. De ahí sale todo lo demás.
+Es el ex Modo Profesional, **mismo contenido**, reempaquetado:
 
-| Plan | Créditos | Clases equivalentes | Costo de profe al tope ($11.000/clase) |
+- **8 clases en total**, con temario, a razón de **4 por mes durante 2 meses**.
+- **Cada clase vale el doble**: 120 créditos en vez de 60. **El doble crédito aplica sólo a
+  las clases de la Carrera** (Facu, 17/09) — una clase normal sigue costando 60.
+- **Horario fijo semanal.** Se elige día y hora y se respetan las 4 semanas del mes.
+- **Se cobra por adelantado.** Es a propósito: *"la idea es no faltar porque ya se cobra."*
+- Si se paga en 2 cuotas, al acreditarse la segunda se agendan las clases restantes en el
+  mismo día y horario, o el alumno puede elegir cambiarlo.
+
+**Por qué Platinum tiene 540 y no 480:** la Carrera consume 480 créditos por mes
+(4 × 120). Los 60 que sobran son para que el alumno igual pueda pagar un alquiler de
+cabina, un mixing & mastering o una clase de producción ese mes.
+
+**El objetivo declarado de este diseño es que el alumno pague Platinum dos veces**, que es
+lo que le toma completar la carrera.
+
+---
+
+## ⚠️ El agujero del doble crédito
+
+El doble crédito protege el costo **sólo si el alumno hace la Carrera**.
+
+Un Platinum que **no** la hace gasta sus 540 créditos en **9 clases normales** (540 ÷ 60),
+y eso son **$99.000 de profe** — más caro que Gold, que son 6 clases por $66.000. O sea que
+el peor caso de Platinum no es el que hace la carrera: es el que no la hace.
+
+| Platinum | Consumo | Clases reales | Costo de profe |
 |---|---|---|---|
-| Silver | 240 | 4 | $44.000 |
-| Gold | 360 | 6 | $66.000 |
-| Platinum | 720 | 4 del Curso Profesional + 4 normales = **8 reales** | $88.000 |
+| Hace la Carrera | 480 + 60 | 4 + 1 | **$55.000** |
+| No la hace | 540 en clases sueltas | 9 | **$99.000** |
 
-⚠️ **Por qué Platinum necesita 720 y no 480.** El Curso Profesional consume 480 créditos
-él solo (4 × 120). Si Platinum queda en los 480 de hoy, el curso **se come el mes entero**
-y al alumno no le queda un crédito para una clase suelta ni para la cabina. 720 le deja el
-curso más 4 clases normales.
-
-### Lo de la "inflación" — la palanca y su costo
-
-Subir el precio en créditos de la clase (de 60 a 80, por ejemplo) sube el precio real sin
-tocar el número que dice el plan. **Pero hay 22.840 créditos comprados y sin usar dando
-vueltas** (59% de todo lo vendido; Toninelli solo tiene 7.680 acumulados). Devaluar el
-crédito le licúa el saldo a los que ahorraron, exactamente como una devaluación de verdad,
-y son justo los que menos vienen y más fácil se van.
-
-**Recomendación: no tocar el valor de la clase en este cambio.** La palanca de precio son
-los créditos del plan y el precio en pesos, que son limpios y no le sacan nada a nadie. La
-inflación del crédito queda guardada para más adelante, avisada y con fecha.
+🔴 **Decisión pendiente: ¿la Carrera es obligatoria al comprar Platinum, o es opcional?**
+Si es opcional, el precio tiene que cubrir los $99.000 del peor caso.
 
 ---
 
-## Precios
+## Precios — recomendación
 
-🔴 **Sin definir.** La derivación, apuntando al 60% de contribución que hoy da Gold —el
-único nivel que no se va— y con los costos medidos (profe $11.000/clase, Mercado Pago
-7,99% parejo, comisión del closer 7%):
+Costos medidos: profe **$11.000/clase**, Mercado Pago **7,99% parejo** (monotributo, el IVA
+no se recupera), comisión del closer **7%**.
 
-| | Hoy | Derivado |
+| | Hoy | **Propuesto** | Contribución |
+|---|---|---|---|
+| Silver | $143.520 | **$175.000** | 60% |
+| Gold | $195.600 | **$245.000** | 58% |
+| Platinum | $272.000 | **$340.000** | 69% con Carrera · **56% sin ella** |
+
+Platinum a $340.000 **aguanta los dos casos** del agujero de arriba, así que no hace falta
+decidir si la Carrera es obligatoria para poner el precio — sólo para prometerla bien.
+
+**Estos números son derivaciones sobre el consumo promedio medido el 04/08/2026, no sobre
+el consumo real alumno por alumno.** Antes de que salgan a un socio o entren al Libro, hay
+que correrlos contra la base.
+
+### El número que hay que mirar de frente
+
+**Completar la Carrera ahora cuesta 2 × $340.000 = $680.000**, contra los $449.999 de Modo
+Profesional. Es 51% más caro.
+
+El contraargumento, y es fuerte: **Modo Profesional a $449.999 vendió cero.** No hay ninguna
+evidencia de que ese precio fuera vendible — lo único probado es que las membresías venden.
+Además el que paga $680.000 no se lleva sólo 8 clases: se lleva dos meses de estudio
+completo, cabina, producción online, DJ Delivery, tracks inéditos y presskit, y **queda
+adentro como member el mes 3**, que es donde está el negocio de verdad.
+
+Aun así, es el número que más fácil puede frenar una venta. 🔴 Facu decide.
+
+### Referencia de mercado
+120 BPM cobra **$121.000/mes** por 1 clase semanal de 1h20 durante 5 meses, sin cabina y con
+fecha de fin (bpmescuela.com, 17/09/2026). Es la única de las cinco competidoras que publica
+tarifario completo. Silver a $175.000 está 45% arriba, por algo que ellos no dan.
+
+---
+
+## Los Silver de hoy: la quita y el incentivo
+
+Los 9 Silver activos hoy tienen DJ Delivery y pueden canjear créditos por cabina. En el
+diseño nuevo pierden las dos cosas. Facu: *"avisarles con anticipación, pero habría que
+buscar un incentivo para que se transformen de Silver a Gold, o que paguen el DJ Delivery
+aparte."*
+
+**Recomendación: DJ Delivery como add-on pago para Silver, a $35.000/mes.**
+
+Convierte la quita en una decisión del alumno en vez de un castigo, y hace la aritmética
+obvia:
+
+| | Total | Qué se lleva |
 |---|---|---|
-| Silver | $143.520 | ~$176.000 |
-| Gold | $195.600 | ~$264.000 |
-| Platinum | $272.000 | ~$355.000 |
+| Silver + DJ Delivery | $210.000 | 4 clases + DJ Delivery |
+| **Gold** | **$245.000** | 6 clases + DJ Delivery + cabina + producción online + tracks |
 
-**Son proyecciones sobre el consumo promedio medido el 04/08/2026, no sobre el consumo real
-alumno por alumno, y el costo de profe está al tope (todos usan todas sus clases).** Antes
-de que estos números salgan a un socio o entren al Libro, hay que correrlos contra la base.
+**Por $35.000 más se lleva 2 clases, la cabina, producción online y los tracks.** El que
+hace la cuenta sube. El que no la hace, igual paga $35.000 que hoy no paga.
 
-Referencia de mercado (relevamiento 17/09/2026, ver `COMPETENCIA_2026.md`): 120 BPM cobra
-**$121.000/mes** por 1 clase semanal de 1h20 durante 5 meses, sin cabina y con fecha de fin.
-Es el único competidor de los cinco que publica tarifario completo.
+🔴 A confirmar: el precio del add-on y si se les mantiene el precio viejo de Silver
+($143.520) a los 9 activos mientras sigan pagando.
 
 ---
 
@@ -135,34 +178,32 @@ Y las cinco comunican **formación**, ninguna comunica el después:
 
 > **Titular propuesto: todos te venden un curso. Nosotros te damos un estudio y una escena.**
 
-El único que ya está parado en ese territorio es **Tekgen** (*"Primera Academia Underground
-Argentina"*, academia + sello + productora) — pero sin web, sin precios públicos y con 13K
-de Instagram. Es el que hay que ganarle de mano.
+El único parado en ese territorio es **Tekgen** (*"Primera Academia Underground Argentina"*,
+academia + sello + productora) — sin web, sin precios públicos, 13K de Instagram. Es al que
+hay que ganarle de mano.
+
+Detalle completo en `COMPETENCIA_2026.md`.
 
 ---
 
-## 🔴 Decisiones abiertas
+## 🔴 Lo que falta definir
 
-1. **Créditos de Gold y Platinum.** Facu definió 240 para Silver. Propuesta: Gold 360,
-   Platinum 720 (ver arriba por qué 720).
-2. **"Nivel inicial" en Silver: ¿qué es?** ¿Es el contenido de la clase, o es que sólo un
-   principiante puede comprar Silver? Y si es lo segundo: quién decide que alguien dejó de
-   ser principiante, y qué le pasa cuando lo decide.
-3. **La quita a los Silver de hoy.** Los 9 Silver activos hoy tienen DJ Delivery y pueden
-   canjear créditos por cabina. Con el diseño nuevo pierden las dos cosas. ¿Se las
-   mantenemos mientras sigan pagando, o se las sacamos en la fecha de cambio?
-4. **Quién hace el presskit y la instalación de Ableton.** Son horas de alguien. Si no
-   tienen dueño con nombre, el beneficio se promete y no se cumple.
-5. **El mínimo de 2 meses de Platinum:** ¿es permanencia (se cobran 2 meses juntos) o es
-   que el presskit y la instalación se entregan recién con el segundo pago acreditado?
-   La segunda opción no necesita desarrollo nuevo y no se cae si el alumno cancela en MP.
-6. **Cabina.** El Curso Profesional de Platinum sigue bloqueando horario fijo en la cabina,
-   igual que Modo Profesional. La cabina es UNA: 25 celdas en la franja 17-22. Hay que fijar
-   cuántos Platinum se pueden vender antes de que la promesa se rompa.
-7. **Fecha de inicio.** Propuesta: **1 de noviembre de 2026**, avisando esta semana. Cae el
+1. **Créditos de Gold.** Propuesta: 360 (6 clases). Silver 240 y Platinum 540 ya están.
+2. **¿La Carrera Profesional es obligatoria al comprar Platinum o es opcional?**
+3. **Cuántos créditos cuesta la instalación de Ableton/plugins.** Propuesta: 60 (una clase).
+4. **Los tres precios**, y si Platinum a $340.000 (Carrera completa = $680.000) va o no.
+5. **Precio del add-on de DJ Delivery para Silver.** Propuesta: $35.000/mes.
+6. **A los 22 activos: ¿se les mantiene el precio viejo mientras sigan pagando?**
+   Recomendación: sí. Con 69% de churn en Silver, un aumento en el mismo mail que les cambia
+   la modalidad es la forma más rápida de perder la base — que ya viene cayendo hacia el
+   equilibrio de 14,5 alumnos.
+7. **Techo de Carreras simultáneas.** La cabina es UNA: 25 celdas en la franja 17-22, y cada
+   Carrera bloquea un horario fijo durante 8 semanas. Hay que fijar el número antes de
+   venderlas, no después.
+8. **Fecha de inicio.** Propuesta: **1 de noviembre de 2026**, avisando esta semana. Cae el
    1° de un mes (si no, José y Luqui prorratean a mano) y deja octubre para construir.
-8. **Precio de los tres niveles.**
-9. **El punto 3 de Facu quedó sin dictar.**
+9. **Qué pasa con la cohorte `oct-2026`**, que arranca el 05/10 y termina el 30/11, a caballo
+   del cambio. Recomendación: no abrirla.
 
 ---
 
