@@ -32,7 +32,7 @@ alumno elige según el servicio que quiere.
 
 # Las tres membresías, en limpio
 
-## 🥈 SILVER — $143.520/mes · 250 créditos
+## 🥈 SILVER — $143.520/mes · 240 créditos
 
 **Para el que quiere aprender.**
 
@@ -49,9 +49,7 @@ alumno elige según el servicio que quiere.
 Los 250 créditos **sólo se canjean por clases**: 4 clases por mes a 60 créditos cada una.
 Acumulan mientras siga pagando.
 
-🔴 **250 o 240.** Facu dijo 240 el 17/09 y después dijo "los mismos créditos de hoy", que
-son 250. Con 240 le entran exactamente 4 clases sin sobrante; con 250 le quedan 10 sueltos
-que no alcanzan para nada ese mes, pero acumulan.
+**240 créditos** (Facu, 17/09): le entran exactamente 4 clases por mes, sin sobrante muerto.
 
 ---
 
@@ -109,7 +107,7 @@ no se recupera), comisión del closer **7%**.
 
 | | Precio | Créditos | Clases al tope | Costo de profe | **Contribución** |
 |---|---|---|---|---|---|
-| Silver | $143.520 | 250 | 4 | $44.000 | **$78.006 · 54%** |
+| Silver | $143.520 | 240 | 4 | $44.000 | **$78.006 · 54%** |
 | Gold | $195.600 | 360 | 6 | $66.000 | **$100.280 · 51%** |
 | Platinum **con Carrera** | $272.000 | 480 | **4 reales** | $44.000 | **$187.227 · 69%** |
 | Platinum sin Carrera | $272.000 | 480 | 8 | $88.000 | **$143.227 · 53%** |
@@ -138,6 +136,68 @@ a un socio o entren al Libro, hay que correrlos contra la base.
 120 BPM cobra **$121.000/mes** por 1 clase semanal de 1h20 durante 5 meses, sin cabina y con
 fecha de fin (bpmescuela.com, 17/09/2026). Es la única de las cinco competidoras que publica
 tarifario completo. Silver a $143.520 está sólo 19% arriba, por algo que ellos no dan.
+
+---
+
+## Instalación de Ableton + plugins + sample pack Astronomy — 100 créditos
+
+**No consume cabina ni profe**: Ari la hace online por Meet desde Córdoba, entrando a la
+computadora del alumno. El único costo es lo que cobra Ari ($25.000–$30.000, a confirmar).
+
+A valor de Platinum ($566,67 el crédito), 100 créditos son **$56.667** — alrededor del doble
+de lo que cuesta. **Ese número no va a la web: el alumno ve "100 créditos".**
+
+| | Silver | Gold | Platinum |
+|---|---|---|---|
+| $ por crédito | $598,00 | $543,33 | $566,67 |
+
+---
+
+## Escenarios de ganancia (17/09/2026)
+
+Supuestos: consumo medido el 04/08/2026 — Silver usa el 100% de su plan y ahora **sólo puede
+gastarlo en clases** (4/mes); **Gold consume el 65%** (3,9 clases); Platinum, mitad con
+Carrera y mitad sin (4,6). Profe $11.000/clase · MP 7,99% · comisión 7% · fijos US$928 al TC
+**$1.472/USD de julio 2026** · José $293.475.
+
+**Techo físico: 200 clases/mes** — dos cabinas (DJ y producción) en paralelo, 5 horarios por
+día × 5 días = 50 clases/semana. **Techo con los profes de hoy: ~152/mes (estimado, sin
+medir contra `availability`).**
+
+### Con Platinum
+
+| | Pesimista | Medio | Optimista |
+|---|---|---|---|
+| Mix | 15S · 8G · 2P | 20S · 15G · 5P | 18S · 20G · 10P |
+| Ingresos | $4.261.600 | $7.164.400 | $9.215.360 |
+| **Ganancia** | **$858.895 · 20,2%** | **$2.654.465 · 37,1%** | **$4.018.487 · 43,6%** |
+| Clases/mes | 100 | 162 ⚠️ | 196 ⚠️ |
+
+### Sin Platinum (la foto real de hoy)
+
+| | Pesimista | Medio | Optimista |
+|---|---|---|---|
+| Mix | 15S · 10G · 0P | 20S · 20G · 0P | 18S · 27G · 3P |
+| Ingresos | $4.108.800 | $6.782.400 | $8.680.560 |
+| **Ganancia** | **$744.400 · 18,1%** | **$2.368.227 · 34,9%** | **$3.617.753 · 41,7%** |
+| Clases/mes | 99 | 158 ⚠️ | 191 ⚠️ |
+
+### Las cuatro lecturas
+
+1. **Cada Platinum vale $57.248/mes más que un Gold.** Idéntico en los tres escenarios.
+2. **El negocio no depende de Platinum.** Con cero Platinum el pesimista deja $744.400/mes.
+   Platinum es upside, no cimiento: **la landing tiene que vender Gold.**
+3. **El mix pesa más que la cantidad.** 48 alumnos bien mezclados (18S·20G·10P) dan
+   $4.018.487; 50 alumnos todos Silver con el estudio al tope dan $2.240.827. **Dos alumnos
+   menos y $1,78M más por mes**, porque Silver consume el 100% de su plan y sólo en clases.
+4. **El freno no es la cabina, es el profe.** Con los de hoy el techo está en ~37 alumnos y
+   ~$2,4M de ganancia. Todo lo que está arriba necesita un profe más, no más pauta.
+
+⚠️ **José y la comisión del 7% pueden estar contados dos veces** — se dejaron los dos, o sea
+que el error va para el lado pesimista. Si se superponen, las seis ganancias suben un 7% de
+la facturación. **Falta el costo del studio manager.**
+
+Modelo: `escenarios.py` (scratchpad de la sesión del 17/09).
 
 ---
 
@@ -182,19 +242,16 @@ hay que ganarle de mano. Detalle completo en `COMPETENCIA_2026.md`.
 
 ## 🔴 Lo que falta definir
 
-1. **Silver: 240 o 250 créditos.**
-2. **Cuántos créditos cuesta la instalación de Ableton/plugins.** Propuesta: 60 (una clase).
-3. **Precio del add-on de DJ Delivery para Silver.** Propuesta: $25.000/mes.
-4. **Techo de Carreras simultáneas.** La cabina es UNA: 25 celdas en la franja 17-22, y cada
-   Carrera bloquea un horario fijo durante 8 semanas. El número se fija **antes** de vender.
-5. **Fecha de inicio.** Propuesta: **1 de noviembre de 2026**, avisando esta semana. Cae el
-   1° de un mes (si no, José y Luqui prorratean a mano) y deja octubre para construir.
-6. **Qué pasa con la cohorte `oct-2026`**, que arranca el 05/10 y termina el 30/11, a caballo
-   del cambio. Recomendación: no abrirla.
+1. **Precio del add-on de DJ Delivery para Silver.** Propuesta: $25.000/mes.
+2. **Confirmar cuánto cobra Ari** por la instalación, y si es por instalación o por hora.
+3. **Medir la disponibilidad real de los profes** contra la tabla `availability`, para cerrar
+   el techo de clases por mes (hoy es un estimado: ~152).
+4. **El costo del studio manager**, que en el organigrama está escondido bajo "Profesores".
+5. **Si José y la comisión del 7% se superponen** — hoy están los dos contados.
 
-Resueltas: precios (los de hoy), créditos de Gold (360) y de Platinum (480), el costo en
-créditos de la Carrera (120/clase, el mes entero), y si la Carrera es obligatoria — no lo
-es, pero el que la hace no puede usar créditos en otra cosa.
+Resueltas el 17/09: precios (los de hoy), créditos (Silver 240 · Gold 360 · Platinum 480),
+el costo en créditos de la Carrera (120/clase, el mes entero), la instalación a 100 créditos,
+las dos cabinas como techo físico, y la fecha objetivo (1 de noviembre, "vamos viendo").
 
 ---
 
