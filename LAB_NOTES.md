@@ -3869,3 +3869,30 @@ el contenido, y el `flex:0 0 87%` de cada tarjeta se calculaba sobre 645. El tex
 cortado por el borde de la pantalla y a ojo parecía "un padding mal". Lo delató imprimir
 la cadena de ancestros con sus `clientWidth`. Fix: `width:100%` + `min-width:0` +
 `flex:none`, y el ancho de la tarjeta contra la pantalla (`calc(100vw - 64px)`).
+
+---
+
+## 17/09/2026 (2ª) — Una viñeta que no se dibuja porque la variable no existe
+
+**Dónde:** `astronomy-members`, `app/academy/preview/estilos.ts`, la sección nueva
+"un curso vs. tu membresía" (commit `34688cc`).
+
+El tilde de las listas de la previa se dibuja con dos bordes:
+`border-left:1.6px solid var(--metal)`. En las tarjetas de plan `--metal` es el color del
+metal de cada membresía. En la sección nueva **no había ningún `--metal` definido**, y una
+declaración con una variable inexistente no queda "en su valor por defecto": es inválida
+entera, así que **el borde no se dibuja para nada**. La columna de la membresía quedó con
+tres ítems sin viñeta y nada lo avisó — el CSS estaba escrito y parecía bien.
+
+Se arregló definiendo `--metal:#fff` en la sección. Intentar pisarlo con
+`border-color:#fff` NO alcanza: lo que se perdió es el `border-style`/`width`.
+
+**Lección:** una viñeta, un ícono o un separador dibujado con `var(--x)` sólo existe donde
+`--x` existe. Si se reusa una pieza en otra sección, se lleva sus variables o se le da un
+fallback (`var(--metal, #fff)`). Y se mira la captura: esto no lo detecta ningún test.
+
+**De la misma sesión, por segunda vez:** un backtick dentro del comentario del CSS de
+`estilos.ts` rompió el archivo (el CSS vive en un template literal). La primera vez fue
+`\`position:fixed\``, la segunda `\`solid var(--metal)\``. **En los comentarios de
+`estilos.ts` no van backticks**; el chequeo es contar backticks sin escapar entre
+`export const CSS = \`` y el cierre — tiene que dar 0.
