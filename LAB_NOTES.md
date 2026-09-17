@@ -3834,3 +3834,38 @@ Lección: un filtro por substring sobre un texto que lo escribe una persona cada
 mes es un chequeo que se rompe callado. Y el comentario decía «Facu no pidió
 anotarlas todavía», que no era el motivo real — un comentario que explica mal el
 porqué es peor que no tenerlo: invita a sacar el filtro.
+
+---
+
+## 17/09/2026 — Una animación de scroll rota se ve igual que una página vacía
+
+**Dónde:** `astronomy-members`, `/academy/preview`, la escena nueva de membresías
+(commit `e8875ae`).
+
+Las tres tarjetas entraban con `opacity:calc(.1 + var(--s) * .9)`, donde `--s` sale del
+`--p` que escribe el director de movimiento en cada cuadro. Con JS corriendo se ve
+perfecto. **Sin JS —script bloqueado, error antes de hidratar, o el instante previo a que
+monte el director— `--p` no existe, `--s` vale 0 y las tres membresías quedaban al 10 %
+de opacidad.** Una landing de precios que se ve vacía.
+
+El mismo error, otra cara: el `#membresias` del botón del hero aterrizaba en el techo de
+la escena sticky, que es exactamente donde `--p` vale 0. Apretar "Ver las membresías"
+llevaba a una pantalla casi en blanco. Se arregló con `scroll-margin-top` negativo
+(`-100vh` en compu), verificado apretando el botón con CDP: cae en `--p` 0,69 y opacidad
+1 en las tres.
+
+**Causa raíz:** el estado *animado* era el estado *base*. Ahora el base es visible y sin
+transform, y la coreografía completa cuelga de `html.cine-compu:not(.cine-quieto)` — la
+clase que el director pone recién cuando está corriendo.
+
+**Lección:** todo lo que dependa de una variable que escribe JS arranca en su estado final
+legible; la animación es la excepción que se activa. Nadie reporta "la página está vacía":
+se va. Va también a la memoria como
+[[coreografia-de-scroll-no-es-el-estado-base]].
+
+**De la misma pasada, medir en vez de suponer:** el `<ul>` del carrusel medía **645 px
+dentro de un padre de 390** — flex item en columna con `width:auto`, el ancho se lo dictó
+el contenido, y el `flex:0 0 87%` de cada tarjeta se calculaba sobre 645. El texto salía
+cortado por el borde de la pantalla y a ojo parecía "un padding mal". Lo delató imprimir
+la cadena de ancestros con sus `clientWidth`. Fix: `width:100%` + `min-width:0` +
+`flex:none`, y el ancho de la tarjeta contra la pantalla (`calc(100vw - 64px)`).
