@@ -8,6 +8,59 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-09-18 · FAIL ✓ · Una diferencia de créditos que era el neto de cuatro errores
+
+**Dónde:** `astronomy-members`, `lib/auditoriaCreditos.ts` y `/api/admin/export`.
+Disparador: dos mensajes de José por WhatsApp a la mañana.
+
+**Lo primero era simple.** "Descargar CSV" en `/admin/usuarios` le abría una pestaña en
+blanco con **No autorizado**. La pantalla entra con `view_students`, que él tiene; la ruta
+`/api/admin/export` autorizaba contra `ADMIN_EMAILS`, una variable de entorno con un solo
+mail. Lo que lo hacía indiagnosticable: **lo que faltaba no era un permiso**, así que mirar
+`staff.permissions` —que es el reflejo correcto— no alcanzaba, y `/admin/accesos` no podía
+arreglarlo. Fix: las dos rutas de export autorizan con `view_students`, y
+`verificar:permisos` recorre `app/api/admin/**/route.ts` y falla si alguna vuelve a gatear
+por lista de mails **o si pide `getStaffContext()` sin chequear nada con él** — el segundo
+chequeo salió de la revisión, porque sin él una ruta sin reja pasaba en verde.
+
+**Lo segundo es la lección.** La cola *Corregir créditos* le mostraba a José "Juan Manuel
+Inchausty tiene 60 créditos de más" con un botón que se los sacaba.
+
+Encontré que `esperado` suma los créditos de premios y compras sueltas por lo que **queda**
+del lote, pero resta **todas** las clases: un premio gastado vale 0 en el saldo y la clase
+que pagó se sigue restando. Inchausty tenía 70 de premio, le quedaban 10 → gastó 60. Su
+`dif` era **+60**. Cerraba perfecto, y lo escribí como causa verificada.
+
+**No era la causa.** El auditor de números levantó la identidad real:
+
+```
+dif = extraGastado − (clases canceladas que igual se cobraron) + (lotes del plan − otorgadoTotal del Libro)
++60 = 60 − 120 + 180 − 60
+```
+
+Los 180 de refunds gastados y los −120 de cancelaciones son **más grandes** que el término
+que yo había medido. El +60 coincidía con los premios por casualidad aritmética.
+
+**Causa raíz del error mío:** un número que cierra exacto con una hipótesis se siente como
+una demostración, y no lo es cuando el resultado es un **neto de varios términos con signo**.
+Un solo caso no distingue "esto lo explica" de "esto suma lo mismo que el resto neteado".
+
+**Lo que quedó, y por qué frena en vez de corregir.** El freno no afirma una causa: afirma
+lo único verificable —*si hay premios gastados, el esperado no es confiable*— y se niega a
+escribir. Dos cosas más que salieron de la revisión y valen por sí solas:
+
+- El caso **no se filtra de la cola**. La primera versión lo hacía, y un caso que desaparece
+  sin que nadie lo haya resuelto no deja dueño ni rastro (Ley 1). Se queda, diciendo por qué
+  no se corrige y apuntando a la cuenta en vez de al botón.
+- `corregirSaldo` **descartaba el resultado** y redirigía igual: un "no se pudo" se veía
+  idéntico a un "listo". Regla final de la Constitución, en una acción que mueve plata.
+
+**Abierto, y es decisión de Facu:** reescribir `esperado` para contar los cuatro términos;
+las cancelaciones sin reintegro (Segundo Pinto 920 cr y 0 reintegrados, y siete más); y
+sobre todo que **1.190 de 1.547 `studio_events` activos no tienen `user_id` (77%)** — el
+`consumido` de Santiago Pacino son 7 clases de ~60, así que su "+60" está armado sobre un
+octavo de sus clases. Es el único que quedó con botón vivo y **no hay que apretarlo**.
+
 ### 2026-09-11 · FAIL ✓ · El historial de las demos sólo registraba al primero que abría
 
 **Dónde:** `astronomy-members`, bandeja de Astronomy Records (`/admin/label`).
