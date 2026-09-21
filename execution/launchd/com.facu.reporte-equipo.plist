@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.reporte-equipo</string>
+
+    <!-- Reporte semanal del equipo de Astronomy: qué hicieron José, Luqui y los profes en
+         la web y qué les quedó sin hacer. Todos los viernes 17:00, a Facu (facue1900@ y
+         festevez@) y a Vlado (vladinic@). Pedido y autorizado por Facu el 21/09/2026.
+         Si la Mac está dormida a esa hora, launchd lo corre al despertar.
+         Si juntar los datos falla, le llega a Facu un mail de error: nunca silencio. -->
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-lc</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/reporte_equipo.py --send</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Weekday</key>
+        <integer>5</integer>
+        <key>Hour</key>
+        <integer>17</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/reporte-equipo.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/reporte-equipo.err</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+</dict>
+</plist>
