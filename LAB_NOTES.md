@@ -3961,3 +3961,32 @@ pantalla llama.** No filtró nada todavía (todo lo cargado en ago/sep es Academ
 abría con la primera plata de Dominé. Fix: la ruta calcula `uSel` con la misma regla.
 Lección: cuando se cierra el alcance de una pantalla, grepear sus `href`/`fetch` a
 `/csv`, `/api`, `/export` y cerrarlos en el mismo commit.
+
+## 22/09/2026 (2ª) — Finanzas leía la planilla sin corregir: los cierres pasan a la web
+
+**Dónde:** `astronomy-members` (`lib/ingresos.ts`, `lib/egresos.ts`, `lib/libroHistorico.ts`,
+`lib/cajas.ts`, `/admin/finanzas`) y `facu-os/execution/astronomy_libro/`.
+
+**Síntoma:** Finanzas decía "Caja real $2.299.384", los cierres $959.909 y Mercado Pago
+$795.524. Tres números para la misma plata.
+
+**Causa raíz:** lo anterior al 25/07/2026 salía de leer EN VIVO la planilla vieja de Academy,
+sin ninguna corrección de los cierres (ficticios como costo, todo como Academy, sin cajas).
+Encima, los meses viejos no tenían NINGÚN gasto en el Libro (sólo se traían ingresos).
+
+**Fix:** tabla `libro_historico` (1.542 movs con caja/clase/cierre) generada por un script
+que no escribe si no reproduce los cierres; la web lee de ahí. `npm run verificar:cierres`
+recalcula los 4 cierres con los motores de la pantalla y se puso rojo 3 veces mientras se
+construía (por eso se le cree). Libro + Finanzas → una sola pantalla.
+
+**Lo que agarró el verificador y ningún ojo habría visto:**
+1. `resumenIngresosConHistorico` tenía un atajo "mes en curso = sólo web" que comparaba ISO
+   como TEXTO (`"…T03:00:00.000Z" > "…T00:00:00-03:00"`): el cierre 4 daba $258.407 de más.
+   Tercera vez que el huso muerde por comparar strings (ver memoria «fecha y hora»).
+2. La web tiene sueldos de JUNIO cargados que ya están en la planilla del cierre 3: sin un
+   corte propio para egresos (01/07) se contaban dos veces.
+
+**Lección:** cuando un número se "aprueba" en una planilla, en el mismo acto se escribe el
+verificador que lo exige a la web. Si no, la pantalla y el cierre se separan en silencio.
+Y: una palabra clave que no está en la memoria es para retomar otra sesión — buscarla en los
+transcripts (memoria `palabra-clave-desconocida-buscar-la-sesion`).

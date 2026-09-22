@@ -279,6 +279,34 @@ def cierre3(U, desde="2025-04-11", hasta="2026-06-30", cierre=3):
     return out
 
 
+# ── categorías: se unifican sólo las que son LO MISMO escrito distinto ─────────
+# (mayúsculas, sinónimos de la misma planilla). Las que podrían ser cosas distintas —sueldos
+# fijos y variables— quedan separadas: unificarlas sería inventar. No cambia ningún total.
+CATEGORIA = {
+    "Membership": "Membresías", "Venta de Curso": "Cursos", "DJ Career": "DJ Career (curso)",
+    "Clase de Prueba": "Clase de prueba", "Starter pack": "Starter Pack",
+    "DJ delivery": "DJ Delivery", "Alquiler de Cabina": "Alquiler de cabina y estudio",
+    "Alquiler de estudio/cabina": "Alquiler de cabina y estudio", "Store": "Tienda (Store)",
+    "Venta de Entradas": "Entradas", "Ventas Puerta": "Puerta", "Venta de Mesas VIP": "Mesas VIP",
+    "Suscripciones": "Suscripciones y software", "Software": "Suscripciones y software",
+    "Software y sistema": "Suscripciones y software",
+    "Pauta": "Publicidad (pauta)", "Pauta Publicitaria": "Publicidad (pauta)", "Publicidad": "Publicidad (pauta)",
+    "Contenido Audiovisual": "Diseño y contenido", "Diseño Audiovisual": "Diseño y contenido",
+    "DJ Lineup": "DJs de eventos", "Devolucion": "Devoluciones", "Financiero": "Gastos financieros",
+    "Sueldos Fijos": "Sueldos fijos", "Sueldos Variables": "Sueldos variables", "Sueldos profes": "Sueldos de profes",
+}
+
+
+def normalizar(rows):
+    for r in rows:
+        c = r["categoria"]
+        if c == "Otros":
+            r["categoria"] = "Otros ingresos" if r["ars"] > 0 else "Otros gastos"
+        else:
+            r["categoria"] = CATEGORIA.get(c, c)
+    return rows
+
+
 # ── verificación contra los cierres aprobados ────────────────────────────────
 def suma(rows, cond, k="ars"):
     return sum(r[k] for r in rows if cond(r))
@@ -328,7 +356,7 @@ if __name__ == "__main__":
         errs.append("julio: los egresos de la planilla no son los dos del cierre 4")
     if errs:
         sys.exit(f"NO CIERRA: {errs}. No se escribe nada.")
-    todo = C1 + C2 + C3 + C4
+    todo = normalizar(C1 + C2 + C3 + C4)
     for r in todo:
         r["ars"] = round(r["ars"], 2); r["usd"] = round(r["usd"], 2)
     json.dump(todo, open(AQUI / "historico.json", "w"), ensure_ascii=False, indent=0)

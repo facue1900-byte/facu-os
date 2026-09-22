@@ -616,7 +616,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Simon Benitez Cruz ",
 "caja": null,
 "operativo": true,
@@ -646,7 +646,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Felipe Moyano ",
 "caja": null,
 "operativo": true,
@@ -706,7 +706,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Pago Profesor VN",
 "caja": null,
 "operativo": true,
@@ -766,7 +766,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Pago Profesor VN",
 "caja": null,
 "operativo": true,
@@ -1276,7 +1276,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Zorro Dias Bonilla (2/2)",
 "caja": null,
 "operativo": true,
@@ -1636,7 +1636,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Alfon Prat Gay y Jero Rosella",
 "caja": null,
 "operativo": true,
@@ -1831,7 +1831,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Clase Ian",
 "caja": null,
 "operativo": true,
@@ -1951,7 +1951,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Alquiler de estudio/cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Alquiler Studio ",
 "caja": null,
 "operativo": true,
@@ -1996,7 +1996,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Primeras 4 clases Fran ",
 "caja": null,
 "operativo": true,
@@ -2011,7 +2011,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Clases Pipe Y Moncho",
 "caja": null,
 "operativo": true,
@@ -2041,7 +2041,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Pago Clase Rodri Mateo Produ",
 "caja": null,
 "operativo": true,
@@ -2116,7 +2116,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Alquiler de estudio/cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Gerbas",
 "caja": null,
 "operativo": true,
@@ -2236,7 +2236,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Rama Haedo Clases Fran",
 "caja": null,
 "operativo": true,
@@ -2251,7 +2251,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Clase Fran 7/8",
 "caja": null,
 "operativo": true,
@@ -2446,7 +2446,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Sueldos Profesores",
 "caja": null,
 "operativo": true,
@@ -2491,7 +2491,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Bw",
 "caja": null,
 "operativo": true,
@@ -2716,7 +2716,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Ulises DJ",
 "caja": null,
 "operativo": true,
@@ -2776,7 +2776,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "VN Sueldo Zorro Produccion",
 "caja": null,
 "operativo": true,
@@ -2791,7 +2791,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "VN Sueldo Fran Bonetti",
 "caja": null,
 "operativo": true,
@@ -2821,7 +2821,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "VN Sueldo Jose Rawson",
 "caja": null,
 "operativo": true,
@@ -2851,7 +2851,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "VN Sueldo Ian Produccion",
 "caja": null,
 "operativo": true,
@@ -3256,7 +3256,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Lanfran Abril",
 "caja": null,
 "operativo": true,
@@ -3271,7 +3271,7 @@
 },
 {
 "persona": "Vlado",
-"categoria": "Sueldos profes",
+"categoria": "Sueldos de profes",
 "concepto": "Sueldo VN Rodrigo Mateo y Ian Salmi Memberships",
 "caja": null,
 "operativo": true,
@@ -3286,7 +3286,7 @@
 },
 {
 "persona": "Jaime",
-"categoria": "Pauta",
+"categoria": "Publicidad (pauta)",
 "concepto": "Facebook 30 de Abril",
 "caja": null,
 "operativo": true,
@@ -3406,7 +3406,7 @@
 },
 {
 "persona": "Jaime",
-"categoria": "Pauta",
+"categoria": "Publicidad (pauta)",
 "concepto": "Pago a Sofi Mes 1",
 "caja": null,
 "operativo": true,
@@ -3811,7 +3811,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Lucho Baronzini - (economic)",
 "caja": "academy",
 "operativo": true,
@@ -3826,7 +3826,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Sueldo Brocca Comisiones Mayo",
 "caja": "academy",
 "operativo": true,
@@ -3841,7 +3841,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Facebook Mes de Mayo",
 "caja": "academy",
 "operativo": true,
@@ -3856,7 +3856,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Venta de Curso",
 "caja": "academy",
 "operativo": true,
@@ -3871,7 +3871,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "RX3 comisión Fede",
 "caja": "academy",
 "operativo": true,
@@ -3886,7 +3886,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Otro Mayo 2024",
 "caja": "academy",
 "operativo": true,
@@ -3916,7 +3916,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "DJ Delivery Francisco Díaz Bonilla",
 "caja": "academy",
 "operativo": true,
@@ -3931,7 +3931,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros ingresos",
 "concepto": "Comisión Brocca",
 "caja": "academy",
 "operativo": true,
@@ -3946,7 +3946,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites",
 "caja": "academy",
 "operativo": true,
@@ -3961,7 +3961,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly",
 "caja": "academy",
 "operativo": true,
@@ -3976,7 +3976,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "SquareSpace",
 "caja": "academy",
 "operativo": true,
@@ -3991,7 +3991,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Rodrigo Mateo - Junio",
 "caja": "academy",
 "operativo": true,
@@ -4006,7 +4006,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Luke Trap Alquiler de produ",
 "caja": "academy",
 "operativo": true,
@@ -4021,7 +4021,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Francisco Rumelfanger",
 "caja": "academy",
 "operativo": true,
@@ -4036,7 +4036,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Pauta Facebook",
 "caja": "academy",
 "operativo": true,
@@ -4051,7 +4051,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Agustin Lopez del Carril - Member Gold - Julio",
 "caja": "academy",
 "operativo": true,
@@ -4066,7 +4066,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Francisco Capoulat",
 "caja": "academy",
 "operativo": true,
@@ -4081,7 +4081,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Pago Parcial Raw",
 "caja": "academy",
 "operativo": true,
@@ -4096,7 +4096,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic Junio 2024",
 "caja": "academy",
 "operativo": true,
@@ -4111,7 +4111,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Lucas Lanfranconi Junio 2024",
 "caja": "academy",
 "operativo": true,
@@ -4126,7 +4126,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Barrett Junio 2024",
 "caja": "academy",
 "operativo": true,
@@ -4141,7 +4141,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Jose Meyrelles Junio 2024",
 "caja": "academy",
 "operativo": true,
@@ -4156,7 +4156,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Francisco Rumelfanger",
 "caja": "academy",
 "operativo": true,
@@ -4171,7 +4171,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "RX3",
 "caja": "academy",
 "operativo": true,
@@ -4186,7 +4186,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Pago Restante a RAW",
 "caja": "academy",
 "operativo": true,
@@ -4201,7 +4201,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Santiago Martin Diaz",
 "caja": "academy",
 "operativo": true,
@@ -4216,7 +4216,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google suites",
 "caja": "academy",
 "operativo": true,
@@ -4231,7 +4231,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly",
 "caja": "academy",
 "operativo": true,
@@ -4246,7 +4246,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace",
 "caja": "academy",
 "operativo": true,
@@ -4261,7 +4261,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Caro puchu curso 4 clases",
 "caja": "academy",
 "operativo": true,
@@ -4276,7 +4276,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Clase introductoria de javier caceres",
 "caja": "academy",
 "operativo": true,
@@ -4291,7 +4291,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Venta de Dos parlantes + Auris",
 "caja": "academy",
 "operativo": true,
@@ -4306,7 +4306,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Comision por venta de dos parlantes + auris (primera parte)",
 "caja": "academy",
 "operativo": true,
@@ -4336,7 +4336,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Seña Lucho que nos cruzamos el viernes",
 "caja": "academy",
 "operativo": true,
@@ -4351,7 +4351,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Nico Davila",
 "caja": "academy",
 "operativo": true,
@@ -4366,7 +4366,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Yerba Mate",
 "caja": "academy",
 "operativo": true,
@@ -4396,7 +4396,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Comision venta parlantes + auris parte 2",
 "caja": "academy",
 "operativo": true,
@@ -4411,7 +4411,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Alberto berton",
 "caja": "academy",
 "operativo": true,
@@ -4426,7 +4426,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Alquiler Francisco Filella",
 "caja": "academy",
 "operativo": true,
@@ -4441,7 +4441,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Jorge Lopez Louge",
 "caja": "academy",
 "operativo": true,
@@ -4456,7 +4456,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Nico davila martes 17:30",
 "caja": "academy",
 "operativo": true,
@@ -4486,7 +4486,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Yerba Canarias 1Kg",
 "caja": "academy",
 "operativo": true,
@@ -4501,7 +4501,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Track List",
 "caja": "academy",
 "operativo": true,
@@ -4516,7 +4516,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jose Meyrelles Julio 2024",
 "caja": "academy",
 "operativo": true,
@@ -4531,7 +4531,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Facebook Ads Julio",
 "caja": "academy",
 "operativo": true,
@@ -4546,7 +4546,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Suscripciones Julio",
 "caja": "academy",
 "operativo": true,
@@ -4561,7 +4561,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Paula trivelloni pago para su hija Maia",
 "caja": "academy",
 "operativo": true,
@@ -4576,7 +4576,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery Julio",
 "caja": "academy",
 "operativo": true,
@@ -4591,7 +4591,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic Julio 2024",
 "caja": "academy",
 "operativo": true,
@@ -4606,7 +4606,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Patricio DJ Course 4 Clases",
 "caja": "academy",
 "operativo": true,
@@ -4621,7 +4621,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Lucas Lanfranconi Julio 2024",
 "caja": "academy",
 "operativo": true,
@@ -4636,7 +4636,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Ian Salmi - Silver Member",
 "caja": "academy",
 "operativo": true,
@@ -4651,7 +4651,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Track Delivery Lanfran",
 "caja": "academy",
 "operativo": true,
@@ -4681,7 +4681,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Alquiler Nico Davila",
 "caja": "academy",
 "operativo": true,
@@ -4696,7 +4696,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Charly Vela",
 "caja": "academy",
 "operativo": true,
@@ -4711,7 +4711,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Alquiler a Albinas",
 "caja": "academy",
 "operativo": true,
@@ -4726,7 +4726,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Seña de Balthazar Garcia Coni",
 "caja": "academy",
 "operativo": true,
@@ -4756,7 +4756,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Simon Amaral - Silver Member",
 "caja": "academy",
 "operativo": true,
@@ -4771,7 +4771,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery Agosto - Septiembre",
 "caja": "academy",
 "operativo": true,
@@ -4801,7 +4801,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Nico Davila",
 "caja": "academy",
 "operativo": true,
@@ -4831,7 +4831,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Alquiler CDJ Parte 1/2",
 "caja": "academy",
 "operativo": true,
@@ -4861,7 +4861,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Plugins Fran Rume",
 "caja": "academy",
 "operativo": true,
@@ -4876,7 +4876,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Simon Amaral - Silver Member",
 "caja": "academy",
 "operativo": true,
@@ -4891,7 +4891,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Llaves Container Arriba",
 "caja": "academy",
 "operativo": true,
@@ -4906,7 +4906,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Cargador Nuevo Compu Vlado",
 "caja": "academy",
 "operativo": true,
@@ -4921,7 +4921,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Agustin Lopez del Carril - Silver Member - Septiembre",
 "caja": "academy",
 "operativo": true,
@@ -4936,7 +4936,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Nico Sanchez Long Agosto 2024",
 "caja": "academy",
 "operativo": true,
@@ -4951,7 +4951,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Jose Meyrelles Agosto 2024",
 "caja": "academy",
 "operativo": true,
@@ -4966,7 +4966,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Franco Pieruccini",
 "caja": "academy",
 "operativo": true,
@@ -4981,7 +4981,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Balthazar García Coni Parte 1",
 "caja": "academy",
 "operativo": true,
@@ -4996,7 +4996,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Balthazar García Coni Parte 2",
 "caja": "academy",
 "operativo": true,
@@ -5011,7 +5011,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Sofi Curso Produ 8 Clases",
 "caja": "academy",
 "operativo": true,
@@ -5026,7 +5026,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic Agosto 2024",
 "caja": "academy",
 "operativo": true,
@@ -5056,7 +5056,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Valentín Rodriguez Agosto 2024",
 "caja": "academy",
 "operativo": true,
@@ -5071,7 +5071,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Elena Corro Curso DJ 4 Clases",
 "caja": "academy",
 "operativo": true,
@@ -5086,7 +5086,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Mes de Agosto",
 "caja": "academy",
 "operativo": true,
@@ -5116,7 +5116,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Promo Viernes Nico Davila",
 "caja": "academy",
 "operativo": true,
@@ -5131,7 +5131,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Balthazar, 10k que faltaban",
 "caja": "academy",
 "operativo": true,
@@ -5146,7 +5146,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Ary Plugins",
 "caja": "academy",
 "operativo": true,
@@ -5161,7 +5161,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Yerba",
 "caja": "academy",
 "operativo": true,
@@ -5176,7 +5176,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Curso DJ 8 Clases Santiago",
 "caja": "academy",
 "operativo": true,
@@ -5206,7 +5206,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Yerba Canarias Serena",
 "caja": "academy",
 "operativo": true,
@@ -5221,7 +5221,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Martin Lavagnino Curso 4 Clases",
 "caja": "academy",
 "operativo": true,
@@ -5251,7 +5251,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Mitad CDJ",
 "caja": "academy",
 "operativo": true,
@@ -5266,7 +5266,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Franco Pieruccini",
 "caja": "academy",
 "operativo": true,
@@ -5281,7 +5281,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pato Kraenzlein - 50% member",
 "caja": "academy",
 "operativo": true,
@@ -5311,7 +5311,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Javier, curso 4 clases",
 "caja": "academy",
 "operativo": true,
@@ -5326,7 +5326,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Facebook Ads",
 "caja": "academy",
 "operativo": true,
@@ -5356,7 +5356,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Comision Martin (Rx3, 2 parlantes, Auris, Pendrive) Parte 1",
 "caja": "academy",
 "operativo": true,
@@ -5386,7 +5386,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Charly Vela - (25%)",
 "caja": "academy",
 "operativo": true,
@@ -5401,7 +5401,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Azul, le faltan $13000",
 "caja": "academy",
 "operativo": true,
@@ -5416,7 +5416,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Hernan, curso con tarjeta de credito",
 "caja": "academy",
 "operativo": true,
@@ -5431,7 +5431,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Segundo Pinto curso 4 clases (septiembre)",
 "caja": "academy",
 "operativo": true,
@@ -5446,7 +5446,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "jeremias, 8 clases, le faltan 15.000 (septiembre)",
 "caja": "academy",
 "operativo": true,
@@ -5461,7 +5461,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Feli Frenkel Curso DJ 8 Clases",
 "caja": "academy",
 "operativo": true,
@@ -5476,7 +5476,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Ignacio, 4 clases",
 "caja": "academy",
 "operativo": true,
@@ -5491,7 +5491,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Bauti, 4 clases, efectivo",
 "caja": "academy",
 "operativo": true,
@@ -5506,7 +5506,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago Restante Azul Curso DJ",
 "caja": "academy",
 "operativo": true,
@@ -5521,7 +5521,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Suscripciones Septiembre",
 "caja": "academy",
 "operativo": true,
@@ -5611,7 +5611,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Valentín Rodriguez Septiembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -5626,7 +5626,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Nico Sanchez Long Septiembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -5641,7 +5641,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Iñaki Lopez",
 "caja": "academy",
 "operativo": true,
@@ -5656,7 +5656,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Justo Velasquen, 8 clases",
 "caja": "academy",
 "operativo": true,
@@ -5671,7 +5671,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Astronomy Starter Pack",
 "caja": "academy",
 "operativo": true,
@@ -5686,7 +5686,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Laca y Rodillos",
 "caja": "academy",
 "operativo": true,
@@ -5701,7 +5701,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Jose Meyrelles Septiembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -5716,7 +5716,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jose Meyrelles Septiembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -5731,7 +5731,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Track Delivery Fede Toni",
 "caja": "academy",
 "operativo": true,
@@ -5776,7 +5776,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Bauti, 8 clases",
 "caja": "academy",
 "operativo": true,
@@ -5791,7 +5791,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Alquiler de Cabina Dominé",
 "caja": "academy",
 "operativo": true,
@@ -5821,7 +5821,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Justo Velasquen, Starter Pack mp",
 "caja": "academy",
 "operativo": true,
@@ -5851,7 +5851,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Clog Nico",
 "caja": "academy",
 "operativo": true,
@@ -5866,7 +5866,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "DJ Delivery",
 "caja": "academy",
 "operativo": true,
@@ -5881,7 +5881,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Martin Lavagning 4 clases extra",
 "caja": "academy",
 "operativo": true,
@@ -5896,7 +5896,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Franco 8 Clases",
 "caja": "academy",
 "operativo": true,
@@ -5911,7 +5911,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic Septiembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -5926,7 +5926,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Pen Drives para Studio y Martin Lavagnino",
 "caja": "academy",
 "operativo": true,
@@ -5941,7 +5941,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Zorro",
 "caja": "academy",
 "operativo": true,
@@ -6031,7 +6031,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Comision venta consola y parlantes Martin Lavagnino",
 "caja": "academy",
 "operativo": true,
@@ -6046,7 +6046,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Ary Plugins - Octubre",
 "caja": "academy",
 "operativo": true,
@@ -6091,7 +6091,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - pago Membership Octubre",
 "caja": "academy",
 "operativo": true,
@@ -6106,7 +6106,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Fran Perez B",
 "caja": "academy",
 "operativo": true,
@@ -6121,7 +6121,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Francisco Perez B. Alquiler de Cabina Restante",
 "caja": "academy",
 "operativo": true,
@@ -6136,7 +6136,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Simon Amaral - Silver Member Octubre",
 "caja": "academy",
 "operativo": true,
@@ -6151,7 +6151,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pato Kraenzlein - Silver Member Octubre",
 "caja": "academy",
 "operativo": true,
@@ -6166,7 +6166,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Charly Vela - Gold Member Octubre",
 "caja": "academy",
 "operativo": true,
@@ -6181,7 +6181,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Ramiro Achaval - Bronze Member Octubre",
 "caja": "academy",
 "operativo": true,
@@ -6211,7 +6211,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Elena Corro - Curso Produ",
 "caja": "academy",
 "operativo": true,
@@ -6226,7 +6226,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Agustin Lopez del Carril - Bronze Member - Octubre",
 "caja": "academy",
 "operativo": true,
@@ -6256,7 +6256,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Charly Vela - Gold Member - Noviembre",
 "caja": "academy",
 "operativo": true,
@@ -6271,7 +6271,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Noviembre",
 "caja": "academy",
 "operativo": true,
@@ -6286,7 +6286,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Simon Amaral - Silver Member - Noviembre",
 "caja": "academy",
 "operativo": true,
@@ -6301,7 +6301,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pato Kraenzlein - Silver Member - Noviembre",
 "caja": "academy",
 "operativo": true,
@@ -6316,7 +6316,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Ramiro Achaval - Bronze Member - Noviembre",
 "caja": "academy",
 "operativo": true,
@@ -6331,7 +6331,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Agustin Lopez del Carril - Bronze Member - Noviembre",
 "caja": "academy",
 "operativo": true,
@@ -6346,7 +6346,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto - Silver Member - Noviembre",
 "caja": "academy",
 "operativo": true,
@@ -6361,7 +6361,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Nico Sanchez Long Octubre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6376,7 +6376,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jose Meyrelles Octubre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6391,7 +6391,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Jose Meyrelles Octubre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6406,7 +6406,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Valentín Rodriguez Octubre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6421,7 +6421,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic Octubre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6436,7 +6436,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Silver Member - Noviembre",
 "caja": "academy",
 "operativo": true,
@@ -6451,7 +6451,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Nicolas Davila - Silver Member - Noviembre",
 "caja": "academy",
 "operativo": true,
@@ -6466,7 +6466,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Tomi Vazquez - curso grupal 4 clases",
 "caja": "academy",
 "operativo": true,
@@ -6481,7 +6481,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic - Noviembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6496,7 +6496,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Suscripciones Noviembre",
 "caja": "academy",
 "operativo": true,
@@ -6526,7 +6526,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto - Silver Member - Diciembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6541,7 +6541,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Membership - Diciembre",
 "caja": "academy",
 "operativo": true,
@@ -6556,7 +6556,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Simon Amaral - Silver Membership - Diciembre",
 "caja": "academy",
 "operativo": true,
@@ -6571,7 +6571,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Nicolas Davila - Silver Membership - Diciembre",
 "caja": "academy",
 "operativo": true,
@@ -6586,7 +6586,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pato Kraenzlein - Silver Membership - Diciembre",
 "caja": "academy",
 "operativo": true,
@@ -6601,7 +6601,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Ramiro Achaval - Bronze Membership - Diciembre",
 "caja": "academy",
 "operativo": true,
@@ -6616,7 +6616,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Gold Membership - Diciembre",
 "caja": "academy",
 "operativo": true,
@@ -6631,7 +6631,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Agustin Lopez del Carril - Bronze Membership - Diciembre",
 "caja": "academy",
 "operativo": true,
@@ -6646,7 +6646,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Yerba Mate Canarias 500g",
 "caja": "academy",
 "operativo": true,
@@ -6661,7 +6661,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Franco Pierruccini - Alquiler de Cabina",
 "caja": "academy",
 "operativo": true,
@@ -6676,7 +6676,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles Noviembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6691,7 +6691,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles Noviembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6706,7 +6706,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Nico Sanchez Long Noviembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6721,7 +6721,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic Noviembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6751,7 +6751,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Clog - Nico Dávila",
 "caja": "academy",
 "operativo": true,
@@ -6766,7 +6766,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Charly Vela - Silver Member - Diciembre",
 "caja": "academy",
 "operativo": true,
@@ -6781,7 +6781,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Franco Pierruccini",
 "caja": "academy",
 "operativo": true,
@@ -6796,7 +6796,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Canje Creditos Nico por tocar en el evento de La Jaula",
 "caja": "academy",
 "operativo": true,
@@ -6811,7 +6811,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Valentin Rodriguez Noviembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6826,7 +6826,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Suscripciones Diciembre",
 "caja": "academy",
 "operativo": true,
@@ -6841,7 +6841,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Instalaciones Ary Plugins",
 "caja": "academy",
 "operativo": true,
@@ -6856,7 +6856,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Lucio Cafoncelli - Subscripción - Diciembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6886,7 +6886,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto - Silver Member - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -6901,7 +6901,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Felipe Miranda",
 "caja": "academy",
 "operativo": true,
@@ -6916,7 +6916,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic - Diciembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6946,7 +6946,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles Diciembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6961,7 +6961,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles Diciembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -6976,7 +6976,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Nico Sanchez Long Diciembre 2024",
 "caja": "academy",
 "operativo": true,
@@ -7006,7 +7006,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7021,7 +7021,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Gold Member - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7036,7 +7036,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Simon Amaral - Silver Member - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7051,7 +7051,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Nicolas Davila - Silver Member - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7066,7 +7066,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto - Silver Member - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7081,7 +7081,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Agustin Lopez del Carril - Bronze Member - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7096,7 +7096,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pato Kraenzlein - Silver Member - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7111,7 +7111,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Ramiro Achaval - Bronze Member - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7126,7 +7126,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Yamila Cejas - Curso con suscripción - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7141,7 +7141,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Instalaciones de Software Ary",
 "caja": "academy",
 "operativo": true,
@@ -7156,7 +7156,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Martin Staffa - Suscripción - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7261,7 +7261,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -7276,7 +7276,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -7291,7 +7291,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -7306,7 +7306,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -7336,7 +7336,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Arreglo de Silla para el Estudio / Oficina",
 "caja": "academy",
 "operativo": true,
@@ -7366,7 +7366,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Vasitos para el Estudio",
 "caja": "academy",
 "operativo": true,
@@ -7381,7 +7381,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros ingresos",
 "concepto": "Devolucion de Dinero por Contracargos",
 "caja": "academy",
 "operativo": true,
@@ -7396,7 +7396,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Martin Staffa - Suscripción - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7411,7 +7411,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pato Kraenzlein - Silver Member - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7426,7 +7426,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ delivery",
+"categoria": "DJ Delivery",
 "concepto": "Valentin Nadinic - Febrero",
 "caja": "academy",
 "operativo": true,
@@ -7441,7 +7441,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Nicolas Davila - Silver Member - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7456,7 +7456,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Franco Pierruccini - Silver Member - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7471,7 +7471,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Gold Member - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7486,7 +7486,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7501,7 +7501,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ delivery",
+"categoria": "DJ Delivery",
 "concepto": "Jose Rawson - Febrero",
 "caja": "academy",
 "operativo": true,
@@ -7516,7 +7516,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Nico Sanchez Long - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7531,7 +7531,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7546,7 +7546,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7651,7 +7651,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7666,7 +7666,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7681,7 +7681,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7696,7 +7696,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery - Enero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7711,7 +7711,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Agustin Lopez del Carril - Bronze Member - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7726,7 +7726,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Thiago",
 "caja": "academy",
 "operativo": true,
@@ -7741,7 +7741,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Seña de primera clase (faltan 12.000) Mauro Julian Gomez Picasso",
 "caja": "academy",
 "operativo": true,
@@ -7756,7 +7756,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Santiago Basavilbaso - DJ Course - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7771,7 +7771,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Santiago Georgalos - DJ Course - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7786,7 +7786,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Roberto Jasinski - DJ Course - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7801,7 +7801,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Mejoras de Software",
 "caja": "academy",
 "operativo": true,
@@ -7831,7 +7831,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Mejoras de Software",
 "caja": "academy",
 "operativo": true,
@@ -7861,7 +7861,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Mejoras de Software",
 "caja": "academy",
 "operativo": true,
@@ -7876,7 +7876,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros ingresos",
 "concepto": "Pago de Mejoras de Software",
 "caja": "academy",
 "operativo": true,
@@ -7906,7 +7906,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Mauro Gómez Picasso Faltante Curso",
 "caja": "academy",
 "operativo": true,
@@ -7921,7 +7921,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Ventana Office",
 "caja": "academy",
 "operativo": true,
@@ -7936,7 +7936,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Instalaciones Ary Febrero",
 "caja": "academy",
 "operativo": true,
@@ -7951,7 +7951,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites (33.3%) - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7966,7 +7966,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7981,7 +7981,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace (33.3%) - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -7996,7 +7996,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery (50.0%) - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -8116,7 +8116,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Federico Toninelli",
 "caja": "academy",
 "operativo": true,
@@ -8131,7 +8131,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Franco Pierucini",
 "caja": "academy",
 "operativo": true,
@@ -8146,7 +8146,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Sofia Fernandez Geller",
 "caja": "academy",
 "operativo": true,
@@ -8161,7 +8161,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Santiago Pacino",
 "caja": "academy",
 "operativo": true,
@@ -8191,7 +8191,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Segundo Pinto",
 "caja": "academy",
 "operativo": true,
@@ -8206,7 +8206,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -8221,7 +8221,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -8251,7 +8251,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Mauro Gómez Picasso",
 "caja": "academy",
 "operativo": true,
@@ -8266,7 +8266,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Roberto Jasinski",
 "caja": "academy",
 "operativo": true,
@@ -8281,7 +8281,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Nico Sanchez Long - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -8311,7 +8311,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Martin",
 "caja": "academy",
 "operativo": true,
@@ -8326,7 +8326,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Nicolas Davila",
 "caja": "academy",
 "operativo": true,
@@ -8341,7 +8341,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Nico Sanchez Long - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -8371,7 +8371,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Juan Pavlovsky - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -8386,7 +8386,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -8401,7 +8401,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -8416,7 +8416,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jaime Chevallier - Febrero 2025",
 "caja": "academy",
 "operativo": true,
@@ -8446,7 +8446,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "ferreteria",
 "caja": "academy",
 "operativo": true,
@@ -8461,7 +8461,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "ferreteria 2",
 "caja": "academy",
 "operativo": true,
@@ -8521,7 +8521,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Pago de AKAI para Segun Pinto",
 "caja": "academy",
 "operativo": true,
@@ -8536,7 +8536,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -8551,7 +8551,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -8566,7 +8566,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -8581,7 +8581,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -8611,7 +8611,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -8626,7 +8626,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -8641,7 +8641,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Cerveza - DJ Course - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -8656,7 +8656,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Nico Sanchez Long - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -8671,7 +8671,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Nico Sanchez Long - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -8686,7 +8686,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Clase de Prueba - Luciano Martin Imperiale",
 "caja": "academy",
 "operativo": true,
@@ -8701,7 +8701,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -8716,7 +8716,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros ingresos",
 "concepto": "Fiesta Boat",
 "caja": "academy",
 "operativo": true,
@@ -8731,7 +8731,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros ingresos",
 "concepto": "Fecha Futura",
 "caja": "academy",
 "operativo": true,
@@ -8776,7 +8776,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Impuestos DJ Delivery",
 "caja": "academy",
 "operativo": true,
@@ -8806,7 +8806,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Flyers coco",
 "caja": "domine",
 "operativo": true,
@@ -8866,7 +8866,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Maquilladora",
 "caja": "domine",
 "operativo": true,
@@ -8881,7 +8881,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Inesperado del micropene de otero",
 "caja": "domine",
 "operativo": true,
@@ -8911,7 +8911,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "iara Modelo",
 "caja": "domine",
 "operativo": true,
@@ -8926,7 +8926,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "kiara modelo",
 "caja": "domine",
 "operativo": true,
@@ -8956,7 +8956,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Alquiler de Falcon eye + Flash para video",
 "caja": "domine",
 "operativo": true,
@@ -9061,7 +9061,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad",
+"categoria": "Publicidad (pauta)",
 "concepto": "Facebook Ads Septiembre",
 "caja": "domine",
 "operativo": true,
@@ -9091,7 +9091,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Lineup",
+"categoria": "DJs de eventos",
 "concepto": "Alquiler de Cabina - Nik Ram & Mateo Cervini",
 "caja": "domine",
 "operativo": true,
@@ -9121,7 +9121,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Diseño de  flyer de promo",
 "caja": "domine",
 "operativo": true,
@@ -9136,7 +9136,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Mesas VIP",
+"categoria": "Mesas VIP",
 "concepto": "Seña Benjamin Mariani",
 "caja": "domine",
 "operativo": true,
@@ -9151,7 +9151,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Mesas VIP",
+"categoria": "Mesas VIP",
 "concepto": "Seña Franco Cohelo",
 "caja": "domine",
 "operativo": true,
@@ -9211,7 +9211,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad",
+"categoria": "Publicidad (pauta)",
 "concepto": "Facebook Ads Octubre",
 "caja": "domine",
 "operativo": true,
@@ -9241,7 +9241,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "milo fotos + video crudo",
 "caja": "domine",
 "operativo": true,
@@ -9256,7 +9256,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Lineup",
+"categoria": "DJs de eventos",
 "concepto": "Tomas otero",
 "caja": "domine",
 "operativo": true,
@@ -9301,7 +9301,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Lineup",
+"categoria": "DJs de eventos",
 "concepto": "Mateo Cervini",
 "caja": "domine",
 "operativo": true,
@@ -9316,7 +9316,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Mesas VIP",
+"categoria": "Mesas VIP",
 "concepto": "Segunda parte mesa Franco Cohelo",
 "caja": "domine",
 "operativo": true,
@@ -9331,7 +9331,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Mesas VIP",
+"categoria": "Mesas VIP",
 "concepto": "Segunda parte mesa Benja Durruty",
 "caja": "domine",
 "operativo": true,
@@ -9346,7 +9346,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Mesas VIP",
+"categoria": "Mesas VIP",
 "concepto": "Segunda parte mesa Benja Mariani",
 "caja": "domine",
 "operativo": true,
@@ -9361,7 +9361,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Mesas VIP",
+"categoria": "Mesas VIP",
 "concepto": "Mesa Beron",
 "caja": "domine",
 "operativo": true,
@@ -9376,7 +9376,7 @@
 },
 {
 "persona": "",
-"categoria": "Ventas Puerta",
+"categoria": "Puerta",
 "concepto": "Venta VIP Joaqui Cohelo en fiesta",
 "caja": "domine",
 "operativo": true,
@@ -9391,7 +9391,7 @@
 },
 {
 "persona": "",
-"categoria": "Ventas Puerta",
+"categoria": "Puerta",
 "concepto": "Venta Santiago Martin en puerta",
 "caja": "domine",
 "operativo": true,
@@ -9406,7 +9406,7 @@
 },
 {
 "persona": "",
-"categoria": "Ventas Puerta",
+"categoria": "Puerta",
 "concepto": "Venta Icaro",
 "caja": "domine",
 "operativo": true,
@@ -9421,7 +9421,7 @@
 },
 {
 "persona": "",
-"categoria": "Ventas Puerta",
+"categoria": "Puerta",
 "concepto": "Venta yankees en puerta (1 parte)",
 "caja": "domine",
 "operativo": true,
@@ -9436,7 +9436,7 @@
 },
 {
 "persona": "",
-"categoria": "Ventas Puerta",
+"categoria": "Puerta",
 "concepto": "Venta yankees en puerta (2 parte)",
 "caja": "domine",
 "operativo": true,
@@ -9451,7 +9451,7 @@
 },
 {
 "persona": "",
-"categoria": "Ventas Puerta",
+"categoria": "Puerta",
 "concepto": "Venta Logan en puerta",
 "caja": "domine",
 "operativo": true,
@@ -9466,7 +9466,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Lineup",
+"categoria": "DJs de eventos",
 "concepto": "Pago Ian Salmi",
 "caja": "domine",
 "operativo": true,
@@ -9481,7 +9481,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Lineup",
+"categoria": "DJs de eventos",
 "concepto": "Pago Fran Niell",
 "caja": "domine",
 "operativo": true,
@@ -9496,7 +9496,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Lineup",
+"categoria": "DJs de eventos",
 "concepto": "Pago Marcos Larreta (Nik Ram)",
 "caja": "domine",
 "operativo": true,
@@ -9526,7 +9526,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Pago Milo por 3 vids",
 "caja": "domine",
 "operativo": true,
@@ -9541,7 +9541,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Lineup",
+"categoria": "DJs de eventos",
 "concepto": "Seña Otero",
 "caja": "domine",
 "operativo": true,
@@ -9586,7 +9586,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Mesas VIP",
+"categoria": "Mesas VIP",
 "concepto": "Seña Benja Durruty",
 "caja": "domine",
 "operativo": true,
@@ -9601,7 +9601,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Mesas VIP",
+"categoria": "Mesas VIP",
 "concepto": "Efectivo mesa Mariani (la tiene benja)",
 "caja": "domine",
 "operativo": true,
@@ -9616,7 +9616,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Mesas VIP",
+"categoria": "Mesas VIP",
 "concepto": "Restante mesa Beron (vlado)",
 "caja": "domine",
 "operativo": true,
@@ -9661,7 +9661,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Entradas",
+"categoria": "Entradas",
 "concepto": "Plata de Bombo",
 "caja": "domine",
 "operativo": true,
@@ -9721,7 +9721,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros ingresos",
 "concepto": "Ganancia Evento Capri",
 "caja": "domine",
 "operativo": true,
@@ -9841,7 +9841,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Entradas",
+"categoria": "Entradas",
 "concepto": "retiro de bombo",
 "caja": "domine",
 "operativo": true,
@@ -9856,7 +9856,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad",
+"categoria": "Publicidad (pauta)",
 "concepto": "growing group (influencers)",
 "caja": "domine",
 "operativo": true,
@@ -9871,7 +9871,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Video 1 Milo",
 "caja": "domine",
 "operativo": true,
@@ -9886,7 +9886,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad",
+"categoria": "Publicidad (pauta)",
 "concepto": "Seña Nico Ferrayeah",
 "caja": "domine",
 "operativo": true,
@@ -9916,7 +9916,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad",
+"categoria": "Publicidad (pauta)",
 "concepto": "Club de los Manijas Posteo + Story",
 "caja": "domine",
 "operativo": true,
@@ -9946,7 +9946,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Mesas VIP",
+"categoria": "Mesas VIP",
 "concepto": "Seña mesa Francisco Picasso",
 "caja": "domine",
 "operativo": true,
@@ -9961,7 +9961,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Video 3D Chloe",
 "caja": "domine",
 "operativo": true,
@@ -9976,7 +9976,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad",
+"categoria": "Publicidad (pauta)",
 "concepto": "segunda parte nico ferra",
 "caja": "domine",
 "operativo": true,
@@ -10006,7 +10006,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Milo video vlado",
 "caja": "domine",
 "operativo": true,
@@ -10171,7 +10171,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Pago de Mejoras de Software",
 "caja": "domine",
 "operativo": true,
@@ -10246,7 +10246,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Pago de Mejoras de Software",
 "caja": "domine",
 "operativo": true,
@@ -10261,7 +10261,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites (33.3%) - Febrero 2025",
 "caja": "domine",
 "operativo": true,
@@ -10276,7 +10276,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace (33.3%) - Febrero 2025",
 "caja": "domine",
 "operativo": true,
@@ -10336,7 +10336,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Perdida Consolidada Total",
 "caja": "domine",
 "operativo": true,
@@ -10351,7 +10351,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Lineup",
+"categoria": "DJs de eventos",
 "concepto": "Almuerzo Big Fett",
 "caja": "domine",
 "operativo": true,
@@ -10366,7 +10366,7 @@
 },
 {
 "persona": "",
-"categoria": "Contenido Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Contenido Milo",
 "caja": "domine",
 "operativo": true,
@@ -10456,7 +10456,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Zegre",
 "caja": "label",
 "operativo": true,
@@ -10531,7 +10531,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Somos Humanos NYE",
 "caja": "label",
 "operativo": true,
@@ -10591,7 +10591,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Publicidad Instagram",
 "caja": "label",
 "operativo": true,
@@ -10621,7 +10621,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Sin Genero 08/02",
 "caja": "label",
 "operativo": true,
@@ -10651,7 +10651,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Mejoras de Software",
 "caja": "label",
 "operativo": true,
@@ -10681,7 +10681,7 @@
 },
 {
 "persona": "",
-"categoria": "Software",
+"categoria": "Suscripciones y software",
 "concepto": "Mejoras de Software",
 "caja": "label",
 "operativo": true,
@@ -10741,7 +10741,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Koko Costanera 1 de Marzo",
 "caja": "label",
 "operativo": true,
@@ -10756,7 +10756,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Set de Astronomy Private Boat",
 "caja": "label",
 "operativo": true,
@@ -10786,7 +10786,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Koko Costanera 1 de Marzo",
 "caja": "label",
 "operativo": true,
@@ -10801,7 +10801,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Pago fee 70% Ian Salmi",
 "caja": "label",
 "operativo": true,
@@ -10816,7 +10816,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites (33.3%) - Febrero 2025",
 "caja": "label",
 "operativo": true,
@@ -10831,7 +10831,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace (33.3%) - Febrero 2025",
 "caja": "label",
 "operativo": true,
@@ -10846,7 +10846,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery (50.0%) - Febrero 2025",
 "caja": "label",
 "operativo": true,
@@ -10891,7 +10891,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Futura Big Fett",
 "caja": "label",
 "operativo": true,
@@ -10906,7 +10906,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Créditos Fecha Futura",
 "caja": "label",
 "operativo": true,
@@ -10921,7 +10921,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "DJ Career",
 "caja": "label",
 "operativo": true,
@@ -10936,7 +10936,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Fee VLADINIC Barco",
 "caja": "label",
 "operativo": true,
@@ -10951,7 +10951,7 @@
 },
 {
 "persona": "",
-"categoria": "DJ Career",
+"categoria": "DJ Career (curso)",
 "concepto": "Créditos VLADINIC Boat Que no se hizo",
 "caja": "label",
 "operativo": true,
@@ -11881,7 +11881,7 @@
 },
 {
 "persona": "Astronomy",
-"categoria": "Software y sistema",
+"categoria": "Suscripciones y software",
 "concepto": "Mejoras en el Sistema",
 "caja": "empresa",
 "operativo": true,
@@ -11911,7 +11911,7 @@
 },
 {
 "persona": "Astronomy",
-"categoria": "Software y sistema",
+"categoria": "Suscripciones y software",
 "concepto": "Mejoras del Sistema",
 "caja": "empresa",
 "operativo": true,
@@ -12136,7 +12136,7 @@
 },
 {
 "persona": "Astronomy",
-"categoria": "Software y sistema",
+"categoria": "Suscripciones y software",
 "concepto": "Mejoras de Software",
 "caja": "empresa",
 "operativo": true,
@@ -12646,7 +12646,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Damian Nanfra - DJ Course - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -12661,7 +12661,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Esteban Moscoloni - DJ Course - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -12676,7 +12676,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Georgina Moreno - DJ Course - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -12691,7 +12691,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Jonno Lavenas - DJ Course - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -12706,7 +12706,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Santiago Basavilbaso - DJ Course - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -12721,7 +12721,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Santiago Georgalos - DJ Course - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -12736,7 +12736,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Axel Alaniz - DJ Course - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -12751,7 +12751,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Goldy",
 "caja": "academy",
 "operativo": true,
@@ -12766,7 +12766,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Nara Acosta",
 "caja": "academy",
 "operativo": true,
@@ -12781,7 +12781,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Cayetano Apesteguia",
 "caja": "academy",
 "operativo": true,
@@ -12796,7 +12796,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juan Carlos Goldy - Producción - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12826,7 +12826,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Gold Member - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12841,7 +12841,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12871,7 +12871,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Cayetano Apesteguia - DJ Course - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12886,7 +12886,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Franco Pierucini - Silver Member - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12901,7 +12901,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Jonno Lavenas - DJ Course - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12916,7 +12916,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto - Silver Member - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12931,7 +12931,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Roberto Jasinski - DJ Course - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12946,7 +12946,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Damian Nanfra - DJ Course - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12961,7 +12961,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Nara Acosta - DJ Course - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12976,7 +12976,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Clara Heslop - DJ Course - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -12991,7 +12991,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Santino Dominioni",
 "caja": "academy",
 "operativo": true,
@@ -13006,7 +13006,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Andres Constantinidis",
 "caja": "academy",
 "operativo": true,
@@ -13021,7 +13021,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Santiago Chagas",
 "caja": "academy",
 "operativo": true,
@@ -13036,7 +13036,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Luciano",
 "caja": "academy",
 "operativo": true,
@@ -13066,7 +13066,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Marian Cherone - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13081,7 +13081,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santino Dominioni - Silver Member - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13096,7 +13096,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Prueba de Diseñadora Josefina Louge",
 "caja": "academy",
 "operativo": true,
@@ -13111,7 +13111,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Marian Cherone - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13126,7 +13126,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Mauro Picasso - DJ Course - Clase Suelta",
 "caja": "academy",
 "operativo": true,
@@ -13141,7 +13141,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Axel Alaniz - DJ Course - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -13171,7 +13171,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13186,7 +13186,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13201,7 +13201,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13216,7 +13216,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13276,7 +13276,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Juan Carlos Goldy",
 "caja": "academy",
 "operativo": true,
@@ -13291,7 +13291,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Santiago Pacino",
 "caja": "academy",
 "operativo": true,
@@ -13306,7 +13306,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Luciano Imperiale",
 "caja": "academy",
 "operativo": true,
@@ -13321,7 +13321,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Santiago Chagas",
 "caja": "academy",
 "operativo": true,
@@ -13336,7 +13336,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Santino Dominioni",
 "caja": "academy",
 "operativo": true,
@@ -13366,7 +13366,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Federico Toninelli",
 "caja": "academy",
 "operativo": true,
@@ -13381,7 +13381,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Franco Pierucini",
 "caja": "academy",
 "operativo": true,
@@ -13396,7 +13396,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Roberto Jasinski",
 "caja": "academy",
 "operativo": true,
@@ -13411,7 +13411,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Segundo Pinto",
 "caja": "academy",
 "operativo": true,
@@ -13426,7 +13426,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Instalaciones Software Ary",
 "caja": "academy",
 "operativo": true,
@@ -13441,7 +13441,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Mauro Gómez Picasso",
 "caja": "academy",
 "operativo": true,
@@ -13456,7 +13456,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13471,7 +13471,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jaime Chevallier - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -13486,7 +13486,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Marian Cherone - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13501,7 +13501,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Gabriela Herbstein",
 "caja": "academy",
 "operativo": true,
@@ -13516,7 +13516,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Fran Masjuan",
 "caja": "academy",
 "operativo": true,
@@ -13531,7 +13531,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13546,7 +13546,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13576,7 +13576,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Nico Sanchez Long - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13591,7 +13591,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Facundo Estevez - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13606,7 +13606,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Lucas Lanfanconi - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13621,7 +13621,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13636,7 +13636,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jaime Chevallier - Marzo 2025",
 "caja": "academy",
 "operativo": true,
@@ -13666,7 +13666,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Clara Heslop",
 "caja": "academy",
 "operativo": true,
@@ -13681,7 +13681,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Felipe Taborda",
 "caja": "academy",
 "operativo": true,
@@ -13711,7 +13711,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Marian Cherone - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13726,7 +13726,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Ubers para Nico",
 "caja": "academy",
 "operativo": true,
@@ -13741,7 +13741,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Nicolás Nuñez - DJ Course - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -13771,7 +13771,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Bautista Pillado Matheu - Gold Member - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -13786,7 +13786,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Uber Nico",
 "caja": "academy",
 "operativo": true,
@@ -13801,7 +13801,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jaime Chevallier - Abril 2025",
 "caja": "academy",
 "operativo": true,
@@ -13816,7 +13816,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santino Dominioni - Silver Member - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -13831,7 +13831,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Wifi GOW",
 "caja": "academy",
 "operativo": true,
@@ -13891,7 +13891,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Narayan Acosta",
 "caja": "academy",
 "operativo": true,
@@ -13906,7 +13906,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Narayan Acosta - Silver Member - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -13921,7 +13921,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Alejandra Bicocchi - Clase de Prueba",
 "caja": "academy",
 "operativo": true,
@@ -13936,7 +13936,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Tomi Vazquez - Silver Member - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -13951,7 +13951,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Adriel Romano - Clase de Prueba",
 "caja": "academy",
 "operativo": true,
@@ -13981,7 +13981,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Ajuste de caja",
 "caja": "academy",
 "operativo": true,
@@ -14011,7 +14011,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14026,7 +14026,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14041,7 +14041,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14056,7 +14056,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14086,7 +14086,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Mauro Gómez Picasso",
 "caja": "academy",
 "operativo": true,
@@ -14101,7 +14101,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Federico Toninelli",
 "caja": "academy",
 "operativo": true,
@@ -14116,7 +14116,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Santiago Pacino",
 "caja": "academy",
 "operativo": true,
@@ -14131,7 +14131,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Santiago Chagas",
 "caja": "academy",
 "operativo": true,
@@ -14161,7 +14161,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Segundo Pinto",
 "caja": "academy",
 "operativo": true,
@@ -14176,7 +14176,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Tomas Caceres",
 "caja": "academy",
 "operativo": true,
@@ -14191,7 +14191,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Pedro",
 "caja": "academy",
 "operativo": true,
@@ -14206,7 +14206,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Roberto Jasinski",
 "caja": "academy",
 "operativo": true,
@@ -14221,7 +14221,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Alfredo Ibañez",
 "caja": "academy",
 "operativo": true,
@@ -14236,7 +14236,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Router Nuevo",
 "caja": "academy",
 "operativo": true,
@@ -14251,7 +14251,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marcelo Rinaudo - DJ Course - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14266,7 +14266,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Elías leguizamon",
 "caja": "academy",
 "operativo": true,
@@ -14281,7 +14281,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Tato",
 "caja": "academy",
 "operativo": true,
@@ -14296,7 +14296,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Gabriela  Herbstein",
 "caja": "academy",
 "operativo": true,
@@ -14311,7 +14311,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Maximiliano Perez - DJ Course - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14326,7 +14326,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Narayan Acosta",
 "caja": "academy",
 "operativo": true,
@@ -14341,7 +14341,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Marian Cherone - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14356,7 +14356,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Lucas Lanfanconi - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14371,7 +14371,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14386,7 +14386,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14401,7 +14401,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Ary Branca - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14416,7 +14416,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Ale",
 "caja": "academy",
 "operativo": true,
@@ -14431,7 +14431,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Adriel Romano - DJ Course - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14446,7 +14446,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Felipe Taborda",
 "caja": "academy",
 "operativo": true,
@@ -14461,7 +14461,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Facundo Estevez - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14476,7 +14476,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Clara Heslop - DJ Course - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14491,7 +14491,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Curso Astronomy por Marcos Lopez Blanco",
 "caja": "academy",
 "operativo": true,
@@ -14506,7 +14506,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Vladimir Nadinic - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14521,7 +14521,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jaime Chevallier Boutell - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14536,7 +14536,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Nico Sanchez Long - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14551,7 +14551,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Mayo 2025",
 "caja": "academy",
 "operativo": true,
@@ -14566,7 +14566,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Savelli - DJ Course - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14581,7 +14581,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Lola Gallal Videos Pauta Online",
 "caja": "academy",
 "operativo": true,
@@ -14596,7 +14596,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Santi Pacino - Set cámaras",
 "caja": "academy",
 "operativo": true,
@@ -14611,7 +14611,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Cuentas Claras",
 "caja": "academy",
 "operativo": true,
@@ -14626,7 +14626,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Pendrives Members",
 "caja": "academy",
 "operativo": true,
@@ -14641,7 +14641,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros ingresos",
 "concepto": "Rendimientos Ajuste de Caja",
 "caja": "academy",
 "operativo": true,
@@ -14656,7 +14656,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Vinos de Platinum Member",
 "caja": "academy",
 "operativo": true,
@@ -14686,7 +14686,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Lavandina",
 "caja": "academy",
 "operativo": true,
@@ -14701,7 +14701,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Pelotitas Olor Studio",
 "caja": "academy",
 "operativo": true,
@@ -14716,7 +14716,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Lucas Lanfanconi - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14731,7 +14731,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Valen Frando - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14746,7 +14746,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Nico Sanchez Long - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14761,7 +14761,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Joaquin Albanese - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14776,7 +14776,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Marian Cherone - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14791,7 +14791,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14806,7 +14806,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14821,7 +14821,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14836,7 +14836,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14866,7 +14866,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Neutralizador Olor Organico",
 "caja": "academy",
 "operativo": true,
@@ -14881,7 +14881,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Tomas Caceres - DJ Course - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14896,7 +14896,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Elías leguizamon - Producción - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14911,7 +14911,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Roberto Jasinski - DJ Course - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14926,7 +14926,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto - Silver Member - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14956,7 +14956,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Narayan Acosta - Gold Member - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14971,7 +14971,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Alfredo Ibañez - DJ Course - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -14986,7 +14986,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Daniel Pizarro - Producción - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15001,7 +15001,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15016,7 +15016,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Gold Member - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15031,7 +15031,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Marcos Lopez Blanco - Platinum Member - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15061,7 +15061,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Lautaro Marciano - Gold Member - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15076,7 +15076,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Ofelia Herbstein - Silver Member - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15091,7 +15091,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Mauro Lopez Picasso - Silver Member - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15106,7 +15106,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Tomi Vazquez - DJ Course - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15136,7 +15136,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Felipe Taborda - Producción - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15151,7 +15151,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Contenido - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15166,7 +15166,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15181,7 +15181,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15211,7 +15211,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo - DJ Course - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15226,7 +15226,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Cuentas Claras Cuota 1 (2/2)",
 "caja": "academy",
 "operativo": true,
@@ -15241,7 +15241,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Otro - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15256,7 +15256,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marcos Mingo - DJ Course - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15271,7 +15271,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Fernando Knutzen - DJ Course - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15301,7 +15301,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juan Carlos Goldy - DJ Course - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15316,7 +15316,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Candado Nuevo",
 "caja": "academy",
 "operativo": true,
@@ -15331,7 +15331,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros ingresos",
 "concepto": "Devolución Candado",
 "caja": "academy",
 "operativo": true,
@@ -15361,7 +15361,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Pago 2/2 MKT + LOGO",
 "caja": "academy",
 "operativo": true,
@@ -15376,7 +15376,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jaime Chevallier Boutell - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15391,7 +15391,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Vladimir Nadinic - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15406,7 +15406,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Marian Cherone Manager - Dummy - Junio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15421,7 +15421,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Nico Sanchez Long - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15436,7 +15436,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Nico Sanchez Long - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15451,7 +15451,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Otro - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15466,7 +15466,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Lucas Lanfanconi - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15481,7 +15481,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15496,7 +15496,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15511,7 +15511,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Valen Frando - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15526,7 +15526,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Marian Cherone - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15541,7 +15541,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Julio 2025",
 "caja": "academy",
 "operativo": true,
@@ -15571,7 +15571,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Mauro Lopez Picasso",
 "caja": "academy",
 "operativo": true,
@@ -15586,7 +15586,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Federico Toninelli",
 "caja": "academy",
 "operativo": true,
@@ -15601,7 +15601,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Santiago Pacino",
 "caja": "academy",
 "operativo": true,
@@ -15631,7 +15631,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Lautaro Marciano",
 "caja": "academy",
 "operativo": true,
@@ -15661,7 +15661,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Narayan Acosta",
 "caja": "academy",
 "operativo": true,
@@ -15676,7 +15676,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Segundo Pinto",
 "caja": "academy",
 "operativo": true,
@@ -15691,7 +15691,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Ofelia Herbstein",
 "caja": "academy",
 "operativo": true,
@@ -15706,7 +15706,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Daniel Pizarro - Producción - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15721,7 +15721,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marcos Mingo - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15736,7 +15736,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Alfredo Ibañez - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15751,7 +15751,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Lucas Ortega - Producción - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15766,7 +15766,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marco - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15781,7 +15781,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Mele - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15796,7 +15796,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Felipe Taborda - Producción - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15811,7 +15811,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Tomas Caceres - Silver Member - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15826,7 +15826,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Martin Oliver - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15841,7 +15841,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Tomi Carrizo - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15856,7 +15856,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Tomas Vazquez - Silver Member - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15886,7 +15886,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Caro - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15901,7 +15901,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Dario Bak - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15916,7 +15916,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marcelo - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15931,7 +15931,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Garage 433",
 "caja": "academy",
 "operativo": true,
@@ -15946,7 +15946,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Trini Tiscornia - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15961,7 +15961,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Salva Patuel - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -15976,7 +15976,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Diseño 3D Isotipo Astronomy",
 "caja": "academy",
 "operativo": true,
@@ -15991,7 +15991,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Devolucion Clase de Prueba",
 "caja": "academy",
 "operativo": true,
@@ -16006,7 +16006,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Clase de Prueba Salva",
 "caja": "academy",
 "operativo": true,
@@ -16036,7 +16036,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Agustin Mario Gimenez - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16081,7 +16081,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Nico Caillet Bois - DJ Course - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16096,7 +16096,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Ary Branca - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16111,7 +16111,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Nico Sanchez Long - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16126,7 +16126,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16141,7 +16141,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16156,7 +16156,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Lucas Alvarez Ochoa - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16171,7 +16171,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Lucas Alvarez Ochoa - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16186,7 +16186,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Marian Cherone - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16216,7 +16216,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16231,7 +16231,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Valen Frando - Agosto 2025",
 "caja": "academy",
 "operativo": true,
@@ -16246,7 +16246,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Felipe Taborda - Producción - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16276,7 +16276,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16291,7 +16291,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Narayan Acosta - Gold Member - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16306,7 +16306,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Lautaro Marciano - Gold Member - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16321,7 +16321,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto - Silver Member - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16366,7 +16366,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Daniel Pizarro - Silver Member - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16381,7 +16381,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marcos Mingo - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16396,7 +16396,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Salva Patuel - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16411,7 +16411,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Cris Mollo - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16426,7 +16426,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Alvaro Fernando Quiroz Núñez - Producción - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16441,7 +16441,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Mauro Lopez Picasso - Silver Member - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16456,7 +16456,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Master Look At My Eyes",
 "caja": "academy",
 "operativo": true,
@@ -16471,7 +16471,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marco Nagualde - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16486,7 +16486,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Felipe Floria - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16501,7 +16501,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Beltran Ocampo - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16531,7 +16531,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Clase Producción Individual - Alejandra Paola Carrizo",
 "caja": "academy",
 "operativo": true,
@@ -16561,7 +16561,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marcelo - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16576,7 +16576,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Dario Hernan Bak - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16591,7 +16591,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Fico Barbeito - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16606,7 +16606,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Caro - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16621,7 +16621,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Castro - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16636,7 +16636,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juan Vignola - Producción - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16651,7 +16651,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Agustin Mario Gimenez - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16666,7 +16666,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Emilio Scazzuso - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16681,7 +16681,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Cuentas Claras Pago 3",
 "caja": "academy",
 "operativo": true,
@@ -16696,7 +16696,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Pago MKT septiembre",
 "caja": "academy",
 "operativo": true,
@@ -16711,7 +16711,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juli Lamas - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16726,7 +16726,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Salva Patuel - Silver Member - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16741,7 +16741,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Gabriel Marzullo - DJ Course - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16756,7 +16756,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Alquiler de cabina - Iñaki Villamil",
 "caja": "academy",
 "operativo": true,
@@ -16771,7 +16771,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Nico Sanchez Long - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16786,7 +16786,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Lucas Lanfanconi - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16801,7 +16801,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Valen Frando - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16816,7 +16816,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Mateo Guini - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16831,7 +16831,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Josefina Meyrelles - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16846,7 +16846,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16861,7 +16861,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Variables",
+"categoria": "Sueldos variables",
 "concepto": "Marian Cherone - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16876,7 +16876,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Lucas Alvarez Ochoa - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16891,7 +16891,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Lucas Alvarez Ochoa - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16906,7 +16906,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Septiembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16981,7 +16981,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Mauro Lopez Picasso - Silver Member - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -16996,7 +16996,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Trini Tiscornia - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17011,7 +17011,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17026,7 +17026,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Daniel Pizarro - Silver Member - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17041,7 +17041,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Narayan Acosta - Gold Member - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17056,7 +17056,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Lautaro Marciano - Gold Member - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17071,7 +17071,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marcos Mingo - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17086,7 +17086,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto - Silver Member - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17101,7 +17101,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marco Nagualde - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17116,7 +17116,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Salva Patuel - Silver Member - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17131,7 +17131,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Caro Abramzon - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17146,7 +17146,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pato - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17161,7 +17161,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Alvaro Fernando Quiroz Núñez - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17176,7 +17176,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17206,7 +17206,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17221,7 +17221,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17236,7 +17236,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Nico Sanchez Long - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17251,7 +17251,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Valen Frando - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17266,7 +17266,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Mateo Guini - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17281,7 +17281,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Lucas Alvarez Ochoa - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17296,7 +17296,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Lucas Alvarez Ochoa - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17341,7 +17341,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Matias R - Producción - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17371,7 +17371,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros ingresos",
 "concepto": "Valentina - Restante del curso",
 "caja": "academy",
 "operativo": true,
@@ -17386,7 +17386,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "-",
 "caja": "academy",
 "operativo": true,
@@ -17416,7 +17416,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marian Dibar - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17431,7 +17431,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Costo de adelanto de Mercado Pago",
 "caja": "academy",
 "operativo": true,
@@ -17476,7 +17476,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juan Carlos Goldy - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17491,7 +17491,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Gold Member - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17506,7 +17506,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Beltran Ocampo - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17521,7 +17521,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Ariel Gimenez - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17551,7 +17551,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Salva Patuel - Silver Member - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17566,7 +17566,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Anita Segura - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17581,7 +17581,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Miguel - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17596,7 +17596,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Daniel - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17611,7 +17611,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Vicente Juarez - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17626,7 +17626,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Mimi - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17641,7 +17641,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Mimi - Clase de Prueba - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17656,7 +17656,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Fico Barbeito - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17671,7 +17671,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Rocio Dibuccio - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17686,7 +17686,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Caro - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17716,7 +17716,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Castro - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17731,7 +17731,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Agustin Mario Gimenez - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17746,7 +17746,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Leandro Sergio Ballaris - Producción - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17761,7 +17761,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Mele - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17776,7 +17776,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Emilio Scazzuso - DJ Course - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17791,7 +17791,7 @@
 },
 {
 "persona": "",
-"categoria": "Starter pack",
+"categoria": "Starter Pack",
 "concepto": "Leandro Sergio Ballaris - Starter pack - Octubre 2025",
 "caja": "academy",
 "operativo": true,
@@ -17806,7 +17806,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Salva Patuel",
 "caja": "academy",
 "operativo": true,
@@ -17851,7 +17851,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Platinum Member por Marcos Lopez Blanco",
 "caja": "academy",
 "operativo": true,
@@ -17866,7 +17866,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Mauro Lopez Picasso",
 "caja": "academy",
 "operativo": true,
@@ -17896,7 +17896,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Federico Toninelli",
 "caja": "academy",
 "operativo": true,
@@ -17911,7 +17911,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Santiago Pacino",
 "caja": "academy",
 "operativo": true,
@@ -17941,7 +17941,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Lautaro Marciano",
 "caja": "academy",
 "operativo": true,
@@ -17956,7 +17956,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Daniel Pizarro",
 "caja": "academy",
 "operativo": true,
@@ -17971,7 +17971,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Narayan Acosta",
 "caja": "academy",
 "operativo": true,
@@ -17986,7 +17986,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Salva Patuel - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18001,7 +18001,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Tomas Ibero - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18016,7 +18016,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juanse Ozores - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18031,7 +18031,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marcos Mingo - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18046,7 +18046,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Segundo Pinto",
 "caja": "academy",
 "operativo": true,
@@ -18061,7 +18061,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Pago Cuentas Claras",
 "caja": "academy",
 "operativo": true,
@@ -18076,7 +18076,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pato - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18091,7 +18091,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Alvaro Fernando Quiroz Núñez - Producción - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18106,7 +18106,7 @@
 },
 {
 "persona": "",
-"categoria": "Starter pack",
+"categoria": "Starter Pack",
 "concepto": "Alvaro Fernando Quiroz Núñez - Starter pack - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18121,7 +18121,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Mimi - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18136,7 +18136,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Rocio Dibuccio - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18151,7 +18151,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Pago a Jaime",
 "caja": "academy",
 "operativo": true,
@@ -18166,7 +18166,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Facebook",
 "caja": "academy",
 "operativo": true,
@@ -18181,7 +18181,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites",
 "caja": "academy",
 "operativo": true,
@@ -18196,7 +18196,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace",
 "caja": "academy",
 "operativo": true,
@@ -18211,7 +18211,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJdelivery",
 "caja": "academy",
 "operativo": true,
@@ -18226,7 +18226,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Emiliano Denegri - Silver Member - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18271,7 +18271,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "- - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18301,7 +18301,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Valentina - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18346,7 +18346,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Barby Salmi - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18361,7 +18361,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juan Carlos Goldy - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18391,7 +18391,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Beltran Ocampo - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18406,7 +18406,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Pago Ventas Claras",
 "caja": "academy",
 "operativo": true,
@@ -18421,7 +18421,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marian Dibar - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18436,7 +18436,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Miguel - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18451,7 +18451,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Anita Segura - Platinum Member - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18481,7 +18481,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Dario Hernan Bak - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18496,7 +18496,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Martin Lopez Blanco - Platinum Member - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18511,7 +18511,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Fico Barbeito - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18526,7 +18526,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Castro - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18541,7 +18541,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace",
 "caja": "academy",
 "operativo": true,
@@ -18556,7 +18556,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Agustin Mario Gimenez - DJ Course - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18571,7 +18571,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ary Branca - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18586,7 +18586,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18601,7 +18601,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Mateo Guini - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18616,7 +18616,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18631,7 +18631,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18646,7 +18646,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Lucas Alvarez Ochoa - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18661,7 +18661,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Valen Frando - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18676,7 +18676,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Lucas Lanfanconi - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18691,7 +18691,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Marian Cherone - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18706,7 +18706,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jaime Chevallier Boutell - Noviembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18721,7 +18721,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Caro Caruso - DJ Course - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18736,7 +18736,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Leandro Sergio Ballaris - Producción - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18751,7 +18751,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Salva Patuel",
 "caja": "academy",
 "operativo": true,
@@ -18781,7 +18781,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Platinum Member por Marcos Lopez Blanco",
 "caja": "academy",
 "operativo": true,
@@ -18796,7 +18796,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Emiliano Denegri",
 "caja": "academy",
 "operativo": true,
@@ -18811,7 +18811,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Rocio Dibuccio",
 "caja": "academy",
 "operativo": true,
@@ -18841,7 +18841,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Santiago Pacino",
 "caja": "academy",
 "operativo": true,
@@ -18856,7 +18856,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Federico Toninelli",
 "caja": "academy",
 "operativo": true,
@@ -18886,7 +18886,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Daniel Pizarro - Producción - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -18901,7 +18901,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Narayan Acosta",
 "caja": "academy",
 "operativo": true,
@@ -18916,7 +18916,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Lautaro Marciano",
 "caja": "academy",
 "operativo": true,
@@ -18931,7 +18931,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Segundo Pinto",
 "caja": "academy",
 "operativo": true,
@@ -18946,7 +18946,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Facebook",
 "caja": "academy",
 "operativo": true,
@@ -18961,7 +18961,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly",
 "caja": "academy",
 "operativo": true,
@@ -18976,7 +18976,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites",
 "caja": "academy",
 "operativo": true,
@@ -18991,7 +18991,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery",
 "caja": "academy",
 "operativo": true,
@@ -19006,7 +19006,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juan Carlos Goldy - DJ Course - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19021,7 +19021,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Patricio Legaccio - DJ Course - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19036,7 +19036,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Mauro Lopez Picasso",
 "caja": "academy",
 "operativo": true,
@@ -19051,7 +19051,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Isa Goldy - DJ Course - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19081,7 +19081,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Ramiro Agustin Pozzi - Clase de Prueba - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19096,7 +19096,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Pagos Ventas Claras",
 "caja": "academy",
 "operativo": true,
@@ -19111,7 +19111,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace",
 "caja": "academy",
 "operativo": true,
@@ -19126,7 +19126,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly",
 "caja": "academy",
 "operativo": true,
@@ -19141,7 +19141,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites",
 "caja": "academy",
 "operativo": true,
@@ -19156,7 +19156,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Dj Delivery",
 "caja": "academy",
 "operativo": true,
@@ -19171,7 +19171,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Claudio Ortiz - DJ Course - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19186,7 +19186,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Marian Dibar - DJ Course - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19201,7 +19201,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Ramiro Agustin Pozzi",
 "caja": "academy",
 "operativo": true,
@@ -19216,7 +19216,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Facebook",
 "caja": "academy",
 "operativo": true,
@@ -19231,7 +19231,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Miguel - DJ Course - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19246,7 +19246,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Fico Barbeito - DJ Course - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19261,7 +19261,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Gasto Comida Astronomy",
 "caja": "academy",
 "operativo": true,
@@ -19276,7 +19276,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Castro - DJ Course - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19291,7 +19291,7 @@
 },
 {
 "persona": "",
-"categoria": "Otros",
+"categoria": "Otros gastos",
 "concepto": "Devolución Curso Fico Barbeito",
 "caja": "academy",
 "operativo": true,
@@ -19306,7 +19306,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Leandro Sergio Ballaris - Producción - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19336,7 +19336,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Jaime Chevallier Boutell - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19351,7 +19351,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Josefina Meyrelles - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19366,7 +19366,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Ignacio Chevallier Boutell - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19381,7 +19381,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Lucas Alvarez Ochoa - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19396,7 +19396,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Mateo Guini - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19411,7 +19411,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Valen Frando - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19426,7 +19426,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Marian Cherone - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19441,7 +19441,7 @@
 },
 {
 "persona": "",
-"categoria": "Sueldos Fijos",
+"categoria": "Sueldos fijos",
 "concepto": "Lucas Lanfanconi - Diciembre 2025",
 "caja": "academy",
 "operativo": true,
@@ -19456,7 +19456,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Mauro Lopez Picasso (Yane Caldera) - Silver Member - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19471,7 +19471,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Salva Patuel",
 "caja": "academy",
 "operativo": true,
@@ -19501,7 +19501,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Platinum Member por Marcos Lopez Blanco",
 "caja": "academy",
 "operativo": true,
@@ -19516,7 +19516,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Emiliano Denegri",
 "caja": "academy",
 "operativo": true,
@@ -19531,7 +19531,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Federico Toninelli",
 "caja": "academy",
 "operativo": true,
@@ -19561,7 +19561,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Santiago Pacino",
 "caja": "academy",
 "operativo": true,
@@ -19591,7 +19591,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Narayan Acosta",
 "caja": "academy",
 "operativo": true,
@@ -19606,7 +19606,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Lautaro Marciano",
 "caja": "academy",
 "operativo": true,
@@ -19621,7 +19621,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Segundo Pinto",
 "caja": "academy",
 "operativo": true,
@@ -19636,7 +19636,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Daniel Pizarro - Producción - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19651,7 +19651,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Patricio Legaccio - DJ Course - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19666,7 +19666,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Miguel - DJ Course - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19711,7 +19711,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Castro - DJ Course - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19741,7 +19741,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Francisco Agüero",
 "caja": "academy",
 "operativo": true,
@@ -19756,7 +19756,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Leandro Sergio Ballaris - Producción - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19816,7 +19816,7 @@
 },
 {
 "persona": "",
-"categoria": "Pauta Publicitaria",
+"categoria": "Publicidad (pauta)",
 "concepto": "Facebook Ads - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19831,7 +19831,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "DJ Delivery - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19846,7 +19846,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Squarespace - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19861,7 +19861,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Calendly - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19876,7 +19876,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Google Suites - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -19921,7 +19921,7 @@
 },
 {
 "persona": "",
-"categoria": "Financiero",
+"categoria": "Gastos financieros",
 "concepto": "Dif Caja Dol",
 "caja": "academy",
 "operativo": true,
@@ -19936,7 +19936,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pago de Silver Member por Salva Patuel",
 "caja": "academy",
 "operativo": true,
@@ -19966,7 +19966,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Federico Toninelli",
 "caja": "academy",
 "operativo": true,
@@ -19981,7 +19981,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Santiago Pacino",
 "caja": "academy",
 "operativo": true,
@@ -20011,7 +20011,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Narayan Acosta",
 "caja": "academy",
 "operativo": true,
@@ -20026,7 +20026,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Daniel Pizarro",
 "caja": "academy",
 "operativo": true,
@@ -20041,7 +20041,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Lautaro Marciano",
 "caja": "academy",
 "operativo": true,
@@ -20056,7 +20056,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pi - DJ Course - Febrero 2026",
 "caja": "academy",
 "operativo": true,
@@ -20071,7 +20071,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Segundo Pinto",
 "caja": "academy",
 "operativo": true,
@@ -20086,7 +20086,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Agustín Antoniolli - DJ Course - Febrero 2026",
 "caja": "academy",
 "operativo": true,
@@ -20101,7 +20101,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Jeronimo Melegari - DJ Course - Febrero 2026",
 "caja": "academy",
 "operativo": true,
@@ -20116,7 +20116,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Mauro Lopez Picasso",
 "caja": "academy",
 "operativo": true,
@@ -20131,7 +20131,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Patricio Legaccio - DJ Course - Febrero 2026",
 "caja": "academy",
 "operativo": true,
@@ -20146,7 +20146,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Anita - DJ Course - Febrero 2026",
 "caja": "academy",
 "operativo": true,
@@ -20191,7 +20191,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Miguel Musto - DJ Course - Febrero 2026",
 "caja": "academy",
 "operativo": true,
@@ -20221,7 +20221,7 @@
 },
 {
 "persona": "",
-"categoria": "Financiero",
+"categoria": "Gastos financieros",
 "concepto": "Ajuste Cambiario",
 "caja": "academy",
 "operativo": true,
@@ -20326,7 +20326,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Annie Lola Febrero",
 "caja": "academy",
 "operativo": true,
@@ -20341,7 +20341,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Tomas Ibero - DJ Course - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20356,7 +20356,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Castro - DJ Course - Febrero 2026",
 "caja": "academy",
 "operativo": true,
@@ -20371,7 +20371,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "RODOLFO CARLOS LARIA - DJ Course - Febrero 2026",
 "caja": "academy",
 "operativo": true,
@@ -20386,7 +20386,7 @@
 },
 {
 "persona": "",
-"categoria": "Pauta Publicitaria",
+"categoria": "Publicidad (pauta)",
 "concepto": "Pauta Febrero",
 "caja": "academy",
 "operativo": true,
@@ -20401,7 +20401,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Subs Febrero",
 "caja": "academy",
 "operativo": true,
@@ -20416,7 +20416,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Francisco Agüero - Silver Member - Febrero 2026",
 "caja": "academy",
 "operativo": true,
@@ -20431,7 +20431,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Francisco Agüero",
 "caja": "academy",
 "operativo": true,
@@ -20446,7 +20446,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Leandro Sergio Ballaris - Producción - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20461,7 +20461,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Salva Patuel",
 "caja": "academy",
 "operativo": true,
@@ -20491,7 +20491,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Federico Toninelli",
 "caja": "academy",
 "operativo": true,
@@ -20506,7 +20506,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Santiago Pacino",
 "caja": "academy",
 "operativo": true,
@@ -20536,7 +20536,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Lautaro Marciano",
 "caja": "academy",
 "operativo": true,
@@ -20551,7 +20551,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Gold Member por Narayan Acosta",
 "caja": "academy",
 "operativo": true,
@@ -20566,7 +20566,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Segundo Pinto",
 "caja": "academy",
 "operativo": true,
@@ -20581,7 +20581,7 @@
 },
 {
 "persona": "",
-"categoria": "Financiero",
+"categoria": "Gastos financieros",
 "concepto": "Adelantamiento",
 "caja": "academy",
 "operativo": true,
@@ -20596,7 +20596,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juanse Ozores - DJ Course - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20611,7 +20611,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Patricio Legaccio - DJ Course - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20626,7 +20626,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Anita - DJ Course - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20641,7 +20641,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Gaston San Pedro - Clase de Prueba - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20656,7 +20656,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juani Gastaldi - DJ Course - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20671,7 +20671,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Héctor Gabriel Flores - DJ Course - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20701,7 +20701,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Sofi (Caro Caruso/Alejandro Stojadinovic) - DJ Course - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20716,7 +20716,7 @@
 },
 {
 "persona": "",
-"categoria": "Devolucion",
+"categoria": "Devoluciones",
 "concepto": "Devolucion Reclamo MP",
 "caja": "academy",
 "operativo": true,
@@ -20731,7 +20731,7 @@
 },
 {
 "persona": "",
-"categoria": "Financiero",
+"categoria": "Gastos financieros",
 "concepto": "Ajuste Cambiario",
 "caja": "academy",
 "operativo": true,
@@ -20761,7 +20761,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Martin Serebrinsky - DJ Course - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20776,7 +20776,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Marcos Lopez Blanco - Bronze Membership - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20791,7 +20791,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Juan Garcia - Clase de Prueba - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20806,7 +20806,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Nico Caillet Bois - Bronze Membership - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20821,7 +20821,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Felipe Floria - Bronze Membership - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20836,7 +20836,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Castro - DJ Course - Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20851,7 +20851,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Subs Marzo",
 "caja": "academy",
 "operativo": true,
@@ -20866,7 +20866,7 @@
 },
 {
 "persona": "",
-"categoria": "Pauta Publicitaria",
+"categoria": "Publicidad (pauta)",
 "concepto": "Pauta Marzo",
 "caja": "academy",
 "operativo": true,
@@ -20956,7 +20956,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Marzo 2026",
 "caja": "academy",
 "operativo": true,
@@ -20971,7 +20971,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Francisco Agüero - Silver Member - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -20986,7 +20986,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Salva Patuel - Silver Member - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21016,7 +21016,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Gold Member - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21031,7 +21031,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21046,7 +21046,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto (Josefina Maria Rocca) - Silver Member - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21061,7 +21061,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Grego Pedriel - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21076,7 +21076,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Baltazar Molina - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21091,7 +21091,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Patricio Legaccio - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21106,7 +21106,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Maximiliano Aguirre - Clase de Prueba - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21121,7 +21121,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Mariano Sorrentino - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21136,7 +21136,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Federico Melino - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21166,7 +21166,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Lautaro Marciano - Gold Member - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21196,7 +21196,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Maximiliano Aguirre - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21211,7 +21211,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Azul Haupt (corina) - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21226,7 +21226,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Simon Garimberti - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21241,7 +21241,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Anita - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21256,7 +21256,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Bronze Member por Marcos Lopez Blanco",
 "caja": "academy",
 "operativo": true,
@@ -21271,7 +21271,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Felipe Taborda (Soledad Palacios) - Producción - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21286,7 +21286,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Gaston San Pedro - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21301,7 +21301,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Pago de Silver Member por Juani Gastaldi",
 "caja": "academy",
 "operativo": true,
@@ -21346,7 +21346,7 @@
 },
 {
 "persona": "",
-"categoria": "Alquiler de Cabina",
+"categoria": "Alquiler de cabina y estudio",
 "concepto": "Manuel Villegas - Alquiler de Cabina - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21361,7 +21361,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Carlos Ortiz - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21376,7 +21376,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Sofi (Caro Caruso/Alejandro Stojadinovic) - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21391,7 +21391,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Constantino Aldazabal (Laura Elizabet Martinez) - Clase de Prueba - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21421,7 +21421,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Felipe Floria - Bronze Member - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21436,7 +21436,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Benja Ruiz Berruti - Clase de Prueba - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21451,7 +21451,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Mariano Damonte - Clase de Prueba - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21466,7 +21466,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Guadalupe Merke - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21481,7 +21481,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pablo Castro - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21496,7 +21496,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Tomas Lopez Aufranc (virginia del aguila) - DJ Course - Abril 2026",
 "caja": "academy",
 "operativo": true,
@@ -21631,7 +21631,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Annie Lola",
 "caja": "academy",
 "operativo": true,
@@ -21646,7 +21646,7 @@
 },
 {
 "persona": "",
-"categoria": "Pauta Publicitaria",
+"categoria": "Publicidad (pauta)",
 "concepto": "Pauta Publicitaria Abril",
 "caja": "academy",
 "operativo": true,
@@ -21661,7 +21661,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Suscripciones Abril",
 "caja": "academy",
 "operativo": true,
@@ -21676,7 +21676,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Tomas Alvarez Salva Patuel - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21706,7 +21706,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21721,7 +21721,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Gold Member - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21751,7 +21751,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Lautaro Marciano - Gold Member - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21766,7 +21766,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto (Josefina Maria Rocca) - Silver Member - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21781,7 +21781,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Patricio Legaccio - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21796,7 +21796,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Felipe Brandan (juan martin brandan) - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21811,7 +21811,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pedro Fraguas - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21841,7 +21841,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Constantino Aldazabal (Laura Elizabet Martinez) - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21856,7 +21856,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Maximiliano Aguirre - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21871,7 +21871,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Simon Garimberti - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21886,7 +21886,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Marcos Lopez Blanco - Bronze Member - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21901,7 +21901,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Clemente Trejo Benayas - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21916,7 +21916,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Martin Caneque - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21931,7 +21931,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Nacho Kertzman - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21946,7 +21946,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Sofi (Caro Caruso/Alejandro Stojadinovic) - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21976,7 +21976,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Mariano Sorrentino - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -21991,7 +21991,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Felipe Taborda (Soledad Palacios) - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -22021,7 +22021,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Juan Manuel Inchausty - Platinum Member - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -22036,7 +22036,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Tomas Lopez Aufranc (virginia del aguila) - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22051,7 +22051,7 @@
 },
 {
 "persona": "",
-"categoria": "Starter pack",
+"categoria": "Starter Pack",
 "concepto": "Felipe Taborda (Soledad Palacios) - Starter pack - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22066,7 +22066,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Azul Haupt (corina) - DJ Course - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -22081,7 +22081,7 @@
 },
 {
 "persona": "",
-"categoria": "Store",
+"categoria": "Tienda (Store)",
 "concepto": "Ary - Taborda",
 "caja": "academy",
 "operativo": true,
@@ -22126,7 +22126,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Annie Lola - Mayo 2026",
 "caja": "academy",
 "operativo": true,
@@ -22201,7 +22201,7 @@
 },
 {
 "persona": "",
-"categoria": "Pauta Publicitaria",
+"categoria": "Publicidad (pauta)",
 "concepto": "Pauta Mayo",
 "caja": "academy",
 "operativo": true,
@@ -22216,7 +22216,7 @@
 },
 {
 "persona": "",
-"categoria": "Suscripciones",
+"categoria": "Suscripciones y software",
 "concepto": "Suscripciones Mayo",
 "caja": "academy",
 "operativo": true,
@@ -22246,7 +22246,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Fernando Lopez - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22261,7 +22261,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Tomas Alvarez Salva Patuel - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22291,7 +22291,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22306,7 +22306,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Gold Member - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22336,7 +22336,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Lautaro Marciano - Gold Member - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22351,7 +22351,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto (Josefina Maria Rocca) - Silver Member - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22366,7 +22366,7 @@
 },
 {
 "persona": "",
-"categoria": "Devolucion",
+"categoria": "Devoluciones",
 "concepto": "devolucion Reclamo MP",
 "caja": "academy",
 "operativo": true,
@@ -22381,7 +22381,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Felipe Brandan (juan martin brandan) - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22396,7 +22396,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pedro Fraguas - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22426,7 +22426,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Constantino Aldazabal (Laura Elizabet Martinez) - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22441,7 +22441,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Maximiliano Aguirre - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22456,7 +22456,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Simon Garimberti - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22471,7 +22471,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Guadalupe Merke - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22486,7 +22486,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Clemente Trejo Benayas - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22501,7 +22501,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Fernando Lopez - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22516,7 +22516,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Santiago Romero - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22531,7 +22531,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Sofi (Caro Caruso/Alejandro Stojadinovic) - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22546,7 +22546,7 @@
 },
 {
 "persona": "",
-"categoria": "Clase de Prueba",
+"categoria": "Clase de prueba",
 "concepto": "Christine Bell - Clase de Prueba - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22561,7 +22561,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Ary Juarez - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22576,7 +22576,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Facundo Guzman - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22591,7 +22591,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Fernando Lopez - Gold Member - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22606,7 +22606,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Christine Bell - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22621,7 +22621,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Javier Basso - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22636,7 +22636,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Juan Manuel Inchausty - Platinum Member - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22681,7 +22681,7 @@
 },
 {
 "persona": "",
-"categoria": "Diseño Audiovisual",
+"categoria": "Diseño y contenido",
 "concepto": "Annie Lola - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22756,7 +22756,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Tomas Alvarez Salva Patuel - DJ Course - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22786,7 +22786,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Federico Toninelli - Gold Member - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22801,7 +22801,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Santiago Pacino - Gold Member - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22831,7 +22831,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Martin Bernardo",
 "caja": "academy",
 "operativo": true,
@@ -22846,7 +22846,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Segundo Pinto (Josefina Maria Rocca) - Silver Member - Junio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22861,7 +22861,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Ary Juarez - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22876,7 +22876,7 @@
 },
 {
 "persona": "",
-"categoria": "Financiero",
+"categoria": "Gastos financieros",
 "concepto": "Balance",
 "caja": "academy",
 "operativo": true,
@@ -22891,7 +22891,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Rochi Mounier (sebastian mounier) - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22906,7 +22906,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Felipe Brandan (juan martin brandan) - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22921,7 +22921,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Pedro Fraguas - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22936,7 +22936,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Guadalupe Merke - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22951,7 +22951,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Maximiliano Aguirre - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22966,7 +22966,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Clemente Trejo Benayas - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -22996,7 +22996,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Juan (Valeria Milei) - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -23011,7 +23011,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Olivia (joaquin otaño) - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -23026,7 +23026,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Sofi (Caro Caruso/Alejandro Stojadinovic) - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -23041,7 +23041,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Santiago Romero - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -23056,7 +23056,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Facundo Guzman - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -23071,7 +23071,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Fernando Lopez - Gold Member - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -23086,7 +23086,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Christine Bell - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -23101,7 +23101,7 @@
 },
 {
 "persona": "",
-"categoria": "Venta de Curso",
+"categoria": "Cursos",
 "concepto": "Javier Basso - DJ Course - Julio 2026",
 "caja": "academy",
 "operativo": true,
@@ -23116,7 +23116,7 @@
 },
 {
 "persona": "",
-"categoria": "Membership",
+"categoria": "Membresías",
 "concepto": "Matilda Goldy - Silver Member - Agosto 2026",
 "caja": "academy",
 "operativo": true,
