@@ -208,7 +208,10 @@ def cierre2(rev, U):
                 out.append(fila(**dict(base, ars=-a, usd=-u_), unidad="domine", clase="pase", categoria="Pase a Dominé",
                                 nota="$530.000 a Dominé, que se los devuelve a Facu"))
             else:
-                out.append(fila(**dict(base, ars=-a, usd=-u_), unidad="empresa", clase="retiro", categoria="Retiro de socios"))
+                # Base 318 y 319 dicen persona "Astronomy" y el socio en el CONCEPTO ("Jaime",
+                # "Vlado"): el retiro es de ese socio, no de los tres (auditoría 22/09/2026).
+                quien = desc.strip() if desc.strip() in ("Facu", "Jaime", "Vlado") else per
+                out.append(fila(**dict(base, ars=-a, usd=-u_, persona=quien), unidad="empresa", clase="retiro", categoria="Retiro de socios"))
             continue
         if bu in UNM:
             u = "Dominé" if f == 381 else UNM[bu]
@@ -290,7 +293,7 @@ CATEGORIA = {
     "Venta de Entradas": "Entradas", "Ventas Puerta": "Puerta", "Venta de Mesas VIP": "Mesas VIP",
     "Suscripciones": "Suscripciones y software", "Software": "Suscripciones y software",
     "Software y sistema": "Suscripciones y software",
-    "Pauta": "Publicidad (pauta)", "Pauta Publicitaria": "Publicidad (pauta)", "Publicidad": "Publicidad (pauta)",
+    "Pauta": "Publicidad", "Pauta Publicitaria": "Publicidad",
     "Contenido Audiovisual": "Diseño y contenido", "Diseño Audiovisual": "Diseño y contenido",
     "DJ Lineup": "DJs de eventos", "Devolucion": "Devoluciones", "Financiero": "Gastos financieros",
     "Sueldos Fijos": "Sueldos fijos", "Sueldos Variables": "Sueldos variables", "Sueldos profes": "Sueldos de profes",

@@ -3286,7 +3286,7 @@
 },
 {
 "persona": "Jaime",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Facebook 30 de Abril",
 "caja": null,
 "operativo": true,
@@ -3406,7 +3406,7 @@
 },
 {
 "persona": "Jaime",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Pago a Sofi Mes 1",
 "caja": null,
 "operativo": true,
@@ -9061,7 +9061,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Facebook Ads Septiembre",
 "caja": "domine",
 "operativo": true,
@@ -9211,7 +9211,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Facebook Ads Octubre",
 "caja": "domine",
 "operativo": true,
@@ -9856,7 +9856,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "growing group (influencers)",
 "caja": "domine",
 "operativo": true,
@@ -9886,7 +9886,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Seña Nico Ferrayeah",
 "caja": "domine",
 "operativo": true,
@@ -9916,7 +9916,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Club de los Manijas Posteo + Story",
 "caja": "domine",
 "operativo": true,
@@ -9976,7 +9976,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "segunda parte nico ferra",
 "caja": "domine",
 "operativo": true,
@@ -11835,7 +11835,7 @@
 "clase": "pase"
 },
 {
-"persona": "Astronomy",
+"persona": "Jaime",
 "categoria": "Retiro de socios",
 "concepto": "Jaime",
 "caja": "empresa",
@@ -11850,7 +11850,7 @@
 "clase": "retiro"
 },
 {
-"persona": "Astronomy",
+"persona": "Vlado",
 "categoria": "Retiro de socios",
 "concepto": "Vlado",
 "caja": "empresa",
@@ -19816,7 +19816,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Facebook Ads - Enero 2026",
 "caja": "academy",
 "operativo": true,
@@ -20386,7 +20386,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Pauta Febrero",
 "caja": "academy",
 "operativo": true,
@@ -20866,7 +20866,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Pauta Marzo",
 "caja": "academy",
 "operativo": true,
@@ -21646,7 +21646,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Pauta Publicitaria Abril",
 "caja": "academy",
 "operativo": true,
@@ -22201,7 +22201,7 @@
 },
 {
 "persona": "",
-"categoria": "Publicidad (pauta)",
+"categoria": "Publicidad",
 "concepto": "Pauta Mayo",
 "caja": "academy",
 "operativo": true,
