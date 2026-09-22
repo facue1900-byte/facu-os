@@ -3949,3 +3949,15 @@ fallback (`var(--metal, #fff)`). Y se mira la captura: esto no lo detecta ningú
 `\`position:fixed\``, la segunda `\`solid var(--metal)\``. **En los comentarios de
 `estilos.ts` no van backticks**; el chequeo es contar backticks sin escapar entre
 `export const CSS = \`` y el cierre — tiene que dar 0.
+
+## 22/09/2026 — El CSV del Libro no heredaba el alcance de la pantalla
+
+**Dónde:** `astronomy-members`, `app/admin/libro/csv/route.ts` (fix en `d2c831a`).
+
+Desde el 07/08 la pantalla del Libro limita a quien no es GrandMaster a Academy, en el
+servidor. El botón "Descargar CSV" colgaba de otra ruta que sólo pedía `view_payments` y
+exportaba las cuatro unidades. **Un candado en la pantalla no cierra las rutas que la
+pantalla llama.** No filtró nada todavía (todo lo cargado en ago/sep es Academy), pero se
+abría con la primera plata de Dominé. Fix: la ruta calcula `uSel` con la misma regla.
+Lección: cuando se cierra el alcance de una pantalla, grepear sus `href`/`fetch` a
+`/csv`, `/api`, `/export` y cerrarlos en el mismo commit.
