@@ -66,7 +66,7 @@ Verificados contra SIGSA: La Victorina y La Magdalena coinciden exacto.
 
 Destinos frecuentes (misma planilla): La Brava S.A. `04.003.0.01146/00` (frigorífico,
 30-70781069-2) · El Trompezón `05.001.0.00503/02` · Los Valientes S.R.L. `08.007.0.05283/00` ·
-Mc Carnes S.R.L. `13.012.0.01172/00` · La Muralla China S.R.L. `04.003.0.05304/00` ·
+Mc Carnes S.R.L. `13.012.0.01172/00` · CARFINORT CARNES S.A.S.U. `04.003.0.05304/00` (antes figuraba La Muralla China; SIGSA 23/09/2026) ·
 Forres-Beltrán S.A. `21.023.0.01695/00`.
 
 ## El grupo de WhatsApp «Est. Don Ricardo»
