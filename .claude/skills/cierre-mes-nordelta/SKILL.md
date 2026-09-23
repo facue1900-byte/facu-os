@@ -457,3 +457,13 @@ Queda a mano interpretar (esto sí lo hago yo, leyendo):
   siguen apuntando a `~/Desktop/Paseo Nordelta/Paseo Nordelta - CLAUDE/`.
 - El reporte branded en PDF para inversores todavía no es un script: se arma a mano.
   Candidato a `scripts/reporte_inversores.py` cuando se haya hecho 3 veces.
+
+## Efectivo diario (automático desde el 23/09/2026)
+
+`scripts/efectivo_diario.sh`, por launchd (`com.facu.efectivo-diario`) todos los días
+7:30: chequea que la app y la planilla coincidan (`sincronizar_supabase.py --estricto`)
+y vuelca a las pestañas los cobros **por Caja** (`volcar_cobros.py --solo-efectivo`).
+Si algo no cierra, frena y manda mail a Facu. Log en `data/logs/efectivo-diario.log`.
+**No publica el link de Mati**: no hace falta a diario (la app descuenta sola los cobros
+posteriores a `cobrosDesde`). Se republica cuando cambian los cargos, a principio de mes:
+`deuda_efectivo.py --cobros-en-planilla` + `deploy.sh` desde una copia limpia de la app.

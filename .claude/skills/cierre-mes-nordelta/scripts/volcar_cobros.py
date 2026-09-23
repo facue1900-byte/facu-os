@@ -185,6 +185,11 @@ def main():
     ap.add_argument("--desde", default="2026-08-26",
                     help="no mirar cobros anteriores a esta fecha (AAAA-MM-DD)")
     ap.add_argument("--escribir", action="store_true")
+    ap.add_argument("--solo-efectivo", action="store_true",
+                    help="volcar sólo lo cobrado por Caja. Lo de banco espera al "
+                         "extracto: su fecha en la pestaña es la del comprobante y "
+                         "la del banco puede caer más allá de la tolerancia, así "
+                         "que automatizarlo arriesga un pago duplicado.")
     a = ap.parse_args()
     desde = dt.date.fromisoformat(a.desde)
 
@@ -221,6 +226,12 @@ def main():
         if not cfg.get("pestania") or not cfg.get("layout"):
             continue
         vals, faltan, avisos = pendientes(sv, local, cfg, cobros, desde)
+        if a.solo_efectivo:
+            banco = [x for x in faltan if MEDIO.get(x[2].strip().lower()) != "efectivo"]
+            if banco:
+                print(f"── {local}: {len(banco)} cobro/s por banco quedan para el "
+                      f"extracto ({plata(sum(x[1] for x in banco))})")
+            faltan = [x for x in faltan if x not in banco]
         lay = cfg["layout"]
         ult = ultima_fila(vals, lay)
         if not ult:

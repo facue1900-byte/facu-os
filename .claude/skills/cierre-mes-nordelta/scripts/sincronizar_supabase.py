@@ -108,6 +108,12 @@ def main():
     if sobran:
         print(f"\n!! {sobran} movimientos estan en Supabase y NO en el Master Plan.")
         print("   Este script NO los toca: revisalos a mano antes de confiar en la app.")
+        if "--estricto" in sys.argv:
+            # Un cobro que Mati cargó en la app y no llegó a la planilla (el POST
+            # al Apps Script no se mira) no se vuelca a ninguna pestaña. Si
+            # encima se adelanta `cobrosDesde`, la app deja de descontarlo y le
+            # pide a Mati una plata que ya cobró. Con --estricto eso frena todo.
+            sys.exit(f"ESTRICTO: {sobran} movimiento/s de la app no estan en la planilla.")
     if not falta:
         print("\nNada que importar: las dos fuentes dicen lo mismo.")
         return

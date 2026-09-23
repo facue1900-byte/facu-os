@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.efectivo-diario</string>
+
+    <!-- Paseo: vuelca a las Ctas Ctes los cobros en efectivo que Mati cargó en la
+         app. Todos los días 7:30. Si la app y la planilla no coinciden o un
+         saldo no cierra, frena y le manda mail a Facu. Ver efectivo_diario.sh. -->
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-lc</string>
+        <string>/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/efectivo_diario.sh</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>7</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/efectivo-diario.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/efectivo-diario.err</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+</dict>
+</plist>
