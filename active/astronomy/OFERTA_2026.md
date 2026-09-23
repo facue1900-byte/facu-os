@@ -46,7 +46,7 @@ alumno elige según el servicio que quiere.
 | Unreleased tracks | — |
 | Carrera Profesional | — |
 
-Los 250 créditos **sólo se canjean por clases**: 4 clases por mes a 60 créditos cada una.
+Los 240 créditos **sólo se canjean por clases**: 4 clases por mes a 60 créditos cada una.
 Acumulan mientras siga pagando.
 
 **240 créditos** (Facu, 17/09): le entran exactamente 4 clases por mes, sin sobrante muerto.
@@ -267,3 +267,17 @@ las dos cabinas como techo físico, y la fecha objetivo (1 de noviembre, "vamos 
 4. Árbol del bot, leyendo los precios del mismo lugar que la web (hoy el bot cotiza
    $440.000 y $495.000 para el mismo producto, y la landing $449.999).
 5. `lib/productos.ts` y la tabla `plans`.
+
+---
+
+## 22/09/2026 — a la venta desde hoy (Facu)
+
+Facu subió los tres Word (SILVER/GOLD/PLATINUM_PLAN.docx), que coinciden con este archivo, y
+decidió que **se venden a partir de hoy**:
+
+- **Silver otorga 240 en la base desde hoy.** Los 9 Silver que ya pagaban conservan 250
+  hasta el 1/11/2026 (tabla `plan_creditos_respetados` en astronomy-members). Aplicado y
+  verificado el 22/09.
+- **La Carrera Profesional se ve sólo adentro de Platinum**, sin página ni precio propio.
+- **DJ Delivery suelto (3 suscripciones a $16.499) pasa a $25.000 en noviembre**, avisado el 1/10.
+- Aviso a todos los activos el **1/10**; los cambios les rigen desde el **1/11**.
