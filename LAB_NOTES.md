@@ -8,6 +8,18 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-09-23 · FAIL ✓ · "Ya está cargado" sin decir qué: $1,14M de gastos que no existen
+
+**Dónde:** `astronomy-members`, espejo de MP (`app/actions/espejoMp.ts`) y tareas de Luqui (`lib/workflows.ts`), commit `63558de`.
+
+**Qué pasó:** el retiro de MP del 08/09 ($2.115.838,57 = pauta + suscripciones jul-ago) se cerró con "ya cargado" y un texto. En el Libro había sólo agosto ($974.491): ≈$1.141.348 de gastos en ningún lado, con el movimiento dado por resuelto. Y una cuota de Inchausty se cargó dos veces (31/07 y 04/08) porque cada carga era válida por separado.
+
+**Causa raíz:** una decisión que dice "esto ya está en otro lado" sin apuntar a QUÉ no se puede verificar, y ninguna pantalla preguntaba "¿esto ya existe?" antes de escribir plata (salvo para sueldos).
+
+**Fix:** el gasto queda atado al movimiento (`expenses.mp_mov_id`); cerrar una salida exige tildar gastos que sumen igual; un gasto suelto del mismo monto frena la carga; un gasto borrado reabre el movimiento; la carga manual frena una cuota del mismo plan a ±20 días. Además las tareas diarias de ritmo de Luqui (0 usos en 7 semanas) se reemplazaron por evidencia: transferencias vencidas, resumen mensual de tarjeta, sueldos por persona después del 5.
+
+**Lección:** toda decisión que cierra un movimiento de plata apunta a la fila que lo explica. Un texto libre como prueba es un chequeo que nunca falla.
+
 ### 2026-09-23 · FAIL ✓ · La cola de José: 0 de 15 casos de créditos eran corregibles, y un filtro que no filtraba nada
 
 **Dónde:** `astronomy-members`, `lib/workflows.ts` y `lib/auditoriaCreditos.ts` (commit `2dee6cc`).
