@@ -3990,3 +3990,19 @@ construía (por eso se le cree). Libro + Finanzas → una sola pantalla.
 verificador que lo exige a la web. Si no, la pantalla y el cierre se separan en silencio.
 Y: una palabra clave que no está en la memoria es para retomar otra sesión — buscarla en los
 transcripts (memoria `palabra-clave-desconocida-buscar-la-sesion`).
+
+## 23/09/2026 — Una captura de pantalla creó 4 preapprovals reales en Mercado Pago
+
+**Qué pasó:** `astronomy-members/scripts/mirar.mjs` arrancaba el Chrome headless sin
+`--user-data-dir` (a propósito, porque con uno vacío se cuelga), y así heredaba las cookies
+del perfil de la Mac, incluida la sesión de Facu en `localhost:3100`. Capturar
+`/registro?plan=silver` "logueado" hizo que el proxy redirigiera a `/suscribirme`, y eso
+creó un preapproval pendiente real en MP en cada corrida (4 en total, a nombre de
+facue1900, cuenta interna). No hubo cobro.
+**Causa raíz:** una herramienta de mirar tenía efectos, porque en esta web una URL con
+`?plan=` equivale a apretar el botón de comprar.
+**Arreglo:** mirar.mjs corre ahora en un `Target.createBrowserContext` aislado; la sesión
+sólo se usa cuando se pide con `--entrar` (commit `7f47d15`). Se verificó volviendo a
+capturar: ya no sale "Hola, Facundo" y no aparecen preapprovals nuevos.
+**Pendiente:** Facu decide si se cancelan los 4 links. La web los cierra sola la próxima
+vez que él inicie un checkout (`cerrarIntentosAbiertos`).
