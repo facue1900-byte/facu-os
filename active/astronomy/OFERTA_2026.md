@@ -281,3 +281,7 @@ decidió que **se venden a partir de hoy**:
 - **La Carrera Profesional se ve sólo adentro de Platinum**, sin página ni precio propio.
 - **DJ Delivery suelto (3 suscripciones a $16.499) pasa a $25.000 en noviembre**, avisado el 1/10.
 - Aviso a todos los activos el **1/10**; los cambios les rigen desde el **1/11**.
+- **Gold (Facu, 22/09):** grabación de live sets **sin cámaras** (con cámaras es de Platinum) e
+  **instalación de Ableton, plugins y sample pack a $65.000 aparte** (Platinum: 100 créditos).
+  🔴 No hay compra online de la instalación: la cobra José a mano.
+- En la web se dice **"tracks unreleased"**, no "inéditos".
