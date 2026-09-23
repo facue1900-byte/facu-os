@@ -96,6 +96,13 @@ def leer_unidades():
             L.append(dict(unidad=name, fila=n, fecha=f.isoformat(), tipo=str(r[ix["Category"]]).strip(),
                           sub=str(r[ix["Sub Category"]]).strip(), ars=float(r[ix["ARS_Ammount"]] or 0),
                           usd=float(r[ix["USD_Ammount"]] or 0), desc=str(r[ix["Descripción"]]).strip()))
+        if name == "Academy":
+            # Fila 878 "Jaime Chevallier Boutell - Diciembre 2025": $273.100 con USD en 0.
+            # Vlado, 23/09/2026: "que sume los dólares". Al TC de la fila 879, mismo sueldo
+            # del mismo mes ($315.000 / u$s 209,30 = 1.505).
+            f878 = next(x for x in L if x["fila"] == 878); f879 = next(x for x in L if x["fila"] == 879)
+            assert f878["usd"] == 0 and f879["usd"] > 0
+            f878["usd"] = f878["ars"] / (f879["ars"] / f879["usd"])
         out[name] = L
     return out
 
@@ -234,7 +241,11 @@ def cierre2(rev, U):
         elif cl == "Inversión":
             out.append(fila(**base, unidad="empresa", clase="inversion", categoria=d["CATEGORÍA FINAL"]))
         elif cl.startswith("Ajuste"):
-            out.append(fila(**base, unidad="empresa", clase="ajuste", categoria=d["CATEGORÍA FINAL"], operativo=True))
+            # Base 320, 322 y 378 ($363.397). Vlado, 23/09/2026: "ajustes no es plata real, son
+            # diferencias de caja que solucioné con ajustes". Mueven la caja, NO el resultado:
+            # el cierre 2 pasa de $5.713.164 a $5.349.767 (General de −$124.162 a −$487.559).
+            out.append(fila(**base, unidad="empresa", clase="ajuste", categoria=d["CATEGORÍA FINAL"], operativo=False,
+                            nota="Diferencia de caja corregida con un ajuste: no es plata que se ganó (Vlado, 23/09/2026)"))
         else:
             out.append(fila(**base, unidad="empresa", clase="costo", categoria=d["CATEGORÍA FINAL"], operativo=True))
     # consola: Academy le pasó a la maestra la venta de la consola (Academy fila 105)
@@ -326,10 +337,10 @@ def verificar(C1, C2, C3):
     eq("resultado USD", suma(C1, lambda r: r["operativo"], "usd"), 1072, 1)
     eq("inversión $", -suma(C1, lambda r: r["clase"] == "inversion"), 5509675)
     print("Cierre 2")
-    for u, want in (("academy", 5080398), ("domine", -733925), ("label", 1490853), ("empresa", -124162)):
+    for u, want in (("academy", 5080398), ("domine", -733925), ("label", 1490853), ("empresa", -487559)):
         eq(f"resultado {u} $", suma(C2, lambda r: r["operativo"] and r["unidad"] == u), want)
-    eq("resultado total $", suma(C2, lambda r: r["operativo"]), 5713164)
-    eq("resultado USD", suma(C2, lambda r: r["operativo"], "usd"), 4895, 2)
+    eq("resultado total $ (sin los $363.397 de ajustes, Vlado 23/09)", suma(C2, lambda r: r["operativo"]), 5713164 - 363397)
+    eq("resultado USD + ajustes USD = 4.895 aprobado", suma(C2, lambda r: r["operativo"], "usd") + suma(C2, lambda r: r["clase"] == "ajuste" and r["caja"] == "empresa" and r["categoria"] != "Cierre de la caja maestra", "usd"), 4895, 2)
     eq("inversión $", -suma(C2, lambda r: r["clase"] == "inversion"), 3702018)
     for c, want in (("academy", 605), ("domine", 0), ("label", 0), ("empresa", 0)):
         eq(f"caja {c} al 10/04/2025", suma(C2, lambda r: r["caja"] == c), want, 2)
