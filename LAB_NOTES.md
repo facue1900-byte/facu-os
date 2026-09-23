@@ -8,6 +8,36 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-09-23 · FAIL ✓ · La cola de José: 0 de 15 casos de créditos eran corregibles, y un filtro que no filtraba nada
+
+**Dónde:** `astronomy-members`, `lib/workflows.ts` y `lib/auditoriaCreditos.ts` (commit `2dee6cc`).
+Disparador: Facu pidió auditar las tareas de José "asumiendo que está todo mal hecho".
+
+**Lo que estaba mal, por causa raíz:**
+- **`'cancelled'` vs `'canceled'`.** La base escribe `canceled` con una L; el motor comparaba con
+  dos. 49 clases canceladas de la web y 290 de Calendly contaban como "vino" o "tiene clase
+  futura". Pasó `tsc` y nunca falló nada: un filtro que no filtra no da error.
+- **El esperado de créditos tenía cinco sesgos más**: no leía devoluciones (Basso "le faltan 240"
+  sobre un cobro devuelto), asignaba clases por fecha de clase y no de reserva (se paga al
+  reservar), ignoraba lo reservado pasado el vencimiento y las cancelaciones cobradas (−24 hs),
+  y valuaba los pagos viejos con los créditos del plan de hoy (Silver 250→240 el 22/09 = "+10 por
+  mes" a todo Silver viejo). Y para quien tiene saldos puestos a mano en julio no es calculable.
+- **El freno de premios sólo miraba `dif > 0`**: del lado de "le faltan", el botón regalaba.
+- **La cola mandaba a José a apretar "Está bien así" en filas donde ese botón estaba oculto.**
+- **`contactar.ts` tiene una lista cerrada de resultados**: un botón nuevo sin sumarse ahí vuelve
+  a la cola sin anotar nada. Lo agarré antes de publicar.
+
+**Fix:** una sola función `porQueNoSeCorrige` para botón, pantalla y cola; los cinco términos del
+esperado corregidos; los no calculables frenados con su motivo (15 → 9, 0 con botón). La cola de
+José pasó a ser sólo de contacto (pagos que no entraron, cuentas sin compra, paga a mano,
+inactivos), una persona por tarea. La revisión independiente encontró 3 bugs míos antes del push
+(suscripciones `pending` contadas como compra, "agendó y canceló" tratado como "nunca agendó",
+`profiles` sin paginar).
+
+**Lección:** comparar contra un literal de estado sin verificar qué valores existen en la base es
+un chequeo que nunca falla — regla 3 de la Constitución. Antes de filtrar por `status`, contar los
+valores reales (`select status` + agrupar).
+
 ### 2026-09-18 · FAIL ✓ · Una diferencia de créditos que era el neto de cuatro errores
 
 **Dónde:** `astronomy-members`, `lib/auditoriaCreditos.ts` y `/api/admin/export`.
