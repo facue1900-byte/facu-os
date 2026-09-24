@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<title>Puzzle vuelve — early birds</title>
+</head>
+<body style="margin:0;padding:0;background:#f2f2f2;">
+<!-- preheader: se ve en la bandeja, al lado del asunto -->
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Antes que nadie y al mejor precio. Hasta el {{fecha_corte}} o hasta que se agoten.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2f2f2;">
+  <tr><td align="center" style="padding:32px 16px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:14px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;">
+      <tr><td align="center" style="background:#0d0d0d;padding:36px 24px;">
+        <div style="color:#ffffff;font-size:34px;font-weight:800;letter-spacing:10px;">PUZZLE</div>
+        <div style="color:#9a9a9a;font-size:12px;letter-spacing:3px;margin-top:10px;">{{fecha}} · {{lugar}}</div>
+      </td></tr>
+      <tr><td style="padding:36px 32px 8px 32px;color:#111111;font-size:16px;line-height:1.55;">
+        <p style="margin:0 0 18px 0;">Hola{{nombre}},</p>
+        <p style="margin:0 0 18px 0;">Puzzle vuelve. Y como ya viniste, entrás antes que nadie.</p>
+      </td></tr>
+      <tr><td style="padding:0 32px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e6e6e6;border-radius:10px;">
+          <tr><td align="center" style="padding:22px 16px;">
+            <div style="font-size:12px;letter-spacing:3px;color:#777777;">EARLY BIRD</div>
+            <div style="font-size:34px;font-weight:800;color:#111111;margin-top:6px;">{{precio_eb}}</div>
+            <div style="font-size:14px;color:#777777;margin-top:4px;">Después: <span style="text-decoration:line-through;">{{precio_general}}</span></div>
+          </td></tr>
+        </table>
+      </td></tr>
+      <tr><td style="padding:22px 32px 0 32px;color:#111111;font-size:16px;line-height:1.55;">
+        <p style="margin:0;">Son <b>{{cupo}} entradas</b> y se cortan el <b>{{fecha_corte}}</b>, o antes si se agotan.</p>
+      </td></tr>
+      <tr><td align="center" style="padding:28px 32px 36px 32px;">
+        <a href="{{link}}" style="display:inline-block;background:#0d0d0d;color:#ffffff;text-decoration:none;font-weight:700;font-size:16px;padding:16px 34px;border-radius:999px;">Quiero mi early bird</a>
+        <p style="margin:22px 0 0 0;color:#111111;font-size:16px;">Nos vemos adentro.</p>
+      </td></tr>
+      <tr><td style="padding:18px 32px;border-top:1px solid #eeeeee;color:#9a9a9a;font-size:12px;line-height:1.5;" align="center">
+        Te llega porque compraste entradas para Puzzle.<br>
+        Si no querés recibir más, respondé este mail con la palabra <b>baja</b>.
+      </td></tr>
+    </table>
+  </td></tr>
+</table>
+</body>
+</html>
