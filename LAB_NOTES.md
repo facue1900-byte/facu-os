@@ -4048,3 +4048,23 @@ sólo se usa cuando se pide con `--entrar` (commit `7f47d15`). Se verificó volv
 capturar: ya no sale "Hola, Facundo" y no aparecen preapprovals nuevos.
 **Pendiente:** Facu decide si se cancelan los 4 links. La web los cierra sola la próxima
 vez que él inicie un checkout (`cerrarIntentosAbiertos`).
+
+## 24/09/2026 — WhatsApp bloqueó el número de Facu 24 hs por difusión en frío
+
+**Qué pasó:** Obsession, contactos agendados "Habanna" (155 números a los que Facu nunca les
+había escrito). Salieron 55 de 14:48 a 17:29 y, a pedido de Facu, otros 20 de 18:18 a 18:43,
+de a uno por minuto desde WhatsApp Web. En el mensaje 76 (18:44) WhatsApp bloqueó el envío
+por 24 hs. El loop frenó solo ("no aparece el mensaje enviado"), sin duplicados ni envíos a
+gente ajena a la lista.
+**Causa raíz:** volumen de mensajes en frío (primer contacto, con link) en un mismo día
+desde un número personal. El ritmo de 1/min no alcanza: lo que cuenta es la cantidad de
+chats nuevos por día.
+**Lección:** tope de **~50 primeros contactos por día** por número, y la difusión en frío
+masiva no va desde el número personal (número aparte o WhatsApp Business). Antes de subir
+el tope, frenar.
+**Otras trampas del mismo día** (en memoria `retomar-obsession-early-bird-mail`): en WhatsApp
+Web, `send?phone=` dice "isn't on WhatsApp" en falso; el click por JS no abre el chat (sí
+Enter en el buscador); con la ventana oculta `innerText` sale vacío y los resultados de
+búsqueda llegan tarde: sólo mandar si el nombre del resultado == el de la lista.
+**Pendiente:** 54 contactos sin mandar + 1 dudoso (Habanna 1026). Estado por contacto en
+`data/eventos/obsession/habanna_contactos.csv`.
