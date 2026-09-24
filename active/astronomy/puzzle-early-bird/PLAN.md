@@ -1,48 +1,38 @@
-# Puzzle — mail de early birds a la base
+# OBSESSION (31/10/2026) — mail de early birds a la base de Puzzle
 
-Estado 24/09/2026: **mail y plan armados, nada enviado** (regla 10). Faltan los datos de
-la fecha para completar el mail.
+Estado 24/09/2026: **mail armado, nada enviado** (regla 10).
 
-## Base
+## El evento (leído de Planout el 24/09)
 
-`~/Desktop/Productoras/Puzzle/base_contactos_unificada PUZZLE.xlsx`, hoja `Unificada`
-(armada el 01/09 a partir de las fechas de abril 490638 y junio 514816 de Passline).
-
-| | |
-|---|---|
-| Personas | 1.367 |
-| Mail válido y único | 1.367 |
-| Con nombre usable para el saludo | 1.254 (el resto: "Hola," a secas) |
-| Compraron 2+ entradas | 384 — los que traen grupo |
-| Con teléfono | 852 |
+- OBSESSION · Palacio Alsina · sábado 31/10/2026 23:59 · flyer: **+27**
+- Link: `https://planout.ar/eventos/es/comprarEvento?idEvento=1300&affId=FC`
+- Early bird **$20.000 + $3.000** de gastos de gestión. VIP mujer +25 $50.000 + $7.500 ·
+  VIP hombre +27 $70.000 + $10.500. Precio de la tanda siguiente: no publicado.
 
 ## El mail
 
-- Template: `mail.html` (HTML de tablas con estilos inline, anda en Gmail/iPhone/Outlook).
-- **Asunto:** `Puzzle vuelve: early birds antes que nadie`
-- **Preheader:** `Antes que nadie y al mejor precio. Hasta el {{fecha_corte}} o hasta que se agoten.`
-- Variables: `{{nombre}}` `{{fecha}}` `{{lugar}}` `{{precio_eb}}` `{{precio_general}}`
-  `{{cupo}}` `{{fecha_corte}}` `{{link}}`.
+- Template: `mail.html` + `obsession-banner.jpg` (va embebido en el mail, no linkeado).
+- **Asunto:** `OBSESSION: ya se fue la mitad de los early birds`
+- **Preheader:** `31/10 en Palacio Alsina. LA fiesta de Halloween. No lo dejes para el final.`
+- Variables: `{{nombre}}` `{{link}}` `{{banner}}`.
+- 🔴 "la mitad de los early birds" tiene que ser **cierto el día que sale**: se chequea en
+  el panel de Planout antes de cada tanda.
+
+## 🚨 La base de Puzzle y el +27
+
+Base: `~/Desktop/Productoras/Puzzle/base_contactos_unificada PUZZLE.xlsx` (1.367 mails).
+
+| Edad (col. "Edad aprox.") | Personas |
+|---|---|
+| Cumplen (mujer 25+, hombre 27+) | 128 (92 mujeres, 36 hombres) |
+| Con edad y NO cumplen | 702 — de ellos **78 son menores de 18** |
+| Sin edad | 537 |
+
+La base de Puzzle es de 19 a 24 años; OBSESSION es +27. Pendiente de Facu: a quién se manda.
 
 ## Cómo se manda
 
-1. **Un mail por persona, nunca CCO masivo.** CCO con 1.367 va directo a spam.
-2. **Tandas de 450 por día, 3 días.** Gmail corta a los ~500/día en una cuenta común y
-   un pico de golpe quema la reputación del remitente.
-3. **Orden por intención:** día 1 los de 2+ entradas (384) + los primeros de 1 entrada;
-   días 2 y 3 el resto. El que trae grupo es el que más vende.
-4. Script con `--send` apagado por defecto: sin el flag, arma los mails y se manda
-   **uno solo a Facu** de prueba. Log de a quién salió cada uno, para no repetir si se corta.
-5. Las respuestas "baja" se anotan en una lista de exclusión antes de cualquier envío futuro.
-
-## FOMO sin inventar
-
-- El cupo y la fecha de corte del mail tienen que ser **reales**.
-- Recordatorio a los 4-5 días **sólo a los que no compraron** (se cruza con el export de
-  Passline / la ticketera): "quedan X early birds", con X leído del panel ese día.
-
-## Lo que falta para ejecutar
-
-- Fecha y lugar · precio early bird y precio siguiente · cantidad de early birds ·
-  fecha de corte · link de compra (Passline o la ticketera propia).
-- Desde qué cuenta sale (ver recomendación en el chat).
+1. Un mail por persona, nunca CCO masivo.
+2. Script con `--send` apagado: sin el flag manda uno solo a Facu de prueba. Log por destinatario.
+3. Menores de 18: **nunca**, decida lo que decida con el resto.
+4. Las respuestas "baja" van a una lista de exclusión.
