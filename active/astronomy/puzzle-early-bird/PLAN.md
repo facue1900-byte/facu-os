@@ -18,21 +18,19 @@ Estado 24/09/2026: **mail armado, nada enviado** (regla 10).
 - 🔴 "la mitad de los early birds" tiene que ser **cierto el día que sale**: se chequea en
   el panel de Planout antes de cada tanda.
 
-## 🚨 La base de Puzzle y el +27
+## Edad (decisión de Facu, 24/09)
 
-Base: `~/Desktop/Productoras/Puzzle/base_contactos_unificada PUZZLE.xlsx` (1.367 mails).
+El flyer y el mail dicen **+27** a propósito, para frenar a los más chicos. El corte real en
+puerta es **+23 mujeres / +24 hombres** y se controla ahí. **No se aclara en ningún lado.**
+Se manda a toda la base salvo **menores de 18 (78), que no reciben nunca**.
+Tampoco se aclaran los $3.000 de gastos de gestión: el mail dice $20.000.
 
-| Edad (col. "Edad aprox.") | Personas |
-|---|---|
-| Cumplen (mujer 25+, hombre 27+) | 128 (92 mujeres, 36 hombres) |
-| Con edad y NO cumplen | 702 — de ellos **78 son menores de 18** |
-| Sin edad | 537 |
+## Cómo se manda — `enviar.py`
 
-La base de Puzzle es de 19 a 24 años; OBSESSION es +27. Pendiente de Facu: a quién se manda.
-
-## Cómo se manda
-
-1. Un mail por persona, nunca CCO masivo.
-2. Script con `--send` apagado: sin el flag manda uno solo a Facu de prueba. Log por destinatario.
-3. Menores de 18: **nunca**, decida lo que decida con el resto.
-4. Las respuestas "baja" van a una lista de exclusión.
+- `--contar`: a cuántos le sale y quién queda afuera. Hoy: **1.289** (1.367 − 78 menores).
+- Sin flags: una prueba a Facu. `--send`: tanda real de 450 (Gmail personal corta ~500/día)
+  → **3 días**. Ordenado por cantidad de entradas compradas (el que trae grupo, primero).
+- Sale de `facue1900@gmail.com` como "OBSESSION": la cuenta `studio` tiene el token roto.
+- `enviados.csv` (gitignoreado) anota cada envío al instante: si se corta, se re-corre y sigue.
+- Las respuestas "baja" se pegan en `bajas.txt`, una por línea.
+- Saludo por nombre sólo si hay apellido (los usuarios de Instagram vienen sin): 1.175 con nombre.
