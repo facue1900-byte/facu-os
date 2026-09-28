@@ -39,4 +39,4 @@ Tampoco se aclaran los $3.000 de gastos de gestión: el mail dice $20.000.
 
 +194 (lista de Facu) y +310 (PDF «Lista 26/09», invitados por RRPP) → base 1.871, **504 pendientes**.
 Como no compraron entradas, el pie pasó de "compraste entradas para Puzzle" a
-**"estás en la lista de Puzzle"** (vale para todos de acá en adelante). Sin edad: el filtro de menores no los alcanza (OK de Facu).
+**sin aclaración**: sólo queda "si no querés recibir más, respondé baja" (Facu, 28/09). Sin edad: el filtro de menores no los alcanza (OK de Facu).
