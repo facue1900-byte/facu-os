@@ -20,6 +20,9 @@ Lo técnico ya está hecho y corre solo el 1/11: los límites por plan
 (`planQueSeAcredita`, `lib/payments.ts`). El 1/11 falta correr
 `scripts/cursodj-a-silver.mjs --aplicar` (sólo cambia la etiqueta) y subir el plan
 `djdelivery` a $25.000 **en Mercado Pago** (la base sola no cambia lo que cobra MP).
+Eso ya está escrito y frenado (28/09): `node --env-file=.env.local
+scripts/djdelivery-a-25000.mjs` simula, `--send` aplica y se niega antes del 1/11.
+Desde el 28/09 DJ Delivery se compra en el panel (tarjeta «Sumá DJ Delivery»).
 
 ---
 
@@ -29,7 +32,9 @@ Lo técnico ya está hecho y corre solo el 1/11: los límites por plan
 > noviembre el Curso de DJ pasa a ser la membresía **Silver**: pagás lo mismo
 > ($143.520), seguís con tus 240 créditos por mes (4 clases), y ahora **los créditos que
 > no uses se acumulan** mientras sigas siendo member, en vez de vencerse a fin de mes.
-> No tenés que hacer nada: el cambio es automático.
+> No tenés que hacer nada: el cambio es automático. DJ Delivery y producción online
+> quedan afuera de Silver; si querés seguir con DJ Delivery, lo sumás desde tu panel por
+> $25.000 por mes a partir del 1/11.
 > Si querés sumar la cabina para practicar solo y producción online, está **Gold**:
 > astronomyofficial.com/academy. Cualquier duda, acá estamos.
 
@@ -43,7 +48,8 @@ Lo técnico ya está hecho y corre solo el 1/11: los límites por plan
 > Como vos venís usando {la cabina / producción online}, te conviene mirar Gold:
 > $195.600, 6 clases por mes, la cabina y el estudio para practicar, producción online
 > con Valen y DJ Delivery. Son $52.080 más que hoy y te llevás dos clases más y todo lo
-> demás. Si preferís quedarte en Silver y sumar sólo DJ Delivery, son $25.000 aparte.
+> demás. Si preferís quedarte en Silver y sumar sólo DJ Delivery, son $25.000 aparte y lo
+> sumás desde tu panel (astronomyofficial.com/member) a partir del 1/11.
 > Hasta el 31/10 seguís con todo como hasta ahora. ¿Te paso el link para cambiarte?
 
 *(Personalizar el `{…}` con lo que usa cada uno: sale de sus reservas en `slot_bookings`.)*
