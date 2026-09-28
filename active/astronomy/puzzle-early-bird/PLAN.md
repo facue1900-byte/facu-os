@@ -34,3 +34,9 @@ Tampoco se aclaran los $3.000 de gastos de gestión: el mail dice $20.000.
 - `enviados.csv` (gitignoreado) anota cada envío al instante: si se corta, se re-corre y sigue.
 - Las respuestas "baja" se pegan en `bajas.txt`, una por línea.
 - Saludo por nombre sólo si hay apellido (los usuarios de Instagram vienen sin): 1.175 con nombre.
+
+## Base ampliada (28/09)
+
++194 (lista de Facu) y +310 (PDF «Lista 26/09», invitados por RRPP) → base 1.871, **504 pendientes**.
+Como no compraron entradas, el pie pasó de "compraste entradas para Puzzle" a
+**"estás en la lista de Puzzle"** (vale para todos de acá en adelante). Sin edad: el filtro de menores no los alcanza (OK de Facu).

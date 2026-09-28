@@ -46,7 +46,7 @@ No lo dejes para el final.
 
 31.10.2026 · PALACIO ALSINA · +27
 
-Te llega porque compraste entradas para Puzzle. Si no querés recibir más, respondé este mail con la palabra baja.
+Te llega porque estás en la lista de Puzzle. Si no querés recibir más, respondé este mail con la palabra baja.
 """
 
 
