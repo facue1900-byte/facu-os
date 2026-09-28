@@ -6,6 +6,8 @@ nada se escribió en la base ni se atacó producción.
 
 ## Estado de los arreglos (28/09)
 
+**Contracargos y suspendidos, 28/09:** commit `ed6c441` (Ready). `lib/contracargos.ts`: refunded/charged_back apaga lo que queda del lote (academia `mp:`, sueltos `buy:`), anula entradas no usadas, Modo Pro sólo avisa, parcial avisa una vez. `lib/suspension.ts` en toda acción que toma turno o cupo. QA 13 casos/71 asserts con cliente falso.
+
 **Límite por IP, 28/09:** commit `a21e5ce` (Ready) + `limite_por_ip.sql` aplicado por Facu; verificado: anon 401, tope 2 → true,true,false. `ADMIN_EMAILS` en Vercel sólo con facue1900@. Facu: captcha y confirmación de mail NO por ahora.
 
 **Tarde, 28/09:** Facu corrió `aplicar-seguridad.mjs` → verificado: Facu `is_master=true` en staff y `extender_vencimientos_por_pago` da 401 a anon. Commit `7807afd` (Ready): el maestro sale sólo de `staff.is_master`. **C1 y C2 CERRADOS; A3 cerrado (candado en `spend_credits`).**
