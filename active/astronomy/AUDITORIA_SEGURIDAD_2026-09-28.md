@@ -2,7 +2,15 @@
 
 **28/09/2026.** Hecha con los 20 puntos del reel de Alejo Sant'Anna (transcripto con Whisper local).
 Cuatro auditores en paralelo: base de datos, login/permisos, plata, código/secretos. Todo solo lectura:
-nada se escribió en la base ni se atacó producción. **Nada de esto está arreglado todavía.**
+nada se escribió en la base ni se atacó producción.
+
+## Estado de los arreglos (28/09, commit `82a513b` en astronomy-members, Vercel Ready)
+
+- ✅ **En producción:** C3 (Next 16.3.6) · A1/A2 cancelaciones con guarda (también el cruce alumno+staff en grupales) · A3 parcial (grupal mira el cobro) · A4 (plan B va último) · A5 open redirect (verificado con curl en prod) · A6 parcial (2 pendientes por mail, reserva 15 min) · testpay sólo maestro · helpers fuera de `"use server"` (verificado en el manifest).
+- ⏳ **SQL escrito, lo corre Facu** (el clasificador de permisos no me deja tocar grants): `supabase/seguridad_2026_09_28.sql` (C2 revoke, `spend_credits` con candado = resto de A3, CHECK, índice de reintegros) y `supabase/staff_maestro_facu.sql`. Antes de correrlo, re-chequear 0 lotes negativos y 0 `refund:slot:` duplicados.
+- ⏳ **C1:** después de la fila de maestro de Facu, sacar `ADMIN_EMAILS` de `lib/staff.ts`, `lib/destinatarios.ts`, `lib/adminData.ts`, `app/actions/auth.ts`. Mirar `ADMIN_EMAILS` en Vercel (no se lee por CLI: `[SENSITIVE]`).
+- ⏳ **Sin hacer:** límite por IP (firewall de Vercel) para entradas, login y `/recuperar` · captcha · 2FA · apagar autoconfirm (cambia el registro: decisión de Facu) · medios y bajos · arreglar `test:seguridad`.
+- Riesgo nuevo anotado por la revisión: si `confirmSlotGroup` se corta entre tomar el invite y cobrar, el invite queda `confirmed` sin salida (hay que destrabarlo a mano).
 
 PROBADO = se verificó contra producción o la base. INFERIDO = leído del código, sin explotar.
 
