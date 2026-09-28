@@ -4,7 +4,11 @@
 Cuatro auditores en paralelo: base de datos, login/permisos, plata, código/secretos. Todo solo lectura:
 nada se escribió en la base ni se atacó producción.
 
-## Estado de los arreglos (28/09, commit `82a513b` en astronomy-members, Vercel Ready)
+## Estado de los arreglos (28/09)
+
+**Tarde, 28/09:** Facu corrió `aplicar-seguridad.mjs` → verificado: Facu `is_master=true` en staff y `extender_vencimientos_por_pago` da 401 a anon. Commit `7807afd` (Ready): el maestro sale sólo de `staff.is_master`. **C1 y C2 CERRADOS; A3 cerrado (candado en `spend_credits`).**
+
+Commit `82a513b` en astronomy-members, Vercel Ready:
 
 - ✅ **En producción:** C3 (Next 16.3.6) · A1/A2 cancelaciones con guarda (también el cruce alumno+staff en grupales) · A3 parcial (grupal mira el cobro) · A4 (plan B va último) · A5 open redirect (verificado con curl en prod) · A6 parcial (2 pendientes por mail, reserva 15 min) · testpay sólo maestro · helpers fuera de `"use server"` (verificado en el manifest).
 - ⏳ **SQL escrito, lo corre Facu** (el clasificador de permisos no me deja tocar grants): `supabase/seguridad_2026_09_28.sql` (C2 revoke, `spend_credits` con candado = resto de A3, CHECK, índice de reintegros) y `supabase/staff_maestro_facu.sql`. Antes de correrlo, re-chequear 0 lotes negativos y 0 `refund:slot:` duplicados.
