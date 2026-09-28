@@ -6,6 +6,8 @@ nada se escribió en la base ni se atacó producción.
 
 ## Estado de los arreglos (28/09)
 
+**Límite por IP, 28/09:** commit `a21e5ce` (Ready) + `limite_por_ip.sql` aplicado por Facu; verificado: anon 401, tope 2 → true,true,false. `ADMIN_EMAILS` en Vercel sólo con facue1900@. Facu: captcha y confirmación de mail NO por ahora.
+
 **Tarde, 28/09:** Facu corrió `aplicar-seguridad.mjs` → verificado: Facu `is_master=true` en staff y `extender_vencimientos_por_pago` da 401 a anon. Commit `7807afd` (Ready): el maestro sale sólo de `staff.is_master`. **C1 y C2 CERRADOS; A3 cerrado (candado en `spend_credits`).**
 
 Commit `82a513b` en astronomy-members, Vercel Ready:
