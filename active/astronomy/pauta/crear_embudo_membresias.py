@@ -4,7 +4,7 @@
 Etapa 1 (conocer): el reel colaborativo de Camille en el estudio, optimizado a
 ThruPlay en 20 km de Nordelta. Su trabajo no es traer leads, es llenar el público.
 
-Etapa 2 (vender): los tres posteos de Silver, Gold y Platinum, a WhatsApp, sólo a
+Etapa 2 (vender): los tres posteos de Silver, Gold y Platinum, a /academy, sólo a
 quien vio 15 s o más del reel (público `Vio reel Camille (15s) | 60d`). Cada anuncio
 llega con su propio mensaje autocompletado, para poder atribuir el lead a la
 membresía sin adivinar.
@@ -75,6 +75,12 @@ def asegurar(cli, path, **data):
     return existente(cli, path, data["name"]) or post(cli, path, **data)
 
 
+def landing(plan):
+    """/academy con el posteo de origen en utm_content: la web guarda los UTM en lead_events."""
+    return ("https://astronomyofficial.com/academy?utm_source=meta&utm_medium=paid"
+            f"&utm_campaign=membresias-vio-reel&utm_content={plan}#membresias")
+
+
 def bienvenida(texto):
     return json.dumps({
         "type": "VISUAL_EDITOR", "version": 2, "landing_screen_type": "welcome_message",
@@ -103,29 +109,29 @@ def main():
                   adset_id=s1, status="PAUSED", creative={"creative_id": CREATIVO_CAMILLE})
         creado["conocer"] = {"campaign": c1, "adset": s1, "ad": a1}
 
-        # Etapa 2 — membresías a quien vio el reel
-        c2 = asegurar(cli, f"{CUENTA}/campaigns", name="Membresias | vio reel Camille | wpp | sep-26",
-                  objective="OUTCOME_ENGAGEMENT", status="PAUSED", special_ad_categories=[],
+        # Etapa 2 — membresías a quien vio el reel, a la WEB (29/09/2026).
+        # Primero se armó a WhatsApp; Facu pidió mandarla a /academy (las tres membresías
+        # juntas, con el WhatsApp a mano). La web ahora dispara Purchase por membresía, así
+        # que se puede saber qué anuncio vendió. Optimiza visitas a la página: con 0 compras
+        # en el pixel, Meta no tiene de dónde aprender a optimizar por venta todavía.
+        c2 = asegurar(cli, f"{CUENTA}/campaigns", name="Membresias | vio reel Camille | web | sep-26",
+                  objective="OUTCOME_TRAFFIC", status="PAUSED", special_ad_categories=[],
                   is_adset_budget_sharing_enabled="false")
-        s2 = asegurar(cli, f"{CUENTA}/adsets", name="Membresias | Vio reel Camille 15s | wpp",
+        s2 = asegurar(cli, f"{CUENTA}/adsets", name="Membresias | Vio reel Camille 15s | web",
                   campaign_id=c2, status="PAUSED", daily_budget=PRESUPUESTO_VENDER,
-                  billing_event="IMPRESSIONS", optimization_goal="CONVERSATIONS",
-                  destination_type="WHATSAPP", bid_strategy="LOWEST_COST_WITHOUT_CAP",
-                  promoted_object={"page_id": PAGE, "whatsapp_phone_number": WHATSAPP},
+                  billing_event="IMPRESSIONS", optimization_goal="LANDING_PAGE_VIEWS",
+                  destination_type="WEBSITE", bid_strategy="LOWEST_COST_WITHOUT_CAP",
                   targeting={"geo_locations": {"countries": ["AR"]}, "age_min": 18, "age_max": 65,
                              "custom_audiences": [{"id": PUBLICO_VIO_REEL}],
                              "targeting_automation": {"advantage_audience": 0}})
         creado["vender"] = {"campaign": c2, "adset": s2, "ads": {}}
-        for nombre, media, mensaje in MEMBRESIAS:
-            nombre_ad = f"membresia {nombre} | post IG | vio reel | wpp | sep-26"
+        for nombre, media, _ in MEMBRESIAS:
+            nombre_ad = f"membresia {nombre} | post IG | vio reel | web | sep-26"
             if existente(cli, f"{CUENTA}/ads", nombre_ad):
                 continue
-            cr = post(cli, f"{CUENTA}/adcreatives", name=f"membresia {nombre} | post IG | wpp",
+            cr = post(cli, f"{CUENTA}/adcreatives", name=f"membresia {nombre} | post IG | web",
                       object_id=PAGE, instagram_user_id=IG, source_instagram_media_id=media,
-                      call_to_action={"type": "WHATSAPP_MESSAGE",
-                                      "value": {"app_destination": "WHATSAPP",
-                                                "link": "https://api.whatsapp.com/send"}},
-                      page_welcome_message=bienvenida(mensaje))
+                      call_to_action={"type": "LEARN_MORE", "value": {"link": landing(nombre)}})
             ad = asegurar(cli, f"{CUENTA}/ads", name=nombre_ad,
                       adset_id=s2, status="PAUSED", creative={"creative_id": cr})
             creado["vender"]["ads"][nombre] = {"creative": cr, "ad": ad}

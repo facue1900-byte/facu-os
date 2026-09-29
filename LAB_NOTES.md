@@ -4068,3 +4068,10 @@ Enter en el buscador); con la ventana oculta `innerText` sale vacío y los resul
 búsqueda llegan tarde: sólo mandar si el nombre del resultado == el de la lista.
 **Pendiente:** 54 contactos sin mandar + 1 dudoso (Habanna 1026). Estado por contacto en
 `data/eventos/obsession/habanna_contactos.csv`.
+
+## 29/09/2026 — Las membresías se vendían sin que el pixel se enterara
+
+**Qué pasó:** en 30 días el pixel `6508137999303373` registró 3.880 PageView y **0 Purchase**. El `Purchase` sólo existía para Modo Profesional (`?curso=ok`); la vuelta de una membresía (`/member?sub=ok`) no disparaba nada, y la rama "clase de prueba" de `/member` ni siquiera montaba el componente. Además `CompraPixel` marcaba la compra como contada antes de saber si `fbq` había cargado.
+**Por qué importó:** Facu quiso mandar la pauta de membresías a la web. Sin Purchase, Meta no puede optimizar por venta y no sabemos qué anuncio vendió.
+**Arreglo:** commit `6911722` (astronomy-members) — back_url con plan y monto, Purchase por membresía con reintento, montado en las dos ramas y apagado para staff/vista previa.
+**Lección:** para verificar un pixel en producción no sirve mirar la red desde Chrome headless: Meta no manda `/tr` desde un navegador automatizado. Se intercepta `window.fbq` y se mira qué le pasa nuestro código.
