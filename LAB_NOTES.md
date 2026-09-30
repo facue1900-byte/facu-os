@@ -4075,3 +4075,10 @@ búsqueda llegan tarde: sólo mandar si el nombre del resultado == el de la list
 **Por qué importó:** Facu quiso mandar la pauta de membresías a la web. Sin Purchase, Meta no puede optimizar por venta y no sabemos qué anuncio vendió.
 **Arreglo:** commit `6911722` (astronomy-members) — back_url con plan y monto, Purchase por membresía con reintento, montado en las dos ramas y apagado para staff/vista previa.
 **Lección:** para verificar un pixel en producción no sirve mirar la red desde Chrome headless: Meta no manda `/tr` desde un navegador automatizado. Se intercepta `window.fbq` y se mira qué le pasa nuestro código.
+
+## 30/09/2026 — La devolución "de Basso" era de Brandan
+
+**Qué pasó:** Problemas le preguntó a José si Javier Basso se había dado de baja. José notó que el cobro era de Juan Martín Brandan (`jb@trebol4.com`), el papá de Felipe. En MP, el cobro 176623513123 tiene tarjeta a nombre de JUAN MARTIN BRANDAN y la suscripción `c92ad98c…` cobra el día 6 desde el 06/05. Basso arrancó el 23/06.
+**Causa raíz:** el 21/07 se vincularon a mano el mail `jb@trebol4.com` y el payer MP 180574196 a Basso: "JB" parecía Javier Basso. Desde ahí la suscripción y cada cobro del 6 cayeron en su ficha. El "Basso pagó dos veces en julio" venía de este error.
+**Arreglo:** con el OK de Facu, se pasaron a Felipe la suscripción, 3 ventas, sus lotes y movimientos, el payer, el mail, 2 payment_links, la devolución y la pregunta. Hay un respaldo en `archive/backup_basso_brandan_2026-09-30.txt`. El detector ahora dice «A Felipe Brandan…». Queda abierto: Felipe tiene dos ventas en julio (MP 06/07 y la planilla 13/07), un posible duplicado de $143.520.
+**Lección:** antes de preguntar por un alumno a partir de un cobro de MP, mirar el `card.cardholder.name` del pago. Unas iniciales o un mail parecido no alcanzan para vincular un pagador.
