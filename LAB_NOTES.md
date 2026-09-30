@@ -4082,3 +4082,10 @@ búsqueda llegan tarde: sólo mandar si el nombre del resultado == el de la list
 **Causa raíz:** el 21/07 se vincularon a mano el mail `jb@trebol4.com` y el payer MP 180574196 a Basso: "JB" parecía Javier Basso. Desde ahí la suscripción y cada cobro del 6 cayeron en su ficha. El "Basso pagó dos veces en julio" venía de este error.
 **Arreglo:** con el OK de Facu, se pasaron a Felipe la suscripción, 3 ventas, sus lotes y movimientos, el payer, el mail, 2 payment_links, la devolución y la pregunta. Hay un respaldo en `archive/backup_basso_brandan_2026-09-30.txt`. El detector ahora dice «A Felipe Brandan…». Queda abierto: Felipe tiene dos ventas en julio (MP 06/07 y la planilla 13/07), un posible duplicado de $143.520.
 **Lección:** antes de preguntar por un alumno a partir de un cobro de MP, mirar el `card.cardholder.name` del pago. Unas iniciales o un mail parecido no alcanzan para vincular un pagador.
+
+## 30/09/2026 — "Hecho" no hacía nada (segunda vez del mismo bug)
+
+**Qué pasó:** José apretaba "Hecho" en «Preguntarle cómo le va al que hizo su segunda clase» y el caso no se iba. En `incidencia_eventos` no había ni una fila de `segunda_clase`.
+**Causa raíz:** `registrarContacto` (`app/actions/contactar.ts`) validaba contra una lista escrita a mano, y "hecho" no estaba. El servidor lo devolvía a la misma pantalla sin anotar nada y sin avisar. Ya había pasado con "compro" el 23/09, y ese día se parchó agregando el id a la lista.
+**Arreglo:** commit `bc60d14` (astronomy-members). La lista ahora sale de los botones de `lib/workflows.ts` (`resultadosValidos()`), y un id desconocido muestra el cartel de error.
+**Lección:** una lista copiada de otra se desincroniza. La segunda vez que se rompe lo mismo ya no se agrega el id que falta: se elimina la copia.
