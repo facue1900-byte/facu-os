@@ -108,6 +108,9 @@ def main():
         "Retiro de basura del mes (P4): el total de la factura de Transportes "
         "Olivos. Sin esto se reconstruye con la fórmula clavada a mayo 2026 ÷ 3, "
         "que es lo que la hoja tiene puesto pero NO lo que se cobró."))
+    ap.add_argument("--insumos", type=float, help=(
+        "Limpieza e Insumos (J4), el mismo --insumos que se pasó a "
+        "cargos_del_mes.py. Sin compras en el mes va la mitad del anterior."))
     args = ap.parse_args()
     anio, mes = (int(x) for x in args.periodo.split("-"))
     per = serial(anio, mes)
@@ -144,6 +147,9 @@ def main():
     inp[L["I"]] = sueldo / 2                                    # Limpieza Baños
     inp[L["K"]] = inp[L["I"]]                                   # Limpieza Predio = I4
     inp[L["J"]] = sumifs("Productos de limpieza", per)
+    if args.insumos is not None:
+        inp[L["J"]] = args.insumos
+        print(f"Limpieza e Insumos puesto A MANO: ${args.insumos:,.2f}")
     inp[L["N"]] = sumifs("Fumigación", per)
     # P4 está clavado a "mayo 2026"/3 en la hoja: no depende del mes elegido.
     # Si el mes se congeló con --basura, se reconstruye con ESE número.
