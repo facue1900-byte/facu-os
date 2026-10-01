@@ -4099,3 +4099,19 @@ día siguiente lo levantaba, y corrido a mano el 01/10 dio todo al día.
 **Causa:** la alarma dependía del mismo recurso que fallaba. **Arreglo:** el script
 espera hasta 15 minutos a que resuelva `www.googleapis.com` antes de arrancar.
 **Lección:** un aviso que viaja por el mismo canal que el fallo no es un aviso.
+
+## 01/10/2026 — Bejerman quedó con la numeración de FC A 0002 corrida respecto de ARCA
+
+Emitiendo el alquiler de octubre de Fabric: 1) un modal de publicidad (webinar) tapó
+«Emitir» y el click murió por timeout — nada se creó; 2) el reintento salió «CONFIRMADO»
+pero ARCA rechazó el CAE con «El CEE ya posee un TA válido» (WSAA, problema de
+autenticación Bejerman↔ARCA) y **Bejerman se quedó con el número 17** en estado «Pend.
+de CAE»; 3) desde ahí cada intento sale con el número siguiente (18, 19) y ARCA lo
+rechaza: «el próximo número esperado es 00000017». Borrar los pendientes (Facu lo
+autorizó) **no rebobina el contador de Bejerman**.
+Ninguna factura existe ante ARCA (las tres dieron 404). Quedó frenado esperando que se
+corrija el «próximo número» del talonario (Configuración → Tablas de gestión →
+Talonarios) o que lo resuelva soporte de Bejerman.
+**Lecciones:** (a) un rechazo de CAE deja el número consumido en Bejerman: NO reintentar
+emitiendo de nuevo — mirar la grilla primero; un pendiente se reprocesa con «Solicitar
+CAE → Individual», no se reemite; (b) el robot ahora cierra publicidades antes de emitir.
