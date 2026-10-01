@@ -52,6 +52,20 @@ echo "=================================================================="
 echo "EFECTIVO DIARIO — $(date '+%d/%m/%Y %H:%M')"
 echo "=================================================================="
 
+# launchd lo dispara apenas la Mac despierta, muchas veces antes de que haya red.
+# Sin red fallan los dos pasos Y el mail de alarma, así que el día se perdía sin
+# que nadie se enterara (27/09, 29/09 y 01/10/2026). Se espera hasta 15 minutos.
+for i in $(seq 1 30); do
+  host -W 3 www.googleapis.com >/dev/null 2>&1 && break
+  [[ $i -eq 1 ]] && echo "Sin red todavía: espero hasta 15 minutos..."
+  sleep 30
+done
+if ! host -W 3 www.googleapis.com >/dev/null 2>&1; then
+  echo "!!! Sin red después de 15 minutos: no se volcó nada hoy. Mañana lo levanta"
+  echo "!!! solo (el volcado mira los últimos 60 días)."
+  exit 1
+fi
+
 echo; echo "--- 1/2 · ¿La app y la planilla dicen lo mismo? ---"
 "$PY" "$S/sincronizar_supabase.py" --aplicar --estricto \
   || avisar "la app y la planilla no coinciden (paso 1)"

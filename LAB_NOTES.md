@@ -4089,3 +4089,13 @@ búsqueda llegan tarde: sólo mandar si el nombre del resultado == el de la list
 **Causa raíz:** `registrarContacto` (`app/actions/contactar.ts`) validaba contra una lista escrita a mano, y "hecho" no estaba. El servidor lo devolvía a la misma pantalla sin anotar nada y sin avisar. Ya había pasado con "compro" el 23/09, y ese día se parchó agregando el id a la lista.
 **Arreglo:** commit `bc60d14` (astronomy-members). La lista ahora sale de los botones de `lib/workflows.ts` (`resultadosValidos()`), y un id desconocido muestra el cartel de error.
 **Lección:** una lista copiada de otra se desincroniza. La segunda vez que se rompe lo mismo ya no se agrega el id que falta: se elimina la copia.
+
+## 01/10/2026 — El efectivo diario fallaba callado cuando la Mac despertaba sin red
+
+`efectivo_diario.sh` (launchd 7:30) corrió el 27/09, 29/09 y 01/10 antes de que la Mac
+tuviera red: fallaron los dos pasos **y también el mail de alarma** (mismo DNS caído),
+así que nadie se enteró. No se perdió plata: el volcado mira 60 días hacia atrás y el
+día siguiente lo levantaba, y corrido a mano el 01/10 dio todo al día.
+**Causa:** la alarma dependía del mismo recurso que fallaba. **Arreglo:** el script
+espera hasta 15 minutos a que resuelva `www.googleapis.com` antes de arrancar.
+**Lección:** un aviso que viaja por el mismo canal que el fallo no es un aviso.
