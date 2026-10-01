@@ -22,13 +22,15 @@
 //    cuerpo, checkbox "Agrupar por cliente") y después "¿Seguro que desea
 //    enviar los Comprobantes?" con Aceptar. Recién ahí manda.
 //  - "Agrupar por cliente" = un mail por local con todos sus comprobantes.
-//    Sin tildarlo salen 6 mails sueltos.
+//    Sin tildarlo sale un mail por comprobante. **Facu, 01/10/2026: se manda
+//    SIN agrupar** — es el default. `--agrupar` lo tilda (como se hacía en sep).
 //  - El resultado es un alert: «Se han enviado N correos con sus
 //    correspondientes comprobantes». N = cantidad de clientes si se agrupó.
 const { chromium } = require('playwright-core');
 const args = process.argv.slice(2);
 const ENVIAR = args.includes('--enviar');
-const [FECHA, ...ESPERADOS] = args.filter(a => a !== '--enviar');
+const AGRUPAR = args.includes('--agrupar');
+const [FECHA, ...ESPERADOS] = args.filter(a => a !== '--enviar' && a !== '--agrupar');
 const ASUNTO = process.env.ASUNTO || 'Paseo Nordelta - Comprobantes';
 if (!FECHA || !ESPERADOS.length) { console.log('uso: enviar_mail.js dd/mm/aaaa "FC A 0002 000000NN" ... [--enviar]'); process.exit(1); }
 
@@ -80,11 +82,12 @@ if (!FECHA || !ESPERADOS.length) { console.log('uso: enviar_mail.js dd/mm/aaaa "
   if (!/Datos para env/i.test((await M()) || '')) { console.log('!! no abrió "Datos para envío": ' + await M()); await B.close(); process.exit(4); }
   await F().evaluate(() => { const e = document.getElementById('sendMailSubject'); e.focus(); e.setSelectionRange(0, e.value.length); });
   await P.keyboard.press('Backspace'); await P.keyboard.type(ASUNTO, { delay: 40 });
-  await F().evaluate(() => { const m = document.querySelector('ngb-modal-window, .modal.show'); const cb = m.querySelector('input[type=checkbox]'); if (cb && !cb.checked) cb.click(); });
+  // El checkbox se deja EXACTAMENTE como se pidió: tildado sólo con --agrupar.
+  await F().evaluate((ag) => { const m = document.querySelector('ngb-modal-window, .modal.show'); const cb = m.querySelector('input[type=checkbox]'); if (cb && cb.checked !== ag) cb.click(); }, AGRUPAR);
   await P.waitForTimeout(600);
   const est = await F().evaluate(() => ({ asunto: document.getElementById('sendMailSubject').value, agrupar: document.querySelector('ngb-modal-window, .modal.show').querySelector('input[type=checkbox]').checked }));
   console.log('modal:', JSON.stringify(est));
-  if (est.asunto !== ASUNTO || !est.agrupar) { console.log('!! FRENO: el modal no quedó como esperaba'); await B.close(); process.exit(5); }
+  if (est.asunto !== ASUNTO || est.agrupar !== AGRUPAR) { console.log('!! FRENO: el modal no quedó como esperaba'); await B.close(); process.exit(5); }
   await F().evaluate(() => { const m = document.querySelector('ngb-modal-window, .modal.show'); [...m.querySelectorAll('button')].find(x => /^enviar$/i.test((x.innerText || '').trim())).click(); });
   await P.waitForTimeout(3000);
   if (!/Seguro que desea enviar/i.test((await M()) || '')) { console.log('!! no apareció la confirmación: ' + await M()); await B.close(); process.exit(6); }

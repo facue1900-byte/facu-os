@@ -4115,3 +4115,9 @@ Talonarios) o que lo resuelva soporte de Bejerman.
 **Lecciones:** (a) un rechazo de CAE deja el número consumido en Bejerman: NO reintentar
 emitiendo de nuevo — mirar la grilla primero; un pendiente se reprocesa con «Solicitar
 CAE → Individual», no se reemite; (b) el robot ahora cierra publicidades antes de emitir.
+**Resuelto el 01/10:** Facu puso «Último utilizado» del talonario FC en 00000016 (el
+botón «Próximo Nro.» del talonario consulta a ARCA y confirmó que esperaba el 17; el
+cambio de configuración lo bloquea el clasificador de auto mode, lo hace Facu). Después
+salieron las 6 de octubre (FC 17-20, ND 10-11) con CAE, verificadas en el PDF.
+Ojo al verificar: el CAE **no está en la capa de texto** del PDF (se imprime
+«C.A.E. N°…» dibujado): se lee renderizando el pie de página, no con un regex sobre el texto.
