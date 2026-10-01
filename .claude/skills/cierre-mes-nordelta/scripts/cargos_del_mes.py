@@ -684,7 +684,7 @@ def alquiler_vigente(p, cfg, anio, mes, avisos):
     return ancla
 
 
-def cargos_existentes(p, anio, mes):
+def cargos_existentes(p, anio, mes, incluir_cero=False):
     """Los (local, concepto) que YA tienen cargo en CARGOS para ese mes.
 
     Una fila en **$0 no cuenta**: son placeholders viejos, y tomarlos por cargo
@@ -695,7 +695,8 @@ def cargos_existentes(p, anio, mes):
     filas = p.leer(CTAS, "CARGOS!A4:I500")
     clave = f"{anio}-{mes:02d}"
     return {(r[1].strip(), r[2].strip()) for r in filas
-            if len(r) >= 4 and str(r[0]).strip() == clave and num(r[3])}
+            if len(r) >= 4 and str(r[0]).strip() == clave
+            and (incluir_cero or num(r[3]))}
 
 
 def proponer(p, anio, mes, expensas):
@@ -836,7 +837,10 @@ def escribir_cargos(p, propuesta, anio, mes):
     faltan = []
     for f in filas:
         a, m = (int(x) for x in (f[0].split("/")[2], f[0].split("/")[1]))
-        if (f[1], f[2]) not in cargos_existentes(p, a, m):
+        # incluir_cero: un cargo legítimo de $0 (Peak One sin alquiler) se
+        # escribe igual, y el dedupe lo ignora a propósito — sin esto la
+        # verificación decía «NO quedaron escritas» de una fila que estaba.
+        if (f[1], f[2]) not in cargos_existentes(p, a, m, incluir_cero=True):
             faltan.append(f"{f[1]} {f[2]}")
     if faltan:
         print("  ⚠ NO quedaron escritas: " + ", ".join(faltan))
