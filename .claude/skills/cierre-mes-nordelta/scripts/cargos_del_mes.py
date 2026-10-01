@@ -245,8 +245,16 @@ def expensas_del_historico(p, anio, mes):
             for r in filas if len(r) >= 4 and r[0] == clave}
 
 
+# Inputs de servicios comunes que salen de Movimientos (sólo lo PAGADO) y que
+# también se pueden pasar desde la factura. Regla de Facu (01/10/2026): con la
+# factura alcanza aunque no esté pagada — y lo pagado va aunque no haya factura.
+# celda → (índice de columna dentro de A3:R30, nombre)
+EXTRA_CELDAS = {"I4": (8, "Limpieza Baños"), "J4": (9, "Limpieza e Insumos"),
+                "O4": (14, "Comunicación")}
+
+
 def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
-                      basura=None, dry_run=True):
+                      basura=None, extra=None, dry_run=True):
     """Pone la fecha del mes en Expensas Predio, lee, y RESTAURA todo lo tocado.
 
     Devuelve {local_predio: (recupero, servicios_comunes)}.
@@ -282,6 +290,20 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
     original = p.leer(MASTER, "Expensas Predio!A2:D4", render="FORMULA")
     p4_leida = p.leer(MASTER, "Expensas Predio!P4", render="FORMULA")
     p4_orig = p4_leida[0][0] if p4_leida and p4_leida[0] else ""
+    extra = {k: v for k, v in (extra or {}).items() if v is not None}
+    extra_orig = {}
+    for celda in extra:
+        leida = p.leer(MASTER, f"Expensas Predio!{celda}", render="FORMULA")
+        extra_orig[celda] = leida[0][0] if leida and leida[0] else ""
+        if extra_orig[celda] == "":
+            raise SystemExit(f"CORTO: no pude leer {celda} de Expensas Predio; "
+                             f"sin el original no lo puedo restaurar. No toco nada.")
+        # I4 y J4 son SUMIFS: si no empiezan con "=", una corrida murió antes del
+        # finally y restaurar ese número lo volvería permanente (igual que B4/P4).
+        if celda in ("I4", "J4") and not str(extra_orig[celda]).startswith("="):
+            raise SystemExit(f"CORTO: {celda} ya no es una fórmula — vale "
+                             f"{extra_orig[celda]!r}. Volvé a ponerla (está en "
+                             f"expensas_predio_backup.json) antes de seguir.")
     a2 = original[0][0] if original and original[0] else ""
     a3 = original[1][0] if len(original) > 1 and original[1] else ""
     fila4 = original[2] if len(original) > 2 else []
@@ -344,9 +366,19 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
     # puestos, y eso no avisa. Se deja el backup en disco ANTES de tocar nada.
     backup = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                           "expensas_predio_backup.json")
+    if os.path.exists(backup):
+        with open(backup, encoding="utf-8") as fh:
+            previo = json.load(fh)
+        if previo.get("en_curso"):
+            raise SystemExit(
+                f"CORTO: el backup {backup} es de una corrida que NO terminó de "
+                f"restaurar Expensas Predio.\n  Poné a mano los valores que dice "
+                f"(A2, A3, B4, C4, D4, P4 y las celdas extra), borrá la clave "
+                f"\"en_curso\" del JSON y volvé a correr. No toco nada.")
     with open(backup, "w", encoding="utf-8") as fh:
         json.dump({"A2": a2, "A3": a3, "B4": b4_orig,
-                   "C4": c4_orig, "D4": d4_orig, "P4": p4_orig}, fh,
+                   "C4": c4_orig, "D4": d4_orig, "P4": p4_orig,
+                   **extra_orig, "en_curso": True}, fh,
                   ensure_ascii=False, indent=2)
     print(f"  backup de los valores originales en {backup}")
 
@@ -357,6 +389,8 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
             p.escribir(MASTER, "Expensas Predio!B4", [[avn]])
         if basura is not None:
             p.escribir(MASTER, "Expensas Predio!P4", [[basura]])
+        for celda, valor in extra.items():
+            p.escribir(MASTER, f"Expensas Predio!{celda}", [[valor]])
         # UNFORMATTED_VALUE, no el formateado: de estas columnas salen el
         # recupero y los servicios comunes que se le cobran a cada local. La
         # celda MUESTRA "$1.176.363" pero vale 1176362,725 — leerla formateada
@@ -410,6 +444,13 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
                 print(f"    Este mes también reparte mayo÷3 = "
                       f"{plata(basura_leida)}. Pasá --basura con la factura de "
                       f"Transportes Olivos del mes, o arreglá la fórmula.")
+        for celda, valor in extra.items():
+            col, nombre = EXTRA_CELDAS[celda]
+            leida = num(datos[1][col]) if len(datos[1]) > col else 0.0
+            if abs(leida - valor) > 0.01:
+                raise SystemExit(f"CORTO: escribí {nombre} {plata(valor)} en {celda} "
+                                 f"pero la hoja leyó {plata(leida)}.")
+            print(f"  {nombre}: {plata(leida)}  ⚠ DESDE LA FACTURA, no de Movimientos")
         out = {}
         for fila in datos[4:]:          # los locales arrancan en la fila 7
             if not fila or not fila[0]:
@@ -432,6 +473,8 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
             ("Expensas Predio!B4:D4", [[b4_orig, c4_orig, d4_orig]],
              "AVN, Agua y ABL (B4:D4)"),
             ("Expensas Predio!P4", [[p4_orig]], "Retiro de basura (P4)"),
+            *((f"Expensas Predio!{c}", [[v]], f"{EXTRA_CELDAS[c][1]} ({c})")
+              for c, v in extra_orig.items()),
         ):
             try:
                 p.escribir(MASTER, rango, valores)
@@ -447,10 +490,18 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
             print(f"       B4={b4_orig!r}")
             print(f"       C4={c4_orig!r}  D4={d4_orig!r}")
             print(f"       P4={p4_orig!r}")
+            for c, v in extra_orig.items():
+                print(f"       {c}={v!r}")
             print("     Ponelos a mano ANTES de volver a correr esto.")
         else:
-            print("  Expensas Predio restaurada a como estaba "
-                  "(fecha, AVN, Agua, ABL y Basura).")
+            extras = "".join(f", {EXTRA_CELDAS[c][1]}" for c in extra_orig)
+            print(f"  Expensas Predio restaurada a como estaba "
+                  f"(fecha, AVN, Agua, ABL, Basura{extras}).")
+            with open(backup, encoding="utf-8") as fh:
+                hecho = json.load(fh)
+            hecho["en_curso"] = False
+            with open(backup, "w", encoding="utf-8") as fh:
+                json.dump(hecho, fh, ensure_ascii=False, indent=2)
 
 
 def guardar_historico(p, anio, mes, expensas, nota=None):
@@ -948,6 +999,16 @@ def main():
                          "liquidaciones de la carpeta del mes SIGUIENTE (la "
                          "carpeta es el mes de pago). Sin esto B4 sale del "
                          "SUMIFS contra Movimientos, que es lo normal.")
+    ap.add_argument("--limpieza", type=float, default=None,
+                    help="Total de la factura de Rhino (limpieza y mantenimiento, "
+                         "c/IVA). Va la mitad a Limpieza Baños (I4) y K4=I4. Con "
+                         "la factura alcanza aunque no esté pagada.")
+    ap.add_argument("--insumos", type=float, default=None,
+                    help="Limpieza e Insumos (J4). Mes sin compras: la mitad del "
+                         "mes anterior (Facu, 01/10/2026).")
+    ap.add_argument("--comunicacion", type=float, default=None,
+                    help="Comunicación (O4): diseño de redes. La factura de Annie "
+                         "cubre 3 meses: va un tercio por mes.")
     args = ap.parse_args()
 
     anio, mes = parse_mes(args.mes)
@@ -959,6 +1020,13 @@ def main():
           f"{MESES_LARGO[ant_m]} {ant_a}\n")
 
     expensas = expensas_del_historico(p, ant_a, ant_m)
+    a_mano_pasados = [f for f in ("agua", "abl", "avn", "basura", "limpieza",
+                                  "insumos", "comunicacion")
+                      if getattr(args, f) is not None]
+    if a_mano_pasados and (expensas or not args.congelar_expensas):
+        print(f"⚠ Pasaste --{' --'.join(a_mano_pasados)} pero NO se van a usar: "
+              + ("el mes ya está congelado en EXPENSAS HISTORICO."
+                 if expensas else "falta --congelar-expensas."))
     if expensas:
         print(f"Expensas de {ant_a}-{ant_m:02d}: {len(expensas)} locales "
               f"desde {HOJA_HISTORICO} (ya congeladas).")
@@ -967,6 +1035,10 @@ def main():
         expensas = congelar_expensas(p, ant_a, ant_m, agua=args.agua,
                                      abl=args.abl, avn=args.avn,
                                      basura=args.basura,
+                                     extra={"I4": None if args.limpieza is None
+                                            else args.limpieza / 2,
+                                            "J4": args.insumos,
+                                            "O4": args.comunicacion},
                                      dry_run=not args.escribir)
         if expensas and args.escribir:
             nota = None
@@ -978,7 +1050,10 @@ def main():
             # congela para siempre y después nadie puede reconstruir de dónde
             # salió cada número mirando la hoja viva.
             a_mano = [("Agua R&S", args.agua), ("ABL Municipal", args.abl),
-                      ("Retiro de basura", args.basura)]
+                      ("Retiro de basura", args.basura),
+                      ("Limpieza Rhino", args.limpieza),
+                      ("Limpieza e Insumos", args.insumos),
+                      ("Comunicación", args.comunicacion)]
             puestos = " · ".join(f"{q} {plata(v)} a mano"
                                  for q, v in a_mano if v is not None)
             if puestos:

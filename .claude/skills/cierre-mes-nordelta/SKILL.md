@@ -173,6 +173,15 @@ cada uno con su factura archivada en `Facturas de Compra/2026/<Mes>/`:
 | `--abl` | Municipal (D4) | liquidación de Tigre: **sólo** Tasa Servicios + Cont. Hospital |
 | `--avn` | Expensas AVN (B4) | las **4** liquidaciones de la carpeta del mes |
 | `--basura` | Retiro de basura (P4) | factura de **Transportes Olivos** ("TODSE") |
+| `--limpieza` | Limpieza Baños (I4 = total/2; K4 = I4) | factura de **Rhino**, total c/IVA |
+| `--insumos` | Limpieza e Insumos (J4) | compras del mes; **sin compras = ½ del mes anterior** |
+| `--comunicacion` | Comunicación (O4) | diseño de redes de Annie: **la factura cubre 3 meses, va ⅓** |
+
+**Con la factura alcanza aunque no esté pagada, y lo pagado va aunque no haya
+factura** (Facu, 01/10/2026). Nunca cargar una factura impaga como fila de
+Movimientos: rompe la conciliación del banco — para eso están los flags. Si el
+script muere a mitad, el backup queda marcado `en_curso` y la próxima corrida
+se niega a arrancar hasta que se restaure a mano.
 
 **El mes de la factura es el de PAGO**, no el que dice adentro: la expensa del mes M
 toma lo que se paga en M, que es lo emitido en M−1.
