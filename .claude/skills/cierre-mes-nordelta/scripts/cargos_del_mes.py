@@ -253,6 +253,39 @@ EXTRA_CELDAS = {"I4": (8, "Limpieza Baños"), "J4": (9, "Limpieza e Insumos"),
                 "O4": (14, "Comunicación")}
 
 
+# Rampa de m²: un local que creció no paga el salto de golpe (Facu, 01/10/2026).
+# Peak One pasó de 600 a 750 m² y la AVN/ABL se reparten por m²: de una sola vez
+# le subía +$188.000 el recupero. Se sube de a 50 m² por mes. El m² de la rampa
+# se escribe en la hoja y QUEDA (rige desde el mes en curso, nunca hacia atrás:
+# [[paseo-cambio-de-m2-rige-desde-el-mes-en-curso]]), así la reconstrucción del
+# detalle y el verificador leen el mismo m² que se cobró.
+# local → (celda de m² en Expensas Predio, {AAAA-MM de las expensas: m²})
+M2_RAMPA = {"Peak One": ("AC7", {"2026-09": 650, "2026-10": 700, "2026-11": 750})}
+
+
+def aplicar_rampa_m2(p, anio, mes, dry_run):
+    clave = f"{anio}-{mes:02d}"
+    for local, (celda, tabla) in M2_RAMPA.items():
+        if clave not in tabla:
+            continue
+        actual = num(p.leer(MASTER, f"Expensas Predio!{celda}",
+                            render="UNFORMATTED_VALUE")[0][0])
+        quiere = tabla[clave]
+        if abs(actual - quiere) < 0.01:
+            print(f"  Rampa de m²: {local} ya tiene {quiere} m² para {clave}.")
+        elif dry_run:
+            print(f"  Rampa de m²: {local} tiene {actual:g} m² y para {clave} van "
+                  f"{quiere}. Con --escribir se cambia {celda}.")
+        else:
+            p.escribir(MASTER, f"Expensas Predio!{celda}", [[quiere]])
+            leido = num(p.leer(MASTER, f"Expensas Predio!{celda}",
+                               render="UNFORMATTED_VALUE")[0][0])
+            if abs(leido - quiere) > 0.01:
+                raise SystemExit(f"CORTO: escribí {quiere} m² en {celda} y leí {leido}.")
+            print(f"  Rampa de m²: {local} {actual:g} → {quiere} m² ({celda}), "
+                  f"rige desde {clave}.")
+
+
 def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
                       basura=None, extra=None, dry_run=True):
     """Pone la fecha del mes en Expensas Predio, lee, y RESTAURA todo lo tocado.
@@ -350,6 +383,7 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
     periodo_texto = f"{MESES_LARGO[mes]} {anio}"
     fecha_a2 = f"1/{mes}/{anio}"
 
+    aplicar_rampa_m2(p, anio, mes, dry_run)
     if dry_run:
         print("  [dry-run] no se toca la fecha de Expensas Predio.")
         return None
