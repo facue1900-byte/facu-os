@@ -313,10 +313,11 @@ servicios comunes de algún local no cierran al peso contra los cargos de su
 pestaña de cuenta corriente. La Jaula y Salón (Alto) no llevan detalle: una no
 paga expensas y el otro paga $1.000.000 pactado.
 
-⚠️ **Se mandan como DOCUMENTO, no como foto.** Un PNG por el campo de adjuntos que
-WhatsApp Web deja a mano se envía como **sticker**: llega diminuto e ilegible y no
-se puede ampliar. Como documento conserva el nombre del local y la calidad, y Mati
-puede reenviarle a cada locatario el suyo.
+⚠️ **Se mandan como FOTO** (Facu, 01/10/2026: «mándaselo como foto, no como
+archivo»), por el ítem **«Photos & videos»** del menú «+». **Nunca** por el
+`input[accept="image/*"]` suelto (`multiple: false`) que WhatsApp Web deja a mano:
+ése es el de **stickers**, y un PNG por ahí llega diminuto e ilegible (pasó el
+03/09). Se verifica mirando la burbuja ya enviada, no el preview.
 
 **3. Conciliación** — los chequeos deterministas los hace el script; yo interpreto:
 

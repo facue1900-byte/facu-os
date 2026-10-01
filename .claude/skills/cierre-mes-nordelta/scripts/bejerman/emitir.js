@@ -64,6 +64,30 @@ const die = async (m, c) => { log('!! ' + m); clearTimeout(wd); if (B) await B.c
     log(`   ${sel} = ${q}`);
   };
 
+  // Bejerman tira publicidades (webinars) en un modal que tapa el formulario. El
+  // 01/10/2026 una tapó «Emitir»: el click murió por timeout y el comprobante no
+  // salió. Se cierran por el botón de «después», en cualquier frame, sin tocar
+  // nunca el modal de emisión (ése tiene «emisi» en el texto).
+  const cerrarPublicidad = async () => {
+    let n = 0;
+    for (const f of P.frames()) {
+      n += await f.evaluate(() => {
+        let k = 0;
+        for (const e of document.querySelectorAll('button,a')) {
+          const t = (e.innerText || '').trim();
+          if (e.offsetParent && /^(Recordarme luego|Más tarde|No, gracias|Ahora no)$/i.test(t)) {
+            const cont = e.closest('[role=dialog],.modal,ngb-modal-window,div');
+            if (cont && /emisi/i.test(cont.innerText || '')) continue;
+            e.click(); k++;
+          }
+        }
+        return k;
+      }).catch(() => 0);
+    }
+    if (n) { log(`   (cerré ${n} publicidad/es de Bejerman)`); await P.waitForTimeout(1500); }
+  };
+  await cerrarPublicidad();
+
   // asegurar grilla
   for (let i = 0; i < 3 && F().url().includes('/crud'); i++) {
     await F().evaluate(() => { const c=[...document.querySelectorAll('button')].find(e=>e.offsetParent&&/^(Cancelar|Cerrar)/.test((e.innerText||'').trim())); if(c)c.click(); });
@@ -175,6 +199,7 @@ const die = async (m, c) => { log('!! ' + m); clearTimeout(wd); if (B) await B.c
   if (est.desc !== s.desc) await die(`la descripción quedó "${est.desc}"`, 8);
   if (est.total !== s.total) await die(`TOTAL NO COINCIDE: ${est.total} vs ${s.total}. NO EMITO.`, 9);
   log('   verificado, emito');
+  await cerrarPublicidad();
 
   await F().locator('#sales-crud-emit-button').first().click({ timeout: 20000, noWaitAfter: true }).catch(e => log('   warn ' + e.message.slice(0,60)));
   await P.waitForTimeout(4000);
