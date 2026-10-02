@@ -27,6 +27,15 @@ Predio, Volta es «Heladeria»): el mapeo vive en `reglas_locales.ALIAS_EXPENSAS
 La Jaula y Salón (Alto) **no llevan detalle**: la Jaula no paga expensas y el
 Salón paga $1.000.000 pactado, no la fórmula de reparto.
 
+**El % de cada ítem** (Martín de Bigg lo pidió el 02/10/2026: «los % que estoy
+pagando de cada ítem, tanto de recupero como de servicios comunes»). Cada fila
+muestra el costo total del predio en ese concepto (de `INPUTS EXPENSAS`, el
+renglón del mes) y el % que le toca al local = su monto ÷ ese total. Se despeja
+del monto congelado, no se lee de `Expensas Predio!AE:AS`: esos % son vivos y
+cambian con los m² (Peak One en rampa), así que no garantizan coincidir con lo
+ya cobrado. Si un concepto tiene monto pero su input está en blanco o en $0,
+FRENA: no hay % que mostrar.
+
 Sale a `Cuentas Corrientes/<año>/<Mes año>/<Local>/Expensas <Local> - <Mes año>.png`,
 al lado de la captura de la cuenta corriente.
 """
@@ -132,6 +141,51 @@ def leer_detalle(fmt, raw, cab, col):
     return filas_out
 
 
+def inputs_del_mes(sv, anio, mes):
+    """{concepto: costo total del predio} del renglón del mes en `INPUTS EXPENSAS`.
+    La columna A es una fecha: se busca formateada («septiembre 2026»)."""
+    rango = "INPUTS EXPENSAS!A4:O14"
+    fmt = sv.values().get(spreadsheetId=MASTER, range=rango,
+                          valueRenderOption="FORMATTED_VALUE").execute().get("values", [])
+    raw = sv.values().get(spreadsheetId=MASTER, range=rango,
+                          valueRenderOption="UNFORMATTED_VALUE").execute().get("values", [])
+    cabecera = [str(c).strip() for c in fmt[0]]
+    etiqueta = f"{MESES[mes - 1]} {anio}"
+    for f, r in zip(fmt[1:], raw[1:]):
+        if str((f or [""])[0]).strip().lower() == etiqueta:
+            r = list(r) + [""] * len(cabecera)
+            return {c: r[i] for i, c in enumerate(cabecera)
+                    if i and c and not c.upper().startswith("TOTAL")}
+    raise SystemExit(f"No hay renglón de {etiqueta} en «INPUTS EXPENSAS».")
+
+
+def con_porcentajes(detalle, inputs, local):
+    """Agrega a cada concepto (total del predio, % del local). Frena si un
+    concepto cobrado no tiene input: no hay de dónde sacar el %."""
+    out, faltan = [], []
+    for concepto, monto, tipo in detalle:
+        if tipo in ("subtotal", "total"):
+            out.append((concepto, monto, tipo, None, None))
+            continue
+        if concepto not in inputs:
+            faltan.append(f"«{concepto}» no está en INPUTS EXPENSAS")
+            continue
+        total = inputs[concepto]
+        if total in ("", None) or num(total) == 0:
+            if monto:
+                faltan.append(f"«{concepto}» cobra {pesos(monto)} pero su input está vacío")
+            out.append((concepto, monto, tipo, 0.0, None))
+            continue
+        out.append((concepto, monto, tipo, num(total), monto / num(total)))
+    if faltan:
+        raise SystemExit(f"🔴 FRENO en {local}:\n  " + "\n  ".join(faltan))
+    return out
+
+
+def porcentaje(p):
+    return f"{p * 100:.2f}".replace(".", ",") + "%"
+
+
 def cargos_cta_cte(sv, tab, anio, mes):
     """Recupero y servicios comunes que la cuenta corriente le cobra por ese mes.
     La etiqueta del cargo es el mes de ORIGEN (AGO'26), no el del bloque."""
@@ -174,21 +228,28 @@ CSS = """
 
 
 def armar_html(local, etiqueta_mes, filas):
-    def fila(concepto, monto, clase=""):
+    def fila(concepto, monto, total, pct, clase=""):
+        t = pesos(total) if total else ("$0" if total == 0 else "")
+        p = porcentaje(pct) if pct is not None else ("—" if total == 0 else "")
         return (f'<tr class="{clase}"><td>{html.escape(concepto)}</td>'
+                f'<td class="m">{t}</td><td class="m">{p}</td>'
                 f'<td class="m">{pesos(monto)}</td></tr>')
 
-    cuerpo, seccion_abierta = [], None
-    cuerpo.append('<tr class="sec"><td colspan="2">RECUPERO DE GASTOS</td></tr>')
+    def seccion(nombre):
+        return (f'<tr class="sec"><td>{nombre}</td><td class="m">Total predio</td>'
+                f'<td class="m">% {html.escape(local)}</td>'
+                f'<td class="m">{html.escape(local)} paga</td></tr>')
+
+    cuerpo = [seccion("RECUPERO DE GASTOS")]
     seccion_abierta = "recupero"
-    for concepto, monto, tipo in filas:
+    for concepto, monto, tipo, total, pct in filas:
         if tipo == "servicios" and seccion_abierta != "servicios":
-            cuerpo.append('<tr class="sec"><td colspan="2">SERVICIOS COMUNES</td></tr>')
+            cuerpo.append(seccion("SERVICIOS COMUNES"))
             seccion_abierta = "servicios"
         clase = {"subtotal": "sub", "total": "tot"}.get(tipo, "")
         if not clase and monto == 0:
             clase = "cero"
-        cuerpo.append(fila(concepto, monto, clase))
+        cuerpo.append(fila(concepto, monto, total, pct, clase))
     return (f"<!doctype html><meta charset='utf-8'>{CSS}<div class='hoja'>"
             f"<h1>EXPENSAS — {html.escape(local.upper())}</h1>"
             f"<p class='sub'>{etiqueta_mes}</p>"
@@ -204,7 +265,7 @@ def render(html_txt, destino):
         proc = subprocess.run(
             [CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
              "--force-device-scale-factor=2", "--virtual-time-budget=3000",
-             "--window-size=760,1200", f"--screenshot={salida}", pagina.as_uri()],
+             "--window-size=900,1200", f"--screenshot={salida}", pagina.as_uri()],
             capture_output=True, text=True, timeout=120)
         if not salida.exists():
             raise RuntimeError(f"Chrome no escribió el PNG.\n{proc.stderr[-600:]}")
@@ -237,6 +298,7 @@ def main():
     raw = sv.values().get(spreadsheetId=MASTER, range=rango,
                           valueRenderOption="UNFORMATTED_VALUE").execute().get("values", [])
     cab = bloque_congelado(fmt, anio, mes)
+    inputs = inputs_del_mes(sv, anio, mes)
     print(f"Bloque congelado de {etiqueta}: fila {cab} de «Expensas Predio»\n")
 
     listos, problemas = [], []
@@ -256,7 +318,7 @@ def main():
                 f"     servicios detalle {pesos(ser)}  vs cta cte {pesos(cta.get('servicios', 0))}"
                 f"   (dif {pesos(d_ser)})")
             continue
-        listos.append((local, detalle, rec, ser))
+        listos.append((local, con_porcentajes(detalle, inputs, local), rec, ser))
         print(f"  ✓ {local:<14} recupero {pesos(rec):>12} · servicios {pesos(ser):>12}"
               f" · total {pesos(rec + ser):>12}   (cierra contra la cta cte)")
 
