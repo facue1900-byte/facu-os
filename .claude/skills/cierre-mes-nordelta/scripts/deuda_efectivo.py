@@ -12,8 +12,9 @@ partido — sólo la «Diferencia Alquiler (sin iva)» es efectivo.
 que siempre hay un bloque en la calle que **no está vencido**. Se separa:
   · `delMes`  → el bloque que se está cobrando ahora
   · `vencido` → lo que quedó de antes (negativo = saldo a favor)
-El corte es la **última fila de pago** de cada pestaña: lo que hay debajo es el
-bloque corriente. No hace falta hardcodear filas ni fechas.
+El bloque corriente son los cargos que siguen al último grupo de pagos; lo que
+queda pendiente se imputa primero a ese bloque (un pago cancela lo más viejo).
+No hace falta hardcodear filas ni fechas.
 
 **Esto es una FOTO, no el saldo de hoy.** Los cobros que Mati carga en la app van
 a Supabase y a la hoja Movimientos del Master Plan, pero NO a Ctas Ctes: la
@@ -211,6 +212,28 @@ def cobros_desde_previo(salida, hoy, ya_en_planilla, avisos=None):
     return hoy.isoformat()
 
 
+def cobros_hasta(salida, ya_en_planilla):
+    """El instante (UTC) hasta el que la foto ya incluye los cobros de la app.
+
+    `cobrosDesde` es un DÍA, y la app sólo descuenta cobros de días posteriores:
+    un cobro con la misma fecha de la foto pero cargado DESPUÉS de generarla no
+    se descontaba nunca. Pasó con Bigg el 01/10/2026: foto a las 14:00, pagó
+    $731.036 a las 21:29 y la tarjeta se los siguió pidiendo. Con el instante,
+    la app compara contra el `created_at` del movimiento y ese hueco no existe.
+
+    Se toma al EMPEZAR la corrida: lo que se cargue mientras corre puede quedar
+    en las dos (foto y app) y descontarse dos veces, pero es una ventana de
+    segundos; tomarlo al final la perdería entera.
+    """
+    if ya_en_planilla:
+        return datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+    try:
+        with open(salida, encoding="utf-8") as fh:
+            return json.load(fh).get("cobrosHasta")
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     ya_en_planilla = "--cobros-en-planilla" in sys.argv[1:]
@@ -220,31 +243,39 @@ def main():
     sv = sheets().spreadsheets()
     locales, avisos = [], []
     desde = cobros_desde_previo(salida, hoy, ya_en_planilla, avisos)
+    hasta = cobros_hasta(salida, ya_en_planilla)
 
     for tab, (cobra, cd, cin, ceg, csal, signo) in PESTANAS.items():
         vals = sv.values().get(spreadsheetId=CTAS, range=f"{tab}!A1:H200",
                                valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
-        # el bloque que se cobra ahora es todo lo que hay DEBAJO del último pago
-        ult_pago = max((i for i, r in enumerate(vals, 1)
-                        if i >= 6 and len(r) > cin and num(r[cin])), default=5)
         # El pendiente en efectivo se camina EN ORDEN, no como cargos-menos-pagos:
         # un pago en efectivo cancela primero lo que se debe en efectivo, y lo que
         # sobra fue a cancelar cargos de banco (Bigg, marzo-26: $2.831.486 en mano
         # pagaron la Diferencia Alquiler Y el recupero + servicios comunes de
         # febrero). Restar los totales le regala a Bigg ese excedente para siempre:
         # daba $1.778.591 donde la deuda verificada es $2.591.035.
-        pend = del_mes = 0.0
+        # `bloque` = los cargos en efectivo del último bloque. Un bloque arranca en
+        # el primer cargo que viene DESPUÉS de un pago. Antes se tomaba como
+        # bloque "lo que hay debajo del último pago", pero los pagos se appendean
+        # al final (`volcar_cobros.py`): un pago dentro del mes dejaba el bloque
+        # vacío y TODA la deuda figuraba como de meses anteriores (Bigg, 02/10/2026:
+        # pagó $731.036 de septiembre y le quedaron $2.029.303 «vencidos» que eran
+        # el bloque de octubre).
+        pend = bloque = 0.0
+        hubo_pago = False
         for i, r in enumerate(vals, 1):
             r = r + [""] * 10
             if i < 6:
                 continue
             det, eg, ing = str(r[cd]).strip(), num(r[ceg]), num(r[cin])
             if eg:                                            # CARGO
+                if hubo_pago:
+                    bloque, hubo_pago = 0.0, False
                 if medio_del_cargo(cobra, det) == "efectivo":
                     pend += eg
-                    if i > ult_pago:
-                        del_mes += eg
+                    bloque += eg
             elif ing:                                         # PAGO
+                hubo_pago = True
                 m = medio_del_pago(r, cd)
                 if m == "banco" or cobra == "banco":
                     continue      # Fabric no paga nada en mano: nada que descontar
@@ -261,6 +292,11 @@ def main():
                 if cobra == "mixto":
                     pend = max(0.0, pend)
         total = round(pend, 2)
+        # Un pago cancela primero lo más viejo: lo que queda se le imputa primero
+        # al bloque corriente y recién el excedente es de meses anteriores. Un
+        # negativo es saldo a favor y va entero a `vencido`, como en los locales
+        # sin pestaña.
+        del_mes = min(bloque, total) if total > 0 else 0.0
         locales.append({
             "nombre": ROTULO.get(tab, tab),
             "origen": origen_app(ROTULO.get(tab, tab), avisos),
@@ -353,6 +389,8 @@ def main():
     doc = {"generado": hoy.isoformat(),
            # De acá en adelante los cobros los tiene la app, no la planilla.
            "cobrosDesde": desde,
+           # La app usa éste cuando está: compara contra el `created_at`.
+           "cobrosHasta": hasta,
            "fuente": "Sheet Ctas Ctes — pestañas por local + CARGOS/Cobros/Futbol",
            "total": total,
            "cuantosDeben": sum(1 for l in locales if l["confiable"] and l["efectivo"] > 0),

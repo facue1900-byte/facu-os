@@ -72,6 +72,30 @@ MEDIO = {"caja": "efectivo", "banco": "banco"}
 CADENA = re.compile(r"^=\+?([A-Z]+)\d+([+-])([A-Z]+)\d+([+-])([A-Z]+)\d+$")
 
 
+def copiar_formato_de_pago(sv, pest, lay, ult, n):
+    """Las filas nuevas toman el formato del último pago de la pestaña.
+
+    Escritas a pelo salían «01/10/2026» y «731036» entre filas «7-sep» y
+    «560,000» (Bigg, 02/10/2026): la cuenta que se le manda al locatario quedaba
+    desprolija. Se copian sólo A:G — en la H viven los cartuchos a mano.
+    """
+    vals = sv.values().get(spreadsheetId=CTAS, range=f"{pest}!A1:H{ult}",
+                           valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
+    ci = col(lay["ingreso"])
+    modelo = max((i for i, r in enumerate(vals, 1)
+                  if i >= 6 and len(r) > ci and num(r[ci])), default=None)
+    if modelo is None:
+        return
+    sid = next(h["properties"]["sheetId"] for h in sv.get(
+        spreadsheetId=CTAS, fields="sheets(properties(sheetId,title))").execute()["sheets"]
+        if h["properties"]["title"] == pest)
+    rango = lambda a, b: {"sheetId": sid, "startRowIndex": a - 1, "endRowIndex": b,
+                          "startColumnIndex": 0, "endColumnIndex": 7}
+    sv.batchUpdate(spreadsheetId=CTAS, body={"requests": [{"copyPaste": {
+        "source": rango(modelo, modelo), "destination": rango(ult + 1, ult + n),
+        "pasteType": "PASTE_FORMAT"}}]}).execute()
+
+
 def serial_a_fecha(s):
     try:
         return dt.date(1899, 12, 30) + dt.timedelta(days=int(s))
@@ -299,6 +323,7 @@ def main():
             sv.values().batchUpdate(
                 spreadsheetId=CTAS,
                 body={"valueInputOption": "USER_ENTERED", "data": datos}).execute()
+            copiar_formato_de_pago(sv, pest, lay, ult, len(faltan))
         except Exception as e:                                    # noqa: BLE001
             ok_todo = False
             fallados.append(local)
