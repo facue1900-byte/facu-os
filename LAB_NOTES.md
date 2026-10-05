@@ -4128,3 +4128,10 @@ Ojo al verificar: el CAE **no está en la capa de texto** del PDF (se imprime
 - **Causa (2):** el reporte de MP llega con atraso (el del 04/10 se generó 22:01 y no traía el cobro de las 23:06). La tarjeta daba rojo por timing.
 - **Fix:** `comisionesDeCreditos` (espejo + processed_payments buycredits) desde el 22/09; la tarjeta suma «en camino» los cobros posteriores al último movimiento. Commit en astronomy-members, 05/10.
 - **Lección:** para cazar una diferencia libro↔banco, comparar saldo contra saldo **día por día** desde el último punto en que cuadraba: el día del salto dice qué buscar. Un "error financiero" cargado a mano puede estar tapando un agujero sistemático.
+
+## 05/10/2026 — Caja del Paseo: dos cargas de Mati mal interpretadas por el parser
+
+**Qué pasó.** «Pagué sueldo limpieza $1.100.000» y «$1.200.000» cayeron en *Productos de limpieza* (la regla de la palabra «limpieza» ganaba), y «Pago Marina salón $1.000.000» —Marina pagando las expensas del salón— entró como **egreso** en *Otros*: la caja se corrió $2.000.000 y el salón seguía figurando con $1.000.000 a cobrar.
+**Causa.** `parseCaja.ts` trata cualquier «pago/pagó» como verbo de egreso, sin mirar quién paga; y no había regla para el sueldo de la limpieza (históricamente va a *Sueldo Mantenimiento Gastronomia*, como Rhino).
+**Arreglo.** App `d395bff`: «sueldo…limpieza» / «rhino» → Sueldo Mantenimiento Gastronomia, antes que productos; «pago/pagó» + un local y sin rubro de gasto → cobro de ese local («pagué» sigue siendo nuestro). 9 casos probados con `tsx`. Los 3 movimientos se corrigieron en Supabase y en el Sheet (el Apps Script respondió `updated` en los tres). Desplegado en los tres sitios (`index-DOyyygDS.js`).
+**Lo que queda.** «pago luz 80mil» sigue cayendo en *Otros* (la regla de Edenor pide «factura de luz»); el `.env` de facu-os tiene una línea 44 suelta (un token sin `NOMBRE=`) que rompe `set -a; . ./.env` en bash.
