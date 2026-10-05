@@ -4,8 +4,8 @@
   "titulo": "Un local<br>a estrenar.",
   "bajada": "47,9 m² en la galería gastronómica nueva, con la cocina prevista en el proyecto y el frente sobre la galería semicubierta. Buscamos pizzería.",
   "disponibilidad": "Post obra 1 · ~3 meses",
-  "portada_img": "render-galeria-noche",
-  "portada_alt": "Render de noche de la galería gastronómica nueva: Pizza, Fabric y Schock BA",
+  "portada_img": "galeria",
+  "portada_alt": "La galería gastronómica del Paseo Nordelta con los frentes vidriados",
   "portada_meta": [
     {
       "k": "Superficie",
@@ -103,7 +103,6 @@
     "titulo": "En la galería<br>nueva.",
     "bajada": "Tres locales gastronómicos juntos sobre el acceso al paseo. Dos ya tienen dueño; queda éste."
   },
-  "portada_pos": "22% 50%",
   "galeria": {
     "h": "Así va a quedar<br>la galería.",
     "fotos": [
