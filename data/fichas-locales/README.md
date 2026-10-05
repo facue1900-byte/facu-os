@@ -94,7 +94,7 @@ dos cortaron con el mensaje correcto.
 | Pizzería: 47,9 m², cotas 2,00 / 10,95 / 7,60 | proyecto validado, medido en `propuesta 16-07.pdf` |
 | Pizzería: $2.750.000 | Facu, 05/10/2026 (antes $2.250.000, 11/09) |
 | Renders de la galería | el `Cartel Obra Locales.jpg` (2835 px), con los logos reales de Fabric (fabricsushi.com.ar) y Schock BA (schockba.com.ar) puestos encima; «Pizza» queda provisorio |
-| Láminas de planta y vistas | `planos-pizzeria-arquitecto.pdf` (el «Local Fabric» del arquitecto: el local es el sombreado) |
+| Láminas de planta y vistas | `planos-pizzeria-arquitecto.pdf` (el «Local Fabric» del arquitecto: el local es el sombreado). `laminas.py` las pasa a PNG y cambia el rótulo a «Local Pizzería» (Facu, 05/10) |
 | Qué local es cada ambiente del plano | Facu, 11/09/2026 |
 | La cafetería es el bloque de SALON 28 | el plano trae `9,60`, `3,45`, `5,95`, `GALERIA 13,00` y `Deck madera descubierto` — las mismas cotas que el plano del café de Max |
 | Contacto | `paseonordelta@gmail.com` · @paseonordelta · Av. de los Colegios 160 |
