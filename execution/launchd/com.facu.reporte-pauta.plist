@@ -2,7 +2,8 @@
 <!--
   Reporte de pauta de Astronomy Academy — todos los lunes a las 10:00.
 
-  Corre `reporte_pauta.py`, deja el informe en
+  Desde el 05/10/2026 corre `reporte_embudo.py` (Meta + web + Instagram + clientes nuevos)
+  y su `--chequeo`, y deja todo en
   ~/Desktop/Productoras/Astronomy/Academia/Pauta/REPORTE_PAUTA.txt y avisa con una
   notificación de macOS. Es de solo lectura: no toca la cuenta publicitaria.
 
@@ -10,6 +11,11 @@
   14/08/2026, junto a los exports de Meta. Como el aviso ya no se ve de reojo al
   mirar el Escritorio, LA NOTIFICACIÓN PASÓ A SER EL ÚNICO CANAL: si se toca el
   osascript de abajo, el reporte se vuelve invisible.
+
+  05/10/2026: el lunes 05/10 a las 10:00 el script viejo murió por un error de conexión y
+  la notificación dijo igual "El informe de la semana está..." — avisaba siempre lo mismo.
+  Ahora reintenta 3 veces (2 min entre cada una) y la notificación dice OK o FALLA según
+  el resultado real. `reporte_pauta.py` (experimento de julio) queda en el repo, sin uso.
 
   Instalar:
     cp ~/facu-os/execution/launchd/com.facu.reporte-pauta.plist ~/Library/LaunchAgents/
@@ -36,7 +42,7 @@
     <array>
         <string>/bin/bash</string>
         <string>-lc</string>
-        <string>DEST=/Users/Facu/Desktop/Productoras/Astronomy/Academia/Pauta; mkdir -p "$DEST" || exit 1; /Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/active/astronomy/pauta/reporte_pauta.py > "$DEST/REPORTE_PAUTA.txt" 2>&amp;1; osascript -e 'display notification "El informe de la semana está en Astronomy/Academia/Pauta: REPORTE_PAUTA.txt" with title "Pauta Astronomy" sound name "Ping"'</string>
+        <string>DEST=/Users/Facu/Desktop/Productoras/Astronomy/Academia/Pauta; OUT="$DEST/REPORTE_PAUTA.txt"; PY=/Users/Facu/facu-os/.venv/bin/python; R=/Users/Facu/facu-os/active/astronomy/pauta/reporte_embudo.py; mkdir -p "$DEST" || exit 1; for i in 1 2 3; do { date; echo; $PY $R; echo; echo "=== CHEQUEO: ¿se está registrando todo? ==="; $PY $R --chequeo; } > "$OUT" 2>&amp;1; rc=$?; grep -qE "Traceback|rechazó|Faltan" "$OUT" || break; rc=2; sleep 120; done; if [ $rc -eq 0 ]; then MSG="Informe listo y todo registrando. Está en Academia/Pauta: REPORTE_PAUTA.txt"; else MSG="FALLA: algo dejó de registrar o el reporte no corrió. Mirá REPORTE_PAUTA.txt"; fi; osascript -e "display notification \"$MSG\" with title \"Pauta Astronomy\" sound name \"Ping\""; exit $rc</string>
     </array>
 
     <key>WorkingDirectory</key>

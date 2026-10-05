@@ -4135,3 +4135,21 @@ Ojo al verificar: el CAE **no está en la capa de texto** del PDF (se imprime
 **Causa.** `parseCaja.ts` trata cualquier «pago/pagó» como verbo de egreso, sin mirar quién paga; y no había regla para el sueldo de la limpieza (históricamente va a *Sueldo Mantenimiento Gastronomia*, como Rhino).
 **Arreglo.** App `d395bff`: «sueldo…limpieza» / «rhino» → Sueldo Mantenimiento Gastronomia, antes que productos; «pago/pagó» + un local y sin rubro de gasto → cobro de ese local («pagué» sigue siendo nuestro). 9 casos probados con `tsx`. Los 3 movimientos se corrigieron en Supabase y en el Sheet (el Apps Script respondió `updated` en los tres). Desplegado en los tres sitios (`index-DOyyygDS.js`).
 **Lo que queda.** «pago luz 80mil» sigue cayendo en *Otros* (la regla de Edenor pide «factura de luz»); el `.env` de facu-os tiene una línea 44 suelta (un token sin `NOMBRE=`) que rompe `set -a; . ./.env` en bash.
+
+## 2026-10-05 — Tres cosas que fallaban calladas, encontradas el mismo día
+
+1. **El reporte de pauta de los lunes avisaba "listo" aunque fallara.** El plist hacía
+   `script > archivo; osascript "El informe está..."`: la notificación no miraba el
+   resultado. El 05/10 a las 10:00 murió por conexión y avisó igual. Arreglo: reintenta
+   3 veces y la notificación dice OK o FALLA según el código de salida. Corre ahora
+   `active/astronomy/pauta/reporte_embudo.py` (+ `--chequeo`).
+2. **`test:seguridad` de astronomy-members moría en el primer chequeo** porque leía
+   `lib/equipo.ts`, borrado en 947e05c: ninguno de los chequeos de abajo corría. Al
+   arreglarlo aparecieron 2 fallas reales que estaban tapadas.
+3. **Línea 44 del `.env` de facu-os** (`GH_TOKEN= ghp_…`, con espacio): al hacer
+   `source`, bash ejecutaba el token como comando e **imprimía el token** en la salida.
+   Corregida; el token quedó expuesto en una sesión → rotarlo.
+
+Patrón: un aviso que no depende del resultado no es un aviso. Todo `&& notificar` tiene
+que mirar el código de salida, y un chequeo que muere en la línea 1 se ve igual que uno
+que pasa.
