@@ -4,7 +4,7 @@ Una ficha comercial por local vacío. Un JSON por local, dos piezas de salida:
 
 | Pieza | Qué es | Para qué |
 |---|---|---|
-| `salida/<slug>.pdf` | 3 hojas A4 verticales | mandar por WhatsApp a un candidato |
+| `salida/<slug>.pdf` | 3 hojas A4 verticales, más las opcionales (`galeria`: los renders; `laminas`: planos del arquitecto en hojas apaisadas) | mandar por WhatsApp a un candidato |
 | `salida/<slug>-story.png` | 1080 × 1920 | historia de Instagram, con o sin pauta |
 
 ```bash
@@ -50,7 +50,7 @@ Qué es cada letra del plano, dicho por Facu el 11/09/2026:
 | | | | |
 |---|---|---|---|
 | Cafetería | SALON 28 + OFICINA 29/30 + GALERIA + deck | Pizzería | LOCAL 13 + COCINA 14 |
-| Futuro Fabric | LOCAL 11 + COCINA 12 | Heladería Shock BA | LOCAL 9 + COCINA 10 |
+| Futuro Fabric | LOCAL 11 + COCINA 12 | Heladería Schock BA | LOCAL 9 + COCINA 10 |
 | BIGG | SALON 16/17 + COCINA 18 (el gris al costado es el Fabric de hoy, futura parrilla) | Wellness | GIMNASIO 3 |
 | Market | SUPERMERCADO 1 | Los 7 de servicios | la tira de LOCAL 2 |
 | Salón multiespacios | SALON 32 | Oficinas | OFICINA 31 |
@@ -92,7 +92,9 @@ dos cortaron con el mensaje correcto.
 | Café: 130 / 52 / 39 m², cotas | plano preliminar del Arq. Max Elewaut (`SECTOR CAFE - PLANTA`) |
 | Café: $3.500.000 + $1.050.000 | tabla de precios de Facu, 11/09/2026 |
 | Pizzería: 47,9 m², cotas 2,00 / 10,95 / 7,60 | proyecto validado, medido en `propuesta 16-07.pdf` |
-| Pizzería: $2.250.000 | Facu, 11/09/2026 |
+| Pizzería: $2.750.000 | Facu, 05/10/2026 (antes $2.250.000, 11/09) |
+| Renders de la galería | el `Cartel Obra Locales.jpg` (2835 px), con los logos reales de Fabric (fabricsushi.com.ar) y Schock BA (schockba.com.ar) puestos encima; «Pizza» queda provisorio |
+| Láminas de planta y vistas | `planos-pizzeria-arquitecto.pdf` (el «Local Fabric» del arquitecto: el local es el sombreado) |
 | Qué local es cada ambiente del plano | Facu, 11/09/2026 |
 | La cafetería es el bloque de SALON 28 | el plano trae `9,60`, `3,45`, `5,95`, `GALERIA 13,00` y `Deck madera descubierto` — las mismas cotas que el plano del café de Max |
 | Contacto | `paseonordelta@gmail.com` · @paseonordelta · Av. de los Colegios 160 |

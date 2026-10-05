@@ -55,8 +55,9 @@ def hoja_portada(d: dict) -> str:
     )
     return f"""
 <section class="hoja hoja--foto">
-  <div class="foto"><img src="{datauri(d['portada_img'])}" alt="{esc(d['portada_alt'])}"></div>
-  <div class="cota"><span>01 &middot; {esc(d['nombre'])}</span></div>
+  <div class="foto"><img src="{datauri(d['portada_img'])}" alt="{esc(d['portada_alt'])}"
+       style="object-position:{d.get('portada_pos', '50% 50%')}"></div>
+  <div class="cota"><span>{{N}} &middot; {esc(d['nombre'])}</span></div>
   <div class="portada__body">
     <img class="portada__logo" src="{datauri('logo')}" alt="Paseo Nordelta">
     <p class="chip"><i></i>{esc(d['disponibilidad'])}</p>
@@ -85,7 +86,7 @@ def hoja_local(d: dict) -> str:
     n = len(d["superficies"])
     return f"""
 <section class="hoja">
-  <div class="cota"><span>02 &middot; El local</span></div>
+  <div class="cota"><span>{{N}} &middot; El local</span></div>
   <div class="hoja__body">
     <p class="eyebrow">El local</p>
     <h2>{d['h_local']}</h2>
@@ -93,7 +94,7 @@ def hoja_local(d: dict) -> str:
     {dibujo}
     <ul class="puntos">{puntos}</ul>
   </div>
-  <div class="pie"><span>Paseo Nordelta</span><span>{esc(d['nombre'])} &middot; Hoja 2 de 3</span></div>
+  <div class="pie"><span>Paseo Nordelta</span><span>{esc(d['nombre'])} &middot; Hoja {{N}} de {{T}}</span></div>
 </section>"""
 
 
@@ -127,7 +128,7 @@ def hoja_cierre(d: dict) -> str:
     )
     return f"""
 <section class="hoja">
-  <div class="cota"><span>03 &middot; D&oacute;nde est&aacute; y cu&aacute;nto sale</span></div>
+  <div class="cota"><span>{{N}} &middot; D&oacute;nde est&aacute; y cu&aacute;nto sale</span></div>
   <div class="hoja__body">
     <p class="eyebrow">D&oacute;nde est&aacute;</p>
     <h2>{d['h_cierre']}</h2>
@@ -146,13 +147,63 @@ def hoja_cierre(d: dict) -> str:
       <div><p class="cta__l">D&oacute;nde</p><p class="cta__v">{CONTACTO['dir']}</p></div>
     </div>
   </div>
-  <div class="pie"><span>{CONTACTO['web']}</span><span>{esc(d['nombre'])} &middot; Hoja 3 de 3</span></div>
+  <div class="pie"><span>{CONTACTO['web']}</span><span>{esc(d['nombre'])} &middot; Hoja {{N}} de {{T}}</span></div>
 </section>"""
+
+
+def hoja_galeria(d: dict) -> str:
+    """Los renders del local, enteros (en la portada van recortados)."""
+    g = d["galeria"]
+    fotos = "".join(
+        f'<figure class="render"><img src="{datauri(f["src"])}" alt="{esc(f["cap"])}">'
+        f'<figcaption>{esc(f["cap"])}</figcaption></figure>'
+        for f in g["fotos"]
+    )
+    return f"""
+<section class="hoja">
+  <div class="cota"><span>{{N}} &middot; La galer&iacute;a</span></div>
+  <div class="hoja__body">
+    <p class="eyebrow">La galer&iacute;a</p>
+    <h2>{g['h']}</h2>
+    <div class="renders">{fotos}</div>
+    <p class="nota">{g['nota']}</p>
+  </div>
+  <div class="pie"><span>Paseo Nordelta</span><span>{esc(d['nombre'])} &middot; Hoja {{N}} de {{T}}</span></div>
+</section>"""
+
+
+def hoja_plano(d: dict, pl: dict) -> str:
+    """Una lámina del arquitecto, tal cual, en una hoja apaisada."""
+    return f"""
+<section class="hoja hoja--apaisada">
+  <div class="cota"><span>{{N}} &middot; {esc(pl['titulo'])}</span></div>
+  <div class="hoja__body">
+    <div class="lamina__head"><p class="eyebrow">{esc(pl['titulo'])}</p>
+      <p class="plano__cap">{esc(pl['cap'])}</p></div>
+    <div class="lamina"><img src="{datauri(pl['src'])}" alt="{esc(pl['titulo'])}"></div>
+  </div>
+  <div class="pie"><span>Paseo Nordelta</span><span>{esc(d['nombre'])} &middot; Hoja {{N}} de {{T}}</span></div>
+</section>"""
+
+
+def hojas(d: dict) -> list[str]:
+    """El orden de la ficha. Galería y láminas son opcionales: sin ellas quedan las 3 de siempre."""
+    out = [hoja_portada(d)]
+    if d.get("galeria"):
+        out.append(hoja_galeria(d))
+    out.append(hoja_local(d))
+    out += [hoja_plano(d, pl) for pl in d.get("laminas", [])]
+    out.append(hoja_cierre(d))
+    return out
 
 
 def ficha_html(d: dict) -> str:
     css = (BASE / "estilo.css").read_text()
-    cuerpo = hoja_portada(d) + hoja_local(d) + hoja_cierre(d)
+    hs = hojas(d)
+    # la numeración sale del orden real: la cota lleva "01", el pie "Hoja 1 de N"
+    cuerpo = "".join(h.replace("Hoja {N} de {T}", f"Hoja {i} de {len(hs)}")
+                      .replace("{N}", f"{i:02d}")
+                     for i, h in enumerate(hs, 1))
     return (f'<!doctype html><html lang="es"><head><meta charset="utf-8">'
             f'<title>{esc(d["nombre"])} &middot; Paseo Nordelta</title>'
             f'<style>{css}</style></head><body>{cuerpo}</body></html>')
@@ -261,13 +312,13 @@ def main(slugs: list[str]) -> None:
         chrome(["--window-size=1080,1920", "--force-device-scale-factor=1",
                 f"--screenshot={png2}", s2html.as_uri()], png2)
 
-        verificar(pdf, png, slug)
+        verificar(pdf, png, slug, d)
         verificar_historia(png2, f"{slug} (historia 2)")
         for f in (pdf, png, png2):
             print(f"{slug:<10} {f.name:<22} {f.stat().st_size/1024:>6.0f} KB")
 
 
-def verificar(pdf: pathlib.Path, png: pathlib.Path, slug: str) -> None:
+def verificar(pdf: pathlib.Path, png: pathlib.Path, slug: str, d: dict) -> None:
     """Que el archivo exista no alcanza: se abren y se miran.
 
     El PDF tiene que traer 3 hojas A4 verticales con texto adentro, y el PNG
@@ -275,12 +326,15 @@ def verificar(pdf: pathlib.Path, png: pathlib.Path, slug: str) -> None:
     """
     import fitz
     doc = fitz.open(pdf)
-    if len(doc) != 3:
-        sys.exit(f"{slug}: el PDF salió con {len(doc)} hojas, tienen que ser 3")
-    for i, p in enumerate(doc, 1):
+    # cada hoja que se espera, con su tamaño: las láminas van apaisadas
+    esperado = [(595, 842)] * (3 + bool(d.get("galeria")))
+    esperado[-1:-1] = [(842, 595)] * len(d.get("laminas", []))
+    if len(doc) != len(esperado):
+        sys.exit(f"{slug}: el PDF salió con {len(doc)} hojas, tienen que ser {len(esperado)}")
+    for i, (p, tam) in enumerate(zip(doc, esperado), 1):
         ancho, alto = round(p.rect.width), round(p.rect.height)
-        if (ancho, alto) != (595, 842):
-            sys.exit(f"{slug}: la hoja {i} mide {ancho}x{alto} pt, no A4 vertical")
+        if (ancho, alto) != tam:
+            sys.exit(f"{slug}: la hoja {i} mide {ancho}x{alto} pt, tenía que medir {tam[0]}x{tam[1]}")
         if len(p.get_text().strip()) < 40:
             sys.exit(f"{slug}: la hoja {i} salió casi sin texto")
     doc.close()

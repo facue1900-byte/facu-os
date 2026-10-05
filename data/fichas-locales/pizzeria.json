@@ -4,8 +4,8 @@
   "titulo": "Un local<br>a estrenar.",
   "bajada": "47,9 m² en la galería gastronómica nueva, con la cocina prevista en el proyecto y el frente sobre la galería semicubierta. Buscamos pizzería.",
   "disponibilidad": "Post obra 1 · ~3 meses",
-  "portada_img": "galeria",
-  "portada_alt": "La galería gastronómica del Paseo Nordelta con los frentes vidriados",
+  "portada_img": "render-galeria-noche",
+  "portada_alt": "Render de noche de la galería gastronómica nueva: Pizza, Fabric y Schock BA",
   "portada_meta": [
     {
       "k": "Superficie",
@@ -44,7 +44,7 @@
     "<b>Cocina prevista en el proyecto</b> — los tres locales de la galería nacieron gastronómicos.",
     "<b>Frente de 7,60 m</b> vidriado sobre la galería semicubierta.",
     "<b>Galería propia al frente</b> para mesas afuera, cubierta de sol y lluvia.",
-    "<b>Los vecinos ya están:</b> Fabric se muda al local de al lado y Shock BA toma el tercero.",
+    "<b>Los vecinos ya están:</b> Fabric se muda al local de al lado y Schock BA toma el tercero.",
     "<b>Disponible después de la Obra 1</b>, aproximadamente en tres meses."
   ],
   "h_cierre": "En la galería nueva,<br>sobre el acceso.",
@@ -52,7 +52,7 @@
   "condiciones": [
     {
       "k": "Alquiler",
-      "v": "$2.250.000",
+      "v": "$2.750.000",
       "n": "Por mes, en pesos. Los alquileres del paseo ajustan por IPC, trimestralmente."
     },
     {
@@ -71,7 +71,7 @@
       "n": "Al terminar la Obra 1 de la galería nueva."
     }
   ],
-  "nota": "La galería nueva son tres locales gastronómicos juntos, sobre el acceso al paseo. Dos ya tienen dueño — Fabric se muda a uno y Shock BA toma el otro — y queda éste. El paseo funciona de lunes a lunes: La Jaula y las escuelas de fútbol, BIGG y el Wellness Center traen gente todos los días. Cotas del proyecto validado; se verifican en obra.",
+  "nota": "La galería nueva son tres locales gastronómicos juntos, sobre el acceso al paseo. Dos ya tienen dueño — Fabric se muda a uno y Schock BA toma el otro — y queda éste. El paseo funciona de lunes a lunes: La Jaula y las escuelas de fútbol, BIGG y el Wellness Center traen gente todos los días. Cotas del proyecto validado; se verifican en obra.",
   "story": {
     "titulo": "Buscamos<br>pizzería.",
     "bajada": "47,9 m² a estrenar en la galería gastronómica nueva, con cocina prevista y frente vidriado de 7,60 m sobre la galería.",
@@ -102,5 +102,32 @@
   "story2": {
     "titulo": "En la galería<br>nueva.",
     "bajada": "Tres locales gastronómicos juntos sobre el acceso al paseo. Dos ya tienen dueño; queda éste."
-  }
+  },
+  "portada_pos": "22% 50%",
+  "galeria": {
+    "h": "Así va a quedar<br>la galería.",
+    "fotos": [
+      {
+        "src": "render-galeria-dia",
+        "cap": "Render · de día — el local es el de la izquierda, con el horno a la vista"
+      },
+      {
+        "src": "render-galeria-noche",
+        "cap": "Render · de noche — galería semicubierta y el jardín al frente"
+      }
+    ],
+    "nota": "«Pizza» es un cartel provisorio: el nombre y la marca los pone el locatario. Fabric y Schock BA ya tienen su local en la galería. Imágenes ilustrativas del proyecto."
+  },
+  "laminas": [
+    {
+      "src": "plano-pizzeria-planta",
+      "titulo": "Planta del proyecto",
+      "cap": "Lámina del arquitecto · el local es el sombreado de la izquierda"
+    },
+    {
+      "src": "plano-pizzeria-vistas",
+      "titulo": "Vistas y cortes",
+      "cap": "Lámina del arquitecto · en la vista de frente, el local es el módulo de la izquierda"
+    }
+  ]
 }
