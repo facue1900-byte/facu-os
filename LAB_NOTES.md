@@ -4121,3 +4121,10 @@ cambio de configuración lo bloquea el clasificador de auto mode, lo hace Facu).
 salieron las 6 de octubre (FC 17-20, ND 10-11) con CAE, verificadas en el PDF.
 Ojo al verificar: el CAE **no está en la capa de texto** del PDF (se imprime
 «C.A.E. N°…» dibujado): se lee renderizando el pie de página, no con un regex sobre el texto.
+
+## 05/10/2026 · La comisión de MP de los créditos sueltos nunca se anotó (Astronomy)
+- **Síntoma:** la tarjeta de Finanzas marcaba −$136.977,11 entre el libro de Academy y Mercado Pago.
+- **Causa raíz (1):** la fila «Comisión Mercado Pago» sumaba sólo `sales.mp_fee`; las compras de créditos sueltos van a `manual_payments` (sin id de pago) y su 7,99% no se anotaba nunca. 10 compras = $73.305,06 desde julio; $68.385,26 de eso ya estaban adentro del «error financiero» de $164.378,03 del 22/09, sin que nadie lo supiera.
+- **Causa (2):** el reporte de MP llega con atraso (el del 04/10 se generó 22:01 y no traía el cobro de las 23:06). La tarjeta daba rojo por timing.
+- **Fix:** `comisionesDeCreditos` (espejo + processed_payments buycredits) desde el 22/09; la tarjeta suma «en camino» los cobros posteriores al último movimiento. Commit en astronomy-members, 05/10.
+- **Lección:** para cazar una diferencia libro↔banco, comparar saldo contra saldo **día por día** desde el último punto en que cuadraba: el día del salto dice qué buscar. Un "error financiero" cargado a mano puede estar tapando un agujero sistemático.
