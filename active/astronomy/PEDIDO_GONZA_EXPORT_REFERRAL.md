@@ -6,7 +6,7 @@ Armado 05/10/2026. **SIN MANDAR** — lo manda Facu.
 
 El export del 16/09 (`data/whatsapp-bot-academy-2026-09-16/`, 999 CSV) trae solo
 `Fecha,Hora,De,Mensaje`. Sin el referral no se puede saber qué anuncio trajo cada lead,
-y la atribución hoy se hace por el texto autocompletado (`[MP-VID]`, `[MEM-ONL]`), que se
+y la atribución hoy se hace por el texto autocompletado del anuncio, que se
 pierde si el lead lo borra.
 
 El reporte de Meta de septiembre ya está bajado por API:
