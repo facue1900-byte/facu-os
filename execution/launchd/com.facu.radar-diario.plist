@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Radar Facu — todos los días a las 07:30.
+
+  Barre los repos, las sesiones de Claude Code, la memoria, los ESTADO.md, el vault y el
+  Desktop/Downloads (execution/radar/recolectar.py) y un Claude headless (Opus) reescribe
+  el doc "Radar Facu":
+    https://claude.ai/code/artifact/f91c078c-1bf1-4692-a2d7-1120eb970cc3
+  Notifica OK o FALLA según el resultado real. Si la Mac está dormida a las 07:30, corre
+  al despertar.
+
+  Por qué un doc de Claude Docs y no un artifact HTML: Claude headless (claude -p) NO
+  tiene la herramienta Artifact (probado 06/10/2026), pero sí el conector de Claude Docs.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.radar-diario.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.radar-diario.plist
+  Probar ya:
+    launchctl start com.facu.radar-diario ; cat ~/facu-os/data/radar/ultima-corrida.txt
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.radar-diario</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-lc</string>
+        <string>/Users/Facu/facu-os/execution/radar/radar_diario.sh</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>7</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/radar-diario.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/radar-diario.log</string>
+</dict>
+</plist>
