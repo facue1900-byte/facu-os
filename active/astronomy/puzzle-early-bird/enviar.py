@@ -1,12 +1,13 @@
 """Manda el mail de early birds de OBSESSION a la base de Puzzle.
 
+--campana:      cuál mail (early, preventa1). Obligatorio: cada una tiene su log.
 Sin flags:      manda UNA prueba a Facu. No toca a nadie de la base.
 --contar:       dice a cuántos le saldría y por qué quedan afuera los que quedan afuera.
 --send:         manda de verdad a la base, en tandas de --limite (default 450, Gmail
                 personal corta a ~500/día). Cada envío se anota en enviados.csv al
                 instante: si se corta, se vuelve a correr y sigue donde quedó.
 
-Quedan afuera siempre: menores de 18, los de bajas.txt y los ya enviados.
+Quedan afuera siempre: menores de 18, bajas.txt, rebotes.txt y los ya enviados de ESA campaña.
 """
 import argparse
 import base64
@@ -26,14 +27,21 @@ import google_auth  # noqa: E402
 
 BASE = pathlib.Path.home() / "Desktop/Productoras/Puzzle/base_contactos_unificada PUZZLE.xlsx"
 LINK = "https://planout.ar/eventos/es/comprarEvento?idEvento=1300&affId=FC"
-ASUNTO = "OBSESSION: ya se fue la mitad de los early birds"
 REMITENTE = "OBSESSION"
 CUENTA = "puzzle"  # puzzle.bsas@gmail.com: el remitente es Puzzle, no Facu
 PRUEBA_A = "facue1900@gmail.com"
-LOG = AQUI / "enviados.csv"
 BAJAS = AQUI / "bajas.txt"
+REBOTES = AQUI / "rebotes.txt"  # "address not found" de tandas anteriores
 
-TEXTO = """Hola{nombre},
+PIE = "\nSi no querés recibir más, respondé este mail con la palabra baja.\n"
+
+# Cada campaña lleva su propio log: el que recibió una puede recibir la siguiente.
+CAMPANAS = {
+    "early": {
+        "asunto": "OBSESSION: ya se fue la mitad de los early birds",
+        "html": "mail.html",
+        "log": "enviados.csv",
+        "texto": """Hola{nombre},
 
 El 31 de octubre es OBSESSION: LA fiesta de Halloween, en Palacio Alsina.
 
@@ -45,9 +53,28 @@ EARLY BIRD $20.000
 No lo dejes para el final.
 
 31.10.2026 · PALACIO ALSINA · +27
+""" + PIE,
+    },
+    # 07/10: early birds agotados; en Planout la tanda vigente es "PREVENTA 1" $25.000 + $3.750.
+    "preventa1": {
+        "asunto": "OBSESSION: se agotaron los early birds",
+        "html": "mail-preventa1.html",
+        "log": "enviados-preventa1.csv",
+        "texto": """Hola{nombre},
 
-Si no querés recibir más, respondé este mail con la palabra baja.
-"""
+El 31 de octubre es OBSESSION: LA fiesta de Halloween, en Palacio Alsina.
+
+Los early birds se agotaron. Ya está a la venta la Preventa 1: cuando se termine, pasa a la tanda siguiente.
+
+PREVENTA 1 $25.000
+{link}
+
+No lo dejes para el final.
+
+31.10.2026 · PALACIO ALSINA · +27
+""" + PIE,
+    },
+}
 
 
 def saludo(nombre, apellido):
@@ -85,23 +112,23 @@ def leer_base():
     return personas
 
 
-def ya_enviados():
-    if not LOG.exists():
+def ya_enviados(log):
+    if not log.exists():
         return set()
-    with LOG.open() as f:
+    with log.open() as f:
         return {row["email"] for row in csv.DictReader(f)}
 
 
-def bajas():
-    if not BAJAS.exists():
+def leer_lista(archivo):
+    if not archivo.exists():
         return set()
-    return {l.strip().lower() for l in BAJAS.read_text().splitlines() if l.strip()}
+    return {l.strip().lower() for l in archivo.read_text().splitlines() if l.strip()}
 
 
-def destinatarios():
+def destinatarios(log):
     personas = leer_base()
-    enviados, baja = ya_enviados(), bajas()
-    afuera = {"menor de 18": 0, "baja": 0, "ya enviado": 0, "mail inválido": 0}
+    enviados, baja, rebote = ya_enviados(log), leer_lista(BAJAS), leer_lista(REBOTES)
+    afuera = {"menor de 18": 0, "baja": 0, "rebotó": 0, "ya enviado": 0, "mail inválido": 0}
     lista, vistos = [], set()
     for p in personas:
         e = p["email"]
@@ -111,6 +138,8 @@ def destinatarios():
             afuera["menor de 18"] += 1
         elif e in baja:
             afuera["baja"] += 1
+        elif e in rebote:
+            afuera["rebotó"] += 1
         elif e in enviados:
             afuera["ya enviado"] += 1
         else:
@@ -121,8 +150,8 @@ def destinatarios():
     return personas, lista, afuera
 
 
-def armar(para, nombre, desde):
-    html = (AQUI / "mail.html").read_text()
+def armar(c, para, nombre, desde):
+    html = (AQUI / c["html"]).read_text()
     html = (html.replace("{{nombre}}", nombre)
                 .replace("{{link}}", LINK.replace("&", "&amp;"))
                 .replace("{{banner}}", "cid:banner"))
@@ -131,8 +160,8 @@ def armar(para, nombre, desde):
     m = EmailMessage()
     m["To"] = para
     m["From"] = formataddr((REMITENTE, desde))
-    m["Subject"] = ASUNTO
-    m.set_content(TEXTO.format(nombre=nombre, link=LINK))
+    m["Subject"] = c["asunto"]
+    m.set_content(c["texto"].format(nombre=nombre, link=LINK))
     m.add_alternative(html, subtype="html")
     m.get_payload()[1].add_related(
         (AQUI / "obsession-banner.jpg").read_bytes(), "image", "jpeg", cid="<banner>",
@@ -142,13 +171,17 @@ def armar(para, nombre, desde):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--campana", required=True, choices=sorted(CAMPANAS))
     ap.add_argument("--contar", action="store_true")
     ap.add_argument("--send", action="store_true", help="Manda de verdad a la base")
     ap.add_argument("--limite", type=int, default=450)
     ap.add_argument("--cuenta", default=CUENTA, help="Token de google_auth desde el que sale")
     a = ap.parse_args()
 
-    personas, lista, afuera = destinatarios()
+    c = CAMPANAS[a.campana]
+    log = AQUI / c["log"]
+    personas, lista, afuera = destinatarios(log)
+    print(f"Campaña: {a.campana} · asunto: {c['asunto']}")
     print(f"Base: {len(personas)} · pendientes de envío: {len(lista)} · afuera: {afuera}")
     if a.contar:
         return
@@ -158,19 +191,19 @@ def main():
     print(f"Sale desde: {desde}")
     svc = gm.messages()
     if not a.send:
-        svc.send(userId="me", body=armar(PRUEBA_A, " Facu", desde)).execute()
+        svc.send(userId="me", body=armar(c, PRUEBA_A, " Facu", desde)).execute()
         print(f"Prueba mandada a {PRUEBA_A}. Nadie de la base recibió nada.")
         return
 
     tanda = lista[: a.limite]
-    nuevo = not LOG.exists()
-    with LOG.open("a", newline="") as f:
+    nuevo = not log.exists()
+    with log.open("a", newline="") as f:
         w = csv.writer(f)
         if nuevo:
             w.writerow(["email", "enviado", "gmail_id"])
         for i, p in enumerate(tanda, 1):
             try:
-                r = svc.send(userId="me", body=armar(p["email"], saludo(p["nombre"], p["apellido"]), desde)).execute()
+                r = svc.send(userId="me", body=armar(c, p["email"], saludo(p["nombre"], p["apellido"]), desde)).execute()
             except Exception as e:
                 print(f"FRENADO en {i}/{len(tanda)} ({p['email']}): {e}")
                 sys.exit(1)

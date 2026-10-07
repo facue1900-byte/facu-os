@@ -40,3 +40,14 @@ Tampoco se aclaran los $3.000 de gastos de gestión: el mail dice $20.000.
 +194 (lista de Facu) y +310 (PDF «Lista 26/09», invitados por RRPP) → base 1.871, **504 pendientes**.
 Como no compraron entradas, el pie pasó de "compraste entradas para Puzzle" a
 **sin aclaración**: sólo queda "si no querés recibir más, respondé baja" (Facu, 28/09). Sin edad: el filtro de menores no los alcanza (OK de Facu).
+
+## Preventa 1 (07/10)
+
+Early birds agotados. En Planout (leído 07/10) la tanda vigente se llama **«PREVENTA 1»: $25.000 +
+$3.750** de gastos de gestión (el mail dice $25.000, mismo criterio que el early). Mismo link.
+
+- `enviar.py --campana preventa1` (el flag es obligatorio; `--campana early` es el mail viejo).
+  Log propio: `enviados-preventa1.csv`, así le llega también a los que recibieron el early.
+- **1.780** destinatarios = 1.871 − 78 menores − 5 bajas − 8 rebotes (`rebotes.txt`, 12 "address
+  not found" de las tandas anteriores; 4 ya estaban en bajas). 450/día → 4 días.
+- El envío lo corre Facu desde su Terminal (el clasificador frena `--send` desde Claude).
