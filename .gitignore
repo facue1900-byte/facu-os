@@ -25,3 +25,4 @@ archive/base-clientes-*/
 data/reportes-inversores/
 .ig-token
 execution/cartera/estado/
+execution/cartera/estado-agresiva/
