@@ -91,3 +91,6 @@ Plan inicial: +175% en 90 días con 156 M de volumen; viene de corregir 22%: ent
 
 Plan inicial: +38% en 30 días y +196% en 90, corrigiendo 23%: entrada en retroceso de tendencia.
 
+## 2026-10-07 23:43 UTC — nota
+Sin operar: la carpeta se armó hace <3 h, ninguna posición se movió más de ±5% ni se acercó a su stop, y el reparto (45/30/17,5/7,5) está en objetivo. Rotar ahora sería pagar comisión sin tesis nueva.
+
