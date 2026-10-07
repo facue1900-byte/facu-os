@@ -23,8 +23,8 @@ Si aparece un tipo nuevo (un frigorífico, un sponsor), se agrega ahí.
 
 ## Flujo
 
-**1. Juntar la información.** De lo que diga Facu, de una grabación (usar
-`grabacion-a-tareas` si hay audio) o de los archivos del negocio. Lo que falte y
+**1. Juntar la información.** De lo que diga Facu, de una grabación (transcribirla
+con `execution/gemini.py` → `leer_media()`) o de los archivos del negocio. Lo que falte y
 sea crítico, **se pregunta** — especialmente montos. Los números de plata salen
 de la fuente (sheet, contrato, factura), nunca de una estimación mía.
 

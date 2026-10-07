@@ -69,8 +69,8 @@ escribe se crea su propio objeto descartable, y ninguno manda nada al mundo.**
 
 ## Skills
 
-`cierre-mes-nordelta` · `triage-inbox` · `grabacion-a-tareas` · `consenso` ·
-`prospectar-gmaps` · `propuestas` · `flyers`. Qué hace cada uno está en su `SKILL.md`;
+`cierre-mes-nordelta` · `propuestas` · `flyers`. Los que nunca se usaron están en
+`archive/skills/` (07/10/2026). Qué hace cada uno está en su `SKILL.md`;
 **cuál está productivo y cuál bloqueado, en `SETUP.md`.**
 
 **Los skills se escriben genéricos y lo específico va en config** (`contextos.json`,
@@ -81,9 +81,7 @@ los cuatro y para el próximo.
 
 | Agente | Para qué | Modelo |
 |---|---|---|
-| `numeros` | Audita cualquier cálculo que toque plata, contra la fuente. Su checklist es también el del skill `consenso`. | Opus |
-| `auditor-consenso` | Igual que `numeros` pero escribe JSON, para correr de a varios. | Opus |
-| `clasificador-mails` | Clasifica un chunk de mails. Lo usa `triage-inbox`. | Haiku |
+| `numeros` | Audita cualquier cálculo que toque plata, contra la fuente. | Opus |
 | `mecanico` | Trabajo de dedos: leer, grepear, contar, extraer campos, resumir. Devuelve datos, no conclusiones. | Haiku |
 | `redactor` | Escribe texto para terceros: mails, propuestas, copies. Genera y frena. | Sonnet |
 | `code-reviewer` | Revisa código sin contexto del repo. | Sonnet |

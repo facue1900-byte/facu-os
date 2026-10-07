@@ -20,7 +20,7 @@ Trivial = una pregunta, un archivo chico, un dato puntual. Ahí se hace y listo.
    cuando cambie el precio / el CSV traiga una columna más / el token venza?
 4. **¿Cuál es la versión más simple que resuelve el 90%?** Esa. Lo demás se anota.
 5. **¿Cuánta plata mueve y en qué negocio?** Si mueve plata real → doble verificación
-   (subagente `numeros` o skill `consenso`). Si no mueve nada, ¿por qué lo estoy haciendo?
+   (subagente `numeros`; dos en paralelo si sale a un tercero). Si no mueve nada, ¿por qué lo estoy haciendo?
 
 ## 2. Antes de arrancar — repartir el trabajo
 
@@ -32,7 +32,7 @@ trabajo mecánico no se delega, la política de modelos no ejecuta nada.
 | Leer varios archivos, grepear, contar filas, extraer campos, resumir un PDF largo | `mecanico` (Haiku) |
 | Escribir un mail, propuesta, copy, respuesta a un proveedor | `redactor` (Sonnet) |
 | Buscar en la web o recorrer código desconocido | `research` (Sonnet) |
-| Cualquier número que salga a un tercero | `numeros` / skill `consenso` (Opus) |
+| Cualquier número que salga a un tercero | `numeros`, dos en paralelo sin verse (Opus) |
 | Revisar código propio antes de usarlo | `code-reviewer` + `qa` en paralelo |
 | Decidir, arquitectura, estrategia, qué decir | **se queda en el hilo principal** |
 

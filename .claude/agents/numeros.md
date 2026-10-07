@@ -12,13 +12,9 @@ el que hizo la cuenta está sesgado a creerle a su propia cuenta.
 
 No arreglás nada. Reportás.
 
-> **Este archivo es también el checklist del skill `consenso`.** El agente `auditor-consenso`
-> lo lee y aplica la lista de abajo, pero escribe JSON en vez de texto para que se puedan
-> comparar varias auditorías entre sí. Si mejorás un chequeo acá, mejorás los dos.
->
-> Cuándo usar cuál: **este agente** para una verificación normal, que es la mayoría de las
-> veces. **El skill `consenso`** cuando el número sale hacia un tercero o la decisión es
-> cara de revertir.
+> Cuando el número sale hacia un tercero o la decisión es cara de revertir, se corren
+> **dos `numeros` en paralelo, sin que se vean**, y se comparan. (El skill `consenso` y su
+> `auditor-consenso` hacían eso y se archivaron el 07/10/2026 sin haberse usado nunca.)
 
 ## Qué recibís
 

@@ -15,8 +15,8 @@ esperando algo que **solo podés hacer vos** (un login, una key, un permiso).
       **no puede usar** (`gemini-2.5-flash` figura y tira 404). Antes de cambiar el modelo,
       probarlo con un `generate_content` de verdad.
 - [x] **Skill `cierre-mes-nordelta`** — probado contra el extracto real de junio 2026.
-- [x] **Subagentes** — `code-reviewer`, `qa`, `research`, `numeros`, `auditor-consenso`,
-      `clasificador-mails`.
+- [x] **Subagentes** — `code-reviewer`, `qa`, `research`, `numeros`, `mecanico`, `redactor`.
+      (`auditor-consenso` y `clasificador-mails` → `archive/agents/` el 07/10/2026, con sus skills.)
 - [x] **Vault y Obsidian** — app 1.12.7 en `/Applications` (no abrirlo desde el `.dmg`: se
       ejecuta translocado y la config no persiste), con `~/Obsidian/facu-vault` registrado
       como vault por defecto y sus convenciones de links aplicadas.
@@ -74,12 +74,12 @@ sufijo): `lucent-buttercream-8ac45a` = Mati · `whimsical-alfajores-91122a` = In
 | Skill | Estado |
 |---|---|
 | `cierre-mes-nordelta` | Productivo — `scripts/conciliar.py` hace los chequeos deterministas |
-| `triage-inbox` | Productivo. **Etiquetar en Gmail bloqueado**: faltan los scopes `gmail.modify` / `gmail.labels` |
-| `grabacion-a-tareas` | Productivo |
-| `consenso` | Productivo |
 | `propuestas` | Productivo — genera y frena, no manda |
 | `flyers` | Productivo — precios desde Supabase, render con Chrome headless |
-| `prospectar-gmaps` | **Bloqueado**: falta `APIFY_API_TOKEN` |
+
+**Archivados el 07/10/2026** en `archive/skills/` (0 usos en 128 sesiones, regla 22):
+`triage-inbox`, `grabacion-a-tareas`, `consenso`, `prospectar-gmaps`. Vuelven con un
+`git mv archive/skills/X .claude/skills/` cuando aparezca el trabajo (regla 23).
 
 ## Bloqueado esperándote (en orden de lo que más desbloquea)
 
@@ -104,7 +104,7 @@ cd ~/facu-os && .venv/bin/python execution/google_auth.py --setup --cuenta facu
 El cliente OAuth vive en el proyecto `astronomy-app-502618` de Google Cloud (App de
 escritorio). **Un solo `credentials.json` sirve para todas las cuentas.**
 
-### 1. Token de Apify — 2 min · solo desbloquea `prospectar-gmaps`
+### 1. Token de Apify — 2 min · solo sirve si se reactiva `prospectar-gmaps` (archivado)
 
 1. [console.apify.com/settings/integrations](https://console.apify.com/settings/integrations)
    → copiá el API token.
