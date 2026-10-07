@@ -26,6 +26,7 @@ rompe en silencio).
 """
 
 import argparse
+from decimal import Decimal
 import datetime as dt
 import json
 import os
@@ -279,7 +280,7 @@ def main():
         cl = clientes(cli, a, b)
         for x in cl:
             origen = x["web"] or (f"WhatsApp {x['wa_fecha']}: «{x['wa_texto']}»" if x["wa_fecha"] else "SIN DATO")
-            monto = f"${x['monto_sales']:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".") if x["monto_sales"] else "(fuera de sales)"
+            monto = f"${Decimal(str(x['monto_sales'])):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".") if x["monto_sales"] else "(fuera de sales)"
             print(f"   {x['primera']}  {x['full_name']:<28} {x['plan_sales'] or '-':<10} {monto:>14}  ← {origen}")
         print(f"   Total: {len(cl)} cliente(s) nuevo(s). «SIN DATO» = no pasó por un link con marca ni está en el export de WhatsApp.")
 
