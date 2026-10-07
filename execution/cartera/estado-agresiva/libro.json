@@ -4,8 +4,112 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 1000.0,
-  "posiciones": {},
-  "comisiones_usd": 0.0,
-  "operaciones": []
+  "usdt": 500.0,
+  "posiciones": {
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.07759464371708635,
+      "entrada": 2574.92,
+      "maximo": 2574.92,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791416640000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 37.33183856502242,
+      "entrada": 5.352,
+      "maximo": 5.352,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791416640000
+    },
+    "METUSDT": {
+      "nivel": "trading",
+      "cantidad": 214.4236960721185,
+      "entrada": 0.4659,
+      "maximo": 0.4659,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791416700000
+    }
+  },
+  "comisiones_usd": 0.5,
+  "operaciones": [
+    {
+      "ms": 1791416632773,
+      "fecha": "2026-10-07 23:43 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.07759464371708635,
+      "precio": 2574.92,
+      "usd": 200.0,
+      "comision": 0.2,
+      "motivo": "Rebote en soporte: ETH -4,5% en 24 h, a +1,45% del mínimo de 48 h y la última hora (+0,2%) y 4 h (+0,15%) ya no hacen mínimo nuevo; BTC estable en 4 h (-0,1%). Invalida: perder el mínimo de 48 h / stop -5%."
+    },
+    {
+      "ms": 1791416637783,
+      "fecha": "2026-10-07 23:43 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 37.33183856502242,
+      "precio": 5.352,
+      "usd": 200.0,
+      "comision": 0.2,
+      "motivo": "Momentum 24 h: NEAR +5,6% en 24 h contra un mercado en rojo, +0,2% en 4 h, a -1,9% del máximo de 48 h con volumen 4 h 1,38x; 1 h -0,4% (no estirada). Invalida: cerrar debajo de -5% (stop) o perder fuerza relativa vs BTC."
+    },
+    {
+      "ms": 1791416642556,
+      "fecha": "2026-10-07 23:44 UTC",
+      "lado": "buy",
+      "par": "METUSDT",
+      "nivel": "trading",
+      "cantidad": 214.4236960721185,
+      "precio": 0.4659,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h con volumen: MET +41% en 24 h, +6,2% en 4 h, volumen 4 h 3x el promedio, a -2,5% del máximo de 48 h; 1 h +0,85% (<4%). Tamaño chico (10%) porque está a +62% del mínimo de 48 h: muy extendida. Invalida: stop -5% o rechazo debajo del máximo de 48 h."
+    }
+  ]
 }
