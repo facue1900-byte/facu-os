@@ -78,6 +78,9 @@ No lo dejes para el final.
 }
 
 
+NOMBRES_PROHIBIDOS = r"\b(puzzle|obsession|astronomy|gay|puto|trolo|cogid\w*|pija|concha|forro|boludo|pete)\b"
+
+
 def _ascii(s):
     return unicodedata.normalize("NFKD", str(s or "")).encode("ascii", "ignore").decode().lower()
 
@@ -95,6 +98,9 @@ def saludo(nombre, apellido, email):
         return ""
     primero = str(nombre or "").strip().split(" ")[0]
     if not re.fullmatch(r"[A-Za-zÁÉÍÓÚáéíóúÑñÜü]{2,}", primero):
+        return ""
+    # "Puzzle Meyrelles" = cargado por la productora; "Panchi Gay Cogido" = nombre trucho.
+    if re.search(NOMBRES_PROHIBIDOS, _ascii(f"{nombre} {apellido}")):
         return ""
     local = re.sub(r"[^a-z]", "", _ascii(email.split("@")[0]))
     partes = [t for t in re.split(r"[^a-z]+", _ascii(f"{nombre} {apellido}")) if len(t) >= 3]
