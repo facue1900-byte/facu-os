@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Carpeta ficticia de cripto (paper trading) — cada 4 horas.
+
+  Claude headless (Opus) mira precios reales de Binance y opera en papel con 10.000 USDT
+  ficticios (execution/paper/). No usa key ni toca ninguna cuenta. Sirve para medir si
+  le gana a quedarse quieto antes de darle plata real.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.paper-trading.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.paper-trading.plist
+  Probar ya:
+    launchctl start com.facu.paper-trading ; cat ~/facu-os/data/paper/ultima-corrida.txt
+  Cómo va:
+    ~/facu-os/.venv/bin/python ~/facu-os/execution/paper/paper.py estado
+
+  Corre sólo con la Mac prendida: si está dormida, el ciclo se hace al despertar.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.paper-trading</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-lc</string>
+        <string>/Users/Facu/facu-os/execution/paper/paper_ciclo.sh</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+    <key>StartInterval</key>
+    <integer>14400</integer>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/paper-trading.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/paper-trading.log</string>
+</dict>
+</plist>
