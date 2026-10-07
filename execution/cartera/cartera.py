@@ -1,7 +1,8 @@
 """Carpeta cripto ficticia de 1.000 USD, vigilada minuto a minuto aunque la Mac esté apagada.
 
-Corre en rutinas en la nube de Claude Code: PROMPT.md (3 niveles, cada 2 h) y PROMPT_AGRESIVA.md
-`claude/cartera-cripto`, en `execution/cartera/estado/`. No usa key: precios públicos de
+Corre en rutinas en la nube de Claude Code: PROMPT.md (3 niveles, cada 2 h, libro en la rama
+`claude/cartera-cripto`, `execution/cartera/estado/`) y PROMPT_AGRESIVA.md (cada 1 h, rama
+`claude/cartera-agresiva`, `execution/cartera/estado-agresiva/`). No usa key: precios públicos de
 Binance (data-api.binance.vision, el espejo que responde desde servidores de EE.UU.).
 
 Cómo es "24/7" sin un servidor prendido: cada posición lleva su stop, su trailing stop y
