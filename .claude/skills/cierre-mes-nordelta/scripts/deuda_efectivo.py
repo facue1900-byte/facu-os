@@ -164,6 +164,19 @@ def precios_semestrales_jaula(sv):
     return anclas
 
 
+def creditos_jaula(sv):
+    """Lo que se le reconoce a favor a La Jaula (un arreglo de la cancha que
+    pagaron ellos, etc.): renglones con monto NEGATIVO en el bloque de cargos
+    de su cuenta corriente, `Futbol!I5:K`. El alquiler sale de AR, pero el
+    crédito vive sólo ahí — sin esto la tarjeta de Mati lo ignora y le cobra
+    de más. Devuelve el total (positivo) y el detalle."""
+    filas = sv.values().get(spreadsheetId=CTAS, range="Futbol!I5:K200",
+                            valueRenderOption="UNFORMATTED_VALUE").execute().get("values", [])
+    creditos = [(str(r[1]), -num(r[2])) for r in (x + [""] * 3 for x in filas)
+                if str(r[0]).strip() and num(r[2]) < 0]
+    return round(sum(m for _, m in creditos), 2), creditos
+
+
 def precio_jaula(anclas, anio, mes):
     """El precio vigente para un mes es el del último ancla verde <= ese mes."""
     vigentes = [a for a in anclas if (a[0], a[1]) <= (anio, mes)]
@@ -371,7 +384,11 @@ def main():
                         confiable = False
                 cargado += monto
                 del_mes = monto
-            total = round(cargado - cobrado(alias, cfg["desde"]), 2)
+            a_favor, creditos = creditos_jaula(sv)
+            if creditos:
+                nota += " · a favor: " + "; ".join(
+                    f"{d} (${m:,.0f})".replace(",", ".") for d, m in creditos)
+            total = round(cargado - a_favor - cobrado(alias, cfg["desde"]), 2)
 
         else:
             raise ValueError(f"regla desconocida para {nombre}: {regla}")
