@@ -26,13 +26,15 @@ Pasos:
 2. `query` de comentarios bajo el body. Un comentario de Facu es INPUT: si dice "hecho",
    "ya está", "sacalo", ese ítem no vuelve a aparecer; si pregunta algo, respondelo en
    su hilo (create utterance con parent = la raíz del hilo), corto.
-3. UN SOLO `update` atómico sobre el body, con estos ops en orden:
+3. UN SOLO `update` atómico sobre el body, con estos ops en este orden:
    - `replace` del bloque byline (el que tiene el chip de fecha), con ifHash + ifRev, por
      `Última barrida: <?claude block asof?> · <?claude block me?>` con
      `blocks: {"asof":{"type":"date","value":"<hoy YYYY-MM-DD>"},"me":{"type":"mention","user":"me"}}`.
-   - `delete` de TODOS los bloques que vienen después del byline, por ids, con `ifRev`
-     y `"allowDetach": true` (el doc se regenera entero cada día por pedido de Facu).
-   - `insert` después del byline con el markdown nuevo completo (`"as":"markdown"`).
+   - `insert` con `"side":"before"` el PRIMER bloque que hoy viene después del byline,
+     con el markdown nuevo completo (`"as":"markdown"`). No uses `"after"` del byline: el
+     `replace` ya ocupa ese ancla y la API lo rechaza (`same_anchor`, pasó el 07/10).
+   - `delete` de TODOS los bloques viejos que venían después del byline, por ids, con
+     `ifRev` y `"allowDetach": true` (el doc se regenera entero cada día por pedido de Facu).
    Si el update es rechazado, leé el código, `guide(items=["refusal.<code>"])`, corregí y
    reenviá. Nunca dejes el doc a medio escribir.
 4. Al final imprimí exactamente una línea: `RADAR_OK <n ítems en Hoy por plata>` o
