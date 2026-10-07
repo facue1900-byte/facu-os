@@ -1,0 +1,589 @@
+{
+  "inicio": {
+    "ms": 1791406700122,
+    "capital": 1000.0,
+    "btc": 83439.39,
+    "plan_sin_tocar": {
+      "usdt": 75.0,
+      "cantidades": {
+        "BTCUSDT": 0.0035915438017947174,
+        "ETHUSDT": 0.03880983182406209,
+        "BNBUSDT": 0.0647901939165964,
+        "SOLUSDT": 0.6017554427329835,
+        "XRPUSDT": 21.067060312104594,
+        "AAVEUSDT": 0.2292862061051182,
+        "LINKUSDT": 2.989451634622578,
+        "AVAXUSDT": 3.558009082005164,
+        "SUIUSDT": 26.663701067615655,
+        "TAOUSDT": 0.08594287680660702,
+        "LTCUSDT": 0.37755102040816324,
+        "NEARUSDT": 5.539741219963031,
+        "RAYUSDT": 9.974041533546327,
+        "ZROUSDT": 11.42497712717292,
+        "METUSDT": 45.193395159466185,
+        "PUMPUSDT": 3948.616600790514,
+        "ZECUSDT": 0.01889125896342017,
+        "ENAUSDT": 110.26490066225166
+      }
+    }
+  },
+  "usdt": 75.0,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "conservador",
+      "cantidad": 0.0035915438017947174,
+      "entrada": 83446.01,
+      "maximo": 83446.01,
+      "reglas": {
+        "stop": 25.0,
+        "trail": 25.0,
+        "tp": []
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406740000
+    },
+    "ETHUSDT": {
+      "nivel": "conservador",
+      "cantidad": 0.03880983182406209,
+      "entrada": 2574.09,
+      "maximo": 2574.09,
+      "reglas": {
+        "stop": 25.0,
+        "trail": 25.0,
+        "tp": []
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406800000
+    },
+    "BNBUSDT": {
+      "nivel": "conservador",
+      "cantidad": 0.0647901939165964,
+      "entrada": 770.95,
+      "maximo": 770.95,
+      "reglas": {
+        "stop": 25.0,
+        "trail": 25.0,
+        "tp": []
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406800000
+    },
+    "SOLUSDT": {
+      "nivel": "medio",
+      "cantidad": 0.6017554427329835,
+      "entrada": 116.21,
+      "maximo": 116.21,
+      "reglas": {
+        "stop": 18.0,
+        "trail": 20.0,
+        "tp": [
+          [
+            50.0,
+            0.33
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406800000
+    },
+    "XRPUSDT": {
+      "nivel": "medio",
+      "cantidad": 21.067060312104594,
+      "entrada": 1.4226,
+      "maximo": 1.4226,
+      "reglas": {
+        "stop": 18.0,
+        "trail": 20.0,
+        "tp": [
+          [
+            50.0,
+            0.33
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406860000
+    },
+    "AAVEUSDT": {
+      "nivel": "medio",
+      "cantidad": 0.2292862061051182,
+      "entrada": 174.28,
+      "maximo": 174.28,
+      "reglas": {
+        "stop": 18.0,
+        "trail": 20.0,
+        "tp": [
+          [
+            50.0,
+            0.33
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406860000
+    },
+    "LINKUSDT": {
+      "nivel": "medio",
+      "cantidad": 2.989451634622578,
+      "entrada": 13.367,
+      "maximo": 13.367,
+      "reglas": {
+        "stop": 18.0,
+        "trail": 20.0,
+        "tp": [
+          [
+            50.0,
+            0.33
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406860000
+    },
+    "AVAXUSDT": {
+      "nivel": "medio",
+      "cantidad": 3.558009082005164,
+      "entrada": 11.231,
+      "maximo": 11.231,
+      "reglas": {
+        "stop": 18.0,
+        "trail": 20.0,
+        "tp": [
+          [
+            50.0,
+            0.33
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406860000
+    },
+    "SUIUSDT": {
+      "nivel": "medio",
+      "cantidad": 26.663701067615655,
+      "entrada": 1.124,
+      "maximo": 1.124,
+      "reglas": {
+        "stop": 18.0,
+        "trail": 20.0,
+        "tp": [
+          [
+            50.0,
+            0.33
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406920000
+    },
+    "TAOUSDT": {
+      "nivel": "medio",
+      "cantidad": 0.08594287680660702,
+      "entrada": 290.6,
+      "maximo": 290.6,
+      "reglas": {
+        "stop": 18.0,
+        "trail": 20.0,
+        "tp": [
+          [
+            50.0,
+            0.33
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406920000
+    },
+    "LTCUSDT": {
+      "nivel": "medio",
+      "cantidad": 0.37755102040816324,
+      "entrada": 66.15,
+      "maximo": 66.15,
+      "reglas": {
+        "stop": 18.0,
+        "trail": 20.0,
+        "tp": [
+          [
+            50.0,
+            0.33
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406920000
+    },
+    "NEARUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 5.539741219963031,
+      "entrada": 5.41,
+      "maximo": 5.41,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406980000
+    },
+    "RAYUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 9.974041533546327,
+      "entrada": 2.504,
+      "maximo": 2.504,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406980000
+    },
+    "ZROUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 11.42497712717292,
+      "entrada": 2.186,
+      "maximo": 2.186,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791406980000
+    },
+    "METUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 45.193395159466185,
+      "entrada": 0.4421,
+      "maximo": 0.4421,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791407040000
+    },
+    "PUMPUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 3948.616600790514,
+      "entrada": 0.006325,
+      "maximo": 0.006325,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791407040000
+    },
+    "ZECUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 0.01889125896342017,
+      "entrada": 1322.04,
+      "maximo": 1322.04,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791407040000
+    },
+    "ENAUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 110.26490066225166,
+      "entrada": 0.2265,
+      "maximo": 0.2265,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791407100000
+    }
+  },
+  "comisiones_usd": 0.9250000000000004,
+  "operaciones": [
+    {
+      "ms": 1791406722430,
+      "fecha": "2026-10-07 20:58 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "conservador",
+      "cantidad": 0.0035915438017947174,
+      "precio": 83446.01,
+      "usd": 300.0,
+      "comision": 0.3,
+      "motivo": "Plan inicial: núcleo de la carpeta. BTC 31,9% en 90 días y a 4,6% de su máximo; menor volatilidad (38%). Se invalida si pierde el piso del rango de 30 días (75.000)."
+    },
+    {
+      "ms": 1791406740347,
+      "fecha": "2026-10-07 20:59 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "conservador",
+      "cantidad": 0.03880983182406209,
+      "precio": 2574.09,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Plan inicial: segunda pata del núcleo. +47% en 90 días, 8% bajo el máximo. Se invalida bajo 2.250."
+    },
+    {
+      "ms": 1791406762030,
+      "fecha": "2026-10-07 20:59 UTC",
+      "lado": "buy",
+      "par": "BNBUSDT",
+      "nivel": "conservador",
+      "cantidad": 0.0647901939165964,
+      "precio": 770.95,
+      "usd": 50.0,
+      "comision": 0.05,
+      "motivo": "Plan inicial: la menos volátil de las grandes (33%), +35% en 90 días, a 5% del máximo."
+    },
+    {
+      "ms": 1791406785374,
+      "fecha": "2026-10-07 20:59 UTC",
+      "lado": "buy",
+      "par": "SOLUSDT",
+      "nivel": "medio",
+      "cantidad": 0.6017554427329835,
+      "precio": 116.21,
+      "usd": 70.0,
+      "comision": 0.07,
+      "motivo": "Plan inicial: la grande con más fuerza: +12% en 30 días, +49% en 90, a 7% del máximo, 232 M de volumen diario."
+    },
+    {
+      "ms": 1791406803523,
+      "fecha": "2026-10-07 21:00 UTC",
+      "lado": "buy",
+      "par": "XRPUSDT",
+      "nivel": "medio",
+      "cantidad": 21.067060312104594,
+      "precio": 1.4226,
+      "usd": 30.0,
+      "comision": 0.03,
+      "motivo": "Plan inicial: posición chica por liquidez (233 M/día) pese a venir floja en 7 días (-4,6%). Se invalida si sigue cayendo bajo el stop."
+    },
+    {
+      "ms": 1791406820624,
+      "fecha": "2026-10-07 21:00 UTC",
+      "lado": "buy",
+      "par": "AAVEUSDT",
+      "nivel": "medio",
+      "cantidad": 0.2292862061051182,
+      "precio": 174.28,
+      "usd": 40.0,
+      "comision": 0.04,
+      "motivo": "Plan inicial: DeFi líder, +32% en 30 días y +91% en 90, a 7% del máximo con volatilidad moderada (81%)."
+    },
+    {
+      "ms": 1791406837477,
+      "fecha": "2026-10-07 21:00 UTC",
+      "lado": "buy",
+      "par": "LINKUSDT",
+      "nivel": "medio",
+      "cantidad": 2.989451634622578,
+      "precio": 13.367,
+      "usd": 40.0,
+      "comision": 0.04,
+      "motivo": "Plan inicial: +73% en 90 días, corrigiendo 15% desde el máximo: entrada en retroceso de tendencia."
+    },
+    {
+      "ms": 1791406858967,
+      "fecha": "2026-10-07 21:00 UTC",
+      "lado": "buy",
+      "par": "AVAXUSDT",
+      "nivel": "medio",
+      "cantidad": 3.558009082005164,
+      "precio": 11.231,
+      "usd": 40.0,
+      "comision": 0.04,
+      "motivo": "Plan inicial: +39% en 30 días y a 6,7% del máximo de 90: tendencia fuerte con volumen (78 M)."
+    },
+    {
+      "ms": 1791406881157,
+      "fecha": "2026-10-07 21:01 UTC",
+      "lado": "buy",
+      "par": "SUIUSDT",
+      "nivel": "medio",
+      "cantidad": 26.663701067615655,
+      "precio": 1.124,
+      "usd": 30.0,
+      "comision": 0.03,
+      "motivo": "Plan inicial: +37% en 30 días, 13% bajo el máximo; 81 M de volumen."
+    },
+    {
+      "ms": 1791406899994,
+      "fecha": "2026-10-07 21:01 UTC",
+      "lado": "buy",
+      "par": "TAOUSDT",
+      "nivel": "medio",
+      "cantidad": 0.08594287680660702,
+      "precio": 290.6,
+      "usd": 25.0,
+      "comision": 0.025,
+      "motivo": "Plan inicial: exposición a IA con volumen (45 M). +11% en 30 días, 15% bajo el máximo."
+    },
+    {
+      "ms": 1791406918291,
+      "fecha": "2026-10-07 21:01 UTC",
+      "lado": "buy",
+      "par": "LTCUSDT",
+      "nivel": "medio",
+      "cantidad": 0.37755102040816324,
+      "precio": 66.15,
+      "usd": 25.0,
+      "comision": 0.025,
+      "motivo": "Plan inicial: +20% en 30 días, baja volatilidad para su tamaño (71%)."
+    },
+    {
+      "ms": 1791406935043,
+      "fecha": "2026-10-07 21:02 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "riesgo",
+      "cantidad": 5.539741219963031,
+      "precio": 5.41,
+      "usd": 30.0,
+      "comision": 0.03,
+      "motivo": "Plan inicial momentum: +135% en 30 días y a 3% del máximo, 170 M de volumen. Se invalida con el trailing del 15%."
+    },
+    {
+      "ms": 1791406952614,
+      "fecha": "2026-10-07 21:02 UTC",
+      "lado": "buy",
+      "par": "RAYUSDT",
+      "nivel": "riesgo",
+      "cantidad": 9.974041533546327,
+      "precio": 2.504,
+      "usd": 25.0,
+      "comision": 0.025,
+      "motivo": "Plan inicial momentum: +115% en 30 días, a 2% del máximo de 90."
+    },
+    {
+      "ms": 1791406967811,
+      "fecha": "2026-10-07 21:02 UTC",
+      "lado": "buy",
+      "par": "ZROUSDT",
+      "nivel": "riesgo",
+      "cantidad": 11.42497712717292,
+      "precio": 2.186,
+      "usd": 25.0,
+      "comision": 0.025,
+      "motivo": "Plan inicial momentum: +90% en 30 días, a 6% del máximo."
+    },
+    {
+      "ms": 1791406989877,
+      "fecha": "2026-10-07 21:03 UTC",
+      "lado": "buy",
+      "par": "METUSDT",
+      "nivel": "riesgo",
+      "cantidad": 45.193395159466185,
+      "precio": 0.4421,
+      "usd": 20.0,
+      "comision": 0.02,
+      "motivo": "Plan inicial momentum: +118% en 30 días, a 6% del máximo. La más chica por volatilidad (161%)."
+    },
+    {
+      "ms": 1791407006992,
+      "fecha": "2026-10-07 21:03 UTC",
+      "lado": "buy",
+      "par": "PUMPUSDT",
+      "nivel": "riesgo",
+      "cantidad": 3948.616600790514,
+      "precio": 0.006325,
+      "usd": 25.0,
+      "comision": 0.025,
+      "motivo": "Plan inicial momentum: +46% en 30 días y +330% en 90, a 7% del máximo, 54 M de volumen."
+    },
+    {
+      "ms": 1791407023831,
+      "fecha": "2026-10-07 21:03 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "riesgo",
+      "cantidad": 0.01889125896342017,
+      "precio": 1322.04,
+      "usd": 25.0,
+      "comision": 0.025,
+      "motivo": "Plan inicial: +175% en 90 días con 156 M de volumen; viene de corregir 22%: entrada en retroceso."
+    },
+    {
+      "ms": 1791407049249,
+      "fecha": "2026-10-07 21:04 UTC",
+      "lado": "buy",
+      "par": "ENAUSDT",
+      "nivel": "riesgo",
+      "cantidad": 110.26490066225166,
+      "precio": 0.2265,
+      "usd": 25.0,
+      "comision": 0.025,
+      "motivo": "Plan inicial: +38% en 30 días y +196% en 90, corrigiendo 23%: entrada en retroceso de tendencia."
+    }
+  ]
+}
