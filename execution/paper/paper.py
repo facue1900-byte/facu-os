@@ -1,7 +1,9 @@
 """Carpeta ficticia (paper trading) contra precios reales de Binance.
 
 Prueba si Claude opera bien antes de darle una key real. NO usa key ni toca la cuenta
-de Facu: lee precios públicos de api.binance.com y anota todo en un libro local.
+de Facu: lee precios públicos de Binance y anota todo en un libro local.
+
+Sólo usa la biblioteca estándar, para que corra en cualquier máquina sin instalar nada.
 
 Reglas que el código hace cumplir (no el criterio del que opera):
 - Sólo los pares de PARES, contra USDT. Nada de apalancamiento ni cortos.
@@ -29,14 +31,17 @@ import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
-import httpx
+import urllib.error
+import urllib.parse
+import urllib.request
 
 DIR = Path(os.environ.get("PAPER_DIR", "/Users/Facu/facu-os/data/paper"))
 LIBRO = DIR / "libro.json"
 DIARIO = DIR / "diario.md"
 HISTORIAL = DIR / "historial.csv"
 
-API = "https://api.binance.com/api/v3"
+# Espejo oficial de datos de mercado: api.binance.com da 451 desde IPs de EE.UU. (la nube).
+API = "https://data-api.binance.vision/api/v3"
 PARES = ("BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT")
 COMISION = 0.001
 TOPE_ORDEN = 0.25
@@ -54,11 +59,11 @@ def ahora() -> str:
 # --- precios -------------------------------------------------------------------------
 
 def _get(ruta: str, params: dict) -> object:
+    url = f"{API}/{ruta}?{urllib.parse.urlencode(params)}"
     try:
-        r = httpx.get(f"{API}/{ruta}", params=params, timeout=15)
-        r.raise_for_status()
-        return r.json()
-    except (httpx.HTTPError, ValueError) as e:
+        with urllib.request.urlopen(url, timeout=15) as r:
+            return json.loads(r.read())
+    except (urllib.error.URLError, TimeoutError, ValueError) as e:
         raise ErrorPaper(f"Binance no respondió ({ruta}): {e}. No se opera sin precio.")
 
 
