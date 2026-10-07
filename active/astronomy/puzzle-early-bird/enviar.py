@@ -16,6 +16,7 @@ import pathlib
 import re
 import sys
 import time
+import unicodedata
 from email.message import EmailMessage
 from email.utils import formataddr
 
@@ -77,15 +78,27 @@ No lo dejes para el final.
 }
 
 
-def saludo(nombre, apellido):
-    """' Sofi' si el nombre parece un nombre; '' si es un usuario tipo 'Vferraritorre'.
+def _ascii(s):
+    return unicodedata.normalize("NFKD", str(s or "")).encode("ascii", "ignore").decode().lower()
+
+
+def saludo(nombre, apellido, email):
+    """' Sofi' si el nombre parece un nombre Y es de ese mail; si no, '' (queda "Hola,").
 
     Los usuarios de Instagram vienen sin apellido: sin apellido, no se saluda por nombre.
+    El nombre de la base a veces es el del VENDEDOR, no el del dueño del mail (07/10: a
+    agustin.durigon le llegó "Hola Lucas" porque Lanfranconi le vendió la entrada; "Benjamin
+    Brocca" figura en 16 mails). Por eso sólo se saluda si el nombre o el apellido aparece
+    en el mail.
     """
     if not str(apellido or "").strip():
         return ""
     primero = str(nombre or "").strip().split(" ")[0]
     if not re.fullmatch(r"[A-Za-zÁÉÍÓÚáéíóúÑñÜü]{2,}", primero):
+        return ""
+    local = re.sub(r"[^a-z]", "", _ascii(email.split("@")[0]))
+    partes = [t for t in re.split(r"[^a-z]+", _ascii(f"{nombre} {apellido}")) if len(t) >= 3]
+    if not any(t in local for t in partes):
         return ""
     return " " + primero.capitalize()
 
@@ -203,7 +216,7 @@ def main():
             w.writerow(["email", "enviado", "gmail_id"])
         for i, p in enumerate(tanda, 1):
             try:
-                r = svc.send(userId="me", body=armar(c, p["email"], saludo(p["nombre"], p["apellido"]), desde)).execute()
+                r = svc.send(userId="me", body=armar(c, p["email"], saludo(p["nombre"], p["apellido"], p["email"]), desde)).execute()
             except Exception as e:
                 print(f"FRENADO en {i}/{len(tanda)} ({p['email']}): {e}")
                 sys.exit(1)
