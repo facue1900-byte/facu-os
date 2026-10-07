@@ -14,7 +14,9 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>-lc</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>reporte-equipo</string>
+        <string>--</string>
         <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/reporte_equipo.py --send</string>
     </array>
 

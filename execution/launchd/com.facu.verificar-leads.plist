@@ -54,7 +54,9 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>-lc</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>verificar-leads</string>
+        <string>--</string>
         <string>APP=/Users/Facu/Desktop/Productoras/Astronomy/Academia/astronomy-members; LOG=/Users/Facu/facu-os/data/logs/verificar-leads.log; HIST=/Users/Facu/facu-os/data/logs/verificar-leads-historico.log; ALERTA=/Users/Facu/Desktop/Productoras/Astronomy/Academia/Alertas/ALERTA_LEADS.txt; mkdir -p /Users/Facu/facu-os/data/logs "$(dirname "$ALERTA")"; cd "$APP" &amp;&amp; node --env-file=.env.local --import ./scripts/_registrar.mjs scripts/verificar-leads.mjs &gt; "$LOG" 2&gt;&amp;1; CODE=$?; cat "$LOG" &gt;&gt; "$HIST"; if [ $CODE -ne 0 ]; then cp "$LOG" "$ALERTA"; osascript -e 'display notification "Hay algo para corregir en el rastro de leads. El detalle está en Astronomy/Academia/Alertas: ALERTA_LEADS.txt" with title "Leads — algo se rompió" sound name "Basso"'; else rm -f "$ALERTA"; fi</string>
     </array>
 

@@ -22,9 +22,11 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/Facu/facu-os/.venv/bin/python</string>
-        <string>/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/alerta_rampa.py</string>
-        <string>--send</string>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>alerta-rampa</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/alerta_rampa.py --send</string>
     </array>
 
     <key>WorkingDirectory</key>

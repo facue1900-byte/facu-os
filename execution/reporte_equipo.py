@@ -22,6 +22,7 @@ import json
 import pathlib
 import subprocess
 import sys
+import time
 from datetime import datetime, timedelta
 from email.message import EmailMessage
 
@@ -81,13 +82,25 @@ def dia(iso):
     return f"{DIAS[d.weekday()]} {d.day:02d}/{d.month:02d}"
 
 
-def juntar():
-    r = subprocess.run(
-        ["npm", "run", "-s", "reporte:equipo"], cwd=APP, capture_output=True, text=True,
-        env={"PATH": f"{NODE_BIN}:/usr/bin:/bin", "HOME": str(pathlib.Path.home())}, timeout=300,
-    )
+def juntar(intentos=3, espera=120):
+    # Sólo lee, así que se puede reintentar sin riesgo. El 02/10/2026 falló una sola vez
+    # con "JWT issued at future" (el reloj de la Mac recién despierta) y ese viernes no
+    # hubo reporte; corrido de nuevo, anduvo.
+    for i in range(1, intentos + 1):
+        try:
+            r = subprocess.run(
+                ["npm", "run", "-s", "reporte:equipo"], cwd=APP, capture_output=True, text=True,
+                env={"PATH": f"{NODE_BIN}:/usr/bin:/bin", "HOME": str(pathlib.Path.home())}, timeout=300,
+            )
+        except subprocess.TimeoutExpired:
+            r = subprocess.CompletedProcess([], 124, "", "npm run reporte:equipo tardó más de 300 s")
+        if r.returncode == 0:
+            break
+        print(f"intento {i}/{intentos}: npm run reporte:equipo salió con {r.returncode}", file=sys.stderr)
+        if i < intentos:
+            time.sleep(espera)
     if r.returncode != 0:
-        raise RuntimeError(f"npm run reporte:equipo salió con {r.returncode}:\n{r.stderr[-3000:]}")
+        raise RuntimeError(f"npm run reporte:equipo salió con {r.returncode} ({intentos} intentos):\n{r.stderr[-3000:]}")
     datos = json.loads(r.stdout)
     # Regla 2: un reporte sin José y Luqui no es "no hicieron nada", es un reporte roto.
     nombres = {p["nombre"] for p in datos["personas"] if p.get("principal")}

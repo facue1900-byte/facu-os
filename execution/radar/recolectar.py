@@ -211,6 +211,106 @@ def seccion_archivos(desde: datetime) -> str:
     return "\n".join(out)
 
 
+AGENTS = HOME / "Library" / "LaunchAgents"
+REPO_PLISTS = OS_DIR / "execution" / "launchd"
+REGISTRO = LOGS / "tareas.jsonl"
+# Cuánto puede tardar una corrida en quedar registrada después de su hora: espera de red
+# (15 min) + la tarea + la Mac dormida que la dispara al despertar.
+GRACIA = timedelta(hours=12)
+
+
+def _ultima_hora_esperada(intervalos: list[dict], ahora: datetime) -> datetime | None:
+    """La última vez que launchd TENDRÍA que haber disparado, según StartCalendarInterval."""
+    mejor = None
+    for d in range(0, 40):
+        dia = (ahora - timedelta(days=d)).date()
+        for it in intervalos:
+            if "Day" in it and dia.day != it["Day"]:
+                continue
+            if "Month" in it and dia.month != it["Month"]:
+                continue
+            if "Weekday" in it and (dia.weekday() + 1) % 7 != it["Weekday"] % 7:
+                continue
+            horas = [it["Hour"]] if "Hour" in it else range(24)
+            for h in horas:
+                t = datetime(dia.year, dia.month, dia.day, h, it.get("Minute", 0)).astimezone()
+                if t <= ahora and (mejor is None or t > mejor):
+                    mejor = t
+        if mejor:
+            return mejor
+    return mejor
+
+
+def chequeo_tareas(ahora: datetime) -> tuple[str, int]:
+    """Qué tarea programada falló o no corrió. Determinista: el agente lo copia, no lo interpreta."""
+    registros: dict[str, dict] = {}
+    desde_registro = None
+    invalidas = 0
+    if REGISTRO.is_file():
+        for linea in REGISTRO.read_text().splitlines():
+            if not linea.strip():
+                continue
+            try:
+                r = json.loads(linea)
+                ini = datetime.strptime(r["inicio"], "%Y-%m-%dT%H:%M:%S%z")
+                r["_ini"] = ini
+                registros[r["tarea"]] = r  # queda la última
+            except (json.JSONDecodeError, KeyError, ValueError, TypeError):
+                invalidas += 1
+                continue
+            desde_registro = desde_registro or ini
+    cargadas = sh(["bash", "-c", "launchctl list | grep com.facu || true"])
+    codigos = {l.split()[-1]: l.split()[1] for l in cargadas.splitlines() if l.strip()}
+
+    problemas, ok = [], []
+    if invalidas:
+        problemas.append(f"- **{REGISTRO.name}: {invalidas} línea(s) ilegibles**: esas corridas no se pueden verificar.")
+    nombres = sorted({p.name for p in AGENTS.glob("com.facu.*.plist")} | {p.name for p in REPO_PLISTS.glob("com.facu.*.plist")})
+    for archivo in nombres:
+        label = archivo[:-len(".plist")]
+        tarea = label[len("com.facu."):]
+        instalado = AGENTS / archivo
+        if not instalado.is_file() or label not in codigos:
+            problemas.append(f"- **{tarea}: NO ESTÁ CARGADA** en launchd: nunca va a correr.")
+            continue
+        # Con plutil, como launchd: plistlib rechaza un "--" adentro de un comentario
+        # (reporte-pauta lo tiene) y eso tiraba abajo el radar entero.
+        try:
+            pl = json.loads(sh(["plutil", "-convert", "json", "-o", "-", str(instalado)]))
+        except json.JSONDecodeError:
+            problemas.append(f"- **{tarea}: no pude leer su plist** ({instalado}).")
+            continue
+        envuelta = "correr.sh" in " ".join(pl.get("ProgramArguments", []))
+        sci = pl.get("StartCalendarInterval")
+        # Se juzga la última hora que YA venció su gracia: una diaria de las 07:30 se
+        # juzga con la de ayer cuando el radar corre a las 07:30 de hoy.
+        esperada = _ultima_hora_esperada(sci if isinstance(sci, list) else [sci], ahora - GRACIA) if sci else None
+        # Piso: no se le reclama una corrida anterior al registro ni a su instalación.
+        piso = max(filter(None, [desde_registro, datetime.fromtimestamp(instalado.stat().st_mtime).astimezone()]))
+        r = registros.get(tarea)
+        if not envuelta:
+            cod = codigos.get(label, "?")
+            linea = f"- {tarea}: no pasa por correr.sh (sin registro); último código de launchd {cod}."
+            (problemas if cod not in ("0", "-") else ok).append(linea)
+            continue
+        if r and r["codigo"] != 0:
+            problemas.append(f"- **{tarea}: FALLÓ** el {r['_ini']:%d/%m %H:%M} (código {r['codigo']}).")
+        elif esperada is None:
+            problemas.append(f"- **{tarea}: sin horario calculable** (no StartCalendarInterval o fuera de 40 días): no se puede verificar.")
+        elif esperada > piso and (r is None or r["_ini"] < esperada):
+            problemas.append(f"- **{tarea}: NO CORRIÓ** — le tocaba el {esperada:%d/%m %H:%M} y no hay registro.")
+        elif r:
+            ok.append(f"- {tarea}: OK, última {r['_ini']:%d/%m %H:%M}.")
+        else:
+            ok.append(f"- {tarea}: todavía sin corridas registradas.")
+
+    out = ["## ⚠ Tareas programadas que fallaron o no corrieron\n",
+           "Calculado por recolectar.py contra data/logs/tareas.jsonl. Copiar tal cual al tope del radar.\n"]
+    out += problemas or ["- Ninguna: todas corrieron bien la última vez que les tocaba."]
+    out += ["", "Al día:"] + ok + [""]
+    return "\n".join(out), len(problemas)
+
+
 def seccion_tareas() -> str:
     out = ["## Tareas programadas (launchd)\n", "Formato: PID · último código de salida · label (0 = OK)\n"]
     out.append("```\n" + sh(["bash", "-c", "launchctl list | grep com.facu || echo '(ninguna cargada)'"]) + "\n```\n")
@@ -234,6 +334,7 @@ def main() -> int:
     repos_md, n_repos = seccion_repos(desde)
     ses_md, n_ses, n_auto = seccion_sesiones(desde)
     mem_md, mem_ok = seccion_memoria(desde)
+    tareas_md, n_tareas_mal = chequeo_tareas(ahora)
 
     partes = [
         f"# Digest del radar — {ahora.strftime('%d/%m/%Y %H:%M')} (ventana: últimas {a.horas} h, desde {desde.strftime('%d/%m %H:%M')})\n",
@@ -242,12 +343,13 @@ def main() -> int:
         f"- Sesiones de Claude Code con actividad: {n_ses} (headless salteadas: {n_auto})",
         f"- MEMORY.md leído: {'sí' if mem_ok else 'NO'}",
         "- NO cubre: chats de claude.ai web/app (no quedan en disco), WhatsApp, Gmail, bases de Supabase.\n",
+        tareas_md,
         repos_md, ses_md, seccion_estados(), mem_md, seccion_archivos(desde), seccion_tareas(),
     ]
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(partes))
-    print(f"digest: {out} · {out.stat().st_size // 1024} KB · repos {n_repos} · sesiones {n_ses}")
+    print(f"digest: {out} · {out.stat().st_size // 1024} KB · repos {n_repos} · sesiones {n_ses} · tareas con problema {n_tareas_mal}")
 
     fallas = []
     if n_repos == 0:

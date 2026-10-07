@@ -113,29 +113,25 @@ escritorio). **Un solo `credentials.json` sirve para todas las cuentas.**
 **Qué se enciende:** listas de candidatos a locatario para los locales vacíos del Paseo,
 venues y productoras para eventos, frigoríficos y transportistas por zona.
 
-### 2. Encender el radar automático — 1 min
+### 2. Radar de rampa (`alerta-rampa`) — CARGADO el 07/10/2026
 
-**Hoy NO está cargado**: el `.plist` está en el repo pero no en `~/Library/LaunchAgents`,
-y `launchctl list` no lo muestra. Que exista el archivo no significa que corra: verificar
-siempre con `launchctl list | grep facu`.
+Probado a mano el 07/10 (dry-run, corte 2026-10): detecta La Jaula atrasada desde 2026-08.
+Corre el día 5 de cada mes, 9:00, y manda el mail sólo a `MAIL_FACU`.
+🔴 **Número a revisar:** dice "entró $185.000" y "acumulado no cobrado $6.000.000" (3 ×
+$2M), sin restar lo que entró. Hasta revisarlo, el acumulado del mail no es un número
+para pasarle a nadie.
 
-Ya no está bloqueado por credenciales — el OAuth está resuelto. Falta solo probarlo a mano
-contra agosto, varias veces:
+### Tareas programadas: todas pasan por `execution/launchd/correr.sh`
 
-```bash
-cd ~/facu-os && .venv/bin/python \
-  .claude/skills/cierre-mes-nordelta/scripts/alerta_rampa.py --mes 2026-08
-```
-
-Sin `--send` no manda nada, solo muestra. Cuando te convenza:
-
-```bash
-cp ~/facu-os/execution/launchd/com.facu.alerta-rampa.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.facu.alerta-rampa.plist
-```
-
-Día 5 de cada mes, 9:00, te avisa si un alta se atrasó. **La Jaula arranca en agosto**:
-esta es la primera que hay que controlar.
+Desde el 07/10/2026 cada plist corre su comando a través de `correr.sh <nombre> -- "<cmd>"`:
+espera la red hasta 15 min, anota cada corrida en `data/logs/tareas.jsonl`, y si falla
+avisa (notificación + mail a Facu vía `execution/avisar.py`, siempre). El radar de las 7:30 lee ese registro y marca las que **fallaron, no
+corrieron o no están cargadas** (`chequeo_tareas` en `execution/radar/recolectar.py`).
+**Una tarea nueva se escribe así o el radar la marca como "no pasa por correr.sh".**
+No reintenta la tarea entera (duplicaría mails o plata): el reintento va adentro del
+script, en el paso que sólo lee. Instalar o cambiar un plist:
+`cp execution/launchd/com.facu.X.plist ~/Library/LaunchAgents/ && launchctl unload … && launchctl load …`,
+y verificar con `launchctl list | grep facu`.
 
 ## Lo que hay que decidir todavía
 

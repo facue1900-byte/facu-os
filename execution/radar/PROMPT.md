@@ -68,8 +68,17 @@ Tabla: Repo o sesión · Qué se hizo (una línea). Commits agrupados por tema, 
 Debajo: repos con cambios sin commitear o sin pushear (eso puede perderse).
 
 ## Automatizaciones
-Tabla: Tarea · Último resultado (OK / FALLA código N) · Qué hacer. Toda tarea con código
-distinto de 0 o con log que muestre error va con su causa probable según el log.
+Tabla: Tarea · Último resultado (OK / FALLA código N / NO CORRIÓ / NO CARGADA) · Qué hacer.
+La fuente es la sección "⚠ Tareas programadas que fallaron o no corrieron" del digest: la
+calcula Python, se copia, no se reinterpreta. Toda tarea con problema va con su causa
+probable según su log.
+```
+
+Si esa sección del digest trae al menos un problema, el doc arranca (antes del Lead) con
+una línea `Se rompió: <tarea> (<FALLÓ / NO CORRIÓ / NO CARGADA>)` por cada una. Una tarea
+que no corrió no la ve nadie más que este radar.
+
+```
 
 ## Anotado, no se construye
 Ideas que aparecieron en sesiones o memoria que no mueven plata ni ahorran horas

@@ -12,7 +12,9 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>-lc</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>efectivo-diario</string>
+        <string>--</string>
         <string>/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/efectivo_diario.sh</string>
     </array>
 

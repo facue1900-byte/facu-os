@@ -17,7 +17,9 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>-lc</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>reporte-inversores</string>
+        <string>--</string>
         <string>/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/cierre_mensual.sh</string>
     </array>
 

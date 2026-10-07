@@ -41,7 +41,9 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>-lc</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>reporte-pauta</string>
+        <string>--</string>
         <string>DEST=/Users/Facu/Desktop/Productoras/Astronomy/Academia/Pauta; OUT="$DEST/REPORTE_PAUTA.txt"; PY=/Users/Facu/facu-os/.venv/bin/python; R=/Users/Facu/facu-os/active/astronomy/pauta/reporte_embudo.py; mkdir -p "$DEST" || exit 1; for i in 1 2 3; do { date; echo; $PY $R; echo; echo "=== CHEQUEO: ¿se está registrando todo? ==="; $PY $R --chequeo; } > "$OUT" 2>&amp;1; rc=$?; grep -qE "Traceback|rechazó|Faltan" "$OUT" || break; rc=2; sleep 120; done; if [ $rc -eq 0 ]; then MSG="Informe listo y todo registrando. Está en Academia/Pauta: REPORTE_PAUTA.txt"; else MSG="FALLA: algo dejó de registrar o el reporte no corrió. Mirá REPORTE_PAUTA.txt"; fi; osascript -e "display notification \"$MSG\" with title \"Pauta Astronomy\" sound name \"Ping\""; exit $rc</string>
     </array>
 

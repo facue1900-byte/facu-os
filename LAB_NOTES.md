@@ -8,6 +8,29 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, se destila como nota en el vault.
 
+### 2026-10-07 · FAIL ✓ · Cada tarea programada se cuidaba sola, y dos se cayeron
+
+**Dónde:** `execution/launchd/*.plist`, `execution/reporte_equipo.py`, `cierre_mensual.sh`.
+
+**Qué pasó:** el reporte del equipo del viernes 02/10 no salió ("JWT issued at future": la
+Mac recién despierta, una sola vez; corrido de nuevo anduvo). Ese sí mandó mail de error.
+El cierre del Paseo del 16/09 falló sin red y no avisó a nadie: `cierre_mensual.sh` no
+tenía aviso. Y `alerta-rampa` llevaba dos meses sin cargar en launchd (sí documentado).
+
+**Causa raíz:** no había una forma única de correr una tarea. Cada plist resolvía red,
+reintento y aviso a su manera: `efectivo-diario` esperaba la red y mandaba mail,
+`reporte-pauta` y `verificar-leads` tenían reintento y notificación pegados en el plist,
+los otros nada. Y ninguna tarea puede avisar que NO corrió.
+
+**Fix:** `execution/launchd/correr.sh` envuelve las 7 (espera red, registra en
+`data/logs/tareas.jsonl`, avisa si falla); el radar calcula contra ese registro qué falló,
+qué no corrió y qué no está cargado (`chequeo_tareas`, con test que le fabrica las tres
+fallas). `juntar()` del reporte del equipo reintenta 3 veces: sólo lee.
+
+**Lección:** una tarea programada no puede ser la única que vigila si corrió. El registro
+lo escribe el wrapper y lo lee otro (el radar). No se reintenta una tarea que escribe o
+manda: se reintenta el paso que lee.
+
 ### 2026-09-23 · FAIL ✓ · "Ya está cargado" sin decir qué: $1,14M de gastos que no existen
 
 **Dónde:** `astronomy-members`, espejo de MP (`app/actions/espejoMp.ts`) y tareas de Luqui (`lib/workflows.ts`), commit `63558de`.
