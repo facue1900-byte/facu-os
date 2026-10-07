@@ -6,7 +6,7 @@ arregla, se marca `FAIL ✓` y se anota el fix.
 
 Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la API / el skill.
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
-afectado. Si es un patrón transferible, se destila como nota en el vault.
+afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
 ### 2026-10-07 · FAIL ✓ · Cada tarea programada se cuidaba sola, y dos se cayeron
 

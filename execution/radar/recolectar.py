@@ -311,6 +311,19 @@ def chequeo_tareas(ahora: datetime) -> tuple[str, int]:
     return "\n".join(out), len(problemas)
 
 
+TECHO_MEMORIA = 24_000  # pasado esto, las líneas de abajo de MEMORY.md dejan de cargarse sin avisar
+AVISO_MEMORIA = 22_000
+
+
+def chequeo_memoria() -> tuple[str, int]:
+    idx = MEMORY_DIR / "MEMORY.md"
+    n = idx.stat().st_size if idx.is_file() else 0
+    if n < AVISO_MEMORIA:
+        return f"- MEMORY.md: {n:,} bytes de {TECHO_MEMORIA:,}: bien.\n".replace(",", "."), 0
+    return (f"- **MEMORY.md: {n:,} bytes de {TECHO_MEMORIA:,}**: hay que podar antes de que se corte "
+            "lo de abajo (pasar líneas de +30 días a indice-temas-dormidos.md).\n").replace(",", "."), 1
+
+
 def seccion_tareas() -> str:
     out = ["## Tareas programadas (launchd)\n", "Formato: PID · último código de salida · label (0 = OK)\n"]
     out.append("```\n" + sh(["bash", "-c", "launchctl list | grep com.facu || echo '(ninguna cargada)'"]) + "\n```\n")
@@ -335,6 +348,9 @@ def main() -> int:
     ses_md, n_ses, n_auto = seccion_sesiones(desde)
     mem_md, mem_ok = seccion_memoria(desde)
     tareas_md, n_tareas_mal = chequeo_tareas(ahora)
+    mem_aviso, n_mem = chequeo_memoria()
+    tareas_md = tareas_md.replace("\nAl día:", mem_aviso + "\nAl día:", 1) if n_mem else tareas_md + mem_aviso
+    n_tareas_mal += n_mem
 
     partes = [
         f"# Digest del radar — {ahora.strftime('%d/%m/%Y %H:%M')} (ventana: últimas {a.horas} h, desde {desde.strftime('%d/%m %H:%M')})\n",

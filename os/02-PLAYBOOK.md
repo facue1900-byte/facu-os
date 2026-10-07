@@ -192,7 +192,7 @@ andando bien. Ver el Lab Note del 10/08/2026.
 4. **Eliminar la recurrencia**: que el mismo error no pueda volver a pasar callado.
 5. **Doble escritura**: postmortem completo en `LAB_NOTES.md`, lección corta en el
    `SKILL.md` o doc afectado.
-6. Si es un patrón que va a seguir siendo cierto en un año → se destila al vault.
+6. Si es un patrón que va a seguir siendo cierto en un año → memoria, en `indice-trampas.md`.
 
 ## 6. Innovación — el backlog, no el impulso
 

@@ -1,6 +1,6 @@
 # Constitución — Empresa OS
 
-`CONSTITUCION-v4` · 04/08/2026 · **rige en todas las sesiones, todos los negocios.**
+`CONSTITUCION-v5` · 07/10/2026 · **rige en todas las sesiones, todos los negocios.**
 
 Esto es lo **no negociable**. Es corto a propósito: entra entero en cada sesión.
 
@@ -73,7 +73,7 @@ Van numeradas para poder citarlas. "Me comí la 4" tiene que ser una frase decib
 19. **Causa raíz, no síntoma.** Se rompe → se arregla la causa → se prueba → se
     actualiza el doc afectado → Lab Note en `LAB_NOTES.md`.
 20. **Todo aprendizaje no obvio se escribe** en la capa que corresponde (ver
-    `03-EMPRESA.md`): ejecución en el repo, estado en memoria, conocimiento en el vault.
+    `03-EMPRESA.md`): ejecución en el repo, estado y patrones en memoria, postmortems en `LAB_NOTES.md`.
 21. **Proponer mejoras sin que las pidan.** Lo que es interesante pero no mueve plata ni
     ahorra horas: se anota, no se construye.
 22. **Un skill se crea recién después de hacer la tarea 3 veces a mano**, y sólo si Facu
@@ -115,7 +115,7 @@ Y cada cosa va a una sola capa:
 | Un KPI, su fuente, un estándar | `03-EMPRESA.md` |
 | En qué quedó algo, con fecha | memoria de Claude Code |
 | Un postmortem completo | `LAB_NOTES.md` |
-| Un patrón que va a seguir siendo cierto en un año | el vault de Obsidian |
+| Un patrón que va a seguir siendo cierto en un año | memoria, en `indice-trampas.md` |
 
 Al agregar una regla: **sube la versión** del tag de arriba y se anota en el historial
 del `README.md`. Y se busca si ya existe una que diga lo mismo — dos reglas parecidas se

@@ -75,7 +75,7 @@ probable según su log.
 ```
 
 Si esa sección del digest trae al menos un problema, el doc arranca (antes del Lead) con
-una línea `Se rompió: <tarea> (<FALLÓ / NO CORRIÓ / NO CARGADA>)` por cada una. Una tarea
+una línea `Se rompió: <tarea> (<FALLÓ / NO CORRIÓ / NO CARGADA>)` por cada una. Si la sección trae el aviso de MEMORY.md cerca del techo, va también ahí arriba. Una tarea
 que no corrió no la ve nadie más que este radar.
 
 ```

@@ -102,7 +102,7 @@ Si se mezclan, los documentos se llenan de data vieja y empiezan a mentir.
 > `CLAUDE.md`, `settings.json`, `scripts/` y las memorias; el `.gitignore` es lista
 > blanca, así que **lo que se agregue ahí adentro no entra hasta que alguien lo habilite**.
 
-| **Conocimiento** | `~/Obsidian/facu-vault/` | Lo que va a seguir siendo cierto en un año | patrones, aprendizajes destilados |
+| **Conocimiento** | memoria → `indice-trampas.md` | Lo que va a seguir siendo cierto en un año | patrones, aprendizajes destilados. (El vault de Obsidian quedó como archivo histórico el 07/10/2026, v5.) |
 | **Data cruda** | `~/Desktop/` | Extractos, exports, PDFs, planillas | por path absoluto, no se mueve |
 
 ## Qué se registra siempre
