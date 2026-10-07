@@ -76,3 +76,15 @@ def test_acciones_tokenizadas_afuera(c):
         assert c.es_accion_tokenizada(b)
     for b in ("BNB", "ARB", "BTC", "NEAR"):
         assert not c.es_accion_tokenizada(b)
+
+
+def test_trading_vende_mitad_a_8_y_resto_a_15(c):
+    lb = libro(c, nivel="trading")
+    ops = c.vigilar_posicion(lb, "XUSDT", [vela(0, 100, 108.5, 99), vela(1, 108, 115.5, 107)])
+    assert [round(o["precio"], 2) for o in ops] == [108.0, 115.0]
+    assert "XUSDT" not in lb["posiciones"]
+
+
+def test_perfil_limita_niveles(c, tmp_path):
+    (tmp_path / "perfil.json").write_text('{"niveles": ["trading"], "tope_posicion": 0.25}')
+    assert c.perfil()["niveles"] == ["trading"] and c.perfil()["tope_posicion"] == 0.25

@@ -38,7 +38,7 @@ comercial) y **campos** (Chaco, Pergamino).
 | Paseo Nordelta (extractos Macro, cierre de mes) | `~/Desktop/Paseo Nordelta/` |
 | Guías de traslado de hacienda (Chaco) | `~/Desktop/Chaco/` |
 | Astronomy y Puzzle | `~/Desktop/Productoras/` (Astronomy → `Academia/`, `Eventos/`, `Marca Astronomy/`) |
-| Segundo cerebro (Obsidian) | `~/Obsidian/facu-vault/` |
+| Vault de Obsidian — archivo histórico desde el 07/10/2026, no se escribe | `~/Obsidian/facu-vault/` |
 
 `~/Claude-Workspace/` es **read-only**: template del curso, otro rubro. Biblioteca de
 código de ejemplo, no una capacidad de este OS.
@@ -158,9 +158,9 @@ decir que está bien.**
 
 **Se rompe algo:** causa raíz → lo pruebo → actualizo el `SKILL.md` o el doc afectado →
 Lab Note en `LAB_NOTES.md`. Postmortem completo allá, lección corta en el doc. Si es un
-patrón que va a seguir siendo cierto en un año, se destila al vault.
+patrón que va a seguir siendo cierto en un año, va a memoria (`indice-trampas.md`).
 
-**Las tres capas** (repo / memoria / vault): la tabla vive en `os/03-EMPRESA.md` →
+**Las capas** (repo / memoria / `LAB_NOTES.md`): la tabla vive en `os/03-EMPRESA.md` →
 *Dónde se escribe cada cosa*. La parte del repo es código, skills y estado operativo por
 frente. Si las capas se mezclan, este archivo se llena de data vieja y empieza a mentir.
 

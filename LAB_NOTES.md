@@ -6,7 +6,7 @@ arregla, se marca `FAIL ✓` y se anota el fix.
 
 Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la API / el skill.
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
-afectado. Si es un patrón transferible, se destila como nota en el vault.
+afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
 ### 2026-10-07 · FAIL ✓ · Cada tarea programada se cuidaba sola, y dos se cayeron
 
@@ -239,3 +239,15 @@ manda uno propio.
 [`archive/lab-notes/LAB_NOTES-2026-07-y-08.md`](archive/lab-notes/LAB_NOTES-2026-07-y-08.md),
 con índice arriba. Cuando este archivo vuelva a pasar los ~60 KB, se mueve igual el
 trimestre más viejo: buscar ahí con `grep -rn "<tema>" LAB_NOTES.md archive/lab-notes/`.
+
+## 2026-10-07 — La nube de Claude Code bloquea dominios que no están en su lista
+
+**Qué pasó:** la rutina de la carpeta cripto (`trig_01DjiQf8wctTrs8xAgXjaNR1`) corrió en la nube y
+`data-api.binance.vision` devolvió `Tunnel connection failed: 403 Forbidden`. El entorno Default
+de claude.ai/code tiene acceso de red restringido: sólo deja salir a una lista de dominios.
+El script falló bien (no operó sin precio) y la rutina avisó con `CARTERA_FALLA`.
+
+**Lección:** antes de mudar a una rutina en la nube algo que llama a una API externa, probar
+ese dominio desde la nube (una corrida con `curl`), no desde la Mac. Se arregla habilitando el
+dominio en Network access del entorno. Además, `api.binance.com` da 451 desde IPs de EE.UU.:
+para datos públicos usar el espejo `data-api.binance.vision`.

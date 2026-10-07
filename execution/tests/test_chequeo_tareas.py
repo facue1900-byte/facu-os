@@ -90,3 +90,12 @@ def test_linea_rota_del_registro_no_tira_el_radar(tmp_path, monkeypatch):
     recolectar.REGISTRO.write_text('{"tarea":"x"}\nbasura\n')
     md, n = recolectar.chequeo_tareas(ahora)
     assert "2 línea(s) ilegibles" in md
+
+
+def test_memoria_cerca_del_techo_avisa(tmp_path, monkeypatch):
+    (tmp_path / "MEMORY.md").write_text("x" * 23_000)
+    monkeypatch.setattr(recolectar, "MEMORY_DIR", tmp_path)
+    md, n = recolectar.chequeo_memoria()
+    assert n == 1 and "hay que podar" in md
+    (tmp_path / "MEMORY.md").write_text("x" * 100)
+    assert recolectar.chequeo_memoria()[1] == 0

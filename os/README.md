@@ -36,6 +36,7 @@ cuando Facu corrigió lo mismo dos veces. No por completitud.
 
 | Fecha | Cambio |
 |---|---|
+| 07/10/2026 | `CONSTITUCION-v5`. **El vault de Obsidian deja de ser capa obligatoria.** Sus 23 notas son del 27-29/07 y en 10 semanas no se escribió ninguna: los patrones se fueron escribiendo en la memoria (`indice-trampas.md`). Una capa que la regla exige y nadie usa es un chequeo que nunca falla (regla 3). El vault queda como archivo histórico, sin obligación. |
 | 04/08/2026 | `CONSTITUCION-v4`. **Regla 24**: nada está terminado cuando se programa, sino cuando alguien lo usa solo dos semanas sin instrucciones. Cambia el criterio de éxito de *¿está hecho?* a *¿el trabajo se hizo realmente desde ahí?*. Es la Ley 9 de Astronomy, y vale igual para un skill del OS que para una pantalla del Paseo. |
 | 04/08/2026 | `CONSTITUCION-v3`. **Regla 23**: el software crece cuando aparece trabajo nuevo, nunca cuando aparece una idea nueva. Salió del sprint del escritorio de Astronomy — Facu la dictó como Ley 8 del repo y vale para los cuatro negocios. La pregunta que autoriza a construir es *¿esta persona necesitó salir del sistema?* |
 | 03/08/2026 | `CONSTITUCION-v2`. Sección **"Cómo crece esto"**: el chequeo de cierre, los tres disparadores de una regla nueva, y a qué capa va cada aprendizaje. Sin eso los tres documentos se congelaban. |

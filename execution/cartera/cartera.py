@@ -1,7 +1,8 @@
 """Carpeta cripto ficticia de 1.000 USD, vigilada minuto a minuto aunque la Mac esté apagada.
 
-Corre en una rutina en la nube de Claude Code (ver PROMPT.md). El libro vive en la rama
-`claude/cartera-cripto`, en `execution/cartera/estado/`. No usa key: precios públicos de
+Corre en rutinas en la nube de Claude Code: PROMPT.md (3 niveles, cada 2 h, libro en la rama
+`claude/cartera-cripto`, `execution/cartera/estado/`) y PROMPT_AGRESIVA.md (cada 1 h, rama
+`claude/cartera-agresiva`, `execution/cartera/estado-agresiva/`). No usa key: precios públicos de
 Binance (data-api.binance.vision, el espejo que responde desde servidores de EE.UU.).
 
 Cómo es "24/7" sin un servidor prendido: cada posición lleva su stop, su trailing stop y
@@ -51,6 +52,7 @@ LIBRO = DIR / "libro.json"
 DIARIO = DIR / "diario.md"
 HISTORIAL = DIR / "historial.csv"
 RESUMEN = DIR / "RESUMEN.md"
+PERFIL = DIR / "perfil.json"
 
 API = "https://data-api.binance.vision/api/v3"
 COMISION = 0.001
@@ -58,7 +60,7 @@ TOPE_POSICION = 0.35
 TOPE_RIESGO = 0.05
 MINIMO_USD = 5.0
 CONSERVADORES = ("BTC", "ETH", "BNB")
-VOLUMEN_MINIMO = {"conservador": 0.0, "medio": 20e6, "riesgo": 5e6}
+VOLUMEN_MINIMO = {"conservador": 0.0, "medio": 20e6, "riesgo": 5e6, "trading": 20e6}
 EXCLUIDOS = {"USDC", "FDUSD", "TUSD", "DAI", "USDP", "EUR", "USDE", "USD1", "XUSD", "BFUSD",
              "RLUSD", "PAXG", "EURI", "AEUR", "USDS", "PYUSD", "XAUT", "U"}
 # Reglas por defecto: stop % bajo la compra, trailing % bajo el máximo, tomas [(+%, fracción)].
@@ -66,7 +68,16 @@ REGLAS = {
     "conservador": {"stop": 25.0, "trail": 25.0, "tp": []},
     "medio": {"stop": 18.0, "trail": 20.0, "tp": [[50.0, 0.33]]},
     "riesgo": {"stop": 15.0, "trail": 15.0, "tp": [[40.0, 0.5], [100.0, 0.5]]},
+    # Carpeta agresiva: entrar y salir en horas o días. Vende la mitad a +8% y el resto a +15%.
+    "trading": {"stop": 5.0, "trail": 5.0, "tp": [[8.0, 0.5], [15.0, 1.0]]},
 }
+# Sin perfil.json en la carpeta: la estrategia de 3 niveles. Con perfil: lo que diga.
+PERFIL_BASE = {"nombre": "Carpeta cripto ficticia", "niveles": ["conservador", "medio", "riesgo"],
+               "tope_posicion": TOPE_POSICION}
+
+
+def perfil() -> dict:
+    return PERFIL_BASE | (json.loads(PERFIL.read_text()) if PERFIL.exists() else {})
 MINUTO_MS = 60_000
 
 
@@ -105,7 +116,7 @@ def es_accion_tokenizada(base: str) -> bool:
 
 def pares_validos() -> dict[str, str]:
     """{símbolo: activo base} de los pares USDT operables: sin stables, oro ni acciones."""
-    info = _get("exchangeInfo", {"permissions": "SPOT"})
+    info = _get("exchangeInfo", {"permissions": "SPOT", "showPermissionSets": "false", "symbolStatus": "TRADING"})
     return {s["symbol"]: s["baseAsset"] for s in info["symbols"]
             if s["status"] == "TRADING" and s["quoteAsset"] == "USDT" and s["baseAsset"].isascii()
             and s["baseAsset"] not in EXCLUIDOS and not es_accion_tokenizada(s["baseAsset"])}
@@ -255,6 +266,8 @@ def cmd_comprar(par: str, usd: float, nivel: str, motivo: str, stop, trail, tp) 
     if par not in validos:
         raise ErrorCartera(f"{par} no es un par USDT operable (o es stable/oro/acción).")
     base = validos[par]
+    if nivel not in perfil()["niveles"]:
+        raise ErrorCartera(f"Esta carpeta opera {', '.join(perfil()['niveles'])}, no {nivel}.")
     if nivel == "conservador" and base not in CONSERVADORES:
         raise ErrorCartera(f"Conservador es sólo {', '.join(CONSERVADORES)}.")
     t = tickers_24h([par])[par]
@@ -269,7 +282,7 @@ def cmd_comprar(par: str, usd: float, nivel: str, motivo: str, stop, trail, tp) 
     precios = precios_de(libro) | libro_de_precios([par])
     total = valuar(libro, precios)["total_usd"]
     ya = pos["cantidad"] * precios[par]["bid"] if pos else 0.0
-    tope = total * (TOPE_RIESGO if nivel == "riesgo" else TOPE_POSICION)
+    tope = total * (TOPE_RIESGO if nivel == "riesgo" else perfil()["tope_posicion"])
     if usd < MINIMO_USD:
         raise ErrorCartera(f"Orden mínima {MINIMO_USD} USD.")
     if ya + usd > tope + 1e-9:
@@ -407,6 +420,29 @@ def cmd_vigilar() -> dict:
     return {"fecha": fecha(), "vigilancia": resumen}
 
 
+def cmd_radar_corto(top: int) -> dict:
+    """Radar para la carpeta agresiva: velas de 1 h de las últimas 48 h."""
+    validos = pares_validos()
+    t = [d for s, d in tickers_24h().items() if s in validos and float(d["quoteVolume"]) >= VOLUMEN_MINIMO["trading"]]
+    t.sort(key=lambda d: -float(d["quoteVolume"]))
+    out = []
+    for d in t[:top]:
+        k = velas(d["symbol"], "1h", limite=49)
+        if len(k) < 49:
+            continue
+        c = [float(v[4]) for v in k]
+        vq = [float(v[7]) for v in k]
+        p = c[-1]
+        prom4 = sum(vq[:-4]) / (len(vq) - 4) * 4
+        out.append({"par": d["symbol"], "vol_24h_musd": round(float(d["quoteVolume"]) / 1e6, 1),
+                    "var_1h": round((p / c[-2] - 1) * 100, 2), "var_4h": round((p / c[-5] - 1) * 100, 2),
+                    "var_24h": round((p / c[-25] - 1) * 100, 2), "var_48h": round((p / c[0] - 1) * 100, 2),
+                    "volumen_4h_vs_promedio": round(sum(vq[-4:]) / prom4, 2) if prom4 else None,
+                    "vs_max_48h": round((p / max(float(v[2]) for v in k) - 1) * 100, 2),
+                    "vs_min_48h": round((p / min(float(v[3]) for v in k) - 1) * 100, 2)})
+    return {"fecha": fecha(), "pares": out}
+
+
 def cmd_radar(top: int) -> dict:
     validos = pares_validos()
     t = [d for s, d in tickers_24h().items() if s in validos]
@@ -433,7 +469,7 @@ def cmd_radar(top: int) -> dict:
 
 def escribir_resumen(e: dict, libro: dict) -> None:
     """RESUMEN.md: lo que Facu abre desde el celular en GitHub."""
-    L = [f"# Carpeta cripto ficticia — {e['fecha']}", "",
+    L = [f"# {perfil()['nombre']} — {e['fecha']}", "",
          f"**Total: {e['total_usd']:,.2f} USD ({e['resultado_pct']:+.2f}%)** desde {e['desde']} · "
          f"USDT libre {e['usdt']:,.2f} · comisiones {e['comisiones_usd']:,.2f} · {e['operaciones']} operaciones", "",
          "| Contra qué | USD |", "|---|---:|", f"| **Esta carpeta** | **{e['total_usd']:,.2f}** |"]
@@ -482,6 +518,7 @@ def main(argv: list[str] | None = None) -> int:
     i.add_argument("--forzar", action="store_true")
     r = sub.add_parser("radar")
     r.add_argument("--top", type=int, default=60)
+    r.add_argument("--corto", action="store_true", help="velas de 1 h, últimas 48 h (carpeta agresiva)")
     for nombre in ("estado", "vigilar", "snapshot", "fijar-plan"):
         sub.add_parser(nombre)
     n = sub.add_parser("nota")
@@ -510,7 +547,7 @@ def main(argv: list[str] | None = None) -> int:
         if a.cmd == "init":
             res = cmd_init(a.capital, a.forzar)
         elif a.cmd == "radar":
-            res = cmd_radar(a.top)
+            res = cmd_radar_corto(a.top) if a.corto else cmd_radar(a.top)
         elif a.cmd == "estado":
             libro = leer()
             res = valuar(libro, precios_de(libro))
