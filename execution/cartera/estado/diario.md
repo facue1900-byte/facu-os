@@ -100,3 +100,6 @@ Sin operar: pasaron 22 min desde el ciclo anterior, el vigilante no disparó nad
 ## 2026-10-08 02:06 UTC — nota
 Sin operar: el vigilante no disparó nada en 2 h; todas las posiciones están dentro de ±4% de su entrada (peor RAY -2,9%, a ~12% de su stop) y el reparto sigue en objetivo (45/30/17,5/7,5). Las tesis del armado siguen vigentes; rotar a <6 h de entrar es pagar comisión sin tesis nueva.
 
+## 2026-10-08 04:05 UTC — nota
+Sin operar: el vigilante no disparó nada en 2 h; todo dentro de ±4% de la entrada salvo MET (+8,3%, lejos de su toma de +40%); el peor es PUMP -4,1%, a ~10% de su stop. Reparto en objetivo (45/30/17,4/7,6). La carpeta tiene 7 h: no hay tesis nueva que pague la comisión, así que no corrí radar.
+
