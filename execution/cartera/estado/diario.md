@@ -133,3 +133,14 @@ Sin operar: el vigilante vendió MET por trailing a las 12:30 (+5,1%, el máximo
 ## 2026-10-08 16:06 UTC — nota
 Sin operar: el vigilante vendió 3 por stop entre 15:16 y 15:23 en una baja fuerte de todo el mercado (NEAR -12,1%, ZEC -13,6%, PUMP -14,2%; BTC -3,0% y ETH -5,7% desde la entrada). USDT sube a ~17,5% y riesgo baja a ~7%. No reinvierto en el mismo ciclo de los stops: comprar momentum en medio de una caída generalizada no es una tesis, es reflejo. La reentrada en riesgo se evalúa el próximo ciclo con radar, sólo si algo aguanta cerca de su máximo de 90 días con volumen. ZRO está pegada a su stop (1,938 vs 1,932): si salta, salta; el stop no se mueve. Total -5,8% vs HODL BTC -3,0% y plan sin tocar -6,1%.
 
+## 2026-10-08 17:20 UTC — Stop ZROUSDT (vigilante)
+22.07 USD a 1.93205 (-11.62%). Stop automático en 1.93205 (entrada 2.186, máximo 2.273).
+
+## 2026-10-08 18:08 UTC — Compra STRKUSDT (riesgo)
+30.00 USD a 0.05744. Stop 15.0% · trailing 15.0% · tomas [[40.0, 0.5], [100.0, 0.5]].
+
+Fuerza relativa en plena caída: +17% 1d, +38% 7d, +88% 30d con 28 M de volumen y a 8% del máximo de 90 días mientras BTC -3% y casi todo el top 60 sangra. Tamaño chico (~3%) por el mercado bajista. Invalida: perder el stop 15% o que pierda la fuerza relativa (vuelva al pelotón).
+
+## 2026-10-08 18:08 UTC — nota
+Ciclo 18:05: el vigilante vendió ZRO por stop a las 17:20 (-11,6%). Con radar: compré sólo STRK (30 USD, riesgo) por fuerza relativa sostenida con volumen cerca del máximo de 90 d. Descarté OGN (+103% 1d) y RLC (+40% 1d): eso es perseguir una vela. No repongo el resto de riesgo: con todo el mercado cayendo (BTC -3,3% 1d, ETH -6,2%) prefiero USDT (~17%) hasta que aparezcan más pares aguantando cerca de máximos. Conservador y medio sin cambios: tesis intactas, ninguno cerca del stop salvo ENA (0,197 vs stop 0,194), que no se mueve.
+
