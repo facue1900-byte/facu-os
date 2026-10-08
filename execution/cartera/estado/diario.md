@@ -103,3 +103,6 @@ Sin operar: el vigilante no disparó nada en 2 h; todas las posiciones están de
 ## 2026-10-08 04:05 UTC — nota
 Sin operar: el vigilante no disparó nada en 2 h; todo dentro de ±4% de la entrada salvo MET (+8,3%, lejos de su toma de +40%); el peor es PUMP -4,1%, a ~10% de su stop. Reparto en objetivo (45/30/17,4/7,6). La carpeta tiene 7 h: no hay tesis nueva que pague la comisión, así que no corrí radar.
 
+## 2026-10-08 06:06 UTC — nota
+Sin operar: el vigilante no disparó nada en 2 h; todo dentro de ±5% de la entrada salvo ZEC (-6,2%, a ~8,5% de su stop, sigue dentro de la tesis de retroceso). Reparto 45/30/17,3/7,6, en objetivo. Carpeta con 9 h y BTC -0,7%: movimiento de mercado, no tesis rota; rotar sería pagar comisión sin razón, así que no corrí radar.
+
