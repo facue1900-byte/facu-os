@@ -106,3 +106,6 @@ Sin operar: el vigilante no disparó nada en 2 h; todo dentro de ±4% de la entr
 ## 2026-10-08 06:06 UTC — nota
 Sin operar: el vigilante no disparó nada en 2 h; todo dentro de ±5% de la entrada salvo ZEC (-6,2%, a ~8,5% de su stop, sigue dentro de la tesis de retroceso). Reparto 45/30/17,3/7,6, en objetivo. Carpeta con 9 h y BTC -0,7%: movimiento de mercado, no tesis rota; rotar sería pagar comisión sin razón, así que no corrí radar.
 
+## 2026-10-08 08:06 UTC — nota
+Sin operar: el vigilante no disparó nada en 2 h. MET +15% (lejos de su toma de +40%, el trailing ya la sube); peor ZEC -6,2% (stop a ~8%, tesis de retroceso intacta), PUMP -4,2%. Reparto 45/30/17,5/7,5 en objetivo; total -0,9% vs HODL BTC -0,5%: es mercado, no tesis rota. Carpeta con 11 h: rotar sería pagar comisión sin razón, no corrí radar.
+
