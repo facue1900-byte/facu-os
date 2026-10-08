@@ -97,3 +97,6 @@ Sin operar: la carpeta se armó hace <3 h, ninguna posición se movió más de �
 ## 2026-10-08 00:05 UTC — nota
 Sin operar: pasaron 22 min desde el ciclo anterior, el vigilante no disparó nada, todas las posiciones están dentro de ±1,6% de su entrada y lejos de sus stops; el reparto sigue en objetivo. No corrí radar: en este lapso no puede haber una tesis nueva que pague la comisión.
 
+## 2026-10-08 02:06 UTC — nota
+Sin operar: el vigilante no disparó nada en 2 h; todas las posiciones están dentro de ±4% de su entrada (peor RAY -2,9%, a ~12% de su stop) y el reparto sigue en objetivo (45/30/17,5/7,5). Las tesis del armado siguen vigentes; rotar a <6 h de entrar es pagar comisión sin tesis nueva.
+
