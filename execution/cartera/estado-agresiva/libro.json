@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 500.0,
+  "usdt": 594.810095,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.07759464371708635,
       "entrada": 2574.92,
-      "maximo": 2574.92,
+      "maximo": 2576.68,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791416640000
+      "vigilado_hasta": 1791419640000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 37.33183856502242,
       "entrada": 5.352,
-      "maximo": 5.352,
+      "maximo": 5.377,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791416640000
-    },
-    "METUSDT": {
-      "nivel": "trading",
-      "cantidad": 214.4236960721185,
-      "entrada": 0.4659,
-      "maximo": 0.4659,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791416700000
+      "vigilado_hasta": 1791419640000
     }
   },
-  "comisiones_usd": 0.5,
+  "comisiones_usd": 0.594905,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -110,6 +88,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h con volumen: MET +41% en 24 h, +6,2% en 4 h, volumen 4 h 3x el promedio, a -2,5% del máximo de 48 h; 1 h +0,85% (<4%). Tamaño chico (10%) porque está a +62% del mínimo de 48 h: muy extendida. Invalida: stop -5% o rechazo debajo del máximo de 48 h."
+    },
+    {
+      "ms": 1791417600000,
+      "fecha": "2026-10-08 00:00 UTC",
+      "lado": "sell",
+      "par": "METUSDT",
+      "cantidad": 214.4236960721185,
+      "precio": 0.44260499999999997,
+      "usd": 94.905,
+      "comision": 0.094905,
+      "motivo": "Stop automático en 0.442605 (entrada 0.4659, máximo 0.4659).",
+      "resultado_pct": -5.0
     }
   ]
 }

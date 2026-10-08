@@ -16,3 +16,6 @@ Momentum 24 h: NEAR +5,6% en 24 h contra un mercado en rojo, +0,2% en 4 h, a -1,
 
 Momentum 24 h con volumen: MET +41% en 24 h, +6,2% en 4 h, volumen 4 h 3x el promedio, a -2,5% del máximo de 48 h; 1 h +0,85% (<4%). Tamaño chico (10%) porque está a +62% del mínimo de 48 h: muy extendida. Invalida: stop -5% o rechazo debajo del máximo de 48 h.
 
+## 2026-10-08 00:00 UTC — Stop METUSDT (vigilante)
+94.91 USD a 0.442605 (-5.00%). Stop automático en 0.442605 (entrada 0.4659, máximo 0.4659).
+
