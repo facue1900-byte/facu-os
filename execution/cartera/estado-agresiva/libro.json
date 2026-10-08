@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.002452471097849055,
       "entrada": 81468.85,
-      "maximo": 81891.35,
+      "maximo": 81948.03,
       "reglas": {
         "stop": 2.5,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791498660000
+      "vigilado_hasta": 1791502320000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791498660000
+      "vigilado_hasta": 1791502320000
     }
   },
   "comisiones_usd": 2.12369,
