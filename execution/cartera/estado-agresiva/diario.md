@@ -76,3 +76,20 @@ Momentum 24 h con volumen: ONDO +7,5% en 24 h, +3% en 4 h, 1 h +1,3% (<4%), volu
 ## 2026-10-08 14:32 UTC — nota
 14:32 UTC — 1 entrada: ONDO (momentum 24 h: +7,5% 24 h, +3% 4 h, vol 2x, 1 h +1,3%), 100 USD. BTC -0,1% en 4 h (sin bloqueo). Ruptura con volumen: ninguna — TRX a -0,62% del máximo con vol 1,05x. OGN +100% 24 h, +27,5% 4 h, vol 14x pero a +108% del mínimo de 48 h y hace una hora se dio vuelta -9,5%: estirada, paso. MET -7,5% en 4 h: venta. Rebote: SOL/SUI/BNB/HYPE con vol 1,6-2,2x todavía cayendo en 4 h: venta, no soporte. Posiciones: STRK +4% (+11,4% 4 h, vol 6,5x, a -2,2% del máximo) en tesis; BTC +1,07% y ETH +1,13% sobre el mínimo de 48 h y verdes en 1 h — tesis de rebote viva. 4 posiciones, ~40% en USDT.
 
+## 2026-10-08 15:23 UTC — Stop ETHUSDT (vigilante)
+190.72 USD a 2,457.916 (-4.54%). Stop automático en 2,457.916 (entrada 2,574.92, máximo 2,587.28).
+
+## 2026-10-08 15:20 UTC — Stop ONDOUSDT (vigilante)
+95.21 USD a 0.47443 (-4.69%). Stop automático en 0.47443 (entrada 0.4978, máximo 0.4994).
+
+## 2026-10-08 15:23 UTC — Stop STRKUSDT (vigilante)
+100.62 USD a 0.059375 (+0.72%). Stop automático en 0.059375 (entrada 0.05895, máximo 0.0625).
+
+## 2026-10-08 15:32 UTC — Reglas BTCUSDT
+Antes {'stop': 5.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]} → ahora {'stop': 3.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]}.
+
+Acerco el stop (5% -> 3%, ~80.665): la tesis era rebote en el mínimo de 48 h (~81.340) y BTC está a +0,11% de perderlo, -1,6% en 1 h con vol 1,57x y ETH ya saltó por stop. Stop 3% queda ~0,8% debajo del mínimo: si lo pierde con convicción, la tesis está muerta. Invalida la salida: rebote verde en 1 h desde el mínimo.
+
+## 2026-10-08 15:32 UTC — nota
+15:32 UTC — Sin entradas. Vigilante: saltaron 3 stops entre 15:20 y 15:23 — ETH -4,54% (rebote en soporte fallado), ONDO -4,69% (momentum se dio vuelta: -5,8% en 1 h con vol 2,9x) y STRK +0,72% por trailing (máximo 0,0625). BTC -1,38% en 4 h (no llega al bloqueo de -3%), pero el mercado se cae parejo: -3% a -7% en 4 h con volumen 1,5-3x en casi los 30 pares (SOL, SUI, AVAX, ADA, NEAR, UNI, PEPE, TAO). Ruptura con volumen: ninguna — TRX a -0,95% del máximo con vol 1,51x pero -0,7% en 4 h, no rompe. Momentum: OGN +83% 24 h y +7,9% 4 h pero a +94% del mínimo y -3% en 1 h: estirada; STRK/MET rojas en 4 h. Rebote: todo pegado al mínimo de 48 h y todavía haciendo mínimos en 1 h con volumen: venta, no soporte. BTC +0,11% sobre el mínimo de 48 h, -1,6% en 1 h: acerco el stop a 3% (~80.665) para que la salida coincida con perder el mínimo. 1 posición, ~80% en USDT: plata parada mientras no frene la caída.
+

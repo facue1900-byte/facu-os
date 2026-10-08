@@ -4,37 +4,15 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 393.0397218778028,
+  "usdt": 779.2045539764192,
   "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.07759464371708635,
-      "entrada": 2574.92,
-      "maximo": 2587.28,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791469860000
-    },
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.002402597113684811,
       "entrada": 83160.01,
       "maximo": 83297.25,
       "reglas": {
-        "stop": 5.0,
+        "stop": 3.0,
         "trail": 5.0,
         "tp": [
           [
@@ -48,54 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791469860000
-    },
-    "STRKUSDT": {
-      "nivel": "trading",
-      "cantidad": 1694.6564885496184,
-      "entrada": 0.05895,
-      "maximo": 0.0625,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791469860000
-    },
-    "ONDOUSDT": {
-      "nivel": "trading",
-      "cantidad": 200.6830052229811,
-      "entrada": 0.4978,
-      "maximo": 0.4978,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791469980000
+      "vigilado_hasta": 1791473460000
     }
   },
-  "comisiones_usd": 1.1933330000000002,
+  "comisiones_usd": 1.579884,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -192,6 +126,42 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h con volumen: ONDO +7,5% en 24 h, +3% en 4 h, 1 h +1,3% (<4%), volumen 4 h 2x el promedio, a -2,9% del máximo de 48 h y +9% sobre el mínimo (no estirada). Tamaño 10% con mercado rojo parejo. Invalida: stop -5% o perder el arranque de la suba de 4 h (-3%)."
+    },
+    {
+      "ms": 1791472980000,
+      "fecha": "2026-10-08 15:23 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.07759464371708635,
+      "precio": 2457.916,
+      "usd": 190.7211,
+      "comision": 0.190721,
+      "motivo": "Stop automático en 2,457.916 (entrada 2,574.92, máximo 2,587.28).",
+      "resultado_pct": -4.54
+    },
+    {
+      "ms": 1791472800000,
+      "fecha": "2026-10-08 15:20 UTC",
+      "lado": "sell",
+      "par": "ONDOUSDT",
+      "cantidad": 200.6830052229811,
+      "precio": 0.47442999999999996,
+      "usd": 95.21,
+      "comision": 0.09521,
+      "motivo": "Stop automático en 0.47443 (entrada 0.4978, máximo 0.4994).",
+      "resultado_pct": -4.69
+    },
+    {
+      "ms": 1791472980000,
+      "fecha": "2026-10-08 15:23 UTC",
+      "lado": "sell",
+      "par": "STRKUSDT",
+      "cantidad": 1694.6564885496184,
+      "precio": 0.059375,
+      "usd": 100.6202,
+      "comision": 0.10062,
+      "motivo": "Stop automático en 0.059375 (entrada 0.05895, máximo 0.0625).",
+      "resultado_pct": 0.72
     }
   ]
 }
