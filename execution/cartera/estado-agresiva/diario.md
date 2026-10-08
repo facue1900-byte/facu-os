@@ -30,3 +30,6 @@ Rebote en soporte: BTC a +0,46% del mínimo de 48 h, -4% del máximo; la última
 ## 2026-10-08 03:32 UTC — nota
 03:32 UTC — Sin entradas. BTC -0,39% en 4 h (mercado flojo pero sin bloqueo). MET a -1,3% del máximo de 48 h con volumen 1,73x y 1 h +3,4%: sigo esperando ruptura del máximo, no compro a +66% del mínimo. RAY +11,6% en 24 h pero 4 h plano (-0,09%): no sigue subiendo. TRX pegado al máximo sin volumen (0,69x). Posiciones en tesis: BTC +0,42% y ETH +1,37% sobre el mínimo de 48 h sin perderlo; NEAR +8,9% en 24 h a -1,6% del máximo. 40% en USDT.
 
+## 2026-10-08 04:32 UTC — nota
+04:32 UTC — Sin entradas. BTC -0,61% en 4 h (sin bloqueo). No hay ruptura de máximo 48 h con volumen: MET a -2,4% del máximo, 1 h -1,8%, a +65% del mínimo; sigo esperando ruptura. RAY (+10% 24 h) y SAND (+5% 24 h) caen en 4 h: momentum roto. LINK volumen 1,64x pero haciendo mínimos. Posiciones en tesis: BTC +0,77% y ETH +1,29% sobre el mínimo de 48 h sin perderlo; NEAR +9,4% en 24 h, +1,5% en 4 h, a -1,3% del máximo. 40% en USDT.
+

@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791430260000
+      "vigilado_hasta": 1791433860000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791430260000
+      "vigilado_hasta": 1791433860000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791430260000
+      "vigilado_hasta": 1791433860000
     }
   },
   "comisiones_usd": 0.794905,
