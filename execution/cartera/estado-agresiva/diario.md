@@ -68,3 +68,11 @@ Momentum 24 h con volumen: STRK +21% en 24 h, +4,5% en 4 h, 1 h +3,5% (<4%), vol
 ## 2026-10-08 13:32 UTC — nota
 13:32 UTC — 1 entrada: STRK (momentum 24 h: +21% 24 h, +4,5% 4 h, vol 6,2x, 1 h +3,5%), 100 USD. BTC -0,91% en 4 h (sin bloqueo). Ruptura con volumen: ninguna — TRX a -0,59% del máximo con vol 0,95x. OGN +85% 24 h pero -9,5% en 1 h: ya se dio vuelta, paso. MET -8,4% en 4 h: venta. Rebote: SOL/SUI/PUMP con vol 1,5-2x todavía cayendo en 4 h: venta, no soporte. Posiciones: BTC +0,45% y ETH +0,63% sobre el mínimo de 48 h y verdes en 1 h — no lo perdieron, tesis viva al borde. 3 posiciones, ~50% en USDT.
 
+## 2026-10-08 14:32 UTC — Compra ONDOUSDT (trading)
+100.00 USD a 0.4978. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h con volumen: ONDO +7,5% en 24 h, +3% en 4 h, 1 h +1,3% (<4%), volumen 4 h 2x el promedio, a -2,9% del máximo de 48 h y +9% sobre el mínimo (no estirada). Tamaño 10% con mercado rojo parejo. Invalida: stop -5% o perder el arranque de la suba de 4 h (-3%).
+
+## 2026-10-08 14:32 UTC — nota
+14:32 UTC — 1 entrada: ONDO (momentum 24 h: +7,5% 24 h, +3% 4 h, vol 2x, 1 h +1,3%), 100 USD. BTC -0,1% en 4 h (sin bloqueo). Ruptura con volumen: ninguna — TRX a -0,62% del máximo con vol 1,05x. OGN +100% 24 h, +27,5% 4 h, vol 14x pero a +108% del mínimo de 48 h y hace una hora se dio vuelta -9,5%: estirada, paso. MET -7,5% en 4 h: venta. Rebote: SOL/SUI/BNB/HYPE con vol 1,6-2,2x todavía cayendo en 4 h: venta, no soporte. Posiciones: STRK +4% (+11,4% 4 h, vol 6,5x, a -2,2% del máximo) en tesis; BTC +1,07% y ETH +1,13% sobre el mínimo de 48 h y verdes en 1 h — tesis de rebote viva. 4 posiciones, ~40% en USDT.
+

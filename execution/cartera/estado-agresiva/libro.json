@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 493.0397218778028,
+  "usdt": 393.0397218778028,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791466260000
+      "vigilado_hasta": 1791469860000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791466260000
+      "vigilado_hasta": 1791469860000
     },
     "STRKUSDT": {
       "nivel": "trading",
       "cantidad": 1694.6564885496184,
       "entrada": 0.05895,
-      "maximo": 0.05895,
+      "maximo": 0.0625,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791466380000
+      "vigilado_hasta": 1791469860000
+    },
+    "ONDOUSDT": {
+      "nivel": "trading",
+      "cantidad": 200.6830052229811,
+      "entrada": 0.4978,
+      "maximo": 0.4978,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791469980000
     }
   },
-  "comisiones_usd": 1.093333,
+  "comisiones_usd": 1.1933330000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -158,6 +180,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h con volumen: STRK +21% en 24 h, +4,5% en 4 h, 1 h +3,5% (<4%), volumen 4 h 6,2x el promedio, a -4,4% del máximo de 48 h. Tamaño chico (10%) porque está a +23% del mínimo de 48 h y el mercado está rojo. Invalida: stop -5% o perder el +4 h (vuelve debajo del arranque de la suba)."
+    },
+    {
+      "ms": 1791469937356,
+      "fecha": "2026-10-08 14:32 UTC",
+      "lado": "buy",
+      "par": "ONDOUSDT",
+      "nivel": "trading",
+      "cantidad": 200.6830052229811,
+      "precio": 0.4978,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h con volumen: ONDO +7,5% en 24 h, +3% en 4 h, 1 h +1,3% (<4%), volumen 4 h 2x el promedio, a -2,9% del máximo de 48 h y +9% sobre el mínimo (no estirada). Tamaño 10% con mercado rojo parejo. Invalida: stop -5% o perder el arranque de la suba de 4 h (-3%)."
     }
   ]
 }
