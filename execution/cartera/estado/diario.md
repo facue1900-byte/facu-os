@@ -115,3 +115,9 @@ Sin operar: el vigilante no disparó nada en 2 h. MET +13,6% (lejos de su toma d
 ## 2026-10-08 12:06 UTC — nota
 Sin operar: el vigilante no disparó nada en 2 h. Baja pareja de mercado (BTC -1,4%, ETH -1,6% desde entrada; total -2,5% vs HODL BTC -1,4%). Más cerca del stop: PUMP -9,8% (stop a ~4,9%) y ZEC -8,9% (stop a ~5,1%); los dejo correr, el stop es la invalidación acordada y no se mueve. MET +7,6% sigue arriba. Reparto 45/30/17/7,5 en objetivo. Carpeta con 15 h y ninguna tesis rota por algo propio del par: rotar es pagar comisión sin razón, no corrí radar.
 
+## 2026-10-08 12:30 UTC — Stop METUSDT (vigilante)
+21.00 USD a 0.46478 (+5.13%). Stop automático en 0.46478 (entrada 0.4421, máximo 0.5468).
+
+## 2026-10-08 14:06 UTC — nota
+Sin operar: el vigilante vendió MET por trailing a las 12:30 (+5,1%, el máximo fue +23,7%); la plata (21 USD) queda en USDT, que sube a ~9,8%, y riesgo baja a ~14,9%. No reinvierto por reflejo en el mismo ciclo: la reentrada en riesgo se evalúa el próximo ciclo con radar y tesis nueva. Resto: baja pareja de mercado (BTC -1,2%, total -2,5% vs HODL BTC -1,2%); más cerca del stop PUMP -8,2% (stop a ~6,5%) y ZEC -8,2% (stop a ~5,8%), tesis intactas, los stops no se mueven.
+

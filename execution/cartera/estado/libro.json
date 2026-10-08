@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 75.0,
+  "usdt": 95.98398121601447,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "NEARUSDT": {
       "nivel": "riesgo",
@@ -232,7 +232,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "RAYUSDT": {
       "nivel": "riesgo",
@@ -254,7 +254,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "ZROUSDT": {
       "nivel": "riesgo",
@@ -276,29 +276,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
-    },
-    "METUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 45.193395159466185,
-      "entrada": 0.4421,
-      "maximo": 0.5468,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "PUMPUSDT": {
       "nivel": "riesgo",
@@ -320,7 +298,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "ZECUSDT": {
       "nivel": "riesgo",
@@ -342,7 +320,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     },
     "ENAUSDT": {
       "nivel": "riesgo",
@@ -364,10 +342,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791461160000
+      "vigilado_hasta": 1791468360000
     }
   },
-  "comisiones_usd": 0.9250000000000004,
+  "comisiones_usd": 0.9460050000000004,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -584,6 +562,18 @@
       "usd": 25.0,
       "comision": 0.025,
       "motivo": "Plan inicial: +38% en 30 días y +196% en 90, corrigiendo 23%: entrada en retroceso de tendencia."
+    },
+    {
+      "ms": 1791462600000,
+      "fecha": "2026-10-08 12:30 UTC",
+      "lado": "sell",
+      "par": "METUSDT",
+      "cantidad": 45.193395159466185,
+      "precio": 0.46477999999999997,
+      "usd": 21.005,
+      "comision": 0.021005,
+      "motivo": "Stop automático en 0.46478 (entrada 0.4421, máximo 0.5468).",
+      "resultado_pct": 5.13
     }
   ]
 }
