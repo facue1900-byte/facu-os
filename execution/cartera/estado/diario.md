@@ -144,3 +144,11 @@ Fuerza relativa en plena caída: +17% 1d, +38% 7d, +88% 30d con 28 M de volumen 
 ## 2026-10-08 18:08 UTC — nota
 Ciclo 18:05: el vigilante vendió ZRO por stop a las 17:20 (-11,6%). Con radar: compré sólo STRK (30 USD, riesgo) por fuerza relativa sostenida con volumen cerca del máximo de 90 d. Descarté OGN (+103% 1d) y RLC (+40% 1d): eso es perseguir una vela. No repongo el resto de riesgo: con todo el mercado cayendo (BTC -3,3% 1d, ETH -6,2%) prefiero USDT (~17%) hasta que aparezcan más pares aguantando cerca de máximos. Conservador y medio sin cambios: tesis intactas, ninguno cerca del stop salvo ENA (0,197 vs stop 0,194), que no se mueve.
 
+## 2026-10-08 20:07 UTC — Compra TIAUSDT (riesgo)
+25.00 USD a 0.5265. Stop 15.0% · trailing 15.0% · tomas [[40.0, 0.5], [100.0, 0.5]].
+
+Fuerza relativa en mercado bajista: +11,5% 1d, +22,7% 7d, +28% 30d con 19,5 M de volumen y a 2,3% de su máximo de 90 d mientras BTC -1,8% y casi todo el top 60 cae. Tamaño chico (~2,6%). Invalida: perder el stop 15% o que vuelva al pelotón (pierda el máximo de 90 d con el mercado estable).
+
+## 2026-10-08 20:07 UTC — nota
+Ciclo 20:05: el vigilante no disparó nada en 2 h. Compré sólo TIA (25 USD, riesgo) por fuerza relativa a 2,3% del máximo de 90 d con volumen, misma tesis que STRK (que sigue +13% 1d, -3,5% desde entrada). Descarté OGN (+115% 1d) y RLC (+31% 1d): perseguir vela; PYTH y CTSI quedan en observación. No repongo más riesgo: el mercado sigue cayendo (ETH -4,2%, SOL -6,2% 1d), USDT queda ~14%. Más cerca del stop: RAY (2,245 vs 2,151) y ENA (0,205 vs 0,194); los stops no se mueven. Conservador y medio sin cambios, tesis intactas.
+
