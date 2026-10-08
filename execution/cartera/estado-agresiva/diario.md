@@ -60,3 +60,11 @@ Rebote en soporte: BTC a +0,46% del mínimo de 48 h, -4% del máximo; la última
 ## 2026-10-08 12:32 UTC — nota
 12:32 UTC — Sin entradas. BTC -0,55% en 4 h (sin bloqueo), mercado rojo parejo con volumen bajo. Ruptura con volumen: ninguna — TRX a -0,36% del máximo de 48 h con vol 0,86x. Momentum 24 h: nadie cumple — MET -12,7% en 4 h con vol 2,1x (venta); SAND +3,2% y ONDO +3,6% en 24 h, no llegan a +5%; RAY -2,2% en 4 h. Rebote: SOL/XRP/AVAX/UNI/ADA/LTC/HYPE pegadas al mínimo de 48 h y todavía rojas en 1 h — no frenaron. Posiciones: BTC +0,22% y ETH +0,26% sobre el mínimo de 48 h, rojas en 1 h y 4 h — no perdieron el mínimo, así que la tesis sigue viva aunque al borde; si lo pierden en la próxima pasada, salgo antes del stop. 2 posiciones, 60% en USDT.
 
+## 2026-10-08 13:32 UTC — Compra STRKUSDT (trading)
+100.00 USD a 0.05895. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h con volumen: STRK +21% en 24 h, +4,5% en 4 h, 1 h +3,5% (<4%), volumen 4 h 6,2x el promedio, a -4,4% del máximo de 48 h. Tamaño chico (10%) porque está a +23% del mínimo de 48 h y el mercado está rojo. Invalida: stop -5% o perder el +4 h (vuelve debajo del arranque de la suba).
+
+## 2026-10-08 13:32 UTC — nota
+13:32 UTC — 1 entrada: STRK (momentum 24 h: +21% 24 h, +4,5% 4 h, vol 6,2x, 1 h +3,5%), 100 USD. BTC -0,91% en 4 h (sin bloqueo). Ruptura con volumen: ninguna — TRX a -0,59% del máximo con vol 0,95x. OGN +85% 24 h pero -9,5% en 1 h: ya se dio vuelta, paso. MET -8,4% en 4 h: venta. Rebote: SOL/SUI/PUMP con vol 1,5-2x todavía cayendo en 4 h: venta, no soporte. Posiciones: BTC +0,45% y ETH +0,63% sobre el mínimo de 48 h y verdes en 1 h — no lo perdieron, tesis viva al borde. 3 posiciones, ~50% en USDT.
+

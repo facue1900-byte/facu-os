@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 593.0397218778028,
+  "usdt": 493.0397218778028,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791462660000
+      "vigilado_hasta": 1791466260000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791462660000
+      "vigilado_hasta": 1791466260000
+    },
+    "STRKUSDT": {
+      "nivel": "trading",
+      "cantidad": 1694.6564885496184,
+      "entrada": 0.05895,
+      "maximo": 0.05895,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791466380000
     }
   },
-  "comisiones_usd": 0.993333,
+  "comisiones_usd": 1.093333,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -124,6 +146,18 @@
       "comision": 0.198428,
       "motivo": "Stop automático en 5.31525 (entrada 5.352, máximo 5.595).",
       "resultado_pct": -0.69
+    },
+    {
+      "ms": 1791466364569,
+      "fecha": "2026-10-08 13:32 UTC",
+      "lado": "buy",
+      "par": "STRKUSDT",
+      "nivel": "trading",
+      "cantidad": 1694.6564885496184,
+      "precio": 0.05895,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h con volumen: STRK +21% en 24 h, +4,5% en 4 h, 1 h +3,5% (<4%), volumen 4 h 6,2x el promedio, a -4,4% del máximo de 48 h. Tamaño chico (10%) porque está a +23% del mínimo de 48 h y el mercado está rojo. Invalida: stop -5% o perder el +4 h (vuelve debajo del arranque de la suba)."
     }
   ]
 }
