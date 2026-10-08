@@ -121,3 +121,15 @@ Sin operar: el vigilante no disparó nada en 2 h. Baja pareja de mercado (BTC -1
 ## 2026-10-08 14:06 UTC — nota
 Sin operar: el vigilante vendió MET por trailing a las 12:30 (+5,1%, el máximo fue +23,7%); la plata (21 USD) queda en USDT, que sube a ~9,8%, y riesgo baja a ~14,9%. No reinvierto por reflejo en el mismo ciclo: la reentrada en riesgo se evalúa el próximo ciclo con radar y tesis nueva. Resto: baja pareja de mercado (BTC -1,2%, total -2,5% vs HODL BTC -1,2%); más cerca del stop PUMP -8,2% (stop a ~6,5%) y ZEC -8,2% (stop a ~5,8%), tesis intactas, los stops no se mueven.
 
+## 2026-10-08 15:16 UTC — Stop NEARUSDT (vigilante)
+26.35 USD a 4.75575 (-12.09%). Stop automático en 4.75575 (entrada 5.41, máximo 5.595).
+
+## 2026-10-08 15:23 UTC — Stop PUMPUSDT (vigilante)
+21.43 USD a 0.00542725 (-14.19%). Stop automático en 0.00542725 (entrada 0.006325, máximo 0.006385).
+
+## 2026-10-08 15:20 UTC — Stop ZECUSDT (vigilante)
+21.59 USD a 1,142.927 (-13.55%). Stop automático en 1,142.927 (entrada 1,322.04, máximo 1,344.62).
+
+## 2026-10-08 16:06 UTC — nota
+Sin operar: el vigilante vendió 3 por stop entre 15:16 y 15:23 en una baja fuerte de todo el mercado (NEAR -12,1%, ZEC -13,6%, PUMP -14,2%; BTC -3,0% y ETH -5,7% desde la entrada). USDT sube a ~17,5% y riesgo baja a ~7%. No reinvierto en el mismo ciclo de los stops: comprar momentum en medio de una caída generalizada no es una tesis, es reflejo. La reentrada en riesgo se evalúa el próximo ciclo con radar, sólo si algo aguanta cerca de su máximo de 90 días con volumen. ZRO está pegada a su stop (1,938 vs 1,932): si salta, salta; el stop no se mueve. Total -5,8% vs HODL BTC -3,0% y plan sin tocar -6,1%.
+
