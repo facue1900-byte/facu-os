@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 594.810095,
+  "usdt": 394.81009500000005,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791423060000
+      "vigilado_hasta": 1791426660000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791423060000
+      "vigilado_hasta": 1791426660000
+    },
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.002402597113684811,
+      "entrada": 83160.01,
+      "maximo": 83160.01,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791426780000
     }
   },
-  "comisiones_usd": 0.594905,
+  "comisiones_usd": 0.794905,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -100,6 +122,18 @@
       "comision": 0.094905,
       "motivo": "Stop automático en 0.442605 (entrada 0.4659, máximo 0.4659).",
       "resultado_pct": -5.0
+    },
+    {
+      "ms": 1791426722939,
+      "fecha": "2026-10-08 02:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.002402597113684811,
+      "precio": 83160.01,
+      "usd": 200.0,
+      "comision": 0.2,
+      "motivo": "Rebote en soporte: BTC a +0,46% del mínimo de 48 h, -4% del máximo; la última hora (+0,08%) ya no hace mínimo nuevo y 4 h plano (-0,07%). Invalida: cierre horario debajo del mínimo de 48 h / stop -5%."
     }
   ]
 }

@@ -19,3 +19,11 @@ Momentum 24 h con volumen: MET +41% en 24 h, +6,2% en 4 h, volumen 4 h 3x el pro
 ## 2026-10-08 00:00 UTC — Stop METUSDT (vigilante)
 94.91 USD a 0.442605 (-5.00%). Stop automático en 0.442605 (entrada 0.4659, máximo 0.4659).
 
+## 2026-10-08 02:32 UTC — Compra BTCUSDT (trading)
+200.00 USD a 83,160.01. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: BTC a +0,46% del mínimo de 48 h, -4% del máximo; la última hora (+0,08%) ya no hace mínimo nuevo y 4 h plano (-0,07%). Invalida: cierre horario debajo del mínimo de 48 h / stop -5%.
+
+## 2026-10-08 02:32 UTC — nota
+02:31 UTC — Paso MET (de nuevo cerca del máximo de 48 h con volumen 1,84x, +48% en 24 h) porque está a +65% del mínimo y ya me sacó el stop hace 2,5 h: sólo entro si rompe el máximo de 48 h con volumen. ETH y NEAR siguen dentro de tesis (ETH arriba del mínimo de 48 h, NEAR +8,6% en 24 h a -1,2% del máximo). LINK no: sigue haciendo mínimos.
+
