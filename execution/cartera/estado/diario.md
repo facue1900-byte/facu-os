@@ -112,3 +112,6 @@ Sin operar: el vigilante no disparó nada en 2 h. MET +15% (lejos de su toma de 
 ## 2026-10-08 10:06 UTC — nota
 Sin operar: el vigilante no disparó nada en 2 h. MET +13,6% (lejos de su toma de +40%); peor ZEC -7,3% (stop a ~6,8%, tesis de retroceso intacta; si salta, la plata queda en USDT sin reentrar por reflejo), ZRO -5,3%, PUMP -5,1%. Reparto 45/30/17,3/7,6 en objetivo; total -1,0% vs HODL BTC -0,4%: deriva de mercado, ninguna tesis rota. Carpeta con 13 h: rotar sería pagar comisión sin razón, no corrí radar.
 
+## 2026-10-08 12:06 UTC — nota
+Sin operar: el vigilante no disparó nada en 2 h. Baja pareja de mercado (BTC -1,4%, ETH -1,6% desde entrada; total -2,5% vs HODL BTC -1,4%). Más cerca del stop: PUMP -9,8% (stop a ~4,9%) y ZEC -8,9% (stop a ~5,1%); los dejo correr, el stop es la invalidación acordada y no se mueve. MET +7,6% sigue arriba. Reparto 45/30/17/7,5 en objetivo. Carpeta con 15 h y ninguna tesis rota por algo propio del par: rotar es pagar comisión sin razón, no corrí radar.
+
