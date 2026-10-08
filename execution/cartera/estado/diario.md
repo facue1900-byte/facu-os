@@ -94,3 +94,6 @@ Plan inicial: +38% en 30 días y +196% en 90, corrigiendo 23%: entrada en retroc
 ## 2026-10-07 23:43 UTC — nota
 Sin operar: la carpeta se armó hace <3 h, ninguna posición se movió más de ±5% ni se acercó a su stop, y el reparto (45/30/17,5/7,5) está en objetivo. Rotar ahora sería pagar comisión sin tesis nueva.
 
+## 2026-10-08 00:05 UTC — nota
+Sin operar: pasaron 22 min desde el ciclo anterior, el vigilante no disparó nada, todas las posiciones están dentro de ±1,6% de su entrada y lejos de sus stops; el reparto sigue en objetivo. No corrí radar: en este lapso no puede haber una tesis nueva que pague la comisión.
+
