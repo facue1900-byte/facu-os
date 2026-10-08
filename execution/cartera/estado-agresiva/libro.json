@@ -4,9 +4,54 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 972.8167479764193,
-  "posiciones": {},
-  "comisiones_usd": 1.77369,
+  "usdt": 622.8167479764193,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.002452471097849055,
+      "entrada": 81468.85,
+      "maximo": 81468.85,
+      "reglas": {
+        "stop": 2.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791484380000
+    },
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.061340275816335305,
+      "entrada": 2442.93,
+      "maximo": 2442.93,
+      "reglas": {
+        "stop": 2.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791484380000
+    }
+  },
+  "comisiones_usd": 2.12369,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -151,6 +196,30 @@
       "comision": 0.193806,
       "motivo": "Stop automático en 80,665.21 (entrada 83,160.01, máximo 83,297.25).",
       "resultado_pct": -3.0
+    },
+    {
+      "ms": 1791484360138,
+      "fecha": "2026-10-08 18:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.002452471097849055,
+      "precio": 81468.85,
+      "usd": 200.0,
+      "comision": 0.2,
+      "motivo": "Rebote en soporte: BTC tocó el mínimo de 48 h en 80.393 (17:15 UTC) y la última hora entera no hizo mínimo nuevo (mínimos 80.543 y 80.552, más altos), +0,83% en 1 h y volumen de la última hora ya calmado frente al pico de 17:15. BTC -1,55% en 4 h, sin bloqueo. Invalida: perder el mínimo de 48 h (80.393); acerco el stop a 2,5% para salir ~1,3% debajo de ese piso."
+    },
+    {
+      "ms": 1791484370525,
+      "fecha": "2026-10-08 18:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.061340275816335305,
+      "precio": 2442.93,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: ETH tocó el mínimo de 48 h en 2.406 (17:15 UTC) y la última hora entera hizo mínimos más altos (2.408-2.417), +0,89% en 1 h con volumen calmándose. A diferencia de la entrada de ayer, ahora hay una hora completa sin mínimo nuevo. Tamaño 15%. Invalida: perder 2.406; stop 2,5% (~2.380)."
     }
   ]
 }

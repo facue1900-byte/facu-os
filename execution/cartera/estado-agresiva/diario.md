@@ -102,3 +102,26 @@ Acerco el stop (5% -> 3%, ~80.665): la tesis era rebote en el mínimo de 48 h (~
 ## 2026-10-08 17:32 UTC — nota
 17:32 UTC — Sin entradas. Vigilante: BTC saltó por stop a las 17:22 en 80.665 (-3%): perdió el mínimo de 48 h, la tesis de rebote quedó muerta y la salida fue la planeada. Carpeta 100% en USDT. BTC -1,68% en 4 h (no llega al bloqueo de -3%), pero el mercado cae parejo con volumen vendedor: -4% a -9,6% en 4 h con vol 2-4,7x en casi los 30 pares (ETH, SOL, NEAR, SUI, ADA, WLD, FET, ONDO). Ruptura con volumen: ninguna — TRX a -1% del máximo pero -0,45% en 4 h; OGN +21% en 1 h (>4%) y a +132% del mínimo de 48 h: estirada, paso. Momentum 24 h: nadie cumple — STRK +21,6% 24 h pero -0,9% en 4 h; MET +12,5% 24 h pero -0,8% en 4 h y vol 1x. Rebote: todo pegado al mínimo de 48 h (+0,5% a +2,5%) con la última hora mayormente roja; ETH/ZEC/ONDO apenas verdes en 1 h (+0,1% a +0,95%) con volumen vendedor de 2-4x: respiro, no piso — ETH ya me sacó por stop en el mismo setup hace 2 h. Espero una hora completa sin mínimo nuevo y volumen que se calme antes de entrar. 0 posiciones, 100% USDT.
 
+## 2026-10-08 18:32 UTC — Compra BTCUSDT (trading)
+200.00 USD a 81,468.85. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: BTC tocó el mínimo de 48 h en 80.393 (17:15 UTC) y la última hora entera no hizo mínimo nuevo (mínimos 80.543 y 80.552, más altos), +0,83% en 1 h y volumen de la última hora ya calmado frente al pico de 17:15. BTC -1,55% en 4 h, sin bloqueo. Invalida: perder el mínimo de 48 h (80.393); acerco el stop a 2,5% para salir ~1,3% debajo de ese piso.
+
+## 2026-10-08 18:32 UTC — Reglas BTCUSDT
+Antes {'stop': 5.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]} → ahora {'stop': 2.5, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]}.
+
+Stop 2,5% (~79.370): queda ~1,3% debajo del mínimo de 48 h (80.393). Si lo pierde, la tesis de rebote está muerta; no hace falta aguantar 5%.
+
+## 2026-10-08 18:32 UTC — Compra ETHUSDT (trading)
+150.00 USD a 2,442.93. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: ETH tocó el mínimo de 48 h en 2.406 (17:15 UTC) y la última hora entera hizo mínimos más altos (2.408-2.417), +0,89% en 1 h con volumen calmándose. A diferencia de la entrada de ayer, ahora hay una hora completa sin mínimo nuevo. Tamaño 15%. Invalida: perder 2.406; stop 2,5% (~2.380).
+
+## 2026-10-08 18:32 UTC — Reglas ETHUSDT
+Antes {'stop': 5.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]} → ahora {'stop': 2.5, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]}.
+
+Stop 2,5% (~2.380): ~1,1% debajo del mínimo de 48 h (2.406). Si lo pierde, la tesis de rebote está muerta.
+
+## 2026-10-08 18:33 UTC — nota
+18:32 UTC — 2 entradas: BTC 200 USD y ETH 150 USD (rebote en soporte). Vigilante: sin disparos en la última hora. Lo que esperaba la pasada anterior se dio: BTC, ETH, SOL y XRP marcaron el mínimo de 48 h a las 17:15 y la hora entera siguiente (17:30-18:30) hizo mínimos más altos; ahora +0,5% a +3% en 1 h en casi los 30 pares, con el volumen de la última hora bajando frente al pico de 17:15. Entré en las dos más grandes y líquidas con stop 2,5% (~1,1-1,3% debajo del piso) para que la salida sea perder el mínimo. BTC -1,55% en 4 h, sin bloqueo. Ruptura con volumen: ninguna — TRX a -0,89% del máximo, -0,33% en 4 h. Momentum 24 h: OGN +110% 24 h y RLC +34% en 4 h, ambas a +47-130% del mínimo: estiradas, paso; MET +4,85% 24 h, no llega; STRK -6% en 4 h. Alts chicas (ENA, QNT, FET +3-3,8% en 1 h) rebotan más fuerte pero desde caídas de -6% a -10% en 4 h: no sumo más correlación. 2 posiciones, ~64% en USDT.
+
