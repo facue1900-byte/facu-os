@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791433860000
+      "vigilado_hasta": 1791437460000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 37.33183856502242,
       "entrada": 5.352,
-      "maximo": 5.47,
+      "maximo": 5.531,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791433860000
+      "vigilado_hasta": 1791437460000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791433860000
+      "vigilado_hasta": 1791437460000
     }
   },
   "comisiones_usd": 0.794905,
