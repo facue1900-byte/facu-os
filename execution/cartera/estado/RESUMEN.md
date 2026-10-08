@@ -1,34 +1,34 @@
-# Carpeta cripto ficticia — 2026-10-08 08:06 UTC
+# Carpeta cripto ficticia — 2026-10-08 10:06 UTC
 
-**Total: 991.15 USD (-0.88%)** desde 2026-10-07 20:58 UTC · USDT libre 75.00 · comisiones 0.93 · 18 operaciones
+**Total: 990.03 USD (-1.00%)** desde 2026-10-07 20:58 UTC · USDT libre 75.00 · comisiones 0.93 · 18 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **991.15** |
+| **Esta carpeta** | **990.03** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 994.84 |
-| plan inicial sin tocar | 991.15 |
+| hodl btc | 996.08 |
+| plan inicial sin tocar | 990.03 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 298.13 | -0.52% | 62,640.9 |
-| ETH | conservador | 99.64 | -0.26% | 1,940.46 |
-| SOL | medio | 69.18 | -1.08% | 95.2922 |
-| BNB | conservador | 49.79 | -0.32% | 582.173 |
-| AAVE | medio | 39.49 | -1.18% | 142.91 |
-| LINK | medio | 39.20 | -1.91% | 10.9609 |
-| AVAX | medio | 38.61 | -3.38% | 9.20942 |
-| SUI | medio | 30.16 | +0.65% | 0.92168 |
-| NEAR | riesgo | 29.85 | -0.41% | 4.75575 |
-| XRP | medio | 29.71 | -0.88% | 1.16653 |
-| RAY | riesgo | 24.73 | -0.98% | 2.14804 |
-| TAO | medio | 24.42 | -2.24% | 238.292 |
-| ENA | riesgo | 24.35 | -2.52% | 0.194055 |
-| LTC | medio | 24.32 | -2.62% | 54.243 |
-| ZRO | riesgo | 24.11 | -3.48% | 1.93205 |
-| PUMP | riesgo | 23.96 | -4.05% | 0.00542725 |
-| ZEC | riesgo | 23.45 | -6.12% | 1,142.93 |
-| MET | riesgo | 23.08 | +15.49% | 0.46478 |
+| BTC | conservador | 298.50 | -0.40% | 62,640.9 |
+| ETH | conservador | 99.62 | -0.28% | 1,940.46 |
+| SOL | medio | 69.24 | -0.99% | 95.2922 |
+| BNB | conservador | 49.86 | -0.18% | 582.173 |
+| AAVE | medio | 39.52 | -1.10% | 142.91 |
+| LINK | medio | 39.32 | -1.59% | 10.9609 |
+| AVAX | medio | 38.78 | -2.95% | 9.20942 |
+| SUI | medio | 30.14 | +0.56% | 0.92168 |
+| XRP | medio | 29.80 | -0.56% | 1.16653 |
+| NEAR | riesgo | 29.32 | -2.18% | 4.75575 |
+| RAY | riesgo | 24.52 | -1.84% | 2.1505 |
+| TAO | medio | 24.48 | -2.00% | 238.292 |
+| LTC | medio | 24.44 | -2.15% | 54.243 |
+| ENA | riesgo | 24.29 | -2.74% | 0.194055 |
+| PUMP | riesgo | 23.72 | -5.04% | 0.00542725 |
+| ZRO | riesgo | 23.64 | -5.35% | 1.93205 |
+| ZEC | riesgo | 23.16 | -7.26% | 1,142.93 |
+| MET | riesgo | 22.69 | +13.57% | 0.46478 |
 
 ## Últimas operaciones
 
