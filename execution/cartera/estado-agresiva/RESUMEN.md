@@ -1,19 +1,19 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-08 16:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-08 17:32 UTC
 
-**Total: 974.44 USD (-2.56%)** desde 2026-10-07 23:06 UTC · USDT libre 779.20 · comisiones 1.58 · 11 operaciones
+**Total: 972.82 USD (-2.72%)** desde 2026-10-07 23:06 UTC · USDT libre 972.82 · comisiones 1.77 · 12 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **974.44** |
+| **Esta carpeta** | **972.82** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 976.46 |
+| hodl btc | 971.20 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 195.24 | -2.28% | 80,665.2 |
 
 ## Últimas operaciones
 
+- 2026-10-08 17:22 UTC · venta BTC 193.81 USD a 80,665.2 — Stop automático en 80,665.21 (entrada 83,160.01, máximo 83,297.25).
 - 2026-10-08 15:23 UTC · venta STRK 100.62 USD a 0.059375 — Stop automático en 0.059375 (entrada 0.05895, máximo 0.0625).
 - 2026-10-08 15:20 UTC · venta ONDO 95.21 USD a 0.47443 — Stop automático en 0.47443 (entrada 0.4978, máximo 0.4994).
 - 2026-10-08 15:23 UTC · venta ETH 190.72 USD a 2,457.92 — Stop automático en 2,457.916 (entrada 2,574.92, máximo 2,587.28).
@@ -23,6 +23,5 @@
 - 2026-10-08 02:32 UTC · compra BTC 200.00 USD a 83,160 — Rebote en soporte: BTC a +0,46% del mínimo de 48 h, -4% del máximo; la última hora (+0,08%) ya no hace mínimo nuevo y 4 h plano (-0,07%). In
 - 2026-10-08 00:00 UTC · venta MET 94.91 USD a 0.442605 — Stop automático en 0.442605 (entrada 0.4659, máximo 0.4659).
 - 2026-10-07 23:44 UTC · compra MET 100.00 USD a 0.4659 — Momentum 24 h con volumen: MET +41% en 24 h, +6,2% en 4 h, volumen 4 h 3x el promedio, a -2,5% del máximo de 48 h; 1 h +0,85% (<4%). Tamaño 
-- 2026-10-07 23:43 UTC · compra NEAR 200.00 USD a 5.352 — Momentum 24 h: NEAR +5,6% en 24 h contra un mercado en rojo, +0,2% en 4 h, a -1,9% del máximo de 48 h con volumen 4 h 1,38x; 1 h -0,4% (no e
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

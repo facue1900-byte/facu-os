@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 779.2045539764192,
-  "posiciones": {
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.002402597113684811,
-      "entrada": 83160.01,
-      "maximo": 83297.25,
-      "reglas": {
-        "stop": 3.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791477060000
-    }
-  },
-  "comisiones_usd": 1.579884,
+  "usdt": 972.8167479764193,
+  "posiciones": {},
+  "comisiones_usd": 1.77369,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -162,6 +139,18 @@
       "comision": 0.10062,
       "motivo": "Stop automático en 0.059375 (entrada 0.05895, máximo 0.0625).",
       "resultado_pct": 0.72
+    },
+    {
+      "ms": 1791480120000,
+      "fecha": "2026-10-08 17:22 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.002402597113684811,
+      "precio": 80665.20969999999,
+      "usd": 193.806,
+      "comision": 0.193806,
+      "motivo": "Stop automático en 80,665.21 (entrada 83,160.01, máximo 83,297.25).",
+      "resultado_pct": -3.0
     }
   ]
 }
