@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-09 18:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-09 19:32 UTC
 
-**Total: 983.30 USD (-1.67%)** desde 2026-10-07 23:06 UTC · USDT libre 883.25 · comisiones 2.98 · 22 operaciones
+**Total: 982.64 USD (-1.74%)** desde 2026-10-07 23:06 UTC · USDT libre 783.25 · comisiones 3.08 · 23 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **983.30** |
+| **Esta carpeta** | **982.64** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 991.48 |
+| hodl btc | 990.92 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BCH | trading | 100.05 | +0.15% | 263.712 |
+| DOT | trading | 99.82 | -0.08% | 1.1438 |
+| BCH | trading | 99.57 | -0.33% | 263.712 |
 
 ## Últimas operaciones
 
+- 2026-10-09 19:32 UTC · compra DOT 100.00 USD a 1.204 — Momentum 24 h: DOT +15,0% en 24 h (margen amplio sobre el +5%, no en el borde como QNT), sigue subiendo en 4 h (+1,09%) y 1 h (+0,33%, no es
 - 2026-10-09 18:32 UTC · venta ETH 152.34 USD a 2,483.6 — Regla de 24 h: abierta 2026-10-08 18:32, no llegó a +8% ni al stop (+1,6%, -0,3% en 4 h, vol 0,4x, a -4% del máximo de 48 h). Sale y se libe
 - 2026-10-09 18:32 UTC · venta BTC 202.36 USD a 82,513 — Regla de 24 h: abierta 2026-10-08 18:32, no llegó a +8% ni al stop (+1,2%, -0,64% en 4 h, vol 0,52x, a -1,31% del máximo de 48 h). Sale y se
 - 2026-10-09 17:32 UTC · compra BCH 100.00 USD a 274.7 — Rebote en soporte: BCH (22 M USD/día) cayó -8,8% en 48 h hasta el mínimo de 48 h y lleva 3 pasadas sin hacer mínimo nuevo (a +2,38% del míni
@@ -23,6 +25,5 @@
 - 2026-10-09 02:56 UTC · venta STRK 53.95 USD a 0.0634176 — Toma de ganancia +8% en 0.0634176: vende 50% de lo que quedaba.
 - 2026-10-09 01:32 UTC · compra STRK 100.00 USD a 0.05872 — Momentum 24 h: STRK +19,2% en 24 h, +4,95% en 4 h y +0,74% en 1 h (no estirada, <4%), a -6,3% del máximo de 48 h: se recupera tras el pico e
 - 2026-10-08 18:32 UTC · compra ETH 150.00 USD a 2,442.93 — Rebote en soporte: ETH tocó el mínimo de 48 h en 2.406 (17:15 UTC) y la última hora entera hizo mínimos más altos (2.408-2.417), +0,89% en 1
-- 2026-10-08 18:32 UTC · compra BTC 200.00 USD a 81,468.9 — Rebote en soporte: BTC tocó el mínimo de 48 h en 80.393 (17:15 UTC) y la última hora entera no hizo mínimo nuevo (mínimos 80.543 y 80.552, m
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
