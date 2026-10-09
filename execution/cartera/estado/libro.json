@@ -27,20 +27,20 @@
       }
     }
   },
-  "usdt": 92.333251250588,
+  "usdt": 72.333251250588,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
       "cantidad": 0.0035915438017947174,
       "entrada": 83446.01,
-      "maximo": 83521.15,
+      "maximo": 83528.98,
       "reglas": {
         "stop": 25.0,
         "trail": 25.0,
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "RAYUSDT": {
       "nivel": "riesgo",
@@ -232,7 +232,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "ENAUSDT": {
       "nivel": "riesgo",
@@ -254,7 +254,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "STRKUSDT": {
       "nivel": "riesgo",
@@ -276,7 +276,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "TIAUSDT": {
       "nivel": "riesgo",
@@ -298,13 +298,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "JUPUSDT": {
       "nivel": "riesgo",
       "cantidad": 55.469183786785116,
       "entrada": 0.3602,
-      "maximo": 0.368,
+      "maximo": 0.3768,
       "reglas": {
         "stop": 15.0,
         "trail": 15.0,
@@ -320,7 +320,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
     },
     "PYTHUSDT": {
       "nivel": "riesgo",
@@ -342,10 +342,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791540360000
+      "vigilado_hasta": 1791547560000
+    },
+    "ATOMUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 10.288362512873327,
+      "entrada": 1.942,
+      "maximo": 1.942,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791547740000
     }
   },
-  "comisiones_usd": 1.1324460000000003,
+  "comisiones_usd": 1.1524460000000003,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -670,6 +692,18 @@
       "usd": 20.0,
       "comision": 0.02,
       "motivo": "Confirmó tras 3 ciclos en observación: 1d +4,4% con vela ya legible, 7d +7,7%, 30d +63%, a 4,3% del máximo de 90 d con 16 M/día, y el mercado dejó de caer (BTC +1,1% 1d). Riesgo en ~13% vs objetivo 20%. Tamaño chico (~2%). Invalida: perder el stop 15% o que pierda el máximo de 90 d y vuelva al pelotón."
+    },
+    {
+      "ms": 1791547686816,
+      "fecha": "2026-10-09 12:08 UTC",
+      "lado": "buy",
+      "par": "ATOMUSDT",
+      "nivel": "riesgo",
+      "cantidad": 10.288362512873327,
+      "precio": 1.942,
+      "usd": 20.0,
+      "comision": 0.02,
+      "motivo": "Ruptura con volumen tras 2 ciclos en observación: 1d +10%, 7d +17% (ya no es una vela), a 4,5% del máximo de 90 d con 13,9 M/día, con el mercado recuperando (BTC +1,9% 1d). 30d +4% indica que recién sale del rango: por eso tamaño chico (~2%). Riesgo en ~15% vs objetivo 20%. Invalida: perder el stop 15% o que vuelva al rango y pierda el máximo de 90 d."
     }
   ]
 }

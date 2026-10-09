@@ -183,3 +183,11 @@ Ciclo 08:05: el vigilante no disparó nada en 2 h. Compré sólo PYTH (20 USD, r
 ## 2026-10-09 10:08 UTC — nota
 Ciclo 10:05: el vigilante no disparó nada en 2 h. Sin operar. Corrí el radar una vez y sólo leí la cola de la salida (pares de 11-12 M de volumen); arranqué por error una segunda corrida y la corté antes de que terminara, para respetar el tope de una por ciclo. En lo que vi no hay nada nuevo que cumpla: MUBARAK y GTC siguen con vol 250-290% (perseguir vela), AMP y AERO a 12-23% del máximo de 90 d y flojas en 1d, MINA y XPL rotas. Con lo que tengo, riesgo ya está en ~15,5% (STRK +28% desde entrada, a ~9% de la toma de +40%; JUP y PYTH recién entradas, +0,6%), así que no hace falta forzar compras sin datos completos. USDT ~9,5%. Más cerca del stop: TIA (0,5001 vs 0,4508, -5% desde entrada) y ENA (0,218 vs 0,1941); los stops no se mueven. Total -2,8% vs HODL BTC -0,9% y plan sin tocar -3,2%.
 
+## 2026-10-09 12:08 UTC — Compra ATOMUSDT (riesgo)
+20.00 USD a 1.942. Stop 15.0% · trailing 15.0% · tomas [[40.0, 0.5], [100.0, 0.5]].
+
+Ruptura con volumen tras 2 ciclos en observación: 1d +10%, 7d +17% (ya no es una vela), a 4,5% del máximo de 90 d con 13,9 M/día, con el mercado recuperando (BTC +1,9% 1d). 30d +4% indica que recién sale del rango: por eso tamaño chico (~2%). Riesgo en ~15% vs objetivo 20%. Invalida: perder el stop 15% o que vuelva al rango y pierda el máximo de 90 d.
+
+## 2026-10-09 12:08 UTC — nota
+Ciclo 12:05: el vigilante no disparó nada en 2 h. Compré sólo ATOM (20 USD, riesgo): estaba en observación desde 08:05 como 'una vela' y ahora confirma (1d +10%, 7d +17%, a 4,5% del máximo de 90 d, 13,9 M), con el mercado recuperando (BTC +1,9% 1d). ZRO vuelve a estar a 7% del máximo (7d +22%, 1d +8,8%): queda en observación; no la recompro en el primer rebote para no hacerlo por revancha, entra el próximo ciclo sólo si sostiene. Descarto KAIA (+48% 1d: perseguir vela), RLC/OGN/GTC/MUBARAK (vol 250-290%), SKL (90d +19%, flojo de fondo). STRK +26% desde entrada (1d +29%, 7d +67%), a ~11% de la toma de +40%; trailing la acompaña, no toco reglas. Más cerca del stop: TIA (0,4808 vs 0,4508, -8,7% desde entrada, 1d -4%): si salta, salta; el stop no se mueve. Total -2,7% vs HODL BTC -0,2% y plan sin tocar -2,9%; riesgo sube a ~17%, USDT ~7,5%.
+
