@@ -1,0 +1,12 @@
+{
+  "name": "wa-tanda",
+  "private": true,
+  "type": "module",
+  "description": "Tandas diarias de WhatsApp desde una sesion vinculada propia (ver tanda.mjs)",
+  "dependencies": {
+    "csv-parse": "^7.0.3",
+    "csv-stringify": "^6.9.0",
+    "qrcode": "^1.5.4",
+    "whatsapp-web.js": "^1.34.7"
+  }
+}
