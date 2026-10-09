@@ -1,34 +1,34 @@
-# Carpeta cripto ficticia — 2026-10-09 12:08 UTC
+# Carpeta cripto ficticia — 2026-10-09 14:07 UTC
 
-**Total: 973.58 USD (-2.64%)** desde 2026-10-07 20:58 UTC · USDT libre 72.33 · comisiones 1.15 · 28 operaciones
+**Total: 966.56 USD (-3.34%)** desde 2026-10-07 20:58 UTC · USDT libre 72.33 · comisiones 1.15 · 28 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **973.58** |
+| **Esta carpeta** | **966.56** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 998.81 |
-| plan inicial sin tocar | 972.32 |
+| hodl btc | 993.13 |
+| plan inicial sin tocar | 963.04 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 299.32 | -0.13% | 62,646.7 |
-| ETH | conservador | 97.33 | -2.58% | 1,940.46 |
-| SOL | medio | 66.91 | -4.32% | 95.2922 |
-| BNB | conservador | 48.17 | -3.56% | 582.173 |
-| AAVE | medio | 38.78 | -2.96% | 142.91 |
-| LINK | medio | 38.59 | -3.43% | 10.9609 |
-| STRK | riesgo | 37.73 | +25.91% | 0.065297 |
-| AVAX | medio | 37.00 | -7.42% | 9.20942 |
-| XRP | medio | 29.51 | -1.54% | 1.16653 |
-| SUI | medio | 28.58 | -4.64% | 0.92168 |
-| RAY | riesgo | 24.53 | -1.77% | 2.1505 |
-| LTC | medio | 24.21 | -3.07% | 54.243 |
-| ENA | riesgo | 24.11 | -3.44% | 0.194055 |
-| TAO | medio | 23.71 | -5.06% | 238.292 |
-| TIA | riesgo | 22.81 | -8.66% | 0.450755 |
-| JUP | riesgo | 20.25 | +1.36% | 0.32028 |
-| ATOM | riesgo | 19.97 | -0.05% | 1.6507 |
-| PYTH | riesgo | 19.73 | -1.24% | 0.073644 |
+| BTC | conservador | 297.62 | -0.69% | 62,646.7 |
+| ETH | conservador | 96.65 | -3.26% | 1,940.46 |
+| SOL | medio | 66.13 | -5.44% | 95.2922 |
+| BNB | conservador | 47.93 | -4.05% | 582.173 |
+| AAVE | medio | 38.55 | -3.54% | 142.91 |
+| LINK | medio | 38.25 | -4.27% | 10.9609 |
+| STRK | riesgo | 37.18 | +24.04% | 0.065297 |
+| AVAX | medio | 36.37 | -8.98% | 9.20942 |
+| XRP | medio | 29.13 | -2.79% | 1.16653 |
+| SUI | medio | 28.19 | -5.94% | 0.92168 |
+| LTC | medio | 24.08 | -3.60% | 54.243 |
+| RAY | riesgo | 23.87 | -4.43% | 2.1505 |
+| ENA | riesgo | 23.82 | -4.64% | 0.194055 |
+| TAO | medio | 23.52 | -5.82% | 238.292 |
+| TIA | riesgo | 22.76 | -8.85% | 0.450755 |
+| PYTH | riesgo | 20.22 | +1.20% | 0.074409 |
+| ATOM | riesgo | 20.06 | +0.41% | 1.7051 |
+| JUP | riesgo | 19.91 | -0.33% | 0.32028 |
 
 ## Últimas operaciones
 
