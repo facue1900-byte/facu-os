@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 628.9039544764194,
+  "usdt": 528.9039544764194,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791563460000
+      "vigilado_hasta": 1791567060000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791563460000
+      "vigilado_hasta": 1791567060000
+    },
+    "BCHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.36366945759009833,
+      "entrada": 274.7,
+      "maximo": 274.7,
+      "reglas": {
+        "stop": 4.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791567180000
     }
   },
-  "comisiones_usd": 2.5299829999999996,
+  "comisiones_usd": 2.6299829999999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -280,6 +302,18 @@
       "comision": 0.094905,
       "motivo": "Stop automático en 243.3235 (entrada 256.13, máximo 256.13).",
       "resultado_pct": -5.0
+    },
+    {
+      "ms": 1791567165485,
+      "fecha": "2026-10-09 17:32 UTC",
+      "lado": "buy",
+      "par": "BCHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.36366945759009833,
+      "precio": 274.7,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Rebote en soporte: BCH (22 M USD/día) cayó -8,8% en 48 h hasta el mínimo de 48 h y lleva 3 pasadas sin hacer mínimo nuevo (a +2,38% del mínimo, 1 h -0,07% plana) y ahora el 4 h se dio vuelta a verde (+0,48%) con volumen 1,03x. Vigilada desde las 14:32. Stop más ajustado (4%) porque la invalidación real es perder el mínimo de 48 h (~2,4% abajo); tamaño 10%."
     }
   ]
 }
