@@ -172,3 +172,11 @@ Fuerza relativa con volumen: 7d +14,5%, 30d +55%, a 6,9% del máximo de 90 d con
 ## 2026-10-09 06:07 UTC — nota
 Ciclo 06:05: el vigilante no disparó nada en 2 h. Compré sólo JUP (20 USD, riesgo): 7d +14,5%, 30d +55%, a 6,9% del máximo de 90 d con 14,6 M; el mercado dejó de caer (BTC +0,8% 1d) y riesgo estaba en ~11% vs objetivo 20%. PYTH no confirmó (1d +1,2%, a 7,3% del máximo): sigue en observación. Descarto RLC (+40% 1d, +228% 7d), APT y W (+10-11% 1d, una sola vela) y OGN/MUBARAK (vol 246-289%): perseguir vela. STRK +20% desde entrada (1d +24%, a 3,6% del máximo), RAY y TIA cerca de máximos: tesis intactas, los trailing acompañan. Más cerca del stop: ENA (0,2151 vs 0,1941, -5% desde entrada); el stop no se mueve. Total -3,2% vs HODL BTC -1,2% y plan sin tocar -3,3%.
 
+## 2026-10-09 08:08 UTC — Compra PYTHUSDT (riesgo)
+20.00 USD a 0.08495. Stop 15.0% · trailing 15.0% · tomas [[40.0, 0.5], [100.0, 0.5]].
+
+Confirmó tras 3 ciclos en observación: 1d +4,4% con vela ya legible, 7d +7,7%, 30d +63%, a 4,3% del máximo de 90 d con 16 M/día, y el mercado dejó de caer (BTC +1,1% 1d). Riesgo en ~13% vs objetivo 20%. Tamaño chico (~2%). Invalida: perder el stop 15% o que pierda el máximo de 90 d y vuelva al pelotón.
+
+## 2026-10-09 08:08 UTC — nota
+Ciclo 08:05: el vigilante no disparó nada en 2 h. Compré sólo PYTH (20 USD, riesgo): confirmó tras 3 ciclos en observación (1d +4,4% con 8 h de vela, 7d +7,7%, 30d +63%, a 4,3% del máximo de 90 d, 16 M) con el mercado ya sin caer (BTC +1,1% 1d). Descarto ATOM (+10,7% 1d pero 30d +5%: una vela, queda en observación), APT (+12% 1d, 7d +4%), MUBARAK/GTC (vol 250-290%) y ZRO (no recompro por revancha). STRK +24% desde entrada y a 0,5% del máximo de 90 d (1d +29%, 7d +67%): el trailing 15% la acompaña, la toma de +40% está a ~13% de distancia; no toco reglas. JUP, RAY, TIA cerca de máximos, tesis intactas. Más cerca del stop: ENA (0,2163 vs 0,1941); el stop no se mueve. Total -2,8% vs HODL BTC -0,9% y plan sin tocar -3,0%; riesgo sube a ~15%, USDT ~9,5%.
+
