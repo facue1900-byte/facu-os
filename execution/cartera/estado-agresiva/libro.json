@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791556260000
+      "vigilado_hasta": 1791559860000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791556260000
+      "vigilado_hasta": 1791559860000
     },
     "QNTUSDT": {
       "nivel": "trading",
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791556380000
+      "vigilado_hasta": 1791559860000
     }
   },
   "comisiones_usd": 2.435078,
