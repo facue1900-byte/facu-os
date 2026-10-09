@@ -164,3 +164,11 @@ Ciclo 02:05: el vigilante no disparó nada en 2 h. Sin operar. Radar a 2 h del c
 ## 2026-10-09 04:06 UTC — nota
 Ciclo 04:05: el vigilante no disparó nada en 2 h. Sin operar. Las tesis de fuerza relativa siguen funcionando: STRK +16% desde entrada (1d +20%, 7d +55%, a 1,4% del máximo de 90 d), RAY a 2,2% del máximo (7d +31%), TIA a 3,8% (7d +16%); los trailing ya las acompañan, no toco reglas. PYTH mejora (a 6,4% del máximo, 7d +5%, 15 M) pero el 1d tiene sólo 4 h de vela y el mercado recién deja de caer (BTC +0,8% 1d pero -2,5% 7d, ETH -6,6% 7d): sigue en observación, entra si el próximo ciclo confirma con 1d legible. Descarto MUBARAK (vol 289%) y ZRO (ya nos sacó el stop, a 10,6% del máximo: no recompro por revancha). Más cerca del stop: ENA (0,2127 vs 0,1941, -6% desde entrada); el stop no se mueve. Total -3,4% vs HODL BTC -1,2% y plan sin tocar -3,6%; USDT ~13,7%, riesgo ~11%.
 
+## 2026-10-09 06:07 UTC — Compra JUPUSDT (riesgo)
+20.00 USD a 0.3602. Stop 15.0% · trailing 15.0% · tomas [[40.0, 0.5], [100.0, 0.5]].
+
+Fuerza relativa con volumen: 7d +14,5%, 30d +55%, a 6,9% del máximo de 90 d con 14,6 M/día, mientras BTC/ETH siguen negativos en 7d; el mercado dejó de caer (BTC +0,8% 1d). Tamaño chico (~2%). Invalida: perder el stop 15% o que pierda el máximo de 90 d y vuelva al pelotón.
+
+## 2026-10-09 06:07 UTC — nota
+Ciclo 06:05: el vigilante no disparó nada en 2 h. Compré sólo JUP (20 USD, riesgo): 7d +14,5%, 30d +55%, a 6,9% del máximo de 90 d con 14,6 M; el mercado dejó de caer (BTC +0,8% 1d) y riesgo estaba en ~11% vs objetivo 20%. PYTH no confirmó (1d +1,2%, a 7,3% del máximo): sigue en observación. Descarto RLC (+40% 1d, +228% 7d), APT y W (+10-11% 1d, una sola vela) y OGN/MUBARAK (vol 246-289%): perseguir vela. STRK +20% desde entrada (1d +24%, a 3,6% del máximo), RAY y TIA cerca de máximos: tesis intactas, los trailing acompañan. Más cerca del stop: ENA (0,2151 vs 0,1941, -5% desde entrada); el stop no se mueve. Total -3,2% vs HODL BTC -1,2% y plan sin tocar -3,3%.
+
