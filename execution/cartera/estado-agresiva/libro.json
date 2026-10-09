@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791577920000
+      "vigilado_hasta": 1791581460000
     },
     "DOTUSDT": {
       "nivel": "trading",
       "cantidad": 82.9734219269103,
       "entrada": 1.204,
-      "maximo": 1.225,
+      "maximo": 1.229,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791577920000
+      "vigilado_hasta": 1791581460000
     },
     "ATOMUSDT": {
       "nivel": "trading",
       "cantidad": 48.97058823529412,
       "entrada": 2.04,
-      "maximo": 2.04,
+      "maximo": 2.051,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791578040000
+      "vigilado_hasta": 1791581460000
     }
   },
   "comisiones_usd": 3.184689,
