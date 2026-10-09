@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "RAYUSDT": {
       "nivel": "riesgo",
@@ -232,7 +232,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "ENAUSDT": {
       "nivel": "riesgo",
@@ -254,13 +254,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "STRKUSDT": {
       "nivel": "riesgo",
       "cantidad": 521.7618384401114,
       "entrada": 0.05744,
-      "maximo": 0.07206,
+      "maximo": 0.07682,
       "reglas": {
         "stop": 15.0,
         "trail": 15.0,
@@ -276,7 +276,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "TIAUSDT": {
       "nivel": "riesgo",
@@ -298,7 +298,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "JUPUSDT": {
       "nivel": "riesgo",
@@ -320,13 +320,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533160000
+      "vigilado_hasta": 1791540360000
     },
     "PYTHUSDT": {
       "nivel": "riesgo",
       "cantidad": 235.19717480871103,
       "entrada": 0.08495,
-      "maximo": 0.08495,
+      "maximo": 0.08664,
       "reglas": {
         "stop": 15.0,
         "trail": 15.0,
@@ -342,7 +342,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791533340000
+      "vigilado_hasta": 1791540360000
     }
   },
   "comisiones_usd": 1.1324460000000003,
