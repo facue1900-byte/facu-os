@@ -1,31 +1,31 @@
-# Carpeta cripto ficticia — 2026-10-09 00:07 UTC
+# Carpeta cripto ficticia — 2026-10-09 02:06 UTC
 
-**Total: 950.12 USD (-4.99%)** desde 2026-10-07 20:58 UTC · USDT libre 132.33 · comisiones 1.09 · 25 operaciones
+**Total: 959.09 USD (-4.09%)** desde 2026-10-07 20:58 UTC · USDT libre 132.33 · comisiones 1.09 · 25 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **950.12** |
+| **Esta carpeta** | **959.09** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 979.90 |
-| plan inicial sin tocar | 951.49 |
+| hodl btc | 983.97 |
+| plan inicial sin tocar | 959.05 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 293.65 | -2.02% | 62,640.9 |
-| ETH | conservador | 96.08 | -3.82% | 1,940.46 |
-| SOL | medio | 65.79 | -5.92% | 95.2922 |
-| BNB | conservador | 47.66 | -4.59% | 582.173 |
-| AAVE | medio | 38.15 | -4.54% | 142.91 |
-| LINK | medio | 38.09 | -4.69% | 10.9609 |
-| AVAX | medio | 35.78 | -10.46% | 9.20942 |
-| XRP | medio | 29.15 | -2.72% | 1.16653 |
-| STRK | riesgo | 29.02 | -3.17% | 0.0501415 |
-| SUI | medio | 27.78 | -7.31% | 0.92168 |
-| LTC | medio | 23.86 | -4.44% | 54.243 |
-| TIA | riesgo | 23.68 | -5.17% | 0.450755 |
-| RAY | riesgo | 23.17 | -7.24% | 2.1505 |
-| TAO | medio | 23.09 | -7.54% | 238.292 |
-| ENA | riesgo | 22.84 | -8.57% | 0.194055 |
+| BTC | conservador | 294.87 | -1.61% | 62,640.9 |
+| ETH | conservador | 96.48 | -3.42% | 1,940.46 |
+| SOL | medio | 66.08 | -5.51% | 95.2922 |
+| BNB | conservador | 47.81 | -4.29% | 582.173 |
+| LINK | medio | 38.31 | -4.14% | 10.9609 |
+| AAVE | medio | 38.11 | -4.62% | 142.91 |
+| AVAX | medio | 36.45 | -8.78% | 9.20942 |
+| STRK | riesgo | 31.95 | +6.62% | 0.0519945 |
+| XRP | medio | 29.32 | -2.16% | 1.16653 |
+| SUI | medio | 28.17 | -6.01% | 0.92168 |
+| TIA | riesgo | 24.13 | -3.40% | 0.450755 |
+| LTC | medio | 24.03 | -3.79% | 54.243 |
+| RAY | riesgo | 24.02 | -3.82% | 2.1505 |
+| ENA | riesgo | 23.53 | -5.78% | 0.194055 |
+| TAO | medio | 23.49 | -5.95% | 238.292 |
 
 ## Últimas operaciones
 
