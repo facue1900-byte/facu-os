@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 622.8167479764193,
+  "usdt": 522.8167479764193,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791505860000
+      "vigilado_hasta": 1791509460000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791505860000
+      "vigilado_hasta": 1791509460000
+    },
+    "STRKUSDT": {
+      "nivel": "trading",
+      "cantidad": 1701.2942779291554,
+      "entrada": 0.05872,
+      "maximo": 0.05872,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791509580000
     }
   },
-  "comisiones_usd": 2.12369,
+  "comisiones_usd": 2.22369,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -220,6 +242,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: ETH tocó el mínimo de 48 h en 2.406 (17:15 UTC) y la última hora entera hizo mínimos más altos (2.408-2.417), +0,89% en 1 h con volumen calmándose. A diferencia de la entrada de ayer, ahora hay una hora completa sin mínimo nuevo. Tamaño 15%. Invalida: perder 2.406; stop 2,5% (~2.380)."
+    },
+    {
+      "ms": 1791509541198,
+      "fecha": "2026-10-09 01:32 UTC",
+      "lado": "buy",
+      "par": "STRKUSDT",
+      "nivel": "trading",
+      "cantidad": 1701.2942779291554,
+      "precio": 0.05872,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h: STRK +19,2% en 24 h, +4,95% en 4 h y +0,74% en 1 h (no estirada, <4%), a -6,3% del máximo de 48 h: se recupera tras el pico en vez de seguir desinflándose. Volumen 4 h flojo (0,58x), por eso tamaño chico (10%). Invalida: perder el arranque de las últimas 4 h (~-5%), que coincide con el stop por defecto de 5%."
     }
   ]
 }
