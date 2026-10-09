@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 522.8167479764193,
+  "usdt": 576.7088019764193,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.002452471097849055,
       "entrada": 81468.85,
-      "maximo": 82129.0,
+      "maximo": 82356.2,
       "reglas": {
         "stop": 2.5,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791513060000
+      "vigilado_hasta": 1791516660000
     },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.061340275816335305,
       "entrada": 2442.93,
-      "maximo": 2487.27,
+      "maximo": 2500.0,
       "reglas": {
         "stop": 2.5,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791513060000
+      "vigilado_hasta": 1791516660000
     },
     "STRKUSDT": {
       "nivel": "trading",
-      "cantidad": 1701.2942779291554,
+      "cantidad": 850.6471389645777,
       "entrada": 0.05872,
-      "maximo": 0.06148,
+      "maximo": 0.06727,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -69,11 +69,13 @@
           ]
         ]
       },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791513060000
+      "tomas_hechas": [
+        8.0
+      ],
+      "vigilado_hasta": 1791516660000
     }
   },
-  "comisiones_usd": 2.22369,
+  "comisiones_usd": 2.2776359999999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -254,6 +256,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: STRK +19,2% en 24 h, +4,95% en 4 h y +0,74% en 1 h (no estirada, <4%), a -6,3% del máximo de 48 h: se recupera tras el pico en vez de seguir desinflándose. Volumen 4 h flojo (0,58x), por eso tamaño chico (10%). Invalida: perder el arranque de las últimas 4 h (~-5%), que coincide con el stop por defecto de 5%."
+    },
+    {
+      "ms": 1791514560000,
+      "fecha": "2026-10-09 02:56 UTC",
+      "lado": "sell",
+      "par": "STRKUSDT",
+      "cantidad": 850.6471389645777,
+      "precio": 0.0634176,
+      "usd": 53.946,
+      "comision": 0.053946,
+      "motivo": "Toma de ganancia +8% en 0.0634176: vende 50% de lo que quedaba.",
+      "resultado_pct": 8.0
     }
   ]
 }
