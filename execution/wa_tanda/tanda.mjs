@@ -4,7 +4,7 @@
 // Cada campaña vive en campanas.json: un CSV (fuente única del estado de cada contacto),
 // el texto aprobado por Facu, cuántos por día y cada cuánto.
 //
-//   node tanda.mjs --setup                      vincular la sesión (QR en data/wa_tanda/qr.png)
+//   node tanda.mjs --setup                      vincular la sesión (abre una página con el QR)
 //   node tanda.mjs --campana habanna-earlys     simulacro: dice a quién le mandaría, no conecta
 //   node tanda.mjs --campana habanna-earlys --send     manda de verdad (lo corre launchd)
 //   --forzar   ignora horario y tope del día (para probar a mano)
@@ -91,9 +91,13 @@ function conectar(cliente, { setup }) {
     const corte = setTimeout(() => reject(new Error('WhatsApp no conectó en 3 minutos')), setup ? 600000 : 180000);
     cliente.on('qr', async (qr) => {
       if (!setup) { clearTimeout(corte); const e = new Error('Sesión vencida: hay que volver a vincular con --setup'); e.codigo = 2; reject(e); return; }
-      const png = path.join(DATOS, 'qr.png');
-      await QRCode.toFile(png, qr, { width: 420 });
-      log(`QR listo en ${png} — escanealo desde el celu: WhatsApp > Dispositivos vinculados > Vincular dispositivo`);
+      // El QR cambia cada ~20 s: una página que se recarga sola, abierta una única vez.
+      const html = path.join(DATOS, 'qr.html');
+      const primera = !fs.existsSync(html);
+      fs.writeFileSync(html, `<meta http-equiv="refresh" content="3"><body style="font-family:sans-serif;text-align:center">
+<h2>WhatsApp &gt; Dispositivos vinculados &gt; Vincular dispositivo</h2><img src="${await QRCode.toDataURL(qr, { width: 420 })}"></body>`);
+      log(`QR nuevo en ${html}`);
+      if (primera) try { execFileSync('open', [html]); } catch {}
     });
     cliente.on('auth_failure', (m) => { clearTimeout(corte); reject(new Error('Falló la autenticación: ' + m)); });
     cliente.on('ready', () => { clearTimeout(corte); resolve(); });
@@ -103,11 +107,13 @@ function conectar(cliente, { setup }) {
 
 async function setup() {
   fs.mkdirSync(DATOS, { recursive: true });
+  try { fs.unlinkSync(path.join(DATOS, 'qr.html')); } catch {} // de un setup anterior cortado
   const cliente = nuevoCliente();
   try {
     await conectar(cliente, { setup: true });
     log(`Vinculado como ${cliente.info.wid.user}. La sesión queda en ${DATOS}/sesion.`);
-    try { fs.unlinkSync(path.join(DATOS, 'qr.png')); } catch {}
+    fs.writeFileSync(path.join(DATOS, 'qr.html'), '<body style="font-family:sans-serif;text-align:center"><h2>✓ Vinculado. Podés cerrar esta pestaña.</h2></body>');
+    setTimeout(() => { try { fs.unlinkSync(path.join(DATOS, 'qr.html')); } catch {} }, 7000);
     await dormir(8000); // que termine de guardar la sesión antes de cerrar
   } finally {
     await cliente.destroy().catch(() => {});
