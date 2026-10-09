@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 683.2547057339746,
+  "usdt": 583.2547057339746,
   "posiciones": {
     "BCHUSDT": {
       "nivel": "trading",
       "cantidad": 0.36366945759009833,
       "entrada": 274.7,
-      "maximo": 276.1,
+      "maximo": 276.7,
       "reglas": {
         "stop": 4.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791585060000
+      "vigilado_hasta": 1791588660000
     },
     "DOTUSDT": {
       "nivel": "trading",
       "cantidad": 82.9734219269103,
       "entrada": 1.204,
-      "maximo": 1.229,
+      "maximo": 1.24,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791585060000
+      "vigilado_hasta": 1791588660000
     },
     "ATOMUSDT": {
       "nivel": "trading",
       "cantidad": 48.97058823529412,
       "entrada": 2.04,
-      "maximo": 2.084,
+      "maximo": 2.086,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791585060000
+      "vigilado_hasta": 1791588660000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 20.333808263789944,
+      "entrada": 4.913,
+      "maximo": 4.913,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791588780000
     }
   },
-  "comisiones_usd": 3.184689,
+  "comisiones_usd": 3.284689,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -362,6 +384,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: ATOM +16,8% en 24 h (margen amplio sobre el +5%), sigue verde en 4 h (+0,25%) y 1 h (+0,69%, no estirada), a -2,25% del máximo de 48 h con volumen 4 h 3,46x (el más fuerte entre las no parabólicas) y a +23,9% del mínimo, lejos de lo parabólico (MAGIC +92%). Tamaño 10%. Invalida: perder ~-5% (stop por defecto) o que el 4 h se dé vuelta a rojo con volumen apagándose sin romper el máximo de 48 h."
+    },
+    {
+      "ms": 1791588723273,
+      "fecha": "2026-10-09 23:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 20.333808263789944,
+      "precio": 4.913,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h: NEAR (143 M USD/día) +10,33% en 24 h (margen amplio sobre el +5%, ya no en el borde como a las 21:32), sigue subiendo en 4 h (+5,82%) y la última hora está plana (-0,1%, no estirada), a +14,5% del mínimo de 48 h, lejos de lo parabólico. Vigilada desde las 21:32: pasó de +5,4% a +10,3% en 24 h. Punto flojo: volumen 4 h 0,59x, por eso tamaño 10% y stop por defecto. Invalida: perder ~-5% (stop) o que el 4 h se dé vuelta a rojo sin volumen."
     }
   ]
 }
