@@ -1,0 +1,17 @@
+{
+  "habanna-earlys": {
+    "descripcion": "Obsession 31/10: aviso de early birds agotados a los de Habanna que ya recibieron el primer mensaje (24 y 28/09). Texto aprobado por Facu el 09/10/2026.",
+    "csv": "/Users/Facu/facu-os/data/eventos/obsession/habanna_contactos.csv",
+    "col_nombre": "contacto",
+    "col_telefono": "telefono",
+    "col_estado": "estado",
+    "elegibles": "^ENVIADO (24|28)/09$",
+    "marca": "RECONTACTO {fecha} (earlys agotados)",
+    "huella": "earlysss",
+    "texto": "Hola! Facu de OBSESSION devuelta. Se agotaron todos los earlysss, ya arrancó la Preventa 1.\nTe dejo el link: https://planout.ar/eventos/es/comprarEvento?idEvento=1300&affId=FC\nSi no querés que te escriba más, respondé BAJA.",
+    "limite_diario": 15,
+    "espera_seg": [120, 240],
+    "horario": [10, 21],
+    "hasta": "2026-10-30"
+  }
+}

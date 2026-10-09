@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  WhatsApp tanda diaria — campaña habanna-earlys (Obsession 31/10).
+
+  Corre al iniciar sesión y después cada hora; el script decide si hace algo: una sola
+  tanda de 15 por día, entre las 10 y las 21 hs, la primera vez que encuentra la Mac
+  prendida. Las demás corridas del día salen solas en segundos ("tope cumplido").
+  Manda desde una sesión de WhatsApp vinculada propia (data/wa_tanda/sesion), no desde
+  el Chrome de Facu. Si la sesión se vence, sale con código 2 y correr.sh avisa
+  (notificación + mail): se arregla con `node execution/wa_tanda/tanda.mjs --setup`.
+  Cuando no queda nadie o pasa la fecha "hasta" de campanas.json, no hace nada.
+
+  Instalar (una vez, lo corre Facu):
+    cp ~/facu-os/execution/launchd/com.facu.wa-tanda.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.wa-tanda.plist
+  Apagar:
+    launchctl unload ~/Library/LaunchAgents/com.facu.wa-tanda.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.wa-tanda</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>wa-tanda</string>
+        <string>--</string>
+        <string>/Users/Facu/.local/node/bin/node /Users/Facu/facu-os/execution/wa_tanda/tanda.mjs --campana habanna-earlys --send</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os/execution/wa_tanda</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StartInterval</key>
+    <integer>3600</integer>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/wa-tanda.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/wa-tanda.log</string>
+</dict>
+</plist>
