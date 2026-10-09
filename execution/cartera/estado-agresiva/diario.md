@@ -218,3 +218,16 @@ Rebote en soporte: BCH (22 M USD/día) cayó -8,8% en 48 h hasta el mínimo de 4
 ## 2026-10-09 17:32 UTC — nota
 17:32 UTC — 1 entrada: BCH 100 USD (rebote en soporte, stop 4%: invalida perder el mínimo de 48 h). Vigilante: sin disparos en la última hora. Posiciones vivas: BTC +1,38% (-1,2% del máximo de 48 h, 0% en 4 h) y ETH +1,7% (0,05% en 4 h), abiertas hace 23 h; a las 18:32 UTC se cumplen 24 h sin llegar a +8%: la próxima pasada salen y se rota. BTC 0% en 4 h, sin bloqueo. Mercado: +2-7% en 24 h casi parejo, plano en 4 h y levemente rojo en 1 h, volumen 4 h 0,4-0,8x en las grandes: es suba de todo el mercado, no fuerza propia. Ruptura con volumen: ninguna — KAIA 1,52x pero a -22% del máximo y -3,3% en 4 h; STRK a -2,37% del máximo con vol 1,0x, no rompe. Momentum 24 h: SUI/ADA/TAO/WLD/PEPE/ZEC/LINK cumplen la letra (+5-7% 24 h, apenas verdes en 4 h) pero con volumen 0,4-0,8x: mismo perfil que QNT (entró en el borde sin volumen y saltó el stop), paso; STRK +29% 24 h, +4,7% 4 h pero a +56% sobre el mínimo, estirada, paso; ENA/ONDO/QNT rojas en 4 h. Rebote: BCH cumple (ver entrada); TRX pegada al mínimo pero lateral. 3 posiciones, ~54% en USDT.
 
+## 2026-10-09 18:32 UTC — Venta BTCUSDT
+202.36 USD a 82,513 (+1.28% contra la compra).
+
+Regla de 24 h: abierta 2026-10-08 18:32, no llegó a +8% ni al stop (+1,2%, -0,64% en 4 h, vol 0,52x, a -1,31% del máximo de 48 h). Sale y se libera para rotar.
+
+## 2026-10-09 18:32 UTC — Venta ETHUSDT
+152.34 USD a 2,483.6 (+1.66% contra la compra).
+
+Regla de 24 h: abierta 2026-10-08 18:32, no llegó a +8% ni al stop (+1,6%, -0,3% en 4 h, vol 0,4x, a -4% del máximo de 48 h). Sale y se libera para rotar.
+
+## 2026-10-09 18:32 UTC — nota
+18:32 UTC — 2 salidas, 0 entradas. Vigilante: sin disparos en la última hora. BTC (+1,28%) y ETH (+1,66%) salen por la regla de 24 h: abiertas 2026-10-08 18:32, nunca llegaron a +8% ni al stop. BCH sigue (rebote, entrada 274,7, ahora +0,15%, a +2,57% del mínimo de 48 h, +0,36% en 4 h; invalida perder el mínimo, stop ~263,7). BTC -0,64% en 4 h, sin bloqueo. Mercado plano y levemente rojo en 1 h, volumen 4 h 0,3-0,7x en casi todo. Ruptura con volumen: MAGIC +38,7% 4 h con vol 13,4x a -1,25% del máximo, pero +4,76% en la última hora (>4%, estirada) y +96% sobre el mínimo de 48 h: parabólica, paso. Momentum 24 h: WLD (+5,01% 24 h, +0,85% 4 h, vol 0,59x) y ENA/ZEC (+5-6% 24 h pero rojas en 4 h) cumplen en el borde sin volumen: perfil QNT, paso; STRK +27,7% 24 h pero plana en 4 h y a +53% del mínimo; KAIA +45% 24 h pero a -20% del máximo. Rebote: TRX pegada al mínimo pero lateral sin caída previa; HYPE/PUMP a +2,1-2,3% del mínimo pero todavía rojas en 4 h (-1,5/-2%), no dejaron de caer, se miran la próxima hora. Rotar a algo sin tesis sería pagar 0,2% por nada: 1 posición, ~90% en USDT.
+
