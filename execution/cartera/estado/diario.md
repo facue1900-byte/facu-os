@@ -197,3 +197,16 @@ Ciclo 14:05: el vigilante no disparó nada en 2 h. Sin operar. ZRO no sostuvo (d
 ## 2026-10-09 16:07 UTC — nota
 Ciclo 16:05: el vigilante no disparó nada en 2 h. Sin operar. MAGIC (+48% 1d, 7d +68%, 30d +120%, en el máximo de 90 d, 12,8 M) es lo más fuerte del radar, pero casi todo el 7d es la vela de hoy: queda en observación, entra el próximo ciclo sólo si sostiene sin devolver. Mismo criterio que con KAIA (+42% 1d), que descarto. DOT (+9,6% 1d) y APT (+10% 1d) siguen con 7d planos: una vela. ZRO a 11% del máximo: sigue afuera. Las de riesgo bien ubicadas: STRK +29% desde entrada (1d +33%, 7d +72%, a 4% del máximo) a ~11% de la toma de +40%; ATOM a 1,2% del máximo (+3% desde entrada), JUP a 4,2%, PYTH a 3,5%, RAY a 8%: tesis intactas, los trailing acompañan, no toco reglas. Riesgo ~17,5% y USDT ~7,5%: no fuerzo compras. Más cerca del stop: TIA (0,4727 vs 0,4508, -10% desde entrada, 1d -5,5%, a 12% del máximo): la tesis de fuerza relativa se está debilitando; si salta, salta, el stop no se mueve. Total -3,1% vs HODL BTC -0,6% y plan sin tocar -3,7%.
 
+## 2026-10-09 18:08 UTC — Venta TIAUSDT
+22.53 USD a 0.4749 (-9.80% contra la compra).
+
+Se cumplió la invalidación escrita al comprar: volvió al pelotón con el mercado estable. 1d -5,2% mientras BTC +1,2%, ya a 11,7% del máximo de 90 d (entró a 2,3%), 7d bajó de +22,7% a +6%. Salgo por tesis rota a ~-10%, no espero el stop de -15%. Lo que invalidaría la salida: nada, recompra sólo con tesis nueva.
+
+## 2026-10-09 18:08 UTC — Compra MAGICUSDT (riesgo)
+20.00 USD a 0.114. Stop 15.0% · trailing 15.0% · tomas [[40.0, 0.5], [100.0, 0.5]].
+
+Estaba en observación desde 16:05 con condición 'entra si sostiene sin devolver': sostuvo y amplió (1d de +48% a +69,5%, 7d +92%, 30d +152%, a 1,8% del máximo de 90 d, 20 M/día). Volatilidad 198%: tamaño chico (~2%). Invalida: perder el stop 15% o que devuelva la ruptura y se aleje >10% del máximo de 90 d.
+
+## 2026-10-09 18:08 UTC — nota
+Ciclo 18:05: el vigilante no disparó nada en 2 h. Dos órdenes. Vendí TIA (-9,8%) por tesis rota, no por stop: la invalidación escrita al comprar era volver al pelotón con el mercado estable, y hoy cae -5,2% 1d con BTC +1,2%, a 11,7% del máximo de 90 d. Compré MAGIC (20 USD, riesgo): cumplió la condición de observación de 16:05 (sostuvo y amplió, 1d +69,5%, 7d +92%, a 1,8% del máximo, 20 M); tamaño chico por vol 198%. Descarto KAIA (+45% 1d pero a 21% del máximo), ZK (+24% 1d, 7d +12%: una vela, queda en observación), W (+15% 1d, 7d +31%, a 6,7%: observación), DOT/APT (7d planos), RLC/OGN/GTC (vol 250-260%, devolviendo). STRK +29% desde entrada a 4% del máximo, ATOM y JUP a <2% del máximo, PYTH y RAY a 7-9%: tesis intactas, los trailing acompañan, no toco reglas. Más cerca del stop ahora: RAY (2,345 vs 2,151) y ENA (0,2146 vs 0,1941); los stops no se mueven. Riesgo ~17,3%, USDT ~7,8%.
+
