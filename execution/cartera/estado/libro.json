@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "RAYUSDT": {
       "nivel": "riesgo",
@@ -232,7 +232,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "ENAUSDT": {
       "nivel": "riesgo",
@@ -254,7 +254,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "STRKUSDT": {
       "nivel": "riesgo",
@@ -276,7 +276,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "JUPUSDT": {
       "nivel": "riesgo",
@@ -298,7 +298,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "PYTHUSDT": {
       "nivel": "riesgo",
@@ -320,7 +320,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "ATOMUSDT": {
       "nivel": "riesgo",
@@ -342,13 +342,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "MAGICUSDT": {
       "nivel": "riesgo",
       "cantidad": 175.26315789473685,
       "entrada": 0.114,
-      "maximo": 0.1217,
+      "maximo": 0.1282,
       "reglas": {
         "stop": 15.0,
         "trail": 15.0,
@@ -364,13 +364,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576300000
+      "vigilado_hasta": 1791583500000
     },
     "ZKUSDT": {
       "nivel": "riesgo",
       "cantidad": 1432.258064516129,
       "entrada": 0.01395,
-      "maximo": 0.01395,
+      "maximo": 0.01423,
       "reglas": {
         "stop": 15.0,
         "trail": 15.0,
@@ -386,7 +386,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791576480000
+      "vigilado_hasta": 1791583500000
     }
   },
   "comisiones_usd": 1.2149730000000003,
