@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 534.0938594764193,
+  "usdt": 628.9039544764194,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791559860000
+      "vigilado_hasta": 1791563460000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791559860000
-    },
-    "QNTUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.39003630968648734,
-      "entrada": 256.13,
-      "maximo": 256.13,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791559860000
+      "vigilado_hasta": 1791563460000
     }
   },
-  "comisiones_usd": 2.435078,
+  "comisiones_usd": 2.5299829999999996,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -290,6 +268,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: QNT +5,0% en 24 h, +5,45% en 4 h y +2,28% en 1 h (no estirada, <4%), pegada al máximo de 48 h (-0,05%) con volumen 4 h 1,28x (no llega a 1,5x para llamarla ruptura) y a +16% del mínimo, lejos de lo parabólico. Venía marcada como candidata desde las 12:33 si pasaba +5% y seguía; lo hizo. Tamaño chico (10%) porque está justo en el borde del umbral. Invalida: perder el arranque de 4 h (~-5%), que coincide con el stop por defecto, o volver abajo del máximo previo con volumen que se apaga."
+    },
+    {
+      "ms": 1791563400000,
+      "fecha": "2026-10-09 16:30 UTC",
+      "lado": "sell",
+      "par": "QNTUSDT",
+      "cantidad": 0.39003630968648734,
+      "precio": 243.3235,
+      "usd": 94.905,
+      "comision": 0.094905,
+      "motivo": "Stop automático en 243.3235 (entrada 256.13, máximo 256.13).",
+      "resultado_pct": -5.0
     }
   ]
 }
