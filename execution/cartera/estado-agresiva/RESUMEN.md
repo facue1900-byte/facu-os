@@ -1,20 +1,22 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-09 19:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-09 20:33 UTC
 
-**Total: 982.64 USD (-1.74%)** desde 2026-10-07 23:06 UTC · USDT libre 783.25 · comisiones 3.08 · 23 operaciones
+**Total: 983.46 USD (-1.65%)** desde 2026-10-07 23:06 UTC · USDT libre 683.25 · comisiones 3.18 · 24 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **982.64** |
+| **Esta carpeta** | **983.46** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 990.92 |
+| hodl btc | 989.89 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| DOT | trading | 99.82 | -0.08% | 1.1438 |
-| BCH | trading | 99.57 | -0.33% | 263.712 |
+| DOT | trading | 100.65 | +0.75% | 1.16375 |
+| ATOM | trading | 99.80 | -0.10% | 1.938 |
+| BCH | trading | 99.75 | -0.15% | 263.712 |
 
 ## Últimas operaciones
 
+- 2026-10-09 20:33 UTC · compra ATOM 100.00 USD a 2.04 — Momentum 24 h: ATOM +16,8% en 24 h (margen amplio sobre el +5%), sigue verde en 4 h (+0,25%) y 1 h (+0,69%, no estirada), a -2,25% del máxim
 - 2026-10-09 19:32 UTC · compra DOT 100.00 USD a 1.204 — Momentum 24 h: DOT +15,0% en 24 h (margen amplio sobre el +5%, no en el borde como QNT), sigue subiendo en 4 h (+1,09%) y 1 h (+0,33%, no es
 - 2026-10-09 18:32 UTC · venta ETH 152.34 USD a 2,483.6 — Regla de 24 h: abierta 2026-10-08 18:32, no llegó a +8% ni al stop (+1,6%, -0,3% en 4 h, vol 0,4x, a -4% del máximo de 48 h). Sale y se libe
 - 2026-10-09 18:32 UTC · venta BTC 202.36 USD a 82,513 — Regla de 24 h: abierta 2026-10-08 18:32, no llegó a +8% ni al stop (+1,2%, -0,64% en 4 h, vol 0,52x, a -1,31% del máximo de 48 h). Sale y se
@@ -24,6 +26,5 @@
 - 2026-10-09 03:58 UTC · venta STRK 57.44 USD a 0.067528 — Toma de ganancia +15% en 0.067528: vende 100% de lo que quedaba.
 - 2026-10-09 02:56 UTC · venta STRK 53.95 USD a 0.0634176 — Toma de ganancia +8% en 0.0634176: vende 50% de lo que quedaba.
 - 2026-10-09 01:32 UTC · compra STRK 100.00 USD a 0.05872 — Momentum 24 h: STRK +19,2% en 24 h, +4,95% en 4 h y +0,74% en 1 h (no estirada, <4%), a -6,3% del máximo de 48 h: se recupera tras el pico e
-- 2026-10-08 18:32 UTC · compra ETH 150.00 USD a 2,442.93 — Rebote en soporte: ETH tocó el mínimo de 48 h en 2.406 (17:15 UTC) y la última hora entera hizo mínimos más altos (2.408-2.417), +0,89% en 1
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
