@@ -8,6 +8,26 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-10-09 · FAIL · La tarea «Aprobar comentarios» no tenía ningún botón
+
+**Dónde:** `astronomy-members`: `app/admin/hacer/[id]/page.tsx`, `lib/workflows.ts`.
+
+**Qué pasó:** José (08/10): «no sé dónde poner publicar». El caso declaraba el botón
+«Publicar en la web», pero la cola sólo dibuja `botones` adentro de casos con `resolverEn`;
+éste no tenía, así que no se veía nada. «Descartar» tampoco andaba: anotaba el id del
+COMENTARIO en `incidencia_eventos.persona_id` (FK a `auth.users`) y fallaba siempre.
+
+**Causa raíz:** un caso nuevo con una forma que la pantalla no contemplaba (botones sin
+pantalla de destino), y nadie lo abrió en la cola real antes de darlo por hecho (06/10).
+
+**Fix:** commits `a1f4461` + `d189adf`: la cola dibuja botones sin `resolverEn`; Publicar /
+No publicar escriben en `encuesta_profes` (`comentario_descartado_at`, columna nueva, no
+se borra nada); Deshacer 15 min; `noEsPersona` saca Posponer/Ya no aplica de casos cuya
+clave es un uuid que no es persona. Push frenado hasta aplicar la columna.
+
+**Lección:** una tarea nueva de la cola se da por hecha recién abriéndola en
+`/admin/hacer/<id>` y apretando cada botón. Que el caso traiga el botón no prueba que se vea.
+
 ### 2026-10-07 · FAIL ✓ · Cada tarea programada se cuidaba sola, y dos se cayeron
 
 **Dónde:** `execution/launchd/*.plist`, `execution/reporte_equipo.py`, `cierre_mensual.sh`.
