@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 68.8100456352034,
+  "usdt": 79.70920408249361,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "RAYUSDT": {
       "nivel": "riesgo",
@@ -232,7 +232,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "ENAUSDT": {
       "nivel": "riesgo",
@@ -254,7 +254,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "STRKUSDT": {
       "nivel": "riesgo",
@@ -276,7 +276,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "JUPUSDT": {
       "nivel": "riesgo",
@@ -298,29 +298,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
-    },
-    "PYTHUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 235.19717480871103,
-      "entrada": 0.08495,
-      "maximo": 0.08754,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "ATOMUSDT": {
       "nivel": "riesgo",
@@ -342,31 +320,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
-    },
-    "MAGICUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 87.63157894736842,
-      "entrada": 0.114,
-      "maximo": 0.1639,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [
-        40.0
-      ],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
     },
     "ZKUSDT": {
       "nivel": "riesgo",
@@ -388,10 +342,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791612300000
+      "vigilado_hasta": 1791619440000
+    },
+    "NEARUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 3.8173481085212075,
+      "entrada": 5.234,
+      "maximo": 5.234,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791619680000
     }
   },
-  "comisiones_usd": 1.2289590000000004,
+  "comisiones_usd": 1.2798890000000003,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -776,6 +752,42 @@
       "comision": 0.013986,
       "motivo": "Toma de ganancia +40% en 0.1596: vende 50% de lo que quedaba.",
       "resultado_pct": 40.0
+    },
+    {
+      "ms": 1791617040000,
+      "fecha": "2026-10-10 07:24 UTC",
+      "lado": "sell",
+      "par": "MAGICUSDT",
+      "cantidad": 87.63157894736842,
+      "precio": 0.139315,
+      "usd": 12.2084,
+      "comision": 0.012208,
+      "motivo": "Stop automático en 0.139315 (entrada 0.114, máximo 0.1639).",
+      "resultado_pct": 22.21
+    },
+    {
+      "ms": 1791619638007,
+      "fecha": "2026-10-10 08:07 UTC",
+      "lado": "sell",
+      "par": "PYTHUSDT",
+      "cantidad": 235.19717480871103,
+      "precio": 0.0796,
+      "usd": 18.7217,
+      "comision": 0.018722,
+      "motivo": "Se cumplió la invalidación escrita al comprar y repetida en cada ciclo: a 10,3% del máximo de 90 d (cruzó el 10%) con el mercado estable (BTC +0,2% 1d), 7d se enfrió de +4,2% a +2%, -6% desde entrada. Salgo por tesis rota, no espero el stop. Recompra sólo con tesis nueva.",
+      "resultado_pct": -6.3
+    },
+    {
+      "ms": 1791619643003,
+      "fecha": "2026-10-10 08:07 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "riesgo",
+      "cantidad": 3.8173481085212075,
+      "precio": 5.234,
+      "usd": 20.0,
+      "comision": 0.02,
+      "motivo": "En observación desde 06:05 con condición 'entra si amplía': amplió (1d de +5,6% a +7,2%, 7d de +6,8% a +8,4%, de 7,8% a 6,4% del máximo de 90 d), 30d +114%, 125 M/día, con el mercado plano. Viene de la plata liberada por el stop de MAGIC y la salida de PYTH, no del mismo ciclo por reflejo: tesis nueva en otro par. Vol 155%: tamaño chico (~2%). Invalida: perder el stop 15% o alejarse >12% del máximo de 90 d."
     }
   ]
 }

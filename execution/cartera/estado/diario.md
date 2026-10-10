@@ -236,3 +236,19 @@ Ciclo 04:05: el vigilante disparó 1: toma de +40% en MAGIC a las 03:27 (vendió
 ## 2026-10-10 06:07 UTC — nota
 Ciclo 06:05: el vigilante no disparó nada en 2 h. Sin operar. La vela diaria tiene 6 h; decido con 7d/30d y distancia al máximo. PYTH a 9,8% del máximo de 90 d (7d +2,5% vs BTC -2,3%): roza pero no cruza el 10% de su invalidación y mantiene fuerza relativa, sigue; si lo cruza con el mercado estable, sale. RAY a 9,8% (7d +11,3%): sigue. Lo liberado por la toma de MAGIC (USDT ~7%, riesgo ~18%) no se reinvierte sin tesis clara: DOT (a 3,4% del máximo, 7d +6,4%, 18,7 M) y OP (1d +8,5%, 7d +5,4%, a 4,8%) sostienen pero con 7d tibios, no es 'sube fuerte'; NEAR (1d +5,6%, 7d +6,8%, 30d +111%, 125 M, a 7,8%) aparece por primera vez: los tres en observación, entran sólo si amplían. BAT (7d +43%, a 7,4%) y PIXEL (a 9,5%) siguen alejándose: afuera. FIL se alejó (de 2,5% a 6,1%). Descarto RLC/OGN/QNT/MET (vol 170-300%, a 24-34% del máximo), KAIA (a 15%), MINA (rota). Las de riesgo: MAGIC +37% desde entrada en la mitad que queda (7d +173%, a 4,8% del máximo), STRK +23% (a 8,8%), ATOM a 4,2%, JUP a 4,1%, ZK a 5,3%: tesis intactas, los trailing acompañan, no toco reglas. Más cerca del stop: PYTH (0,0798 vs 0,0744) y RAY (2,317 vs 2,151); los stops no se mueven. Total -2,1% vs HODL BTC -0,8% y plan sin tocar -3,0%.
 
+## 2026-10-10 07:24 UTC — Stop MAGICUSDT (vigilante)
+12.21 USD a 0.139315 (+22.21%). Stop automático en 0.139315 (entrada 0.114, máximo 0.1639).
+
+## 2026-10-10 08:07 UTC — Venta PYTHUSDT
+18.72 USD a 0.0796 (-6.30% contra la compra).
+
+Se cumplió la invalidación escrita al comprar y repetida en cada ciclo: a 10,3% del máximo de 90 d (cruzó el 10%) con el mercado estable (BTC +0,2% 1d), 7d se enfrió de +4,2% a +2%, -6% desde entrada. Salgo por tesis rota, no espero el stop. Recompra sólo con tesis nueva.
+
+## 2026-10-10 08:07 UTC — Compra NEARUSDT (riesgo)
+20.00 USD a 5.234. Stop 15.0% · trailing 15.0% · tomas [[40.0, 0.5], [100.0, 0.5]].
+
+En observación desde 06:05 con condición 'entra si amplía': amplió (1d de +5,6% a +7,2%, 7d de +6,8% a +8,4%, de 7,8% a 6,4% del máximo de 90 d), 30d +114%, 125 M/día, con el mercado plano. Viene de la plata liberada por el stop de MAGIC y la salida de PYTH, no del mismo ciclo por reflejo: tesis nueva en otro par. Vol 155%: tamaño chico (~2%). Invalida: perder el stop 15% o alejarse >12% del máximo de 90 d.
+
+## 2026-10-10 08:07 UTC — nota
+Ciclo 08:05: el vigilante disparó 1: trailing stop de la mitad restante de MAGIC a las 07:24 en 0,139315 (+22% desde entrada, máximo 0,1639; hoy 1d -12%, a 34% del máximo). Entre la toma de +40% y este stop, MAGIC cerró bien. Dos órdenes: vendí PYTH (-6,3%) por tesis rota, no por stop: cruzó el 10% del máximo de 90 d (10,3%) con el mercado estable, la invalidación escrita desde la compra. Compré NEAR (20 USD, riesgo): cumplió la condición de observación de 06:05 (amplió: 7d +8,4%, a 6,4% del máximo, 125 M). DOT (7d +5,5%, a 4,3%) y OP (7d +1%) no ampliaron: siguen en observación tibia. LUMIA (+54% 1d, 7d +48%, a 6,9%, 7,6 M): una vela, observación. BAT a 7,7% (7d +43%) quieta, FIL a 7,9%: observación. Descarto RLC/OGN/QNT (vol 250-300%, a 25-34% del máximo), KAIA (a 14%), MINA (rota). Las de riesgo: STRK +24% (a 8,1%), JUP a 3,9%, ATOM a 7% (1d -6%, -0,2% desde entrada: se acerca a perder fuerza, vigilo), ZK a 7,2%, RAY a 9,6% (7d +11,6%): tesis intactas, los trailing acompañan, no toco reglas. Más cerca del stop: ATOM (1,939 vs 1,774) y ENA (0,2194 vs 0,1941); los stops no se mueven. Riesgo ~16,7%, USDT ~8,3%.
+
