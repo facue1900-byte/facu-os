@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 732.510935710539,
+  "usdt": 632.510935710539,
   "posiciones": {
     "BCHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791639060000
+      "vigilado_hasta": 1791642660000
     },
     "DOTUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791639060000
+      "vigilado_hasta": 1791642660000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 10.166904131894972,
       "entrada": 4.913,
-      "maximo": 5.341,
+      "maximo": 5.435,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -72,10 +72,32 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1791639060000
+      "vigilado_hasta": 1791642660000
+    },
+    "SUIUSDT": {
+      "nivel": "trading",
+      "cantidad": 87.83962015299394,
+      "entrada": 1.1373,
+      "maximo": 1.1373,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791642780000
     }
   },
-  "comisiones_usd": 3.8342940000000003,
+  "comisiones_usd": 3.9342940000000004,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -448,6 +470,18 @@
       "comision": 0.099548,
       "motivo": "Invalidación escrita cumplida: el 4 h de ADA pasó a rojo (-0,70%, -0,16% 1 h, vol 0,41x) sin romper el máximo de 48 h (a -1,05%). El momentum se apagó; salgo a USDT y libero lugar.",
       "resultado_pct": -0.35
+    },
+    {
+      "ms": 1791642746379,
+      "fecha": "2026-10-10 14:32 UTC",
+      "lado": "buy",
+      "par": "SUIUSDT",
+      "nivel": "trading",
+      "cantidad": 87.83962015299394,
+      "precio": 1.1373,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h: SUI (49,9 M USD/día) +7,12% en 24 h, 4 h volvió a verde (+1,05%), +1,49% en 1 h (no estirada, <4%), a -0,15% del máximo de 48 h y +13,6% sobre el mínimo. Se cumplió la condición escrita a las 13:32 (4 h verde con el 24 h sobre +5%). Volumen 0,6x, sin confirmación de ruptura: tamaño 10%, reglas por defecto. Invalida: stop -5% (~1 pt bajo el mínimo de la última hora) o que el 4 h vuelva a rojo sin romper el máximo de 48 h."
     }
   ]
 }
