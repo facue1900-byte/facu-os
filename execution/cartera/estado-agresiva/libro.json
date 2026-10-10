@@ -28,7 +28,7 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1791664260000
+      "vigilado_hasta": 1791667860000
     },
     "ENAUSDT": {
       "nivel": "trading",
@@ -50,7 +50,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791664260000
+      "vigilado_hasta": 1791667860000
     }
   },
   "comisiones_usd": 4.338628,
