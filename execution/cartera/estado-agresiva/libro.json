@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791646260000
+      "vigilado_hasta": 1791649860000
     },
     "DOTUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791646260000
+      "vigilado_hasta": 1791649860000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -72,7 +72,7 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1791646260000
+      "vigilado_hasta": 1791649860000
     },
     "SUIUSDT": {
       "nivel": "trading",
@@ -94,7 +94,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791646260000
+      "vigilado_hasta": 1791649860000
     }
   },
   "comisiones_usd": 3.9342940000000004,
