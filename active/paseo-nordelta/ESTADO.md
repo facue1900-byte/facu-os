@@ -26,10 +26,9 @@ Master Plan no tiene banco de sep/oct (es esperable, no un faltante).
   `google_auth` no tiene permiso para cambiarlo. Compartir → Acceso general → Restringido
   (y agregar a re1900@ si Richi lo abre por link).
 - ✅ 10/10: «Pagué municipalidad $16.669.692» (07/10) pasado a **Inversiones** (sheet + Supabase) y cargado en Gastos Obra fila 121 como Paseo Nordelta. Hundía octubre a −$16,4M; ahora da +$288.447.
-- Facu: posible doble pago de dic-2025 — Movimientos 21 vs 357 (Redes y Servicios
-  $572.965 / $572.964) y 19 vs 346 (TOSDE $1.101.150 / $1.149.538).
-- Facu: 09/10 «materiales rejilla» $206.155 (fila 595, Mejoras) vs «materiales de
-  construcción» $206.155 (fila 592, Inversiones), y Daniel $600.000 ×2 (597/598): ¿dobles?
+- ✅ 10/10: Facu revisó los posibles dobles (dic-2025 filas 19/21 vs 346/357; 09/10 filas
+  592/595 y 597/598): **no hay dobles**. Las 3 inversiones del 09/10 ($1.406.155) cargadas
+  en Gastos Obra filas 122–124.
 - Pestaña **«Deuda»** de la app: fuera de producción desde los redeploys de octubre. El
   código quedó en la rama `wip/deuda-ctas-ctes` (no se mergea así): su fuente, la hoja
   `CUENTA CORRIENTE` de Ctas Ctes, **dejó de alimentarse en julio**. Republicarla exige
