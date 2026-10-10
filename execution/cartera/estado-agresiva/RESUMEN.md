@@ -1,22 +1,22 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-10 16:33 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-10 17:32 UTC
 
-**Total: 992.51 USD (-0.75%)** desde 2026-10-07 23:06 UTC · USDT libre 632.51 · comisiones 3.93 · 32 operaciones
+**Total: 992.03 USD (-0.80%)** desde 2026-10-07 23:06 UTC · USDT libre 734.31 · comisiones 4.04 · 33 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **992.51** |
+| **Esta carpeta** | **992.03** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 997.65 |
+| hodl btc | 998.10 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| DOT | trading | 104.71 | +4.82% | 1.2312 |
-| BCH | trading | 102.01 | +2.11% | 267.52 |
-| SUI | trading | 98.60 | -1.30% | 1.083 |
-| NEAR | trading | 54.68 | +9.46% | 5.168 |
+| DOT | trading | 104.46 | +4.57% | 1.2312 |
+| SUI | trading | 98.51 | -1.39% | 1.083 |
+| NEAR | trading | 54.75 | +9.61% | 5.168 |
 
 ## Últimas operaciones
 
+- 2026-10-10 17:32 UTC · venta BCH 101.90 USD a 280.2 — Regla de 24 h: BCH entró ayer 17:32 (rebote, 274,7) y en 24 h no llegó a +8% ni al stop (+2%). Salgo a USDT y libero lugar para rotar.
 - 2026-10-10 14:32 UTC · compra SUI 100.00 USD a 1.1373 — Momentum 24 h: SUI (49,9 M USD/día) +7,12% en 24 h, 4 h volvió a verde (+1,05%), +1,49% en 1 h (no estirada, <4%), a -0,15% del máximo de 48
 - 2026-10-10 12:32 UTC · venta ADA 99.55 USD a 0.2548 — Invalidación escrita cumplida: el 4 h de ADA pasó a rojo (-0,70%, -0,16% 1 h, vol 0,41x) sin romper el máximo de 48 h (a -1,05%). El momentu
 - 2026-10-10 09:37 UTC · venta NEAR 53.95 USD a 5.30604 — Toma de ganancia +8% en 5.30604: vende 50% de lo que quedaba.
@@ -26,6 +26,5 @@
 - 2026-10-10 00:53 UTC · venta ATOM 97.05 USD a 1.9817 — Stop automático en 1.9817 (entrada 2.04, máximo 2.086).
 - 2026-10-09 23:32 UTC · compra NEAR 100.00 USD a 4.913 — Momentum 24 h: NEAR (143 M USD/día) +10,33% en 24 h (margen amplio sobre el +5%, ya no en el borde como a las 21:32), sigue subiendo en 4 h 
 - 2026-10-09 20:33 UTC · compra ATOM 100.00 USD a 2.04 — Momentum 24 h: ATOM +16,8% en 24 h (margen amplio sobre el +5%), sigue verde en 4 h (+0,25%) y 1 h (+0,69%, no estirada), a -2,25% del máxim
-- 2026-10-09 19:32 UTC · compra DOT 100.00 USD a 1.204 — Momentum 24 h: DOT +15,0% en 24 h (margen amplio sobre el +5%, no en el borde como QNT), sigue subiendo en 4 h (+1,09%) y 1 h (+0,33%, no es
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
