@@ -25,7 +25,7 @@ Master Plan no tiene banco de sep/oct (es esperable, no un faltante).
 - 🔴 Facu: el **link público** del Master Plan («cualquiera con el link») — el token de
   `google_auth` no tiene permiso para cambiarlo. Compartir → Acceso general → Restringido
   (y agregar a re1900@ si Richi lo abre por link).
-- 🔴 Facu: «Pagué municipalidad $16.669.692» (07/10) está como gasto **operativo**
+- ✅ 10/10: «Pagué municipalidad $16.669.692» (07/10) pasado a **Inversiones** (sheet + Supabase) y cargado en Gastos Obra fila 121 como Paseo Nordelta. Antes estaba como gasto operativo
   (Municipal). Si es el plan de Fondo y Áridos, es obra → Inversiones. Hoy hunde octubre
   a −$16,4M.
 - Facu: posible doble pago de dic-2025 — Movimientos 21 vs 357 (Redes y Servicios
