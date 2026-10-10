@@ -28,13 +28,13 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1791660660000
+      "vigilado_hasta": 1791664260000
     },
     "ENAUSDT": {
       "nivel": "trading",
       "cantidad": 446.1813309513176,
       "entrada": 0.2239,
-      "maximo": 0.2239,
+      "maximo": 0.2246,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -50,7 +50,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791660780000
+      "vigilado_hasta": 1791664260000
     }
   },
   "comisiones_usd": 4.338628,
