@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 580.202675425151,
+  "usdt": 480.202675425151,
   "posiciones": {
     "BCHUSDT": {
       "nivel": "trading",
       "cantidad": 0.36366945759009833,
       "entrada": 274.7,
-      "maximo": 280.0,
+      "maximo": 280.3,
       "reglas": {
         "stop": 4.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791606660000
+      "vigilado_hasta": 1791610260000
     },
     "DOTUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791606660000
+      "vigilado_hasta": 1791610260000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 20.333808263789944,
       "entrada": 4.913,
-      "maximo": 5.07,
+      "maximo": 5.201,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791606660000
+      "vigilado_hasta": 1791610260000
     },
     "ADAUSDT": {
       "nivel": "trading",
@@ -92,10 +92,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791606660000
+      "vigilado_hasta": 1791610260000
+    },
+    "WLDUSDT": {
+      "nivel": "trading",
+      "cantidad": 181.01105272694332,
+      "entrada": 0.5519,
+      "maximo": 0.5519,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791610380000
     }
   },
-  "comisiones_usd": 3.4817340000000003,
+  "comisiones_usd": 3.5817340000000004,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -420,6 +442,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: ADA (37,5 M USD/día) +9,05% en 24 h (ya con margen, no en el borde como a las 00:32/01:31), sigue subiendo en 4 h (+5,93%) y 1 h (+0,79%, no estirada), a -1,01% del máximo de 48 h con volumen 4 h 1,46x (casi ruptura con volumen) y a +14% del mínimo, lejos de lo parabólico. Vigilada desde las 00:32: pasó de +5,6% a +9% en 24 h y apareció el volumen que faltaba. Tamaño 10%. Invalida: perder ~-5% (stop por defecto) o que el 4 h se dé vuelta a rojo sin romper el máximo de 48 h."
+    },
+    {
+      "ms": 1791610348068,
+      "fecha": "2026-10-10 05:32 UTC",
+      "lado": "buy",
+      "par": "WLDUSDT",
+      "nivel": "trading",
+      "cantidad": 181.01105272694332,
+      "precio": 0.5519,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Ruptura con volumen + momentum 24 h: WLD (27,6 M USD/día) a -0,14% del máximo de 48 h con volumen 4 h 1,51x, +11,14% en 24 h, +5,41% en 4 h y +2,26% en 1 h (no estirada, <4%), +20% sobre el mínimo, lejos de lo parabólico. Vigilada desde las 00:32: se cumplió la condición escrita a las 04:32 (romper el máximo con vol >=1,5x / pasar +8% en 24 h). Tamaño 10%, reglas por defecto. Invalida: perder ~-5% (stop) o que no sostenga el máximo de 48 h y el 4 h pase a rojo con volumen apagándose."
     }
   ]
 }
