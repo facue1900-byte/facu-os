@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 633.0621070832414,
+  "usdt": 732.510935710539,
   "posiciones": {
     "BCHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791631860000
+      "vigilado_hasta": 1791635460000
     },
     "DOTUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791631860000
+      "vigilado_hasta": 1791635460000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 10.166904131894972,
       "entrada": 4.913,
-      "maximo": 5.33,
+      "maximo": 5.341,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -72,32 +72,10 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1791631860000
-    },
-    "ADAUSDT": {
-      "nivel": "trading",
-      "cantidad": 390.69221744231527,
-      "entrada": 0.2557,
-      "maximo": 0.2576,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791631860000
+      "vigilado_hasta": 1791635460000
     }
   },
-  "comisiones_usd": 3.7347460000000003,
+  "comisiones_usd": 3.8342940000000003,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -458,6 +436,18 @@
       "comision": 0.053946,
       "motivo": "Toma de ganancia +8% en 5.30604: vende 50% de lo que quedaba.",
       "resultado_pct": 8.0
+    },
+    {
+      "ms": 1791635547957,
+      "fecha": "2026-10-10 12:32 UTC",
+      "lado": "sell",
+      "par": "ADAUSDT",
+      "cantidad": 390.69221744231527,
+      "precio": 0.2548,
+      "usd": 99.5484,
+      "comision": 0.099548,
+      "motivo": "Invalidación escrita cumplida: el 4 h de ADA pasó a rojo (-0,70%, -0,16% 1 h, vol 0,41x) sin romper el máximo de 48 h (a -1,05%). El momentum se apagó; salgo a USDT y libero lugar.",
+      "resultado_pct": -0.35
     }
   ]
 }
