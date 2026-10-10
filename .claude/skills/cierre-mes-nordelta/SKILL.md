@@ -362,6 +362,11 @@ Queda a mano interpretar (esto sí lo hago yo, leyendo):
 
 ## Lecciones cargadas
 
+- Un timeout **leyendo** cortaba el volcado diario (02/10 y 09/10/2026): las lecturas de
+  Sheets van con `execute(num_retries=N)`; las escrituras no idempotentes, sin reintento.
+- El Dashboard del Master Plan es **resultado operativo** (Facu, 10/10/2026): ingresos sin
+  `Aporte de Capital*` ni `Cambio de USD`; egresos sin `Inversiones`, `Retiro de Ganancia*`
+  ni `Pesos a USD`. Cuadra al peso con el reporte a inversores de agosto.
 - El conector de Drive truncó Movimientos en 206 de 455 filas **sin error**. Un
   resultado uniformemente vacío o corto es un error hasta que se demuestre lo contrario:
   siempre el export xlsx completo.
