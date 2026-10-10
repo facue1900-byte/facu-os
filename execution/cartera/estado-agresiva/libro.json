@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 734.3092175452678,
+  "usdt": 832.6789635225824,
   "posiciones": {
     "DOTUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791653460000
+      "vigilado_hasta": 1791657060000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -50,32 +50,10 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1791653460000
-    },
-    "SUIUSDT": {
-      "nivel": "trading",
-      "cantidad": 87.83962015299394,
-      "entrada": 1.1373,
-      "maximo": 1.14,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791653460000
+      "vigilado_hasta": 1791657060000
     }
   },
-  "comisiones_usd": 4.036194,
+  "comisiones_usd": 4.1346620000000005,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -472,6 +450,18 @@
       "comision": 0.1019,
       "motivo": "Regla de 24 h: BCH entró ayer 17:32 (rebote, 274,7) y en 24 h no llegó a +8% ni al stop (+2%). Salgo a USDT y libero lugar para rotar.",
       "resultado_pct": 2.0
+    },
+    {
+      "ms": 1791657143290,
+      "fecha": "2026-10-10 18:32 UTC",
+      "lado": "sell",
+      "par": "SUIUSDT",
+      "cantidad": 87.83962015299394,
+      "precio": 1.121,
+      "usd": 98.4682,
+      "comision": 0.098468,
+      "motivo": "Invalidación escrita cumplida: el 4 h de SUI pasó a rojo (-0,85%) sin romper el máximo de 48 h (a -1,64%), vol 0,77x; el 24 h sigue +5,56% pero el momentum de corto se apagó. Salgo a USDT.",
+      "resultado_pct": -1.43
     }
   ]
 }
