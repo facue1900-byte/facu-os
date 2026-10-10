@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 579.1700530832413,
+  "usdt": 633.0621070832414,
   "posiciones": {
     "BCHUSDT": {
       "nivel": "trading",
       "cantidad": 0.36366945759009833,
       "entrada": 274.7,
-      "maximo": 280.3,
+      "maximo": 280.9,
       "reglas": {
         "stop": 4.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791624660000
+      "vigilado_hasta": 1791628260000
     },
     "DOTUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791624660000
+      "vigilado_hasta": 1791628260000
     },
     "NEARUSDT": {
       "nivel": "trading",
-      "cantidad": 20.333808263789944,
+      "cantidad": 10.166904131894972,
       "entrada": 4.913,
-      "maximo": 5.295,
+      "maximo": 5.33,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -69,8 +69,10 @@
           ]
         ]
       },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791624660000
+      "tomas_hechas": [
+        8.0
+      ],
+      "vigilado_hasta": 1791628260000
     },
     "ADAUSDT": {
       "nivel": "trading",
@@ -92,10 +94,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791624660000
+      "vigilado_hasta": 1791628260000
     }
   },
-  "comisiones_usd": 3.6808000000000005,
+  "comisiones_usd": 3.7347460000000003,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -444,6 +446,18 @@
       "comision": 0.099066,
       "motivo": "Stop automático en 0.547295 (entrada 0.5519, máximo 0.5761).",
       "resultado_pct": -0.83
+    },
+    {
+      "ms": 1791625020000,
+      "fecha": "2026-10-10 09:37 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 10.166904131894972,
+      "precio": 5.30604,
+      "usd": 53.946,
+      "comision": 0.053946,
+      "motivo": "Toma de ganancia +8% en 5.30604: vende 50% de lo que quedaba.",
+      "resultado_pct": 8.0
     }
   ]
 }
