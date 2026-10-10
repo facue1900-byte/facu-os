@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 680.202675425151,
+  "usdt": 580.202675425151,
   "posiciones": {
     "BCHUSDT": {
       "nivel": "trading",
       "cantidad": 0.36366945759009833,
       "entrada": 274.7,
-      "maximo": 278.0,
+      "maximo": 279.2,
       "reglas": {
         "stop": 4.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791595860000
+      "vigilado_hasta": 1791599460000
     },
     "DOTUSDT": {
       "nivel": "trading",
       "cantidad": 82.9734219269103,
       "entrada": 1.204,
-      "maximo": 1.244,
+      "maximo": 1.296,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791595860000
+      "vigilado_hasta": 1791599460000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 20.333808263789944,
       "entrada": 4.913,
-      "maximo": 4.973,
+      "maximo": 5.032,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791595860000
+      "vigilado_hasta": 1791599460000
+    },
+    "ADAUSDT": {
+      "nivel": "trading",
+      "cantidad": 390.69221744231527,
+      "entrada": 0.2557,
+      "maximo": 0.2557,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791599580000
     }
   },
-  "comisiones_usd": 3.3817340000000002,
+  "comisiones_usd": 3.4817340000000003,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -386,6 +408,18 @@
       "comision": 0.097045,
       "motivo": "Stop automático en 1.9817 (entrada 2.04, máximo 2.086).",
       "resultado_pct": -2.86
+    },
+    {
+      "ms": 1791599556133,
+      "fecha": "2026-10-10 02:32 UTC",
+      "lado": "buy",
+      "par": "ADAUSDT",
+      "nivel": "trading",
+      "cantidad": 390.69221744231527,
+      "precio": 0.2557,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h: ADA (37,5 M USD/día) +9,05% en 24 h (ya con margen, no en el borde como a las 00:32/01:31), sigue subiendo en 4 h (+5,93%) y 1 h (+0,79%, no estirada), a -1,01% del máximo de 48 h con volumen 4 h 1,46x (casi ruptura con volumen) y a +14% del mínimo, lejos de lo parabólico. Vigilada desde las 00:32: pasó de +5,6% a +9% en 24 h y apareció el volumen que faltaba. Tamaño 10%. Invalida: perder ~-5% (stop por defecto) o que el 4 h se dé vuelta a rojo sin romper el máximo de 48 h."
     }
   ]
 }
