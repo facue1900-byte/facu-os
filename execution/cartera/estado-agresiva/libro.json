@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 832.6789635225824,
+  "usdt": 836.5406954993266,
   "posiciones": {
-    "DOTUSDT": {
-      "nivel": "trading",
-      "cantidad": 82.9734219269103,
-      "entrada": 1.204,
-      "maximo": 1.296,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791657060000
-    },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 10.166904131894972,
@@ -50,10 +28,32 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1791657060000
+      "vigilado_hasta": 1791660660000
+    },
+    "ENAUSDT": {
+      "nivel": "trading",
+      "cantidad": 446.1813309513176,
+      "entrada": 0.2239,
+      "maximo": 0.2239,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791660780000
     }
   },
-  "comisiones_usd": 4.1346620000000005,
+  "comisiones_usd": 4.338628,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -462,6 +462,30 @@
       "comision": 0.098468,
       "motivo": "Invalidación escrita cumplida: el 4 h de SUI pasó a rojo (-0,85%) sin romper el máximo de 48 h (a -1,64%), vol 0,77x; el 24 h sigue +5,56% pero el momentum de corto se apagó. Salgo a USDT.",
       "resultado_pct": -1.43
+    },
+    {
+      "ms": 1791660719849,
+      "fecha": "2026-10-10 19:31 UTC",
+      "lado": "sell",
+      "par": "DOTUSDT",
+      "cantidad": 82.9734219269103,
+      "precio": 1.253,
+      "usd": 103.9657,
+      "comision": 0.103966,
+      "motivo": "Regla de 24 h: DOT entró ayer 19:32 (momentum, 1,204) y en 24 h no llegó a +8% ni al stop (~+4%). Salgo a USDT y roto.",
+      "resultado_pct": 4.07
+    },
+    {
+      "ms": 1791660724628,
+      "fecha": "2026-10-10 19:32 UTC",
+      "lado": "buy",
+      "par": "ENAUSDT",
+      "nivel": "trading",
+      "cantidad": 446.1813309513176,
+      "precio": 0.2239,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h: ENA (25 M USD/día) +5,58% 24 h, +0,41% 4 h verde, +0,09% 1 h (no estirada), a -0,67% del máximo de 48 h; se cumplió la condición vigilada a las 18:32 (cruzar +5%). Vol 0,69x, sin confirmación de ruptura: tamaño 10%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h."
     }
   ]
 }

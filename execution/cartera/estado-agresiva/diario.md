@@ -357,3 +357,16 @@ Invalidación escrita cumplida: el 4 h de SUI pasó a rojo (-0,85%) sin romper e
 ## 2026-10-10 18:32 UTC — nota
 18:32 UTC — 1 salida, sin entradas. Vigilante: sin disparos en la última hora. Vendí SUI a 1,121 (-1,43%): se cumplió la invalidación escrita, el 4 h pasó a rojo (-0,85%) sin romper el máximo de 48 h (a -1,64%), vol 0,77x. Posiciones vivas: DOT +4,65% (momentum, entrada 1,204; stop ~1,231, en ganancia; sale en la próxima vuelta, 19:32, si no llegó a +8%), NEAR +8,1% sobre la mitad restante (-0,95% 4 h, -0,26% 1 h, +13,4% 24 h, a -2,24% del máximo de 48 h; stop ~5,168, sobre la entrada; busca +15%; sale hoy 23:32). BTC +0,08% en 4 h, sin bloqueo. Mercado plano: 1 h entre -0,2% y +0,1% en las grandes, volumen 4 h 0,3-0,7x. Ruptura con volumen: ninguna rompe el máximo de 48 h con vol >=1,5x; STRK 4,39x pero +7,23% en 1 h y +16% en 4 h, estirada, paso; CFX 7,16x pero -2,24% 1 h y a -3,9% del máximo; QNT 1,62x pero -3,3% 4 h (vendedor). Momentum 24 h: WLD +14% 24 h, +2,42% 4 h, +1,04% 1 h, a -2,1% del máximo: cumple en papel pero fue invalidada hoy, no recompro en el mismo día (vigilada para mañana); ENA +4,86% 24 h, +0,36% 4 h, no llega al +5%: vigilada; FET, ADA, SUI rojas en 4 h; RLC -4,27% 1 h y a -33% del máximo. Rebote: TRX pegada al mínimo (+0,06%) pero lateral sin caída previa. 2 posiciones, ~84% en USDT.
 
+## 2026-10-10 19:31 UTC — Venta DOTUSDT
+103.97 USD a 1.253 (+4.07% contra la compra).
+
+Regla de 24 h: DOT entró ayer 19:32 (momentum, 1,204) y en 24 h no llegó a +8% ni al stop (~+4%). Salgo a USDT y roto.
+
+## 2026-10-10 19:32 UTC — Compra ENAUSDT (trading)
+100.00 USD a 0.2239. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: ENA (25 M USD/día) +5,58% 24 h, +0,41% 4 h verde, +0,09% 1 h (no estirada), a -0,67% del máximo de 48 h; se cumplió la condición vigilada a las 18:32 (cruzar +5%). Vol 0,69x, sin confirmación de ruptura: tamaño 10%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h.
+
+## 2026-10-10 19:32 UTC — nota
+19:32 UTC — 1 salida, 1 entrada. Vigilante: sin disparos en la última hora. Vendí DOT a 1,253 (+4,07%) por la regla de 24 h: entró ayer 19:32 y no llegó a +8% ni al stop. Compré ENA 100 USD a 0,2239 (momentum: +5,58% 24 h, +0,41% 4 h, +0,09% 1 h, vol 0,69x, a -0,67% del máximo de 48 h); se cumplió la condición vigilada a las 18:32. Invalida: stop -5% (~0,2127) o 4 h en rojo sin romper el máximo; sale mañana 19:32 si no llegó a +8%. Posiciones vivas: NEAR +8% sobre la mitad restante (-1,04% 4 h, -0,6% 1 h, +14% 24 h, a -2,41% del máximo; stop ~5,168, sobre la entrada; busca +15%; sale hoy 23:32), ENA recién entrada. BTC 0% en 4 h, sin bloqueo. Mercado plano: 1 h entre -0,1% y +0,2% en las grandes, volumen 4 h 0,2-0,9x. Ruptura con volumen: ninguna rompe el máximo de 48 h con vol >=1,5x; CFX 4,06x y +1,69% 1 h pero +23% en 24 h y a -6,2% del máximo, post-pump, paso; STRK 3,18x pero +86% sobre el mínimo, estirada. Momentum 24 h: SUI +6,08% pero roja en 4 h, recién invalidada; WLD +13,8% 24 h, +0,48% 4 h, invalidada hoy, vigilada para mañana; ADA y FET rojas en 4 h; UNI +3,88% no llega. Rebote: nadie en mínimo de 48 h. 2 posiciones, ~84% en USDT.
+
