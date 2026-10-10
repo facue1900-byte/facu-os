@@ -1,6 +1,47 @@
 # Paseo Nordelta — estado
 
-Última actualización: 2026-07-27
+Última actualización: 2026-10-10 (sección de abajo). Lo que sigue después de
+«Historia al 27/07» quedó como registro: varios números de ahí ya cambiaron.
+
+## Vigente al 10/10/2026 (auditoría completa)
+
+**Sociedad (Facu, 10/10):** el Paseo opera como **MAHNI MANAGEMENT S.A.** Es el mismo
+predio que antes explotaba **NDPL SAS (Nordelta Plaza)**: cambió la concesión, la empresa
+y la sociedad. Por eso proveedores como Transportes Olivos todavía facturan
+«NORDELTA PLAZAS - MAHNI MANAGEMENT»: eso **es del Paseo**. Las deudas viejas de
+Noreventos/NDPL que figuran pagadas en Movimientos ($3.363.879: filas 193, 329, 346, 357)
+**las asumió el Paseo a propósito** (Facu, 10/10) — no es un error de negocio.
+
+**Master Plan — Dashboard = resultado operativo** (definido por Facu el 10/10): ingresos
+sin aportes de capital ni cambio de USD; egresos sin Inversiones, retiros de ganancia ni
+compra de USD. Cuadra al peso con el reporte de agosto ($23.825.055,83 / $17.861.555,69) y
+con junio ($5.218.022,73). Acumulado ene–oct al 10/10: $18.395.422,06 (oct parcial, sin
+banco). Fórmulas viejas (SUMIFS sin exclusiones): `dashboard_formulas_antes_2026-10-10.json`.
+
+**Último extracto Macro cargado:** agosto. Septiembre llega ~15/10; hasta entonces el
+Master Plan no tiene banco de sep/oct (es esperable, no un faltante).
+
+**Abierto (con dueño):**
+- 🔴 Facu: el **link público** del Master Plan («cualquiera con el link») — el token de
+  `google_auth` no tiene permiso para cambiarlo. Compartir → Acceso general → Restringido
+  (y agregar a re1900@ si Richi lo abre por link).
+- 🔴 Facu: «Pagué municipalidad $16.669.692» (07/10) está como gasto **operativo**
+  (Municipal). Si es el plan de Fondo y Áridos, es obra → Inversiones. Hoy hunde octubre
+  a −$16,4M.
+- Facu: posible doble pago de dic-2025 — Movimientos 21 vs 357 (Redes y Servicios
+  $572.965 / $572.964) y 19 vs 346 (TOSDE $1.101.150 / $1.149.538).
+- Facu: 09/10 «materiales rejilla» $206.155 (fila 595, Mejoras) vs «materiales de
+  construcción» $206.155 (fila 592, Inversiones), y Daniel $600.000 ×2 (597/598): ¿dobles?
+- Pestaña **«Deuda»** de la app: fuera de producción desde los redeploys de octubre. El
+  código quedó en la rama `wip/deuda-ctas-ctes` (no se mergea así): su fuente, la hoja
+  `CUENTA CORRIENTE` de Ctas Ctes, **dejó de alimentarse en julio**. Republicarla exige
+  leer las pestañas por local. Nadie la extrañó en 10 días → antes de escribir código,
+  ver si alguien la usa (regla 24).
+- Gastos Obra sin gastos desde el 18/08 (sólo aportes). `obra_a_gastos_obra.py` carga lo
+  pagado por caja; lo pagado por Richi/Facu es a mano.
+- Mails: 9 borradores de respuesta en paseonordelta@ y facue1900@ (10/10), sin enviar.
+
+## Historia al 27/07/2026
 
 ## Qué es
 
@@ -18,7 +59,7 @@ La obra se financia casi 100% con capital de socios: **Richi ~$150–161M**,
 |---|---|
 | Extractos Banco Macro | `~/Desktop/Paseo Nordelta/Principio de mes/Resumen de Banco Paseo Nordelta/<año>/` |
 | Cierre de mes (facturas, impuestos, sueldos) | `~/Desktop/Paseo Nordelta/Principio de mes/` |
-| Logos | `~/Desktop/Paseo Nordelta/Logotipos Nordelta Plaza/` |
+| Logos | `~/Desktop/Paseo Nordelta/Logotipos Paseo Nordelta.zip` |
 | Web e informes a inversores | `~/Desktop/Paseo Nordelta/Paseo Nordelta - CLAUDE/` |
 
 Sheets: **Master Plan** `1ATiNBHCukPYPn9-poP1HO4SlfsDu5pGXsLz-JvW-IQs` ·
