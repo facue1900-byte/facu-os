@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.36366945759009833,
       "entrada": 274.7,
-      "maximo": 280.9,
+      "maximo": 281.6,
       "reglas": {
         "stop": 4.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791642660000
+      "vigilado_hasta": 1791646260000
     },
     "DOTUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791642660000
+      "vigilado_hasta": 1791646260000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 10.166904131894972,
       "entrada": 4.913,
-      "maximo": 5.435,
+      "maximo": 5.44,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -72,13 +72,13 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1791642660000
+      "vigilado_hasta": 1791646260000
     },
     "SUIUSDT": {
       "nivel": "trading",
       "cantidad": 87.83962015299394,
       "entrada": 1.1373,
-      "maximo": 1.1373,
+      "maximo": 1.14,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -94,7 +94,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791642780000
+      "vigilado_hasta": 1791646260000
     }
   },
   "comisiones_usd": 3.9342940000000004,
