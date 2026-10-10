@@ -8,6 +8,44 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-10-10 · FAIL ✓ · Netlify y Vercel en plan gratis, a una corrida de pausar los sitios
+
+**Dónde:** cuenta Netlify «Astronomy» (Free, 300 créditos/período) que hostea la app del
+Paseo (3 sitios) · Vercel team `astronomyofficial` (Hobby, 4 h de Fluid Active CPU).
+
+**Qué pasó:** los mails de 50/75% de Netlify (02 y 05/10) y el «Approaching your limits» de
+Vercel (05/10) quedaron sin leer. Ninguno decía qué se rompe: en los dos planes gratis, al
+pasar el 100% **se pausan los sitios** hasta el reset.
+
+**Causa raíz:** Netlify cobra 15 créditos por deploy de producción y `deploy.sh` publica 3
+sitios por corrida (45). 6 corridas del 13/09 al 05/10 = 18 deploys = 270/300. Nada en el
+script miraba el saldo. En Vercel: 3 h 07 m de 4 h en 30 días; la base fija son los crons
+de pg_cron `sync-sheet` (cada hora, ~38 min/mes) y `sync-mp` (~cada 20 min, ~25 min/mes).
+
+**Fix:** `deploy.sh` cuenta los deploys del período y frena antes del build si el próximo
+deja la cuenta sin margen (`--forzar` para saltearlo). Probado sobre una copia sin publicar:
+lee 270/300 y corta. Vercel: queda la recomendación de pasar a Pro (US$20/mes; Hobby
+además es sólo para uso no comercial y la web cobra membresías) — lo decide Facu.
+
+### 2026-10-10 · FAIL ✓ · Paseo: un timeout LEYENDO cortaba el volcado de efectivo del día
+
+**Dónde:** `cierre-mes-nordelta/scripts/volcar_cobros.py` (paso 2 de `efectivo_diario.sh`).
+
+**Qué pasó:** el 02/10 y el 09/10 la tarea salió con código 1: `TimeoutError: The read
+operation timed out` en un `values().get`. No dejó nada a medias (falló leyendo, antes de
+escribir) y el día siguiente lo levantó la ventana de 60 días, pero cada falla es un mail
+de alarma y un día sin volcar.
+
+**Causa raíz:** `googleapiclient` sabe reintentar timeouts, pero sólo si se le pasa
+`execute(num_retries=N)`; por default es 0. Ninguna lectura lo pasaba.
+
+**Fix:** las 6 lecturas con `num_retries=4` (`LECTURA_REINTENTOS`). Las 2 escrituras NO:
+reintentar un insert duplica un pago. Probado con un `http` que tira 2 timeouts: con el fix
+sale al tercer intento; sin el fix falla igual que el 09/10.
+
+**Lección:** toda lectura de Sheets en una tarea programada va con `num_retries`; toda
+escritura no idempotente, sin.
+
 ### 2026-10-09 · FAIL · La tarea «Aprobar comentarios» no tenía ningún botón
 
 **Dónde:** `astronomy-members`: `app/admin/hacer/[id]/page.tsx`, `lib/workflows.ts`.
