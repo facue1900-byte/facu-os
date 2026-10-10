@@ -1,34 +1,34 @@
-# Carpeta cripto ficticia — 2026-10-10 08:07 UTC
+# Carpeta cripto ficticia — 2026-10-10 10:07 UTC
 
-**Total: 978.03 USD (-2.20%)** desde 2026-10-07 20:58 UTC · USDT libre 79.71 · comisiones 1.28 · 35 operaciones
+**Total: 977.43 USD (-2.26%)** desde 2026-10-07 20:58 UTC · USDT libre 79.71 · comisiones 1.28 · 35 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **978.03** |
+| **Esta carpeta** | **977.43** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 992.79 |
-| plan inicial sin tocar | 972.17 |
+| hodl btc | 992.91 |
+| plan inicial sin tocar | 971.60 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 297.52 | -0.73% | 62,646.7 |
-| ETH | conservador | 96.91 | -2.99% | 1,940.46 |
-| SOL | medio | 66.26 | -5.25% | 95.2922 |
-| BNB | conservador | 48.62 | -2.66% | 582.173 |
-| AAVE | medio | 40.12 | +0.40% | 142.91 |
-| LINK | medio | 38.64 | -3.29% | 10.9609 |
-| AVAX | medio | 37.74 | -5.56% | 9.20942 |
-| STRK | riesgo | 37.19 | +24.08% | 0.0660365 |
-| SUI | medio | 29.73 | -0.81% | 0.92168 |
-| XRP | medio | 29.67 | -1.01% | 1.16653 |
-| TAO | medio | 24.37 | -2.41% | 238.292 |
-| ENA | riesgo | 24.19 | -3.13% | 0.194055 |
-| LTC | medio | 24.03 | -3.78% | 54.243 |
-| RAY | riesgo | 23.20 | -7.09% | 2.1505 |
-| JUP | riesgo | 20.70 | +3.61% | 0.3281 |
-| NEAR | riesgo | 19.99 | +0.06% | 4.4489 |
-| ATOM | riesgo | 19.95 | -0.15% | 1.77395 |
-| ZK | riesgo | 19.49 | -2.44% | 0.0123505 |
+| BTC | conservador | 297.55 | -0.72% | 62,646.7 |
+| ETH | conservador | 96.86 | -3.05% | 1,940.46 |
+| SOL | medio | 66.04 | -5.57% | 95.2922 |
+| BNB | conservador | 48.59 | -2.73% | 582.173 |
+| AAVE | medio | 39.89 | -0.18% | 142.91 |
+| LINK | medio | 38.63 | -3.32% | 10.9609 |
+| AVAX | medio | 37.47 | -6.23% | 9.20942 |
+| STRK | riesgo | 37.07 | +23.69% | 0.0660365 |
+| SUI | medio | 29.79 | -0.59% | 0.92168 |
+| XRP | medio | 29.62 | -1.17% | 1.16653 |
+| TAO | medio | 24.30 | -2.68% | 238.292 |
+| ENA | riesgo | 24.26 | -2.87% | 0.194055 |
+| LTC | medio | 23.98 | -3.98% | 54.243 |
+| RAY | riesgo | 23.53 | -5.79% | 2.1505 |
+| JUP | riesgo | 20.36 | +1.89% | 0.3281 |
+| NEAR | riesgo | 20.13 | +0.73% | 4.51265 |
+| ATOM | riesgo | 19.91 | -0.36% | 1.77395 |
+| ZK | riesgo | 19.75 | -1.15% | 0.0123505 |
 
 ## Últimas operaciones
 
