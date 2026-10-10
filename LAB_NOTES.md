@@ -8,6 +8,25 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-10-10 · FAIL ✓ · Paseo: un timeout LEYENDO cortaba el volcado de efectivo del día
+
+**Dónde:** `cierre-mes-nordelta/scripts/volcar_cobros.py` (paso 2 de `efectivo_diario.sh`).
+
+**Qué pasó:** el 02/10 y el 09/10 la tarea salió con código 1: `TimeoutError: The read
+operation timed out` en un `values().get`. No dejó nada a medias (falló leyendo, antes de
+escribir) y el día siguiente lo levantó la ventana de 60 días, pero cada falla es un mail
+de alarma y un día sin volcar.
+
+**Causa raíz:** `googleapiclient` sabe reintentar timeouts, pero sólo si se le pasa
+`execute(num_retries=N)`; por default es 0. Ninguna lectura lo pasaba.
+
+**Fix:** las 6 lecturas con `num_retries=4` (`LECTURA_REINTENTOS`). Las 2 escrituras NO:
+reintentar un insert duplica un pago. Probado con un `http` que tira 2 timeouts: con el fix
+sale al tercer intento; sin el fix falla igual que el 09/10.
+
+**Lección:** toda lectura de Sheets en una tarea programada va con `num_retries`; toda
+escritura no idempotente, sin.
+
 ### 2026-10-09 · FAIL · La tarea «Aprobar comentarios» no tenía ningún botón
 
 **Dónde:** `astronomy-members`: `app/admin/hacer/[id]/page.tsx`, `lib/workflows.ts`.

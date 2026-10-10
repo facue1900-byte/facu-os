@@ -53,6 +53,10 @@ sys.path.insert(0, "/Users/Facu/facu-os")
 from execution.google_auth import sheets  # noqa: E402
 from cargos_del_mes import CTAS, LOCALES, num, plata  # noqa: E402
 
+# Sólo las LECTURAS se reintentan: un timeout leyendo cortaba el día entero
+# (02/10 y 09/10/2026). Las escrituras no — reintentar un insert duplica un pago.
+LECTURA_REINTENTOS = 4
+
 # Cómo se llama cada local en la hoja `Cobros`.
 ALIAS = {
     "Fabric": ["fabric"],
@@ -80,14 +84,14 @@ def copiar_formato_de_pago(sv, pest, lay, ult, n):
     desprolija. Se copian sólo A:G — en la H viven los cartuchos a mano.
     """
     vals = sv.values().get(spreadsheetId=CTAS, range=f"{pest}!A1:H{ult}",
-                           valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
+                           valueRenderOption="UNFORMATTED_VALUE").execute(num_retries=LECTURA_REINTENTOS)["values"]
     ci = col(lay["ingreso"])
     modelo = max((i for i, r in enumerate(vals, 1)
                   if i >= 6 and len(r) > ci and num(r[ci])), default=None)
     if modelo is None:
         return
     sid = next(h["properties"]["sheetId"] for h in sv.get(
-        spreadsheetId=CTAS, fields="sheets(properties(sheetId,title))").execute()["sheets"]
+        spreadsheetId=CTAS, fields="sheets(properties(sheetId,title))").execute(num_retries=LECTURA_REINTENTOS)["sheets"]
         if h["properties"]["title"] == pest)
     rango = lambda a, b: {"sheetId": sid, "startRowIndex": a - 1, "endRowIndex": b,
                           "startColumnIndex": 0, "endColumnIndex": 7}
@@ -115,7 +119,7 @@ def signo_del_ingreso(sv, pestania, lay, fila):
     """
     fx = sv.values().get(spreadsheetId=CTAS,
                          range=f"{pestania}!{lay['saldo']}{fila}",
-                         valueRenderOption="FORMULA").execute().get("values")
+                         valueRenderOption="FORMULA").execute(num_retries=LECTURA_REINTENTOS).get("values")
     if not fx or not fx[0]:
         return None, f"{pestania}!{lay['saldo']}{fila} no tiene fórmula de saldo"
     m = CADENA.match(str(fx[0][0]).replace(" ", ""))
@@ -168,7 +172,7 @@ def pendientes(sv, local, cfg, cobros, desde):
     """
     lay = cfg["layout"]
     vals = sv.values().get(spreadsheetId=CTAS, range=f"{cfg['pestania']}!A1:H400",
-                           valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
+                           valueRenderOption="UNFORMATTED_VALUE").execute(num_retries=LECTURA_REINTENTOS)["values"]
     volcados = collections.Counter()
     for r in vals:
         c = col(lay["ingreso"])
@@ -219,7 +223,7 @@ def main():
 
     sv = sheets().spreadsheets()
     crudo = sv.values().get(spreadsheetId=CTAS, range="Cobros!A1:E600",
-                            valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
+                            valueRenderOption="UNFORMATTED_VALUE").execute(num_retries=LECTURA_REINTENTOS)["values"]
     # Cuántas filas de encabezado tiene `Cobros` se LEE, no se asume: si mañana
     # gana o pierde una, saltear un número fijo se come la primera fila de plata
     # y no lo nota nadie.
@@ -333,7 +337,7 @@ def main():
 
         # --- verificación de ESTE local, releyendo ---
         vals = sv.values().get(spreadsheetId=CTAS, range=f"{pest}!A1:H400",
-                               valueRenderOption="UNFORMATTED_VALUE").execute()["values"]
+                               valueRenderOption="UNFORMATTED_VALUE").execute(num_retries=LECTURA_REINTENTOS)["values"]
         saldo_desp = saldo_en(vals, lay, ultima_fila(vals, lay))
         volcado = sum(x[1] for x in faltan)
         esperado = round(saldo_antes + signo * volcado, 2)
