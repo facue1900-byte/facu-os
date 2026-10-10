@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 480.202675425151,
+  "usdt": 579.1700530832413,
   "posiciones": {
     "BCHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791621120000
+      "vigilado_hasta": 1791624660000
     },
     "DOTUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791621120000
+      "vigilado_hasta": 1791624660000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 20.333808263789944,
       "entrada": 4.913,
-      "maximo": 5.268,
+      "maximo": 5.295,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791621120000
+      "vigilado_hasta": 1791624660000
     },
     "ADAUSDT": {
       "nivel": "trading",
@@ -92,32 +92,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791621120000
-    },
-    "WLDUSDT": {
-      "nivel": "trading",
-      "cantidad": 181.01105272694332,
-      "entrada": 0.5519,
-      "maximo": 0.5761,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791621120000
+      "vigilado_hasta": 1791624660000
     }
   },
-  "comisiones_usd": 3.5817340000000004,
+  "comisiones_usd": 3.6808000000000005,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -454,6 +432,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Ruptura con volumen + momentum 24 h: WLD (27,6 M USD/día) a -0,14% del máximo de 48 h con volumen 4 h 1,51x, +11,14% en 24 h, +5,41% en 4 h y +2,26% en 1 h (no estirada, <4%), +20% sobre el mínimo, lejos de lo parabólico. Vigilada desde las 00:32: se cumplió la condición escrita a las 04:32 (romper el máximo con vol >=1,5x / pasar +8% en 24 h). Tamaño 10%, reglas por defecto. Invalida: perder ~-5% (stop) o que no sostenga el máximo de 48 h y el 4 h pase a rojo con volumen apagándose."
+    },
+    {
+      "ms": 1791624060000,
+      "fecha": "2026-10-10 09:21 UTC",
+      "lado": "sell",
+      "par": "WLDUSDT",
+      "cantidad": 181.01105272694332,
+      "precio": 0.547295,
+      "usd": 99.0664,
+      "comision": 0.099066,
+      "motivo": "Stop automático en 0.547295 (entrada 0.5519, máximo 0.5761).",
+      "resultado_pct": -0.83
     }
   ]
 }

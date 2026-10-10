@@ -1,23 +1,23 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-10 08:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-10 09:32 UTC
 
-**Total: 991.50 USD (-0.85%)** desde 2026-10-07 23:06 UTC · USDT libre 480.20 · comisiones 3.58 · 28 operaciones
+**Total: 994.03 USD (-0.60%)** desde 2026-10-07 23:06 UTC · USDT libre 579.17 · comisiones 3.68 · 29 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **991.50** |
+| **Esta carpeta** | **994.03** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 995.34 |
+| hodl btc | 996.16 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| NEAR | trading | 106.43 | +6.53% | 5.0046 |
-| DOT | trading | 103.55 | +3.65% | 1.2312 |
-| BCH | trading | 101.43 | +1.53% | 266.285 |
-| WLD | trading | 99.95 | +0.05% | 0.547295 |
+| NEAR | trading | 107.44 | +7.55% | 5.03025 |
+| DOT | trading | 105.79 | +5.90% | 1.2312 |
+| BCH | trading | 101.68 | +1.78% | 266.285 |
 | ADA | trading | 99.94 | +0.04% | 0.24472 |
 
 ## Últimas operaciones
 
+- 2026-10-10 09:21 UTC · venta WLD 99.07 USD a 0.547295 — Stop automático en 0.547295 (entrada 0.5519, máximo 0.5761).
 - 2026-10-10 05:32 UTC · compra WLD 100.00 USD a 0.5519 — Ruptura con volumen + momentum 24 h: WLD (27,6 M USD/día) a -0,14% del máximo de 48 h con volumen 4 h 1,51x, +11,14% en 24 h, +5,41% en 4 h 
 - 2026-10-10 02:32 UTC · compra ADA 100.00 USD a 0.2557 — Momentum 24 h: ADA (37,5 M USD/día) +9,05% en 24 h (ya con margen, no en el borde como a las 00:32/01:31), sigue subiendo en 4 h (+5,93%) y 
 - 2026-10-10 00:53 UTC · venta ATOM 97.05 USD a 1.9817 — Stop automático en 1.9817 (entrada 2.04, máximo 2.086).
@@ -27,6 +27,5 @@
 - 2026-10-09 18:32 UTC · venta ETH 152.34 USD a 2,483.6 — Regla de 24 h: abierta 2026-10-08 18:32, no llegó a +8% ni al stop (+1,6%, -0,3% en 4 h, vol 0,4x, a -4% del máximo de 48 h). Sale y se libe
 - 2026-10-09 18:32 UTC · venta BTC 202.36 USD a 82,513 — Regla de 24 h: abierta 2026-10-08 18:32, no llegó a +8% ni al stop (+1,2%, -0,64% en 4 h, vol 0,52x, a -1,31% del máximo de 48 h). Sale y se
 - 2026-10-09 17:32 UTC · compra BCH 100.00 USD a 274.7 — Rebote en soporte: BCH (22 M USD/día) cayó -8,8% en 48 h hasta el mínimo de 48 h y lleva 3 pasadas sin hacer mínimo nuevo (a +2,38% del míni
-- 2026-10-09 16:30 UTC · venta QNT 94.91 USD a 243.323 — Stop automático en 243.3235 (entrada 256.13, máximo 256.13).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
