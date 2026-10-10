@@ -389,3 +389,14 @@ Momentum 24 h: CFX (25 M USD/día) +26,7% 24 h, +6,49% 4 h sigue subiendo, +2,8%
 ## 2026-10-10 22:33 UTC — nota
 22:32 UTC — 1 salida, 1 entrada. Vigilante: sin disparos en la última hora. Vendí ENA a 0,2215 (-1,07%): se cumplió la invalidación escrita, el 4 h pasó a rojo (-0,67%) sin romper el máximo de 48 h (a -1,42%) y el 24 h bajó a +2,98%. Compré CFX 75 USD a 0,06387 (momentum: +26,7% 24 h, +6,49% 4 h, +2,8% 1 h, vol 1,59x, a -1,72% del máximo de 48 h); tamaño reducido por ser post-pump. Invalida: stop -5% (~0,0607) o 4 h en rojo sin romper el máximo; sale mañana 22:32 si no llegó a +8%. Posiciones vivas: NEAR +8,35% sobre la mitad restante (-0,34% 4 h, -0,21% 1 h, +7,97% 24 h, a -2,15% del máximo; stop ~5,168, sobre la entrada; sale en la próxima vuelta, 23:32, si no llegó a +15%), CFX recién entrada. BTC +0,02% en 4 h, sin bloqueo. Mercado plano: 1 h entre -0,5% y +0,1% en las grandes, volumen 4 h 0,2-0,6x (ETH 1,3x pero plana). Ruptura con volumen: ninguna rompe el máximo de 48 h con vol >=1,5x; STRK 1,48x, +91% sobre el mínimo, estirada, paso. Momentum 24 h: WLD +10% 24 h pero roja en 4 h; SUI +4,57% y UNI +4,49% no llegan (UNI vigilada: +1,17% 4 h, a -1,34% del máximo); ADA roja en 4 h. Rebote: nadie en mínimo de 48 h. 2 posiciones, ~85% en USDT.
 
+## 2026-10-10 23:00 UTC — Stop CFXUSDT (vigilante)
+71.45 USD a 0.0609045 (-4.64%). Stop automático en 0.0609045 (entrada 0.06387, máximo 0.06411).
+
+## 2026-10-10 23:32 UTC — Venta NEARUSDT
+53.78 USD a 5.29 (+7.67% contra la compra).
+
+Plazo de 24 h cumplido (entró ayer 23:32, momentum). Tomó la mitad a +8% a las 09:37 pero el resto no llegó a +15%; el impulso se apagó: 4 h -0,45%, 1 h -0,47%, vol 0,4x, a -2,65% del máximo de 48 h. Cierro como estaba escrito y libero lugar.
+
+## 2026-10-10 23:32 UTC — nota
+23:32 UTC — 1 disparo, 1 salida, sin entradas. Vigilante: CFX saltó el stop a 0,0609 (-4,64%) a las 23:00; la tesis post-pump no aguantó. Vendí el resto de NEAR a 5,29 (+7,67%) por el plazo de 24 h: la mitad ya había tomado +8% a las 09:37, el resto no llegó a +15% y el impulso se apagó (4 h -0,45%, 1 h -0,47%, vol 0,4x, a -2,65% del máximo). BTC -0,03% en 4 h, sin bloqueo. Mercado plano: 1 h entre -0,3% y 0% en las grandes, vol 4 h 0,2-0,6x (ETH 1,26x pero plana). Ruptura con volumen: ninguna rompe el máximo de 48 h; CFX 1,64x pero a -5,67% del máximo y recién stopeada, no recompro hoy; STRK 1,47x, +86% sobre el mínimo, estirada. Momentum 24 h: WLD, ADA, SUI, ENA rojas en 4 h; UNI +3,71% no llega (vigilada: +0,69% 4 h, a -1,54% del máximo); LUMIA y ERA lejos del máximo (-25%, -31%). Rebote: nadie en mínimo de 48 h. Sin tesis clara: 0 posiciones, 100% en USDT.
+

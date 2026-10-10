@@ -4,56 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 860.2710311402377,
-  "posiciones": {
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 10.166904131894972,
-      "entrada": 4.913,
-      "maximo": 5.44,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [
-        8.0
-      ],
-      "vigilado_hasta": 1791671520000
-    },
-    "CFXUSDT": {
-      "nivel": "trading",
-      "cantidad": 1173.085955847816,
-      "entrada": 0.06387,
-      "maximo": 0.06387,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791671640000
-    }
-  },
-  "comisiones_usd": 4.512457,
+  "usdt": 985.3749384594398,
+  "posiciones": {},
+  "comisiones_usd": 4.637686,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -510,6 +463,30 @@
       "usd": 75.0,
       "comision": 0.075,
       "motivo": "Momentum 24 h: CFX (25 M USD/día) +26,7% 24 h, +6,49% 4 h sigue subiendo, +2,8% 1 h (no estirada, <4%), vol 4 h 1,59x, a -1,72% del máximo de 48 h: vuelve a buscar el máximo tras consolidar. Post-pump: tamaño reducido 7,5%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h."
+    },
+    {
+      "ms": 1791673200000,
+      "fecha": "2026-10-10 23:00 UTC",
+      "lado": "sell",
+      "par": "CFXUSDT",
+      "cantidad": 1173.085955847816,
+      "precio": 0.0609045,
+      "usd": 71.4462,
+      "comision": 0.071446,
+      "motivo": "Stop automático en 0.0609045 (entrada 0.06387, máximo 0.06411).",
+      "resultado_pct": -4.64
+    },
+    {
+      "ms": 1791675135417,
+      "fecha": "2026-10-10 23:32 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 10.166904131894972,
+      "precio": 5.29,
+      "usd": 53.7829,
+      "comision": 0.053783,
+      "motivo": "Plazo de 24 h cumplido (entró ayer 23:32, momentum). Tomó la mitad a +8% a las 09:37 pero el resto no llegó a +15%; el impulso se apagó: 4 h -0,45%, 1 h -0,47%, vol 0,4x, a -2,65% del máximo de 48 h. Cierro como estaba escrito y libero lugar.",
+      "resultado_pct": 7.67
     }
   ]
 }
