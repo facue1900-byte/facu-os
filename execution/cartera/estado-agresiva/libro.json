@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 836.5406954993266,
+  "usdt": 860.2710311402377,
   "posiciones": {
     "NEARUSDT": {
       "nivel": "trading",
@@ -28,13 +28,13 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1791667860000
+      "vigilado_hasta": 1791671520000
     },
-    "ENAUSDT": {
+    "CFXUSDT": {
       "nivel": "trading",
-      "cantidad": 446.1813309513176,
-      "entrada": 0.2239,
-      "maximo": 0.2246,
+      "cantidad": 1173.085955847816,
+      "entrada": 0.06387,
+      "maximo": 0.06387,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -50,10 +50,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791667860000
+      "vigilado_hasta": 1791671640000
     }
   },
-  "comisiones_usd": 4.338628,
+  "comisiones_usd": 4.512457,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -486,6 +486,30 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: ENA (25 M USD/día) +5,58% 24 h, +0,41% 4 h verde, +0,09% 1 h (no estirada), a -0,67% del máximo de 48 h; se cumplió la condición vigilada a las 18:32 (cruzar +5%). Vol 0,69x, sin confirmación de ruptura: tamaño 10%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h."
+    },
+    {
+      "ms": 1791671576658,
+      "fecha": "2026-10-10 22:32 UTC",
+      "lado": "sell",
+      "par": "ENAUSDT",
+      "cantidad": 446.1813309513176,
+      "precio": 0.2215,
+      "usd": 98.8292,
+      "comision": 0.098829,
+      "motivo": "Invalidación escrita cumplida: el 4 h de ENA pasó a rojo (-0,67%) sin romper el máximo de 48 h (a -1,42%), 24 h bajó a +2,98% (ya no cumple momentum), vol 0,47x. Salgo a USDT.",
+      "resultado_pct": -1.07
+    },
+    {
+      "ms": 1791671583210,
+      "fecha": "2026-10-10 22:33 UTC",
+      "lado": "buy",
+      "par": "CFXUSDT",
+      "nivel": "trading",
+      "cantidad": 1173.085955847816,
+      "precio": 0.06387,
+      "usd": 75.0,
+      "comision": 0.075,
+      "motivo": "Momentum 24 h: CFX (25 M USD/día) +26,7% 24 h, +6,49% 4 h sigue subiendo, +2,8% 1 h (no estirada, <4%), vol 4 h 1,59x, a -1,72% del máximo de 48 h: vuelve a buscar el máximo tras consolidar. Post-pump: tamaño reducido 7,5%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h."
     }
   ]
 }

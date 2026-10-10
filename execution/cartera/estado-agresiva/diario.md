@@ -376,3 +376,16 @@ Momentum 24 h: ENA (25 M USD/día) +5,58% 24 h, +0,41% 4 h verde, +0,09% 1 h (no
 ## 2026-10-10 21:32 UTC — nota
 21:32 UTC — Sin entradas ni salidas. Vigilante: sin disparos en la última hora. Posiciones vivas: ENA -0,94% (momentum, entrada 0,2239; 4 h todavía verde +0,41%, -0,4% 1 h, 24 h +3,59%, a -1,11% del máximo de 48 h; stop ~0,2134; invalidación no cumplida; sale mañana 19:32 si no llegó a +8%), NEAR +9,36% sobre la mitad restante (+0,77% 4 h, +0,09% 1 h, +10,6% 24 h, vol 0,47x, a -1,23% del máximo; stop ~5,168, sobre la entrada; busca +15%; sale en dos vueltas, 23:32, si no llegó). BTC -0,06% en 4 h, sin bloqueo. Mercado plano: 1 h entre -0,2% y +0,2% en las grandes, volumen 4 h 0,25-0,6x (ETH 1,23x pero plana). Ruptura con volumen: ninguna rompe el máximo de 48 h con vol >=1,5x; STRK 2,16x pero a -1,94% del máximo y +91% sobre el mínimo, estirada, paso; CFX 2,48x pero -1,93% 4 h y a -3,6% del máximo. Momentum 24 h: SUI +5,06% 24 h, +0,47% 4 h, -0,36% 1 h: cumple en papel pero fue invalidada a las 18:32, no recompro en el mismo día (vigilada para mañana); WLD +10,85% 24 h, +0,54% 4 h, invalidada hoy, vigilada para mañana; ADA roja en 4 h; UNI +4,19% no llega (vigilada). Rebote: nadie en mínimo de 48 h. 2 posiciones, ~84% en USDT.
 
+## 2026-10-10 22:32 UTC — Venta ENAUSDT
+98.83 USD a 0.2215 (-1.07% contra la compra).
+
+Invalidación escrita cumplida: el 4 h de ENA pasó a rojo (-0,67%) sin romper el máximo de 48 h (a -1,42%), 24 h bajó a +2,98% (ya no cumple momentum), vol 0,47x. Salgo a USDT.
+
+## 2026-10-10 22:33 UTC — Compra CFXUSDT (trading)
+75.00 USD a 0.06387. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: CFX (25 M USD/día) +26,7% 24 h, +6,49% 4 h sigue subiendo, +2,8% 1 h (no estirada, <4%), vol 4 h 1,59x, a -1,72% del máximo de 48 h: vuelve a buscar el máximo tras consolidar. Post-pump: tamaño reducido 7,5%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h.
+
+## 2026-10-10 22:33 UTC — nota
+22:32 UTC — 1 salida, 1 entrada. Vigilante: sin disparos en la última hora. Vendí ENA a 0,2215 (-1,07%): se cumplió la invalidación escrita, el 4 h pasó a rojo (-0,67%) sin romper el máximo de 48 h (a -1,42%) y el 24 h bajó a +2,98%. Compré CFX 75 USD a 0,06387 (momentum: +26,7% 24 h, +6,49% 4 h, +2,8% 1 h, vol 1,59x, a -1,72% del máximo de 48 h); tamaño reducido por ser post-pump. Invalida: stop -5% (~0,0607) o 4 h en rojo sin romper el máximo; sale mañana 22:32 si no llegó a +8%. Posiciones vivas: NEAR +8,35% sobre la mitad restante (-0,34% 4 h, -0,21% 1 h, +7,97% 24 h, a -2,15% del máximo; stop ~5,168, sobre la entrada; sale en la próxima vuelta, 23:32, si no llegó a +15%), CFX recién entrada. BTC +0,02% en 4 h, sin bloqueo. Mercado plano: 1 h entre -0,5% y +0,1% en las grandes, volumen 4 h 0,2-0,6x (ETH 1,3x pero plana). Ruptura con volumen: ninguna rompe el máximo de 48 h con vol >=1,5x; STRK 1,48x, +91% sobre el mínimo, estirada, paso. Momentum 24 h: WLD +10% 24 h pero roja en 4 h; SUI +4,57% y UNI +4,49% no llegan (UNI vigilada: +1,17% 4 h, a -1,34% del máximo); ADA roja en 4 h. Rebote: nadie en mínimo de 48 h. 2 posiciones, ~85% en USDT.
+
