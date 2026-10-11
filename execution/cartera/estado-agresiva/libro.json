@@ -4,54 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 702.882190628439,
-  "posiciones": {
-    "ENAUSDT": {
-      "nivel": "trading",
-      "cantidad": 627.7754503560955,
-      "entrada": 0.2387,
-      "maximo": 0.2416,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791747060000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.09715479413686864,
-      "entrada": 1285.32,
-      "maximo": 1299.66,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791747060000
-    }
-  },
-  "comisiones_usd": 5.705586000000001,
+  "usdt": 975.6913684650066,
+  "posiciones": {},
+  "comisiones_usd": 5.978669000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -652,6 +607,30 @@
       "comision": 0.147064,
       "motivo": "Invalidación cumplida: 4 h en rojo (-1,74%) sin romper el máximo de 48 h (a -3,56%), momentum agotado y vol bajando de 4,6x a 2,1x. Salgo a ~-2% antes del stop.",
       "resultado_pct": -1.86
+    },
+    {
+      "ms": 1791750776401,
+      "fecha": "2026-10-11 20:32 UTC",
+      "lado": "sell",
+      "par": "ENAUSDT",
+      "cantidad": 627.7754503560955,
+      "precio": 0.2384,
+      "usd": 149.6617,
+      "comision": 0.149662,
+      "motivo": "Invalidación cumplida: 4 h en rojo (-0,67%) sin romper el máximo de 48 h (a -2,09%), 1 h -1,36%. Salgo plano antes del stop.",
+      "resultado_pct": -0.13
+    },
+    {
+      "ms": 1791750777391,
+      "fecha": "2026-10-11 20:32 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.09715479413686864,
+      "precio": 1270.35,
+      "usd": 123.4206,
+      "comision": 0.123421,
+      "motivo": "Invalidación cumplida: debajo de -2% del máximo de 48 h (a -2,23%) con 4 h en rojo (-0,38%). Salgo a ~-1% antes del stop.",
+      "resultado_pct": -1.16
     }
   ]
 }

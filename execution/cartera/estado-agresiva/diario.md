@@ -506,3 +506,16 @@ Invalidación cumplida: 4 h en rojo (-1,74%) sin romper el máximo de 48 h (a -3
 ## 2026-10-11 19:32 UTC — nota
 19:32 UTC — Sin disparos, 1 salida, sin entradas. Vigilante: ENA, NEAR y ZEC sin disparos (60 min revisados). Vendí NEAR a 5,701 (-1,86%): invalidación cumplida, 4 h en rojo (-1,74%) sin romper el máximo de 48 h (a -3,56%), vol bajó de 4,64x a 2,14x. Quedan: ENA -0,96% (0,2364; +2,56% 4 h sigue verde, +0,59% 1 h, vol 3,26x, a -1,99% del máximo; stop 0,22952; no invalida); ZEC -1,62% (1264,53; +0,53% 4 h verde, a -2,68% del máximo pero la invalidación pide además 4 h en rojo: no se cumple, vigilada de cerca; stop 1234,68). BTC -0,24% en 4 h, sin bloqueo; el mercado se enfría debajo de los máximos de 48 h (grandes a -0,6/-1,5%). Ruptura con volumen: ninguna rompe el máximo; AVAX (2,32x, a -1,33%) y BNB (1,5x, a -0,72%, sin recorrido) vigiladas. Momentum 24 h: FET +5,41% 24 h pero 4 h plana (-0,08%), no sigue subiendo; APT -3,13% 4 h; S +43,8% 24 h y 15,5x vol, pump, sostengo la lección; MAGIC, LUMIA, STRK, CFX, TIA, CHIP post-pump. Rebote: nada en mínimos. Sin tesis nueva clara: 2 posiciones, ~72% en USDT.
 
+## 2026-10-11 20:32 UTC — Venta ENAUSDT
+149.66 USD a 0.2384 (-0.13% contra la compra).
+
+Invalidación cumplida: 4 h en rojo (-0,67%) sin romper el máximo de 48 h (a -2,09%), 1 h -1,36%. Salgo plano antes del stop.
+
+## 2026-10-11 20:32 UTC — Venta ZECUSDT
+123.42 USD a 1,270.35 (-1.16% contra la compra).
+
+Invalidación cumplida: debajo de -2% del máximo de 48 h (a -2,23%) con 4 h en rojo (-0,38%). Salgo a ~-1% antes del stop.
+
+## 2026-10-11 20:33 UTC — nota
+20:32 UTC — Sin disparos, 2 salidas, sin entradas. Vigilante: ENA y ZEC sin disparos (61 min revisados). Vendí ENA a 0,2384 (-0,13%): invalidación cumplida, 4 h en rojo (-0,67%) sin romper el máximo de 48 h (a -2,09%), 1 h -1,36%. Vendí ZEC a 1270,35 (-1,16%): invalidación cumplida, a -2,23% del máximo con 4 h en rojo (-0,38%). BTC -0,34% en 4 h, sin bloqueo; el mercado entero se enfría en rojo 4 h debajo de los máximos de 48 h, vol 0,75-1,1x. Ruptura con volumen: ninguna rompe el máximo; BNB a -0,72% y DOGE a -0,89% sin volumen ni recorrido; AVAX 1,09x a -1,37%, ya sin el volumen de antes. Momentum 24 h: S +38,9% 24 h, 8,16x vol, +55% sobre el mínimo: pump, sostengo la lección; MAGIC +33,5% 24 h y +6,29% 4 h pero 1 h roja y a -18,6% del máximo, post-pump; LUMIA a -28,6% del máximo; NEAR, APT, FET, STRK, CFX rojas en 4 h. Rebote: nada en mínimos de 48 h. Sin tesis clara: 0 posiciones, 100% en USDT.
+
