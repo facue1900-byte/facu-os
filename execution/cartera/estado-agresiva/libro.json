@@ -4,35 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 810.3749384594398,
+  "usdt": 885.9834422751298,
   "posiciones": {
-    "TIAUSDT": {
-      "nivel": "trading",
-      "cantidad": 125.79751511081261,
-      "entrada": 0.5956,
-      "maximo": 0.6122,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791682260000
-    },
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 177.91629563668747,
       "entrada": 0.5615,
-      "maximo": 0.5615,
+      "maximo": 0.5686,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791682440000
+      "vigilado_hasta": 1791685920000
     }
   },
-  "comisiones_usd": 4.812686,
+  "comisiones_usd": 4.88837,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -556,6 +534,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: WLD (48 M USD/día) +6,88% 24 h, +0,39% 4 h sigue verde, +1,19% 1 h (no estirada), a -2,93% del máximo de 48 h; invalidada ayer y vigilada para hoy, hoy cumple. Vol 0,56x, sin confirmación de ruptura: tamaño 10%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h."
+    },
+    {
+      "ms": 1791684480000,
+      "fecha": "2026-10-11 02:08 UTC",
+      "lado": "sell",
+      "par": "TIAUSDT",
+      "cantidad": 125.79751511081261,
+      "precio": 0.6016349999999999,
+      "usd": 75.6842,
+      "comision": 0.075684,
+      "motivo": "Stop automático en 0.601635 (entrada 0.5956, máximo 0.6333).",
+      "resultado_pct": 1.01
     }
   ]
 }
