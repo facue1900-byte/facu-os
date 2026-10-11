@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 885.9834422751298,
-  "posiciones": {
-    "WLDUSDT": {
-      "nivel": "trading",
-      "cantidad": 177.91629563668747,
-      "entrada": 0.5615,
-      "maximo": 0.5686,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791685920000
-    }
-  },
-  "comisiones_usd": 4.88837,
+  "usdt": 982.9930497194754,
+  "posiciones": {},
+  "comisiones_usd": 4.985477,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -546,6 +523,18 @@
       "comision": 0.075684,
       "motivo": "Stop automático en 0.601635 (entrada 0.5956, máximo 0.6333).",
       "resultado_pct": 1.01
+    },
+    {
+      "ms": 1791689541671,
+      "fecha": "2026-10-11 03:32 UTC",
+      "lado": "sell",
+      "par": "WLDUSDT",
+      "cantidad": 177.91629563668747,
+      "precio": 0.5458,
+      "usd": 97.1067,
+      "comision": 0.097107,
+      "motivo": "Invalidación escrita cumplida: el 4 h de WLD pasó a rojo (-1,71%) sin romper el máximo de 48 h (a -5,33%), -3,02% en 1 h, 24 h bajó a +4,7% (ya no cumple momentum). Salgo a USDT antes del stop (~0,5402).",
+      "resultado_pct": -2.8
     }
   ]
 }

@@ -422,3 +422,11 @@ Momentum 24 h: WLD (48 M USD/día) +6,88% 24 h, +0,39% 4 h sigue verde, +1,19% 1
 ## 2026-10-11 02:33 UTC — nota
 02:32 UTC — 1 disparo, sin entradas ni salidas manuales. Vigilante: TIA saltó el trailing a 0,6016 (+1,01%) a las 02:08 tras tocar 0,6333; el post-pump se dio vuelta (-2,47% 1 h). Posición viva: WLD +0,37% (momentum, entrada 0,5615; +1,2% 4 h, +0,16% 1 h, +7,72% 24 h, vol 0,75x, a -2,1% del máximo de 48 h; stop ~0,5402; invalidación no cumplida; sale mañana 01:32 si no llegó a +8%). BTC -0,02% en 4 h, sin bloqueo. Mercado plano: 1 h entre -0,1% y +0,1% en las grandes, vol 4 h 0,4-0,6x (ETH 1,14x pero plana). Ruptura con volumen: ninguna rompe el máximo de 48 h; STRK 1,56x y +13,5% 4 h pero a -1,76% del máximo y +95% sobre el mínimo, estirada, paso. Momentum 24 h: TIA recién stopeada, no recompro hoy; NEAR +6,2% 24 h pero roja en 4 h; LUMIA +30% 24 h pero a -22% del máximo y vol 0,51x, paso; UNI +4,19% no llega (vigilada: +0,63% 4 h, a -0,7% del máximo); CFX 1 h roja y a -5,8% del máximo. Rebote: QNT -4% 24 h a +1,55% del mínimo, no lo toca y es chica, paso. 1 posición, ~90% en USDT.
 
+## 2026-10-11 03:32 UTC — Venta WLDUSDT
+97.11 USD a 0.5458 (-2.80% contra la compra).
+
+Invalidación escrita cumplida: el 4 h de WLD pasó a rojo (-1,71%) sin romper el máximo de 48 h (a -5,33%), -3,02% en 1 h, 24 h bajó a +4,7% (ya no cumple momentum). Salgo a USDT antes del stop (~0,5402).
+
+## 2026-10-11 03:32 UTC — nota
+03:32 UTC — Sin disparos, 1 salida, sin entradas. Vigilante: sin disparos en la última hora. Vendí WLD a 0,5458 (-2,8%): se cumplió la invalidación escrita, el 4 h pasó a rojo (-1,71%) sin romper el máximo de 48 h (a -5,33%), -3,02% 1 h, 24 h bajó a +4,7%. BTC -0,07% en 4 h, sin bloqueo. Mercado flojo: 1 h entre -0,6% y -0,2% en las grandes, vol 4 h 0,4-0,7x (ETH 1,05x). Ruptura con volumen: ninguna rompe el máximo de 48 h; STRK 1,98x y +13% 4 h pero a -5,67% del máximo, -1,62% 1 h y +85% sobre el mínimo, estirada, paso; TIA 2,04x pero roja en 4 h y stopeada hoy. Momentum 24 h: NEAR, WLD, CFX, TIA, UNI, SUI rojas en 4 h; LUMIA +32% 24 h y +7,8% 4 h pero a -21,5% del máximo con vol 0,54x, paso; ENA +1,6% 24 h no llega. Rebote: QNT a +1,31% del mínimo de 48 h, 1 h plana, pero chica (21 M) y sin señal de giro, paso. Sin tesis clara: 0 posiciones, 100% en USDT.
+
