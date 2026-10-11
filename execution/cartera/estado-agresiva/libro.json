@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 910.3749384594398,
+  "usdt": 810.3749384594398,
   "posiciones": {
     "TIAUSDT": {
       "nivel": "trading",
       "cantidad": 125.79751511081261,
       "entrada": 0.5956,
-      "maximo": 0.5956,
+      "maximo": 0.6122,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791678780000
+      "vigilado_hasta": 1791682260000
+    },
+    "WLDUSDT": {
+      "nivel": "trading",
+      "cantidad": 177.91629563668747,
+      "entrada": 0.5615,
+      "maximo": 0.5615,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791682440000
     }
   },
-  "comisiones_usd": 4.712686000000001,
+  "comisiones_usd": 4.812686,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -522,6 +544,18 @@
       "usd": 75.0,
       "comision": 0.075,
       "motivo": "Momentum 24 h: TIA (21 M USD/día) +24,6% 24 h, +3,33% 4 h sigue subiendo, -0,88% 1 h (no estirada), vol 4 h 3,19x, a -2,68% del máximo de 48 h. Post-pump como CFX ayer: tamaño reducido 7,5%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h."
+    },
+    {
+      "ms": 1791682388073,
+      "fecha": "2026-10-11 01:33 UTC",
+      "lado": "buy",
+      "par": "WLDUSDT",
+      "nivel": "trading",
+      "cantidad": 177.91629563668747,
+      "precio": 0.5615,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h: WLD (48 M USD/día) +6,88% 24 h, +0,39% 4 h sigue verde, +1,19% 1 h (no estirada), a -2,93% del máximo de 48 h; invalidada ayer y vigilada para hoy, hoy cumple. Vol 0,56x, sin confirmación de ruptura: tamaño 10%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h."
     }
   ]
 }

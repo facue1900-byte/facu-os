@@ -408,3 +408,11 @@ Momentum 24 h: TIA (21 M USD/día) +24,6% 24 h, +3,33% 4 h sigue subiendo, -0,88
 ## 2026-10-11 00:32 UTC — nota
 00:32 UTC — Sin disparos, 1 entrada. Vigilante: sin disparos en la última hora. Compré TIA 75 USD a 0,5956 (momentum: +24,6% 24 h, +3,33% 4 h, -0,88% 1 h, vol 3,19x, a -2,68% del máximo de 48 h); tamaño reducido por post-pump. Invalida: stop -5% (~0,566) o 4 h en rojo sin romper el máximo; sale mañana 00:32 si no llegó a +8%. BTC -0,08% en 4 h, sin bloqueo. Mercado plano: 1 h entre -0,2% y 0% en las grandes, vol 4 h 0,2-0,7x (ETH 1,32x pero plana). Ruptura con volumen: ninguna rompe el máximo de 48 h; CFX 1,7x pero a -5,3% del máximo y stopeada hace hora y media, paso; STRK +90% sobre el mínimo, estirada, paso. Momentum 24 h: NEAR, WLD, SUI, ADA rojas en 4 h; UNI +3,47% no llega (vigilada). Rebote: nadie en mínimo de 48 h. 1 posición, ~92% en USDT.
 
+## 2026-10-11 01:33 UTC — Compra WLDUSDT (trading)
+100.00 USD a 0.5615. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: WLD (48 M USD/día) +6,88% 24 h, +0,39% 4 h sigue verde, +1,19% 1 h (no estirada), a -2,93% del máximo de 48 h; invalidada ayer y vigilada para hoy, hoy cumple. Vol 0,56x, sin confirmación de ruptura: tamaño 10%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h.
+
+## 2026-10-11 01:33 UTC — nota
+01:32 UTC — Sin disparos, 1 entrada. Vigilante: sin disparos en la última hora. Compré WLD 100 USD a 0,5615 (momentum: +6,88% 24 h, +0,39% 4 h, +1,19% 1 h, vol 0,56x, a -2,93% del máximo de 48 h; vigilada desde ayer). Invalida: stop -5% (~0,533) o 4 h en rojo sin romper el máximo; sale mañana 01:32 si no llegó a +8%. Posiciones vivas: TIA +2,12% (+5,49% 4 h, +2,33% 1 h, +25% 24 h, vol 2,84x, a -1% del máximo; stop ~0,5816; sale hoy 00:32 de mañana si no llegó a +8%), WLD recién entrada. BTC 0% en 4 h, sin bloqueo. Mercado plano: 1 h entre 0% y +0,3% en las grandes. Ruptura con volumen: ninguna en el máximo de 48 h con vol >=1,5x; CFX 1,62x pero a -3,59% del máximo y stopeada anoche, paso. Momentum 24 h: NEAR +6,41% 24 h, +0,19% 4 h, pero recién salida por la regla de 24 h, no recompro sin señal nueva; STRK +39,7% 24 h, +83% sobre el mínimo, estirada, paso; UNI +3,51% no llega; SUI, ADA rojas en 4 h. Rebote: nadie en mínimo de 48 h. 2 posiciones, ~82% en USDT.
+
