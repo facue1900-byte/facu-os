@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 555.9652419023245,
+  "usdt": 702.882190628439,
   "posiciones": {
     "ENAUSDT": {
       "nivel": "trading",
@@ -26,29 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791743460000
-    },
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 25.796178343949045,
-      "entrada": 5.809,
-      "maximo": 5.836,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791743460000
+      "vigilado_hasta": 1791747060000
     },
     "ZECUSDT": {
       "nivel": "trading",
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791743460000
+      "vigilado_hasta": 1791747060000
     }
   },
-  "comisiones_usd": 5.558522000000001,
+  "comisiones_usd": 5.705586000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -662,6 +640,18 @@
       "usd": 125.0,
       "comision": 0.125,
       "motivo": "Ruptura con volumen: ZEC (103 M USD/día) haciendo máximos de 48 h (a -0,21%, máximo marcado esta hora), vol 4 h 2,31x, +4,37% 4 h, +0,73% 1 h, sólo +7,4% sobre el mínimo (no estirada); venía vigilada desde las 09:32. Tamaño 12,5%, reglas por defecto. Invalida: stop -5% o vuelve debajo de -2% del máximo con 4 h en rojo; sale mañana 17:32 si no llegó a +8%."
+    },
+    {
+      "ms": 1791747147542,
+      "fecha": "2026-10-11 19:32 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 25.796178343949045,
+      "precio": 5.701,
+      "usd": 147.064,
+      "comision": 0.147064,
+      "motivo": "Invalidación cumplida: 4 h en rojo (-1,74%) sin romper el máximo de 48 h (a -3,56%), momentum agotado y vol bajando de 4,6x a 2,1x. Salgo a ~-2% antes del stop.",
+      "resultado_pct": -1.86
     }
   ]
 }
