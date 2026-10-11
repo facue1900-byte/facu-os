@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 830.9652419023245,
+  "usdt": 555.9652419023245,
   "posiciones": {
     "ENAUSDT": {
       "nivel": "trading",
       "cantidad": 627.7754503560955,
       "entrada": 0.2387,
-      "maximo": 0.2387,
+      "maximo": 0.2416,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,10 +26,54 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791736380000
+      "vigilado_hasta": 1791739860000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 25.796178343949045,
+      "entrada": 5.809,
+      "maximo": 5.809,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791739980000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.09715479413686864,
+      "entrada": 1285.32,
+      "maximo": 1285.32,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791739980000
     }
   },
-  "comisiones_usd": 5.2835220000000005,
+  "comisiones_usd": 5.558522000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -594,6 +638,30 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: ENA (27,7 M USD/día) +7,49% 24 h, +5,82% 4 h sigue subiendo, +3,12% 1 h (no estirada, <4%), vol 4 h 2,19x, a -0,21% del máximo de 48 h y sólo +13% sobre el mínimo (no es post-pump). BTC +0,92% 4 h, mercado acompaña con volumen. Tamaño 15%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale mañana 16:32 si no llegó a +8%."
+    },
+    {
+      "ms": 1791739949949,
+      "fecha": "2026-10-11 17:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 25.796178343949045,
+      "precio": 5.809,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h: NEAR (149 M USD/día) +9,04% 24 h, +8,39% 4 h sigue subiendo, +0,45% 1 h (no estirada), vol 4 h 4,15x, a -1,46% del máximo de 48 h y +25% sobre el mínimo (no es pump de +20% 24 h). BTC +1,09% 4 h acompaña. Tamaño 15%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale mañana 17:32 si no llegó a +8%."
+    },
+    {
+      "ms": 1791739956559,
+      "fecha": "2026-10-11 17:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.09715479413686864,
+      "precio": 1285.32,
+      "usd": 125.0,
+      "comision": 0.125,
+      "motivo": "Ruptura con volumen: ZEC (103 M USD/día) haciendo máximos de 48 h (a -0,21%, máximo marcado esta hora), vol 4 h 2,31x, +4,37% 4 h, +0,73% 1 h, sólo +7,4% sobre el mínimo (no estirada); venía vigilada desde las 09:32. Tamaño 12,5%, reglas por defecto. Invalida: stop -5% o vuelve debajo de -2% del máximo con 4 h en rojo; sale mañana 17:32 si no llegó a +8%."
     }
   ]
 }

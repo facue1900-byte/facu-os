@@ -482,3 +482,16 @@ Momentum 24 h: ENA (27,7 M USD/día) +7,49% 24 h, +5,82% 4 h sigue subiendo, +3,
 ## 2026-10-11 16:32 UTC — nota
 16:32 UTC — Sin disparos, 1 entrada. Vigilante: sin disparos en la última hora (0 posiciones). Compré ENA 150 USD a 0,2387 (momentum 24 h: +7,49% 24 h, +5,82% 4 h, +3,12% 1 h, vol 2,19x, a -0,21% del máximo de 48 h, +13% sobre el mínimo, no es post-pump). Invalida: stop -5% (~0,2268) o 4 h en rojo sin romper el máximo; sale mañana 16:32 si no llegó a +8%. BTC +0,92% en 4 h, sin bloqueo; el mercado se despierta con volumen (BTC 1,59x, ETH 1,99x, SOL 1,87x, todas a <0,3% del máximo de 48 h). Ruptura con volumen: ninguna rompe todavía; ZEC (1,68x, a -0,68%, +1,59% 1 h), AVAX (3,44x, a -0,83%) y SUI (2,13x, a -0,69%) vigiladas: entran si rompen el máximo con volumen. Momentum 24 h: NEAR cumple en la letra (+6,95% 24 h, +7,17% 4 h, 3,86x) pero 1 h roja, a -2,25% del máximo y +24% sobre el mínimo: vigilada, no persigo; APT -1,86% 1 h y a -4,27% del máximo tras el spike, se da vuelta, paso; STRK, CHIP, CFX, TIA post-pump, sostengo la lección; LUMIA -22% 4 h y MAGIC/RLC rojas en 4 h, confirma. Rebote: nada en mínimos, el mercado está en máximos. 1 posición, ~85% en USDT.
 
+## 2026-10-11 17:32 UTC — Compra NEARUSDT (trading)
+150.00 USD a 5.809. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: NEAR (149 M USD/día) +9,04% 24 h, +8,39% 4 h sigue subiendo, +0,45% 1 h (no estirada), vol 4 h 4,15x, a -1,46% del máximo de 48 h y +25% sobre el mínimo (no es pump de +20% 24 h). BTC +1,09% 4 h acompaña. Tamaño 15%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale mañana 17:32 si no llegó a +8%.
+
+## 2026-10-11 17:32 UTC — Compra ZECUSDT (trading)
+125.00 USD a 1,285.32. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Ruptura con volumen: ZEC (103 M USD/día) haciendo máximos de 48 h (a -0,21%, máximo marcado esta hora), vol 4 h 2,31x, +4,37% 4 h, +0,73% 1 h, sólo +7,4% sobre el mínimo (no estirada); venía vigilada desde las 09:32. Tamaño 12,5%, reglas por defecto. Invalida: stop -5% o vuelve debajo de -2% del máximo con 4 h en rojo; sale mañana 17:32 si no llegó a +8%.
+
+## 2026-10-11 17:32 UTC — nota
+17:32 UTC — Sin disparos, 2 entradas. Vigilante: ENA sin disparos (58 min revisados). Posición viva: ENA -0,29% (entrada 0,2387, ahora 0,238; +6,52% 4 h sigue verde, vol 3,27x, a -1,28% del máximo de 48 h; stop 0,22952; invalidación no cumplida). Compré NEAR 150 USD a 5,809 (momentum: +9,04% 24 h, +8,39% 4 h, +0,45% 1 h, vol 4,15x, a -1,46% del máximo) y ZEC 125 USD a 1285,32 (ruptura: en máximos de 48 h con vol 2,31x, +4,37% 4 h, +7,4% sobre el mínimo). BTC +1,09% en 4 h, sin bloqueo; el mercado entero en máximos de 48 h con volumen ~2x. Descartes: S +40,6% 24 h y 17x vol, pump, sostengo la lección; STRK, CHIP, CFX, TIA, MAGIC post-pump; APT a -4,57% del máximo tras el spike; FET 1 h roja y a -1,8% del máximo, vigilada; AVAX (3,46x, a -0,84%) y SUI (2,71x, a -0,53%) vigiladas para ruptura; BTC/SOL/DOGE en máximo pero sin recorrido a +8%. 3 posiciones, ~56% en USDT.
+
