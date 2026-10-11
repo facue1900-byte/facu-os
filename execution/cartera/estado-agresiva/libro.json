@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 907.9930497194754,
-  "posiciones": {
-    "CFXUSDT": {
-      "nivel": "trading",
-      "cantidad": 1062.012756909993,
-      "entrada": 0.07055,
-      "maximo": 0.071,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791707460000
-    }
-  },
-  "comisiones_usd": 5.060477000000001,
+  "usdt": 980.9652419023245,
+  "posiciones": {},
+  "comisiones_usd": 5.133522,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -570,6 +547,18 @@
       "usd": 75.0,
       "comision": 0.075,
       "motivo": "Momentum 24 h + casi ruptura: CFX (38 M USD/día) +37,9% 24 h, +19,97% 4 h sigue subiendo, +1,72% 1 h (no estirada), vol 4 h 3,21x, a -0,68% del máximo de 48 h y +43,6% sobre el mínimo (menos estirada que STRK/LUMIA). Stopeada ayer 23:00; señal nueva hoy. Post-pump: tamaño reducido 7,5%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h; sale mañana 07:33 si no llegó a +8%."
+    },
+    {
+      "ms": 1791709080000,
+      "fecha": "2026-10-11 08:58 UTC",
+      "lado": "sell",
+      "par": "CFXUSDT",
+      "cantidad": 1062.012756909993,
+      "precio": 0.06878000000000001,
+      "usd": 73.0452,
+      "comision": 0.073045,
+      "motivo": "Stop automático en 0.06878 (entrada 0.07055, máximo 0.0724).",
+      "resultado_pct": -2.51
     }
   ]
 }
