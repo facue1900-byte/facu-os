@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 975.6913684650066,
-  "posiciones": {},
-  "comisiones_usd": 5.978669000000002,
+  "usdt": 875.6913684650066,
+  "posiciones": {
+    "FILUSDT": {
+      "nivel": "trading",
+      "cantidad": 79.62062644456843,
+      "entrada": 1.2547,
+      "maximo": 1.2547,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791754380000
+    }
+  },
+  "comisiones_usd": 6.078669000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -631,6 +654,18 @@
       "comision": 0.123421,
       "motivo": "Invalidación cumplida: debajo de -2% del máximo de 48 h (a -2,23%) con 4 h en rojo (-0,38%). Salgo a ~-1% antes del stop.",
       "resultado_pct": -1.16
+    },
+    {
+      "ms": 1791754337148,
+      "fecha": "2026-10-11 21:32 UTC",
+      "lado": "buy",
+      "par": "FILUSDT",
+      "nivel": "trading",
+      "cantidad": 79.62062644456843,
+      "precio": 1.2547,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h: FIL (21 M USD/día) +11,95% 24 h, +9,61% 4 h sigue subiendo, +0,35% 1 h (no estirada), vol 4 h 3,84x, a -1,52% del máximo de 48 h y +17% sobre el mínimo (no es pump de +20% 24 h). Va contra un mercado que se enfría (BTC -0,46% 4 h, sin bloqueo) y liquidez justa: tamaño chico, 10%. Reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale mañana 21:31 si no llegó a +8%."
     }
   ]
 }
