@@ -400,3 +400,11 @@ Plazo de 24 h cumplido (entró ayer 23:32, momentum). Tomó la mitad a +8% a las
 ## 2026-10-10 23:32 UTC — nota
 23:32 UTC — 1 disparo, 1 salida, sin entradas. Vigilante: CFX saltó el stop a 0,0609 (-4,64%) a las 23:00; la tesis post-pump no aguantó. Vendí el resto de NEAR a 5,29 (+7,67%) por el plazo de 24 h: la mitad ya había tomado +8% a las 09:37, el resto no llegó a +15% y el impulso se apagó (4 h -0,45%, 1 h -0,47%, vol 0,4x, a -2,65% del máximo). BTC -0,03% en 4 h, sin bloqueo. Mercado plano: 1 h entre -0,3% y 0% en las grandes, vol 4 h 0,2-0,6x (ETH 1,26x pero plana). Ruptura con volumen: ninguna rompe el máximo de 48 h; CFX 1,64x pero a -5,67% del máximo y recién stopeada, no recompro hoy; STRK 1,47x, +86% sobre el mínimo, estirada. Momentum 24 h: WLD, ADA, SUI, ENA rojas en 4 h; UNI +3,71% no llega (vigilada: +0,69% 4 h, a -1,54% del máximo); LUMIA y ERA lejos del máximo (-25%, -31%). Rebote: nadie en mínimo de 48 h. Sin tesis clara: 0 posiciones, 100% en USDT.
 
+## 2026-10-11 00:32 UTC — Compra TIAUSDT (trading)
+75.00 USD a 0.5956. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: TIA (21 M USD/día) +24,6% 24 h, +3,33% 4 h sigue subiendo, -0,88% 1 h (no estirada), vol 4 h 3,19x, a -2,68% del máximo de 48 h. Post-pump como CFX ayer: tamaño reducido 7,5%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h.
+
+## 2026-10-11 00:32 UTC — nota
+00:32 UTC — Sin disparos, 1 entrada. Vigilante: sin disparos en la última hora. Compré TIA 75 USD a 0,5956 (momentum: +24,6% 24 h, +3,33% 4 h, -0,88% 1 h, vol 3,19x, a -2,68% del máximo de 48 h); tamaño reducido por post-pump. Invalida: stop -5% (~0,566) o 4 h en rojo sin romper el máximo; sale mañana 00:32 si no llegó a +8%. BTC -0,08% en 4 h, sin bloqueo. Mercado plano: 1 h entre -0,2% y 0% en las grandes, vol 4 h 0,2-0,7x (ETH 1,32x pero plana). Ruptura con volumen: ninguna rompe el máximo de 48 h; CFX 1,7x pero a -5,3% del máximo y stopeada hace hora y media, paso; STRK +90% sobre el mínimo, estirada, paso. Momentum 24 h: NEAR, WLD, SUI, ADA rojas en 4 h; UNI +3,47% no llega (vigilada). Rebote: nadie en mínimo de 48 h. 1 posición, ~92% en USDT.
+

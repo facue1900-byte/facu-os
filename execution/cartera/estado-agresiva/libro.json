@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 985.3749384594398,
-  "posiciones": {},
-  "comisiones_usd": 4.637686,
+  "usdt": 910.3749384594398,
+  "posiciones": {
+    "TIAUSDT": {
+      "nivel": "trading",
+      "cantidad": 125.79751511081261,
+      "entrada": 0.5956,
+      "maximo": 0.5956,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791678780000
+    }
+  },
+  "comisiones_usd": 4.712686000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -487,6 +510,18 @@
       "comision": 0.053783,
       "motivo": "Plazo de 24 h cumplido (entró ayer 23:32, momentum). Tomó la mitad a +8% a las 09:37 pero el resto no llegó a +15%; el impulso se apagó: 4 h -0,45%, 1 h -0,47%, vol 0,4x, a -2,65% del máximo de 48 h. Cierro como estaba escrito y libero lugar.",
       "resultado_pct": 7.67
+    },
+    {
+      "ms": 1791678765269,
+      "fecha": "2026-10-11 00:32 UTC",
+      "lado": "buy",
+      "par": "TIAUSDT",
+      "nivel": "trading",
+      "cantidad": 125.79751511081261,
+      "precio": 0.5956,
+      "usd": 75.0,
+      "comision": 0.075,
+      "motivo": "Momentum 24 h: TIA (21 M USD/día) +24,6% 24 h, +3,33% 4 h sigue subiendo, -0,88% 1 h (no estirada), vol 4 h 3,19x, a -2,68% del máximo de 48 h. Post-pump como CFX ayer: tamaño reducido 7,5%, reglas por defecto. Invalida: stop -5% o el 4 h en rojo sin romper el máximo de 48 h."
     }
   ]
 }
