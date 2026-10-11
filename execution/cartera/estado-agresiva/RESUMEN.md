@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-11 22:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-11 23:32 UTC
 
-**Total: 974.56 USD (-2.54%)** desde 2026-10-07 23:06 UTC · USDT libre 875.69 · comisiones 6.08 · 53 operaciones
+**Total: 971.39 USD (-2.86%)** desde 2026-10-07 23:06 UTC · USDT libre 871.59 · comisiones 6.27 · 55 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **974.56** |
+| **Esta carpeta** | **971.39** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 1,004.98 |
+| hodl btc | 1,006.06 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| FIL | trading | 98.87 | -1.03% | 1.20565 |
+| ONDO | trading | 99.80 | -0.10% | 0.496755 |
 
 ## Últimas operaciones
 
+- 2026-10-11 23:32 UTC · compra ONDO 100.00 USD a 0.5229 — Momentum 24 h: ONDO (21 M USD/día) +5,45% 24 h, +2,77% 4 h sigue subiendo, +1,89% 1 h (no estirada), vol 4 h 1,75x, a -0,13% del máximo de 4
+- 2026-10-11 22:52 UTC · venta FIL 95.99 USD a 1.20564 — Stop automático en 1.205645 (entrada 1.2547, máximo 1.2691).
 - 2026-10-11 21:32 UTC · compra FIL 100.00 USD a 1.2547 — Momentum 24 h: FIL (21 M USD/día) +11,95% 24 h, +9,61% 4 h sigue subiendo, +0,35% 1 h (no estirada), vol 4 h 3,84x, a -1,52% del máximo de 4
 - 2026-10-11 20:32 UTC · venta ZEC 123.42 USD a 1,270.35 — Invalidación cumplida: debajo de -2% del máximo de 48 h (a -2,23%) con 4 h en rojo (-0,38%). Salgo a ~-1% antes del stop.
 - 2026-10-11 20:32 UTC · venta ENA 149.66 USD a 0.2384 — Invalidación cumplida: 4 h en rojo (-0,67%) sin romper el máximo de 48 h (a -2,09%), 1 h -1,36%. Salgo plano antes del stop.
@@ -22,7 +24,5 @@
 - 2026-10-11 17:32 UTC · compra NEAR 150.00 USD a 5.809 — Momentum 24 h: NEAR (149 M USD/día) +9,04% 24 h, +8,39% 4 h sigue subiendo, +0,45% 1 h (no estirada), vol 4 h 4,15x, a -1,46% del máximo de 
 - 2026-10-11 16:32 UTC · compra ENA 150.00 USD a 0.2387 — Momentum 24 h: ENA (27,7 M USD/día) +7,49% 24 h, +5,82% 4 h sigue subiendo, +3,12% 1 h (no estirada, <4%), vol 4 h 2,19x, a -0,21% del máxim
 - 2026-10-11 08:58 UTC · venta CFX 73.05 USD a 0.06878 — Stop automático en 0.06878 (entrada 0.07055, máximo 0.0724).
-- 2026-10-11 07:33 UTC · compra CFX 75.00 USD a 0.07055 — Momentum 24 h + casi ruptura: CFX (38 M USD/día) +37,9% 24 h, +19,97% 4 h sigue subiendo, +1,72% 1 h (no estirada), vol 4 h 3,21x, a -0,68% 
-- 2026-10-11 03:32 UTC · venta WLD 97.11 USD a 0.5458 — Invalidación escrita cumplida: el 4 h de WLD pasó a rojo (-1,71%) sin romper el máximo de 48 h (a -5,33%), -3,02% en 1 h, 24 h bajó a +4,7% 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

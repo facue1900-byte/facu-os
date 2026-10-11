@@ -530,3 +530,14 @@ Momentum 24 h: FIL (21 M USD/día) +11,95% 24 h, +9,61% 4 h sigue subiendo, +0,3
 ## 2026-10-11 22:32 UTC — nota
 22:32 UTC — Sin disparos, sin entradas ni salidas. Vigilante: FIL sin disparos (58 min revisados). Posición viva: FIL -0,87% (1,2438; +7,48% 4 h sigue verde, 1 h -1,23%, vol 3,91x, a -2,58% del máximo de 48 h; stop 1,2056; 4 h verde, invalidación no cumplida; sale mañana 21:31 si no llegó a +8%). BTC -0,05% en 4 h, sin bloqueo; mercado plano y sin volumen (BTC 0,56x, BNB 0,57x). Ruptura con volumen: ninguna rompe el máximo de 48 h; AVAX a -0,8% pero vol 1,11x (<1,5), vigilada. Momentum 24 h: AVAX (+5,2% 24 h, +0,4% 4 h), FET (+6,06%, +0,72% 4 h, a -2,62% del máximo) y NEAR (+8,49%, +1,01% 4 h, +20,6% sobre el mínimo) cumplen la letra pero con volumen bajo 1x y 4 h casi plana, mismo patrón que ya invalidó NEAR/ENA/ZEC hoy: paso; ENA 1 h roja; S -7,75% 4 h, MAGIC, LUMIA, STRK, CFX, TIA post-pump. Rebote: nada en mínimos de 48 h dejando de caer. Sin tesis nueva clara: 1 posición, ~90% en USDT.
 
+## 2026-10-11 22:52 UTC — Stop FILUSDT (vigilante)
+95.99 USD a 1.205645 (-3.91%). Stop automático en 1.205645 (entrada 1.2547, máximo 1.2691).
+
+## 2026-10-11 23:32 UTC — Compra ONDOUSDT (trading)
+100.00 USD a 0.5229. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: ONDO (21 M USD/día) +5,45% 24 h, +2,77% 4 h sigue subiendo, +1,89% 1 h (no estirada), vol 4 h 1,75x, a -0,13% del máximo de 48 h y +8,9% sobre el mínimo (no es pump). BTC +0,03% 4 h, sin bloqueo. Liquidez justa: tamaño 10%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale mañana 23:31 si no llegó a +8%.
+
+## 2026-10-11 23:32 UTC — nota
+23:31 UTC — 1 disparo, 1 entrada. Vigilante: FIL saltó el stop a 1,205645 a las 22:52 (-3,91%; entrada 1,2547, máximo 1,2691). Compré ONDO 100 USD a 0,5229 (momentum 24 h: +5,45% 24 h, +2,77% 4 h, +1,89% 1 h, vol 1,75x, a -0,13% del máximo de 48 h, +8,9% sobre el mínimo); tamaño 10% por liquidez justa (21 M). BTC +0,03% en 4 h, sin bloqueo; mercado plano y sin volumen (BTC 0,59x). Ruptura con volumen: ninguna rompe el máximo de 48 h. Momentum 24 h: NEAR (+10,99% 24 h, +3,52% 4 h, a -0,39%) cumple la letra pero vol 0,9x y +20,6% sobre el mínimo, mismo patrón sin volumen que se invalidó hoy: paso; AVAX +0,4% 4 h y FET +0,34% 4 h, planas y sin volumen; MAGIC +6,16% 1 h post-pump; S -6,89% 4 h; STRK, CFX, LUMIA, TIA post-pump. Rebote: nada en mínimos de 48 h dejando de caer. 1 posición, ~90% en USDT.
+
