@@ -1,18 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-11 06:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-11 07:33 UTC
 
-**Total: 982.99 USD (-1.70%)** desde 2026-10-07 23:06 UTC · USDT libre 982.99 · comisiones 4.99 · 44 operaciones
+**Total: 982.81 USD (-1.72%)** desde 2026-10-07 23:06 UTC · USDT libre 907.99 · comisiones 5.06 · 45 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **982.99** |
+| **Esta carpeta** | **982.81** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 998.30 |
+| hodl btc | 998.28 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| CFX | trading | 74.82 | -0.14% | 0.0670225 |
 
 ## Últimas operaciones
 
+- 2026-10-11 07:33 UTC · compra CFX 75.00 USD a 0.07055 — Momentum 24 h + casi ruptura: CFX (38 M USD/día) +37,9% 24 h, +19,97% 4 h sigue subiendo, +1,72% 1 h (no estirada), vol 4 h 3,21x, a -0,68% 
 - 2026-10-11 03:32 UTC · venta WLD 97.11 USD a 0.5458 — Invalidación escrita cumplida: el 4 h de WLD pasó a rojo (-1,71%) sin romper el máximo de 48 h (a -5,33%), -3,02% en 1 h, 24 h bajó a +4,7% 
 - 2026-10-11 02:08 UTC · venta TIA 75.68 USD a 0.601635 — Stop automático en 0.601635 (entrada 0.5956, máximo 0.6333).
 - 2026-10-11 01:33 UTC · compra WLD 100.00 USD a 0.5615 — Momentum 24 h: WLD (48 M USD/día) +6,88% 24 h, +0,39% 4 h sigue verde, +1,19% 1 h (no estirada), a -2,93% del máximo de 48 h; invalidada aye
@@ -22,6 +24,5 @@
 - 2026-10-10 22:33 UTC · compra CFX 75.00 USD a 0.06387 — Momentum 24 h: CFX (25 M USD/día) +26,7% 24 h, +6,49% 4 h sigue subiendo, +2,8% 1 h (no estirada, <4%), vol 4 h 1,59x, a -1,72% del máximo d
 - 2026-10-10 22:32 UTC · venta ENA 98.83 USD a 0.2215 — Invalidación escrita cumplida: el 4 h de ENA pasó a rojo (-0,67%) sin romper el máximo de 48 h (a -1,42%), 24 h bajó a +2,98% (ya no cumple 
 - 2026-10-10 19:32 UTC · compra ENA 100.00 USD a 0.2239 — Momentum 24 h: ENA (25 M USD/día) +5,58% 24 h, +0,41% 4 h verde, +0,09% 1 h (no estirada), a -0,67% del máximo de 48 h; se cumplió la condic
-- 2026-10-10 19:31 UTC · venta DOT 103.97 USD a 1.253 — Regla de 24 h: DOT entró ayer 19:32 (momentum, 1,204) y en 24 h no llegó a +8% ni al stop (~+4%). Salgo a USDT y roto.
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
