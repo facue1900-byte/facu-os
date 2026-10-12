@@ -1,33 +1,33 @@
-# Carpeta cripto ficticia — 2026-10-12 18:07 UTC
+# Carpeta cripto ficticia — 2026-10-12 20:08 UTC
 
-**Total: 971.83 USD (-2.82%)** desde 2026-10-07 20:58 UTC · USDT libre 124.09 · comisiones 1.59 · 52 operaciones
+**Total: 977.04 USD (-2.30%)** desde 2026-10-07 20:58 UTC · USDT libre 124.09 · comisiones 1.59 · 52 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **971.83** |
+| **Esta carpeta** | **977.04** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 988.74 |
-| plan inicial sin tocar | 962.78 |
+| hodl btc | 994.89 |
+| plan inicial sin tocar | 968.51 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 296.30 | -1.13% | 63,264 |
-| ETH | conservador | 97.48 | -2.42% | 1,940.46 |
-| SOL | medio | 64.86 | -7.25% | 95.2922 |
-| BNB | conservador | 48.23 | -3.43% | 582.173 |
-| LINK | medio | 38.58 | -3.44% | 10.9609 |
-| AVAX | medio | 37.13 | -7.08% | 9.20942 |
-| AAVE | medio | 36.97 | -7.48% | 142.91 |
-| XRP | medio | 28.71 | -4.19% | 1.16653 |
-| SUI | medio | 28.55 | -4.73% | 0.92168 |
-| TAO | medio | 24.28 | -2.79% | 241.6 |
-| ENA | riesgo | 24.18 | -3.18% | 0.21029 |
-| LTC | medio | 23.59 | -5.56% | 54.243 |
-| RAY | riesgo | 21.91 | -12.25% | 2.1505 |
-| NEAR | riesgo | 20.73 | +3.76% | 5.1 |
-| PYTH | riesgo | 19.00 | -4.92% | 0.076143 |
-| AERO | riesgo | 18.61 | -6.86% | 0.84439 |
-| JUP | riesgo | 18.60 | -6.89% | 0.3281 |
+| BTC | conservador | 298.14 | -0.52% | 63,264 |
+| ETH | conservador | 98.02 | -1.88% | 1,940.46 |
+| SOL | medio | 65.36 | -6.54% | 95.2922 |
+| BNB | conservador | 48.43 | -3.05% | 582.173 |
+| LINK | medio | 39.02 | -2.35% | 10.9609 |
+| AVAX | medio | 37.62 | -5.87% | 9.20942 |
+| AAVE | medio | 37.08 | -7.20% | 142.91 |
+| XRP | medio | 28.85 | -3.75% | 1.16653 |
+| SUI | medio | 28.67 | -4.35% | 0.92168 |
+| TAO | medio | 24.50 | -1.89% | 241.6 |
+| ENA | riesgo | 24.13 | -3.40% | 0.21029 |
+| LTC | medio | 23.76 | -4.88% | 54.243 |
+| RAY | riesgo | 22.21 | -11.06% | 2.1505 |
+| NEAR | riesgo | 21.05 | +5.33% | 5.1 |
+| JUP | riesgo | 18.96 | -5.11% | 0.3281 |
+| AERO | riesgo | 18.77 | -6.07% | 0.84439 |
+| PYTH | riesgo | 18.40 | -7.93% | 0.076143 |
 
 ## Últimas operaciones
 
