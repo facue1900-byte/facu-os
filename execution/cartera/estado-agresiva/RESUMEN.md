@@ -1,19 +1,19 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-12 22:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-12 23:32 UTC
 
-**Total: 958.48 USD (-4.15%)** desde 2026-10-07 23:06 UTC · USDT libre 839.09 · comisiones 7.76 · 67 operaciones
+**Total: 957.43 USD (-4.26%)** desde 2026-10-07 23:06 UTC · USDT libre 957.43 · comisiones 7.88 · 68 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **958.48** |
+| **Esta carpeta** | **957.43** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 992.68 |
+| hodl btc | 984.93 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 119.39 | -0.41% | 81,293 |
 
 ## Últimas operaciones
 
+- 2026-10-12 23:32 UTC · venta BTC 118.46 USD a 81,967.2 — Invalidación cumplida: la tesis de rebote moría si BTC cerraba debajo de ~82.390 (mínimo de 48 h de la entrada). Hizo mínimo nuevo (~82.040,
 - 2026-10-12 14:34 UTC · compra BTC 120.00 USD a 82,952 — Rebote en soporte: BTC (1.058 M USD/día) tocó el mínimo de 48 h la pasada pasada (+0,22%) y esta hora no hizo mínimo nuevo: rebotó a +0,61% 
 - 2026-10-12 09:32 UTC · venta AVAX 119.75 USD a 11.015 — Invalidación cumplida: 4 h en rojo (-0,38%) sin romper el máximo de 48 h (a -0,72%), vol bajó a 0,91x (sin el volumen de la entrada). Salgo 
 - 2026-10-12 08:32 UTC · venta TAO 119.00 USD a 296.7 — Invalidación cumplida: 4 h en rojo (-0,83%) sin romper el máximo de 48 h (a -1,66%), vol bajó a 1,29x (perdió el volumen que justificó la en
@@ -23,6 +23,5 @@
 - 2026-10-12 06:33 UTC · compra AVAX 120.00 USD a 11.027 — Momentum 24 h: AVAX (34 M USD/día) +6,57% 24 h, +1,44% 4 h sigue subiendo, -0,21% 1 h (no estirada), vol 4 h 1,35x, a -0,55% del máximo de 4
 - 2026-10-12 06:33 UTC · venta ENA 143.18 USD a 0.2361 — Invalidación cumplida: 4 h en rojo (-1,54%) sin romper el máximo de 48 h (a -4,53%), 1 h -1,42%, a -4,5% contra la compra y pegada al stop 0
 - 2026-10-12 05:32 UTC · compra ZEC 150.00 USD a 1,332.32 — Momentum 24 h: ZEC (150 M USD/día) +9,07% 24 h, +4,85% 4 h sigue subiendo, -0,74% 1 h (no estirada), vol 4 h 1,51x (esta vez con volumen, a 
-- 2026-10-12 04:32 UTC · compra PUMP 100.00 USD a 0.005836 — Momentum 24 h: PUMP (23 M USD/día) +6,83% 24 h, +3,15% 4 h sigue subiendo, +2,01% 1 h (no estirada), vol 4 h 1,48x, a -1% del máximo de 48 h
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

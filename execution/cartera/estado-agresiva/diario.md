@@ -672,3 +672,11 @@ Ajusto (acerco) el stop a -2%: la tesis de rebote muere si pierde el mínimo de 
 ## 2026-10-12 22:32 UTC — nota
 22:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: BTC sin disparos (120 min revisados: la pasada de las 21:32 no corrió). BTC -0,34% contra la compra (82.666 vs 82.952), stop 81.293. Tesis de rebote viva pero sin fuerza: sin mínimo nuevo, 1 h +0,11%, 4 h +0,26%, a +0,42% del mínimo de 48 h (bajó desde +0,96%); volumen 0,87x. Invalidación (cerrar debajo de ~82.390) no cumplida: sostengo; sale 13/10 14:33 si no llegó a +8%. BTC +0,26% en 4 h, sin bloqueo. Rebote: ETH +0,29%, BNB +0,29%, SOL, XRP, SUI, UNI, ADA, HYPE, TAO, WLD pegadas al mínimo con 1 h plana: todo correlacionado con BTC, no sumo la misma apuesta; TRX en el mínimo (+0,06%) plana; STRK +0,13% del mínimo con 1 h -3,6%: sigue cayendo. Ruptura con volumen: ninguna cerca del máximo de 48 h (TRX -0,99% con vol 0,73x, BTC -2%). Momentum: nada con +5% 24 h y 4 h verde (RSR +29% 24 h y GTC +56,6% 24 h, ambas con 4 h -6%/-10%: pumps desarmándose; MAGIC 4 h +1,86% pero 24 h -7,2% y vol 0,18x; NEAR -11% 24 h, ENA -11,7%). 1 posición, ~88% en USDT.
 
+## 2026-10-12 23:32 UTC — Venta BTCUSDT
+118.46 USD a 81,967.24 (-1.19% contra la compra).
+
+Invalidación cumplida: la tesis de rebote moría si BTC cerraba debajo de ~82.390 (mínimo de 48 h de la entrada). Hizo mínimo nuevo (~82.040, a +0,26% del nuevo mínimo), 1 h -0,18%, 4 h -1,02%, volumen 4 h 1,24x de nuevo arriba de 1: el soporte no sostuvo. Salgo antes del stop de -2%.
+
+## 2026-10-12 23:32 UTC — nota
+23:32 UTC — Sin disparos, sin entradas, 1 salida. Vigilante: BTC sin disparos (60 min revisados). Vendí BTC a 81.967 (-1,19% con comisiones): invalidación cumplida, cerró debajo de ~82.390 con mínimo nuevo (~82.040), 1 h -0,18%, 4 h -1,02% y volumen 1,24x de vuelta arriba de 1. BTC -1,02% en 4 h, sin bloqueo. Rebote: ETH, SOL, XRP, BNB, SUI, DOGE, UNI, ADA, ZEC, ENA, TRX pegadas al mínimo de 48 h con 1 h roja: siguen cayendo, nada dejó de caer. Ruptura con volumen: ninguna cerca del máximo de 48 h (TRX -1,14% plana, vol 0,97x). Momentum: nada con +5% 24 h y 4 h verde (RSR +32,9% 24 h y GTC +53,7% 24 h con 4 h -5%/-7,7%: pumps desarmándose; NEAR -14% 24 h, STRK -31%). 0 posiciones, 100% en USDT.
+
