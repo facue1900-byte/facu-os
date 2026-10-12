@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 720.7407642869048,
+  "usdt": 570.7407642869048,
   "posiciones": {
     "ENAUSDT": {
       "nivel": "trading",
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791779580000
+      "vigilado_hasta": 1791783060000
     },
     "PUMPUSDT": {
       "nivel": "trading",
       "cantidad": 17117.888965044553,
       "entrada": 0.005836,
-      "maximo": 0.005836,
+      "maximo": 0.006042,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791779580000
+      "vigilado_hasta": 1791783060000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.11247297946439294,
+      "entrada": 1332.32,
+      "maximo": 1332.32,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791783180000
     }
   },
-  "comisiones_usd": 6.623913000000001,
+  "comisiones_usd": 6.773913000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -748,6 +770,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: PUMP (23 M USD/día) +6,83% 24 h, +3,15% 4 h sigue subiendo, +2,01% 1 h (no estirada), vol 4 h 1,48x, a -1% del máximo de 48 h y +8,8% sobre el mínimo (no es pump de +20%). BTC -0,26% 4 h, sin bloqueo. Meme y liquidez justa: tamaño 10%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale 13/10 04:31 si no llegó a +8%."
+    },
+    {
+      "ms": 1791783152471,
+      "fecha": "2026-10-12 05:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.11247297946439294,
+      "precio": 1332.32,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h: ZEC (150 M USD/día) +9,07% 24 h, +4,85% 4 h sigue subiendo, -0,74% 1 h (no estirada), vol 4 h 1,51x (esta vez con volumen, a diferencia de las pasadas en que la descarté), a -1,23% del máximo de 48 h y +9,5% sobre el mínimo (no es pump). BTC +0,26% 4 h, sin bloqueo. Tamaño 15%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale 13/10 05:31 si no llegó a +8%."
     }
   ]
 }

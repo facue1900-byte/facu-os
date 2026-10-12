@@ -1,20 +1,22 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-12 04:33 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-12 05:32 UTC
 
-**Total: 969.83 USD (-3.02%)** desde 2026-10-07 23:06 UTC · USDT libre 720.74 · comisiones 6.62 · 58 operaciones
+**Total: 967.64 USD (-3.24%)** desde 2026-10-07 23:06 UTC · USDT libre 570.74 · comisiones 6.77 · 59 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **969.83** |
+| **Esta carpeta** | **967.64** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 1,006.28 |
+| hodl btc | 1,007.70 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ENA | trading | 149.43 | -0.28% | 0.234745 |
-| PUMP | trading | 99.66 | -0.24% | 0.0055442 |
+| ZEC | trading | 149.78 | -0.05% | 1,265.7 |
+| ENA | trading | 146.09 | -2.51% | 0.234745 |
+| PUMP | trading | 101.03 | +1.13% | 0.0057399 |
 
 ## Últimas operaciones
 
+- 2026-10-12 05:32 UTC · compra ZEC 150.00 USD a 1,332.32 — Momentum 24 h: ZEC (150 M USD/día) +9,07% 24 h, +4,85% 4 h sigue subiendo, -0,74% 1 h (no estirada), vol 4 h 1,51x (esta vez con volumen, a 
 - 2026-10-12 04:32 UTC · compra PUMP 100.00 USD a 0.005836 — Momentum 24 h: PUMP (23 M USD/día) +6,83% 24 h, +3,15% 4 h sigue subiendo, +2,01% 1 h (no estirada), vol 4 h 1,48x, a -1% del máximo de 48 h
 - 2026-10-12 04:32 UTC · compra ENA 150.00 USD a 0.2471 — Momentum 24 h: ENA (46 M USD/día) +10,41% 24 h, +2,96% 4 h sigue subiendo, +1,35% 1 h (no estirada), vol 4 h 1,33x, a -0,08% del máximo de 4
 - 2026-10-12 03:32 UTC · venta ONDO 99.25 USD a 0.5195 — Invalidación cumplida: 4 h en rojo (-0,5%) sin romper el máximo de 48 h (a -2,5%), momentum agotado. Salgo cerca de plano antes del stop.
@@ -24,6 +26,5 @@
 - 2026-10-11 20:32 UTC · venta ZEC 123.42 USD a 1,270.35 — Invalidación cumplida: debajo de -2% del máximo de 48 h (a -2,23%) con 4 h en rojo (-0,38%). Salgo a ~-1% antes del stop.
 - 2026-10-11 20:32 UTC · venta ENA 149.66 USD a 0.2384 — Invalidación cumplida: 4 h en rojo (-0,67%) sin romper el máximo de 48 h (a -2,09%), 1 h -1,36%. Salgo plano antes del stop.
 - 2026-10-11 19:32 UTC · venta NEAR 147.06 USD a 5.701 — Invalidación cumplida: 4 h en rojo (-1,74%) sin romper el máximo de 48 h (a -3,56%), momentum agotado y vol bajando de 4,6x a 2,1x. Salgo a 
-- 2026-10-11 17:32 UTC · compra ZEC 125.00 USD a 1,285.32 — Ruptura con volumen: ZEC (103 M USD/día) haciendo máximos de 48 h (a -0,21%, máximo marcado esta hora), vol 4 h 2,31x, +4,37% 4 h, +0,73% 1 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
