@@ -558,3 +558,16 @@ Invalidación cumplida: 4 h en rojo (-0,5%) sin romper el máximo de 48 h (a -2,
 ## 2026-10-12 03:32 UTC — nota
 03:32 UTC — Sin disparos, 1 salida, sin entradas. Vigilante: ONDO sin disparos (60 min revisados). Vendí ONDO a 0,5195 (-0,65%): invalidación cumplida, 4 h en rojo (-0,5%) sin romper el máximo de 48 h (a -2,5%). BTC -0,13% en 4 h, sin bloqueo; mercado plano y levemente rojo en 1 h. Ruptura con volumen: ninguna rompe el máximo de 48 h; TAO 1,57x pero 4 h roja y a -1,21%; XRP 1,9x pero 4 h roja. Momentum 24 h: ENA (+8,63% 24 h, +1,18% 4 h, vol 1,33x, a -1,44%) mismo patrón sin volumen ya invalidado: paso; PUMP (+5,72% 24 h, +1,05% 4 h, vol 1,33x) a -3,4% del máximo y sin volumen, paso; W +70% 24 h y +32% 4 h con 7,3x: pump, sostengo la lección; NEAR, AVAX, FET, FIL 4 h rojas; S, MAGIC, LUMIA, STRK, CFX, CKB post-pump. Rebote: nada en mínimos de 48 h dejando de caer. Sin tesis clara: 0 posiciones, 100% en USDT.
 
+## 2026-10-12 04:32 UTC — Compra ENAUSDT (trading)
+150.00 USD a 0.2471. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: ENA (46 M USD/día) +10,41% 24 h, +2,96% 4 h sigue subiendo, +1,35% 1 h (no estirada), vol 4 h 1,33x, a -0,08% del máximo de 48 h y +13,3% sobre el mínimo (no es pump). Esta vez 4 h acompaña con fuerza, a diferencia de las pasadas planas. BTC -0,26% 4 h, sin bloqueo. Tamaño 15%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale 13/10 04:31 si no llegó a +8%.
+
+## 2026-10-12 04:32 UTC — Compra PUMPUSDT (trading)
+100.00 USD a 0.005836. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: PUMP (23 M USD/día) +6,83% 24 h, +3,15% 4 h sigue subiendo, +2,01% 1 h (no estirada), vol 4 h 1,48x, a -1% del máximo de 48 h y +8,8% sobre el mínimo (no es pump de +20%). BTC -0,26% 4 h, sin bloqueo. Meme y liquidez justa: tamaño 10%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale 13/10 04:31 si no llegó a +8%.
+
+## 2026-10-12 04:33 UTC — nota
+04:31 UTC — Sin disparos, 2 entradas. Vigilante: sin disparos (0 posiciones). Compré ENA 150 USD a 0,2471 (momentum 24 h: +10,41% 24 h, +2,96% 4 h, +1,35% 1 h, vol 1,33x, a -0,08% del máximo de 48 h); esta vez la 4 h acompaña fuerte, a diferencia de las pasadas planas. Compré PUMP 100 USD a 0,005836 (momentum: +6,83% 24 h, +3,15% 4 h, +2,01% 1 h, vol 1,48x, a -1% del máximo). Ambas invalidan con stop -5% o 4 h en rojo sin romper el máximo; salen 13/10 04:31 si no llegaron a +8%. BTC -0,26% en 4 h, sin bloqueo. Ruptura con volumen: ninguna rompe el máximo de 48 h; TRX 3,11x a -0,18% y XRP 1,81x a -1,35%, vigiladas. Momentum: ZEC (+5,52% 24 h, +1,16% 4 h, a -0,11%) vol 0,86x, ya invalidada ayer: paso; NEAR, AVAX, TAO, FET 4 h rojas; APT a -5,57% del máximo; W +65,9% 24 h y 9,2x: pump, sostengo la lección; MAGIC, STRK, CFX, LUMIA, CKB, S post-pump; MUBARAK -7,3% 1 h cayendo. Rebote: nada en mínimos de 48 h. 2 posiciones, ~75% en USDT.
+
