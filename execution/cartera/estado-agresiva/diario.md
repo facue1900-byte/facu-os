@@ -579,3 +579,16 @@ Momentum 24 h: ZEC (150 M USD/día) +9,07% 24 h, +4,85% 4 h sigue subiendo, -0,7
 ## 2026-10-12 05:32 UTC — nota
 05:31 UTC — Sin disparos, 1 entrada. Vigilante: ENA y PUMP sin disparos (58 min revisados). Posiciones vivas: ENA -2,19% (0,2417; +1,9% 4 h sigue verde, 1 h -1,35%, vol 1,57x, a -2,59% del máximo; stop 0,2347; invalidación no cumplida; sale 13/10 04:31); PUMP +1,05% (0,005897; +5,41% 4 h, 1 h -1,26%, vol 2,06x, a -2,68% del máximo; stop 0,00574; sale 13/10 04:31). Compré ZEC 150 USD a 1332,32 (momentum 24 h: +9,07% 24 h, +4,85% 4 h, -0,74% 1 h, vol 1,51x, a -1,23% del máximo de 48 h). Invalida: stop -5% o 4 h en rojo sin romper el máximo; sale 13/10 05:31. BTC +0,26% en 4 h, sin bloqueo; 1 h en rojo leve en todo el radar. Ruptura con volumen: ninguna rompe el máximo de 48 h; TRX 3,01x a -0,21% pero sin movimiento (+0,54% 4 h), vigilada. Momentum: PEPE (+6,98% 24 h, +2,39% 4 h, vol 2,19x, a -0,92%) cumple, pero no sumo un segundo meme junto a PUMP esta hora: vigilada; NEAR vol 1,1x y +15,5% sobre el mínimo; FIL, FET, AVAX, ONDO con 4 h floja o sin volumen; W +57% 24 h y 9,9x: pump, sostengo la lección; S, MAGIC, STRK, CFX, LUMIA, CKB post-pump; MUBARAK cayendo. Rebote: nada en mínimos de 48 h dejando de caer. 3 posiciones, ~60% en USDT.
 
+## 2026-10-12 06:33 UTC — Venta ENAUSDT
+143.18 USD a 0.2361 (-4.45% contra la compra).
+
+Invalidación cumplida: 4 h en rojo (-1,54%) sin romper el máximo de 48 h (a -4,53%), 1 h -1,42%, a -4,5% contra la compra y pegada al stop 0,2347. Salgo antes del stop.
+
+## 2026-10-12 06:33 UTC — Compra AVAXUSDT (trading)
+120.00 USD a 11.027. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: AVAX (34 M USD/día) +6,57% 24 h, +1,44% 4 h sigue subiendo, -0,21% 1 h (no estirada), vol 4 h 1,35x, a -0,55% del máximo de 48 h y +8,2% sobre el mínimo (no es pump). Las pasadas la descarté por 4 h plana; ahora acompaña. BTC +0,1% 4 h, sin bloqueo. Tamaño 12%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale 13/10 06:32 si no llegó a +8%.
+
+## 2026-10-12 06:33 UTC — nota
+06:32 UTC — Sin disparos, 1 salida, 1 entrada. Vigilante: ENA, PUMP y ZEC sin disparos (~60 min revisados). Vendí ENA a 0,2361 (-4,45%): invalidación cumplida, 4 h -1,54% sin romper el máximo de 48 h (a -4,53%). Compré AVAX 120 USD a 11,027 (momentum 24 h: +6,57% 24 h, +1,44% 4 h, -0,21% 1 h, vol 1,35x, a -0,55% del máximo de 48 h); invalida con stop -5% o 4 h en rojo sin romper el máximo; sale 13/10 06:32. Posiciones vivas: PUMP +0,7% (+3,87% 4 h, vol 2x, a -2,7% del máximo; sale 13/10 04:31); ZEC -0,24% (+3,99% 4 h, vol 1,56x, a -1,53% del máximo; sale 13/10 05:31). BTC +0,1% en 4 h, sin bloqueo; 1 h en rojo leve en casi todo el radar. Ruptura con volumen: ninguna rompe el máximo de 48 h; TRX 3,1x a -0,18% pero plana, vigilada. Momentum: TAO (+5,21% 24 h, +1,39% 4 h, vol 1,49x, a -1,06%) cumple justo, vigilada para no sumar dos entradas en mercado flojo; PEPE cumple pero no sumo segundo meme junto a PUMP; FIL +16,7% sobre el mínimo y saltó el stop ayer: paso; FET vol 1,15x; NEAR y ONDO 4 h planas; W +64% 24 h y 5,5x: pump, sostengo la lección; S, MAGIC, STRK, CFX, LUMIA, CKB post-pump; MUBARAK 8,7x tras -6,3% 4 h, ruido. Rebote: nada en mínimos de 48 h dejando de caer. 3 posiciones, ~63% en USDT.
+
