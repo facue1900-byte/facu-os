@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 191.0499139414802,
       "entrada": 0.5229,
-      "maximo": 0.5229,
+      "maximo": 0.5257,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791761580000
+      "vigilado_hasta": 1791765060000
     }
   },
   "comisiones_usd": 6.274663000000001,
