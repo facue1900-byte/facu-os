@@ -600,3 +600,21 @@ Momentum 24 h: TAO (31 M USD/día) +5,99% 24 h, +1,32% 4 h sigue subiendo, +0,23
 ## 2026-10-12 07:33 UTC — nota
 07:32 UTC — Sin disparos, 1 entrada. Vigilante: AVAX, PUMP y ZEC sin disparos (~60 min revisados). Compré TAO 120 USD a 298,9 (momentum 24 h: +5,99% 24 h, +1,32% 4 h, +0,23% 1 h, vol 1,59x, a -1,03% del máximo de 48 h); invalida con stop -5% o 4 h en rojo sin romper el máximo; sale 13/10 07:32. Posiciones vivas: AVAX -0,43% (+0,72% 4 h sigue verde, vol 1,34x, a -1% del máximo; stop 10,5032; sale 13/10 06:32); PUMP -0,09% (+2,03% 4 h, vol 1,97x, a -3,48% del máximo; sale 13/10 04:31); ZEC -0,37% (+3,45% 4 h, vol 1,66x, a -1,61% del máximo; sale 13/10 05:31). Ninguna invalidación cumplida. BTC +0,53% en 4 h, sin bloqueo; grandes (BTC, ETH, SOL, BNB, DOGE) con volumen 1,3-2,3x a -0,35/-0,6% del máximo de 48 h, sin romper: vigiladas para ruptura. Momentum: PEPE cumple (+6,22% 24 h, +1,18% 4 h, vol 2,2x) pero no sumo segundo meme junto a PUMP; FET 4 h +0,68% y vol 1,29x; NEAR y FIL 4 h planas; ENA 4 h -3,32%, bien vendida; W +72,9% 24 h y 3,96x: pump, sostengo la lección; MUBARAK +9,5% 4 h pero a -6,5% del máximo y +22% sobre el mínimo, ruido; S -5,4% 1 h; MAGIC, STRK, CFX, CKB post-pump. Rebote: nada en mínimos de 48 h. 4 posiciones, ~50% en USDT.
 
+## 2026-10-12 08:32 UTC — Venta ZECUSDT
+147.36 USD a 1,310.2 (-1.66% contra la compra).
+
+Invalidación cumplida: 4 h en rojo (-2,4%) sin romper el máximo de 48 h (a -2,88%), 1 h -0,76%, vol bajó a 1,22x. Salgo a -1,6% antes del stop 1273.
+
+## 2026-10-12 08:32 UTC — Venta PUMPUSDT
+99.69 USD a 0.005824 (-0.21% contra la compra).
+
+Invalidación cumplida: 4 h en rojo (-2,08%) sin romper el máximo de 48 h (a -3,49%), 1 h -0,48%. Salgo cerca de plano antes del stop.
+
+## 2026-10-12 08:32 UTC — Venta TAOUSDT
+119.00 USD a 296.7 (-0.74% contra la compra).
+
+Invalidación cumplida: 4 h en rojo (-0,83%) sin romper el máximo de 48 h (a -1,66%), vol bajó a 1,29x (perdió el volumen que justificó la entrada). Salgo a -0,7% antes del stop.
+
+## 2026-10-12 08:32 UTC — nota
+08:32 UTC — Sin disparos, 3 salidas, sin entradas. Vigilante: AVAX, PUMP, TAO y ZEC sin disparos (~59 min revisados). Vendí ZEC (-1,66%: 4 h -2,4%, a -2,88% del máximo), PUMP (-0,21%: 4 h -2,08%, a -3,49%) y TAO (-0,74%: 4 h -0,83%, a -1,66%, vol 1,29x): las tres cumplieron la invalidación escrita (4 h en rojo sin romper el máximo de 48 h). Queda AVAX -0,02% (4 h +0,12%, a -0,56% del máximo, vol 0,97x; stop 10,5032; sale 13/10 06:32). BTC -0,6% en 4 h, sin bloqueo, pero todo el radar en rojo en 1 h y 4 h con volumen alto en grandes (BTC 2,06x, BNB 2,21x, XRP 2,11x): volumen de venta, no ruptura. Ruptura con volumen: ninguna rompe el máximo de 48 h; ZRO a -0,24% con 4,04x pero +20,8% 24 h y +26% sobre el mínimo: post-pump, misma lección que W; TRX a -0,45% plana. Momentum: nada con 4 h verde salvo ZRO, W (+69% 24 h, pump) y MUBARAK (a -9,5% del máximo, ruido). Rebote: nada en mínimos de 48 h. 1 posición, ~88% en USDT. Lección: momentum 24 h en mercado plano se da vuelta en 1-3 h; el filtro 4 h verde no alcanza solo.
+

@@ -1,22 +1,22 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-12 07:33 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-12 08:32 UTC
 
-**Total: 961.91 USD (-3.81%)** desde 2026-10-07 23:06 UTC · USDT libre 473.78 · comisiones 7.16 · 62 operaciones
+**Total: 959.44 USD (-4.06%)** desde 2026-10-07 23:06 UTC · USDT libre 839.47 · comisiones 7.52 · 65 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **961.91** |
+| **Esta carpeta** | **959.44** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 1,009.46 |
+| hodl btc | 1,005.44 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ZEC | trading | 149.20 | -0.44% | 1,273.24 |
-| TAO | trading | 119.84 | -0.03% | 283.955 |
-| AVAX | trading | 119.31 | -0.47% | 10.5032 |
-| PUMP | trading | 99.78 | -0.12% | 0.0057399 |
+| AVAX | trading | 119.98 | +0.08% | 10.5032 |
 
 ## Últimas operaciones
 
+- 2026-10-12 08:32 UTC · venta TAO 119.00 USD a 296.7 — Invalidación cumplida: 4 h en rojo (-0,83%) sin romper el máximo de 48 h (a -1,66%), vol bajó a 1,29x (perdió el volumen que justificó la en
+- 2026-10-12 08:32 UTC · venta PUMP 99.69 USD a 0.005824 — Invalidación cumplida: 4 h en rojo (-2,08%) sin romper el máximo de 48 h (a -3,49%), 1 h -0,48%. Salgo cerca de plano antes del stop.
+- 2026-10-12 08:32 UTC · venta ZEC 147.36 USD a 1,310.2 — Invalidación cumplida: 4 h en rojo (-2,4%) sin romper el máximo de 48 h (a -2,88%), 1 h -0,76%, vol bajó a 1,22x. Salgo a -1,6% antes del st
 - 2026-10-12 07:33 UTC · compra TAO 120.00 USD a 298.9 — Momentum 24 h: TAO (31 M USD/día) +5,99% 24 h, +1,32% 4 h sigue subiendo, +0,23% 1 h (no estirada), vol 4 h 1,59x (ahora con volumen, las pa
 - 2026-10-12 06:33 UTC · compra AVAX 120.00 USD a 11.027 — Momentum 24 h: AVAX (34 M USD/día) +6,57% 24 h, +1,44% 4 h sigue subiendo, -0,21% 1 h (no estirada), vol 4 h 1,35x, a -0,55% del máximo de 4
 - 2026-10-12 06:33 UTC · venta ENA 143.18 USD a 0.2361 — Invalidación cumplida: 4 h en rojo (-1,54%) sin romper el máximo de 48 h (a -4,53%), 1 h -1,42%, a -4,5% contra la compra y pegada al stop 0
@@ -24,8 +24,5 @@
 - 2026-10-12 04:32 UTC · compra PUMP 100.00 USD a 0.005836 — Momentum 24 h: PUMP (23 M USD/día) +6,83% 24 h, +3,15% 4 h sigue subiendo, +2,01% 1 h (no estirada), vol 4 h 1,48x, a -1% del máximo de 48 h
 - 2026-10-12 04:32 UTC · compra ENA 150.00 USD a 0.2471 — Momentum 24 h: ENA (46 M USD/día) +10,41% 24 h, +2,96% 4 h sigue subiendo, +1,35% 1 h (no estirada), vol 4 h 1,33x, a -0,08% del máximo de 4
 - 2026-10-12 03:32 UTC · venta ONDO 99.25 USD a 0.5195 — Invalidación cumplida: 4 h en rojo (-0,5%) sin romper el máximo de 48 h (a -2,5%), momentum agotado. Salgo cerca de plano antes del stop.
-- 2026-10-11 23:32 UTC · compra ONDO 100.00 USD a 0.5229 — Momentum 24 h: ONDO (21 M USD/día) +5,45% 24 h, +2,77% 4 h sigue subiendo, +1,89% 1 h (no estirada), vol 4 h 1,75x, a -0,13% del máximo de 4
-- 2026-10-11 22:52 UTC · venta FIL 95.99 USD a 1.20564 — Stop automático en 1.205645 (entrada 1.2547, máximo 1.2691).
-- 2026-10-11 21:32 UTC · compra FIL 100.00 USD a 1.2547 — Momentum 24 h: FIL (21 M USD/día) +11,95% 24 h, +9,61% 4 h sigue subiendo, +0,35% 1 h (no estirada), vol 4 h 3,84x, a -1,52% del máximo de 4
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

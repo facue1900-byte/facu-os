@@ -4,52 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 473.77680400766565,
+  "usdt": 839.4650774038321,
   "posiciones": {
-    "PUMPUSDT": {
-      "nivel": "trading",
-      "cantidad": 17117.888965044553,
-      "entrada": 0.005836,
-      "maximo": 0.006042,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791790320000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.11247297946439294,
-      "entrada": 1332.32,
-      "maximo": 1340.25,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791790320000
-    },
     "AVAXUSDT": {
       "nivel": "trading",
       "cantidad": 10.871497234061849,
@@ -70,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791790320000
-    },
-    "TAOUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.40107059217129476,
-      "entrada": 298.9,
-      "maximo": 298.9,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791790440000
+      "vigilado_hasta": 1791793860000
     }
   },
-  "comisiones_usd": 7.157092000000001,
+  "comisiones_usd": 7.523147000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -840,6 +774,42 @@
       "usd": 120.0,
       "comision": 0.12,
       "motivo": "Momentum 24 h: TAO (31 M USD/día) +5,99% 24 h, +1,32% 4 h sigue subiendo, +0,23% 1 h (no estirada), vol 4 h 1,59x (ahora con volumen, las pasadas estaba justa o bajo 1,5x), a -1,03% del máximo de 48 h y +7% sobre el mínimo (no es pump). BTC +0,53% 4 h, sin bloqueo. Tamaño 12%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale 13/10 07:32 si no llegó a +8%."
+    },
+    {
+      "ms": 1791793953182,
+      "fecha": "2026-10-12 08:32 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.11247297946439294,
+      "precio": 1310.2,
+      "usd": 147.3621,
+      "comision": 0.147362,
+      "motivo": "Invalidación cumplida: 4 h en rojo (-2,4%) sin romper el máximo de 48 h (a -2,88%), 1 h -0,76%, vol bajó a 1,22x. Salgo a -1,6% antes del stop 1273.",
+      "resultado_pct": -1.66
+    },
+    {
+      "ms": 1791793954374,
+      "fecha": "2026-10-12 08:32 UTC",
+      "lado": "sell",
+      "par": "PUMPUSDT",
+      "cantidad": 17117.888965044553,
+      "precio": 0.005824,
+      "usd": 99.6946,
+      "comision": 0.099695,
+      "motivo": "Invalidación cumplida: 4 h en rojo (-2,08%) sin romper el máximo de 48 h (a -3,49%), 1 h -0,48%. Salgo cerca de plano antes del stop.",
+      "resultado_pct": -0.21
+    },
+    {
+      "ms": 1791793955546,
+      "fecha": "2026-10-12 08:32 UTC",
+      "lado": "sell",
+      "par": "TAOUSDT",
+      "cantidad": 0.40107059217129476,
+      "precio": 296.7,
+      "usd": 118.9976,
+      "comision": 0.118998,
+      "motivo": "Invalidación cumplida: 4 h en rojo (-0,83%) sin romper el máximo de 48 h (a -1,66%), vol bajó a 1,29x (perdió el volumen que justificó la entrada). Salgo a -0,7% antes del stop.",
+      "resultado_pct": -0.74
     }
   ]
 }
