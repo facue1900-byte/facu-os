@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 959.0948698949902,
-  "posiciones": {},
-  "comisiones_usd": 7.642897000000001,
+  "usdt": 839.0948698949902,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.001445172937943276,
+      "entrada": 82952.01,
+      "maximo": 82952.01,
+      "reglas": {
+        "stop": 2.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791815700000
+    }
+  },
+  "comisiones_usd": 7.7628970000000015,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -799,6 +822,18 @@
       "comision": 0.11975,
       "motivo": "Invalidación cumplida: 4 h en rojo (-0,38%) sin romper el máximo de 48 h (a -0,72%), vol bajó a 0,91x (sin el volumen de la entrada). Salgo a -0,2% antes del stop 10,507, misma regla que ZEC, PUMP y TAO.",
       "resultado_pct": -0.11
+    },
+    {
+      "ms": 1791815661468,
+      "fecha": "2026-10-12 14:34 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.001445172937943276,
+      "precio": 82952.01,
+      "usd": 120.0,
+      "comision": 0.12,
+      "motivo": "Rebote en soporte: BTC (1.058 M USD/día) tocó el mínimo de 48 h la pasada pasada (+0,22%) y esta hora no hizo mínimo nuevo: rebotó a +0,61% con 1 h +0,01%; BNB igual (+0,23% → +0,51%). BTC -0,62% 4 h, sin bloqueo. Volumen 4 h todavía 1,96x (presión de venta), por eso tamaño 12% y stop ajustado a 2%. Invalida: perder el mínimo de 48 h (≈ -0,6%) y no recuperarlo en la hora, o stop -2%; sale 13/10 14:33 si no llegó a +8%."
     }
   ]
 }

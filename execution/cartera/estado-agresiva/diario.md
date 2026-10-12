@@ -638,3 +638,16 @@ Invalidación cumplida: 4 h en rojo (-0,38%) sin romper el máximo de 48 h (a -0
 ## 2026-10-12 13:34 UTC — nota
 13:33 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: sin posiciones abiertas. BTC -1,08% en 4 h (sin bloqueo), radar casi entero en rojo en 4 h con volumen de venta en grandes (BTC 1,49x, ETH 1,53x, SOL 1,51x, BNB 1,51x, XRP 1,76x, DOGE 2,17x). Rebote: BTC bajó a +0,22% del mínimo de 48 h (desde +0,38%) con 1 h -0,13%: sigue haciendo mínimos; BNB +0,23% (desde +0,45%), 1 h -0,22%; XRP +0,35%, 1 h -0,25%: nada dejó de caer. Ruptura con volumen: ninguna rompe el máximo de 48 h; TRX a -0,51% plana, vol 1,01x. Momentum: NEAR +4,98% 24 h (no llega) y 4 h -3,3%; ZEC +4,65% 24 h, 4 h -1,61%; FIL +11% 24 h, 4 h -2,18%; ZRO +18% 24 h pero 4 h +0,12% plana y +24% sobre el mínimo: post-pump; S +16,6% 24 h, vol 0,58x, +37% sobre el mínimo; RSR +50,7% 24 h y CTK +21% 4 h con 16,6x: pumps, ni los miro; W -19,9% 4 h y STRK -8% 1 h: pumps desarmándose, sostengo la lección. 0 posiciones, 100% en USDT.
 
+## 2026-10-12 14:34 UTC — Compra BTCUSDT (trading)
+120.00 USD a 82,952.01. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: BTC (1.058 M USD/día) tocó el mínimo de 48 h la pasada pasada (+0,22%) y esta hora no hizo mínimo nuevo: rebotó a +0,61% con 1 h +0,01%; BNB igual (+0,23% → +0,51%). BTC -0,62% 4 h, sin bloqueo. Volumen 4 h todavía 1,96x (presión de venta), por eso tamaño 12% y stop ajustado a 2%. Invalida: perder el mínimo de 48 h (≈ -0,6%) y no recuperarlo en la hora, o stop -2%; sale 13/10 14:33 si no llegó a +8%.
+
+## 2026-10-12 14:34 UTC — Reglas BTCUSDT
+Antes {'stop': 5.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]} → ahora {'stop': 2.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]}.
+
+Ajusto (acerco) el stop a -2%: la tesis de rebote muere si pierde el mínimo de 48 h (~-0,6%); 5% en BTC es demasiado lejos para esta tesis.
+
+## 2026-10-12 14:34 UTC — nota
+14:33 UTC — Sin disparos, 1 entrada, sin salidas. Vigilante: sin posiciones abiertas. BTC -0,62% en 4 h (sin bloqueo). Rebote: BTC dejó de hacer mínimos (+0,22% → +0,61% sobre el mínimo de 48 h, 1 h +0,01%) y BNB igual (+0,23% → +0,51%, 1 h -0,01%): compré BTC 120 USD a 82.952 con stop acercado a -2% porque el volumen 4 h sigue 1,96x; no sumo BNB, es la misma apuesta. XRP +0,43%, SOL +0,83% y ADA +0,29% con 1 h roja: siguen cayendo. Ruptura con volumen: ninguna rompe el máximo de 48 h; TRX a -0,57% plana, vol 1,08x. Momentum: NEAR +5,2% 24 h pero 4 h -2,5%; FIL +9,5% 24 h, 4 h -1,94%; ZRO +16,9% 24 h, 4 h -1,89%, +21,5% sobre el mínimo; RSR +52,8% 24 h y CTK +14,6% 1 h con 8x: pumps, ni los miro; W -15,8% 4 h, STRK -10,9% 4 h, MAGIC -8,2% 4 h: pumps desarmándose, sostengo la lección. 1 posición, ~88% en USDT.
+
