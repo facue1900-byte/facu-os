@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 593.7768040076656,
+  "usdt": 473.77680400766565,
   "posiciones": {
     "PUMPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791786720000
+      "vigilado_hasta": 1791790320000
     },
     "ZECUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791786720000
+      "vigilado_hasta": 1791790320000
     },
     "AVAXUSDT": {
       "nivel": "trading",
       "cantidad": 10.871497234061849,
       "entrada": 11.027,
-      "maximo": 11.027,
+      "maximo": 11.056,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791786840000
+      "vigilado_hasta": 1791790320000
+    },
+    "TAOUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.40107059217129476,
+      "entrada": 298.9,
+      "maximo": 298.9,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791790440000
     }
   },
-  "comisiones_usd": 7.037092000000001,
+  "comisiones_usd": 7.157092000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -806,6 +828,18 @@
       "usd": 120.0,
       "comision": 0.12,
       "motivo": "Momentum 24 h: AVAX (34 M USD/día) +6,57% 24 h, +1,44% 4 h sigue subiendo, -0,21% 1 h (no estirada), vol 4 h 1,35x, a -0,55% del máximo de 48 h y +8,2% sobre el mínimo (no es pump). Las pasadas la descarté por 4 h plana; ahora acompaña. BTC +0,1% 4 h, sin bloqueo. Tamaño 12%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale 13/10 06:32 si no llegó a +8%."
+    },
+    {
+      "ms": 1791790395265,
+      "fecha": "2026-10-12 07:33 UTC",
+      "lado": "buy",
+      "par": "TAOUSDT",
+      "nivel": "trading",
+      "cantidad": 0.40107059217129476,
+      "precio": 298.9,
+      "usd": 120.0,
+      "comision": 0.12,
+      "motivo": "Momentum 24 h: TAO (31 M USD/día) +5,99% 24 h, +1,32% 4 h sigue subiendo, +0,23% 1 h (no estirada), vol 4 h 1,59x (ahora con volumen, las pasadas estaba justa o bajo 1,5x), a -1,03% del máximo de 48 h y +7% sobre el mínimo (no es pump). BTC +0,53% 4 h, sin bloqueo. Tamaño 12%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale 13/10 07:32 si no llegó a +8%."
     }
   ]
 }
