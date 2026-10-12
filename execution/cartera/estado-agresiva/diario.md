@@ -550,3 +550,11 @@ Momentum 24 h: ONDO (21 M USD/día) +5,45% 24 h, +2,77% 4 h sigue subiendo, +1,8
 ## 2026-10-12 02:32 UTC — nota
 02:31 UTC — Sin disparos, sin entradas ni salidas. Vigilante: ONDO sin disparos (60 min revisados). Posición viva: ONDO -0,23% (0,5217; +1,66% 4 h sigue verde, 1 h -0,27%, vol 2,62x, a -2,05% del máximo de 48 h; stop 0,505875; invalidación no cumplida; sale 12/10 23:31 si no llegó a +8%). BTC +0,33% en 4 h, sin bloqueo; mercado levemente verde en 1 h y 4 h, grandes a -0,3/-0,5% del máximo de 48 h. Ruptura con volumen: ninguna rompe el máximo de 48 h; TAO 1,58x pero a -0,94%, BNB 1,32x y BTC 1,22x sin romper: vigiladas. Momentum 24 h: NEAR +9,97% 24 h pero 4 h plana (+0,09%) y 1 h roja; ENA +7,29% 24 h, 4 h +0,63%, vol 1,19x, mismo patrón ya invalidado: paso; AVAX 4 h plana (+0,02%); FIL +11,13% 24 h, +1,96% 4 h, vol 1,23x, a -3,04% del máximo, saltó el stop ayer: paso; FET y CFX rojas 4 h; S +27,5% 24 h y +4,85% 1 h, pump, sostengo la lección; MAGIC, LUMIA, STRK post-pump. Rebote: nada en mínimos de 48 h. Sin tesis nueva clara: 1 posición, ~90% en USDT.
 
+## 2026-10-12 03:32 UTC — Venta ONDOUSDT
+99.25 USD a 0.5195 (-0.65% contra la compra).
+
+Invalidación cumplida: 4 h en rojo (-0,5%) sin romper el máximo de 48 h (a -2,5%), momentum agotado. Salgo cerca de plano antes del stop.
+
+## 2026-10-12 03:32 UTC — nota
+03:32 UTC — Sin disparos, 1 salida, sin entradas. Vigilante: ONDO sin disparos (60 min revisados). Vendí ONDO a 0,5195 (-0,65%): invalidación cumplida, 4 h en rojo (-0,5%) sin romper el máximo de 48 h (a -2,5%). BTC -0,13% en 4 h, sin bloqueo; mercado plano y levemente rojo en 1 h. Ruptura con volumen: ninguna rompe el máximo de 48 h; TAO 1,57x pero 4 h roja y a -1,21%; XRP 1,9x pero 4 h roja. Momentum 24 h: ENA (+8,63% 24 h, +1,18% 4 h, vol 1,33x, a -1,44%) mismo patrón sin volumen ya invalidado: paso; PUMP (+5,72% 24 h, +1,05% 4 h, vol 1,33x) a -3,4% del máximo y sin volumen, paso; W +70% 24 h y +32% 4 h con 7,3x: pump, sostengo la lección; NEAR, AVAX, FET, FIL 4 h rojas; S, MAGIC, LUMIA, STRK, CFX, CKB post-pump. Rebote: nada en mínimos de 48 h dejando de caer. Sin tesis clara: 0 posiciones, 100% en USDT.
+

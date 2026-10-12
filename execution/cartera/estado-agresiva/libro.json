@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 871.5895844245985,
-  "posiciones": {
-    "ONDOUSDT": {
-      "nivel": "trading",
-      "cantidad": 191.0499139414802,
-      "entrada": 0.5229,
-      "maximo": 0.5325,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791772260000
-    }
-  },
-  "comisiones_usd": 6.274663000000001,
+  "usdt": 970.7407642869048,
+  "posiciones": {},
+  "comisiones_usd": 6.373913000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -690,6 +667,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: ONDO (21 M USD/día) +5,45% 24 h, +2,77% 4 h sigue subiendo, +1,89% 1 h (no estirada), vol 4 h 1,75x, a -0,13% del máximo de 48 h y +8,9% sobre el mínimo (no es pump). BTC +0,03% 4 h, sin bloqueo. Liquidez justa: tamaño 10%, reglas por defecto. Invalida: stop -5% o 4 h en rojo sin romper el máximo de 48 h; sale mañana 23:31 si no llegó a +8%."
+    },
+    {
+      "ms": 1791775932266,
+      "fecha": "2026-10-12 03:32 UTC",
+      "lado": "sell",
+      "par": "ONDOUSDT",
+      "cantidad": 191.0499139414802,
+      "precio": 0.5195,
+      "usd": 99.2504,
+      "comision": 0.09925,
+      "motivo": "Invalidación cumplida: 4 h en rojo (-0,5%) sin romper el máximo de 48 h (a -2,5%), momentum agotado. Salgo cerca de plano antes del stop.",
+      "resultado_pct": -0.65
     }
   ]
 }
