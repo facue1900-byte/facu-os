@@ -1,19 +1,19 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-12 08:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-12 09:32 UTC
 
-**Total: 959.44 USD (-4.06%)** desde 2026-10-07 23:06 UTC · USDT libre 839.47 · comisiones 7.52 · 65 operaciones
+**Total: 959.09 USD (-4.09%)** desde 2026-10-07 23:06 UTC · USDT libre 959.09 · comisiones 7.64 · 66 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **959.44** |
+| **Esta carpeta** | **959.09** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 1,005.44 |
+| hodl btc | 1,003.35 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| AVAX | trading | 119.98 | +0.08% | 10.5032 |
 
 ## Últimas operaciones
 
+- 2026-10-12 09:32 UTC · venta AVAX 119.75 USD a 11.015 — Invalidación cumplida: 4 h en rojo (-0,38%) sin romper el máximo de 48 h (a -0,72%), vol bajó a 0,91x (sin el volumen de la entrada). Salgo 
 - 2026-10-12 08:32 UTC · venta TAO 119.00 USD a 296.7 — Invalidación cumplida: 4 h en rojo (-0,83%) sin romper el máximo de 48 h (a -1,66%), vol bajó a 1,29x (perdió el volumen que justificó la en
 - 2026-10-12 08:32 UTC · venta PUMP 99.69 USD a 0.005824 — Invalidación cumplida: 4 h en rojo (-2,08%) sin romper el máximo de 48 h (a -3,49%), 1 h -0,48%. Salgo cerca de plano antes del stop.
 - 2026-10-12 08:32 UTC · venta ZEC 147.36 USD a 1,310.2 — Invalidación cumplida: 4 h en rojo (-2,4%) sin romper el máximo de 48 h (a -2,88%), 1 h -0,76%, vol bajó a 1,22x. Salgo a -1,6% antes del st
@@ -23,6 +23,5 @@
 - 2026-10-12 05:32 UTC · compra ZEC 150.00 USD a 1,332.32 — Momentum 24 h: ZEC (150 M USD/día) +9,07% 24 h, +4,85% 4 h sigue subiendo, -0,74% 1 h (no estirada), vol 4 h 1,51x (esta vez con volumen, a 
 - 2026-10-12 04:32 UTC · compra PUMP 100.00 USD a 0.005836 — Momentum 24 h: PUMP (23 M USD/día) +6,83% 24 h, +3,15% 4 h sigue subiendo, +2,01% 1 h (no estirada), vol 4 h 1,48x, a -1% del máximo de 48 h
 - 2026-10-12 04:32 UTC · compra ENA 150.00 USD a 0.2471 — Momentum 24 h: ENA (46 M USD/día) +10,41% 24 h, +2,96% 4 h sigue subiendo, +1,35% 1 h (no estirada), vol 4 h 1,33x, a -0,08% del máximo de 4
-- 2026-10-12 03:32 UTC · venta ONDO 99.25 USD a 0.5195 — Invalidación cumplida: 4 h en rojo (-0,5%) sin romper el máximo de 48 h (a -2,5%), momentum agotado. Salgo cerca de plano antes del stop.
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 839.4650774038321,
-  "posiciones": {
-    "AVAXUSDT": {
-      "nivel": "trading",
-      "cantidad": 10.871497234061849,
-      "entrada": 11.027,
-      "maximo": 11.056,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791793860000
-    }
-  },
-  "comisiones_usd": 7.523147000000002,
+  "usdt": 959.0948698949902,
+  "posiciones": {},
+  "comisiones_usd": 7.642897000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -810,6 +787,18 @@
       "comision": 0.118998,
       "motivo": "Invalidación cumplida: 4 h en rojo (-0,83%) sin romper el máximo de 48 h (a -1,66%), vol bajó a 1,29x (perdió el volumen que justificó la entrada). Salgo a -0,7% antes del stop.",
       "resultado_pct": -0.74
+    },
+    {
+      "ms": 1791797548267,
+      "fecha": "2026-10-12 09:32 UTC",
+      "lado": "sell",
+      "par": "AVAXUSDT",
+      "cantidad": 10.871497234061849,
+      "precio": 11.015,
+      "usd": 119.7495,
+      "comision": 0.11975,
+      "motivo": "Invalidación cumplida: 4 h en rojo (-0,38%) sin romper el máximo de 48 h (a -0,72%), vol bajó a 0,91x (sin el volumen de la entrada). Salgo a -0,2% antes del stop 10,507, misma regla que ZEC, PUMP y TAO.",
+      "resultado_pct": -0.11
     }
   ]
 }
