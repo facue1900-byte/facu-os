@@ -1,20 +1,24 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-13 18:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-13 19:33 UTC
 
-**Total: 960.96 USD (-3.90%)** desde 2026-10-07 23:06 UTC · USDT libre 737.43 · comisiones 8.10 · 70 operaciones
+**Total: 961.45 USD (-3.86%)** desde 2026-10-07 23:06 UTC · USDT libre 537.43 · comisiones 8.30 · 72 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **960.96** |
+| **Esta carpeta** | **961.45** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 997.68 |
+| hodl btc | 1,000.55 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 122.04 | +1.80% | 2,411.59 |
-| INJ | trading | 101.48 | +1.58% | 8.0332 |
+| ETH | trading | 122.49 | +2.18% | 2,411.59 |
+| INJ | trading | 101.79 | +1.89% | 8.0332 |
+| NEAR | trading | 99.88 | -0.02% | 4.85492 |
+| HYPE | trading | 99.85 | -0.05% | 78.6572 |
 
 ## Últimas operaciones
 
+- 2026-10-13 19:33 UTC · compra NEAR 100.00 USD a 5.031 — Rebote en soporte: NEAR (282 M, grande y líquida) a +2,72% del mínimo de 48 h (~4,90) tras -8% 24 h; mínimo 4,92 a las 15 h y desde ahí 4 ve
+- 2026-10-13 19:32 UTC · compra HYPE 100.00 USD a 81.51 — Rebote en soporte: HYPE (32 M) a +2,53% del mínimo de 48 h (~79,5) y dejó de caer: mínimo local 80,59 a las 15 h y desde ahí 4 velas de 1 h 
 - 2026-10-13 17:32 UTC · compra INJ 100.00 USD a 8.08 — Momentum 24 h: INJ +5,74% 24 h, 4 h +4,26%, 1 h -1,1% (no estirada), a -1,55% del máximo de 48 h, vol 21 M (justo arriba del piso) con 4 h 1
 - 2026-10-13 01:32 UTC · compra ETH 120.00 USD a 2,457.3 — Rebote en soporte: ETH (825 M USD/día) hizo mínimo de 48 h la pasada pasada con todo el radar en rojo y esta hora no hizo mínimo nuevo: rebo
 - 2026-10-12 23:32 UTC · venta BTC 118.46 USD a 81,967.2 — Invalidación cumplida: la tesis de rebote moría si BTC cerraba debajo de ~82.390 (mínimo de 48 h de la entrada). Hizo mínimo nuevo (~82.040,
@@ -23,7 +27,5 @@
 - 2026-10-12 08:32 UTC · venta TAO 119.00 USD a 296.7 — Invalidación cumplida: 4 h en rojo (-0,83%) sin romper el máximo de 48 h (a -1,66%), vol bajó a 1,29x (perdió el volumen que justificó la en
 - 2026-10-12 08:32 UTC · venta PUMP 99.69 USD a 0.005824 — Invalidación cumplida: 4 h en rojo (-2,08%) sin romper el máximo de 48 h (a -3,49%), 1 h -0,48%. Salgo cerca de plano antes del stop.
 - 2026-10-12 08:32 UTC · venta ZEC 147.36 USD a 1,310.2 — Invalidación cumplida: 4 h en rojo (-2,4%) sin romper el máximo de 48 h (a -2,88%), 1 h -0,76%, vol bajó a 1,22x. Salgo a -1,6% antes del st
-- 2026-10-12 07:33 UTC · compra TAO 120.00 USD a 298.9 — Momentum 24 h: TAO (31 M USD/día) +5,99% 24 h, +1,32% 4 h sigue subiendo, +0,23% 1 h (no estirada), vol 4 h 1,59x (ahora con volumen, las pa
-- 2026-10-12 06:33 UTC · compra AVAX 120.00 USD a 11.027 — Momentum 24 h: AVAX (34 M USD/día) +6,57% 24 h, +1,44% 4 h sigue subiendo, -0,21% 1 h (no estirada), vol 4 h 1,35x, a -0,55% del máximo de 4
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

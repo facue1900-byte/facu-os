@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 737.4332501038459,
+  "usdt": 537.4332501038459,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791916260000
+      "vigilado_hasta": 1791919860000
     },
     "INJUSDT": {
       "nivel": "trading",
@@ -48,10 +48,54 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791916260000
+      "vigilado_hasta": 1791919860000
+    },
+    "HYPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 1.2256164887743835,
+      "entrada": 81.51,
+      "maximo": 81.51,
+      "reglas": {
+        "stop": 3.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791919980000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 19.856887298747765,
+      "entrada": 5.031,
+      "maximo": 5.031,
+      "reglas": {
+        "stop": 3.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791920040000
     }
   },
-  "comisiones_usd": 8.101354,
+  "comisiones_usd": 8.301354,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -892,6 +936,30 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: INJ +5,74% 24 h, 4 h +4,26%, 1 h -1,1% (no estirada), a -1,55% del máximo de 48 h, vol 21 M (justo arriba del piso) con 4 h 1,15x. Tamaño 10% por volumen bajo y 1 h roja. Reglas por defecto (stop 5%, trailing 5%, tp 8:0.5,15:1). Invalida: perder el +4% de las 4 h (volver a ~-4% desde la entrada) o stop -5%; sale 14/10 17:31 si no llegó a +8%."
+    },
+    {
+      "ms": 1791919972700,
+      "fecha": "2026-10-13 19:32 UTC",
+      "lado": "buy",
+      "par": "HYPEUSDT",
+      "nivel": "trading",
+      "cantidad": 1.2256164887743835,
+      "precio": 81.51,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Rebote en soporte: HYPE (32 M) a +2,53% del mínimo de 48 h (~79,5) y dejó de caer: mínimo local 80,59 a las 15 h y desde ahí 4 velas de 1 h con mínimos crecientes (80,86 / 80,94 / 81,07 / 81,30), 1 h +0,23%, 4 h +0,72%. Tamaño 10% por volumen 0,66x. Stop ajustado a 3,5% (~78,6) para quedar justo debajo del mínimo de 48 h. Invalida: perder el mínimo de 48 h (~79,5) o stop; sale 14/10 19:32 si no llegó a +8%."
+    },
+    {
+      "ms": 1791919980268,
+      "fecha": "2026-10-13 19:33 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 19.856887298747765,
+      "precio": 5.031,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Rebote en soporte: NEAR (282 M, grande y líquida) a +2,72% del mínimo de 48 h (~4,90) tras -8% 24 h; mínimo 4,92 a las 15 h y desde ahí 4 velas de 1 h con mínimos crecientes (4,946 / 4,96 / 4,972 / 5,02): dejó de caer. 4 h +1,5%. Tamaño 10% por 24 h todavía rojo y correlación con ETH/HYPE. Stop 3,5% (~4,85), debajo del mínimo de 48 h. Invalida: perder 4,90 o stop; sale 14/10 19:32 si no llegó a +8%."
     }
   ]
 }
