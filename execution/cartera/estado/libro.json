@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 206.23989718505416,
+  "usdt": 224.4211369462979,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,29 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
-    },
-    "JUPUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 55.469183786785116,
-      "entrada": 0.3602,
-      "maximo": 0.386,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     },
     "AEROUSDT": {
       "nivel": "riesgo",
@@ -254,10 +232,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791849900000
+      "vigilado_hasta": 1791857100000
     }
   },
-  "comisiones_usd": 1.670678,
+  "comisiones_usd": 1.6888770000000002,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -930,6 +908,18 @@
       "comision": 0.018123,
       "motivo": "Tesis rota por la condición declarada en los ciclos 20:05 y 22:05 (12/10): si pasaba el 10% del máximo de 90 d, salía aunque no tocara el stop. Hoy a 11,0% del máximo (de 7,8% a 11%; 7d de +12% en la compra a +6,7%). Mismo umbral que ATOM, ZK, TIA y ZRO: sostenerla sería mover la regla. La reabriría sólo si vuelve a <5% del máximo y sostiene un ciclo.",
       "resultado_pct": -9.3
+    },
+    {
+      "ms": 1791849960000,
+      "fecha": "2026-10-13 00:06 UTC",
+      "lado": "sell",
+      "par": "JUPUSDT",
+      "cantidad": 55.469183786785116,
+      "precio": 0.3281,
+      "usd": 18.1994,
+      "comision": 0.018199,
+      "motivo": "Stop automático en 0.3281 (entrada 0.3602, máximo 0.386).",
+      "resultado_pct": -8.91
     }
   ]
 }
