@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 224.4211369462979,
+  "usdt": 204.4211369462979,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
     },
     "AEROUSDT": {
       "nivel": "riesgo",
@@ -232,10 +232,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791871500000
+      "vigilado_hasta": 1791878700000
+    },
+    "TIAUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 32.5619295958279,
+      "entrada": 0.6136,
+      "maximo": 0.6136,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791878880000
     }
   },
-  "comisiones_usd": 1.6888770000000002,
+  "comisiones_usd": 1.7088770000000002,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -920,6 +942,18 @@
       "comision": 0.018199,
       "motivo": "Stop automático en 0.3281 (entrada 0.3602, máximo 0.386).",
       "resultado_pct": -8.91
+    },
+    {
+      "ms": 1791878862218,
+      "fecha": "2026-10-13 08:07 UTC",
+      "lado": "buy",
+      "par": "TIAUSDT",
+      "nivel": "riesgo",
+      "cantidad": 32.5619295958279,
+      "precio": 0.6136,
+      "usd": 20.0,
+      "comision": 0.02,
+      "motivo": "Condición de reapertura declarada al venderla (12/10 18:05) y a 06:05 (13/10): volver a <5% del máximo de 90 d y sostener un ciclo. Cumplida: segundo ciclo en la zona (3,3% → 3,1%), 7d +25%, 30d +75%, volumen de 19,4 a 20,6 M/día; BTC también se acerca a su máximo (a 3,9%, 7d -1,8%), el mercado grande deja de empeorar. Vale la vara de 02:05 (ruptura que sostiene un ciclo). Vol 154%: tamaño ~2%. Invalida: perder el stop 15% o alejarse >10% del máximo de 90 d."
     }
   ]
 }
