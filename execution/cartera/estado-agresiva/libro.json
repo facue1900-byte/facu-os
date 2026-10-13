@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791912660000
+      "vigilado_hasta": 1791916260000
     },
     "INJUSDT": {
       "nivel": "trading",
       "cantidad": 12.363861386138614,
       "entrada": 8.08,
-      "maximo": 8.08,
+      "maximo": 8.456,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791912780000
+      "vigilado_hasta": 1791916260000
     }
   },
   "comisiones_usd": 8.101354,
