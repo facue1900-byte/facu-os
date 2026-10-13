@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 837.4332501038459,
+  "usdt": 737.4332501038459,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791909120000
+      "vigilado_hasta": 1791912660000
+    },
+    "INJUSDT": {
+      "nivel": "trading",
+      "cantidad": 12.363861386138614,
+      "entrada": 8.08,
+      "maximo": 8.08,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791912780000
     }
   },
-  "comisiones_usd": 8.001354000000001,
+  "comisiones_usd": 8.101354,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -858,6 +880,18 @@
       "usd": 120.0,
       "comision": 0.12,
       "motivo": "Rebote en soporte: ETH (825 M USD/día) hizo mínimo de 48 h la pasada pasada con todo el radar en rojo y esta hora no hizo mínimo nuevo: rebotó a +1,93% del mínimo con 1 h +1,39%; el rebote es general (todo el top 30 con 1 h verde). BTC -0,54% 4 h, sin bloqueo. Volumen 4 h 2,43x (capitulación + rebote), por eso tamaño 12% y stop -3% (~1% debajo del mínimo de 48 h). Invalida: perder el mínimo de 48 h (≈ -1,9%) y no recuperarlo en la hora, o stop -3%; sale 14/10 01:32 si no llegó a +8%."
+    },
+    {
+      "ms": 1791912743830,
+      "fecha": "2026-10-13 17:32 UTC",
+      "lado": "buy",
+      "par": "INJUSDT",
+      "nivel": "trading",
+      "cantidad": 12.363861386138614,
+      "precio": 8.08,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h: INJ +5,74% 24 h, 4 h +4,26%, 1 h -1,1% (no estirada), a -1,55% del máximo de 48 h, vol 21 M (justo arriba del piso) con 4 h 1,15x. Tamaño 10% por volumen bajo y 1 h roja. Reglas por defecto (stop 5%, trailing 5%, tp 8:0.5,15:1). Invalida: perder el +4% de las 4 h (volver a ~-4% desde la entrada) o stop -5%; sale 14/10 17:31 si no llegó a +8%."
     }
   ]
 }
