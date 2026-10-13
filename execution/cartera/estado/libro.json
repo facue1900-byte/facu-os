@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 166.70749418442028,
+  "usdt": 206.23989718505416,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,29 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
-    },
-    "RAYUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 9.974041533546327,
-      "entrada": 2.504,
-      "maximo": 2.53,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "JUPUSDT": {
       "nivel": "riesgo",
@@ -254,7 +232,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     },
     "AEROUSDT": {
       "nivel": "riesgo",
@@ -276,32 +254,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
-    },
-    "PYTHUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 223.48993288590606,
-      "entrada": 0.0894,
-      "maximo": 0.08958,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791842700000
+      "vigilado_hasta": 1791849900000
     }
   },
-  "comisiones_usd": 1.6311060000000002,
+  "comisiones_usd": 1.670678,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -950,6 +906,30 @@
       "comision": 0.019468,
       "motivo": "Stop automático en 5.1 (entrada 5.234, máximo 6).",
       "resultado_pct": -2.56
+    },
+    {
+      "ms": 1791847560000,
+      "fecha": "2026-10-12 23:26 UTC",
+      "lado": "sell",
+      "par": "RAYUSDT",
+      "cantidad": 9.974041533546327,
+      "precio": 2.1504999999999996,
+      "usd": 21.4492,
+      "comision": 0.021449,
+      "motivo": "Stop automático en 2.1505 (entrada 2.504, máximo 2.53).",
+      "resultado_pct": -14.12
+    },
+    {
+      "ms": 1791850064020,
+      "fecha": "2026-10-13 00:07 UTC",
+      "lado": "sell",
+      "par": "PYTHUSDT",
+      "cantidad": 223.48993288590606,
+      "precio": 0.08109,
+      "usd": 18.1228,
+      "comision": 0.018123,
+      "motivo": "Tesis rota por la condición declarada en los ciclos 20:05 y 22:05 (12/10): si pasaba el 10% del máximo de 90 d, salía aunque no tocara el stop. Hoy a 11,0% del máximo (de 7,8% a 11%; 7d de +12% en la compra a +6,7%). Mismo umbral que ATOM, ZK, TIA y ZRO: sostenerla sería mover la regla. La reabriría sólo si vuelve a <5% del máximo y sostiene un ciclo.",
+      "resultado_pct": -9.3
     }
   ]
 }
