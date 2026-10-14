@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791959460000
+      "vigilado_hasta": 1791963060000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791959460000
+      "vigilado_hasta": 1791963060000
     },
     "ZECUSDT": {
       "nivel": "trading",
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791959460000
+      "vigilado_hasta": 1791963060000
     }
   },
   "comisiones_usd": 8.622748999999999,
