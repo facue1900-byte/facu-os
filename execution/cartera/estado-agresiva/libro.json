@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 851.9711756631694,
+  "usdt": 791.9711756631694,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.04092601772231759,
       "entrada": 2440.99,
-      "maximo": 2441.26,
+      "maximo": 2453.4,
       "reglas": {
         "stop": 3.0,
         "trail": 5.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791995460000
+      "vigilado_hasta": 1791999060000
+    },
+    "WALUSDT": {
+      "nivel": "trading",
+      "cantidad": 963.0462724935733,
+      "entrada": 0.06224,
+      "maximo": 0.06224,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791999180000
     }
   },
-  "comisiones_usd": 9.016405999999998,
+  "comisiones_usd": 9.076405999999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -978,6 +1000,18 @@
       "comision": 0.097437,
       "motivo": "Rebote en soporte invalidado: hizo mínimo nuevo de 48 h (~79,35) por debajo del nivel de invalidación 79,5; 1 h -0,75%, 4 h -1,57% con vol 2x. Salgo antes del stop y del vencimiento de 24 h.",
       "resultado_pct": -2.47
+    },
+    {
+      "ms": 1791999142965,
+      "fecha": "2026-10-14 17:32 UTC",
+      "lado": "buy",
+      "par": "WALUSDT",
+      "nivel": "trading",
+      "cantidad": 963.0462724935733,
+      "precio": 0.06224,
+      "usd": 60.0,
+      "comision": 0.06,
+      "motivo": "Momentum de 24 h: WAL +64% 24 h, 4 h +19,75% y 1 h +3,51% (< 4%, no estirada por regla), vol 4x, a -1,37% del máximo de 48 h. Tamaño reducido (60 USD) por estar +82% del mínimo en par de 31 M. Invalida perder -5% (stop) o 1 h roja que deje la 4 h negativa."
     }
   ]
 }
