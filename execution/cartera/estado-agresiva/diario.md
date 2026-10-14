@@ -836,3 +836,16 @@ Salida por tiempo: 24 h desde la compra (13/10 01:32) sin llegar a +8% ni al sto
 ## 2026-10-14 14:32 UTC — nota
 14:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: HYPE sin disparos (60 min). HYPE -2,25% (79,68 vs 81,51), stop 78,66: rebote en soporte casi invalidado, 1 h -0,71%, 4 h -2,17%, a +0,38% del mínimo de 48 h; invalida perder ~79,5 (el stop salta a 78,66); sale 14/10 19:32. BTC -1,75% en 4 h (vol 2,49x): no llega al bloqueo de -3%, pero el mercado entero vende con volumen. Ruptura con volumen: ninguna rompe el máximo de 48 h (TRX -0,3% con 1,12x: plana). Momentum: nada con +5% 24 h y 4 h verde (WAL +35,8% 24 h con 4 h -5,34% y a +53,6% del mínimo: pump que gira, paso). Rebote: BTC (+1,21% del mínimo), ETH (+0,83%), AVAX (+0,46%), BNB (+1,43%), ADA, XRP pegadas al mínimo de 48 h pero con 1 h roja y volumen 1,5-2,5x: siguen cayendo, no hay giro; espero que la última hora deje de hacer mínimo nuevo. Mercado rojo con volumen. 1 posición, ~90% en USDT: no sumo sin tesis.
 
+## 2026-10-14 15:32 UTC — Compra ETHUSDT (trading)
+100.00 USD a 2,440.99. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: ETH a +1,33% del mínimo de 48 h, 1 h +0,27% sin mínimo nuevo tras 4 h -2,54% con vol 3,3x; BTC 4 h -1,84% (sin bloqueo). Invalida perder el mínimo de 48 h (~-1,3%) o stop.
+
+## 2026-10-14 15:32 UTC — Reglas ETHUSDT
+Antes {'stop': 5.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]} → ahora {'stop': 3.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]}.
+
+Ajusto stop a 3% (más cerca, no más lejos): la tesis muere si pierde el mínimo de 48 h, ~1,3% abajo; 3% deja margen al ruido.
+
+## 2026-10-14 15:32 UTC — nota
+15:32 UTC — Sin disparos, 1 entrada, sin salidas. Vigilante: HYPE sin disparos (60 min). HYPE -0,83% (80,83 vs 81,51), stop 78,66: rebote en soporte frágil, 1 h +0,16%, 4 h -1,15%, a +1,62% del mínimo de 48 h, sin mínimo nuevo; invalida perder ~79,5; sale 14/10 19:32. ENTRADA ETH 100 USD a 2.440,99: rebote en soporte, a +1,33% del mínimo de 48 h, 1 h +0,27% sin mínimo nuevo tras 4 h -2,54% con vol 3,3x; stop ajustado a 3%; invalida perder el mínimo de 48 h; sale 15/10 15:32 si no llega a +8%. BTC -1,84% en 4 h (vol 3x), sin bloqueo. Ruptura con volumen: ninguna (TRX -0,15% del máximo con 1,2x, plana). Momentum: nada con +5% 24 h y 4 h verde (WAL +34% 24 h con 4 h -5,26% y +50% del mínimo: pump que gira). Rebote: BTC (1 h -0,06%), AVAX/LTC/NEAR/PUMP (1 h roja) siguen cayendo; QNT 1 h +1,39% tras -8,9% 48 h en par de 25 M: no es grande y líquida. 2 posiciones, ~80% en USDT.
+

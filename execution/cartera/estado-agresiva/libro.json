@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 854.6321013164635,
+  "usdt": 754.6321013164635,
   "posiciones": {
     "HYPEUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791988260000
+      "vigilado_hasta": 1791991860000
+    },
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.04092601772231759,
+      "entrada": 2440.99,
+      "maximo": 2440.99,
+      "reglas": {
+        "stop": 3.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791991980000
     }
   },
-  "comisiones_usd": 8.818969,
+  "comisiones_usd": 8.918968999999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -954,6 +976,18 @@
       "comision": 0.097904,
       "motivo": "Stop automático en 4.9305 (entrada 5.031, máximo 5.19).",
       "resultado_pct": -2.0
+    },
+    {
+      "ms": 1791991964365,
+      "fecha": "2026-10-14 15:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.04092601772231759,
+      "precio": 2440.99,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Rebote en soporte: ETH a +1,33% del mínimo de 48 h, 1 h +0,27% sin mínimo nuevo tras 4 h -2,54% con vol 3,3x; BTC 4 h -1,84% (sin bloqueo). Invalida perder el mínimo de 48 h (~-1,3%) o stop."
     }
   ]
 }

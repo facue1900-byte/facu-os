@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-14 14:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-14 15:32 UTC
 
-**Total: 952.39 USD (-4.76%)** desde 2026-10-07 23:06 UTC · USDT libre 854.63 · comisiones 8.82 · 77 operaciones
+**Total: 953.29 USD (-4.67%)** desde 2026-10-07 23:06 UTC · USDT libre 754.63 · comisiones 8.92 · 78 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **952.39** |
+| **Esta carpeta** | **953.29** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 985.59 |
+| hodl btc | 983.83 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| HYPE | trading | 97.76 | -2.15% | 78.6572 |
+| ETH | trading | 99.85 | -0.05% | 2,367.76 |
+| HYPE | trading | 98.81 | -1.09% | 78.6572 |
 
 ## Últimas operaciones
 
+- 2026-10-14 15:32 UTC · compra ETH 100.00 USD a 2,440.99 — Rebote en soporte: ETH a +1,33% del mínimo de 48 h, 1 h +0,27% sin mínimo nuevo tras 4 h -2,54% con vol 3,3x; BTC 4 h -1,84% (sin bloqueo). 
 - 2026-10-14 13:04 UTC · venta NEAR 97.90 USD a 4.9305 — Stop automático en 4.9305 (entrada 5.031, máximo 5.19).
 - 2026-10-14 12:30 UTC · venta ZEC 98.32 USD a 1,222.21 — Stop automático en 1,222.213 (entrada 1,241.9, máximo 1,286.54).
 - 2026-10-14 05:52 UTC · venta INJ 99.32 USD a 8.0332 — Stop automático en 8.0332 (entrada 8.08, máximo 8.456).
@@ -23,6 +25,5 @@
 - 2026-10-13 19:32 UTC · compra HYPE 100.00 USD a 81.51 — Rebote en soporte: HYPE (32 M) a +2,53% del mínimo de 48 h (~79,5) y dejó de caer: mínimo local 80,59 a las 15 h y desde ahí 4 velas de 1 h 
 - 2026-10-13 17:32 UTC · compra INJ 100.00 USD a 8.08 — Momentum 24 h: INJ +5,74% 24 h, 4 h +4,26%, 1 h -1,1% (no estirada), a -1,55% del máximo de 48 h, vol 21 M (justo arriba del piso) con 4 h 1
 - 2026-10-13 01:32 UTC · compra ETH 120.00 USD a 2,457.3 — Rebote en soporte: ETH (825 M USD/día) hizo mínimo de 48 h la pasada pasada con todo el radar en rojo y esta hora no hizo mínimo nuevo: rebo
-- 2026-10-12 23:32 UTC · venta BTC 118.46 USD a 81,967.2 — Invalidación cumplida: la tesis de rebote moría si BTC cerraba debajo de ~82.390 (mínimo de 48 h de la entrada). Hizo mínimo nuevo (~82.040,
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
