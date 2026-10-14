@@ -1,20 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-14 12:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-14 13:32 UTC
 
-**Total: 956.53 USD (-4.35%)** desde 2026-10-07 23:06 UTC · USDT libre 756.83 · comisiones 8.72 · 76 operaciones
+**Total: 953.43 USD (-4.66%)** desde 2026-10-07 23:06 UTC · USDT libre 854.63 · comisiones 8.82 · 77 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **956.53** |
+| **Esta carpeta** | **953.43** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 996.99 |
+| hodl btc | 995.03 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| NEAR | trading | 100.20 | +0.30% | 4.9305 |
-| HYPE | trading | 99.51 | -0.39% | 78.6572 |
+| HYPE | trading | 98.80 | -1.10% | 78.6572 |
 
 ## Últimas operaciones
 
+- 2026-10-14 13:04 UTC · venta NEAR 97.90 USD a 4.9305 — Stop automático en 4.9305 (entrada 5.031, máximo 5.19).
 - 2026-10-14 12:30 UTC · venta ZEC 98.32 USD a 1,222.21 — Stop automático en 1,222.213 (entrada 1,241.9, máximo 1,286.54).
 - 2026-10-14 05:52 UTC · venta INJ 99.32 USD a 8.0332 — Stop automático en 8.0332 (entrada 8.08, máximo 8.456).
 - 2026-10-14 01:32 UTC · venta ETH 122.07 USD a 2,502.28 — Salida por tiempo: 24 h desde la compra (13/10 01:32) sin llegar a +8% ni al stop. Rebote en soporte vivo pero sin impulso: 1 h -0,18%, 4 h 
@@ -24,6 +24,5 @@
 - 2026-10-13 17:32 UTC · compra INJ 100.00 USD a 8.08 — Momentum 24 h: INJ +5,74% 24 h, 4 h +4,26%, 1 h -1,1% (no estirada), a -1,55% del máximo de 48 h, vol 21 M (justo arriba del piso) con 4 h 1
 - 2026-10-13 01:32 UTC · compra ETH 120.00 USD a 2,457.3 — Rebote en soporte: ETH (825 M USD/día) hizo mínimo de 48 h la pasada pasada con todo el radar en rojo y esta hora no hizo mínimo nuevo: rebo
 - 2026-10-12 23:32 UTC · venta BTC 118.46 USD a 81,967.2 — Invalidación cumplida: la tesis de rebote moría si BTC cerraba debajo de ~82.390 (mínimo de 48 h de la entrada). Hizo mínimo nuevo (~82.040,
-- 2026-10-12 14:34 UTC · compra BTC 120.00 USD a 82,952 — Rebote en soporte: BTC (1.058 M USD/día) tocó el mínimo de 48 h la pasada pasada (+0,22%) y esta hora no hizo mínimo nuevo: rebotó a +0,61% 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
