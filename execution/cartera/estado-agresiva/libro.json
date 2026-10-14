@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 658.6075862987743,
+  "usdt": 756.825622872814,
   "posiciones": {
     "HYPEUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791977460000
+      "vigilado_hasta": 1791981060000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791977460000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.08044125936065706,
-      "entrada": 1241.9,
-      "maximo": 1286.54,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791977460000
+      "vigilado_hasta": 1791981060000
     }
   },
-  "comisiones_usd": 8.622748999999999,
+  "comisiones_usd": 8.721065,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -974,6 +952,18 @@
       "comision": 0.099321,
       "motivo": "Stop automático en 8.0332 (entrada 8.08, máximo 8.456).",
       "resultado_pct": -0.58
+    },
+    {
+      "ms": 1791981000000,
+      "fecha": "2026-10-14 12:30 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.08044125936065706,
+      "precio": 1222.213,
+      "usd": 98.3164,
+      "comision": 0.098316,
+      "motivo": "Stop automático en 1,222.213 (entrada 1,241.9, máximo 1,286.54).",
+      "resultado_pct": -1.59
     }
   ]
 }

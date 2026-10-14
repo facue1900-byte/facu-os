@@ -1,21 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-14 11:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-14 12:32 UTC
 
-**Total: 959.68 USD (-4.03%)** desde 2026-10-07 23:06 UTC · USDT libre 658.61 · comisiones 8.62 · 75 operaciones
+**Total: 956.53 USD (-4.35%)** desde 2026-10-07 23:06 UTC · USDT libre 756.83 · comisiones 8.72 · 76 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **959.68** |
+| **Esta carpeta** | **956.53** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 1,002.48 |
+| hodl btc | 996.99 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| NEAR | trading | 101.17 | +1.27% | 4.9305 |
-| HYPE | trading | 100.11 | +0.21% | 78.6572 |
-| ZEC | trading | 99.79 | -0.11% | 1,222.21 |
+| NEAR | trading | 100.20 | +0.30% | 4.9305 |
+| HYPE | trading | 99.51 | -0.39% | 78.6572 |
 
 ## Últimas operaciones
 
+- 2026-10-14 12:30 UTC · venta ZEC 98.32 USD a 1,222.21 — Stop automático en 1,222.213 (entrada 1,241.9, máximo 1,286.54).
 - 2026-10-14 05:52 UTC · venta INJ 99.32 USD a 8.0332 — Stop automático en 8.0332 (entrada 8.08, máximo 8.456).
 - 2026-10-14 01:32 UTC · venta ETH 122.07 USD a 2,502.28 — Salida por tiempo: 24 h desde la compra (13/10 01:32) sin llegar a +8% ni al stop. Rebote en soporte vivo pero sin impulso: 1 h -0,18%, 4 h 
 - 2026-10-14 00:32 UTC · compra ZEC 100.00 USD a 1,241.9 — Momentum 24 h: ZEC (180 M, líquida) +8,27% 24 h, 4 h +1,9%, 1 h +1,92% (no estirada), a +10,6% del mínimo de 48 h y -7,9% del máximo: recorr
@@ -25,6 +25,5 @@
 - 2026-10-13 01:32 UTC · compra ETH 120.00 USD a 2,457.3 — Rebote en soporte: ETH (825 M USD/día) hizo mínimo de 48 h la pasada pasada con todo el radar en rojo y esta hora no hizo mínimo nuevo: rebo
 - 2026-10-12 23:32 UTC · venta BTC 118.46 USD a 81,967.2 — Invalidación cumplida: la tesis de rebote moría si BTC cerraba debajo de ~82.390 (mínimo de 48 h de la entrada). Hizo mínimo nuevo (~82.040,
 - 2026-10-12 14:34 UTC · compra BTC 120.00 USD a 82,952 — Rebote en soporte: BTC (1.058 M USD/día) tocó el mínimo de 48 h la pasada pasada (+0,22%) y esta hora no hizo mínimo nuevo: rebotó a +0,61% 
-- 2026-10-12 09:32 UTC · venta AVAX 119.75 USD a 11.015 — Invalidación cumplida: 4 h en rojo (-0,38%) sin romper el máximo de 48 h (a -0,72%), vol bajó a 0,91x (sin el volumen de la entrada). Salgo 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
