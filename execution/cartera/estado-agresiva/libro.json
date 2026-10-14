@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 437.4332501038459,
+  "usdt": 559.3855363829327,
   "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.04878525210596996,
-      "entrada": 2457.3,
-      "maximo": 2538.52,
-      "reglas": {
-        "stop": 3.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791937860000
-    },
     "INJUSDT": {
       "nivel": "trading",
       "cantidad": 12.363861386138614,
@@ -48,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791937860000
+      "vigilado_hasta": 1791941460000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.2256164887743835,
       "entrada": 81.51,
-      "maximo": 82.26,
+      "maximo": 82.74,
       "reglas": {
         "stop": 3.5,
         "trail": 5.0,
@@ -70,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791937860000
+      "vigilado_hasta": 1791941460000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 19.856887298747765,
       "entrada": 5.031,
-      "maximo": 5.156,
+      "maximo": 5.182,
       "reglas": {
         "stop": 3.5,
         "trail": 5.0,
@@ -92,13 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791937860000
+      "vigilado_hasta": 1791941460000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.08044125936065706,
       "entrada": 1241.9,
-      "maximo": 1241.9,
+      "maximo": 1248.0,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -114,10 +92,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791937980000
+      "vigilado_hasta": 1791941460000
     }
   },
-  "comisiones_usd": 8.401354,
+  "comisiones_usd": 8.523428,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -994,6 +972,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: ZEC (180 M, líquida) +8,27% 24 h, 4 h +1,9%, 1 h +1,92% (no estirada), a +10,6% del mínimo de 48 h y -7,9% del máximo: recorrido hasta +8%. Tamaño 10% por volumen 0,33x en horario muerto y correlación con el resto. Reglas por defecto. Invalida: perder la suba de 4 h (volver ~-3% desde la entrada) o stop -5%; sale 15/10 00:32 si no llegó a +8%."
+    },
+    {
+      "ms": 1791941548419,
+      "fecha": "2026-10-14 01:32 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.04878525210596996,
+      "precio": 2502.28,
+      "usd": 122.0744,
+      "comision": 0.122074,
+      "motivo": "Salida por tiempo: 24 h desde la compra (13/10 01:32) sin llegar a +8% ni al stop. Rebote en soporte vivo pero sin impulso: 1 h -0,18%, 4 h -0,34%, vol 0,3x, a +3,92% del mínimo de 48 h. Cierro ~+1,9% y libero cupo para rotar.",
+      "resultado_pct": 1.83
     }
   ]
 }
