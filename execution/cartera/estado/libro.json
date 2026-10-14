@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 201.92922346889227,
+  "usdt": 220.41718640097028,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     },
     "AEROUSDT": {
       "nivel": "riesgo",
@@ -232,32 +232,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
-    },
-    "STXUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 44.788164088769335,
-      "entrada": 0.4461,
-      "maximo": 0.4493,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791986700000
+      "vigilado_hasta": 1791993960000
     }
   },
-  "comisiones_usd": 1.786423,
+  "comisiones_usd": 1.804929,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1002,6 +980,18 @@
       "comision": 0.01907,
       "motivo": "Tesis rota por la invalidación declarada al comprarla (18:05 13/10) y repetida a 10:05 y 12:05 (14/10): salir si se aleja >10% del máximo de 90 d aunque no toque el stop. Hoy a 12,3% (de 8,3%), 1d -10,1%, 7d de +30% a +15,8%. Mismo umbral que TIA, PYTH, ATOM, ZK y ZRO: sostenerla sería mover la regla. La reabriría sólo si vuelve a <5% del máximo y lo sostiene un ciclo.",
       "resultado_pct": -4.55
+    },
+    {
+      "ms": 1791994090800,
+      "fecha": "2026-10-14 16:08 UTC",
+      "lado": "sell",
+      "par": "STXUSDT",
+      "cantidad": 44.788164088769335,
+      "precio": 0.4132,
+      "usd": 18.5065,
+      "comision": 0.018506,
+      "motivo": "Tesis rota por la invalidación declarada al comprarla (10:05 14/10) y repetida a 12:05 y 14:05: salir si se aleja >10% del máximo de 90 d aunque no toque el stop. Hoy a 11% (0,414 vs máximo 0,465; de 9,1% a las 14:05), 7d de +20,4% en la compra a +11,6%, volumen bajó a ~4 M/día de hoy y salió del top 60. Mismo umbral que TIA, OP, PYTH, ATOM, ZK y ZRO: sostenerla sería mover la regla. La reabriría sólo si vuelve a <5% del máximo y lo sostiene un ciclo.",
+      "resultado_pct": -7.38
     }
   ]
 }
