@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 182.878300160118,
+  "usdt": 201.92922346889227,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "AEROUSDT": {
       "nivel": "riesgo",
@@ -232,29 +232,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
-    },
-    "OPUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 133.82451440053586,
-      "entrada": 0.1493,
-      "maximo": 0.1625,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     },
     "STXUSDT": {
       "nivel": "riesgo",
@@ -276,10 +254,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791979500000
+      "vigilado_hasta": 1791986700000
     }
   },
-  "comisiones_usd": 1.7673530000000002,
+  "comisiones_usd": 1.786423,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1012,6 +990,18 @@
       "usd": 20.0,
       "comision": 0.02,
       "motivo": "Condición declarada a 08:05 (14/10): candidata a las 10:05 si sostiene <5% del máximo de 90 d un ciclo sin otra vela. Cumplida: segundo ciclo en la zona (3,6% → 3,9%), 1d +2,7% (sin vela nueva), 7d +20,4%, 30d +69%, 7,7 M/día (sobre el piso de 5 M de riesgo), vola 106%, la más baja de las candidatas. Mismo criterio que TIA (08:05 13/10) y OP (18:05 13/10). Mercado grande sigue flojo (BTC 7d -0,2%, ETH 7d -3,4%): tamaño chico, ~2%. Invalida: perder el stop 15% o alejarse >10% del máximo de 90 d."
+    },
+    {
+      "ms": 1791986847585,
+      "fecha": "2026-10-14 14:07 UTC",
+      "lado": "sell",
+      "par": "OPUSDT",
+      "cantidad": 133.82451440053586,
+      "precio": 0.1425,
+      "usd": 19.07,
+      "comision": 0.01907,
+      "motivo": "Tesis rota por la invalidación declarada al comprarla (18:05 13/10) y repetida a 10:05 y 12:05 (14/10): salir si se aleja >10% del máximo de 90 d aunque no toque el stop. Hoy a 12,3% (de 8,3%), 1d -10,1%, 7d de +30% a +15,8%. Mismo umbral que TIA, PYTH, ATOM, ZK y ZRO: sostenerla sería mover la regla. La reabriría sólo si vuelve a <5% del máximo y lo sostiene un ciclo.",
+      "resultado_pct": -4.55
     }
   ]
 }
