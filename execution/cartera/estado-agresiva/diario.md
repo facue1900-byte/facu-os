@@ -849,3 +849,11 @@ Ajusto stop a 3% (más cerca, no más lejos): la tesis muere si pierde el mínim
 ## 2026-10-14 15:32 UTC — nota
 15:32 UTC — Sin disparos, 1 entrada, sin salidas. Vigilante: HYPE sin disparos (60 min). HYPE -0,83% (80,83 vs 81,51), stop 78,66: rebote en soporte frágil, 1 h +0,16%, 4 h -1,15%, a +1,62% del mínimo de 48 h, sin mínimo nuevo; invalida perder ~79,5; sale 14/10 19:32. ENTRADA ETH 100 USD a 2.440,99: rebote en soporte, a +1,33% del mínimo de 48 h, 1 h +0,27% sin mínimo nuevo tras 4 h -2,54% con vol 3,3x; stop ajustado a 3%; invalida perder el mínimo de 48 h; sale 15/10 15:32 si no llega a +8%. BTC -1,84% en 4 h (vol 3x), sin bloqueo. Ruptura con volumen: ninguna (TRX -0,15% del máximo con 1,2x, plana). Momentum: nada con +5% 24 h y 4 h verde (WAL +34% 24 h con 4 h -5,26% y +50% del mínimo: pump que gira). Rebote: BTC (1 h -0,06%), AVAX/LTC/NEAR/PUMP (1 h roja) siguen cayendo; QNT 1 h +1,39% tras -8,9% 48 h en par de 25 M: no es grande y líquida. 2 posiciones, ~80% en USDT.
 
+## 2026-10-14 16:32 UTC — Venta HYPEUSDT
+97.44 USD a 79.5 (-2.47% contra la compra).
+
+Rebote en soporte invalidado: hizo mínimo nuevo de 48 h (~79,35) por debajo del nivel de invalidación 79,5; 1 h -0,75%, 4 h -1,57% con vol 2x. Salgo antes del stop y del vencimiento de 24 h.
+
+## 2026-10-14 16:32 UTC — nota
+16:32 UTC — Sin disparos, sin entradas, 1 salida manual. Vigilante: ETH y HYPE sin disparos (58-60 min). SALIDA HYPE a 79,5 (-2,47%): la tesis de rebote murió, hizo mínimo nuevo de 48 h (~79,35, a +0,25%) bajo el nivel de invalidación 79,5, 1 h -0,75%, 4 h -1,57% con vol 2x. ETH -0,33% (2.432,9 vs 2.441), stop 2.367,8 (3%): rebote en soporte frágil, 1 h +0,06%, 4 h -1,83% con vol 2,7x, a +0,92% del mínimo de 48 h; invalida perder el mínimo (~2.411) o stop; sale 15/10 15:32. BTC -1,26% en 4 h (vol 2,25x), sin bloqueo. Ruptura con volumen: WAL a -0,7% del máximo con 3,25x pero no rompe y está +70% del mínimo de 48 h con 1 h +10% (estirado, par de 27 M): paso; TRX a -0,21% del máximo con 1,05x (< 1,5): no. Momentum: WAL +51% 24 h pero 1 h +10% > 4%: estirado; nada más con +5% 24 h. Rebote: BTC (+0,82%), BNB (+0,86%), AVAX (+0,77%), LTC (+0,66%), STRK, PUMP pegadas al mínimo con 1 h plana: sin giro confirmado y correlacionadas con ETH. Mercado rojo con volumen. 1 posición, ~90% en USDT: no sumo sin tesis.
+

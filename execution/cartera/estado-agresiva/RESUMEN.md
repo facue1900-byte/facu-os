@@ -1,20 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-14 15:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-14 16:32 UTC
 
-**Total: 953.29 USD (-4.67%)** desde 2026-10-07 23:06 UTC · USDT libre 754.63 · comisiones 8.92 · 78 operaciones
+**Total: 951.53 USD (-4.85%)** desde 2026-10-07 23:06 UTC · USDT libre 851.97 · comisiones 9.02 · 79 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **953.29** |
+| **Esta carpeta** | **951.53** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 983.83 |
+| hodl btc | 982.23 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 99.85 | -0.05% | 2,367.76 |
-| HYPE | trading | 98.81 | -1.09% | 78.6572 |
+| ETH | trading | 99.56 | -0.34% | 2,367.76 |
 
 ## Últimas operaciones
 
+- 2026-10-14 16:32 UTC · venta HYPE 97.44 USD a 79.5 — Rebote en soporte invalidado: hizo mínimo nuevo de 48 h (~79,35) por debajo del nivel de invalidación 79,5; 1 h -0,75%, 4 h -1,57% con vol 2
 - 2026-10-14 15:32 UTC · compra ETH 100.00 USD a 2,440.99 — Rebote en soporte: ETH a +1,33% del mínimo de 48 h, 1 h +0,27% sin mínimo nuevo tras 4 h -2,54% con vol 3,3x; BTC 4 h -1,84% (sin bloqueo). 
 - 2026-10-14 13:04 UTC · venta NEAR 97.90 USD a 4.9305 — Stop automático en 4.9305 (entrada 5.031, máximo 5.19).
 - 2026-10-14 12:30 UTC · venta ZEC 98.32 USD a 1,222.21 — Stop automático en 1,222.213 (entrada 1,241.9, máximo 1,286.54).
@@ -24,6 +24,5 @@
 - 2026-10-13 19:33 UTC · compra NEAR 100.00 USD a 5.031 — Rebote en soporte: NEAR (282 M, grande y líquida) a +2,72% del mínimo de 48 h (~4,90) tras -8% 24 h; mínimo 4,92 a las 15 h y desde ahí 4 ve
 - 2026-10-13 19:32 UTC · compra HYPE 100.00 USD a 81.51 — Rebote en soporte: HYPE (32 M) a +2,53% del mínimo de 48 h (~79,5) y dejó de caer: mínimo local 80,59 a las 15 h y desde ahí 4 velas de 1 h 
 - 2026-10-13 17:32 UTC · compra INJ 100.00 USD a 8.08 — Momentum 24 h: INJ +5,74% 24 h, 4 h +4,26%, 1 h -1,1% (no estirada), a -1,55% del máximo de 48 h, vol 21 M (justo arriba del piso) con 4 h 1
-- 2026-10-13 01:32 UTC · compra ETH 120.00 USD a 2,457.3 — Rebote en soporte: ETH (825 M USD/día) hizo mínimo de 48 h la pasada pasada con todo el radar en rojo y esta hora no hizo mínimo nuevo: rebo
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

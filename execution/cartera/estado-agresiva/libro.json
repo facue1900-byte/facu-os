@@ -4,35 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 754.6321013164635,
+  "usdt": 851.9711756631694,
   "posiciones": {
-    "HYPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.2256164887743835,
-      "entrada": 81.51,
-      "maximo": 82.79,
-      "reglas": {
-        "stop": 3.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791991860000
-    },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.04092601772231759,
       "entrada": 2440.99,
-      "maximo": 2440.99,
+      "maximo": 2441.26,
       "reglas": {
         "stop": 3.0,
         "trail": 5.0,
@@ -48,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791991980000
+      "vigilado_hasta": 1791995460000
     }
   },
-  "comisiones_usd": 8.918968999999999,
+  "comisiones_usd": 9.016405999999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -988,6 +966,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Rebote en soporte: ETH a +1,33% del mínimo de 48 h, 1 h +0,27% sin mínimo nuevo tras 4 h -2,54% con vol 3,3x; BTC 4 h -1,84% (sin bloqueo). Invalida perder el mínimo de 48 h (~-1,3%) o stop."
+    },
+    {
+      "ms": 1791995550358,
+      "fecha": "2026-10-14 16:32 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 1.2256164887743835,
+      "precio": 79.5,
+      "usd": 97.4365,
+      "comision": 0.097437,
+      "motivo": "Rebote en soporte invalidado: hizo mínimo nuevo de 48 h (~79,35) por debajo del nivel de invalidación 79,5; 1 h -0,75%, 4 h -1,57% con vol 2x. Salgo antes del stop y del vencimiento de 24 h.",
+      "resultado_pct": -2.47
     }
   ]
 }
