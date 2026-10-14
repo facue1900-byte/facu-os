@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 559.3855363829327,
+  "usdt": 658.6075862987743,
   "posiciones": {
-    "INJUSDT": {
-      "nivel": "trading",
-      "cantidad": 12.363861386138614,
-      "entrada": 8.08,
-      "maximo": 8.456,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1791955860000
-    },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.2256164887743835,
@@ -48,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791955860000
+      "vigilado_hasta": 1791959460000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -70,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791955860000
+      "vigilado_hasta": 1791959460000
     },
     "ZECUSDT": {
       "nivel": "trading",
@@ -92,10 +70,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791955860000
+      "vigilado_hasta": 1791959460000
     }
   },
-  "comisiones_usd": 8.523428,
+  "comisiones_usd": 8.622748999999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -984,6 +962,18 @@
       "comision": 0.122074,
       "motivo": "Salida por tiempo: 24 h desde la compra (13/10 01:32) sin llegar a +8% ni al stop. Rebote en soporte vivo pero sin impulso: 1 h -0,18%, 4 h -0,34%, vol 0,3x, a +3,92% del mínimo de 48 h. Cierro ~+1,9% y libero cupo para rotar.",
       "resultado_pct": 1.83
+    },
+    {
+      "ms": 1791957120000,
+      "fecha": "2026-10-14 05:52 UTC",
+      "lado": "sell",
+      "par": "INJUSDT",
+      "cantidad": 12.363861386138614,
+      "precio": 8.033199999999999,
+      "usd": 99.3214,
+      "comision": 0.099321,
+      "motivo": "Stop automático en 8.0332 (entrada 8.08, máximo 8.456).",
+      "resultado_pct": -0.58
     }
   ]
 }
