@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 537.4332501038459,
+  "usdt": 437.4332501038459,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791934260000
+      "vigilado_hasta": 1791937860000
     },
     "INJUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791934260000
+      "vigilado_hasta": 1791937860000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.2256164887743835,
       "entrada": 81.51,
-      "maximo": 81.96,
+      "maximo": 82.26,
       "reglas": {
         "stop": 3.5,
         "trail": 5.0,
@@ -70,13 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791934260000
+      "vigilado_hasta": 1791937860000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 19.856887298747765,
       "entrada": 5.031,
-      "maximo": 5.094,
+      "maximo": 5.156,
       "reglas": {
         "stop": 3.5,
         "trail": 5.0,
@@ -92,10 +92,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1791934260000
+      "vigilado_hasta": 1791937860000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.08044125936065706,
+      "entrada": 1241.9,
+      "maximo": 1241.9,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1791937980000
     }
   },
-  "comisiones_usd": 8.301354,
+  "comisiones_usd": 8.401354,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -960,6 +982,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Rebote en soporte: NEAR (282 M, grande y líquida) a +2,72% del mínimo de 48 h (~4,90) tras -8% 24 h; mínimo 4,92 a las 15 h y desde ahí 4 velas de 1 h con mínimos crecientes (4,946 / 4,96 / 4,972 / 5,02): dejó de caer. 4 h +1,5%. Tamaño 10% por 24 h todavía rojo y correlación con ETH/HYPE. Stop 3,5% (~4,85), debajo del mínimo de 48 h. Invalida: perder 4,90 o stop; sale 14/10 19:32 si no llegó a +8%."
+    },
+    {
+      "ms": 1791937969820,
+      "fecha": "2026-10-14 00:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.08044125936065706,
+      "precio": 1241.9,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h: ZEC (180 M, líquida) +8,27% 24 h, 4 h +1,9%, 1 h +1,92% (no estirada), a +10,6% del mínimo de 48 h y -7,9% del máximo: recorrido hasta +8%. Tamaño 10% por volumen 0,33x en horario muerto y correlación con el resto. Reglas por defecto. Invalida: perder la suba de 4 h (volver ~-3% desde la entrada) o stop -5%; sale 15/10 00:32 si no llegó a +8%."
     }
   ]
 }
