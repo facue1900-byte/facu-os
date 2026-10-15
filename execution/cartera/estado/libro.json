@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 237.93151798966403,
+  "usdt": 217.93151798966403,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,10 +210,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792051500000
+      "vigilado_hasta": 1792058700000
+    },
+    "PYTHUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 230.21085378499825,
+      "entrada": 0.08679,
+      "maximo": 0.08679,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792058880000
     }
   },
-  "comisiones_usd": 1.822461,
+  "comisiones_usd": 1.8424610000000001,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -982,6 +1004,18 @@
       "comision": 0.017532,
       "motivo": "Stop automático en 0.84439 (entrada 0.9623, máximo 0.9934).",
       "resultado_pct": -12.25
+    },
+    {
+      "ms": 1792058832861,
+      "fecha": "2026-10-15 10:07 UTC",
+      "lado": "buy",
+      "par": "PYTHUSDT",
+      "nivel": "riesgo",
+      "cantidad": 230.21085378499825,
+      "precio": 0.08679,
+      "usd": 20.0,
+      "comision": 0.02,
+      "motivo": "Condición declarada a 08:05 (15/10): candidata a las 10:05 sólo si sostiene <5% del máximo de 90 d un ciclo sin otra vela. Cumplida: segundo ciclo en la zona (3,7% → 4,2%), 1d +2,2% (sin vela nueva), 7d +7,1%, 30d +65%, 14,3 M/día (sobre el piso de 5 M), vola 88%. Mismo criterio que STX (10:05 14/10). Mercado grande flojo (BTC 7d -0,6%, ETH 7d -4,1%) y las últimas tres de riesgo se invalidaron rápido: tamaño chico, ~2%. Invalida: perder el stop 15% o alejarse >10% del máximo de 90 d."
     }
   ]
 }
