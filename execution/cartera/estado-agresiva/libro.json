@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 850.7217499555859,
-  "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.04092601772231759,
-      "entrada": 2440.99,
-      "maximo": 2453.4,
-      "reglas": {
-        "stop": 3.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792027860000
-    }
-  },
-  "comisiones_usd": 9.135214999999999,
+  "usdt": 947.5278469555859,
+  "posiciones": {},
+  "comisiones_usd": 9.232117999999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1002,6 +979,18 @@
       "comision": 0.058809,
       "motivo": "Stop automático en 0.061066 (entrada 0.06224, máximo 0.06428).",
       "resultado_pct": -1.89
+    },
+    {
+      "ms": 1792031040000,
+      "fecha": "2026-10-15 02:24 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.04092601772231759,
+      "precio": 2367.7603,
+      "usd": 96.903,
+      "comision": 0.096903,
+      "motivo": "Stop automático en 2,367.7603 (entrada 2,440.99, máximo 2,453.4).",
+      "resultado_pct": -3.0
     }
   ]
 }
