@@ -1,20 +1,22 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-15 14:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-15 15:33 UTC
 
-**Total: 944.86 USD (-5.51%)** desde 2026-10-07 23:06 UTC · USDT libre 647.53 · comisiones 9.53 · 84 operaciones
+**Total: 950.38 USD (-4.96%)** desde 2026-10-07 23:06 UTC · USDT libre 497.53 · comisiones 9.68 · 85 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **944.86** |
+| **Esta carpeta** | **950.38** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 974.26 |
+| hodl btc | 988.36 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 149.07 | -0.52% | 79,468.1 |
-| SOL | trading | 148.27 | -1.06% | 99.8496 |
+| SOL | trading | 151.84 | +1.33% | 100.738 |
+| BTC | trading | 151.22 | +0.92% | 79,468.1 |
+| HYPE | trading | 149.79 | -0.04% | 76.9405 |
 
 ## Últimas operaciones
 
+- 2026-10-15 15:32 UTC · compra HYPE 150.00 USD a 80.99 — Rebote en soporte confirmado: HYPE (54 M/día) segunda hora verde seguida (1 h +0,22%, 4 h +2,13%) con volumen 4 h 3,93x, a +4,33% del mínimo
 - 2026-10-15 04:32 UTC · compra BTC 150.00 USD a 81,505.8 — Rebote en soporte: BTC dejó de caer tras 2 h de capitulación; 1 h +0,66% con vol 1,98x, a +1,55% del mínimo de 48 h sin mínimo nuevo, 4 h ca
 - 2026-10-15 04:32 UTC · compra SOL 150.00 USD a 104.01 — Rebote en soporte: SOL (303 M/día) dejó de caer tras la capitulación; 1 h +1,42% con vol 2,29x, a +3,29% del mínimo de 48 h sin mínimo nuevo
 - 2026-10-15 02:24 UTC · venta ETH 96.90 USD a 2,367.76 — Stop automático en 2,367.7603 (entrada 2,440.99, máximo 2,453.4).
@@ -24,6 +26,5 @@
 - 2026-10-14 15:32 UTC · compra ETH 100.00 USD a 2,440.99 — Rebote en soporte: ETH a +1,33% del mínimo de 48 h, 1 h +0,27% sin mínimo nuevo tras 4 h -2,54% con vol 3,3x; BTC 4 h -1,84% (sin bloqueo). 
 - 2026-10-14 13:04 UTC · venta NEAR 97.90 USD a 4.9305 — Stop automático en 4.9305 (entrada 5.031, máximo 5.19).
 - 2026-10-14 12:30 UTC · venta ZEC 98.32 USD a 1,222.21 — Stop automático en 1,222.213 (entrada 1,241.9, máximo 1,286.54).
-- 2026-10-14 05:52 UTC · venta INJ 99.32 USD a 8.0332 — Stop automático en 8.0332 (entrada 8.08, máximo 8.456).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
