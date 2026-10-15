@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 347.5278469555859,
+  "usdt": 197.52784695558591,
   "posiciones": {
     "SOLUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792085460000
+      "vigilado_hasta": 1792089060000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792085460000
+      "vigilado_hasta": 1792089060000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -70,13 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792085460000
+      "vigilado_hasta": 1792089060000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 29.125364431486883,
       "entrada": 5.145,
-      "maximo": 5.145,
+      "maximo": 5.35,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -92,10 +92,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792085580000
+      "vigilado_hasta": 1792089060000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.12163149350649351,
+      "entrada": 1232.0,
+      "maximo": 1232.0,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792089180000
     }
   },
-  "comisiones_usd": 9.832118,
+  "comisiones_usd": 9.982118,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1128,6 +1150,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h con fuerza relativa: NEAR (196 M/día) +6,45% 24 h contra BTC +0,95%, 4 h +12,34% con volumen 2,49x, 1 h +0,53% (no estirada, < 4%), a -0,79% del máximo de 48 h: era la candidata a ruptura anotada a las 16:31. Stop 5%. Invalida perder el stop o volver a 1 h roja con volumen debajo de la base de las 4 h; vence 16/10 17:31."
+    },
+    {
+      "ms": 1792089146791,
+      "fecha": "2026-10-15 18:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.12163149350649351,
+      "precio": 1232.0,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: ZEC (276 M/día) +6,96% 24 h contra BTC +0,61%, 4 h +8,53% con volumen 1,74x, 1 h +0,18% (no estirada, < 4%), a -4,16% del máximo de 48 h. Era la candidata anotada a las 17:31; NEAR no se paró pero ZEC es otra narrativa (privacidad) y par grande. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 16/10 18:32. Quinta posición: tope de cantidad, no sumo más."
     }
   ]
 }

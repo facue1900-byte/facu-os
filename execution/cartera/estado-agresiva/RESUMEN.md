@@ -1,22 +1,24 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-15 17:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-15 18:32 UTC
 
-**Total: 952.56 USD (-4.74%)** desde 2026-10-07 23:06 UTC · USDT libre 347.53 · comisiones 9.83 · 86 operaciones
+**Total: 957.08 USD (-4.29%)** desde 2026-10-07 23:06 UTC · USDT libre 197.53 · comisiones 9.98 · 87 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **952.56** |
+| **Esta carpeta** | **957.08** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 989.58 |
+| hodl btc | 988.09 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| SOL | trading | 152.70 | +1.90% | 101.184 |
-| BTC | trading | 151.41 | +1.04% | 79,468.1 |
-| HYPE | trading | 151.07 | +0.81% | 77.9855 |
-| NEAR | trading | 149.85 | +0.00% | 4.88775 |
+| NEAR | trading | 155.68 | +3.89% | 5.0825 |
+| SOL | trading | 151.98 | +1.42% | 101.184 |
+| BTC | trading | 151.18 | +0.89% | 79,468.1 |
+| HYPE | trading | 150.85 | +0.67% | 77.9855 |
+| ZEC | trading | 149.86 | +0.01% | 1,170.4 |
 
 ## Últimas operaciones
 
+- 2026-10-15 18:32 UTC · compra ZEC 150.00 USD a 1,232 — Momentum de 24 h: ZEC (276 M/día) +6,96% 24 h contra BTC +0,61%, 4 h +8,53% con volumen 1,74x, 1 h +0,18% (no estirada, < 4%), a -4,16% del 
 - 2026-10-15 17:32 UTC · compra NEAR 150.00 USD a 5.145 — Momentum de 24 h con fuerza relativa: NEAR (196 M/día) +6,45% 24 h contra BTC +0,95%, 4 h +12,34% con volumen 2,49x, 1 h +0,53% (no estirada
 - 2026-10-15 15:32 UTC · compra HYPE 150.00 USD a 80.99 — Rebote en soporte confirmado: HYPE (54 M/día) segunda hora verde seguida (1 h +0,22%, 4 h +2,13%) con volumen 4 h 3,93x, a +4,33% del mínimo
 - 2026-10-15 04:32 UTC · compra BTC 150.00 USD a 81,505.8 — Rebote en soporte: BTC dejó de caer tras 2 h de capitulación; 1 h +0,66% con vol 1,98x, a +1,55% del mínimo de 48 h sin mínimo nuevo, 4 h ca
@@ -26,6 +28,5 @@
 - 2026-10-14 17:32 UTC · compra WAL 60.00 USD a 0.06224 — Momentum de 24 h: WAL +64% 24 h, 4 h +19,75% y 1 h +3,51% (< 4%, no estirada por regla), vol 4x, a -1,37% del máximo de 48 h. Tamaño reducid
 - 2026-10-14 16:32 UTC · venta HYPE 97.44 USD a 79.5 — Rebote en soporte invalidado: hizo mínimo nuevo de 48 h (~79,35) por debajo del nivel de invalidación 79,5; 1 h -0,75%, 4 h -1,57% con vol 2
 - 2026-10-14 15:32 UTC · compra ETH 100.00 USD a 2,440.99 — Rebote en soporte: ETH a +1,33% del mínimo de 48 h, 1 h +0,27% sin mínimo nuevo tras 4 h -2,54% con vol 3,3x; BTC 4 h -1,84% (sin bloqueo). 
-- 2026-10-14 13:04 UTC · venta NEAR 97.90 USD a 4.9305 — Stop automático en 4.9305 (entrada 5.031, máximo 5.19).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
