@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792096260000
+      "vigilado_hasta": 1792099860000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792096260000
+      "vigilado_hasta": 1792099860000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.850228423262131,
       "entrada": 80.99,
-      "maximo": 82.26,
+      "maximo": 82.43,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792096260000
+      "vigilado_hasta": 1792099860000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -92,13 +92,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792096260000
+      "vigilado_hasta": 1792099860000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.12163149350649351,
       "entrada": 1232.0,
-      "maximo": 1248.4,
+      "maximo": 1254.05,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -114,7 +114,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792096260000
+      "vigilado_hasta": 1792099860000
     }
   },
   "comisiones_usd": 9.982118,
