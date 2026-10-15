@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 497.5278469555859,
+  "usdt": 347.5278469555859,
   "posiciones": {
     "SOLUSDT": {
       "nivel": "trading",
       "cantidad": 1.4407268531871935,
       "entrada": 104.01,
-      "maximo": 106.3,
+      "maximo": 106.51,
       "reglas": {
         "stop": 4.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792081860000
+      "vigilado_hasta": 1792085460000
     },
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.001838520595172733,
       "entrada": 81505.75,
-      "maximo": 82631.0,
+      "maximo": 82634.3,
       "reglas": {
         "stop": 2.5,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792081860000
+      "vigilado_hasta": 1792085460000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.850228423262131,
       "entrada": 80.99,
-      "maximo": 81.91,
+      "maximo": 82.09,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792081860000
+      "vigilado_hasta": 1792085460000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 29.125364431486883,
+      "entrada": 5.145,
+      "maximo": 5.145,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792085580000
     }
   },
-  "comisiones_usd": 9.682118,
+  "comisiones_usd": 9.832118,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1094,6 +1116,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte confirmado: HYPE (54 M/día) segunda hora verde seguida (1 h +0,22%, 4 h +2,13%) con volumen 4 h 3,93x, a +4,33% del mínimo de 48 h sin mínimo nuevo y a -2,26% del máximo; BTC +1,53% en 4 h acompaña. Era la candidata anotada a las 14:32 si la 1 h verde se confirmaba con volumen. Stop 5% (queda debajo del mínimo de 48 h). Invalida perder el mínimo de 48 h o el stop. Es la tercera apuesta al mismo rebote de mercado: no sumo más correlación."
+    },
+    {
+      "ms": 1792085534687,
+      "fecha": "2026-10-15 17:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 29.125364431486883,
+      "precio": 5.145,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h con fuerza relativa: NEAR (196 M/día) +6,45% 24 h contra BTC +0,95%, 4 h +12,34% con volumen 2,49x, 1 h +0,53% (no estirada, < 4%), a -0,79% del máximo de 48 h: era la candidata a ruptura anotada a las 16:31. Stop 5%. Invalida perder el stop o volver a 1 h roja con volumen debajo de la base de las 4 h; vence 16/10 17:31."
     }
   ]
 }
