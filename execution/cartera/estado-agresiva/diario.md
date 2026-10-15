@@ -901,3 +901,16 @@ Momentum de 24 h: WAL +64% 24 h, 4 h +19,75% y 1 h +3,51% (< 4%, no estirada por
 ## 2026-10-15 03:32 UTC — nota
 03:31 UTC — Sin disparos, sin entradas, sin salidas. 0 posiciones, 100% en USDT (947,53). BTC -0,83% en 4 h (1 h -0,66%, vol 1,97x, a +0,97% del mínimo de 48 h), sin bloqueo. La caída sigue: 1 h roja en 26 de 27 pares (-0,5% a -4,5%), con volumen 1,1-3,9x. Ruptura con volumen: ninguna (TRX, la más cerca, -1,22% del máximo con 1,4x y 1 h plana). Momentum: nada con +5% 24 h y 4 h verde (WAL +47,6% 24 h y 4 h +0,98%, pero 1 h -3,28% y a -13% del máximo: se sigue dando vuelta). Rebote: ninguna grande deja de caer; BTC, ETH, SOL, XRP y BNB con 1 h roja y volumen 1,6-3,3x cerca del mínimo; PUMP (+0,16% del mínimo, 1 h -4,5%, vol 3,9x) y HYPE (+0,31%) haciendo mínimo nuevo. Sigue la capitulación, no hay giro: no agarro el cuchillo. Próxima hora: rebote solo si BTC/ETH/SOL cierran 1 h verde sin hacer mínimo nuevo.
 
+## 2026-10-15 04:32 UTC — Compra SOLUSDT (trading)
+150.00 USD a 104.01. Stop 4.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: SOL (303 M/día) dejó de caer tras la capitulación; 1 h +1,42% con vol 2,29x, a +3,29% del mínimo de 48 h sin mínimo nuevo, BTC/ETH acompañan con 1 h verde. Stop 4% (debajo del mínimo de 48 h). Invalida perder el mínimo de 48 h o el stop.
+
+## 2026-10-15 04:32 UTC — Compra BTCUSDT (trading)
+150.00 USD a 81,505.75. Stop 2.5% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: BTC dejó de caer tras 2 h de capitulación; 1 h +0,66% con vol 1,98x, a +1,55% del mínimo de 48 h sin mínimo nuevo, 4 h casi plana (-0,23%). Stop 2,5% (debajo del mínimo de 48 h). Invalida perder el mínimo de 48 h o el stop. Misma apuesta de mercado que SOL: no sumo más rebotes correlacionados.
+
+## 2026-10-15 04:32 UTC — nota
+04:32 UTC — Sin disparos, 2 entradas, sin salidas. Vigilante: carpeta en USDT, nada que vigilar. Primera hora verde después de la capitulación: 1 h verde en 26 de 27 pares (+0,2% a +2%) con volumen 1,3-4,4x, y BTC/ETH/SOL sin mínimo nuevo, que era la condición anotada para el rebote. BTC -0,23% en 4 h, sin bloqueo. ENTRADAS (rebote en soporte): SOL 150 USD a 104,01 (1 h +1,42%, vol 2,29x, +3,29% del mínimo de 48 h; stop 4%) y BTC 150 USD a 81.505,75 (1 h +0,66%, vol 1,98x, +1,55% del mínimo; stop 2,5%). Las dos son la misma apuesta de mercado: no sumo ETH ni alts correlacionadas. Invalida: perder el mínimo de 48 h o el stop; vencen 16/10 04:32. Ruptura con volumen: ninguna (TRX -0,99% del máximo con 1,29x). Momentum: WAL +48% 24 h y 4 h +7,9% pero 1 h +4,3% > 4%: estirada, y recién stopeada: paso. 2 posiciones, ~70% en USDT.
+

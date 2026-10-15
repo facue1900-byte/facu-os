@@ -4,9 +4,54 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 947.5278469555859,
-  "posiciones": {},
-  "comisiones_usd": 9.232117999999998,
+  "usdt": 647.5278469555859,
+  "posiciones": {
+    "SOLUSDT": {
+      "nivel": "trading",
+      "cantidad": 1.4407268531871935,
+      "entrada": 104.01,
+      "maximo": 104.01,
+      "reglas": {
+        "stop": 4.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792038780000
+    },
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.001838520595172733,
+      "entrada": 81505.75,
+      "maximo": 81505.75,
+      "reglas": {
+        "stop": 2.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792038780000
+    }
+  },
+  "comisiones_usd": 9.532117999999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -991,6 +1036,30 @@
       "comision": 0.096903,
       "motivo": "Stop automático en 2,367.7603 (entrada 2,440.99, máximo 2,453.4).",
       "resultado_pct": -3.0
+    },
+    {
+      "ms": 1792038763301,
+      "fecha": "2026-10-15 04:32 UTC",
+      "lado": "buy",
+      "par": "SOLUSDT",
+      "nivel": "trading",
+      "cantidad": 1.4407268531871935,
+      "precio": 104.01,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: SOL (303 M/día) dejó de caer tras la capitulación; 1 h +1,42% con vol 2,29x, a +3,29% del mínimo de 48 h sin mínimo nuevo, BTC/ETH acompañan con 1 h verde. Stop 4% (debajo del mínimo de 48 h). Invalida perder el mínimo de 48 h o el stop."
+    },
+    {
+      "ms": 1792038770318,
+      "fecha": "2026-10-15 04:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.001838520595172733,
+      "precio": 81505.75,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: BTC dejó de caer tras 2 h de capitulación; 1 h +0,66% con vol 1,98x, a +1,55% del mínimo de 48 h sin mínimo nuevo, 4 h casi plana (-0,23%). Stop 2,5% (debajo del mínimo de 48 h). Invalida perder el mínimo de 48 h o el stop. Misma apuesta de mercado que SOL: no sumo más rebotes correlacionados."
     }
   ]
 }
