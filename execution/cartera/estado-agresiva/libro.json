@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 1.4407268531871935,
       "entrada": 104.01,
-      "maximo": 104.01,
+      "maximo": 104.33,
       "reglas": {
         "stop": 4.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792038780000
+      "vigilado_hasta": 1792042260000
     },
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.001838520595172733,
       "entrada": 81505.75,
-      "maximo": 81505.75,
+      "maximo": 81743.61,
       "reglas": {
         "stop": 2.5,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792038780000
+      "vigilado_hasta": 1792042260000
     }
   },
   "comisiones_usd": 9.532117999999999,
