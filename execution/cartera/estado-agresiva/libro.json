@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 925.9494354583624,
-  "posiciones": {},
-  "comisiones_usd": 12.21202,
+  "usdt": 775.9494354583624,
+  "posiciones": {
+    "XRPUSDT": {
+      "nivel": "trading",
+      "cantidad": 115.06565307532826,
+      "entrada": 1.3023,
+      "maximo": 1.3023,
+      "reglas": {
+        "stop": 3.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792175580000
+    }
+  },
+  "comisiones_usd": 12.362020000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1243,6 +1266,18 @@
       "comision": 0.144139,
       "motivo": "Stop automático en 276.735 (entrada 287.7, máximo 291.3).",
       "resultado_pct": -3.81
+    },
+    {
+      "ms": 1792175558922,
+      "fecha": "2026-10-16 18:32 UTC",
+      "lado": "buy",
+      "par": "XRPUSDT",
+      "nivel": "trading",
+      "cantidad": 115.06565307532826,
+      "precio": 1.3023,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: XRP (103 M/día) cayó a +1,31% del mínimo de 48 h (24 h -3,14%, 4 h -2,07%) y la última hora dejó de caer (1 h +0,07%, todo el top 30 con 1 h verde). BTC -0,68% en 4 h, sin bloqueo. Stop ajustado a 3% (debajo del mínimo de 48 h, más apretado que el default): invalida perder el mínimo de 48 h; vence 17/10 18:32."
     }
   ]
 }

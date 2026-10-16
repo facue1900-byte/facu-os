@@ -1104,3 +1104,11 @@ Momentum de 24 h: FIL (24,3 M/día) +8,87% 24 h, sigue subiendo en 4 h (+1,41%) 
 ## 2026-10-16 17:32 UTC — nota
 17:31 UTC — 2 disparos, sin entradas, sin salidas manuales. Vigilante: TAO stop a 276,735 (17:06, -3,81%) y FIL stop a 1,129265 (17:18, -4,10%): FIL perdió la suba de 4 h con 1 h -2,75% y vol 1,74x, la invalidación que estaba escrita; TAO terminó en el stop que venía rondando. Hora roja amplia con volumen normal-alto (0,8-1,4x): BTC -1,28% en 4 h (sin bloqueo, umbral -3%), ETH -2,17%, SOL -2,24%, ZEC/NEAR/WLD/ZRO entre -5,5% y -8,3% en 4 h. Sin entradas: ninguna ruptura de 48 h (TRX a -0,56% del máximo con vol 0,95x, sin volumen); momentum: INJ (24 h +5,98%) y TIA (+14,16%) con 4 h rojas (-4,5%/-4%), no cumplen; rebote: BTC (+1,48% del mínimo de 48 h), XRP (+1,24%), BNB (+1,67%), HYPE (+1,7%) y STRK (+1,41%) cerca del soporte pero todos con 1 h roja — siguen cayendo, no hay señal de que frenen. Plata parada en USDT. 0 posiciones, 100% USDT (925,95). Próxima pasada: mirar si BTC/XRP/BNB dejan de hacer mínimos en 1 h para un rebote.
 
+## 2026-10-16 18:32 UTC — Compra XRPUSDT (trading)
+150.00 USD a 1.3023. Stop 3.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: XRP (103 M/día) cayó a +1,31% del mínimo de 48 h (24 h -3,14%, 4 h -2,07%) y la última hora dejó de caer (1 h +0,07%, todo el top 30 con 1 h verde). BTC -0,68% en 4 h, sin bloqueo. Stop ajustado a 3% (debajo del mínimo de 48 h, más apretado que el default): invalida perder el mínimo de 48 h; vence 17/10 18:32.
+
+## 2026-10-16 18:32 UTC — nota
+18:32 UTC — Sin disparos, 1 entrada, sin salidas. Vigilante: sin posiciones abiertas, nada que vigilar. Mercado: 4 h rojo amplio (BTC -0,68%, ETH -1,73%, SOL -1,62%; ZEC/NEAR/INJ/WLD/TIA/ZRO/STRK entre -4% y -6,5%) pero la última hora frenó: casi todo el top 30 con 1 h verde chica (+0,1/+0,5%). BTC sin bloqueo. ENTRADA (rebote en soporte): XRP 150 USD a 1,3023 — a +1,31% del mínimo de 48 h, 1 h +0,07% (dejó de hacer mínimos); stop 3% (debajo del mínimo de 48 h), vence 17/10 18:32. Descartadas: BTC/BNB a +2% del mínimo, no están en el soporte; STRK a +0,39% del mínimo pero 1 h -0,69% (sigue cayendo) y -18% en 24 h; ninguna ruptura de 48 h (TRX a -0,56% del máximo, vol 0,83x); momentum: TIA +16% 24 h pero 4 h -4,13%, nada más pasa +5%. 1 posición, ~84% en USDT.
+
