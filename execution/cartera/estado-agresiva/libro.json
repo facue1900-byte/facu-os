@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 775.9494354583624,
+  "usdt": 625.9494354583624,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
       "cantidad": 115.06565307532826,
       "entrada": 1.3023,
-      "maximo": 1.3122,
+      "maximo": 1.3124,
       "reglas": {
         "stop": 3.0,
         "trail": 5.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792189860000
+      "vigilado_hasta": 1792193460000
+    },
+    "TIAUSDT": {
+      "nivel": "trading",
+      "cantidad": 219.52827424553178,
+      "entrada": 0.6826,
+      "maximo": 0.6826,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792193580000
     }
   },
-  "comisiones_usd": 12.362020000000001,
+  "comisiones_usd": 12.512020000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1278,6 +1300,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: XRP (103 M/día) cayó a +1,31% del mínimo de 48 h (24 h -3,14%, 4 h -2,07%) y la última hora dejó de caer (1 h +0,07%, todo el top 30 con 1 h verde). BTC -0,68% en 4 h, sin bloqueo. Stop ajustado a 3% (debajo del mínimo de 48 h, más apretado que el default): invalida perder el mínimo de 48 h; vence 17/10 18:32."
+    },
+    {
+      "ms": 1792193546340,
+      "fecha": "2026-10-16 23:32 UTC",
+      "lado": "buy",
+      "par": "TIAUSDT",
+      "nivel": "trading",
+      "cantidad": 219.52827424553178,
+      "precio": 0.6826,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: TIA (40,4 M/día) +15,52% 24 h, 4 h volvió a verde (+0,34%) tras horas rojas, 1 h +1,16% (no estirada, < +4%), vol 0,9x, a -5,65% del máximo de 48 h. BTC +0,05% 4 h, sin bloqueo. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 23:32."
     }
   ]
 }

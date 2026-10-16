@@ -1124,3 +1124,11 @@ Rebote en soporte: XRP (103 M/día) cayó a +1,31% del mínimo de 48 h (24 h -3,
 ## 2026-10-16 22:32 UTC — nota
 22:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: XRP sin disparos (60 min). Mercado con rebote suave: 4 h verde casi general (+0,2/+1,9%, WLD +3,31%) y 1 h verde (+0,05/+1,6%), pero volumen muy bajo en todo el top (0,2-0,77x). BTC +0,83% en 4 h, sin bloqueo. XRP +0,62% (1,3104), stop 1,2632: 1 h +0,34%, 4 h +1,24%, a +2,06% del mínimo de 48 h — el soporte aguantó y rebota, la tesis sigue viva; vence 17/10 18:32. No muevo stops. Sin entradas: ninguna ruptura de 48 h (TRX a -0,24% del máximo con vol 0,59x, sin volumen); momentum: nada pasa +5% en 24 h salvo TIA (+14,07%) con 4 h -0,41%, no cumple; WLD 4 h +3,31% pero 24 h +2,16%; rebote: BNB (+2,01% del mínimo, vol 0,4x) y BTC (+2,53%) no están en el soporte y ya rebotan; STRK +2,21% del mínimo, -15,9% en 24 h y vol 0,44x: descartada como las horas anteriores. Plata parada en USDT. 1 posición, ~84% en USDT.
 
+## 2026-10-16 23:32 UTC — Compra TIAUSDT (trading)
+150.00 USD a 0.6826. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: TIA (40,4 M/día) +15,52% 24 h, 4 h volvió a verde (+0,34%) tras horas rojas, 1 h +1,16% (no estirada, < +4%), vol 0,9x, a -5,65% del máximo de 48 h. BTC +0,05% 4 h, sin bloqueo. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 23:32.
+
+## 2026-10-16 23:32 UTC — nota
+23:32 UTC — Sin disparos, 1 entrada, sin salidas. Vigilante: XRP sin disparos (60 min). Mercado plano: 4 h verde suave casi general (+0,1/+2,2%), 1 h mixta (-0,3/+0,4%), volumen muy bajo en todo el top (0,15-0,9x). BTC +0,05% en 4 h, sin bloqueo. XRP +0,59% (1,31), stop 1,2632: 4 h +0,94%, 1 h -0,01%, a +2,06% del mínimo de 48 h — el soporte aguantó, la tesis sigue viva; vence 17/10 18:32. No muevo stops. ENTRADA (momentum 24 h): TIA 150 USD a 0,6826 — 24 h +15,52%, 4 h volvió a verde (+0,34%), 1 h +1,16% (no estirada), vol 0,9x; vence 17/10 23:32. Descartadas: ninguna ruptura de 48 h (TRX a -0,33% del máximo con vol 0,49x); rebote: BNB (+1,9% del mínimo) y BTC (+2,29%) no están en el soporte; STRK +1,96% del mínimo, -15,8% en 24 h y vol 0,36x: descartada como las horas anteriores; INJ 24 h +1,9%, ya no pasa +5%. 2 posiciones, ~68% en USDT.
+
