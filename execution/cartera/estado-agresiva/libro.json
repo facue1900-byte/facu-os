@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 195.4142846706228,
+  "usdt": 338.57041840904367,
   "posiciones": {
     "HYPEUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792153860000
+      "vigilado_hasta": 1792157460000
     },
     "INJUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792153860000
+      "vigilado_hasta": 1792157460000
     },
     "TAOUSDT": {
       "nivel": "trading",
@@ -70,35 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792153860000
-    },
-    "ZROUSDT": {
-      "nivel": "trading",
-      "cantidad": 66.10057344508161,
-      "entrada": 2.267,
-      "maximo": 2.282,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792153860000
+      "vigilado_hasta": 1792157460000
     },
     "TIAUSDT": {
       "nivel": "trading",
       "cantidad": 224.66266866566716,
       "entrada": 0.667,
-      "maximo": 0.7101,
+      "maximo": 0.7193,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -114,10 +92,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792153860000
+      "vigilado_hasta": 1792157460000
     }
   },
-  "comisiones_usd": 11.180603000000001,
+  "comisiones_usd": 11.323902000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1258,6 +1236,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: TIA (22,5 M/día) +25,74% 24 h, sigue subiendo en 4 h (+10,58%) con volumen 5,12x, 1 h +1,26% (no estirada), a -6,84% del máximo de 48 h. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 07:32."
+    },
+    {
+      "ms": 1792155360000,
+      "fecha": "2026-10-16 12:56 UTC",
+      "lado": "sell",
+      "par": "ZROUSDT",
+      "cantidad": 66.10057344508161,
+      "precio": 2.1679,
+      "usd": 143.2994,
+      "comision": 0.143299,
+      "motivo": "Stop automático en 2.1679 (entrada 2.267, máximo 2.282).",
+      "resultado_pct": -4.37
     }
   ]
 }
