@@ -1073,3 +1073,19 @@ Momentum de 24 h: TIA (22,5 M/día) +25,74% 24 h, sigue subiendo en 4 h (+10,58%
 ## 2026-10-16 14:32 UTC — nota
 14:32 UTC — 1 disparo, sin entradas, sin salidas manuales. Vigilante: TIA toma +8% a 0,72036 (14:24): vendió la mitad (80,92 USD); queda la otra mitad con stop 0,6871 (trailing) y toma +15% pendiente. HYPE, INJ y TAO sin disparos (60 min). Mercado plano con volumen bajo (0,58-1,03x en casi todo). HYPE -0,1% (80,91), stop 78,51: 4 h -1,09%, vol 0,58x, a -2,09% del máximo; vence 16/10 15:32 — la próxima pasada sale por regla de 24 h si no llegó a +8%. INJ -0,86% (9,10), stop 8,94: 24 h +20,23%, 4 h -1,08%, vol 1,01x, a -3,22% del máximo: se enfría, sin quiebre; vence 17/10 04:32. TAO -0,1% (287,4), stop 276,74: 4 h -0,21%, vol 1,01x; vence 17/10 05:32. TIA +6,7% (0,7117): 24 h +24,82%, 4 h +3,69%, vol 2,53x, a -1,63% del máximo: la tesis camina. No muevo stops. BTC +0,18% en 4 h, sin bloqueo. Sin entradas: ninguna ruptura de 48 h con volumen (TRX a -0,09% del máximo pero vol 0,61x); FIL (24 h +9,86%, 4 h +1,23%, 1 h +0,75%) y ENA (24 h +6,19%, 4 h +1,03%, 1 h -0,15%) cumplen números de momentum pero con vol 0,6-0,73x, mismo criterio que las horas anteriores: sin tesis clara. WLD, ZEC, NEAR con 4 h rojas; AVAX y SUI debajo de +5% 24 h. 4 posiciones, ~44% en USDT.
 
+## 2026-10-16 15:02 UTC — Stop INJUSDT (vigilante)
+145.99 USD a 8.94235 (-2.58%). Stop automático en 8.94235 (entrada 9.179, máximo 9.413).
+
+## 2026-10-16 15:32 UTC — Venta HYPEUSDT
+146.19 USD a 79.01 (-2.44% contra la compra).
+
+Regla de 24 h: entró 15/10 15:32, no llegó a +8% ni al stop (-2,5%, 4 h -3,66%, 1 h -1,6%, a -4,44% del máximo de 48 h). Afuera y se rota.
+
+## 2026-10-16 15:32 UTC — Compra FILUSDT (trading)
+150.00 USD a 1.1776. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: FIL (24,3 M/día) +8,87% 24 h, sigue subiendo en 4 h (+1,41%) con volumen 1,16x, 1 h +0,42% (no estirada), a -2,26% del máximo de 48 h; único par verde en una hora roja del mercado (fuerza relativa). Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 15:32.
+
+## 2026-10-16 15:33 UTC — nota
+15:32 UTC — 1 disparo, 1 entrada, 1 salida. Vigilante: INJ stop a 8,94235 (15:02, -2,58%): el momentum enfriado de las últimas horas terminó en el stop. TAO y TIA sin disparos (60 min). Hora roja amplia con volumen normal-bajo (0,74-1,23x): BTC -1,2% en 4 h (sin bloqueo, umbral -3%), ETH -1,45%, SOL -2,05%. SALIDA (regla 24 h): HYPE a 79,01 (-2,44%), venció sin llegar a +8% ni al stop. TAO (281,2, -2,26%), stop 276,74: 4 h -2,19%, 1 h -1,54%, vol 1,23x — floja, a 1,6% del stop; el stop decide; vence 17/10 05:32. TIA (0,6925, +3,8% sobre la mitad que queda), stop 0,6871: 1 h -2,31% con vol 2,67x, 4 h -0,36% — devuelve parte, ya con la primera toma cobrada; el trailing decide. No muevo stops. ENTRADA (momentum 24 h): FIL 150 USD a 1,1776 (24 h +8,87%, 4 h +1,41%, 1 h +0,42%, vol 1,16x, a -2,26% del máximo; único verde del top 30); vence 17/10 15:32. Para registro: ninguna ruptura de 48 h (TRX a -0,42% del máximo con vol 0,76x); ningún rebote en mínimo de 48 h con la última hora sin nuevo mínimo (todo sigue cayendo en 1 h); WLD/ZEC/NEAR/ZRO con 4 h -4%. 3 posiciones, ~60% en USDT.
+

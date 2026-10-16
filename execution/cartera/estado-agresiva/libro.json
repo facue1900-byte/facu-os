@@ -4,52 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 419.40849940904366,
+  "usdt": 561.2894898841124,
   "posiciones": {
-    "HYPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.850228423262131,
-      "entrada": 80.99,
-      "maximo": 82.64,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792161060000
-    },
-    "INJUSDT": {
-      "nivel": "trading",
-      "cantidad": 16.32530776773069,
-      "entrada": 9.179,
-      "maximo": 9.413,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792161060000
-    },
     "TAOUSDT": {
       "nivel": "trading",
       "cantidad": 0.5208550573514077,
@@ -70,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792161060000
+      "vigilado_hasta": 1792164660000
     },
     "TIAUSDT": {
       "nivel": "trading",
@@ -94,10 +50,32 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1792161060000
+      "vigilado_hasta": 1792164660000
+    },
+    "FILUSDT": {
+      "nivel": "trading",
+      "cantidad": 127.25033967391305,
+      "entrada": 1.1776,
+      "maximo": 1.1776,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792164780000
     }
   },
-  "comisiones_usd": 11.404821000000002,
+  "comisiones_usd": 11.846995000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1262,6 +1240,42 @@
       "comision": 0.080919,
       "motivo": "Toma de ganancia +8% en 0.72036: vende 50% de lo que quedaba.",
       "resultado_pct": 8.0
+    },
+    {
+      "ms": 1792162920000,
+      "fecha": "2026-10-16 15:02 UTC",
+      "lado": "sell",
+      "par": "INJUSDT",
+      "cantidad": 16.32530776773069,
+      "precio": 8.94235,
+      "usd": 145.9866,
+      "comision": 0.145987,
+      "motivo": "Stop automático en 8.94235 (entrada 9.179, máximo 9.413).",
+      "resultado_pct": -2.58
+    },
+    {
+      "ms": 1792164755847,
+      "fecha": "2026-10-16 15:32 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 1.850228423262131,
+      "precio": 79.01,
+      "usd": 146.1865,
+      "comision": 0.146187,
+      "motivo": "Regla de 24 h: entró 15/10 15:32, no llegó a +8% ni al stop (-2,5%, 4 h -3,66%, 1 h -1,6%, a -4,44% del máximo de 48 h). Afuera y se rota.",
+      "resultado_pct": -2.44
+    },
+    {
+      "ms": 1792164767512,
+      "fecha": "2026-10-16 15:32 UTC",
+      "lado": "buy",
+      "par": "FILUSDT",
+      "nivel": "trading",
+      "cantidad": 127.25033967391305,
+      "precio": 1.1776,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: FIL (24,3 M/día) +8,87% 24 h, sigue subiendo en 4 h (+1,41%) con volumen 1,16x, 1 h +0,42% (no estirada), a -2,26% del máximo de 48 h; único par verde en una hora roja del mercado (fuerza relativa). Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 15:32."
     }
   ]
 }
