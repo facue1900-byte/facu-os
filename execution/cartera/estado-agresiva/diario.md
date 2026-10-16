@@ -998,3 +998,27 @@ Momentum de 24 h: ZEC (276 M/día) +6,96% 24 h contra BTC +0,61%, 4 h +8,53% con
 ## 2026-10-16 03:32 UTC — nota
 03:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: BTC, SOL, HYPE, NEAR y ZEC sin disparos (60 min). Madrugada plana y roja suave con volumen muy bajo: 1 h entre -1,4% y +1,1%, volumen 0,19-0,94x en casi todo salvo INJ/ZRO. BTC +0,58% (81.979), stop 79.468: 1 h -0,08%, 4 h -0,32%, a +2,73% del mínimo de 48 h. SOL +1,26% (105,32), stop 101,18 (trailing): 4 h -0,11%. HYPE +0,16% (81,12), stop 78,51 (trailing): 4 h -0,87%, a -2,04% del máximo de 48 h, vol 0,75x. NEAR +1,9% (5,243), stop 5,17 (trailing): 24 h +12,47%, 4 h -0,44%, a -3,68% del máximo: momentum en pausa, el stop queda a ~1,4%. ZEC -1,01% (1.219,6), stop 1.191,35 (trailing): 24 h +10,73%, 4 h -0,17%. Tesis vivas: se quedan, no muevo stops. BTC/SOL cumplen 24 h a las 04:32 sin acercarse a +8%: en la próxima pasada se sacan y se rota. BTC -0,32% en 4 h, sin bloqueo. Sin entradas: 5 posiciones (tope de cantidad). Para registro: INJ (34,7 M, 24 h +24,29%, 4 h +6,64%, vol 3,16x, 1 h -0,19%, -0,99% del máximo de 48 h) sigue cumpliendo momentum y es la primera candidata para la rotación de las 04:32 si no se da vuelta (invalida 1 h roja con volumen que devuelva la suba de 4 h); TAO (24 h +9%, 4 h +2,01%, 1 h +1,14%, -0,28% del máximo) cumpliría momentum pero en el borde de liquidez (24,8 M) y vol 0,86x: segunda candidata; ZRO 1 h -1,33%: se da vuelta. 5 posiciones, ~21% en USDT.
 
+## 2026-10-16 03:36 UTC — Stop NEARUSDT (vigilante)
+150.52 USD a 5.168 (+0.45%). Stop automático en 5.168 (entrada 5.145, máximo 5.44).
+
+## 2026-10-16 03:42 UTC — Stop ZECUSDT (vigilante)
+144.91 USD a 1,191.3475 (-3.30%). Stop automático en 1,191.3475 (entrada 1,232, máximo 1,254.05).
+
+## 2026-10-16 04:32 UTC — Venta BTCUSDT
+151.02 USD a 82,142 (+0.78% contra la compra).
+
+Rotación por regla de 24 h: entrada 15/10 04:32, en 24 h nunca llegó a +8% ni al stop (+0,7%, 1 h 0%, 4 h -0,27%, vol 0,5x). Se libera el cupo.
+
+## 2026-10-16 04:32 UTC — Venta SOLUSDT
+152.04 USD a 105.53 (+1.46% contra la compra).
+
+Rotación por regla de 24 h: entrada 15/10 04:32, sin llegar a +8% ni al stop (+1,4%, 4 h -0,07%, vol 0,54x). Se libera el cupo.
+
+## 2026-10-16 04:32 UTC — Compra INJUSDT (trading)
+150.00 USD a 9.179. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: INJ (38,8 M/día) +23,96% 24 h contra BTC +0,65%, 4 h +7,58% con volumen 4,15x, 1 h -0,31% (no estirada), a -1,22% del máximo de 48 h. Primera candidata anotada desde 01:32, ahora con liquidez holgada. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 04:32.
+
+## 2026-10-16 04:32 UTC — nota
+04:32 UTC — 2 disparos, 1 entrada, 2 salidas. Vigilante: NEAR stop a 5,168 (03:36, +0,45%) y ZEC stop a 1.191,35 (03:42, -3,3%); BTC, SOL y HYPE sin disparos. Madrugada plana con volumen muy bajo (0,24-0,8x en casi todo). Rotación por regla de 24 h: BTC (+0,78%) y SOL (+1,46%) cumplieron 24 h sin llegar a +8% ni al stop: afuera. HYPE +0,07% (81,05), stop 78,51 (trailing): 4 h -1,37%, vence 16/10 15:32, se queda. BTC -0,27% en 4 h, sin bloqueo. ENTRADA (momentum 24 h): INJ 150 USD a 9,179 (38,8 M/día, 24 h +23,96%, 4 h +7,58%, vol 4,15x, 1 h -0,31%, a -1,22% del máximo de 48 h; stop 5%), la candidata anotada desde 01:32; vence 17/10 04:32. Para registro: TAO (25 M, 24 h +7,5%, 4 h +0,85%, -0,52% del máximo) cumpliría momentum pero en el borde de liquidez y vol 1,04x: candidata si rompe el máximo con volumen; TRX en el máximo de 48 h con vol 0,79x: sin volumen; ZRO 4 h roja. 2 posiciones, ~68% en USDT: no hay nada más claro.
+

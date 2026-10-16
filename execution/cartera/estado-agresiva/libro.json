@@ -4,52 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 197.52784695558591,
+  "usdt": 645.4142846706228,
   "posiciones": {
-    "SOLUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.4407268531871935,
-      "entrada": 104.01,
-      "maximo": 106.51,
-      "reglas": {
-        "stop": 4.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792121460000
-    },
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.001838520595172733,
-      "entrada": 81505.75,
-      "maximo": 82634.3,
-      "reglas": {
-        "stop": 2.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792121460000
-    },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.850228423262131,
@@ -70,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792121460000
+      "vigilado_hasta": 1792125060000
     },
-    "NEARUSDT": {
+    "INJUSDT": {
       "nivel": "trading",
-      "cantidad": 29.125364431486883,
-      "entrada": 5.145,
-      "maximo": 5.44,
+      "cantidad": 16.32530776773069,
+      "entrada": 9.179,
+      "maximo": 9.179,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -92,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792121460000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.12163149350649351,
-      "entrada": 1232.0,
-      "maximo": 1254.05,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792121460000
+      "vigilado_hasta": 1792125180000
     }
   },
-  "comisiones_usd": 9.982118,
+  "comisiones_usd": 10.730603,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1162,6 +1096,66 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: ZEC (276 M/día) +6,96% 24 h contra BTC +0,61%, 4 h +8,53% con volumen 1,74x, 1 h +0,18% (no estirada, < 4%), a -4,16% del máximo de 48 h. Era la candidata anotada a las 17:31; NEAR no se paró pero ZEC es otra narrativa (privacidad) y par grande. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 16/10 18:32. Quinta posición: tope de cantidad, no sumo más."
+    },
+    {
+      "ms": 1792121760000,
+      "fecha": "2026-10-16 03:36 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 29.125364431486883,
+      "precio": 5.168,
+      "usd": 150.5199,
+      "comision": 0.15052,
+      "motivo": "Stop automático en 5.168 (entrada 5.145, máximo 5.44).",
+      "resultado_pct": 0.45
+    },
+    {
+      "ms": 1792122120000,
+      "fecha": "2026-10-16 03:42 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.12163149350649351,
+      "precio": 1191.3474999999999,
+      "usd": 144.9054,
+      "comision": 0.144905,
+      "motivo": "Stop automático en 1,191.3475 (entrada 1,232, máximo 1,254.05).",
+      "resultado_pct": -3.3
+    },
+    {
+      "ms": 1792125146200,
+      "fecha": "2026-10-16 04:32 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.001838520595172733,
+      "precio": 82142.0,
+      "usd": 151.0198,
+      "comision": 0.15102,
+      "motivo": "Rotación por regla de 24 h: entrada 15/10 04:32, en 24 h nunca llegó a +8% ni al stop (+0,7%, 1 h 0%, 4 h -0,27%, vol 0,5x). Se libera el cupo.",
+      "resultado_pct": 0.78
+    },
+    {
+      "ms": 1792125146974,
+      "fecha": "2026-10-16 04:32 UTC",
+      "lado": "sell",
+      "par": "SOLUSDT",
+      "cantidad": 1.4407268531871935,
+      "precio": 105.53,
+      "usd": 152.0399,
+      "comision": 0.15204,
+      "motivo": "Rotación por regla de 24 h: entrada 15/10 04:32, sin llegar a +8% ni al stop (+1,4%, 4 h -0,07%, vol 0,54x). Se libera el cupo.",
+      "resultado_pct": 1.46
+    },
+    {
+      "ms": 1792125152070,
+      "fecha": "2026-10-16 04:32 UTC",
+      "lado": "buy",
+      "par": "INJUSDT",
+      "nivel": "trading",
+      "cantidad": 16.32530776773069,
+      "precio": 9.179,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: INJ (38,8 M/día) +23,96% 24 h contra BTC +0,65%, 4 h +7,58% con volumen 4,15x, 1 h -0,31% (no estirada), a -1,22% del máximo de 48 h. Primera candidata anotada desde 01:32, ahora con liquidez holgada. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 04:32."
     }
   ]
 }
