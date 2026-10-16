@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 345.4142846706228,
+  "usdt": 195.4142846706228,
   "posiciones": {
     "HYPEUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792132260000
+      "vigilado_hasta": 1792135860000
     },
     "INJUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792132260000
+      "vigilado_hasta": 1792135860000
     },
     "TAOUSDT": {
       "nivel": "trading",
       "cantidad": 0.5208550573514077,
       "entrada": 287.7,
-      "maximo": 287.8,
+      "maximo": 291.3,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,13 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792132260000
+      "vigilado_hasta": 1792135860000
     },
     "ZROUSDT": {
       "nivel": "trading",
       "cantidad": 66.10057344508161,
       "entrada": 2.267,
-      "maximo": 2.267,
+      "maximo": 2.282,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -92,10 +92,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792132380000
+      "vigilado_hasta": 1792135860000
+    },
+    "TIAUSDT": {
+      "nivel": "trading",
+      "cantidad": 224.66266866566716,
+      "entrada": 0.667,
+      "maximo": 0.667,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792135980000
     }
   },
-  "comisiones_usd": 11.030603000000001,
+  "comisiones_usd": 11.180603000000001,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1224,6 +1246,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: ZRO (24,6 M/día) +21,81% 24 h, 4 h +3,76% con volumen 1,18x, 1 h +0,35% (no estirada), a -0,48% del máximo de 48 h; candidata anotada desde 05:32, sigue sumando. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 06:32."
+    },
+    {
+      "ms": 1792135976881,
+      "fecha": "2026-10-16 07:32 UTC",
+      "lado": "buy",
+      "par": "TIAUSDT",
+      "nivel": "trading",
+      "cantidad": 224.66266866566716,
+      "precio": 0.667,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: TIA (22,5 M/día) +25,74% 24 h, sigue subiendo en 4 h (+10,58%) con volumen 5,12x, 1 h +1,26% (no estirada), a -6,84% del máximo de 48 h. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 07:32."
     }
   ]
 }
