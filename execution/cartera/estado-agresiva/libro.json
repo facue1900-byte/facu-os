@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 645.4142846706228,
+  "usdt": 495.4142846706228,
   "posiciones": {
     "HYPEUSDT": {
       "nivel": "trading",
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792125060000
+      "vigilado_hasta": 1792128660000
     },
     "INJUSDT": {
       "nivel": "trading",
       "cantidad": 16.32530776773069,
       "entrada": 9.179,
-      "maximo": 9.179,
+      "maximo": 9.357,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792125180000
+      "vigilado_hasta": 1792128660000
+    },
+    "TAOUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.5208550573514077,
+      "entrada": 287.7,
+      "maximo": 287.7,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792128780000
     }
   },
-  "comisiones_usd": 10.730603,
+  "comisiones_usd": 10.880603,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1156,6 +1178,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: INJ (38,8 M/día) +23,96% 24 h contra BTC +0,65%, 4 h +7,58% con volumen 4,15x, 1 h -0,31% (no estirada), a -1,22% del máximo de 48 h. Primera candidata anotada desde 01:32, ahora con liquidez holgada. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 04:32."
+    },
+    {
+      "ms": 1792128762405,
+      "fecha": "2026-10-16 05:32 UTC",
+      "lado": "buy",
+      "par": "TAOUSDT",
+      "nivel": "trading",
+      "cantidad": 0.5208550573514077,
+      "precio": 287.7,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: TAO (25,6 M/día) +11,34% 24 h, 4 h +2,6% con volumen 1,14x, 1 h +0,67% (no estirada), a -0,48% del máximo de 48 h; candidata anotada desde 04:32. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 05:32."
     }
   ]
 }
