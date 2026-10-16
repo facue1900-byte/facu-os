@@ -1095,3 +1095,12 @@ Momentum de 24 h: FIL (24,3 M/día) +8,87% 24 h, sigue subiendo en 4 h (+1,41%) 
 ## 2026-10-16 16:32 UTC — nota
 16:31 UTC — 1 disparo, sin entradas, sin salidas manuales. Vigilante: TIA stop (trailing) a 0,687135 (16:12, +3,02% sobre la mitad restante, con la toma +8% ya cobrada): la tesis cerró en verde. FIL y TAO sin disparos (58-60 min). Mercado rojo suave en 4 h con rebote chico en 1 h (casi todo 1 h +0,3/+0,8%), volumen normal (0,8-1,2x). BTC -0,54% en 4 h, sin bloqueo. FIL -1,75% (1,157), stop 1,1293: 24 h +8,39%, 4 h +0,06%, 1 h -0,84% con vol 1,42x — se enfría pero no devolvió la suba de 4 h: sin invalidar, el stop decide; vence 17/10 15:32. TAO -2,5% (280,5), stop 276,74: 4 h -1,68%, 1 h 0%, vol 1,08x, a 1,3% del stop; el stop decide; vence 17/10 05:32. No muevo stops. Sin entradas: ninguna ruptura de 48 h (TRX a -0,54% del máximo con vol 0,81x); momentum: INJ (24 h +9,56%) y TIA (+13,67%) con 4 h rojas, nada más pasa +5% en 24 h; rebote: BTC/XRP/BNB/HYPE a +2,1-2,4% del mínimo de 48 h, no están en el soporte. 2 posiciones, ~69% en USDT.
 
+## 2026-10-16 17:18 UTC — Stop FILUSDT (vigilante)
+143.70 USD a 1.129265 (-4.10%). Stop automático en 1.129265 (entrada 1.1776, máximo 1.1887).
+
+## 2026-10-16 17:06 UTC — Stop TAOUSDT (vigilante)
+144.14 USD a 276.735 (-3.81%). Stop automático en 276.735 (entrada 287.7, máximo 291.3).
+
+## 2026-10-16 17:32 UTC — nota
+17:31 UTC — 2 disparos, sin entradas, sin salidas manuales. Vigilante: TAO stop a 276,735 (17:06, -3,81%) y FIL stop a 1,129265 (17:18, -4,10%): FIL perdió la suba de 4 h con 1 h -2,75% y vol 1,74x, la invalidación que estaba escrita; TAO terminó en el stop que venía rondando. Hora roja amplia con volumen normal-alto (0,8-1,4x): BTC -1,28% en 4 h (sin bloqueo, umbral -3%), ETH -2,17%, SOL -2,24%, ZEC/NEAR/WLD/ZRO entre -5,5% y -8,3% en 4 h. Sin entradas: ninguna ruptura de 48 h (TRX a -0,56% del máximo con vol 0,95x, sin volumen); momentum: INJ (24 h +5,98%) y TIA (+14,16%) con 4 h rojas (-4,5%/-4%), no cumplen; rebote: BTC (+1,48% del mínimo de 48 h), XRP (+1,24%), BNB (+1,67%), HYPE (+1,7%) y STRK (+1,41%) cerca del soporte pero todos con 1 h roja — siguen cayendo, no hay señal de que frenen. Plata parada en USDT. 0 posiciones, 100% USDT (925,95). Próxima pasada: mirar si BTC/XRP/BNB dejan de hacer mínimos en 1 h para un rebote.
+

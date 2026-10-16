@@ -4,54 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 638.3990945094872,
-  "posiciones": {
-    "TAOUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.5208550573514077,
-      "entrada": 287.7,
-      "maximo": 291.3,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792168260000
-    },
-    "FILUSDT": {
-      "nivel": "trading",
-      "cantidad": 127.25033967391305,
-      "entrada": 1.1776,
-      "maximo": 1.1887,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792168260000
-    }
-  },
-  "comisiones_usd": 11.924182000000002,
+  "usdt": 925.9494354583624,
+  "posiciones": {},
+  "comisiones_usd": 12.21202,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1264,6 +1219,30 @@
       "comision": 0.077187,
       "motivo": "Stop automático en 0.687135 (entrada 0.667, máximo 0.7233).",
       "resultado_pct": 3.02
+    },
+    {
+      "ms": 1792171080000,
+      "fecha": "2026-10-16 17:18 UTC",
+      "lado": "sell",
+      "par": "FILUSDT",
+      "cantidad": 127.25033967391305,
+      "precio": 1.129265,
+      "usd": 143.6994,
+      "comision": 0.143699,
+      "motivo": "Stop automático en 1.129265 (entrada 1.1776, máximo 1.1887).",
+      "resultado_pct": -4.1
+    },
+    {
+      "ms": 1792170360000,
+      "fecha": "2026-10-16 17:06 UTC",
+      "lado": "sell",
+      "par": "TAOUSDT",
+      "cantidad": 0.5208550573514077,
+      "precio": 276.735,
+      "usd": 144.1388,
+      "comision": 0.144139,
+      "motivo": "Stop automático en 276.735 (entrada 287.7, máximo 291.3).",
+      "resultado_pct": -3.81
     }
   ]
 }
