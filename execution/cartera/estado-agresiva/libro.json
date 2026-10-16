@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 561.2894898841124,
+  "usdt": 638.3990945094872,
   "posiciones": {
     "TAOUSDT": {
       "nivel": "trading",
@@ -26,37 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792164660000
-    },
-    "TIAUSDT": {
-      "nivel": "trading",
-      "cantidad": 112.33133433283358,
-      "entrada": 0.667,
-      "maximo": 0.7233,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [
-        8.0
-      ],
-      "vigilado_hasta": 1792164660000
+      "vigilado_hasta": 1792168260000
     },
     "FILUSDT": {
       "nivel": "trading",
       "cantidad": 127.25033967391305,
       "entrada": 1.1776,
-      "maximo": 1.1776,
+      "maximo": 1.1887,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -72,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792164780000
+      "vigilado_hasta": 1792168260000
     }
   },
-  "comisiones_usd": 11.846995000000001,
+  "comisiones_usd": 11.924182000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1276,6 +1252,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: FIL (24,3 M/día) +8,87% 24 h, sigue subiendo en 4 h (+1,41%) con volumen 1,16x, 1 h +0,42% (no estirada), a -2,26% del máximo de 48 h; único par verde en una hora roja del mercado (fuerza relativa). Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 15:32."
+    },
+    {
+      "ms": 1792167120000,
+      "fecha": "2026-10-16 16:12 UTC",
+      "lado": "sell",
+      "par": "TIAUSDT",
+      "cantidad": 112.33133433283358,
+      "precio": 0.687135,
+      "usd": 77.1868,
+      "comision": 0.077187,
+      "motivo": "Stop automático en 0.687135 (entrada 0.667, máximo 0.7233).",
+      "resultado_pct": 3.02
     }
   ]
 }
