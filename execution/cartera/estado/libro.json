@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 175.90389523489438,
+  "usdt": 196.6113523244208,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,35 +210,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
-    },
-    "PYTHUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 230.21085378499825,
-      "entrada": 0.08679,
-      "maximo": 0.10094,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "INJUSDT": {
       "nivel": "riesgo",
       "cantidad": 2.3544661795899127,
       "entrada": 8.486,
-      "maximo": 9.357,
+      "maximo": 9.413,
       "reglas": {
         "stop": 15.0,
         "trail": 15.0,
@@ -254,7 +232,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     },
     "TIAUSDT": {
       "nivel": "riesgo",
@@ -276,10 +254,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792145160000
+      "vigilado_hasta": 1792152660000
     }
   },
-  "comisiones_usd": 1.9204510000000001,
+  "comisiones_usd": 1.9411790000000002,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1108,6 +1086,18 @@
       "usd": 20.0,
       "comision": 0.02,
       "motivo": "Condición declarada a 04:05 (16/10): candidata a las 06:05 sólo si sostiene <5% del máximo de 90 d un ciclo sin otra vela. Cumplida: segundo ciclo en la zona (4,6% → 1,5%), 1d de +2,3% (4 h) a +5,6% (6 h): sumó ~3% en 2 h, alrededor de un desvío normal para su vola de 146%, no una vela nueva; 7d +31,9%, 30d +82,5%, 14,5 M/día (sobre el piso de 5 M). Ya se invalidó dos veces antes (no sostuvo), esta vez sí. Mismo criterio que PYTH, INJ y BAT. Mercado grande flojo (BTC 7d -0,6%, ETH 7d -1,7%) y vola muy alta: tamaño chico, ~2%. Invalida: perder el stop 15% o alejarse >10% del máximo de 90 d."
+    },
+    {
+      "ms": 1792152792935,
+      "fecha": "2026-10-16 12:13 UTC",
+      "lado": "sell",
+      "par": "PYTHUSDT",
+      "cantidad": 230.21085378499825,
+      "precio": 0.09004,
+      "usd": 20.7282,
+      "comision": 0.020728,
+      "motivo": "Tesis rota: la invalidación declarada desde 15/10 (y repetida a 10:05 16/10) era alejarse >10% del máximo de 90 d. A 12:05 PYTH está a 10,9% del máximo (1d -3,5%, de 8,7% a 10,9%), sin tocar el stop trailing 0,0858. Se sale por tesis, no por stop, como estaba escrito (mismo criterio que BAT 04:05). Lo liberado queda en USDT sin reinversión por reflejo; volvería sólo con una ruptura nueva a <5% que sostenga un ciclo.",
+      "resultado_pct": 3.74
     }
   ]
 }
