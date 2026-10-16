@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792143060000
+      "vigilado_hasta": 1792146660000
     },
     "INJUSDT": {
       "nivel": "trading",
       "cantidad": 16.32530776773069,
       "entrada": 9.179,
-      "maximo": 9.357,
+      "maximo": 9.413,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792143060000
+      "vigilado_hasta": 1792146660000
     },
     "TAOUSDT": {
       "nivel": "trading",
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792143060000
+      "vigilado_hasta": 1792146660000
     },
     "ZROUSDT": {
       "nivel": "trading",
@@ -92,7 +92,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792143060000
+      "vigilado_hasta": 1792146660000
     },
     "TIAUSDT": {
       "nivel": "trading",
@@ -114,7 +114,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792143060000
+      "vigilado_hasta": 1792146660000
     }
   },
   "comisiones_usd": 11.180603000000001,
