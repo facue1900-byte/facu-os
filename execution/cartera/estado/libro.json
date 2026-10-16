@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 197.93151798966403,
+  "usdt": 177.93151798966403,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "PYTHUSDT": {
       "nivel": "riesgo",
@@ -232,13 +232,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792101900000
+      "vigilado_hasta": 1792109100000
     },
     "INJUSDT": {
       "nivel": "riesgo",
       "cantidad": 2.3544661795899127,
       "entrada": 8.486,
-      "maximo": 8.486,
+      "maximo": 8.618,
       "reglas": {
         "stop": 15.0,
         "trail": 15.0,
@@ -254,10 +254,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792102080000
+      "vigilado_hasta": 1792109100000
+    },
+    "BATUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 92.97347603536528,
+      "entrada": 0.2149,
+      "maximo": 0.2149,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792109280000
     }
   },
-  "comisiones_usd": 1.8624610000000001,
+  "comisiones_usd": 1.8824610000000002,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1050,6 +1072,18 @@
       "usd": 20.0,
       "comision": 0.02,
       "motivo": "Condición declarada a 20:05 (15/10): candidata a las 22:05 sólo si sostiene <5% del máximo de 90 d un ciclo sin otra vela. Cumplida: segundo ciclo en la zona (3,3% → 2,3%), 1d de +9,6% a +10,7% (la vela del día ya estaba a las 20:05; en 2 h sumó ~1%, sin vela nueva), 7d +25,5%, 30d +56%, 24,6 M/día (sobre el piso de 5 M), vola 120%. Mismo criterio que PYTH (10:05 15/10) y STX. Mercado grande estable pero ETH 7d todavía negativo (-0,4%): tamaño chico, ~2%. Invalida: perder el stop 15% o alejarse >10% del máximo de 90 d."
+    },
+    {
+      "ms": 1792109237009,
+      "fecha": "2026-10-16 00:07 UTC",
+      "lado": "buy",
+      "par": "BATUSDT",
+      "nivel": "riesgo",
+      "cantidad": 92.97347603536528,
+      "precio": 0.2149,
+      "usd": 20.0,
+      "comision": 0.02,
+      "motivo": "Condición declarada a 22:05 (15/10): candidata a las 00:05 sólo si sostiene <5% del máximo de 90 d un ciclo sin otra vela. Cumplida: segundo ciclo en la zona (1,3% → 3,8%), sin vela nueva (en 2 h retrocedió 2,5%, no subió), 7d +59%, 30d +194%, 10,1 M/día (sobre el piso de 5 M), vola 167%. Mismo criterio que PYTH, INJ y STX. Vola muy alta y ETH 7d todavía negativo (-1,8%): tamaño chico, ~2%. Invalida: perder el stop 15% o alejarse >10% del máximo de 90 d."
     }
   ]
 }
