@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 338.57041840904367,
+  "usdt": 419.40849940904366,
   "posiciones": {
     "HYPEUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792157460000
+      "vigilado_hasta": 1792161060000
     },
     "INJUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792157460000
+      "vigilado_hasta": 1792161060000
     },
     "TAOUSDT": {
       "nivel": "trading",
@@ -70,13 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792157460000
+      "vigilado_hasta": 1792161060000
     },
     "TIAUSDT": {
       "nivel": "trading",
-      "cantidad": 224.66266866566716,
+      "cantidad": 112.33133433283358,
       "entrada": 0.667,
-      "maximo": 0.7193,
+      "maximo": 0.7233,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -91,11 +91,13 @@
           ]
         ]
       },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792157460000
+      "tomas_hechas": [
+        8.0
+      ],
+      "vigilado_hasta": 1792161060000
     }
   },
-  "comisiones_usd": 11.323902000000002,
+  "comisiones_usd": 11.404821000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1248,6 +1250,18 @@
       "comision": 0.143299,
       "motivo": "Stop automático en 2.1679 (entrada 2.267, máximo 2.282).",
       "resultado_pct": -4.37
+    },
+    {
+      "ms": 1792160640000,
+      "fecha": "2026-10-16 14:24 UTC",
+      "lado": "sell",
+      "par": "TIAUSDT",
+      "cantidad": 112.33133433283358,
+      "precio": 0.7203600000000001,
+      "usd": 80.919,
+      "comision": 0.080919,
+      "motivo": "Toma de ganancia +8% en 0.72036: vende 50% de lo que quedaba.",
+      "resultado_pct": 8.0
     }
   ]
 }
