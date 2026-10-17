@@ -1141,3 +1141,14 @@ Momentum de 24 h: TIA (40,4 M/día) +15,52% 24 h, 4 h volvió a verde (+0,34%) t
 ## 2026-10-17 02:32 UTC — nota
 02:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: TIA y XRP sin disparos (60 min). Mercado plano y dormido: 1 h mixta (-0,5/+0,4%, WLD +1,57%), 4 h rojo suave casi general, volumen muy bajo en todo el top (0,15-0,94x). BTC -0,38% en 4 h, sin bloqueo. TIA +2,93% (0,7026), stop 0,68305: 24 h +16,69%, 4 h +4,17%, 1 h +1,71% con vol 0,94x, a -2,85% del máximo de 48 h — momentum intacto, tesis viva; vence 17/10 23:32. XRP +0,15% (1,3043), stop 1,2632: 1 h +0,04%, 4 h -0,47%, a +1,59% del mínimo de 48 h — el soporte aguanta; vence 17/10 18:32. No muevo stops. Sin entradas: ninguna ruptura de 48 h (TRX a -0,27% del máximo con vol 0,42x, sin volumen); momentum: sólo TIA pasa +5% en 24 h y ya está en cartera (WLD 24 h +3,55%, no llega); rebote: BNB a +1,76% del mínimo y BTC a +2,09%, no están en el soporte; STRK +0,89% del mínimo pero 1 h -0,52% y -14,2% en 24 h: cuchillo cayendo, descartada. Plata parada en USDT. 2 posiciones, ~67% en USDT.
 
+## 2026-10-17 03:25 UTC — Toma TIAUSDT (vigilante)
+80.92 USD a 0.737208 (+8.00%). Toma de ganancia +8% en 0.737208: vende 50% de lo que quedaba.
+
+## 2026-10-17 03:32 UTC — Compra WLDUSDT (trading)
+150.00 USD a 0.5366. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: WLD (51,7 M/día) +6,92% 24 h, 4 h +3,44% sigue subiendo, 1 h +2,45% (no estirada, < +4%), vol 0,9x, a -2,3% del máximo de 48 h. BTC -0,02% 4 h, sin bloqueo. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 18/10 03:32.
+
+## 2026-10-17 03:32 UTC — nota
+03:32 UTC — 1 disparo, 1 entrada, sin salidas. Vigilante: TIA tomó la mitad a +8% en 0,737208 (03:25); XRP sin disparos (60 min). Mercado plano con 1 h verde suave casi general (+0,1/+1,4%), volumen muy bajo en todo el top (0,18-1,12x). BTC -0,02% en 4 h, sin bloqueo. TIA +8,8% (0,7427), stop 0,724375 (trailing), queda la toma a +15%: 24 h +23,55%, 4 h +8,06%, 1 h +5,68% con vol 1,12x — momentum intacto; vence 17/10 23:32. XRP +0,58% (1,3099), stop 1,2632, a +2,09% del mínimo de 48 h — el soporte aguanta; vence 17/10 18:32. No muevo stops. ENTRADA (momentum 24 h): WLD 150 USD a 0,5366 — 24 h +6,92%, 4 h +3,44%, 1 h +2,45% (no estirada), vol 0,9x, a -2,3% del máximo de 48 h; stop 5%, vence 18/10 03:32. Descartadas: ninguna ruptura de 48 h (TRX a -0,36% del máximo con vol 0,51x, sin volumen); momentum: TIA ya en cartera, nada más pasa +5% en 24 h; rebote: BNB a +1,35% del mínimo con 1 h +0,11% y vol 0,75x, mismo criterio que horas anteriores; STRK +1,36% del mínimo, 1 h -0,56% y -16,9% en 24 h: cuchillo cayendo, descartada. 3 posiciones, ~55% en USDT.
+

@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 625.9494354583624,
+  "usdt": 556.7875164583623,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,13 +26,37 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792204260000
+      "vigilado_hasta": 1792207860000
     },
     "TIAUSDT": {
       "nivel": "trading",
-      "cantidad": 219.52827424553178,
+      "cantidad": 109.76413712276589,
       "entrada": 0.6826,
-      "maximo": 0.719,
+      "maximo": 0.7625,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [
+        8.0
+      ],
+      "vigilado_hasta": 1792207860000
+    },
+    "WLDUSDT": {
+      "nivel": "trading",
+      "cantidad": 279.25829295564665,
+      "entrada": 0.5366,
+      "maximo": 0.5366,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +72,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792204260000
+      "vigilado_hasta": 1792207980000
     }
   },
-  "comisiones_usd": 12.512020000000001,
+  "comisiones_usd": 12.742939000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1312,6 +1336,30 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: TIA (40,4 M/día) +15,52% 24 h, 4 h volvió a verde (+0,34%) tras horas rojas, 1 h +1,16% (no estirada, < +4%), vol 0,9x, a -5,65% del máximo de 48 h. BTC +0,05% 4 h, sin bloqueo. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 17/10 23:32."
+    },
+    {
+      "ms": 1792207500000,
+      "fecha": "2026-10-17 03:25 UTC",
+      "lado": "sell",
+      "par": "TIAUSDT",
+      "cantidad": 109.76413712276589,
+      "precio": 0.7372080000000001,
+      "usd": 80.919,
+      "comision": 0.080919,
+      "motivo": "Toma de ganancia +8% en 0.737208: vende 50% de lo que quedaba.",
+      "resultado_pct": 8.0
+    },
+    {
+      "ms": 1792207946396,
+      "fecha": "2026-10-17 03:32 UTC",
+      "lado": "buy",
+      "par": "WLDUSDT",
+      "nivel": "trading",
+      "cantidad": 279.25829295564665,
+      "precio": 0.5366,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: WLD (51,7 M/día) +6,92% 24 h, 4 h +3,44% sigue subiendo, 1 h +2,45% (no estirada, < +4%), vol 0,9x, a -2,3% del máximo de 48 h. BTC -0,02% 4 h, sin bloqueo. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 18/10 03:32."
     }
   ]
 }
