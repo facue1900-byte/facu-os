@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792215060000
+      "vigilado_hasta": 1792218660000
     },
     "WLDUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792215060000
+      "vigilado_hasta": 1792218660000
     },
     "TIAUSDT": {
       "nivel": "trading",
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792215060000
+      "vigilado_hasta": 1792218660000
     }
   },
   "comisiones_usd": 12.972449000000003,
