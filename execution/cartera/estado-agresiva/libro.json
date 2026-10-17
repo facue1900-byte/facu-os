@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 486.21840288983753,
+  "usdt": 632.3090315065888,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792218660000
+      "vigilado_hasta": 1792222260000
     },
     "WLDUSDT": {
       "nivel": "trading",
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792218660000
-    },
-    "TIAUSDT": {
-      "nivel": "trading",
-      "cantidad": 200.17365749398877,
-      "entrada": 0.7486,
-      "maximo": 0.769,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792218660000
+      "vigilado_hasta": 1792222260000
     }
   },
-  "comisiones_usd": 12.972449000000003,
+  "comisiones_usd": 13.118686000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1382,6 +1360,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h (reentrada): TIA (45,8 M/día) +23,14% 24 h, 4 h +8,74% sigue subiendo, 1 h +1,81% (no estirada, < +4%), vol 1,25x, a -1,95% del máximo de 48 h. El trailing la sacó a las 04:06 en 0,724375 y recuperó arriba. BTC -0,06% 4 h, sin bloqueo. Stop 5%. Invalida perder el stop o 1 h roja con volumen que devuelva la suba de 4 h; vence 18/10 04:32."
+    },
+    {
+      "ms": 1792220400000,
+      "fecha": "2026-10-17 07:00 UTC",
+      "lado": "sell",
+      "par": "TIAUSDT",
+      "cantidad": 200.17365749398877,
+      "precio": 0.73055,
+      "usd": 146.2369,
+      "comision": 0.146237,
+      "motivo": "Stop automático en 0.73055 (entrada 0.7486, máximo 0.769).",
+      "resultado_pct": -2.41
     }
   ]
 }
