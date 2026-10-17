@@ -1210,3 +1210,16 @@ Salida por tesis invalidada (momentum 24 h): WLD pasó de +5,3% a -3,54% en 24 h
 ## 2026-10-17 17:32 UTC — nota
 17:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: XRP sin disparos (60 min). Mercado dormido y rojo suave: 1 h plana verde (-0,2/+0,8%), 4 h toda negativa (NEAR -3,79%, ZEC -3,37% con vol 1,9x, TIA -2,94%), 24 h rojo casi general. Sólo 15 pares sobre 20 M/día. BTC -0,25% en 4 h, sin bloqueo. XRP -0,74% (1,2927), stop 1,263231: 1 h +0,1%, 4 h -0,47%, a +0,35% del mínimo de 48 h; la vela de 17:00 no hizo mínimo nuevo (1,2882 vs 1,288 de las 16:00) — el soporte aguanta; vence 17/10 18:32: si en la próxima pasada no llegó a +8% ni al stop, sale y se rota. No muevo stops. Sin entradas: ruptura: TRX vol 1,59x pero a -0,77% del máximo de 48 h y 1 h -0,03%, no rompe; momentum: nadie pasa +5% en 24 h; rebote: BNB a +0,44% del mínimo con vol 1,49x y 1 h +0,07%, pero la vela de 17:00 hizo mínimo nuevo (711,01 < 712,67) — no dejó de caer, no entro; DOGE, SUI, HYPE, SOL igual, pegadas al mínimo sin rebote confirmado; STRK -7,9% en 24 h y -29,8% del máximo: cuchillo, descartada. Plata parada en USDT. 1 posición, ~84% en USDT.
 
+## 2026-10-17 18:32 UTC — Venta XRPUSDT
+149.29 USD a 1.2974 (-0.38% contra la compra).
+
+Salida por tiempo: 24 h desde la entrada (16/10 18:32) sin llegar a +8% ni al stop 1,263231. El soporte de 48 h aguantó (+0,72% del mínimo) pero sin rebote; rotación a USDT.
+
+## 2026-10-17 18:32 UTC — Compra BNBUSDT (trading)
+150.00 USD a 715.94. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: BNB grande y líquida a +0,69% del mínimo de 48 h (711,01, vela 17:00); la vela de 18:00 no hizo mínimo nuevo (714,90), 1 h +0,14%, vol 4 h 1,35x. Invalida: cierre horario debajo de 711 o stop 5%.
+
+## 2026-10-17 18:32 UTC — nota
+18:32 UTC — Sin disparos, 1 entrada, 1 salida. Vigilante: XRP sin disparos (60 min). Mercado dormido: 1 h verde general (0/+1,2%), 4 h rojo suave casi general, 24 h plano, volumen bajo (0,47-1,35x) salvo ZEC 2,14x (cayendo, -9% del máximo). BTC -0,03% en 4 h, sin bloqueo. SALIDA por tiempo: XRP a 1,2974 (-0,38%), 24 h sin +8% ni stop. ENTRADA (rebote en soporte): BNB 150 USD a 715,94 — a +0,69% del mínimo de 48 h (711,01, vela 17:00), la vela de 18:00 no hizo mínimo nuevo (714,90), vol 1,35x; invalida cierre horario bajo 711 o stop 5%; vence 18/10 18:32. Descartadas: ruptura: TRX a -0,71% del máximo y 1 h 0%, no rompe; momentum: nadie pasa +5% en 24 h; rebote: DOGE/SOL/HYPE sin volumen; XRP recién salida por tiempo, no recompro; STRK -6,1% en 24 h y -25,9% del máximo: cuchillo. 1 posición, ~84% en USDT.
+

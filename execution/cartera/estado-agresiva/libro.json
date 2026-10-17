@@ -4,15 +4,15 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 777.9081896970472,
+  "usdt": 777.0450818186782,
   "posiciones": {
-    "XRPUSDT": {
+    "BNBUSDT": {
       "nivel": "trading",
-      "cantidad": 115.06565307532826,
-      "entrada": 1.3023,
-      "maximo": 1.3126,
+      "cantidad": 0.2093052490432159,
+      "entrada": 715.94,
+      "maximo": 715.94,
       "reglas": {
-        "stop": 3.0,
+        "stop": 5.0,
         "trail": 5.0,
         "tp": [
           [
@@ -26,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792258260000
+      "vigilado_hasta": 1792261980000
     }
   },
-  "comisiones_usd": 13.264431000000002,
+  "comisiones_usd": 13.563717000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1362,6 +1362,30 @@
       "comision": 0.145745,
       "motivo": "Salida por tesis invalidada (momentum 24 h): WLD pasó de +5,3% a -3,54% en 24 h, 4 h -2,06% y 1 h -0,57%, ya no cumple el +5% en 24 h ni sigue subiendo. Salgo en -2,7% antes de que llegue al stop 0,51281 (-4,5%). Rotación a USDT.",
       "resultado_pct": -2.74
+    },
+    {
+      "ms": 1792261938692,
+      "fecha": "2026-10-17 18:32 UTC",
+      "lado": "sell",
+      "par": "XRPUSDT",
+      "cantidad": 115.06565307532826,
+      "precio": 1.2974,
+      "usd": 149.2862,
+      "comision": 0.149286,
+      "motivo": "Salida por tiempo: 24 h desde la entrada (16/10 18:32) sin llegar a +8% ni al stop 1,263231. El soporte de 48 h aguantó (+0,72% del mínimo) pero sin rebote; rotación a USDT.",
+      "resultado_pct": -0.38
+    },
+    {
+      "ms": 1792261948007,
+      "fecha": "2026-10-17 18:32 UTC",
+      "lado": "buy",
+      "par": "BNBUSDT",
+      "nivel": "trading",
+      "cantidad": 0.2093052490432159,
+      "precio": 715.94,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: BNB grande y líquida a +0,69% del mínimo de 48 h (711,01, vela 17:00); la vela de 18:00 no hizo mínimo nuevo (714,90), 1 h +0,14%, vol 4 h 1,35x. Invalida: cierre horario debajo de 711 o stop 5%."
     }
   ]
 }
