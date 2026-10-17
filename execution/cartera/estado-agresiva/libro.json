@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792200660000
+      "vigilado_hasta": 1792204260000
     },
     "TIAUSDT": {
       "nivel": "trading",
       "cantidad": 219.52827424553178,
       "entrada": 0.6826,
-      "maximo": 0.6961,
+      "maximo": 0.719,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792200660000
+      "vigilado_hasta": 1792204260000
     }
   },
   "comisiones_usd": 12.512020000000001,
