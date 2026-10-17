@@ -82,13 +82,13 @@ potencial de $51,4M/mes. Cada mes de atraso en un alta cuesta entre $2M y $15M.
 |---|---|---|
 | ago-2026 | La Jaula | $2M |
 | nov-2026 | Cafetería | $3,5M |
-| dic-2026 | Peak One | $4M |
-| ene-2027 | Pizzería $2M + Salón Multiespacios $2,5M + Heladería nueva $5M | $9,5M |
+| ene-2027 | Pizzería $2M + Salón Multiespacios $2,5M + Heladería nueva $5M — 🔴 16/10: la galería recién arrancó obra en oct, esta fecha no se sostiene (falta fecha de Facu) | $9,5M |
+| mar-2027 | Peak One (corrido de dic-26 el 16/10: la obra arrancó en oct; $4M es base, se cobra con IPC) | $4M + IPC |
 | ~jul-2027 | Market | $4M |
 | post-Market | Comercios 1 a 6 | $12M |
 
-Run-rate neto comprometido a enero 2027: **$17,12M/mes**.
-Peak One y Salón pagan solo expensas hasta nov y dic. La Cafetería paga dos meses de
+Run-rate neto comprometido a enero 2027: **$17,12M/mes**. ⚠️ Desde el 16/10 ya no vale: incluía a Peak One, que pasó a marzo, y la galería, que no llega a enero.
+Peak One paga solo expensas hasta feb-27 y el Salón hasta dic-26. La Cafetería paga dos meses de
 expensas solas (sep y oct) antes del alquiler.
 
 **Próxima alta a controlar: La Jaula, agosto 2026.**
