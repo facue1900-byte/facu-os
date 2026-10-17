@@ -27,7 +27,9 @@ RAMPA = [
     # Cafetería: paga las expensas de agosto en septiembre, dos meses de expensas
     # solas (sep y oct), y recién en noviembre arranca el alquiler.
     ("Cafeteria",           "2026-11",  3_500_000),
-    ("Peak One",            "2026-12",  4_000_000),
+    # Peak One: la obra arrancó recién en oct-26; alquiler desde mar-27 (Facu, 16/10/2026).
+    # Los $4M son el valor BASE: en marzo se cobra ajustado por IPC trimestral.
+    ("Peak One",            "2027-03",  4_000_000),
     # $2M es el número que dio Facu el 27/07 para el local nuevo de 47,9 m²
     # (la pestaña Alquileres dice $1,9M, pero para un local de 83,6 m² que no es este).
     ("Pizzeria",            "2027-01",  2_000_000),
@@ -53,7 +55,7 @@ RAMPA = [
 # Locales que hoy pagan solo expensas: el cobro existe pero NO es alquiler.
 # Monto de expensas segun la pestaña Alquileres, para poder descontarlo.
 SOLO_EXPENSAS = {
-    "Peak One": 1_710_269,           # hasta noviembre 2026 inclusive
+    "Peak One": 1_710_269,           # hasta febrero 2027 inclusive (alta corrida a mar-27)
     "Salon Multiespacios": 818_244,  # hasta diciembre 2026 inclusive
     "Cafeteria": 979_912,            # septiembre y octubre 2026
 }
