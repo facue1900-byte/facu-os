@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 627.0450818186782,
+  "usdt": 707.8831628186782,
   "posiciones": {
     "BNBUSDT": {
       "nivel": "trading",
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792301460000
+      "vigilado_hasta": 1792305060000
     },
     "SANDUSDT": {
       "nivel": "trading",
-      "cantidad": 2456.55737704918,
+      "cantidad": 1228.27868852459,
       "entrada": 0.061,
-      "maximo": 0.06557,
+      "maximo": 0.0667,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -47,11 +47,13 @@
           ]
         ]
       },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792301460000
+      "tomas_hechas": [
+        8.0
+      ],
+      "vigilado_hasta": 1792305060000
     }
   },
-  "comisiones_usd": 13.713717000000003,
+  "comisiones_usd": 13.794636000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1420,6 +1422,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: SAND +10,23% en 24 h, sigue subiendo en 4 h (+2,17%) y 1 h +1,89% (no estirada, < +4%); vol 24 h 20,4 M, vol 4 h 0,9x. Invalida: 4 h vuelve a negativo con cierre horario debajo de la entrada -3%, o stop 5%."
+    },
+    {
+      "ms": 1792302300000,
+      "fecha": "2026-10-18 05:45 UTC",
+      "lado": "sell",
+      "par": "SANDUSDT",
+      "cantidad": 1228.27868852459,
+      "precio": 0.06588000000000001,
+      "usd": 80.919,
+      "comision": 0.080919,
+      "motivo": "Toma de ganancia +8% en 0.06588: vende 50% de lo que quedaba.",
+      "resultado_pct": 8.0
     }
   ]
 }
