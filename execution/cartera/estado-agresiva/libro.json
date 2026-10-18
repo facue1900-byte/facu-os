@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792297860000
+      "vigilado_hasta": 1792301460000
     },
     "SANDUSDT": {
       "nivel": "trading",
       "cantidad": 2456.55737704918,
       "entrada": 0.061,
-      "maximo": 0.065,
+      "maximo": 0.06557,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792297860000
+      "vigilado_hasta": 1792301460000
     }
   },
   "comisiones_usd": 13.713717000000003,
