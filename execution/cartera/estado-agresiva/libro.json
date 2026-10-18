@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 935.9320007572718,
-  "posiciones": {},
-  "comisiones_usd": 14.022913000000003,
+  "usdt": 785.9320007572718,
+  "posiciones": {
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.06370523415977962,
+      "entrada": 2352.24,
+      "maximo": 2352.24,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792355580000
+    }
+  },
+  "comisiones_usd": 14.172913000000003,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1411,6 +1434,18 @@
       "comision": 0.148837,
       "motivo": "Salida anticipada del rebote en soporte: 4 velas horarias seguidas con mínimos más bajos (716,67 → 713,05 → 711,36 → 711,11), pegada al mínimo de 48 h (+0,15%) con volumen de venta 1,55x; no dejó de caer. Vence por tiempo a las 18:32 y +8% (≈776) en 2 h no es realista; quedarme es exponerme al stop (688) sin tesis. Salgo y quedo en USDT.",
       "resultado_pct": -0.68
+    },
+    {
+      "ms": 1792355549060,
+      "fecha": "2026-10-18 20:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.06370523415977962,
+      "precio": 2352.24,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: ETH (408 M/día) llegó al mínimo de 48 h y dejó de caer: 1 h +0,62% a +1,02% del mínimo con volumen 4 h 1,74x; cumple la condición fijada a las 17:32 (1 h > +0,5% y vol >= 1,5x). BTC -0,12% en 4 h, sin bloqueo. Invalida: cierre horario bajo el mínimo de 48 h (~1% bajo la entrada) o el stop 5%; vence en 24 h si no llega a +8%."
     }
   ]
 }

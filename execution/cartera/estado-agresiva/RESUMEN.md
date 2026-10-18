@@ -1,18 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-18 19:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-18 20:32 UTC
 
-**Total: 935.93 USD (-6.41%)** desde 2026-10-07 23:06 UTC · USDT libre 935.93 · comisiones 14.02 · 117 operaciones
+**Total: 935.78 USD (-6.42%)** desde 2026-10-07 23:06 UTC · USDT libre 785.93 · comisiones 14.17 · 118 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **935.93** |
+| **Esta carpeta** | **935.78** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 973.12 |
+| hodl btc | 972.82 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| ETH | trading | 149.85 | -0.00% | 2,234.63 |
 
 ## Últimas operaciones
 
+- 2026-10-18 20:32 UTC · compra ETH 150.00 USD a 2,352.24 — Rebote en soporte: ETH (408 M/día) llegó al mínimo de 48 h y dejó de caer: 1 h +0,62% a +1,02% del mínimo con volumen 4 h 1,74x; cumple la c
 - 2026-10-18 16:32 UTC · venta BNB 148.84 USD a 711.1 — Salida anticipada del rebote en soporte: 4 velas horarias seguidas con mínimos más bajos (716,67 → 713,05 → 711,36 → 711,11), pegada al míni
 - 2026-10-18 06:57 UTC · venta SAND 79.44 USD a 0.064676 — Stop automático en 0.064676 (entrada 0.061, máximo 0.06808).
 - 2026-10-18 05:45 UTC · venta SAND 80.92 USD a 0.06588 — Toma de ganancia +8% en 0.06588: vende 50% de lo que quedaba.
@@ -22,6 +24,5 @@
 - 2026-10-17 08:32 UTC · venta WLD 145.74 USD a 0.5219 — Salida por tesis invalidada (momentum 24 h): WLD pasó de +5,3% a -3,54% en 24 h, 4 h -2,06% y 1 h -0,57%, ya no cumple el +5% en 24 h ni sig
 - 2026-10-17 07:00 UTC · venta TIA 146.24 USD a 0.73055 — Stop automático en 0.73055 (entrada 0.7486, máximo 0.769).
 - 2026-10-17 04:32 UTC · compra TIA 150.00 USD a 0.7486 — Momentum de 24 h (reentrada): TIA (45,8 M/día) +23,14% 24 h, 4 h +8,74% sigue subiendo, 1 h +1,81% (no estirada, < +4%), vol 1,25x, a -1,95%
-- 2026-10-17 04:06 UTC · venta TIA 79.51 USD a 0.724375 — Stop automático en 0.724375 (entrada 0.6826, máximo 0.7625).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

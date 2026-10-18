@@ -1314,3 +1314,11 @@ Salida anticipada del rebote en soporte: 4 velas horarias seguidas con mínimos 
 ## 2026-10-18 19:32 UTC — nota
 19:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: sin posiciones. Mercado con 1 h roja general (-1,99/-0,25%), 4 h rojo general (HBAR -3,62%, WLD -2,1%, ENA -2,03%, ZEC -1,99%), 24 h rojo general, volumen 0,61-1,46x. Sólo 14 pares sobre 20 M/día. BTC -0,23% en 4 h, sin bloqueo (umbral -3%). Sin entradas: ruptura: nadie cerca del máximo de 48 h (BTC -1,58% con 0,91x, BNB -1,94% con 0,85x, el resto -3/-13%); momentum: nadie pasa +5% en 24 h (todo el top en rojo, HBAR -2,78% con 4 h -3,62%); rebote: todo el top pegado al mínimo de 48 h (BNB 0,1%, ENA 0,17%, BTC/ETH/HYPE 0,21%, UNI 0,23%) con 1 h roja en los 14 pares: siguen haciendo mínimo, ninguno dejó de caer. La condición de las 17:32 (cierre horario sobre el mínimo con 1 h > +0,5% y vol ≥ 1,5x) sigue sin cumplirse en ningún par. Plata parada en USDT. 0 posiciones, 100% en USDT.
 
+## 2026-10-18 20:32 UTC — Compra ETHUSDT (trading)
+150.00 USD a 2,352.24. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: ETH (408 M/día) llegó al mínimo de 48 h y dejó de caer: 1 h +0,62% a +1,02% del mínimo con volumen 4 h 1,74x; cumple la condición fijada a las 17:32 (1 h > +0,5% y vol >= 1,5x). BTC -0,12% en 4 h, sin bloqueo. Invalida: cierre horario bajo el mínimo de 48 h (~1% bajo la entrada) o el stop 5%; vence en 24 h si no llega a +8%.
+
+## 2026-10-18 20:32 UTC — nota
+20:32 UTC — Sin disparos, 1 entrada, sin salidas. Vigilante: sin posiciones. Mercado con 1 h verde general (+0,12/+1,14%) tras la caída, 4 h rojo general (HBAR -4,02%, ENA -2,41%, NEAR -2,3%), 24 h rojo general, volumen 0,78-2,16x. Sólo 14 pares sobre 20 M/día. BTC -0,12% en 4 h, sin bloqueo. ENTRADA ETH 150 USD a 2352,24 (rebote en soporte): +1,02% del mínimo de 48 h, 1 h +0,62%, vol 1,74x — cumple la condición de las 17:32. Stop 5%, trailing 5%, tomas +8%/+15%; invalida cierre horario bajo el mínimo de 48 h (~2329); vence 19/10 20:32. No abro más: SUI (1 h +0,7%, 1,55x) y ENA (1 h +1,14%, 2,16x) también cumplen pero 48 h -6,7/-10%: más cuchillo y misma apuesta correlacionada con ETH; HBAR 4 h -4%: se cae. Ruptura: nadie cerca del máximo de 48 h; momentum: nadie +5% en 24 h. 1 posición, ~84% en USDT.
+
