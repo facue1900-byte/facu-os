@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 198.72574647154576,
+  "usdt": 217.05348039154575,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     },
     "INJUSDT": {
       "nivel": "riesgo",
@@ -232,32 +232,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
-    },
-    "AUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 177.6,
-      "entrada": 0.1125,
-      "maximo": 0.1151,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792296300000
+      "vigilado_hasta": 1792303560000
     }
   },
-  "comisiones_usd": 1.9833160000000003,
+  "comisiones_usd": 2.0016620000000005,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1122,6 +1100,18 @@
       "usd": 20.0,
       "comision": 0.02,
       "motivo": "Condición declarada a 08:05 (17/10): candidata a las 10:05 sólo si sostiene <5% del máximo de 90 d sin otra vela y con volumen >= 5 M. Cumplida: segundo ciclo en la zona (1,8% -> 3,2%), 1d de +8,3% a +7,3% (sin vela nueva), 7d +8,9%, 30d +42,6%, 90d +65,4%, 6 M/día (sobre el piso), vola 96%. Mercado grande flojo (BTC 7d -1,7%, ETH 7d -2,8%): tamaño chico, ~2%. Invalida: perder el stop 15% o alejarse >10% del máximo de 90 d."
+    },
+    {
+      "ms": 1792303696212,
+      "fecha": "2026-10-18 06:08 UTC",
+      "lado": "sell",
+      "par": "AUSDT",
+      "cantidad": 177.6,
+      "precio": 0.1033,
+      "usd": 18.3461,
+      "comision": 0.018346,
+      "motivo": "Tesis rota (definida al comprar el 17/10 10:05): ruptura cerca del máximo de 90 d; invalidación = alejarse >10% del máximo. Hoy a 10,9% del máximo, 1d -7,5% y volumen 4,3 M (bajo el piso de 5 M de riesgo). Sale aunque no tocó el stop (0,0978). Volvería sólo con una ruptura nueva a <5% del máximo con volumen >= 5 M sostenida un ciclo.",
+      "resultado_pct": -8.18
     }
   ]
 }

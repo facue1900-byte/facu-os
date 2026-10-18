@@ -1,32 +1,32 @@
-# Carpeta cripto ficticia — 2026-10-18 04:07 UTC
+# Carpeta cripto ficticia — 2026-10-18 06:08 UTC
 
-**Total: 941.10 USD (-5.89%)** desde 2026-10-07 20:58 UTC · USDT libre 198.73 · comisiones 1.98 · 72 operaciones
+**Total: 937.05 USD (-6.30%)** desde 2026-10-07 20:58 UTC · USDT libre 217.05 · comisiones 2.00 · 73 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **941.10** |
+| **Esta carpeta** | **937.05** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 981.48 |
-| plan inicial sin tocar | 921.37 |
+| hodl btc | 979.61 |
+| plan inicial sin tocar | 915.55 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 294.13 | -1.86% | 63,264 |
-| ETH | conservador | 94.04 | -5.86% | 1,940.46 |
-| SOL | medio | 62.78 | -10.22% | 95.2922 |
-| BNB | conservador | 46.77 | -6.37% | 582.173 |
-| LINK | medio | 35.96 | -10.02% | 10.9609 |
-| AAVE | medio | 35.20 | -11.90% | 142.91 |
-| AVAX | medio | 34.98 | -12.47% | 9.20942 |
-| XRP | medio | 27.41 | -8.55% | 1.16653 |
-| SUI | medio | 26.35 | -12.06% | 0.92168 |
-| TAO | medio | 23.24 | -6.95% | 241.6 |
-| LTC | medio | 22.34 | -10.55% | 54.243 |
-| INJ | riesgo | 20.31 | +1.67% | 8.00105 |
-| A | riesgo | 18.86 | -5.60% | 0.097835 |
+| BTC | conservador | 293.57 | -2.05% | 63,264 |
+| ETH | conservador | 93.62 | -6.28% | 1,940.46 |
+| SOL | medio | 62.33 | -10.87% | 95.2922 |
+| BNB | conservador | 46.64 | -6.62% | 582.173 |
+| LINK | medio | 35.80 | -10.41% | 10.9609 |
+| AAVE | medio | 34.87 | -12.73% | 142.91 |
+| AVAX | medio | 34.67 | -13.23% | 9.20942 |
+| XRP | medio | 27.29 | -8.93% | 1.16653 |
+| SUI | medio | 26.03 | -13.13% | 0.92168 |
+| TAO | medio | 22.91 | -8.26% | 241.6 |
+| LTC | medio | 22.21 | -11.08% | 54.243 |
+| INJ | riesgo | 20.04 | +0.28% | 8.00105 |
 
 ## Últimas operaciones
 
+- 2026-10-18 06:08 UTC · venta A 18.35 USD a 0.1033 — Tesis rota (definida al comprar el 17/10 10:05): ruptura cerca del máximo de 90 d; invalidación = alejarse >10% del máximo. Hoy a 10,9% del 
 - 2026-10-17 10:07 UTC · compra A 20.00 USD a 0.1125 — Condición declarada a 08:05 (17/10): candidata a las 10:05 sólo si sostiene <5% del máximo de 90 d sin otra vela y con volumen >= 5 M. Cumpl
 - 2026-10-17 10:07 UTC · venta TIA 22.14 USD a 0.6898 — Tesis rota: la invalidación declarada desde 06:05 (16/10) y repetida a 08:05 (17/10) era alejarse >10% del máximo de 90 d aunque no toque el
 - 2026-10-16 12:13 UTC · venta PYTH 20.73 USD a 0.09004 — Tesis rota: la invalidación declarada desde 15/10 (y repetida a 10:05 16/10) era alejarse >10% del máximo de 90 d. A 12:05 PYTH está a 10,9%
@@ -36,6 +36,5 @@
 - 2026-10-15 22:07 UTC · compra INJ 20.00 USD a 8.486 — Condición declarada a 20:05 (15/10): candidata a las 22:05 sólo si sostiene <5% del máximo de 90 d un ciclo sin otra vela. Cumplida: segundo
 - 2026-10-15 10:07 UTC · compra PYTH 20.00 USD a 0.08679 — Condición declarada a 08:05 (15/10): candidata a las 10:05 sólo si sostiene <5% del máximo de 90 d un ciclo sin otra vela. Cumplida: segundo
 - 2026-10-15 06:05 UTC · venta AERO 17.53 USD a 0.84439 — Stop automático en 0.84439 (entrada 0.9623, máximo 0.9934).
-- 2026-10-14 16:08 UTC · venta STX 18.51 USD a 0.4132 — Tesis rota por la invalidación declarada al comprarla (10:05 14/10) y repetida a 12:05 y 14:05: salir si se aleja >10% del máximo de 90 d au
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
