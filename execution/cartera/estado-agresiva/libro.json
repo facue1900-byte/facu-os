@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 777.0450818186782,
+  "usdt": 627.0450818186782,
   "posiciones": {
     "BNBUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792287060000
+      "vigilado_hasta": 1792290660000
+    },
+    "SANDUSDT": {
+      "nivel": "trading",
+      "cantidad": 2456.55737704918,
+      "entrada": 0.061,
+      "maximo": 0.061,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792290780000
     }
   },
-  "comisiones_usd": 13.563717000000002,
+  "comisiones_usd": 13.713717000000003,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1386,6 +1408,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: BNB grande y líquida a +0,69% del mínimo de 48 h (711,01, vela 17:00); la vela de 18:00 no hizo mínimo nuevo (714,90), 1 h +0,14%, vol 4 h 1,35x. Invalida: cierre horario debajo de 711 o stop 5%."
+    },
+    {
+      "ms": 1792290760342,
+      "fecha": "2026-10-18 02:32 UTC",
+      "lado": "buy",
+      "par": "SANDUSDT",
+      "nivel": "trading",
+      "cantidad": 2456.55737704918,
+      "precio": 0.061,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: SAND +10,23% en 24 h, sigue subiendo en 4 h (+2,17%) y 1 h +1,89% (no estirada, < +4%); vol 24 h 20,4 M, vol 4 h 0,9x. Invalida: 4 h vuelve a negativo con cierre horario debajo de la entrada -3%, o stop 5%."
     }
   ]
 }
