@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.2093052490432159,
       "entrada": 715.94,
-      "maximo": 722.9,
+      "maximo": 723.45,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792294260000
+      "vigilado_hasta": 1792297860000
     },
     "SANDUSDT": {
       "nivel": "trading",
       "cantidad": 2456.55737704918,
       "entrada": 0.061,
-      "maximo": 0.06297,
+      "maximo": 0.065,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792294260000
+      "vigilado_hasta": 1792297860000
     }
   },
   "comisiones_usd": 13.713717000000003,
