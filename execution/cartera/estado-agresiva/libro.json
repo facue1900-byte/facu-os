@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 707.8831628186782,
+  "usdt": 787.2438751252356,
   "posiciones": {
     "BNBUSDT": {
       "nivel": "trading",
@@ -26,34 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792305060000
-    },
-    "SANDUSDT": {
-      "nivel": "trading",
-      "cantidad": 1228.27868852459,
-      "entrada": 0.061,
-      "maximo": 0.0667,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [
-        8.0
-      ],
-      "vigilado_hasta": 1792305060000
+      "vigilado_hasta": 1792308660000
     }
   },
-  "comisiones_usd": 13.794636000000002,
+  "comisiones_usd": 13.874076000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1434,6 +1410,18 @@
       "comision": 0.080919,
       "motivo": "Toma de ganancia +8% en 0.06588: vende 50% de lo que quedaba.",
       "resultado_pct": 8.0
+    },
+    {
+      "ms": 1792306620000,
+      "fecha": "2026-10-18 06:57 UTC",
+      "lado": "sell",
+      "par": "SANDUSDT",
+      "cantidad": 1228.27868852459,
+      "precio": 0.064676,
+      "usd": 79.4402,
+      "comision": 0.07944,
+      "motivo": "Stop automático en 0.064676 (entrada 0.061, máximo 0.06808).",
+      "resultado_pct": 6.03
     }
   ]
 }
