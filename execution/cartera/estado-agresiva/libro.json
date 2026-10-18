@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 787.2438751252356,
-  "posiciones": {
-    "BNBUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.2093052490432159,
-      "entrada": 715.94,
-      "maximo": 724.25,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792337460000
-    }
-  },
-  "comisiones_usd": 13.874076000000002,
+  "usdt": 935.9320007572718,
+  "posiciones": {},
+  "comisiones_usd": 14.022913000000003,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1422,6 +1399,18 @@
       "comision": 0.07944,
       "motivo": "Stop automático en 0.064676 (entrada 0.061, máximo 0.06808).",
       "resultado_pct": 6.03
+    },
+    {
+      "ms": 1792341158378,
+      "fecha": "2026-10-18 16:32 UTC",
+      "lado": "sell",
+      "par": "BNBUSDT",
+      "cantidad": 0.2093052490432159,
+      "precio": 711.1,
+      "usd": 148.837,
+      "comision": 0.148837,
+      "motivo": "Salida anticipada del rebote en soporte: 4 velas horarias seguidas con mínimos más bajos (716,67 → 713,05 → 711,36 → 711,11), pegada al mínimo de 48 h (+0,15%) con volumen de venta 1,55x; no dejó de caer. Vence por tiempo a las 18:32 y +8% (≈776) en 2 h no es realista; quedarme es exponerme al stop (688) sin tesis. Salgo y quedo en USDT.",
+      "resultado_pct": -0.68
     }
   ]
 }
