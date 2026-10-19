@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 480.81801524414595,
+  "usdt": 629.844763435032,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,29 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792427460000
-    },
-    "WLDUSDT": {
-      "nivel": "trading",
-      "cantidad": 293.07647173870527,
-      "entrada": 0.5113,
-      "maximo": 0.516,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792427460000
+      "vigilado_hasta": 1792431060000
     },
     "INJUSDT": {
       "nivel": "trading",
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792427460000
+      "vigilado_hasta": 1792431060000
     }
   },
-  "comisiones_usd": 15.368244000000004,
+  "comisiones_usd": 15.517420000000005,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1586,6 +1564,18 @@
       "comision": 0.148053,
       "motivo": "Momentum de 24 h invalidado: 4 h -0,72% (negativo), a -1,2% del máximo de 48 h, 1 h +0,24% sin fuerza. La invalidación fijada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
       "resultado_pct": -1.2
+    },
+    {
+      "ms": 1792431169645,
+      "fecha": "2026-10-19 17:32 UTC",
+      "lado": "sell",
+      "par": "WLDUSDT",
+      "cantidad": 293.07647173870527,
+      "precio": 0.509,
+      "usd": 149.1759,
+      "comision": 0.149176,
+      "motivo": "Momentum de 24 h invalidado: 4 h -0,37% (negativo), 1 h -0,43%, a -1,63% del máximo de 48 h. La invalidación fijada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
+      "resultado_pct": -0.45
     }
   ]
 }
