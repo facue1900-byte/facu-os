@@ -1374,3 +1374,16 @@ Momentum de 24 h invalidado: 4 h -0,98% (negativo), 1 h -1,22%, 24 h cayó de +6
 ## 2026-10-19 10:31 UTC — nota
 10:31 UTC — Sin disparos, sin entradas, 1 salida. Vigilante: ETH y PEPE sin disparos (60 min). Mercado rojo general: 1 h (-2,12/-0,09%), 4 h rojo casi general salvo WLD +0,46% (ENA -2,1%, ZEC -1,99%, SUI -1,55%), 24 h casi nulo salvo HBAR -6,25% y PUMP/PEPE +3,3/+3,9%, volumen 0,44-1,7x. 19 pares sobre 20 M/día. BTC -0,88% en 4 h, sin bloqueo. SALIDA PEPE a 0,00000406 (-0,98%): la invalidación fijada (4 h negativo) se cumplió — 4 h -0,98%, 1 h -1,22%, 24 h bajó a +3,85%. ETH +2,85% (2419,17), stop 2323,96 (trailing): 1 h -0,78%, 4 h -0,53%, -1,16% del máximo de 48 h y +3,82% del mínimo, vol 1,12x — retrocede pero sigue sobre ~2329; tesis viva, invalida el stop o cierre horario bajo ~2329; vence 19/10 20:32. No muevo stops. Sin entradas: ruptura: nadie cerca del máximo de 48 h (BNB -0,85% con 1,7x pero 1 h -0,46%, BTC -1,25% con 1,58x y 1 h -0,77%: alejándose); momentum: nadie pasa +5% en 24 h (máximo PEPE +3,85%); rebote: todo el top a +1,8/+16% del mínimo salvo TRX a +0,09% con rango 48 h ~1,9%: sin recorrido para +8%. Plata parada en USDT. 1 posición, ~84% en USDT.
 
+## 2026-10-19 12:32 UTC — Compra PEPEUSDT (trading)
+150.00 USD a 4.17e-06. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h (reentrada, la tesis volvió): PEPE (26,8 M/día) +6,65% en 24 h, 4 h +1,71% (de nuevo positivo), 1 h +1,96% (no estirada), en el máximo de 48 h con vol 1,27x. BTC -0,26% en 4 h, sin bloqueo. Salí 10:31 por 4 h negativo; hoy se cumple de nuevo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 20/10 12:32.
+
+## 2026-10-19 12:32 UTC — Compra PUMPUSDT (trading)
+150.00 USD a 0.004527. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: PUMP (34,3 M/día) +5,9% en 24 h, 4 h +0,91% (sigue subiendo), 1 h +1,53% (no estirada), -1,59% del máximo de 48 h, vol 1,25x. BTC -0,26% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, 24 h bajo +5% con 1 h roja, o stop 5%; vence 20/10 12:32.
+
+## 2026-10-19 12:32 UTC — nota
+12:32 UTC — Sin disparos, 2 entradas, sin salidas. Vigilante: ETH sin disparos (120 min: la pasada de las 11:31 no quedó registrada). Mercado verde suave en 1 h general (+0,15/+3,05%), 4 h casi nula (-1,66/+1,71%), 24 h verde casi general salvo HBAR -5,23% y TRX -0,33%, volumen 0,56-1,38x. 19 pares sobre 20 M/día. BTC -0,26% en 4 h, sin bloqueo. ETH +3,18% (2427,11), stop 2323,96 (trailing): 1 h +0,26%, 4 h -0,37%, -0,81% del máximo de 48 h y +4,18% del mínimo, vol 0,94x — sigue sobre ~2329; tesis viva, invalida el stop o cierre horario bajo ~2329; vence 19/10 20:32. No muevo stops. ENTRADA PEPE 150 USD a 0,00000417 (momentum de 24 h, reentrada): 24 h +6,65%, 4 h +1,71%, 1 h +1,96%, en el máximo de 48 h, vol 1,27x; invalida 4 h negativo o stop; vence 20/10 12:32. ENTRADA PUMP 150 USD a 0,004527 (momentum de 24 h): 24 h +5,9%, 4 h +0,91%, 1 h +1,53%, vol 1,25x; invalida 4 h negativo o stop; vence 20/10 12:32. Ojo: PEPE y PUMP son la misma apuesta (memes con momentum), correlacionadas. Ruptura: PEPE toca el máximo de 48 h y WLD -0,04% (1 h +3,05%), pero vol 1,27x: no llega a 1,5x; WLD 24 h +3,4%: no cumple momentum. Rebote: hecho en todo el top salvo TRX (+0,42% del mínimo, rango chico). 3 posiciones, ~52% en USDT.
+

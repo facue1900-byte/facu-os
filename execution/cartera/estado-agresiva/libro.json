@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 784.1716614889791,
+  "usdt": 484.1716614889791,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,10 +26,54 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792405860000
+      "vigilado_hasta": 1792413060000
+    },
+    "PEPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 35935251.79856115,
+      "entrada": 4.17e-06,
+      "maximo": 4.17e-06,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792413180000
+    },
+    "PUMPUSDT": {
+      "nivel": "trading",
+      "cantidad": 33101.3916500994,
+      "entrada": 0.004527,
+      "maximo": 0.004527,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792413180000
     }
   },
-  "comisiones_usd": 14.471301000000004,
+  "comisiones_usd": 14.771301000000005,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1470,6 +1514,30 @@
       "comision": 0.148388,
       "motivo": "Momentum de 24 h invalidado: 4 h -0,98% (negativo), 1 h -1,22%, 24 h cayó de +6,2% a +3,85% y ya no cumple +5%. La invalidación fijada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
       "resultado_pct": -0.98
+    },
+    {
+      "ms": 1792413150151,
+      "fecha": "2026-10-19 12:32 UTC",
+      "lado": "buy",
+      "par": "PEPEUSDT",
+      "nivel": "trading",
+      "cantidad": 35935251.79856115,
+      "precio": 4.17e-06,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h (reentrada, la tesis volvió): PEPE (26,8 M/día) +6,65% en 24 h, 4 h +1,71% (de nuevo positivo), 1 h +1,96% (no estirada), en el máximo de 48 h con vol 1,27x. BTC -0,26% en 4 h, sin bloqueo. Salí 10:31 por 4 h negativo; hoy se cumple de nuevo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 20/10 12:32."
+    },
+    {
+      "ms": 1792413157361,
+      "fecha": "2026-10-19 12:32 UTC",
+      "lado": "buy",
+      "par": "PUMPUSDT",
+      "nivel": "trading",
+      "cantidad": 33101.3916500994,
+      "precio": 0.004527,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: PUMP (34,3 M/día) +5,9% en 24 h, 4 h +0,91% (sigue subiendo), 1 h +1,53% (no estirada), -1,59% del máximo de 48 h, vol 1,25x. BTC -0,26% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, 24 h bajo +5% con 1 h roja, o stop 5%; vence 20/10 12:32."
     }
   ]
 }
