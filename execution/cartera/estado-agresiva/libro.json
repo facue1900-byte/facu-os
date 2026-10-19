@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 780.9742257212959,
+  "usdt": 630.9742257212959,
   "posiciones": {
     "ARBUSDT": {
       "nivel": "trading",
       "cantidad": 760.2739726027397,
       "entrada": 0.1971,
-      "maximo": 0.1971,
+      "maximo": 0.1999,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792445580000
+      "vigilado_hasta": 1792449060000
+    },
+    "PUMPUSDT": {
+      "nivel": "trading",
+      "cantidad": 33374.164810690425,
+      "entrada": 0.00449,
+      "maximo": 0.00449,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792449180000
     }
   },
-  "comisiones_usd": 15.968851000000004,
+  "comisiones_usd": 16.118851000000003,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1590,6 +1612,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: ARB (20,2 M/día) +9,8% en 24 h, sigue subiendo en 4 h (+1,81%), 1 h +2,55% (no estirada, < 4%), vol 1,46x (pasa el filtro propio de ≥ 1,2x), -2,71% del máximo de 48 h. BTC +0,18% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 20/10 21:32 si no llega a +8%."
+    },
+    {
+      "ms": 1792449153641,
+      "fecha": "2026-10-19 22:32 UTC",
+      "lado": "buy",
+      "par": "PUMPUSDT",
+      "nivel": "trading",
+      "cantidad": 33374.164810690425,
+      "precio": 0.00449,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: PUMP (33,3 M/día) +8,87% en 24 h, sigue subiendo en 4 h (+2,37%), 1 h +2,39% (no estirada, < 4%), vol 1,32x (pasa el filtro propio de ≥ 1,2x), -2,09% del máximo de 48 h. BTC +0,17% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 20/10 22:32 si no llega a +8%."
     }
   ]
 }
