@@ -8,6 +8,24 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-10-19 · FAIL ✓ · Caja del Paseo: lo que Mati no veía, lo volvía a cargar
+
+**Dónde:** app del Paseo, `src/pages/Caja.tsx` (vista Mati) y `src/lib/parseCaja.ts`.
+
+**Qué pasó:** un pago de $600.000 a Daniel quedó cargado 4 veces en octubre ($1.800.000 de
+caja de más descontados), y «Recio de Boss $300.000» (typo de Recibí) entró como egreso
+Otros (−$600.000 de diferencia). Mati avisó «no me lo toma… descontó la plata» el 14/10.
+
+**Causa raíz:** (1) la vista de Mati escondía las Inversiones pero el saldo las descontaba:
+cargaba, no lo veía y recargaba. Daniel caía en Inversiones por regla del parser. (2) el
+parser decide ingreso/egreso sólo por el verbo; sin verbo, egreso por default.
+
+**Fix:** c2e5c53 (Mati ve todo lo que carga salvo aportes), f9893ab (Daniel + mantenimiento/
+arreglo/rejilla → Mejoras), y sin verbo + nombre de local → cobro. Datos corregidos en base y
+Sheet; `reconciliar_hoja.py` 585/585, dif $0, neto oct +$590.965.
+
+**Lección:** una pantalla que esconde un renglón pero cuenta su plata invita a cargarlo dos veces.
+
 ### 2026-10-10 · FAIL ✓ · Netlify y Vercel en plan gratis, a una corrida de pausar los sitios
 
 **Dónde:** cuenta Netlify «Astronomy» (Free, 300 créditos/período) que hostea la app del
