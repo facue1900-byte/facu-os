@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 635.9320007572718,
+  "usdt": 784.1716614889791,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.06370523415977962,
       "entrada": 2352.24,
-      "maximo": 2444.79,
+      "maximo": 2446.27,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792402260000
-    },
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 36548780.48780488,
-      "entrada": 4.1e-06,
-      "maximo": 4.13e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792402260000
+      "vigilado_hasta": 1792405860000
     }
   },
-  "comisiones_usd": 14.322913000000003,
+  "comisiones_usd": 14.471301000000004,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1480,6 +1458,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: PEPE (24,5 M/día) +6,2% en 24 h, sigue subiendo en 4 h (+1,23%) y 1 h +0,49% (no estirada), a -0,24% del máximo de 48 h con vol 4 h 1,27x. BTC +0,53% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo (pierde el momentum) o el stop 5%; vence 20/10 07:32 si no llega a +8%."
+    },
+    {
+      "ms": 1792405906487,
+      "fecha": "2026-10-19 10:31 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 36548780.48780488,
+      "precio": 4.06e-06,
+      "usd": 148.388,
+      "comision": 0.148388,
+      "motivo": "Momentum de 24 h invalidado: 4 h -0,98% (negativo), 1 h -1,22%, 24 h cayó de +6,2% a +3,85% y ya no cumple +5%. La invalidación fijada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
+      "resultado_pct": -0.98
     }
   ]
 }
