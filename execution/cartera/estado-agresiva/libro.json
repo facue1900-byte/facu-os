@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 930.9742257212959,
-  "posiciones": {},
-  "comisiones_usd": 15.818851000000004,
+  "usdt": 780.9742257212959,
+  "posiciones": {
+    "ARBUSDT": {
+      "nivel": "trading",
+      "cantidad": 760.2739726027397,
+      "entrada": 0.1971,
+      "maximo": 0.1971,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792445580000
+    }
+  },
+  "comisiones_usd": 15.968851000000004,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1555,6 +1578,18 @@
       "comision": 0.152868,
       "motivo": "Vencimiento de 24 h: ETH entró 18/10 20:32 por momentum y en 24 h no llegó a +8% ni al stop (+2,04%, 2400,27; 4 h -0,11%, vol 0,61x, -1,91% del máximo de 48 h). Regla de rotación: salgo.",
       "resultado_pct": 2.01
+    },
+    {
+      "ms": 1792445557329,
+      "fecha": "2026-10-19 21:32 UTC",
+      "lado": "buy",
+      "par": "ARBUSDT",
+      "nivel": "trading",
+      "cantidad": 760.2739726027397,
+      "precio": 0.1971,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: ARB (20,2 M/día) +9,8% en 24 h, sigue subiendo en 4 h (+1,81%), 1 h +2,55% (no estirada, < 4%), vol 1,46x (pasa el filtro propio de ≥ 1,2x), -2,71% del máximo de 48 h. BTC +0,18% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 20/10 21:32 si no llega a +8%."
     }
   ]
 }
