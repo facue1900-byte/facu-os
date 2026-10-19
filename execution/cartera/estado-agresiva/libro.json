@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 629.844763435032,
+  "usdt": 778.2587400808,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792431060000
-    },
-    "INJUSDT": {
-      "nivel": "trading",
-      "cantidad": 17.398119122257054,
-      "entrada": 8.613,
-      "maximo": 8.745,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792431060000
+      "vigilado_hasta": 1792434660000
     }
   },
-  "comisiones_usd": 15.517420000000005,
+  "comisiones_usd": 15.665983000000004,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1576,6 +1554,18 @@
       "comision": 0.149176,
       "motivo": "Momentum de 24 h invalidado: 4 h -0,37% (negativo), 1 h -0,43%, a -1,63% del máximo de 48 h. La invalidación fijada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
       "resultado_pct": -0.45
+    },
+    {
+      "ms": 1792434731941,
+      "fecha": "2026-10-19 18:32 UTC",
+      "lado": "sell",
+      "par": "INJUSDT",
+      "cantidad": 17.398119122257054,
+      "precio": 8.539,
+      "usd": 148.5625,
+      "comision": 0.148563,
+      "motivo": "Momentum de 24 h invalidado: 4 h -0,57% (negativo), 1 h -0,92%, a -3,35% del máximo de 48 h. La invalidación fijada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
+      "resultado_pct": -0.86
     }
   ]
 }
