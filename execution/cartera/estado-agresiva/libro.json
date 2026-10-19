@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792416660000
+      "vigilado_hasta": 1792420320000
     },
     "PEPEUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792416660000
+      "vigilado_hasta": 1792420320000
     },
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 293.07647173870527,
       "entrada": 0.5113,
-      "maximo": 0.5113,
+      "maximo": 0.5139,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792416780000
+      "vigilado_hasta": 1792420320000
     }
   },
   "comisiones_usd": 15.070191000000005,
