@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 484.1716614889791,
+  "usdt": 482.9128310714841,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792413060000
+      "vigilado_hasta": 1792416660000
     },
     "PEPEUSDT": {
       "nivel": "trading",
       "cantidad": 35935251.79856115,
       "entrada": 4.17e-06,
-      "maximo": 4.17e-06,
+      "maximo": 4.18e-06,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792413180000
+      "vigilado_hasta": 1792416660000
     },
-    "PUMPUSDT": {
+    "WLDUSDT": {
       "nivel": "trading",
-      "cantidad": 33101.3916500994,
-      "entrada": 0.004527,
-      "maximo": 0.004527,
+      "cantidad": 293.07647173870527,
+      "entrada": 0.5113,
+      "maximo": 0.5113,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792413180000
+      "vigilado_hasta": 1792416780000
     }
   },
-  "comisiones_usd": 14.771301000000005,
+  "comisiones_usd": 15.070191000000005,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1538,6 +1538,30 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: PUMP (34,3 M/día) +5,9% en 24 h, 4 h +0,91% (sigue subiendo), 1 h +1,53% (no estirada), -1,59% del máximo de 48 h, vol 1,25x. BTC -0,26% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, 24 h bajo +5% con 1 h roja, o stop 5%; vence 20/10 12:32."
+    },
+    {
+      "ms": 1792416737106,
+      "fecha": "2026-10-19 13:32 UTC",
+      "lado": "sell",
+      "par": "PUMPUSDT",
+      "cantidad": 33101.3916500994,
+      "precio": 0.004498,
+      "usd": 148.8901,
+      "comision": 0.14889,
+      "motivo": "Momentum de 24 h invalidado: 4 h -0,27% (negativo) y 1 h -0,22%, a -1,36% del máximo de 48 h. La invalidación fijada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
+      "resultado_pct": -0.64
+    },
+    {
+      "ms": 1792416744121,
+      "fecha": "2026-10-19 13:32 UTC",
+      "lado": "buy",
+      "par": "WLDUSDT",
+      "nivel": "trading",
+      "cantidad": 293.07647173870527,
+      "precio": 0.5113,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: WLD (36,1 M/día) +5,49% en 24 h, sigue subiendo en 4 h (+1,65%), 1 h +0,89% (no estirada), -0,97% del máximo de 48 h con vol 4 h 1,48x. BTC -0,37% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 20/10 13:32 si no llega a +8%."
     }
   ]
 }
