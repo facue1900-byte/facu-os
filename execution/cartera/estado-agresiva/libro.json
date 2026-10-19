@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 482.9128310714841,
+  "usdt": 332.9128310714841,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792420320000
+      "vigilado_hasta": 1792423860000
     },
     "PEPEUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792420320000
+      "vigilado_hasta": 1792423860000
     },
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 293.07647173870527,
       "entrada": 0.5113,
-      "maximo": 0.5139,
+      "maximo": 0.5159,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792420320000
+      "vigilado_hasta": 1792423860000
+    },
+    "INJUSDT": {
+      "nivel": "trading",
+      "cantidad": 17.398119122257054,
+      "entrada": 8.613,
+      "maximo": 8.613,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792423980000
     }
   },
-  "comisiones_usd": 15.070191000000005,
+  "comisiones_usd": 15.220191000000005,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1562,6 +1584,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: WLD (36,1 M/día) +5,49% en 24 h, sigue subiendo en 4 h (+1,65%), 1 h +0,89% (no estirada), -0,97% del máximo de 48 h con vol 4 h 1,48x. BTC -0,37% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 20/10 13:32 si no llega a +8%."
+    },
+    {
+      "ms": 1792423939212,
+      "fecha": "2026-10-19 15:32 UTC",
+      "lado": "buy",
+      "par": "INJUSDT",
+      "nivel": "trading",
+      "cantidad": 17.398119122257054,
+      "precio": 8.613,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: INJ (23,1 M/día) +6,13% en 24 h, sigue subiendo en 4 h (+1,98%), 1 h +0,37% (no estirada), -2,43% del máximo de 48 h, vol 0,92x. BTC -0,12% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 20/10 15:32 si no llega a +8%."
     }
   ]
 }
