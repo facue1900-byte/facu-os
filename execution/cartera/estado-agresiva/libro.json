@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792535460000
+      "vigilado_hasta": 1792539060000
     },
     "ZECUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792535460000
+      "vigilado_hasta": 1792539060000
     },
     "PUMPUSDT": {
       "nivel": "trading",
       "cantidad": 31238.273921200747,
       "entrada": 0.004797,
-      "maximo": 0.004797,
+      "maximo": 0.004806,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792535460000
+      "vigilado_hasta": 1792539060000
     }
   },
   "comisiones_usd": 18.377363999999993,
