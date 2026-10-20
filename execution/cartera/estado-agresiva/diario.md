@@ -1518,3 +1518,16 @@ Momentum de 24 h invalidado: 4 h -0,64% (negativo), 1 h -0,5%, 24 h +6,46% (se d
 ## 2026-10-20 10:32 UTC — nota
 10:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: sin posiciones. Mercado rojo suave y plano: 1 h casi nula (-0,69/+0,42%), 4 h roja casi general (-4,28/+0,12%; positiva sólo TRX), 24 h roja salvo GTC/WLD/PEPE/BNB/TRX, volumen 0,38-1,44x. 17 pares sobre 20 M/día. BTC -0,28% en 4 h, sin bloqueo. Sin entradas: momentum: GTC +20,55% en 24 h pero 4 h -4,28%, -10,18% del máximo de 48 h: bomba en retroceso; WLD +6,35% en 24 h pero 4 h -2,32%: no cumple; PEPE +1,96% no llega. Ruptura: nadie sobre el máximo de 48 h (TRX -0,3% con 0,73x, BNB -0,64% con 0,87x: sin volumen). Rebote: BTC +1,11% del mínimo de 48 h, 1 h +0,1%: no tocó el mínimo, sigue sin señal; NEAR +1,19% del mínimo pero 1 h -0,64%, 4 h -2,28%: todavía cae, candidato si la próxima hora frena sobre el mínimo; TRX +0,6% del mínimo con rango ~0,9%: sin recorrido. 0 posiciones, 100% en USDT.
 
+## 2026-10-20 11:32 UTC — Compra NEARUSDT (trading)
+150.00 USD a 4.681. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: NEAR (111,7 M/día) a +1,36% del mínimo de 48 h tras -5,43% en 24 h; la última hora dejó de caer (1 h +0,09%, sin mínimo nuevo: la distancia al mínimo subió de 1,19% a 1,36%), vol 0,99x. BTC -0,04% en 4 h, sin bloqueo. Invalida: perder el mínimo de 48 h (stop ajustado a 3%, ~1,7% debajo del mínimo) o 24 h sin +8%.
+
+## 2026-10-20 11:32 UTC — Reglas NEARUSDT
+Antes {'stop': 5.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]} → ahora {'stop': 3.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]}.
+
+Ajusto stop de 5% a 3% (más cerca, no más lejos): la tesis de rebote muere si pierde el mínimo de 48 h, que está ~1,4% abajo; 3% lo deja ~1,7% por debajo del mínimo.
+
+## 2026-10-20 11:32 UTC — nota
+11:31 UTC — Sin disparos, 1 entrada, sin salidas. Vigilante: sin posiciones previas. Mercado plano y sin volumen: 1 h casi nula (-0,98/+0,32%), 4 h mixta (-2,51/+0,75%), 24 h roja salvo GTC/WLD/PEPE/BNB/ZEC/TRX, volumen 0,52-1,22x. 16 pares sobre 20 M/día. BTC -0,04% en 4 h, sin bloqueo. ENTRADA NEAR 150 USD a 4,681 (rebote en soporte): +1,36% del mínimo de 48 h, 1 h +0,09% sin mínimo nuevo (la señal que pedí la hora pasada), 24 h -5,43%; stop ajustado a 3% (debajo del mínimo); invalida perder el mínimo; vence 21/10 11:32. Sin otras entradas: momentum: WLD +8,97% en 24 h, 4 h +0,59%, 1 h +0,3%, vol 1,22x — cumple al límite pero el 4 h es flojo, se desinfla desde +10,5% y ya la saqué a las 07:31 por 4 h negativo: no recompro sin 4 h ≥ +1,5% con volumen; GTC 4 h -2,51%: bomba en retroceso; PEPE +2,69% no llega. Ruptura: nadie sobre el máximo de 48 h (TRX -0,36% con 0,98x, BNB -0,66% con 0,82x, PEPE -0,71% con 0,91x: sin volumen). Rebote: BTC +1,05% del mínimo, 1 h -0,03%: sin señal; TRX rango ~0,8%: sin recorrido. 1 posición, ~84% en USDT.
+

@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 930.234197844437,
-  "posiciones": {},
-  "comisiones_usd": 16.718561,
+  "usdt": 780.234197844437,
+  "posiciones": {
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 32.012390514847255,
+      "entrada": 4.681,
+      "maximo": 4.681,
+      "reglas": {
+        "stop": 3.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792495980000
+    }
+  },
+  "comisiones_usd": 16.868561,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1627,6 +1650,18 @@
       "comision": 0.151192,
       "motivo": "Momentum de 24 h invalidado: 4 h -0,64% (negativo), 1 h -0,5%, 24 h +6,46% (se desinfla desde +10,5%), vol 1,65x, -2,45% del máximo de 48 h. La invalidación fijada en la entrada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop (0,526585).",
       "resultado_pct": 0.9
+    },
+    {
+      "ms": 1792495966445,
+      "fecha": "2026-10-20 11:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 32.012390514847255,
+      "precio": 4.681,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: NEAR (111,7 M/día) a +1,36% del mínimo de 48 h tras -5,43% en 24 h; la última hora dejó de caer (1 h +0,09%, sin mínimo nuevo: la distancia al mínimo subió de 1,19% a 1,36%), vol 0,99x. BTC -0,04% en 4 h, sin bloqueo. Invalida: perder el mínimo de 48 h (stop ajustado a 3%, ~1,7% debajo del mínimo) o 24 h sin +8%."
     }
   ]
 }

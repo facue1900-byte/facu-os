@@ -1,18 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-20 10:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-20 11:32 UTC
 
-**Total: 930.23 USD (-6.98%)** desde 2026-10-07 23:06 UTC · USDT libre 930.23 · comisiones 16.72 · 135 operaciones
+**Total: 929.96 USD (-7.00%)** desde 2026-10-07 23:06 UTC · USDT libre 780.23 · comisiones 16.87 · 136 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **930.23** |
+| **Esta carpeta** | **929.96** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 980.30 |
+| hodl btc | 979.39 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| NEAR | trading | 149.72 | -0.09% | 4.54057 |
 
 ## Últimas operaciones
 
+- 2026-10-20 11:32 UTC · compra NEAR 150.00 USD a 4.681 — Rebote en soporte: NEAR (111,7 M/día) a +1,36% del mínimo de 48 h tras -5,43% en 24 h; la última hora dejó de caer (1 h +0,09%, sin mínimo n
 - 2026-10-20 07:31 UTC · venta WLD 151.19 USD a 0.5406 — Momentum de 24 h invalidado: 4 h -0,64% (negativo), 1 h -0,5%, 24 h +6,46% (se desinfla desde +10,5%), vol 1,65x, -2,45% del máximo de 48 h.
 - 2026-10-20 05:32 UTC · venta ARB 151.37 USD a 0.1991 — Momentum de 24 h invalidado: 4 h -0,15% (negativo), 24 h +2,79% (se desinfló desde +9,8%), 1 h -0,35%, vol 1,04x, -2,5% del máximo de 48 h. 
 - 2026-10-20 02:32 UTC · venta PUMP 147.15 USD a 0.004409 — Momentum de 24 h invalidado: 4 h -2,09% (negativo), 24 h -0,97%, 1 h -0,23%, vol 0,48x, -3,94% del máximo de 48 h. La invalidación fijada la
@@ -22,6 +24,5 @@
 - 2026-10-19 20:32 UTC · venta ETH 152.87 USD a 2,399.62 — Vencimiento de 24 h: ETH entró 18/10 20:32 por momentum y en 24 h no llegó a +8% ni al stop (+2,04%, 2400,27; 4 h -0,11%, vol 0,61x, -1,91% 
 - 2026-10-19 18:32 UTC · venta INJ 148.56 USD a 8.539 — Momentum de 24 h invalidado: 4 h -0,57% (negativo), 1 h -0,92%, a -3,35% del máximo de 48 h. La invalidación fijada (cierre horario con 4 h 
 - 2026-10-19 17:32 UTC · venta WLD 149.18 USD a 0.509 — Momentum de 24 h invalidado: 4 h -0,37% (negativo), 1 h -0,43%, a -1,63% del máximo de 48 h. La invalidación fijada (cierre horario con 4 h 
-- 2026-10-19 16:32 UTC · venta PEPE 148.05 USD a 4.12e-06 — Momentum de 24 h invalidado: 4 h -0,72% (negativo), a -1,2% del máximo de 48 h, 1 h +0,24% sin fuerza. La invalidación fijada (cierre horari
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
