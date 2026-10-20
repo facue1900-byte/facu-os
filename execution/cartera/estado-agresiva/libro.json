@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 638.499172811805,
+  "usdt": 640.3024353418706,
   "posiciones": {
-    "WLDUSDT": {
-      "nivel": "trading",
-      "cantidad": 273.0502915451895,
-      "entrada": 0.5488,
-      "maximo": 0.5858,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792510260000
-    },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.12298512852499917,
@@ -48,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792510260000
+      "vigilado_hasta": 1792513860000
+    },
+    "PEPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 33006607.929515418,
+      "entrada": 4.54e-06,
+      "maximo": 4.54e-06,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792513980000
     }
   },
-  "comisiones_usd": 17.326984,
+  "comisiones_usd": 17.628939,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1732,6 +1732,30 @@
       "comision": 0.077504,
       "motivo": "Stop automático en 4.84215 (entrada 4.681, máximo 5.097).",
       "resultado_pct": 3.44
+    },
+    {
+      "ms": 1792513080000,
+      "fecha": "2026-10-20 16:18 UTC",
+      "lado": "sell",
+      "par": "WLDUSDT",
+      "cantidad": 273.0502915451895,
+      "precio": 0.55651,
+      "usd": 151.9552,
+      "comision": 0.151955,
+      "motivo": "Stop automático en 0.55651 (entrada 0.5488, máximo 0.5858).",
+      "resultado_pct": 1.4
+    },
+    {
+      "ms": 1792513951873,
+      "fecha": "2026-10-20 16:32 UTC",
+      "lado": "buy",
+      "par": "PEPEUSDT",
+      "nivel": "trading",
+      "cantidad": 33006607.929515418,
+      "precio": 4.54e-06,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: PEPE (46,9 M/día) +9,98% en 24 h, sigue subiendo en 4 h (+7,36%), 1 h -0,22% (consolidó tras el -1,98% de las 15:31, no estirada), vol 5,77x, -1,53% del máximo de 48 h. BTC +1,22% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
     }
   ]
 }
