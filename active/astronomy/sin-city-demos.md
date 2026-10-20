@@ -62,3 +62,10 @@ No se pudieron (lo hace Facu o falta un dato):
 - Descartados por IA: Bar Melodia (blacklist) y Play Records. Flamingo: sin formulario.
 - LabelRadar: 5 créditos gratis = 1 envío (se usó en Toolroom). Armada, Get Physical, HOUZ, Soave, Sirup y
   Three Six Zero necesitan créditos pagos. Trackstack sigue pausado: mail a support@trackstack.app ENVIADO 20/10 (OK de Facu). Snatch también quedó sólo por Trackstack.
+
+## Respuestas 20–21/10
+- 🔥 **Defora Records (Italia) — INTERESADO.** Latino Pellegrini, founder (deforarecords@gmail.com), 21/10 00:35: quiere sacar los 2 tracks, o mejor un EP de 3–4. Pregunta si tenemos los derechos de las voces y pide pre-masters WAV a −6 dB (ellos masterizan). Respuesta pendiente de OK de Facu.
+- ❌ Hotoven (no encaja, que sigamos mandando) · ❌ WeAreiDyll (sólo afro/melodic).
+- Sound Avenue: ya no recibe por mail, form https://soundavenue.short.gy/demo.
+- Diynamic y Monaberry: sólo escuchan con la descarga del SoundCloud habilitada (sigue sin estar). Solomun: si las voces son de librería (Splice, etc.), mandar instrumental.
+- Autorespuestas: Stush, Defected, Cr2, Snatch (sólo Trackstack).
