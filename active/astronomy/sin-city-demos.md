@@ -61,4 +61,4 @@ No se pudieron (lo hace Facu o falta un dato):
 - Datos que dio Facu: ambos tracks **tech house**, **con voces**, **IA parcial** (no "no": hay sellos que blacklistean).
 - Descartados por IA: Bar Melodia (blacklist) y Play Records. Flamingo: sin formulario.
 - LabelRadar: 5 créditos gratis = 1 envío (se usó en Toolroom). Armada, Get Physical, HOUZ, Soave, Sirup y
-  Three Six Zero necesitan créditos pagos. Trackstack sigue pausado.
+  Three Six Zero necesitan créditos pagos. Trackstack sigue pausado: mail a support@trackstack.app ENVIADO 20/10 (OK de Facu). Snatch también quedó sólo por Trackstack.
