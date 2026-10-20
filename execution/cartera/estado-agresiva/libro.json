@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 630.9742257212959,
+  "usdt": 480.97422572129585,
   "posiciones": {
     "ARBUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792452660000
+      "vigilado_hasta": 1792456260000
     },
     "PUMPUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792452660000
+      "vigilado_hasta": 1792456260000
+    },
+    "WLDUSDT": {
+      "nivel": "trading",
+      "cantidad": 279.6752519596864,
+      "entrada": 0.5358,
+      "maximo": 0.5358,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792456380000
     }
   },
-  "comisiones_usd": 16.118851000000003,
+  "comisiones_usd": 16.268851,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1624,6 +1646,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: PUMP (33,3 M/día) +8,87% en 24 h, sigue subiendo en 4 h (+2,37%), 1 h +2,39% (no estirada, < 4%), vol 1,32x (pasa el filtro propio de ≥ 1,2x), -2,09% del máximo de 48 h. BTC +0,17% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 20/10 22:32 si no llega a +8%."
+    },
+    {
+      "ms": 1792456344071,
+      "fecha": "2026-10-20 00:32 UTC",
+      "lado": "buy",
+      "par": "WLDUSDT",
+      "nivel": "trading",
+      "cantidad": 279.6752519596864,
+      "precio": 0.5358,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: WLD (41,2 M/día) +10,51% en 24 h, sigue subiendo en 4 h (+4,77%), 1 h +0,36% (no estirada, < 4%), vol 1,66x (pasa el filtro propio de ≥ 1,2x, que antes le faltaba), -0,39% del máximo de 48 h. BTC -0,48% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 21/10 00:32 si no llega a +8%."
     }
   ]
 }
