@@ -52,3 +52,13 @@ No se pudieron (lo hace Facu o falta un dato):
 - Bar Melodia: pide UNA playlist privada con los 2 tracks + estado de master; género melodic progressive.
 - Flamingo: el link de demos apunta a la home, no hay formulario.
 - Trackstack (pausada): Kittball, Trace Amounts, Realm, Hot Creations, Catch & Release, Bibi.
+
+## 20/10/2026 (noche): con Facu, uno por uno
+- Enviados: Stush, Area Sur, Juicebox (captcha lo hizo Facu), Mixmania (edad/tel. de Facu; newsletter obligatorio),
+  Dirtybird (2 MP3), Soulcandi (2 MP3). Toolroom vía LabelRadar: cuenta creada por Facu con studio@ y mail
+  confirmado; 🔴 sin verificar que el demo figure enviado — entrar a LabelRadar y mirar.
+- MP3 hechos del master 27/03 (Super Virginia Cigarette): `Downloads/sin-city-promo/` (320) y `/256/` (para subir, tope 10 MB).
+- Datos que dio Facu: ambos tracks **tech house**, **con voces**, **IA parcial** (no "no": hay sellos que blacklistean).
+- Descartados por IA: Bar Melodia (blacklist) y Play Records. Flamingo: sin formulario.
+- LabelRadar: 5 créditos gratis = 1 envío (se usó en Toolroom). Armada, Get Physical, HOUZ, Soave, Sirup y
+  Three Six Zero necesitan créditos pagos. Trackstack sigue pausado.
