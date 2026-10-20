@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792521060000
+      "vigilado_hasta": 1792524660000
     },
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 262.25061253062654,
       "entrada": 0.5714,
-      "maximo": 0.5839,
+      "maximo": 0.5853,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792521060000
+      "vigilado_hasta": 1792524660000
     }
   },
   "comisiones_usd": 17.927183999999997,
