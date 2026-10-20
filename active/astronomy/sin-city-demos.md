@@ -40,3 +40,15 @@ Script `Desktop/Facu/SIN CITY/enviar_demos_2.py` (chequea borradores Y enviados 
   no se puede mandar a Catch & Release, Hot Creations ni Bibi.
 - Pendiente por formulario: Sweek, NOXU Deep, Stush, Soulcandi, Mixmania, Toolroom, Dirtybird, LabelRadar
   + los 17 del research del 20/10 (Lowbit, Guesthouse, Bar Melodia, Armada, Hope...).
+
+## 20/10/2026 (tarde): formularios cargados por Claude (Chrome), con confirmación en pantalla
+Enviados (9): NOXU Deep, Sweek, House Lab, Psicotropic, Hope, Lowbit, Guesthouse, Feedasoul, Diepgraven.
+Nombre real usado: Facundo Estevez · mail studio@ · seguimiento 10/11. NOXU suscribe studio@ a su newsletter (era obligatorio).
+No se pudieron (lo hace Facu o falta un dato):
+- Captcha visible: Stush, Area Sur, Juicebox (Bandcamp).
+- Piden subir MP3/WAV (no hay archivos en la Mac): Dirtybird y Play Records (label-worx), Armada (demodrop), Soulcandi.
+- Cuenta LabelRadar: Toolroom, Get Physical, HOUZ, Soave, Sirup, Three Six Zero.
+- Mixmania: pide edad y teléfono (+ descarga habilitada en SC).
+- Bar Melodia: pide UNA playlist privada con los 2 tracks + estado de master; género melodic progressive.
+- Flamingo: el link de demos apunta a la home, no hay formulario.
+- Trackstack (pausada): Kittball, Trace Amounts, Realm, Hot Creations, Catch & Release, Bibi.
