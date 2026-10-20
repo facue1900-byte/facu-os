@@ -4,35 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 638.3992343705465,
+  "usdt": 638.4291203837624,
   "posiciones": {
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 33006607.929515418,
-      "entrada": 4.54e-06,
-      "maximo": 4.67e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792524660000
-    },
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 262.25061253062654,
       "entrada": 0.5714,
-      "maximo": 0.5853,
+      "maximo": 0.59,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792524660000
+      "vigilado_hasta": 1792528260000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.12288629020353938,
+      "entrada": 1219.42,
+      "maximo": 1219.42,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792528380000
     }
   },
-  "comisiones_usd": 17.927183999999997,
+  "comisiones_usd": 18.227363999999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1780,6 +1780,30 @@
       "comision": 0.148245,
       "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y ZEC cierra 18:31 con 4 h -1,45% y 1 h -1,45% (vol 1,1x, se apaga el volumen). 24 h +6,65% pero se desinfla desde el máximo (-2,38%). Stop 1.166,04 todavía no saltó; salgo por regla propia, no espero el stop.",
       "resultado_pct": -1.07
+    },
+    {
+      "ms": 1792528348774,
+      "fecha": "2026-10-20 20:32 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 33006607.929515418,
+      "precio": 4.55e-06,
+      "usd": 150.1801,
+      "comision": 0.15018,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y PEPE cierra 20:31 con 4 h -1,51% y 1 h -1,3% (vol 1,66x: venden con volumen), -2,36% del máximo de 48 h. Stop 0,00000444 no saltó; salgo por regla propia.",
+      "resultado_pct": 0.22
+    },
+    {
+      "ms": 1792528358008,
+      "fecha": "2026-10-20 20:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.12288629020353938,
+      "precio": 1219.42,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: ZEC (175 M/día) +8,57% en 24 h, 4 h +0,88% (volvió a positivo), 1 h +0,87% (no estirada), -1,17% del máximo de 48 h. Volumen flojo (0,79x): entrada con menos convicción, re-entrada 2 h después de la salida de 18:32. BTC -0,12% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
     }
   ]
 }

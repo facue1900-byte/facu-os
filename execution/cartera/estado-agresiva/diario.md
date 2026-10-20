@@ -1589,3 +1589,16 @@ Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre hor
 ## 2026-10-20 19:32 UTC — nota
 19:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: PEPE y WLD (60 min) sin disparos. Mercado plano y sin volumen: 1 h roja suave casi general (-1,63/+0,15%), 4 h mixta (-0,44/+2,88%), volumen 0,45-2,24x. 18 pares sobre 20 M/día. BTC -0,17% en 4 h, sin bloqueo. PEPE 0,00000458 (+0,88%), stop 0,00000444: 24 h +11,95%, 4 h +1,32%, 1 h 0%, vol 2,24x, -1,71% del máximo de 48 h; 4 h positivo, tesis viva; vence 21/10 16:32. WLD 0,5789 (+1,31%), stop 0,556035: 24 h +14,33%, 4 h +2,88% (se recuperó del +0,14% de las 18:31), 1 h -0,1%, vol 1,37x, -1,09% del máximo de 48 h; tesis viva; vence 21/10 17:32. No muevo stops. Sin entradas: momentum: ZEC 24 h +6,53% pero 4 h +0,45% y 1 h -0,76% con vol 0,76x: recién salida por 4 h negativo, no recompro un rebote de 1 hora sin volumen; PUMP 24 h +5,97%, 4 h +1,53%, 1 h -0,84%, vol 0,56x, liquidez justa (23,4 M): sin fuerza; nadie más con +5% en 24 h. Ruptura: nadie sobre el máximo de 48 h (TRX -0,57% con 0,74x, BNB -0,63% con 0,78x, DOGE -1,04% con 0,76x: sin volumen). Rebote: TRX +0,27% del mínimo con rango ~0,8%: sin recorrido; el resto lejos del mínimo. 2 posiciones, ~68% en USDT.
 
+## 2026-10-20 20:32 UTC — Venta PEPEUSDT
+150.18 USD a 4.55e-06 (+0.22% contra la compra).
+
+Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y PEPE cierra 20:31 con 4 h -1,51% y 1 h -1,3% (vol 1,66x: venden con volumen), -2,36% del máximo de 48 h. Stop 0,00000444 no saltó; salgo por regla propia.
+
+## 2026-10-20 20:32 UTC — Compra ZECUSDT (trading)
+150.00 USD a 1,219.42. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: ZEC (175 M/día) +8,57% en 24 h, 4 h +0,88% (volvió a positivo), 1 h +0,87% (no estirada), -1,17% del máximo de 48 h. Volumen flojo (0,79x): entrada con menos convicción, re-entrada 2 h después de la salida de 18:32. BTC -0,12% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%.
+
+## 2026-10-20 20:32 UTC — nota
+20:31 UTC — Sin disparos, 1 entrada, 1 salida. Vigilante: PEPE y WLD (60 min) sin disparos. Mercado plano y sin volumen: 1 h casi plana (-1,3/+0,98%), 4 h mixta (-1,51/+3,52%), volumen 0,38-1,66x. 18 pares sobre 20 M/día. BTC -0,12% en 4 h, sin bloqueo. SALIDA PEPE a 0,00000455 (+0,22%): 4 h -1,51% al cierre horario con 1 h -1,3% y vol 1,66x, la invalidación que me fijé. WLD 0,5875 (+2,82%), stop 0,5605: 24 h +15,09%, 4 h +3,52%, 1 h +0,98%, vol 1,29x, -0,32% del máximo de 48 h; tesis viva; si rompe el máximo con vol ≥ 1,5x se suma la tesis de ruptura; vence 21/10 17:32. No muevo stops. ENTRADA ZEC 150 USD a 1.219,42 (momentum): 24 h +8,57%, 4 h +0,88%, 1 h +0,87%, vol 0,79x; ojo: recompro 1,2% más caro que la salida de 18:32 (1.205,39), costo de respetar la regla de 4 h; invalida 4 h negativo al cierre horario o stop; vence 21/10 20:32. Sin otras entradas: PUMP cumple momentum (24 h +7,86%, 4 h +3%, 1 h +0,32%) pero vol 0,54x y liquidez justa (22,5 M): paso. Ruptura: nadie sobre el máximo de 48 h (BNB -0,31%, DOGE -0,37%, WLD -0,32% en cartera; todos sin volumen). Rebote: TRX +0,18% del mínimo con rango ~0,8%: sin recorrido. 2 posiciones, ~68% en USDT.
+
