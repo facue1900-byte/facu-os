@@ -56,9 +56,9 @@ No se pudieron (lo hace Facu o falta un dato):
 ## 20/10/2026 (noche): con Facu, uno por uno
 - Enviados: Stush, Area Sur, Juicebox (captcha lo hizo Facu), Mixmania (edad/tel. de Facu; newsletter obligatorio),
   Dirtybird (2 MP3), Soulcandi (2 MP3). Toolroom vía LabelRadar: cuenta creada por Facu con studio@ y mail
-  confirmado; 🔴 sin verificar que el demo figure enviado — entrar a LabelRadar y mirar.
+  confirmado; ✅ figura "sent" 20/10 (preview quedó en 1:21: cambiarlo es PRO). La cuenta sigue mostrando 5 créditos.
 - MP3 hechos del master 27/03 (Super Virginia Cigarette): `Downloads/sin-city-promo/` (320) y `/256/` (para subir, tope 10 MB).
 - Datos que dio Facu: ambos tracks **tech house**, **con voces**, **IA parcial** (no "no": hay sellos que blacklistean).
 - Descartados por IA: Bar Melodia (blacklist) y Play Records. Flamingo: sin formulario.
 - LabelRadar: 5 créditos gratis = 1 envío (se usó en Toolroom). Armada, Get Physical, HOUZ, Soave, Sirup y
-  Three Six Zero necesitan créditos pagos. Trackstack sigue pausado.
+  Three Six Zero necesitan créditos pagos. Trackstack sigue pausado: mail a support@trackstack.app ENVIADO 20/10 (OK de Facu). Snatch también quedó sólo por Trackstack.
