@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 480.97422572129585,
+  "usdt": 627.9737716789796,
   "posiciones": {
     "ARBUSDT": {
       "nivel": "trading",
@@ -26,35 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792459860000
-    },
-    "PUMPUSDT": {
-      "nivel": "trading",
-      "cantidad": 33374.164810690425,
-      "entrada": 0.00449,
-      "maximo": 0.004522,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792459860000
+      "vigilado_hasta": 1792463460000
     },
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 279.6752519596864,
       "entrada": 0.5358,
-      "maximo": 0.5395,
+      "maximo": 0.5419,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792459860000
+      "vigilado_hasta": 1792463460000
     }
   },
-  "comisiones_usd": 16.268851,
+  "comisiones_usd": 16.415998000000002,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1658,6 +1636,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: WLD (41,2 M/día) +10,51% en 24 h, sigue subiendo en 4 h (+4,77%), 1 h +0,36% (no estirada, < 4%), vol 1,66x (pasa el filtro propio de ≥ 1,2x, que antes le faltaba), -0,39% del máximo de 48 h. BTC -0,48% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o stop 5%; vence 21/10 00:32 si no llega a +8%."
+    },
+    {
+      "ms": 1792463522322,
+      "fecha": "2026-10-20 02:32 UTC",
+      "lado": "sell",
+      "par": "PUMPUSDT",
+      "cantidad": 33374.164810690425,
+      "precio": 0.004409,
+      "usd": 147.1467,
+      "comision": 0.147147,
+      "motivo": "Momentum de 24 h invalidado: 4 h -2,09% (negativo), 24 h -0,97%, 1 h -0,23%, vol 0,48x, -3,94% del máximo de 48 h. La invalidación fijada la hora pasada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
+      "resultado_pct": -1.8
     }
   ]
 }
