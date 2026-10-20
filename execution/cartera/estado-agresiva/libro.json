@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 780.234197844437,
+  "usdt": 630.234197844437,
   "posiciones": {
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 32.012390514847255,
       "entrada": 4.681,
-      "maximo": 4.681,
+      "maximo": 4.728,
       "reglas": {
         "stop": 3.0,
         "trail": 5.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792495980000
+      "vigilado_hasta": 1792499460000
+    },
+    "WLDUSDT": {
+      "nivel": "trading",
+      "cantidad": 273.0502915451895,
+      "entrada": 0.5488,
+      "maximo": 0.5488,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792499580000
     }
   },
-  "comisiones_usd": 16.868561,
+  "comisiones_usd": 17.018561,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1662,6 +1684,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: NEAR (111,7 M/día) a +1,36% del mínimo de 48 h tras -5,43% en 24 h; la última hora dejó de caer (1 h +0,09%, sin mínimo nuevo: la distancia al mínimo subió de 1,19% a 1,36%), vol 0,99x. BTC -0,04% en 4 h, sin bloqueo. Invalida: perder el mínimo de 48 h (stop ajustado a 3%, ~1,7% debajo del mínimo) o 24 h sin +8%."
+    },
+    {
+      "ms": 1792499543584,
+      "fecha": "2026-10-20 12:32 UTC",
+      "lado": "buy",
+      "par": "WLDUSDT",
+      "nivel": "trading",
+      "cantidad": 273.0502915451895,
+      "precio": 0.5488,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: WLD (64 M/día) +8,4% en 24 h, sigue subiendo en 4 h (+2,4%, por encima del +1,5% que me pedí para recomprar tras la salida de las 07:31), 1 h +1,09% (no estirada), vol 1,33x, -0,99% del máximo de 48 h. BTC +0,03% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
     }
   ]
 }
