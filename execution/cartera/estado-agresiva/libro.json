@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 638.4291203837624,
+  "usdt": 488.42912038376244,
   "posiciones": {
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 262.25061253062654,
       "entrada": 0.5714,
-      "maximo": 0.59,
+      "maximo": 0.5961,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792528260000
+      "vigilado_hasta": 1792531860000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.12288629020353938,
       "entrada": 1219.42,
-      "maximo": 1219.42,
+      "maximo": 1255.28,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792528380000
+      "vigilado_hasta": 1792531860000
+    },
+    "PUMPUSDT": {
+      "nivel": "trading",
+      "cantidad": 31238.273921200747,
+      "entrada": 0.004797,
+      "maximo": 0.004797,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792531980000
     }
   },
-  "comisiones_usd": 18.227363999999994,
+  "comisiones_usd": 18.377363999999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1804,6 +1826,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: ZEC (175 M/día) +8,57% en 24 h, 4 h +0,88% (volvió a positivo), 1 h +0,87% (no estirada), -1,17% del máximo de 48 h. Volumen flojo (0,79x): entrada con menos convicción, re-entrada 2 h después de la salida de 18:32. BTC -0,12% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792531940952,
+      "fecha": "2026-10-20 21:32 UTC",
+      "lado": "buy",
+      "par": "PUMPUSDT",
+      "nivel": "trading",
+      "cantidad": 31238.273921200747,
+      "precio": 0.004797,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: PUMP (23,2 M/día) +9,37% en 24 h, sigue subiendo en 4 h (+2,76%), 1 h -0,27% (no estirada), -1,21% del máximo de 48 h; momentum sostenido desde las 17:31. Volumen flojo (0,69x) y liquidez justa: convicción media. BTC +0,09% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
     }
   ]
 }
