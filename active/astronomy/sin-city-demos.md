@@ -62,3 +62,10 @@ No se pudieron (lo hace Facu o falta un dato):
 - Descartados por IA: Bar Melodia (blacklist) y Play Records. Flamingo: sin formulario.
 - LabelRadar: 5 créditos gratis = 1 envío (se usó en Toolroom). Armada, Get Physical, HOUZ, Soave, Sirup y
   Three Six Zero necesitan créditos pagos. Trackstack sigue pausado: mail a support@trackstack.app ENVIADO 20/10 (OK de Facu). Snatch también quedó sólo por Trackstack.
+
+## Respuestas 20–21/10
+- 🔥 **Defora Records (Italia) — INTERESADO.** Latino Pellegrini, founder (deforarecords@gmail.com), 21/10 00:35: quiere sacar los 2 tracks, o mejor un EP de 3–4. Pregunta si tenemos los derechos de las voces y pide pre-masters WAV a −6 dB (ellos masterizan). 20/10 contestado (OK Facu): le mandamos "Always In The Game" (link privado) y "Space Miami" (MP3 320 adjunto, `~/Downloads/sin-city-promo/Sin City - Space Miami.mp3`). 🔴 Falta contestarle voces (derechos/IA) y pre-masters WAV −6 dB: Facu tiene que decir de dónde salen las voces y si tiene los pre-masters.
+- ❌ Hotoven (no encaja, que sigamos mandando) · ❌ WeAreiDyll (sólo afro/melodic).
+- Sound Avenue: DESCARTADO. Su form (soundavenue.short.gy/demo) dice que IA = blacklist permanente en todos sus sellos (incluye Bar Melodia).
+- Diynamic y Monaberry: sólo escuchan archivos descargables → 20/10 les mandamos los 2 MP3 320 adjuntos, uno por mail (el SoundCloud logueado en Chrome NO es el de Sin City, no se pudo habilitar la descarga). Solomun: si las voces son de librería (Splice, etc.), mandar instrumental.
+- Autorespuestas: Stush, Defected, Cr2, Snatch (sólo Trackstack).
