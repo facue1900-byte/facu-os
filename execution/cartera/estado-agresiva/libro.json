@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 627.9737716789796,
+  "usdt": 779.1929490762399,
   "posiciones": {
-    "ARBUSDT": {
-      "nivel": "trading",
-      "cantidad": 760.2739726027397,
-      "entrada": 0.1971,
-      "maximo": 0.2041,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792470660000
-    },
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 279.6752519596864,
@@ -48,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792470660000
+      "vigilado_hasta": 1792474260000
     }
   },
-  "comisiones_usd": 16.415998000000002,
+  "comisiones_usd": 16.567369000000003,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1648,6 +1626,18 @@
       "comision": 0.147147,
       "motivo": "Momentum de 24 h invalidado: 4 h -2,09% (negativo), 24 h -0,97%, 1 h -0,23%, vol 0,48x, -3,94% del máximo de 48 h. La invalidación fijada la hora pasada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
       "resultado_pct": -1.8
+    },
+    {
+      "ms": 1792474344416,
+      "fecha": "2026-10-20 05:32 UTC",
+      "lado": "sell",
+      "par": "ARBUSDT",
+      "cantidad": 760.2739726027397,
+      "precio": 0.1991,
+      "usd": 151.3705,
+      "comision": 0.151371,
+      "motivo": "Momentum de 24 h invalidado: 4 h -0,15% (negativo), 24 h +2,79% (se desinfló desde +9,8%), 1 h -0,35%, vol 1,04x, -2,5% del máximo de 48 h. La invalidación fijada la hora pasada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
+      "resultado_pct": 1.01
     }
   ]
 }
