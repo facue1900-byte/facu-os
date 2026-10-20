@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792456260000
+      "vigilado_hasta": 1792459860000
     },
     "PUMPUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792456260000
+      "vigilado_hasta": 1792459860000
     },
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 279.6752519596864,
       "entrada": 0.5358,
-      "maximo": 0.5358,
+      "maximo": 0.5395,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792456380000
+      "vigilado_hasta": 1792459860000
     }
   },
   "comisiones_usd": 16.268851,
