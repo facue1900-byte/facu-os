@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 630.234197844437,
+  "usdt": 480.23419784443695,
   "posiciones": {
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 32.012390514847255,
       "entrada": 4.681,
-      "maximo": 4.728,
+      "maximo": 4.977,
       "reglas": {
         "stop": 3.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792503060000
+      "vigilado_hasta": 1792506660000
     },
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 273.0502915451895,
       "entrada": 0.5488,
-      "maximo": 0.5587,
+      "maximo": 0.5726,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792503060000
+      "vigilado_hasta": 1792506660000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.12298512852499917,
+      "entrada": 1218.44,
+      "maximo": 1218.44,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792506780000
     }
   },
-  "comisiones_usd": 17.018561,
+  "comisiones_usd": 17.168560999999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1696,6 +1718,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: WLD (64 M/día) +8,4% en 24 h, sigue subiendo en 4 h (+2,4%, por encima del +1,5% que me pedí para recomprar tras la salida de las 07:31), 1 h +1,09% (no estirada), vol 1,33x, -0,99% del máximo de 48 h. BTC +0,03% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792506758268,
+      "fecha": "2026-10-20 14:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.12298512852499917,
+      "precio": 1218.44,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: ZEC (150,8 M/día) +7,23% en 24 h, sigue subiendo en 4 h (+6,58%), 1 h +2,81% (no estirada), vol 1,84x, -1,46% del máximo de 48 h. BTC +1,83% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
     }
   ]
 }
