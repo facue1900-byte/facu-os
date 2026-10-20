@@ -1501,3 +1501,11 @@ Momentum de 24 h invalidado: 4 h -0,15% (negativo), 24 h +2,79% (se desinfló de
 ## 2026-10-20 06:32 UTC — nota
 06:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: WLD sin disparos (60 min). Mercado plano y sin volumen: 1 h verde suave general (0,0/+2,83%), 4 h casi nula (-1,16/+4,94%), 24 h roja salvo GTC/WLD/PEPE/ARB/BNB/TRX, volumen 0,35-1,09x salvo WLD 1,9x. 18 pares sobre 20 M/día. BTC +0,07% en 4 h, sin bloqueo. WLD 0,5422 (+1,19%), stop 0,526585 (trailing): 24 h +9,23%, 4 h +0,56% (positivo), 1 h +1,01%, vol 1,9x, -2,2% del máximo de 48 h; tesis viva; vence 21/10 00:32. No muevo stops. Sin entradas: momentum: fuera de cartera sólo GTC (+20,14% en 24 h, 4 h +4,94%, 1 h +2,83%) pero vol 0,86x (< 1,2x), -7,77% del máximo de 48 h y liquidez al borde (20,8 M): rebote de bomba sin volumen, paso; PEPE +2,69% no llega. Ruptura: nadie sobre el máximo de 48 h (BNB -0,45% con 0,46x, TRX -0,51% con 1,09x, PEPE -0,71% con 1,0x: sin volumen). Rebote: TRX +0,39% del mínimo, rango 48 h ~0,9%: sin recorrido. 1 posición, ~84% en USDT.
 
+## 2026-10-20 07:31 UTC — Venta WLDUSDT
+151.19 USD a 0.5406 (+0.90% contra la compra).
+
+Momentum de 24 h invalidado: 4 h -0,64% (negativo), 1 h -0,5%, 24 h +6,46% (se desinfla desde +10,5%), vol 1,65x, -2,45% del máximo de 48 h. La invalidación fijada en la entrada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop (0,526585).
+
+## 2026-10-20 07:32 UTC — nota
+07:31 UTC — Sin disparos, sin entradas, 1 salida. Vigilante: WLD sin disparos (60 min). Mercado rojo suave y sin volumen: 1 h roja casi general (-1,83/+0,93%), 4 h roja casi general (-4,35/+12,48%; positivas sólo GTC y TRX), 24 h roja salvo GTC/WLD/PEPE/TRX/BNB, volumen 0,3-1,21x salvo WLD 1,65x. 18 pares sobre 20 M/día. BTC -0,7% en 4 h, sin bloqueo. SALIDA WLD a 0,5406 (+0,9%): se cumplió la invalidación fijada (4 h -0,64%). Sin entradas: momentum: GTC +27,97% en 24 h, 4 h +12,48%, 1 h +0,93% pero vol 1,16x (< 1,2x), -5,29% del máximo de 48 h y liquidez al borde (21,7 M): bomba sin volumen confirmado, paso; PEPE +1,46% no llega. Ruptura: nadie sobre el máximo de 48 h (TRX -0,48% con 0,78x, BNB -0,63% con 0,57x: sin volumen). Rebote: TRX +0,42% del mínimo, rango 48 h ~0,9%: sin recorrido; NEAR -5,66% en 24 h pero a +3,48% del mínimo, no está en soporte. 0 posiciones, 100% en USDT.
+

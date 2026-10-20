@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 779.1929490762399,
-  "posiciones": {
-    "WLDUSDT": {
-      "nivel": "trading",
-      "cantidad": 279.6752519596864,
-      "entrada": 0.5358,
-      "maximo": 0.5543,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792477860000
-    }
-  },
-  "comisiones_usd": 16.567369000000003,
+  "usdt": 930.234197844437,
+  "posiciones": {},
+  "comisiones_usd": 16.718561,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1638,6 +1615,18 @@
       "comision": 0.151371,
       "motivo": "Momentum de 24 h invalidado: 4 h -0,15% (negativo), 24 h +2,79% (se desinfló desde +9,8%), 1 h -0,35%, vol 1,04x, -2,5% del máximo de 48 h. La invalidación fijada la hora pasada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop.",
       "resultado_pct": 1.01
+    },
+    {
+      "ms": 1792481513398,
+      "fecha": "2026-10-20 07:31 UTC",
+      "lado": "sell",
+      "par": "WLDUSDT",
+      "cantidad": 279.6752519596864,
+      "precio": 0.5406,
+      "usd": 151.1924,
+      "comision": 0.151192,
+      "motivo": "Momentum de 24 h invalidado: 4 h -0,64% (negativo), 1 h -0,5%, 24 h +6,46% (se desinfla desde +10,5%), vol 1,65x, -2,45% del máximo de 48 h. La invalidación fijada en la entrada (cierre horario con 4 h negativo) se cumplió: salgo sin esperar el stop (0,526585).",
+      "resultado_pct": 0.9
     }
   ]
 }
