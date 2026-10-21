@@ -1,20 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-21 04:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-21 05:32 UTC
 
-**Total: 940.29 USD (-5.97%)** desde 2026-10-07 23:06 UTC · USDT libre 640.80 · comisiones 19.43 · 154 operaciones
+**Total: 936.95 USD (-6.31%)** desde 2026-10-07 23:06 UTC · USDT libre 789.47 · comisiones 19.58 · 155 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **940.29** |
+| **Esta carpeta** | **936.95** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 995.60 |
+| hodl btc | 996.02 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| NEAR | trading | 149.76 | -0.06% | 4.7994 |
-| WLD | trading | 149.72 | -0.08% | 0.565345 |
+| WLD | trading | 147.48 | -1.58% | 0.565535 |
 
 ## Últimas operaciones
 
+- 2026-10-21 05:32 UTC · venta NEAR 148.81 USD a 5.017 — Salida por invalidación: la tesis de momentum (al límite) se invalidaba con 24 h bajo +5% y 4 h plano, y NEAR cierra 05:31 con 24 h +4,85%, 
 - 2026-10-21 04:32 UTC · compra NEAR 150.00 USD a 5.052 — Momentum de 24 h: NEAR (179 M/día, muy líquida) +5,25% en 24 h, sigue subiendo en 4 h (+1,14%), 1 h +0,42% (no estirada), -1,69% del máximo 
 - 2026-10-21 04:32 UTC · compra WLD 150.00 USD a 0.5951 — Momentum de 24 h: WLD (98 M/día) +9,5% en 24 h, 4 h volvió a positivo (+2,06%), 1 h +0,49% (no estirada), -0,64% del máximo de 48 h; vol 0,8
 - 2026-10-21 04:32 UTC · venta INJ 146.05 USD a 8.922 — Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y INJ cierra 04:31 con 4 h -0,79%, 1 h -1,41%, 24 h +4,45
@@ -24,6 +24,5 @@
 - 2026-10-21 00:31 UTC · venta WLD 153.84 USD a 0.5866 — Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y WLD cierra 00:31 con 4 h -0,27% y 1 h -0,15% (vol 1,14x
 - 2026-10-20 21:32 UTC · compra PUMP 150.00 USD a 0.004797 — Momentum de 24 h: PUMP (23,2 M/día) +9,37% en 24 h, sigue subiendo en 4 h (+2,76%), 1 h -0,27% (no estirada), -1,21% del máximo de 48 h; mom
 - 2026-10-20 20:32 UTC · compra ZEC 150.00 USD a 1,219.42 — Momentum de 24 h: ZEC (175 M/día) +8,57% en 24 h, 4 h +0,88% (volvió a positivo), 1 h +0,87% (no estirada), -1,17% del máximo de 48 h. Volum
-- 2026-10-20 20:32 UTC · venta PEPE 150.18 USD a 4.55e-06 — Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y PEPE cierra 20:31 con 4 h -1,51% y 1 h -1,3% (vol 1,66x
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

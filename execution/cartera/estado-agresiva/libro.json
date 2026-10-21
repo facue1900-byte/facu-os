@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 640.8033125144822,
+  "usdt": 789.466347461038,
   "posiciones": {
     "WLDUSDT": {
       "nivel": "trading",
       "cantidad": 251.8064190892287,
       "entrada": 0.5951,
-      "maximo": 0.5951,
+      "maximo": 0.5953,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792557180000
-    },
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 29.661520190023754,
-      "entrada": 5.052,
-      "maximo": 5.052,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792557180000
+      "vigilado_hasta": 1792560660000
     }
   },
-  "comisiones_usd": 19.430340999999988,
+  "comisiones_usd": 19.579152999999987,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1900,6 +1878,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: NEAR (179 M/día, muy líquida) +5,25% en 24 h, sigue subiendo en 4 h (+1,14%), 1 h +0,42% (no estirada), -1,69% del máximo de 48 h; vol 0,87x. Al límite del +5%: convicción media. BTC -0,2% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o 24 h bajo +5% con 4 h plano, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792560740592,
+      "fecha": "2026-10-21 05:32 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 29.661520190023754,
+      "precio": 5.017,
+      "usd": 148.8118,
+      "comision": 0.148812,
+      "motivo": "Salida por invalidación: la tesis de momentum (al límite) se invalidaba con 24 h bajo +5% y 4 h plano, y NEAR cierra 05:31 con 24 h +4,85%, 4 h +0,1%, 1 h +0,04%, vol 0,68x, -2,41% del máximo de 48 h. Stop 4,7994 no saltó; salgo por regla propia.",
+      "resultado_pct": -0.69
     }
   ]
 }
