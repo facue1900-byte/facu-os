@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 636.0472202639282,
+  "usdt": 486.04722026392824,
   "posiciones": {
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 28.619174942704355,
       "entrada": 5.236,
-      "maximo": 5.254,
+      "maximo": 5.28,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792571460000
+      "vigilado_hasta": 1792575060000
     },
     "ENAUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792571460000
+      "vigilado_hasta": 1792575060000
+    },
+    "XRPUSDT": {
+      "nivel": "trading",
+      "cantidad": 110.01394904926215,
+      "entrada": 1.3621,
+      "maximo": 1.3621,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792575180000
     }
   },
-  "comisiones_usd": 20.025880999999984,
+  "comisiones_usd": 20.175880999999983,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1948,6 +1970,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: ENA (36 M/día) +9,51% en 24 h, 4 h +3,12%, 1 h +2,19% (no estirada), -0,1% del máximo de 48 h; vol 0,87x (subió desde 0,4x de las horas anteriores, ya no la paso por volumen). BTC +0,5% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792575121231,
+      "fecha": "2026-10-21 09:32 UTC",
+      "lado": "buy",
+      "par": "XRPUSDT",
+      "nivel": "trading",
+      "cantidad": 110.01394904926215,
+      "precio": 1.3621,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: XRP (112 M/día, muy líquida) +5,29% en 24 h, 4 h +2,13%, 1 h +1,05% (no estirada), -0,18% del máximo de 48 h; vol 1,23x (acompaña). BTC +1,07% en 4 h, sin bloqueo. Al límite del +5%: convicción media. Invalida: cierre horario con 4 h negativo, o 24 h bajo +5% con 4 h plano, stop 5%, o 24 h sin +8%."
     }
   ]
 }
