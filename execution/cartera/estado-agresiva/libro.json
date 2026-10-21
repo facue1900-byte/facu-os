@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 483.26350145103424,
+  "usdt": 333.26350145103424,
   "posiciones": {
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.11574109832393605,
       "entrada": 1294.7,
-      "maximo": 1340.0,
+      "maximo": 1350.0,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792596660000
+      "vigilado_hasta": 1792600260000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 28.088097469540767,
       "entrada": 5.335,
-      "maximo": 5.335,
+      "maximo": 5.451,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792596780000
+      "vigilado_hasta": 1792600260000
     },
     "PUMPUSDT": {
       "nivel": "trading",
       "cantidad": 29964.007198560284,
       "entrada": 0.005001,
-      "maximo": 0.005001,
+      "maximo": 0.005002,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792596780000
+      "vigilado_hasta": 1792600260000
+    },
+    "ENAUSDT": {
+      "nivel": "trading",
+      "cantidad": 682.6879271070615,
+      "entrada": 0.2195,
+      "maximo": 0.2195,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792600380000
     }
   },
-  "comisiones_usd": 21.073544999999978,
+  "comisiones_usd": 21.223544999999977,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2054,6 +2076,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: PUMP (21,8 M/día, liquidez justa) +10,72% en 24 h, 4 h +4,67%, 1 h +2,75% (no estirada), vol 1,56x, -0,12% del máximo de 48 h. BTC +1,22% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792600337765,
+      "fecha": "2026-10-21 16:32 UTC",
+      "lado": "buy",
+      "par": "ENAUSDT",
+      "nivel": "trading",
+      "cantidad": 682.6879271070615,
+      "precio": 0.2195,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: ENA (44,5 M/día) +13,21% en 24 h, 4 h +5,73%, 1 h -0,95% (enfriada, no estirada; la hora pasada pasé por 1 h +3,77%), vol 3,09x, -1,53% del máximo de 48 h. Re-entrada: salí 14:32 cuando 24 h cayó a +2,94%; ahora volvió con volumen fuerte. BTC +1,38% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, 24 h bajo +5%, stop 5%, o 24 h sin +8%."
     }
   ]
 }
