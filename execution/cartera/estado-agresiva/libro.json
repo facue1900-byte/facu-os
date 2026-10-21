@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 483.9175746947915,
+  "usdt": 632.7604740010098,
   "posiciones": {
     "ENAUSDT": {
       "nivel": "trading",
@@ -26,35 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792585860000
-    },
-    "XRPUSDT": {
-      "nivel": "trading",
-      "cantidad": 110.01394904926215,
-      "entrada": 1.3621,
-      "maximo": 1.3693,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792585860000
+      "vigilado_hasta": 1792589460000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.11574109832393605,
       "entrada": 1294.7,
-      "maximo": 1294.7,
+      "maximo": 1326.87,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792585980000
+      "vigilado_hasta": 1792589460000
     }
   },
-  "comisiones_usd": 20.47389899999998,
+  "comisiones_usd": 20.62289099999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2006,6 +1984,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: ZEC (233 M/día, muy líquida) +12,08% en 24 h, 4 h +1,86%, 1 h +0,32% (no estirada), -0,84% del máximo de 48 h; vol 0,95x (subió desde 0,6-0,72x de las horas anteriores: ahora sí pasa el ~0,85x que venía pidiendo). BTC +0,33% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792589565531,
+      "fecha": "2026-10-21 13:32 UTC",
+      "lado": "sell",
+      "par": "XRPUSDT",
+      "cantidad": 110.01394904926215,
+      "precio": 1.3543,
+      "usd": 148.9919,
+      "comision": 0.148992,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y XRP cierra 13:31 con 4 h -0,11% (1 h -0,2%, vol 1,14x), 24 h +3,43% (bajo +5% y cayendo), -1,04% del máximo de 48 h. Stop 1,300835 no saltó; salgo por regla propia.",
+      "resultado_pct": -0.57
     }
   ]
 }
