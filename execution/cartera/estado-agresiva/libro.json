@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 28.619174942704355,
       "entrada": 5.236,
-      "maximo": 5.236,
+      "maximo": 5.254,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792568040000
+      "vigilado_hasta": 1792571460000
     },
     "ENAUSDT": {
       "nivel": "trading",
       "cantidad": 730.6192101413944,
       "entrada": 0.2051,
-      "maximo": 0.2051,
+      "maximo": 0.2064,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792568040000
+      "vigilado_hasta": 1792571460000
     }
   },
   "comisiones_usd": 20.025880999999984,
