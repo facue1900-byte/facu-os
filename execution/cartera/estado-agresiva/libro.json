@@ -4,35 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 632.0702587470956,
+  "usdt": 788.7460865485168,
   "posiciones": {
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.11574109832393605,
-      "entrada": 1294.7,
-      "maximo": 1368.4,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792614660000
-    },
     "PUMPUSDT": {
       "nivel": "trading",
       "cantidad": 29964.007198560284,
       "entrada": 0.005001,
-      "maximo": 0.005169,
+      "maximo": 0.005219,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792614660000
+      "vigilado_hasta": 1792618260000
     }
   },
-  "comisiones_usd": 21.522650999999975,
+  "comisiones_usd": 21.679483999999974,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2068,6 +2046,18 @@
       "comision": 0.149509,
       "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y ENA cierra 19:31 con 4 h -1,17% (1 h +0,09%, vol 1,66x), 24 h +13,66%, -3,14% del máximo de 48 h. 24 h sigue fuerte pero la pata de 4 h se rompió. Stop 0,2147 no saltó; salgo por regla propia.",
       "resultado_pct": -0.23
+    },
+    {
+      "ms": 1792618328441,
+      "fecha": "2026-10-21 21:32 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.11574109832393605,
+      "precio": 1355.03,
+      "usd": 156.8327,
+      "comision": 0.156833,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y ZEC cierra 21:31 con 4 h -0,64% (1 h +0,51%, vol 1,41x), 24 h +6,98%, -1,04% del máximo de 48 h. Venía enfriándose (4 h +0,76% y +0,89% las dos horas anteriores). Stop 1299,98 no saltó; salgo por regla propia con ganancia.",
+      "resultado_pct": 4.66
     }
   ]
 }
