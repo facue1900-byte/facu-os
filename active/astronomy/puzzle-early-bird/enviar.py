@@ -81,6 +81,8 @@ No lo dejes para el final.
     # cada mail: el que lo recibe el 24/10 lee 7, no 10. "Últimas de Preventa 1" lo dijo
     # Facu el 21/10 (Planout no se lee desde acá): se chequea en el panel antes de cada tanda.
     "ultimas": {
+        # 21/10 tarde: Facu avisó que aumentó (Preventa 1 terminada). 450 enviados, el resto NO.
+        "cerrada": "la Preventa 1 se terminó el 21/10: este mail ya no es cierto",
         "asunto": "OBSESSION: {faltan} · últimas de Preventa 1",
         "html": "mail-ultimas.html",
         "log": "enviados-ultimas.csv",
@@ -230,6 +232,8 @@ def main():
     a = ap.parse_args()
 
     c = CAMPANAS[a.campana]
+    if c.get("cerrada") and a.send:
+        sys.exit(f"Campaña '{a.campana}' cerrada: {c['cerrada']}. No se manda.")
     log = AQUI / c["log"]
     personas, lista, afuera = destinatarios(log)
     print(f"Campaña: {a.campana} · asunto: {c['asunto'].format(faltan=faltan())}")
