@@ -1,6 +1,6 @@
 """Manda el mail de early birds de OBSESSION a la base de Puzzle.
 
---campana:      cuál mail (early, preventa1). Obligatorio: cada una tiene su log.
+--campana:      cuál mail (early, preventa1, ultimas). Obligatorio: cada una tiene su log.
 Sin flags:      manda UNA prueba a Facu. No toca a nadie de la base.
 --contar:       dice a cuántos le saldría y por qué quedan afuera los que quedan afuera.
 --send:         manda de verdad a la base, en tandas de --limite (default 450, Gmail
@@ -17,6 +17,7 @@ import re
 import sys
 import time
 import unicodedata
+from datetime import date
 from email.message import EmailMessage
 from email.utils import formataddr
 
@@ -27,6 +28,7 @@ sys.path.insert(0, str(AQUI.parents[2] / "execution"))
 import google_auth  # noqa: E402
 
 BASE = pathlib.Path.home() / "Desktop/Productoras/Puzzle/base_contactos_unificada PUZZLE.xlsx"
+EVENTO = date(2026, 10, 31)
 LINK = "https://planout.ar/eventos/es/comprarEvento?idEvento=1300&affId=FC"
 REMITENTE = "OBSESSION"
 CUENTA = "puzzle"  # puzzle.bsas@gmail.com: el remitente es Puzzle, no Facu
@@ -75,7 +77,35 @@ No lo dejes para el final.
 31.10.2026 · PALACIO ALSINA · +27
 """ + PIE,
     },
+    # 21/10: la base sale en 4 días (450/día), así que "faltan N días" se calcula al armar
+    # cada mail: el que lo recibe el 24/10 lee 7, no 10. "Últimas de Preventa 1" lo dijo
+    # Facu el 21/10 (Planout no se lee desde acá): se chequea en el panel antes de cada tanda.
+    "ultimas": {
+        "asunto": "OBSESSION: {faltan} · últimas de Preventa 1",
+        "html": "mail-ultimas.html",
+        "log": "enviados-ultimas.csv",
+        "texto": """Hola{nombre},
+
+{Faltan} para OBSESSION: LA fiesta de Halloween, el sábado 31 de octubre en Palacio Alsina.
+
+Quedan las últimas entradas de la Preventa 1. Cuando se terminen, pasa a la tanda siguiente.
+
+{link}
+
+No lo dejes para el final.
+
+31.10.2026 · PALACIO ALSINA · +27
+""" + PIE,
+    },
 }
+
+
+def faltan(hoy=None):
+    """'faltan 10 días' / 'falta 1 día'. Frena si el evento ya pasó o es hoy."""
+    n = (EVENTO - (hoy or date.today())).days
+    if n < 1:
+        sys.exit(f"El evento es el {EVENTO:%d/%m}: faltan {n} días. Frenado.")
+    return "falta 1 día" if n == 1 else f"faltan {n} días"
 
 
 NOMBRES_PROHIBIDOS = r"\b(puzzle|obsession|astronomy|gay|puto|trolo|cogid\w*|pija|concha|forro|boludo|pete)\b"
@@ -171,7 +201,9 @@ def destinatarios(log):
 
 def armar(c, para, nombre, desde):
     html = (AQUI / c["html"]).read_text()
+    f = faltan()
     html = (html.replace("{{nombre}}", nombre)
+                .replace("{{faltan}}", f).replace("{{Faltan}}", f.capitalize())
                 .replace("{{link}}", LINK.replace("&", "&amp;"))
                 .replace("{{banner}}", "cid:banner"))
     if "{{" in html:
@@ -179,8 +211,8 @@ def armar(c, para, nombre, desde):
     m = EmailMessage()
     m["To"] = para
     m["From"] = formataddr((REMITENTE, desde))
-    m["Subject"] = c["asunto"]
-    m.set_content(c["texto"].format(nombre=nombre, link=LINK))
+    m["Subject"] = c["asunto"].format(faltan=f)
+    m.set_content(c["texto"].format(nombre=nombre, link=LINK, faltan=f, Faltan=f.capitalize()))
     m.add_alternative(html, subtype="html")
     m.get_payload()[1].add_related(
         (AQUI / "obsession-banner.jpg").read_bytes(), "image", "jpeg", cid="<banner>",
@@ -200,7 +232,7 @@ def main():
     c = CAMPANAS[a.campana]
     log = AQUI / c["log"]
     personas, lista, afuera = destinatarios(log)
-    print(f"Campaña: {a.campana} · asunto: {c['asunto']}")
+    print(f"Campaña: {a.campana} · asunto: {c['asunto'].format(faltan=faltan())}")
     print(f"Base: {len(personas)} · pendientes de envío: {len(lista)} · afuera: {afuera}")
     if a.contar:
         return

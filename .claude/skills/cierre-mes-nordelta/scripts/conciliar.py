@@ -35,7 +35,7 @@ import sys
 import openpyxl
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from extracto_a_movimientos import agrupar, bloque_cuenta, parsear, plata  # noqa: E402
+from extracto_a_movimientos import agrupar, bloque_cuenta, parsear, plata, texto_pdf  # noqa: E402
 
 import fitz  # noqa: E402
 
@@ -54,8 +54,7 @@ def normalizar(s):
 
 def saldos_extracto(pdf_path):
     """(saldo último extracto, saldo final) del bloque de la cuenta en pesos."""
-    doc = fitz.open(pdf_path)
-    bloque = bloque_cuenta("\n".join(p.get_text() for p in doc))
+    bloque = bloque_cuenta(texto_pdf(pdf_path))
     prev = final = None
     for linea in bloque.split("\n"):
         if "SALDO ULTIMO EXTRACTO" in linea:

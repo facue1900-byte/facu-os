@@ -8,6 +8,21 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-10-21 · FAIL ✓ · Paseo: una factura pagaba dos débitos, y el extracto sin resumen no se podía leer
+
+**Dónde:** `cierre-mes-nordelta/scripts/extracto_a_movimientos.py` (`resolver_con_facturas`, `texto_pdf`).
+
+**Qué pasó:** con el export de movimientos de septiembre (no había resumen mensual), el match
+por importe le dio la factura de Annie ($1.500.000) a dos débitos: el pago real del 15/09 y una
+transferencia del 16/09 al CUIT de la propia MAHNI. El segundo iba a entrar como Marketing sin
+ningún aviso. Además, el script sólo leía el layout del resumen mensual.
+
+**Causa raíz:** el matcheo nunca marcaba una factura como usada ni miraba el CUIT de la glosa.
+
+**Fix:** cada factura se usa una sola vez y, si la glosa trae CUIT, la factura tiene que ser de
+ese CUIT. El export se lee por la coordenada de la columna y se valida contra cada saldo diario,
+el final y los totales de la cabecera. Julio y agosto dan idéntico al código viejo.
+
 ### 2026-10-19 · FAIL ✓ · Caja del Paseo: lo que Mati no veía, lo volvía a cargar
 
 **Dónde:** app del Paseo, `src/pages/Caja.tsx` (vista Mati) y `src/lib/parseCaja.ts`.
