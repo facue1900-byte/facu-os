@@ -35,6 +35,7 @@ import datetime
 import unicodedata
 
 import argparse
+import collections
 import os
 import glob
 
@@ -467,15 +468,20 @@ def movimientos_del_sheet():
 
 
 def ya_cargados_sheet(filas):
-    """(año, mes, monto) de lo que ya está cargado con Medio «Banco»."""
-    out = set()
+    """(año, mes, monto) -> cuántas veces ya está cargado con Medio «Banco».
+
+    Cuenta, no es un set: dos débitos del mismo mes y el mismo importe son moneda
+    corriente (sep-26: Annie y el sueldo de Facu, $1.500.000 cada uno). Con un set,
+    cargado el primero, el segundo figuraba «ya cargado» y no entraba nunca.
+    """
+    out = collections.Counter()
     for r in filas[1:]:
         r = list(r) + [""] * (8 - len(r))
         if str(r[2]).strip().lower() != "banco":
             continue
         try:
             f = datetime.date(1899, 12, 30) + datetime.timedelta(days=float(r[0]))
-            out.add((f.year, f.month, round(float(r[5] or 0), 2)))
+            out[(f.year, f.month, round(float(r[5] or 0), 2))] += 1
         except (ValueError, TypeError):
             continue
     return out
@@ -535,9 +541,13 @@ def main():
 
     filas_sheet = movimientos_del_sheet()
     cargados = ya_cargados_sheet(filas_sheet)
-    nuevos = [m for m in movs
-              if (m["fecha"].year, m["fecha"].month, round(m["monto"], 2))
-              not in cargados]
+    nuevos = []
+    for m in movs:
+        clave = (m["fecha"].year, m["fecha"].month, round(m["monto"], 2))
+        if cargados[clave] > 0:
+            cargados[clave] -= 1
+        else:
+            nuevos.append(m)
     print(f"# {len(movs) - len(nuevos)} ya estaban cargados, "
           f"{len(nuevos)} para agregar")
     print("#")
