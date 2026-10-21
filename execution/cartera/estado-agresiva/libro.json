@@ -4,35 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 486.04722026392824,
+  "usdt": 633.9175746947915,
   "posiciones": {
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 28.619174942704355,
-      "entrada": 5.236,
-      "maximo": 5.28,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792578660000
-    },
     "ENAUSDT": {
       "nivel": "trading",
       "cantidad": 730.6192101413944,
       "entrada": 0.2051,
-      "maximo": 0.2064,
+      "maximo": 0.2106,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792578660000
+      "vigilado_hasta": 1792582260000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792578660000
+      "vigilado_hasta": 1792582260000
     }
   },
-  "comisiones_usd": 20.175880999999983,
+  "comisiones_usd": 20.323898999999983,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1982,6 +1960,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: XRP (112 M/día, muy líquida) +5,29% en 24 h, 4 h +2,13%, 1 h +1,05% (no estirada), -0,18% del máximo de 48 h; vol 1,23x (acompaña). BTC +1,07% en 4 h, sin bloqueo. Al límite del +5%: convicción media. Invalida: cierre horario con 4 h negativo, o 24 h bajo +5% con 4 h plano, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792582347373,
+      "fecha": "2026-10-21 11:32 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 28.619174942704355,
+      "precio": 5.172,
+      "usd": 148.0184,
+      "comision": 0.148018,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y NEAR cierra 11:31 con 4 h -0,58% (1 h +0,02%, vol 0,86x), 24 h +10,76%, -1,97% del máximo de 48 h. Stop 5,016 no saltó; salgo por regla propia.",
+      "resultado_pct": -1.22
     }
   ]
 }
