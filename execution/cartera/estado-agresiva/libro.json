@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 639.6333923967373,
+  "usdt": 640.8033125144822,
   "posiciones": {
-    "ZECUSDT": {
+    "WLDUSDT": {
       "nivel": "trading",
-      "cantidad": 0.12288629020353938,
-      "entrada": 1219.42,
-      "maximo": 1296.45,
+      "cantidad": 251.8064190892287,
+      "entrada": 0.5951,
+      "maximo": 0.5951,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792553460000
+      "vigilado_hasta": 1792557180000
     },
-    "INJUSDT": {
+    "NEARUSDT": {
       "nivel": "trading",
-      "cantidad": 16.36989294297575,
-      "entrada": 9.154,
-      "maximo": 9.183,
+      "cantidad": 29.661520190023754,
+      "entrada": 5.052,
+      "maximo": 5.052,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792553460000
+      "vigilado_hasta": 1792557180000
     }
   },
-  "comisiones_usd": 18.82886999999999,
+  "comisiones_usd": 19.430340999999988,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1852,6 +1852,54 @@
       "comision": 0.14767,
       "motivo": "Stop automático en 0.0047272 (entrada 0.004797, máximo 0.004976).",
       "resultado_pct": -1.46
+    },
+    {
+      "ms": 1792557137327,
+      "fecha": "2026-10-21 04:32 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.12288629020353938,
+      "precio": 1264.74,
+      "usd": 155.4192,
+      "comision": 0.155419,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y ZEC cierra 04:31 con 4 h -1,15% (1 h +0,31%, vol 0,89x), -2,46% del máximo de 48 h; venía floja (4 h +0,23/+0,03/+0,62% las últimas horas). Stop 1.231,63 no saltó; salgo por regla propia.",
+      "resultado_pct": 3.72
+    },
+    {
+      "ms": 1792557138193,
+      "fecha": "2026-10-21 04:32 UTC",
+      "lado": "sell",
+      "par": "INJUSDT",
+      "cantidad": 16.36989294297575,
+      "precio": 8.922,
+      "usd": 146.0522,
+      "comision": 0.146052,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y INJ cierra 04:31 con 4 h -0,79%, 1 h -1,41%, 24 h +4,45% (ya no cumple +5%), vol 1,44x (venden con volumen), -5,26% del máximo de 48 h. Stop 8,72385 no saltó; salgo por regla propia.",
+      "resultado_pct": -2.53
+    },
+    {
+      "ms": 1792557154208,
+      "fecha": "2026-10-21 04:32 UTC",
+      "lado": "buy",
+      "par": "WLDUSDT",
+      "nivel": "trading",
+      "cantidad": 251.8064190892287,
+      "precio": 0.5951,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: WLD (98 M/día) +9,5% en 24 h, 4 h volvió a positivo (+2,06%), 1 h +0,49% (no estirada), -0,64% del máximo de 48 h; vol 0,88x (flojo). Re-entrada 4 h después de la salida de 00:31 (0,5866). BTC -0,2% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792557161594,
+      "fecha": "2026-10-21 04:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 29.661520190023754,
+      "precio": 5.052,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: NEAR (179 M/día, muy líquida) +5,25% en 24 h, sigue subiendo en 4 h (+1,14%), 1 h +0,42% (no estirada), -1,69% del máximo de 48 h; vol 0,87x. Al límite del +5%: convicción media. BTC -0,2% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o 24 h bajo +5% con 4 h plano, stop 5%, o 24 h sin +8%."
     }
   ]
 }

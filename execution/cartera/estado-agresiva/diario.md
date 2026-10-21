@@ -1641,3 +1641,26 @@ Momentum de 24 h: INJ (21,2 M/día) +6,57% en 24 h, sigue subiendo en 4 h (+2%),
 ## 2026-10-21 03:31 UTC — nota
 03:31 UTC — 1 disparo, sin entradas, sin salidas manuales. Vigilante: STOP PUMP a 0,0047272 (-1,46%) a las 03:10; INJ (58 min) y ZEC (60 min) sin disparos. Mercado plano y sin volumen: 1 h roja suave casi general (-1,05/+0,44%), 4 h mixta (-3,06/+2,11%), volumen 0,34-2,81x. 21 pares sobre 20 M/día. BTC -0,27% en 4 h, sin bloqueo. ZEC 1.264,06 (+3,66%), stop 1.231,63: 24 h +10,08%, 4 h +0,62% (positivo), 1 h -0,35%, vol 1,29x, -2,43% del máximo de 48 h; tesis viva pero floja; vence 21/10 20:32. INJ 9,015 (-1,52%), stop 8,72385: 24 h +3,86% (se enfría), 4 h +0,79%, 1 h -1,05%, vol 1,53x, -4,23% del máximo; tesis viva por la regla de 4 h, si cierra 4 h negativo, afuera; vence 22/10 02:32. No muevo stops. Sin entradas: momentum: WLD 24 h +8,07% pero 4 h +0,07% y 1 h -0,66% (y salió por eso): no; PEPE 4 h -0,88%: no; nadie más con +5% en 24 h. Ruptura: nadie sobre el máximo de 48 h (BNB -0,34% con 0,72x; LTC -0,58% con 1,49x, casi: vigilar; HYPE 2,81x pero -0,84%). Rebote: TRX +0,18% del mínimo con rango ~0,7%: sin recorrido. 2 posiciones, ~68% en USDT.
 
+## 2026-10-21 04:32 UTC — Venta ZECUSDT
+155.42 USD a 1,264.74 (+3.72% contra la compra).
+
+Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y ZEC cierra 04:31 con 4 h -1,15% (1 h +0,31%, vol 0,89x), -2,46% del máximo de 48 h; venía floja (4 h +0,23/+0,03/+0,62% las últimas horas). Stop 1.231,63 no saltó; salgo por regla propia.
+
+## 2026-10-21 04:32 UTC — Venta INJUSDT
+146.05 USD a 8.922 (-2.53% contra la compra).
+
+Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y INJ cierra 04:31 con 4 h -0,79%, 1 h -1,41%, 24 h +4,45% (ya no cumple +5%), vol 1,44x (venden con volumen), -5,26% del máximo de 48 h. Stop 8,72385 no saltó; salgo por regla propia.
+
+## 2026-10-21 04:32 UTC — Compra WLDUSDT (trading)
+150.00 USD a 0.5951. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: WLD (98 M/día) +9,5% en 24 h, 4 h volvió a positivo (+2,06%), 1 h +0,49% (no estirada), -0,64% del máximo de 48 h; vol 0,88x (flojo). Re-entrada 4 h después de la salida de 00:31 (0,5866). BTC -0,2% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%.
+
+## 2026-10-21 04:32 UTC — Compra NEARUSDT (trading)
+150.00 USD a 5.052. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: NEAR (179 M/día, muy líquida) +5,25% en 24 h, sigue subiendo en 4 h (+1,14%), 1 h +0,42% (no estirada), -1,69% del máximo de 48 h; vol 0,87x. Al límite del +5%: convicción media. BTC -0,2% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo o 24 h bajo +5% con 4 h plano, stop 5%, o 24 h sin +8%.
+
+## 2026-10-21 04:32 UTC — nota
+04:31 UTC — Sin disparos, 2 entradas, 2 salidas. Vigilante: INJ y ZEC (60 min) sin disparos. Mercado plano y sin volumen: 1 h verde suave casi general (-1,41/+1,16%), 4 h roja casi general (-2,11/+2,18%), volumen 0,33-2,37x. 21 pares sobre 20 M/día. BTC -0,2% en 4 h, sin bloqueo. SALIDA ZEC a 1.264,74 (+3,72%): 4 h -1,15% al cierre horario, la invalidación que me fijé. SALIDA INJ a 8,922 (-2,53%): 4 h -0,79%, 1 h -1,41%, 24 h +4,45%. ENTRADA WLD 150 USD a 0,5951 (momentum): 24 h +9,5%, 4 h +2,06%, 1 h +0,49%, vol 0,88x, -0,64% del máximo; invalida 4 h negativo o stop; vence 22/10 04:32. ENTRADA NEAR 150 USD a 5,052 (momentum, al límite): 24 h +5,25%, 4 h +1,14%, 1 h +0,42%, vol 0,87x; vence 22/10 04:32. Sin otras entradas: ENA cumple momentum (24 h +6,12%, 4 h +1,46%, 1 h +1,16%) pero vol 0,33x: paso otra vez; PEPE y PUMP 4 h negativo: no. Ruptura: nadie sobre el máximo de 48 h (BNB -0,36% con 0,53x, TRX -0,42%: sin volumen; HYPE 2,37x pero -1,65%). Rebote: TRX +0,21% del mínimo con rango ~0,6%: sin recorrido. 2 posiciones, ~68% en USDT.
+
