@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792575060000
+      "vigilado_hasta": 1792578660000
     },
     "ENAUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792575060000
+      "vigilado_hasta": 1792578660000
     },
     "XRPUSDT": {
       "nivel": "trading",
       "cantidad": 110.01394904926215,
       "entrada": 1.3621,
-      "maximo": 1.3621,
+      "maximo": 1.3693,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792575180000
+      "vigilado_hasta": 1792578660000
     }
   },
   "comisiones_usd": 20.175880999999983,
