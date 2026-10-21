@@ -89,6 +89,12 @@ Lectura rápida en vivo por gviz:
   /Users/Facu/facu-os/data/master_plan.xlsx
 ```
 
+**Sin resumen mensual alcanza el export de movimientos** del home banking
+(`mov_caja_de_ahorros_mahni.pdf`, 21/10/2026): el script lo detecta solo, lee
+débito/crédito por la columna y exige que el saldo reconstruido caiga exacto en
+cada «SALDO FINAL DEL DIA» y en los totales de la cabecera — si no, se planta.
+Se archiva como `<Mes> 2026.pdf`; el de la CC Bancaria (VISA) va aparte.
+
 Los cargos bancarios chicos (SIRCREB, Ley 25413, comisiones) se agrupan en una línea
 mensual cada uno — criterio verificado contra junio 2026, que cerró al centavo. El neto
 se controla contra el extracto **crudo**, no contra el agrupado.
