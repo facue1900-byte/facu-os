@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 633.9175746947915,
+  "usdt": 483.9175746947915,
   "posiciones": {
     "ENAUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792582260000
+      "vigilado_hasta": 1792585860000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792582260000
+      "vigilado_hasta": 1792585860000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.11574109832393605,
+      "entrada": 1294.7,
+      "maximo": 1294.7,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792585980000
     }
   },
-  "comisiones_usd": 20.323898999999983,
+  "comisiones_usd": 20.47389899999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1972,6 +1994,18 @@
       "comision": 0.148018,
       "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y NEAR cierra 11:31 con 4 h -0,58% (1 h +0,02%, vol 0,86x), 24 h +10,76%, -1,97% del máximo de 48 h. Stop 5,016 no saltó; salgo por regla propia.",
       "resultado_pct": -1.22
+    },
+    {
+      "ms": 1792585954361,
+      "fecha": "2026-10-21 12:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.11574109832393605,
+      "precio": 1294.7,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: ZEC (233 M/día, muy líquida) +12,08% en 24 h, 4 h +1,86%, 1 h +0,32% (no estirada), -0,84% del máximo de 48 h; vol 0,95x (subió desde 0,6-0,72x de las horas anteriores: ahora sí pasa el ~0,85x que venía pidiendo). BTC +0,33% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
     }
   ]
 }
