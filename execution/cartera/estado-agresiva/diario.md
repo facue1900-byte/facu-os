@@ -1680,3 +1680,16 @@ Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre hor
 ## 2026-10-21 06:32 UTC — nota
 06:31 UTC — Sin disparos, sin entradas, 1 salida. Vigilante: WLD (60 min) sin disparos. Mercado plano y sin volumen: 1 h verde suave casi general (-0,27/+0,86%, salvo IOST +5,27%), 4 h roja casi general (-3,66/+0,84%, salvo IOST), volumen 0,27-1,18x (IOST 10,81x). 22 pares sobre 20 M/día. BTC -0,01% en 4 h, sin bloqueo. SALIDA WLD a 0,5827 (-2,08%): 4 h -1,57% al cierre horario, la invalidación que me fijé. Sin entradas: momentum: ENA 24 h +7,04%, 4 h +0,75%, 1 h +0,75% pero vol 0,43x: paso otra vez, sin fuerza; PUMP 24 h +8,44%, 4 h +0,84% pero vol 0,27x y ya me sacó el stop hoy: no; IOST 24 h +84,6%, 4 h +39,7%, 1 h +5,27% (> +4%, estirada) con 10,8x: no persigo; ZEC, WLD, PEPE con 4 h negativo: no. Ruptura: nadie sobre el máximo de 48 h (BNB -0,12% con 0,61x: sin volumen). Rebote: TRX +0,18% del mínimo con rango ~0,6%: sin recorrido; ARB +1,23% del mínimo, 1 h +0,53% (dejó de hacer mínimos) pero 4 h -1,72% y 24 h -4,26%: una hora sola no alcanza, vigilar. 0 posiciones, 100% en USDT.
 
+## 2026-10-21 07:33 UTC — Compra NEARUSDT (trading)
+150.00 USD a 5.236. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: NEAR (189 M/día, muy líquida) +9,27% en 24 h, 4 h +3,79%, 1 h +2,98% (no estirada, < +4%), -0,21% del máximo de 48 h (al borde de ruptura); vol 0,88x (flojo). Re-entrada 2 h después de la salida a 5,017: ahora sí cumple +5% con 4 h firme. BTC +0,5% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%.
+
+## 2026-10-21 07:33 UTC — Compra ENAUSDT (trading)
+150.00 USD a 0.2051. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: ENA (36 M/día) +9,51% en 24 h, 4 h +3,12%, 1 h +2,19% (no estirada), -0,1% del máximo de 48 h; vol 0,87x (subió desde 0,4x de las horas anteriores, ya no la paso por volumen). BTC +0,5% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%.
+
+## 2026-10-21 07:33 UTC — nota
+07:32 UTC — Sin disparos, 2 entradas, sin salidas. Vigilante: sin posiciones, nada que vigilar. Mercado verde suave y sin volumen: 1 h verde casi general (-2,79/+2,98%), 4 h verde casi general (-2,45/+7,41%), volumen 0,31-6,68x. 22 pares sobre 20 M/día. BTC +0,5% en 4 h, sin bloqueo. ENTRADA NEAR 150 USD a 5,236 (momentum): 24 h +9,27%, 4 h +3,79%, 1 h +2,98%, vol 0,88x, -0,21% del máximo; invalida 4 h negativo o stop; vence 22/10 07:33. ENTRADA ENA 150 USD a 0,2051 (momentum): 24 h +9,51%, 4 h +3,12%, 1 h +2,19%, vol 0,87x, -0,1% del máximo; vence 22/10 07:33. Sin otras entradas: ZEC 24 h +12,09% pero 4 h +0,83% con 0,62x y salió por 4 h negativo hace 3 h: no; PEPE 4 h +0,89%, vol 0,54x, -2,78% del máximo: flojo; PUMP vol 0,31x: no; UNI 4 h +0,19%: plano; WLD e INJ 4 h negativo: no; IOST 1 h -2,79% tras +73% en 24 h: no persigo. Ruptura: nadie sobre el máximo de 48 h (BNB -0,02% con 0,7x: sin volumen). Rebote: TRX +0,18% del mínimo con rango ~0,6%: sin recorrido; ARB 24 h -0,57%, -5,93% del máximo, lejos del mínimo: no. 2 posiciones, ~68% en USDT.
+

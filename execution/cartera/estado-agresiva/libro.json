@@ -4,9 +4,54 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 936.0472202639282,
-  "posiciones": {},
-  "comisiones_usd": 19.725880999999987,
+  "usdt": 636.0472202639282,
+  "posiciones": {
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 28.619174942704355,
+      "entrada": 5.236,
+      "maximo": 5.236,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792568040000
+    },
+    "ENAUSDT": {
+      "nivel": "trading",
+      "cantidad": 730.6192101413944,
+      "entrada": 0.2051,
+      "maximo": 0.2051,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792568040000
+    }
+  },
+  "comisiones_usd": 20.025880999999984,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1879,6 +1924,30 @@
       "comision": 0.146728,
       "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y WLD cierra 06:31 con 4 h -1,57% (1 h -0,27%, vol 0,55x), 24 h +7,23% (se enfría desde +9,5%), -2,61% del máximo de 48 h. Stop 0,565535 no saltó; salgo por regla propia.",
       "resultado_pct": -2.08
+    },
+    {
+      "ms": 1792567992493,
+      "fecha": "2026-10-21 07:33 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 28.619174942704355,
+      "precio": 5.236,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: NEAR (189 M/día, muy líquida) +9,27% en 24 h, 4 h +3,79%, 1 h +2,98% (no estirada, < +4%), -0,21% del máximo de 48 h (al borde de ruptura); vol 0,88x (flojo). Re-entrada 2 h después de la salida a 5,017: ahora sí cumple +5% con 4 h firme. BTC +0,5% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792567997314,
+      "fecha": "2026-10-21 07:33 UTC",
+      "lado": "buy",
+      "par": "ENAUSDT",
+      "nivel": "trading",
+      "cantidad": 730.6192101413944,
+      "precio": 0.2051,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: ENA (36 M/día) +9,51% en 24 h, 4 h +3,12%, 1 h +2,19% (no estirada), -0,1% del máximo de 48 h; vol 0,87x (subió desde 0,4x de las horas anteriores, ya no la paso por volumen). BTC +0,5% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
     }
   ]
 }
