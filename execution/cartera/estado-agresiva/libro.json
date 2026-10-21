@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.11574109832393605,
       "entrada": 1294.7,
-      "maximo": 1350.0,
+      "maximo": 1358.23,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792600260000
+      "vigilado_hasta": 1792603860000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792600260000
+      "vigilado_hasta": 1792603860000
     },
     "PUMPUSDT": {
       "nivel": "trading",
@@ -70,13 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792600260000
+      "vigilado_hasta": 1792603860000
     },
     "ENAUSDT": {
       "nivel": "trading",
       "cantidad": 682.6879271070615,
       "entrada": 0.2195,
-      "maximo": 0.2195,
+      "maximo": 0.2219,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -92,7 +92,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792600380000
+      "vigilado_hasta": 1792603860000
     }
   },
   "comisiones_usd": 21.223544999999977,
