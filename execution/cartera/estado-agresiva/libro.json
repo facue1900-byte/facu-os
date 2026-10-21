@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 789.466347461038,
-  "posiciones": {
-    "WLDUSDT": {
-      "nivel": "trading",
-      "cantidad": 251.8064190892287,
-      "entrada": 0.5951,
-      "maximo": 0.5953,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792560660000
-    }
-  },
-  "comisiones_usd": 19.579152999999987,
+  "usdt": 936.0472202639282,
+  "posiciones": {},
+  "comisiones_usd": 19.725880999999987,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1890,6 +1867,18 @@
       "comision": 0.148812,
       "motivo": "Salida por invalidación: la tesis de momentum (al límite) se invalidaba con 24 h bajo +5% y 4 h plano, y NEAR cierra 05:31 con 24 h +4,85%, 4 h +0,1%, 1 h +0,04%, vol 0,68x, -2,41% del máximo de 48 h. Stop 4,7994 no saltó; salgo por regla propia.",
       "resultado_pct": -0.69
+    },
+    {
+      "ms": 1792564318466,
+      "fecha": "2026-10-21 06:31 UTC",
+      "lado": "sell",
+      "par": "WLDUSDT",
+      "cantidad": 251.8064190892287,
+      "precio": 0.5827,
+      "usd": 146.7276,
+      "comision": 0.146728,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y WLD cierra 06:31 con 4 h -1,57% (1 h -0,27%, vol 0,55x), 24 h +7,23% (se enfría desde +9,5%), -2,61% del máximo de 48 h. Stop 0,565535 no saltó; salgo por regla propia.",
+      "resultado_pct": -2.08
     }
   ]
 }
