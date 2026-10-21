@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 333.26350145103424,
+  "usdt": 632.0702587470956,
   "posiciones": {
     "ZECUSDT": {
       "nivel": "trading",
@@ -26,35 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792607520000
-    },
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 28.088097469540767,
-      "entrada": 5.335,
-      "maximo": 5.451,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792607520000
+      "vigilado_hasta": 1792611060000
     },
     "PUMPUSDT": {
       "nivel": "trading",
       "cantidad": 29964.007198560284,
       "entrada": 0.005001,
-      "maximo": 0.005054,
+      "maximo": 0.00516,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792607520000
-    },
-    "ENAUSDT": {
-      "nivel": "trading",
-      "cantidad": 682.6879271070615,
-      "entrada": 0.2195,
-      "maximo": 0.226,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792607520000
+      "vigilado_hasta": 1792611060000
     }
   },
-  "comisiones_usd": 21.223544999999977,
+  "comisiones_usd": 21.522650999999975,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2088,6 +2044,30 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: ENA (44,5 M/día) +13,21% en 24 h, 4 h +5,73%, 1 h -0,95% (enfriada, no estirada; la hora pasada pasé por 1 h +3,77%), vol 3,09x, -1,53% del máximo de 48 h. Re-entrada: salí 14:32 cuando 24 h cayó a +2,94%; ahora volvió con volumen fuerte. BTC +1,38% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, 24 h bajo +5%, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792611135088,
+      "fecha": "2026-10-21 19:32 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 28.088097469540767,
+      "precio": 5.326,
+      "usd": 149.5972,
+      "comision": 0.149597,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y NEAR cierra 19:31 con 4 h -1,11% (1 h +0,66%, vol 0,9x), 24 h +9,5%, -2,29% del máximo de 48 h. Ya venía enfriándose (4 h +1,1% la hora pasada). Stop 5,17845 no saltó; salgo por regla propia.",
+      "resultado_pct": -0.17
+    },
+    {
+      "ms": 1792611136018,
+      "fecha": "2026-10-21 19:32 UTC",
+      "lado": "sell",
+      "par": "ENAUSDT",
+      "cantidad": 682.6879271070615,
+      "precio": 0.219,
+      "usd": 149.5087,
+      "comision": 0.149509,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y ENA cierra 19:31 con 4 h -1,17% (1 h +0,09%, vol 1,66x), 24 h +13,66%, -3,14% del máximo de 48 h. 24 h sigue fuerte pero la pata de 4 h se rompió. Stop 0,2147 no saltó; salgo por regla propia.",
+      "resultado_pct": -0.23
     }
   ]
 }
