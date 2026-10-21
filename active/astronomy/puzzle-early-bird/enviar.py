@@ -1,6 +1,8 @@
 """Manda el mail de early birds de OBSESSION a la base de Puzzle.
 
---campana:      cuál mail (early, preventa1, ultimas). Obligatorio: cada una tiene su log.
+--campana:      cuál mail (early, preventa1, ultimas, aumento).
+--sync-bajas:   antes que nada, lee de puzzle.bsas las respuestas "baja" y los rebotes
+                ("address not found") y los suma a bajas.txt / rebotes.txt. Obligatorio: cada una tiene su log.
 Sin flags:      manda UNA prueba a Facu. No toca a nadie de la base.
 --contar:       dice a cuántos le saldría y por qué quedan afuera los que quedan afuera.
 --send:         manda de verdad a la base, en tandas de --limite (default 450, Gmail
@@ -99,6 +101,27 @@ No lo dejes para el final.
 31.10.2026 · PALACIO ALSINA · +27
 """ + PIE,
     },
+    # 21/10: Facu avisó que aumentó. El texto NO nombra la tanda a propósito: sale 450 por
+    # día y la tanda puede volver a cambiar en el medio; "ya subió" sigue siendo cierto.
+    # Primero los que no recibieron "ultimas" el 21/10, para no mandarles dos mails seguidos.
+    "aumento": {
+        "asunto": "OBSESSION: {faltan} · ya subió el precio",
+        "html": "mail-aumento.html",
+        "log": "enviados-aumento.csv",
+        "primero_sin": "enviados-ultimas.csv",
+        "texto": """Hola{nombre},
+
+{Faltan} para OBSESSION: LA fiesta de Halloween, el sábado 31 de octubre en Palacio Alsina.
+
+Se agotó la Preventa 1 y el precio ya subió. Cada tanda que se termina, sube de nuevo.
+
+{link}
+
+No lo dejes para el final.
+
+31.10.2026 · PALACIO ALSINA · +27
+""" + PIE,
+    },
 }
 
 
@@ -176,7 +199,7 @@ def leer_lista(archivo):
     return {l.strip().lower() for l in archivo.read_text().splitlines() if l.strip()}
 
 
-def destinatarios(log):
+def destinatarios(log, primero_sin=None):
     personas = leer_base()
     enviados, baja, rebote = ya_enviados(log), leer_lista(BAJAS), leer_lista(REBOTES)
     afuera = {"menor de 18": 0, "baja": 0, "rebotó": 0, "ya enviado": 0, "mail inválido": 0}
@@ -198,7 +221,48 @@ def destinatarios(log):
         vistos.add(e)
     # Primero los que compran para el grupo.
     lista.sort(key=lambda p: -p["tickets"])
+    if primero_sin:
+        # sorted es estable: dentro de cada grupo se mantiene el orden por entradas.
+        ya = ya_enviados(AQUI / primero_sin)
+        lista.sort(key=lambda p: p["email"] in ya)
     return personas, lista, afuera
+
+
+def sync_bajas(svc):
+    """Suma a bajas.txt los que contestaron "baja" y a rebotes.txt los "address not found".
+
+    Lee la bandeja de puzzle.bsas de los últimos 30 días. Una respuesta cuenta como baja si la
+    palabra aparece en lo que escribió la persona (el snippet arranca por ahí), no en la cita
+    del mail nuestro, que también dice "baja".
+    """
+    def ids(q):
+        out, tok = [], None
+        while True:
+            r = svc.list(userId="me", q=q, maxResults=500, pageToken=tok).execute()
+            out += [m["id"] for m in r.get("messages", [])]
+            tok = r.get("nextPageToken")
+            if not tok:
+                return out
+    nuevas_b, nuevas_r = set(), set()
+    for mid in ids("in:inbox newer_than:30d -from:mailer-daemon -from:me"):
+        m = svc.get(userId="me", id=mid, format="metadata", metadataHeaders=["From"]).execute()
+        propio = re.split(r"\b(El|On) .{0,80}(escribió|wrote)", m.get("snippet", ""))[0]
+        if re.search(r"\bbaja\b", propio, re.I):
+            frm = m["payload"]["headers"][0]["value"]
+            e = (re.search(r"[\w.+-]+@[\w.-]+", frm) or [None])[0]
+            if e:
+                nuevas_b.add(e.lower())
+    for mid in ids("from:mailer-daemon newer_than:30d \"address not found\""):
+        sn = svc.get(userId="me", id=mid, format="metadata").execute().get("snippet", "")
+        e = re.search(r"delivered to ([\w.+-]+@[\w.-]+?)\.? because", sn)
+        if e:
+            nuevas_r.add(e.group(1).lower())
+    for archivo, nuevas in ((BAJAS, nuevas_b), (REBOTES, nuevas_r)):
+        faltan_ = sorted(nuevas - leer_lista(archivo))
+        if faltan_:
+            with archivo.open("a") as f:
+                f.write("".join(e + "\n" for e in faltan_))
+        print(f"{archivo.name}: +{len(faltan_)} {faltan_}")
 
 
 def armar(c, para, nombre, desde):
@@ -228,6 +292,7 @@ def main():
     ap.add_argument("--contar", action="store_true")
     ap.add_argument("--send", action="store_true", help="Manda de verdad a la base")
     ap.add_argument("--limite", type=int, default=450)
+    ap.add_argument("--sync-bajas", action="store_true", help="Lee bajas y rebotes de la bandeja antes")
     ap.add_argument("--cuenta", default=CUENTA, help="Token de google_auth desde el que sale")
     a = ap.parse_args()
 
@@ -235,7 +300,9 @@ def main():
     if c.get("cerrada") and a.send:
         sys.exit(f"Campaña '{a.campana}' cerrada: {c['cerrada']}. No se manda.")
     log = AQUI / c["log"]
-    personas, lista, afuera = destinatarios(log)
+    if a.sync_bajas:
+        sync_bajas(google_auth.gmail(a.cuenta).users().messages())
+    personas, lista, afuera = destinatarios(log, c.get("primero_sin"))
     print(f"Campaña: {a.campana} · asunto: {c['asunto'].format(faltan=faltan())}")
     print(f"Base: {len(personas)} · pendientes de envío: {len(lista)} · afuera: {afuera}")
     if a.contar:
