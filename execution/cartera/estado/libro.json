@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 236.8864863590216,
+  "usdt": 198.8864863590216,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,10 +210,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792533960000
+      "vigilado_hasta": 1792541160000
+    },
+    "WLDUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 64.56122448979593,
+      "entrada": 0.588,
+      "maximo": 0.588,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792541400000
     }
   },
-  "comisiones_usd": 2.0215150000000004,
+  "comisiones_usd": 2.059515,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1102,6 +1124,18 @@
       "comision": 0.019853,
       "motivo": "Tesis rota (invalidación declarada desde la compra y repetida cada ciclo): alejarse >10% del máximo de 90 d aunque no toque el stop. A 12:05 (18/10) INJ está a 10,5% del máximo (8,423 vs 9,413), 1d -2%, 7d +8,5%, volumen 13,3 M en baja; stop 8,001 sin tocar. Se sale por tesis, como TIA y AUSDT. Lo liberado queda en USDT; volvería sólo con una ruptura nueva a <5% del máximo que sostenga un ciclo.",
       "resultado_pct": -0.64
+    },
+    {
+      "ms": 1792541342024,
+      "fecha": "2026-10-21 00:09 UTC",
+      "lado": "buy",
+      "par": "WLDUSDT",
+      "nivel": "riesgo",
+      "cantidad": 64.56122448979593,
+      "precio": 0.588,
+      "usd": 38.0,
+      "comision": 0.038,
+      "motivo": "Riesgo/momentum: WLD sostuvo dos ciclos a <5% del máximo de 90 d (4,4% a 22:05, 4,9% a 00:05), 7d +18,9%, 30d +28,5%, 101 M/día; velas de 1 h parejas, las últimas tres consolidando (-0,7% a +0,1%), no es una vela sola. ~4% de la carpeta con stop 15% / trailing 15% y tomas por defecto. Invalida: alejarse >10% del máximo de 90 d o perder el volumen bajo 20 M."
     }
   ]
 }
