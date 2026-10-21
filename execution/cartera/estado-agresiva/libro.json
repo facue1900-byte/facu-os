@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 783.2635014510342,
+  "usdt": 483.26350145103424,
   "posiciones": {
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.11574109832393605,
       "entrada": 1294.7,
-      "maximo": 1326.87,
+      "maximo": 1340.0,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,10 +26,54 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792593060000
+      "vigilado_hasta": 1792596660000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 28.088097469540767,
+      "entrada": 5.335,
+      "maximo": 5.335,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792596780000
+    },
+    "PUMPUSDT": {
+      "nivel": "trading",
+      "cantidad": 29964.007198560284,
+      "entrada": 0.005001,
+      "maximo": 0.005001,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792596780000
     }
   },
-  "comisiones_usd": 20.77354499999998,
+  "comisiones_usd": 21.073544999999978,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1986,6 +2030,30 @@
       "comision": 0.150654,
       "motivo": "Salida por invalidación: la tesis de momentum pedía +5% en 24 h y 4 h subiendo; ENA cierra 14:31 con 24 h +2,94% (cayó desde +6,78%), 4 h 0,0% (plano), 1 h -0,15%, vol 1,8x, -1,99% del máximo de 48 h. Ya no cumple ninguna de las dos patas. Stop 0,20007 no saltó; salgo por regla propia en vez de esperar el vencimiento de 22/10 07:33.",
       "resultado_pct": 0.54
+    },
+    {
+      "ms": 1792596761127,
+      "fecha": "2026-10-21 15:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 28.088097469540767,
+      "precio": 5.335,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: NEAR (176 M/día) +10,06% en 24 h, 4 h +3,23%, 1 h +1,0% (no estirada), vol 1,8x, -1,22% del máximo de 48 h. Re-entrada: salí 11:32 por 4 h negativo; hoy 4 h volvió a +3,23% con volumen. BTC +1,22% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792596769647,
+      "fecha": "2026-10-21 15:32 UTC",
+      "lado": "buy",
+      "par": "PUMPUSDT",
+      "nivel": "trading",
+      "cantidad": 29964.007198560284,
+      "precio": 0.005001,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: PUMP (21,8 M/día, liquidez justa) +10,72% en 24 h, 4 h +4,67%, 1 h +2,75% (no estirada), vol 1,56x, -0,12% del máximo de 48 h. BTC +1,22% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
     }
   ]
 }
