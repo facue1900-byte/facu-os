@@ -67,6 +67,10 @@ CUIT_CATEGORIA = {
     # con OCR las facturas escaneadas del grupo de WhatsApp «Facturas Paseo
     # Nordelta» — sus PDF no tienen texto, así que el CUIT no salía de ningún lado.
     "30710063474": ("GEVGE (Electro 927)",    "Inversiones"),
+    # Agregados con el extracto de septiembre 2026, cada uno con su precedente en
+    # Movimientos: Annie ya iba a Marketing (ene-26) y los matafuegos a Mejoras (ene-26).
+    "27447142959": ("Hoffer Annie (diseño redes)", "Marketing / Redes Sociales"),
+    "20205123149": ("Matafuegos Yany",        "Mejoras"),
 }
 
 # Glosa del extracto -> (Local, Categoria). Local para ingresos, Categoria para egresos.
@@ -117,6 +121,106 @@ def sin_tildes(s):
                    if unicodedata.category(c) != "Mn")
 
 
+def ar(n):
+    """1234567.8 -> '1.234.567,80', el formato del resumen mensual."""
+    return f"{n:,.2f}".replace(",", "_").replace(".", ",").replace("_", ".")
+
+
+def texto_movimientos_export(doc):
+    """Rearma el export «movimientos» del home banking con el layout del resumen.
+
+    Cuando el resumen mensual no llegó, el Macro deja bajar los movimientos de la
+    cuenta (`mov_caja_de_ahorros_*.pdf`, emitido a pedido). Trae lo mismo pero en
+    otro formato: números en inglés (1,234.56), débito y crédito en COLUMNAS sin
+    saldo por renglón, y sólo un «SALDO FINAL DEL DIA». La columna se lee de la
+    coordenada x del importe. El saldo de cada renglón se reconstruye y se exige
+    que caiga exacto en cada saldo diario, en el final y en los totales de la
+    cabecera: si una sola cosa no da, no se devuelve nada.
+    """
+    num = re.compile(r"^\d{1,3}(?:,\d{3})*\.\d{2}$")
+    en = lambda s: float(s.replace(",", ""))  # noqa: E731
+    cab = None
+    filas = []  # (fecha, desc, debito, credito) o ("DIA", saldo)
+    for pagina in doc:
+        palabras = pagina.get_text("words")
+        heads = {w[4]: w for w in palabras if w[4] in ("DEBITOS", "CREDITOS", "SALDO")
+                 and 280 < w[1] < 305}
+        if cab is None:
+            # Cabecera: SALDO INICIAL · CREDITOS · DEBITOS · IVA · SALDO FINAL, en ese orden de x.
+            tot = sorted((w for w in palabras if num.match(w[4]) and w[1] < 260),
+                         key=lambda w: w[0])
+            if len(tot) == 5:
+                cab = [en(w[4]) for w in tot]
+        # Débito y crédito salen alineados a la derecha: el borde de la columna es
+        # el punto medio entre los encabezados.
+        corte_dc = (heads["DEBITOS"][2] + heads["CREDITOS"][0]) / 2 + 30
+        corte_cs = (heads["CREDITOS"][2] + heads["SALDO"][0]) / 2 + 30
+        renglones = {}
+        for w in palabras:
+            if w[1] > 305:
+                renglones.setdefault(round(w[1]), []).append(w)
+        for y in sorted(renglones):
+            ws = sorted(renglones[y], key=lambda w: w[0])
+            if not re.match(r"^\d{2}/\d{2}/\d{4}$", ws[0][4]):
+                continue
+            fecha = ws[0][4]
+            texto_l = " ".join(w[4] for w in ws[1:] if not num.match(w[4]))
+            montos = [w for w in ws[1:] if num.match(w[4])]
+            if len(montos) != 1:
+                sys.exit(f"Renglón {fecha} '{texto_l}' con {len(montos)} importes.")
+            m = montos[0]
+            if "SALDO FINAL" in texto_l:
+                filas.append(("DIA", fecha, en(m[4])))
+            elif m[2] <= corte_dc:
+                filas.append((fecha, texto_l, en(m[4]), 0.0))
+            elif m[2] <= corte_cs:
+                filas.append((fecha, texto_l, 0.0, en(m[4])))
+            else:
+                sys.exit(f"Renglón {fecha} '{texto_l}': importe en la columna de saldo.")
+        final_txt = re.search(r"SALDO FINAL AL D[IÍ]A (\d{2}/\d{2}/\d{4}) :\s*([\d,.]+)",
+                              pagina.get_text())
+        if final_txt:
+            fecha_final, saldo_final = final_txt.group(1), en(final_txt.group(2))
+    if cab is None or not filas:
+        sys.exit("El export de movimientos no trae la cabecera de saldos o está vacío.")
+    inicial, cred_tot, deb_tot, _iva, final = cab
+    saldo, lineas = inicial, []
+    deb = cred = 0.0
+    for f in filas:
+        if f[0] == "DIA":
+            if abs(saldo - f[2]) > 0.005:
+                sys.exit(f"El saldo reconstruido al {f[1]} da {ar(saldo)} y el banco "
+                         f"dice {ar(f[2])}: alguna columna se leyó mal.")
+            continue
+        fecha, desc, d, c = f
+        saldo = round(saldo - d + c, 2)
+        deb, cred = deb + d, cred + c
+        dd, mm, aaaa = fecha.split("/")
+        lineas.append(f"  {dd}/{mm}/{aaaa[2:]} {desc}   {ar(d or c)}   {ar(saldo)}")
+    for nombre, calc, banco in (("débitos", deb, deb_tot), ("créditos", cred, cred_tot),
+                                ("saldo final", saldo, final), ("saldo al pie", saldo, saldo_final)):
+        if abs(calc - banco) > 0.005:
+            sys.exit(f"Export de movimientos: {nombre} da {ar(calc)} y la cabecera dice {ar(banco)}.")
+    dd, mm, aaaa = fecha_final.split("/")
+    previo = datetime.date(int(aaaa), int(mm), 1) - datetime.timedelta(days=1)
+    return "\n".join(
+        [f"CUENTA CORRIENTE ESPECIAL EN PESOS NRO.: {CUENTA}",
+         f"   SALDO ULTIMO EXTRACTO AL {previo:%d/%m/%Y}   {ar(inicial)}"]
+        + lineas
+        + [f"   SALDO FINAL AL DIA {fecha_final}   {ar(saldo)}"])
+
+
+def texto_pdf(pdf_path):
+    """Texto del extracto en el layout del resumen mensual, venga como venga."""
+    doc = fitz.open(pdf_path)
+    texto = "\n".join(p.get_text() for p in doc)
+    if f"CUENTA CORRIENTE ESPECIAL EN PESOS NRO.: {CUENTA}" in texto:
+        return texto
+    if CUENTA in texto and "SALDO FINAL DEL DIA" in texto:
+        return texto_movimientos_export(doc)
+    return texto
+
+
 def bloque_cuenta(texto):
     """Aísla el detalle de la cuenta en pesos: el extracto trae tres cuentas."""
     ini = texto.find(f"CUENTA CORRIENTE ESPECIAL EN PESOS NRO.: {CUENTA}")
@@ -136,9 +240,7 @@ def clasificar(desc):
 
 
 def parsear(pdf_path):
-    doc = fitz.open(pdf_path)
-    texto = "\n".join(p.get_text() for p in doc)
-    bloque = bloque_cuenta(texto)
+    bloque = bloque_cuenta(texto_pdf(pdf_path))
 
     saldo_prev, movs = None, []
     for linea in bloque.split("\n"):
@@ -314,12 +416,20 @@ def resolver_con_facturas(movs, facturas):
     Si no hay referencia, cae al match por importe con tolerancia de $1: el
     banco redondea al peso (Andersen facturó $599.251,55 y el débito salió
     $599.251,00).
+
+    Una factura paga UN débito: en septiembre 2026 Annie ($1.500.000 el 15/09) y
+    una transferencia a otra cuenta de la propia MAHNI (mismo importe, el 16/09)
+    se llevaban la misma factura y el segundo débito quedaba como Marketing. Y si
+    la glosa trae un CUIT, la factura tiene que ser de ese CUIT.
     """
-    resueltos = []
+    resueltos, usadas = [], set()
     for m in movs:
         if m["local"] or m["categoria"] or m["tipo"] != "Egreso":
             continue
-        cand = [f for f in facturas
+        cuits_glosa = set(re.findall(r"(?<!\d)(\d{11})(?!\d)", m["obs"]))
+        disponibles = [f for f in facturas if f[1] not in usadas
+                       and (not cuits_glosa or f[0] in cuits_glosa)]
+        cand = [f for f in disponibles
                 if f[3] and re.search(rf"\b{f[3]}\b", m["obs"])]
         if len(cand) == 1 and not any(abs(t - m["monto"]) < 1.0 for t in cand[0][2]):
             m["ambiguo"] = [f"{cand[0][1]} (referencia {cand[0][3]} coincide pero "
@@ -327,7 +437,7 @@ def resolver_con_facturas(movs, facturas):
                             f"extracto {m['monto']:,.2f})"]
             continue
         if not cand:
-            cand = [f for f in facturas
+            cand = [f for f in disponibles
                     if any(abs(t - m["monto"]) < 1.0 for t in f[2])]
         if len(cand) != 1:
             if len(cand) > 1:
@@ -340,6 +450,7 @@ def resolver_con_facturas(movs, facturas):
             continue
         nombre, categoria = CUIT_CATEGORIA[cuit]
         m["categoria"] = categoria
+        usadas.add(archivo)
         m["obs"] = f"{m['obs']} — {nombre} {archivo.replace('.pdf', '')}"
         resueltos.append((m, nombre, total))
     return resueltos
