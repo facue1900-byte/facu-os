@@ -18,8 +18,13 @@ compra de USD. Cuadra al peso con el reporte de agosto ($23.825.055,83 / $17.861
 con junio ($5.218.022,73). Acumulado ene–oct al 10/10: $18.395.422,06 (oct parcial, sin
 banco). Fórmulas viejas (SUMIFS sin exclusiones): `dashboard_formulas_antes_2026-10-10.json`.
 
-**Último extracto Macro cargado:** agosto. Septiembre llega ~15/10; hasta entonces el
-Master Plan no tiene banco de sep/oct (es esperable, no un faltante).
+**Último extracto Macro cargado:** septiembre (21/10/2026, desde el export de movimientos:
+no llegó el resumen). Cierra al centavo; los −$0,69 de *Saldo Actual* son los de marzo.
+
+🔴 **Expensas de OCTUBRE (bloque de noviembre, ~01/11) — sumar la FC 15 de Rhino** (Facu,
+21/10): `--limpieza` = facturas de Rhino pagadas en octubre **+ $482.790** (FC A 0002-15,
+10/09, pagada 11/09, quedó fuera de las expensas de sep ya mandadas → $241.395 en I4).
+La FC 0002-14 de Rhino está **anulada** (salió con el mismo contenido que la 13): no falta nada.
 
 **Abierto (con dueño):**
 - 🔴 Facu: el **link público** del Master Plan («cualquiera con el link») — el token de
