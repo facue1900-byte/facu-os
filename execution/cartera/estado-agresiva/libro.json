@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 788.7460865485168,
-  "posiciones": {
-    "PUMPUSDT": {
-      "nivel": "trading",
-      "cantidad": 29964.007198560284,
-      "entrada": 0.005001,
-      "maximo": 0.005224,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792621860000
-    }
-  },
-  "comisiones_usd": 21.679483999999974,
+  "usdt": 940.6014876582949,
+  "posiciones": {},
+  "comisiones_usd": 21.831490999999975,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2058,6 +2035,18 @@
       "comision": 0.156833,
       "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y ZEC cierra 21:31 con 4 h -0,64% (1 h +0,51%, vol 1,41x), 24 h +6,98%, -1,04% del máximo de 48 h. Venía enfriándose (4 h +0,76% y +0,89% las dos horas anteriores). Stop 1299,98 no saltó; salgo por regla propia con ganancia.",
       "resultado_pct": 4.66
+    },
+    {
+      "ms": 1792625517647,
+      "fecha": "2026-10-21 23:31 UTC",
+      "lado": "sell",
+      "par": "PUMPUSDT",
+      "cantidad": 29964.007198560284,
+      "precio": 0.005073,
+      "usd": 152.0074,
+      "comision": 0.152007,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 24 h sobre +5% y PUMP cierra 23:31 con 24 h +4,09% (4 h +0,2% casi plano, 1 h -1,32%, vol 1,07x, -3,01% del máximo de 48 h). Perdió el empuje. Stop 0,0049628 no saltó; salgo por regla propia.",
+      "resultado_pct": 1.44
     }
   ]
 }

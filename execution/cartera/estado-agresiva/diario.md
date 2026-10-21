@@ -1793,3 +1793,11 @@ Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre hor
 ## 2026-10-21 22:32 UTC — nota
 22:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: PUMP (60 min) sin disparos. Mercado plano tirando a rojo: 1 h roja casi general (-3,03/+0,21%), 4 h mixta (-7,3/+2,24%), volumen 0,26-1,52x. 23 pares sobre 20 M/día. BTC +0,3% en 4 h, sin bloqueo. PUMP 0,005136 (+2,7%), stop 0,0049628: 24 h +8,41%, 4 h +2,17%, 1 h -0,5%, vol 1,3x, -1,55% del máximo de 48 h; tesis viva; invalida 4 h negativo al cierre horario, 24 h bajo +5% o stop; vence 22/10 15:32. No muevo stops. Sin entradas: momentum: ZEC 24 h +6,97% con 4 h +0,79%, 1 h -0,32%, vol 1,04x: recién salida y sin empuje, paso; NEAR 24 h +8,25%, 4 h +0,89% pero vol 0,51x: sin volumen, paso; ALT +35,48% con 4 h +2,24% y 1,52x pero -15,17% del máximo y liquidez justa (23,2 M): no persigo; ENA 4 h -1,19%, IOST 4 h -7,3%: no. Ruptura: nadie sobre el máximo de 48 h (BNB -0,22% 0,6x, BTC -0,27% 1,08x, TRX -0,69%): sin romper ni volumen. Rebote: TRX +0,18% del mínimo con rango ~0,9%: sin recorrido. 1 posición, ~84% en USDT: mercado sin señal, plata parada.
 
+## 2026-10-21 23:31 UTC — Venta PUMPUSDT
+152.01 USD a 0.005073 (+1.44% contra la compra).
+
+Salida por invalidación: la tesis de momentum pedía 24 h sobre +5% y PUMP cierra 23:31 con 24 h +4,09% (4 h +0,2% casi plano, 1 h -1,32%, vol 1,07x, -3,01% del máximo de 48 h). Perdió el empuje. Stop 0,0049628 no saltó; salgo por regla propia.
+
+## 2026-10-21 23:31 UTC — nota
+23:31 UTC — Sin disparos, sin entradas, 1 salida. Vigilante: PUMP (60 min) sin disparos. Mercado rojo suave: 1 h roja general (-2,3/+0,57%, salvo IOST -21,16%), 4 h roja casi general (-6,73/+3,82%), volumen 0,34-1,4x. 23 pares sobre 20 M/día. BTC -0,19% en 4 h, sin bloqueo. SALIDA PUMP: 24 h +4,09% bajo el +5% que me fijé, 4 h +0,2%, 1 h -1,32%. Sin entradas: momentum: NEAR 24 h +6,49% y ENA +8,72% pero 4 h negativo (-1,05/-1,89%): no; ALT +30,21% en 24 h, 4 h +3,82%, pero -16,39% del máximo y liquidez justa (23,8 M): no persigo; IOST se desplomó (1 h -21%): no. Ruptura: nadie sobre el máximo de 48 h (BNB -0,66%, BTC -0,67%, ambos con volumen bajo 0,7x). Rebote: TRX +0,06% del mínimo pero rango ~0,8%: sin recorrido. 0 posiciones, 100% en USDT: mercado sin señal, plata parada.
+
