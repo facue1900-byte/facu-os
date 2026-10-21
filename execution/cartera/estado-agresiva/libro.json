@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.12288629020353938,
       "entrada": 1219.42,
-      "maximo": 1280.0,
+      "maximo": 1296.45,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792542660000
+      "vigilado_hasta": 1792546260000
     },
     "PUMPUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792542660000
+      "vigilado_hasta": 1792546260000
     }
   },
   "comisiones_usd": 18.53119999999999,
