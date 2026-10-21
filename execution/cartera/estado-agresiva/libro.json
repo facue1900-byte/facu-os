@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 642.1114934849174,
+  "usdt": 492.11149348491745,
   "posiciones": {
     "ZECUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792546260000
+      "vigilado_hasta": 1792549860000
     },
     "PUMPUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792546260000
+      "vigilado_hasta": 1792549860000
+    },
+    "INJUSDT": {
+      "nivel": "trading",
+      "cantidad": 16.36989294297575,
+      "entrada": 9.154,
+      "maximo": 9.154,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792549980000
     }
   },
-  "comisiones_usd": 18.53119999999999,
+  "comisiones_usd": 18.68119999999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1828,6 +1850,18 @@
       "comision": 0.153836,
       "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y WLD cierra 00:31 con 4 h -0,27% y 1 h -0,15% (vol 1,14x), -1,56% del máximo de 48 h; ya venía floja (4 h +0,94% a las 23:31). Stop 0,566295 no saltó; salgo por regla propia.",
       "resultado_pct": 2.66
+    },
+    {
+      "ms": 1792549940875,
+      "fecha": "2026-10-21 02:32 UTC",
+      "lado": "buy",
+      "par": "INJUSDT",
+      "nivel": "trading",
+      "cantidad": 16.36989294297575,
+      "precio": 9.154,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: INJ (21,2 M/día) +6,57% en 24 h, sigue subiendo en 4 h (+2%), 1 h -0,99% (no estirada, respiro), vol 4 h 1,53x (con volumen), -2,9% del máximo de 48 h. BTC -0,44% en 4 h, sin bloqueo. Liquidez justa. Invalida: cierre horario con 4 h negativo, stop 5%, o 24 h sin +8%."
     }
   ]
 }
