@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 632.7604740010098,
+  "usdt": 783.2635014510342,
   "posiciones": {
-    "ENAUSDT": {
-      "nivel": "trading",
-      "cantidad": 730.6192101413944,
-      "entrada": 0.2051,
-      "maximo": 0.2106,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792589460000
-    },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.11574109832393605,
@@ -48,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792589460000
+      "vigilado_hasta": 1792593060000
     }
   },
-  "comisiones_usd": 20.62289099999998,
+  "comisiones_usd": 20.77354499999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -1996,6 +1974,18 @@
       "comision": 0.148992,
       "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y XRP cierra 13:31 con 4 h -0,11% (1 h -0,2%, vol 1,14x), 24 h +3,43% (bajo +5% y cayendo), -1,04% del máximo de 48 h. Stop 1,300835 no saltó; salgo por regla propia.",
       "resultado_pct": -0.57
+    },
+    {
+      "ms": 1792593157457,
+      "fecha": "2026-10-21 14:32 UTC",
+      "lado": "sell",
+      "par": "ENAUSDT",
+      "cantidad": 730.6192101413944,
+      "precio": 0.2062,
+      "usd": 150.6537,
+      "comision": 0.150654,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía +5% en 24 h y 4 h subiendo; ENA cierra 14:31 con 24 h +2,94% (cayó desde +6,78%), 4 h 0,0% (plano), 1 h -0,15%, vol 1,8x, -1,99% del máximo de 48 h. Ya no cumple ninguna de las dos patas. Stop 0,20007 no saltó; salgo por regla propia en vez de esperar el vencimiento de 22/10 07:33.",
+      "resultado_pct": 0.54
     }
   ]
 }
