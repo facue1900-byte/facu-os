@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 125.8864863590216,
+  "usdt": 91.8864863590216,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "WLDUSDT": {
       "nivel": "riesgo",
@@ -232,7 +232,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "INJUSDT": {
       "nivel": "riesgo",
@@ -254,7 +254,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
     },
     "CVXUSDT": {
       "nivel": "riesgo",
@@ -276,10 +276,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792620300000
+      "vigilado_hasta": 1792627620000
+    },
+    "CRVUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 84.30379746835443,
+      "entrada": 0.4029,
+      "maximo": 0.4029,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792627740000
     }
   },
-  "comisiones_usd": 2.132515,
+  "comisiones_usd": 2.166515,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1204,6 +1226,18 @@
       "usd": 35.0,
       "comision": 0.035,
       "motivo": "Riesgo/momentum: CVX sostuvo dos ciclos a <5% del máximo de 90 d (0,8% a 14:05, 3,1% a 16:05), 7d +39,1%, 90d +122%; velas de 1 h parejas (la más fuerte +1,6%, la última -2,1% devolviendo), no es una vela sola. Volumen 5,4 M apenas sobre el piso: tamaño algo menor (~3,6%). Stop 15% / trailing 15% / tomas por defecto. Invalida: alejarse >10% del máximo de 90 d o volumen bajo 5 M."
+    },
+    {
+      "ms": 1792627725367,
+      "fecha": "2026-10-22 00:08 UTC",
+      "lado": "buy",
+      "par": "CRVUSDT",
+      "nivel": "riesgo",
+      "cantidad": 84.30379746835443,
+      "precio": 0.4029,
+      "usd": 34.0,
+      "comision": 0.034,
+      "motivo": "Riesgo/momentum: CRV sostuvo dos ciclos a <5% del máximo de 90 d (3,9% a 22:05, 3,1% a 00:05), 7d +13,7%, 30d +11,1%, 90d +97,6%, 6,2 M/día; velas de 1 h parejas (la más fuerte +1,6%, las últimas tres +0,05% a +0,8%), no es una vela sola. Volumen cerca del piso: tamaño chico (~3,5%). Stop 15% / trailing 15% / tomas por defecto. Invalida: alejarse >10% del máximo de 90 d o volumen bajo 5 M."
     }
   ]
 }
