@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 935.4987337348314,
-  "posiciones": {},
-  "comisiones_usd": 22.126532999999974,
+  "usdt": 785.4987337348314,
+  "posiciones": {
+    "DOGEUSDT": {
+      "nivel": "trading",
+      "cantidad": 1896.8354430379745,
+      "entrada": 0.079,
+      "maximo": 0.079,
+      "reglas": {
+        "stop": 3.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792697580000
+    }
+  },
+  "comisiones_usd": 22.276532999999972,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2071,6 +2094,18 @@
       "comision": 0.145042,
       "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y PUMP cierra 02:31 con 4 h -2,22% (1 h -1,49%, vol 1,11x), 24 h +5,71%, -3,89% del máximo de 48 h. Stop 0,0049514 no saltó; salgo por regla propia.",
       "resultado_pct": -3.21
+    },
+    {
+      "ms": 1792697554769,
+      "fecha": "2026-10-22 19:32 UTC",
+      "lado": "buy",
+      "par": "DOGEUSDT",
+      "nivel": "trading",
+      "cantidad": 1896.8354430379745,
+      "precio": 0.079,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: DOGE (47,8 M/día) tocó el mínimo de 48 h y lleva 2 horas sin hacer mínimo nuevo (18:32 +0,73% del mínimo, 19:32 +1,48%), 1 h +0,57% con volumen 4 h 1,4x, BTC 4 h -0,19% sin bloqueo. Stop 3% (más ajustado que el 5% por defecto): invalida si pierde el mínimo de 48 h (~1,5% abajo) o si la próxima hora vuelve a 1 h roja con mínimo nuevo."
     }
   ]
 }
