@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 226.4550600530235,
+  "usdt": 259.18949285302347,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
+      "vigilado_hasta": 1792656360000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
+      "vigilado_hasta": 1792656360000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
+      "vigilado_hasta": 1792656360000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
+      "vigilado_hasta": 1792656360000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
+      "vigilado_hasta": 1792656360000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
+      "vigilado_hasta": 1792656360000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,25 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
-    },
-    "AVAXUSDT": {
-      "nivel": "medio",
-      "cantidad": 3.558009082005164,
-      "entrada": 11.231,
-      "maximo": 11.261,
-      "reglas": {
-        "stop": 18.0,
-        "trail": 20.0,
-        "tp": [
-          [
-            50.0,
-            0.33
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
+      "vigilado_hasta": 1792656360000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
+      "vigilado_hasta": 1792656360000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
+      "vigilado_hasta": 1792656360000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,10 +192,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792649160000
+      "vigilado_hasta": 1792656360000
     }
   },
-  "comisiones_usd": 2.301219,
+  "comisiones_usd": 2.3339860000000003,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1198,6 +1180,18 @@
       "comision": 0.035231,
       "motivo": "Venta por tesis, no por stop: la invalidación declarada al comprar (00:05 del 21/10) era alejarse >10% del máximo de 90 d; hoy está a 12,1% (1d -6,8%), con volumen cayendo de 101 a 58 M desde la compra. Mismo criterio que INJ (04:05) y CRV (este ciclo). Reentra sólo con tesis nueva (dos ciclos a <5% del máximo con volumen >= 5 M).",
       "resultado_pct": -7.19
+    },
+    {
+      "ms": 1792656120000,
+      "fecha": "2026-10-22 08:02 UTC",
+      "lado": "sell",
+      "par": "AVAXUSDT",
+      "cantidad": 3.558009082005164,
+      "precio": 9.20942,
+      "usd": 32.7672,
+      "comision": 0.032767,
+      "motivo": "Stop automático en 9.20942 (entrada 11.231, máximo 11.261).",
+      "resultado_pct": -18.0
     }
   ]
 }
