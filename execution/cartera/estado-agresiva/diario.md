@@ -1801,3 +1801,11 @@ Salida por invalidación: la tesis de momentum pedía 24 h sobre +5% y PUMP cier
 ## 2026-10-21 23:31 UTC — nota
 23:31 UTC — Sin disparos, sin entradas, 1 salida. Vigilante: PUMP (60 min) sin disparos. Mercado rojo suave: 1 h roja general (-2,3/+0,57%, salvo IOST -21,16%), 4 h roja casi general (-6,73/+3,82%), volumen 0,34-1,4x. 23 pares sobre 20 M/día. BTC -0,19% en 4 h, sin bloqueo. SALIDA PUMP: 24 h +4,09% bajo el +5% que me fijé, 4 h +0,2%, 1 h -1,32%. Sin entradas: momentum: NEAR 24 h +6,49% y ENA +8,72% pero 4 h negativo (-1,05/-1,89%): no; ALT +30,21% en 24 h, 4 h +3,82%, pero -16,39% del máximo y liquidez justa (23,8 M): no persigo; IOST se desplomó (1 h -21%): no. Ruptura: nadie sobre el máximo de 48 h (BNB -0,66%, BTC -0,67%, ambos con volumen bajo 0,7x). Rebote: TRX +0,06% del mínimo pero rango ~0,8%: sin recorrido. 0 posiciones, 100% en USDT: mercado sin señal, plata parada.
 
+## 2026-10-22 00:32 UTC — Compra PUMPUSDT (trading)
+150.00 USD a 0.005174. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: PUMP (23,7 M/día) +6,18% en 24 h, 4 h +1,71%, 1 h +0,84% (no estirada), -0,96% del máximo de 48 h, vol 0,85x (flojo). Re-entrada: salí 23:31 con 24 h +4,09%; volvió sobre +5% y sube en 4 h y 1 h. BTC -0,55% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, 24 h bajo +5%, stop 5%, o 24 h sin +8%.
+
+## 2026-10-22 00:32 UTC — nota
+00:32 UTC — Sin disparos, 1 entrada, sin salidas. Vigilante: sin posiciones abiertas desde 23:31, nada que vigilar. Mercado plano tirando a rojo y sin volumen: 1 h casi plana (-0,68/+0,84%, salvo IOST -6,19%), 4 h roja casi general (-7,18/+1,79%, salvo IOST -38,24%), volumen 0,34-1,25x. 23 pares sobre 20 M/día. BTC -0,55% en 4 h, sin bloqueo. ENTRADA PUMP 150 USD a 0,005174 (momentum): 24 h +6,18%, 4 h +1,71%, 1 h +0,84%, -0,96% del máximo; volumen flojo 0,85x y liquidez justa: la más débil de las tesis posibles, chica y con la invalidación cerca; vence 23/10 00:32. Sin otras entradas: momentum: NEAR 24 h +5,26% y ENA +7,47% pero 4 h negativo (-0,36/-2,16%): no; IOST 4 h -38%: no; ALT +30,82% con 4 h -4,26% y -16,58% del máximo: no. Ruptura: nadie sobre el máximo de 48 h (BNB -0,47% 0,91x, BTC -0,8% 0,75x): sin romper ni volumen. Rebote: TRX en mínimo de 48 h pero rango ~0,9% y 1 h -0,12%: sin recorrido. 1 posición, ~84% en USDT.
+
