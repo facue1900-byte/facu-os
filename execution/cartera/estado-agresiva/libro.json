@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 785.4987337348314,
+  "usdt": 635.4987337348314,
   "posiciones": {
     "DOGEUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792701060000
+      "vigilado_hasta": 1792704660000
+    },
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.0625532234634073,
+      "entrada": 2395.56,
+      "maximo": 2395.56,
+      "reglas": {
+        "stop": 3.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792704780000
     }
   },
-  "comisiones_usd": 22.276532999999972,
+  "comisiones_usd": 22.42653299999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2106,6 +2128,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: DOGE (47,8 M/día) tocó el mínimo de 48 h y lleva 2 horas sin hacer mínimo nuevo (18:32 +0,73% del mínimo, 19:32 +1,48%), 1 h +0,57% con volumen 4 h 1,4x, BTC 4 h -0,19% sin bloqueo. Stop 3% (más ajustado que el 5% por defecto): invalida si pierde el mínimo de 48 h (~1,5% abajo) o si la próxima hora vuelve a 1 h roja con mínimo nuevo."
+    },
+    {
+      "ms": 1792704721100,
+      "fecha": "2026-10-22 21:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.0625532234634073,
+      "precio": 2395.56,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: ETH (750 M/día) tocó el mínimo de 48 h hacia las 16 UTC y desde ahí no hizo mínimo nuevo (16:32 +0,09% → 20:32 +1,02% → 21:31 +1,47%); ahora 1 h +0,5%, 4 h +0,63% y volumen 4 h 1,95x, el primer freno con volumen real. BTC 4 h +0,42%: sin bloqueo. Stop 3% (queda bajo el mínimo de 48 h, ~1,5% abajo): invalida si pierde el mínimo de 48 h o si la próxima hora vuelve a 1 h roja con volumen."
     }
   ]
 }
