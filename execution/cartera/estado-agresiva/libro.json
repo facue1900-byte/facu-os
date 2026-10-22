@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 790.6014876582949,
-  "posiciones": {
-    "PUMPUSDT": {
-      "nivel": "trading",
-      "cantidad": 28962.118283726322,
-      "entrada": 0.005174,
-      "maximo": 0.005212,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792632660000
-    }
-  },
-  "comisiones_usd": 21.981490999999973,
+  "usdt": 935.4987337348314,
+  "posiciones": {},
+  "comisiones_usd": 22.126532999999974,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2082,6 +2059,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: PUMP (23,7 M/día) +6,18% en 24 h, 4 h +1,71%, 1 h +0,84% (no estirada), -0,96% del máximo de 48 h, vol 0,85x (flojo). Re-entrada: salí 23:31 con 24 h +4,09%; volvió sobre +5% y sube en 4 h y 1 h. BTC -0,55% en 4 h, sin bloqueo. Invalida: cierre horario con 4 h negativo, 24 h bajo +5%, stop 5%, o 24 h sin +8%."
+    },
+    {
+      "ms": 1792636319675,
+      "fecha": "2026-10-22 02:31 UTC",
+      "lado": "sell",
+      "par": "PUMPUSDT",
+      "cantidad": 28962.118283726322,
+      "precio": 0.005008,
+      "usd": 145.0423,
+      "comision": 0.145042,
+      "motivo": "Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y PUMP cierra 02:31 con 4 h -2,22% (1 h -1,49%, vol 1,11x), 24 h +5,71%, -3,89% del máximo de 48 h. Stop 0,0049514 no saltó; salgo por regla propia.",
+      "resultado_pct": -3.21
     }
   ]
 }

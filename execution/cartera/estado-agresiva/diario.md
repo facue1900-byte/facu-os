@@ -1812,3 +1812,11 @@ Momentum de 24 h: PUMP (23,7 M/día) +6,18% en 24 h, 4 h +1,71%, 1 h +0,84% (no 
 ## 2026-10-22 01:32 UTC — nota
 01:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: PUMP (58 min) sin disparos. Mercado plano tirando a rojo y sin volumen: 1 h casi plana (-0,69/+1,44%, salvo IOST -2,49%), 4 h roja casi general (-3,01/+1,53%, salvo IOST -40,64%), volumen 0,34-1,1x. 23 pares sobre 20 M/día. BTC -0,69% en 4 h, sin bloqueo. PUMP 0,005179 (+0,1%), stop 0,0049514: 24 h +7,21%, 4 h +0,1% (apenas positivo), 1 h +0,19%, vol 0,76x, -0,96% del máximo de 48 h; tesis viva pero al límite: invalida 4 h negativo al cierre horario, 24 h bajo +5% o stop; vence 23/10 00:32. No muevo stops. Sin entradas: momentum: NEAR 24 h +5,97% y ENA +7,78% pero 4 h negativo (-0,69/-1,2%) y volumen bajo: no; ALT +28,84% con 4 h -3,01% y -17,35% del máximo: no; ZEC 24 h +4,68%: bajo +5%. Ruptura: nadie sobre el máximo de 48 h (BNB -0,38% 0,79x, BTC -0,75% 0,68x, TRX -0,84%): sin romper ni volumen. Rebote: TRX +0,06% del mínimo con rango ~0,9%: sin recorrido. 1 posición, ~84% en USDT: mercado sin señal, plata parada.
 
+## 2026-10-22 02:31 UTC — Venta PUMPUSDT
+145.04 USD a 0.005008 (-3.21% contra la compra).
+
+Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y PUMP cierra 02:31 con 4 h -2,22% (1 h -1,49%, vol 1,11x), 24 h +5,71%, -3,89% del máximo de 48 h. Stop 0,0049514 no saltó; salgo por regla propia.
+
+## 2026-10-22 02:32 UTC — nota
+02:31 UTC — Sin disparos, sin entradas, 1 salida. Vigilante: PUMP (60 min) sin disparos. Mercado rojo general: 1 h roja casi general (-4,36/+0,6%), 4 h roja general (-6,97/-0,15%, salvo IOST -38,37%), volumen 0,63-1,37x. 24 pares sobre 20 M/día. BTC -1,69% en 4 h: sin bloqueo (umbral -3%) pero mercado débil. SALIDA PUMP a 0,005008 (-3,21%): 4 h -2,22% al cierre horario, la invalidación que me fijé. Sin entradas: momentum: PUMP es el único con 24 h ≥ +5% (+5,71%) pero 4 h negativo: no; ALT +21,85% con 4 h -6,97% y -21,45% del máximo: no. Ruptura: nadie cerca del máximo de 48 h (TRX -0,9%, BNB -1,29% 1,37x, BTC -2,21%): no. Rebote: TRX en mínimo (+0,03%) con rango ~0,9%: sin recorrido; AVAX +0,44% del mínimo pero 1 h -1,44%, sigue haciendo mínimos; ARB +0,65% con 1 h -1,8%: sigue cayendo. 0 posiciones, 100% en USDT: mercado rojo sin señal, plata parada.
+
