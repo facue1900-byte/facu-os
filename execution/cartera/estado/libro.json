@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 125.51741569298744,
+  "usdt": 159.92957926357633,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "AAVEUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "AVAXUSDT": {
       "nivel": "medio",
@@ -156,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -174,7 +174,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -192,7 +192,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -210,7 +210,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "WLDUSDT": {
       "nivel": "riesgo",
@@ -232,29 +232,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
-    },
-    "INJUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 4.21004768770101,
-      "entrada": 9.017,
-      "maximo": 9.025,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     },
     "CRVUSDT": {
       "nivel": "riesgo",
@@ -276,10 +254,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792634700000
+      "vigilado_hasta": 1792641900000
     }
   },
-  "comisiones_usd": 2.20018,
+  "comisiones_usd": 2.234627,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1228,6 +1206,18 @@
       "comision": 0.033665,
       "motivo": "Venta por tesis, no por stop: la invalidación declarada al comprar (16:05 del 21/10) era volumen bajo 5 M/día; hoy 24 h = 4,68 M (salió del top 60 del radar). Precio 2,54, -3,5% vs entrada, a ~6% del máximo de 90 d. Sin volumen la ruptura no tiene sostén. Reentra sólo con tesis nueva (volumen >= 5 M y dos ciclos a <5% del máximo).",
       "resultado_pct": -3.72
+    },
+    {
+      "ms": 1792642001664,
+      "fecha": "2026-10-22 04:06 UTC",
+      "lado": "sell",
+      "par": "INJUSDT",
+      "cantidad": 4.21004768770101,
+      "precio": 8.182,
+      "usd": 34.4466,
+      "comision": 0.034447,
+      "motivo": "Venta por tesis, no por stop: la invalidación declarada al comprar (04:05 del 21/10) era alejarse >10% del máximo de 90 d; hoy está a 13,1% (1d -5,1%, 7d -4,2%), regla fijada a 02:05 de vender si pasaba 10% a las 04:05. Volumen 18 M sigue sobre el piso, pero la ruptura falló. Reentra sólo con tesis nueva (dos ciclos a <5% del máximo con volumen >= 5 M).",
+      "resultado_pct": -9.26
     }
   ]
 }
