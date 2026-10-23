@@ -286,6 +286,20 @@ def armar(c, para, nombre, desde):
     return {"raw": base64.urlsafe_b64encode(m.as_bytes()).decode()}
 
 
+def salio(svc, email):
+    """Id del mail a `email` en Enviados de los últimos 10 minutos, o None."""
+    try:
+        time.sleep(5)
+        r = svc.list(userId="me", q=f"in:sent to:{email} newer_than:1d", maxResults=1).execute()
+        m = r.get("messages")
+        if not m:
+            return None
+        meta = svc.get(userId="me", id=m[0]["id"], format="minimal").execute()
+        return m[0]["id"] if time.time() - int(meta["internalDate"]) / 1000 < 600 else None
+    except Exception:
+        return None
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--campana", required=True, choices=sorted(CAMPANAS))
@@ -294,18 +308,39 @@ def main():
     ap.add_argument("--limite", type=int, default=450)
     ap.add_argument("--sync-bajas", action="store_true", help="Lee bajas y rebotes de la bandeja antes")
     ap.add_argument("--cuenta", default=CUENTA, help="Token de google_auth desde el que sale")
+    ap.add_argument("--auto", action="store_true",
+                    help="Tarea programada: no hace nada (sale 0) si es el día del evento o después, "
+                         "si la última tanda fue hace menos de 24 h o si no queda nadie")
     a = ap.parse_args()
 
     c = CAMPANAS[a.campana]
     if c.get("cerrada") and a.send:
         sys.exit(f"Campaña '{a.campana}' cerrada: {c['cerrada']}. No se manda.")
     log = AQUI / c["log"]
+    if a.auto:
+        # 23/10: Facu pidió que la tanda diaria salga sola. Gmail corta a ~500 en 24 h
+        # corridas (puzzle.bsas ya fue suspendida el 28/09): sin 24 h desde el último
+        # envío, no se manda.
+        if date.today() >= EVENTO:
+            print(f"Auto: ya es {date.today():%d/%m}, el evento fue/es el {EVENTO:%d/%m}. Nada que mandar.")
+            return
+        if log.exists():
+            filas = list(csv.DictReader(log.open()))
+            if filas:
+                ultimo = time.mktime(time.strptime(filas[-1]["enviado"], "%Y-%m-%d %H:%M:%S"))
+                horas = (time.time() - ultimo) / 3600
+                if horas < 24:
+                    print(f"Auto: el último envío fue hace {horas:.1f} h (< 24). No se manda.")
+                    return
     if a.sync_bajas:
         sync_bajas(google_auth.gmail(a.cuenta).users().messages())
     personas, lista, afuera = destinatarios(log, c.get("primero_sin"))
     print(f"Campaña: {a.campana} · asunto: {c['asunto'].format(faltan=faltan())}")
     print(f"Base: {len(personas)} · pendientes de envío: {len(lista)} · afuera: {afuera}")
     if a.contar:
+        return
+    if a.auto and not lista:
+        print("Auto: no queda nadie pendiente en esta campaña. Nada que mandar.")
         return
 
     gm = google_auth.gmail(a.cuenta).users()
@@ -327,7 +362,13 @@ def main():
             try:
                 r = svc.send(userId="me", body=armar(c, p["email"], saludo(p["nombre"], p["apellido"], p["email"]), desde)).execute()
             except Exception as e:
-                print(f"FRENADO en {i}/{len(tanda)} ({p['email']}): {e}")
+                # 21/10 se cortó por "read timeout" y el mail SÍ había salido: si Gmail lo
+                # tiene en Enviados, se anota, así la próxima corrida no se lo repite.
+                ya = salio(svc, p["email"])
+                if ya:
+                    w.writerow([p["email"], time.strftime("%Y-%m-%d %H:%M:%S"), ya])
+                    f.flush()
+                print(f"FRENADO en {i}/{len(tanda)} ({p['email']}, {'sí salió, anotado' if ya else 'no salió'}): {e}")
                 sys.exit(1)
             w.writerow([p["email"], time.strftime("%Y-%m-%d %H:%M:%S"), r["id"]])
             f.flush()
