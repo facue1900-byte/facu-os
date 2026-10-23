@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 788.292894990994,
-  "posiciones": {
-    "ENAUSDT": {
-      "nivel": "trading",
-      "cantidad": 706.5063649222064,
-      "entrada": 0.2121,
-      "maximo": 0.2136,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792791060000
-    }
-  },
-  "comisiones_usd": 23.17978099999997,
+  "usdt": 931.5138022894381,
+  "posiciones": {},
+  "comisiones_usd": 23.32314499999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2178,6 +2155,18 @@
       "comision": 0.150099,
       "motivo": "Rotación por regla de 24 h: abierta 21:32 del 22/10 a 2395,56 (rebote en soporte); 24 h después en ~2399 (+0,15%), nunca llegó a +8% ni al stop 2323,69. 1 h -0,11%, 4 h -0,44%, volumen 0,5x: sin empuje. Se libera la plata para otra tesis.",
       "resultado_pct": 0.17
+    },
+    {
+      "ms": 1792794000000,
+      "fecha": "2026-10-23 22:20 UTC",
+      "lado": "sell",
+      "par": "ENAUSDT",
+      "cantidad": 706.5063649222064,
+      "precio": 0.20292,
+      "usd": 143.3643,
+      "comision": 0.143364,
+      "motivo": "Stop automático en 0.20292 (entrada 0.2121, máximo 0.2136).",
+      "resultado_pct": -4.33
     }
   ]
 }
