@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 635.4987337348314,
+  "usdt": 485.4987337348314,
   "posiciones": {
     "DOGEUSDT": {
       "nivel": "trading",
       "cantidad": 1896.8354430379745,
       "entrada": 0.079,
-      "maximo": 0.08022,
+      "maximo": 0.0803,
       "reglas": {
         "stop": 3.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792740660000
+      "vigilado_hasta": 1792744260000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792740660000
+      "vigilado_hasta": 1792744260000
+    },
+    "PEPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 31547368.421052627,
+      "entrada": 4.75e-06,
+      "maximo": 4.75e-06,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792744320000
     }
   },
-  "comisiones_usd": 22.42653299999997,
+  "comisiones_usd": 22.57653299999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2140,6 +2162,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: ETH (750 M/día) tocó el mínimo de 48 h hacia las 16 UTC y desde ahí no hizo mínimo nuevo (16:32 +0,09% → 20:32 +1,02% → 21:31 +1,47%); ahora 1 h +0,5%, 4 h +0,63% y volumen 4 h 1,95x, el primer freno con volumen real. BTC 4 h +0,42%: sin bloqueo. Stop 3% (queda bajo el mínimo de 48 h, ~1,5% abajo): invalida si pierde el mínimo de 48 h o si la próxima hora vuelve a 1 h roja con volumen."
+    },
+    {
+      "ms": 1792744315489,
+      "fecha": "2026-10-23 08:31 UTC",
+      "lado": "buy",
+      "par": "PEPEUSDT",
+      "nivel": "trading",
+      "cantidad": 31547368.421052627,
+      "precio": 4.75e-06,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: PEPE (42,7 M/día) 24 h +7,48%, sigue subiendo en 4 h (+5,1%), 1 h +2,38% (no estirada, < +4%), volumen 4 h 1,75x, a -1,04% del máximo de 48 h. BTC 4 h +0,27%: sin bloqueo. Stop 5% por defecto. Invalida si pierde el stop o si la próxima hora vuelve con 1 h roja y volumen < 1x (el empuje era el volumen)."
     }
   ]
 }
