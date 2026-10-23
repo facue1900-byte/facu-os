@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792747920000
+      "vigilado_hasta": 1792751460000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792747920000
+      "vigilado_hasta": 1792751460000
     },
     "PEPEUSDT": {
       "nivel": "trading",
       "cantidad": 31547368.421052627,
       "entrada": 4.75e-06,
-      "maximo": 4.98e-06,
+      "maximo": 5.04e-06,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792747920000
+      "vigilado_hasta": 1792751460000
     }
   },
   "comisiones_usd": 22.57653299999997,
