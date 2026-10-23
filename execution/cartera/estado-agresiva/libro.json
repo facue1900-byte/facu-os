@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 638.344032123439,
+  "usdt": 788.292894990994,
   "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.0625532234634073,
-      "entrada": 2395.56,
-      "maximo": 2417.77,
-      "reglas": {
-        "stop": 3.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792787460000
-    },
     "ENAUSDT": {
       "nivel": "trading",
       "cantidad": 706.5063649222064,
@@ -48,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792787460000
+      "vigilado_hasta": 1792791060000
     }
   },
-  "comisiones_usd": 23.02968199999997,
+  "comisiones_usd": 23.17978099999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2188,6 +2166,18 @@
       "comision": 0.150002,
       "motivo": "Rotación por regla de 24 h: abierta 19:32 del 22/10 a 0,079 con tesis de rebote en soporte; 24 h después en ~0,0791 (+0,1%), nunca llegó a +8% ni al stop. 1 h -0,55%, 4 h -1,37%, volumen 0,38x: sin empuje. Se libera la plata para otra tesis.",
       "resultado_pct": 0.1
+    },
+    {
+      "ms": 1792791134599,
+      "fecha": "2026-10-23 21:32 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.0625532234634073,
+      "precio": 2399.54,
+      "usd": 150.099,
+      "comision": 0.150099,
+      "motivo": "Rotación por regla de 24 h: abierta 21:32 del 22/10 a 2395,56 (rebote en soporte); 24 h después en ~2399 (+0,15%), nunca llegó a +8% ni al stop 2323,69. 1 h -0,11%, 4 h -0,44%, volumen 0,5x: sin empuje. Se libera la plata para otra tesis.",
+      "resultado_pct": 0.17
     }
   ]
 }
