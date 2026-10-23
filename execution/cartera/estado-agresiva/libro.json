@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 485.4987337348314,
+  "usdt": 638.4922870348314,
   "posiciones": {
     "DOGEUSDT": {
       "nivel": "trading",
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792762260000
+      "vigilado_hasta": 1792765860000
     },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.0625532234634073,
       "entrada": 2395.56,
-      "maximo": 2417.46,
+      "maximo": 2417.77,
       "reglas": {
         "stop": 3.0,
         "trail": 5.0,
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792762260000
-    },
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 31547368.421052627,
-      "entrada": 4.75e-06,
-      "maximo": 5.11e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792762260000
+      "vigilado_hasta": 1792765860000
     }
   },
-  "comisiones_usd": 22.57653299999997,
+  "comisiones_usd": 22.72967999999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2174,6 +2152,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: PEPE (42,7 M/día) 24 h +7,48%, sigue subiendo en 4 h (+5,1%), 1 h +2,38% (no estirada, < +4%), volumen 4 h 1,75x, a -1,04% del máximo de 48 h. BTC 4 h +0,27%: sin bloqueo. Stop 5% por defecto. Invalida si pierde el stop o si la próxima hora vuelve con 1 h roja y volumen < 1x (el empuje era el volumen)."
+    },
+    {
+      "ms": 1792765140000,
+      "fecha": "2026-10-23 14:19 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 31547368.421052627,
+      "precio": 4.8545e-06,
+      "usd": 153.1467,
+      "comision": 0.153147,
+      "motivo": "Stop automático en 4.8545e-06 (entrada 4.75e-06, máximo 5.11e-06).",
+      "resultado_pct": 2.2
     }
   ]
 }
