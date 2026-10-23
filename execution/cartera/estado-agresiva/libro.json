@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 638.4922870348314,
+  "usdt": 488.4922870348314,
   "posiciones": {
     "DOGEUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792773060000
+      "vigilado_hasta": 1792776660000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792773060000
+      "vigilado_hasta": 1792776660000
+    },
+    "ENAUSDT": {
+      "nivel": "trading",
+      "cantidad": 706.5063649222064,
+      "entrada": 0.2121,
+      "maximo": 0.2121,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792776780000
     }
   },
-  "comisiones_usd": 22.72967999999997,
+  "comisiones_usd": 22.87967999999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2164,6 +2186,18 @@
       "comision": 0.153147,
       "motivo": "Stop automático en 4.8545e-06 (entrada 4.75e-06, máximo 5.11e-06).",
       "resultado_pct": 2.2
+    },
+    {
+      "ms": 1792776720015,
+      "fecha": "2026-10-23 17:32 UTC",
+      "lado": "buy",
+      "par": "ENAUSDT",
+      "nivel": "trading",
+      "cantidad": 706.5063649222064,
+      "precio": 0.2121,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: ENA (31,6 M/día) 24 h +7,59%, sigue subiendo en 4 h (+3,41%), 1 h +1,05% (no estirada, < +4%), volumen 4 h 1,85x, a -5,97% del máximo de 48 h (con recorrido). BTC 4 h -0,46%: sin bloqueo. Stop 5% por defecto. Invalida si pierde el stop o si la próxima hora vuelve 1 h roja con volumen < 1x (el empuje era el volumen)."
     }
   ]
 }
