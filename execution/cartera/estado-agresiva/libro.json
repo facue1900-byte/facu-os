@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 931.5138022894381,
-  "posiciones": {},
-  "comisiones_usd": 23.32314499999997,
+  "usdt": 781.5138022894381,
+  "posiciones": {
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.06305570867715561,
+      "entrada": 2376.47,
+      "maximo": 2376.47,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792798380000
+    }
+  },
+  "comisiones_usd": 23.473144999999967,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2167,6 +2190,18 @@
       "comision": 0.143364,
       "motivo": "Stop automático en 0.20292 (entrada 0.2121, máximo 0.2136).",
       "resultado_pct": -4.33
+    },
+    {
+      "ms": 1792798340571,
+      "fecha": "2026-10-23 23:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.06305570867715561,
+      "precio": 2376.47,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: ETH (512 M/día) a +0,91% del mínimo de 48 h; la vela de 23 UTC no hace mínimo nuevo (2357,96 > 2351,55 de la de 22 UTC) y cierra arriba, 1 h +0,24%, 17 M operados a media hora. BTC 4 h -0,5%: sin bloqueo. Stop 5% por defecto. Invalida si cierra una vela horaria debajo de 2351,55 (mínimo nuevo de 48 h) o si salta el stop."
     }
   ]
 }

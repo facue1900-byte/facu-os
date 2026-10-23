@@ -1,18 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-23 22:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-23 23:32 UTC
 
-**Total: 931.51 USD (-6.85%)** desde 2026-10-07 23:06 UTC · USDT libre 931.51 · comisiones 23.32 · 180 operaciones
+**Total: 931.39 USD (-6.86%)** desde 2026-10-07 23:06 UTC · USDT libre 781.51 · comisiones 23.47 · 181 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **931.51** |
+| **Esta carpeta** | **931.39** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 975.35 |
+| hodl btc | 972.68 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| ETH | trading | 149.88 | +0.02% | 2,257.65 |
 
 ## Últimas operaciones
 
+- 2026-10-23 23:32 UTC · compra ETH 150.00 USD a 2,376.47 — Rebote en soporte: ETH (512 M/día) a +0,91% del mínimo de 48 h; la vela de 23 UTC no hace mínimo nuevo (2357,96 > 2351,55 de la de 22 UTC) y
 - 2026-10-23 22:20 UTC · venta ENA 143.36 USD a 0.20292 — Stop automático en 0.20292 (entrada 0.2121, máximo 0.2136).
 - 2026-10-23 21:32 UTC · venta ETH 150.10 USD a 2,399.54 — Rotación por regla de 24 h: abierta 21:32 del 22/10 a 2395,56 (rebote en soporte); 24 h después en ~2399 (+0,15%), nunca llegó a +8% ni al s
 - 2026-10-23 19:32 UTC · venta DOGE 150.00 USD a 0.07908 — Rotación por regla de 24 h: abierta 19:32 del 22/10 a 0,079 con tesis de rebote en soporte; 24 h después en ~0,0791 (+0,1%), nunca llegó a +
@@ -22,6 +24,5 @@
 - 2026-10-22 21:32 UTC · compra ETH 150.00 USD a 2,395.56 — Rebote en soporte: ETH (750 M/día) tocó el mínimo de 48 h hacia las 16 UTC y desde ahí no hizo mínimo nuevo (16:32 +0,09% → 20:32 +1,02% → 2
 - 2026-10-22 19:32 UTC · compra DOGE 150.00 USD a 0.079 — Rebote en soporte: DOGE (47,8 M/día) tocó el mínimo de 48 h y lleva 2 horas sin hacer mínimo nuevo (18:32 +0,73% del mínimo, 19:32 +1,48%), 
 - 2026-10-22 02:31 UTC · venta PUMP 145.04 USD a 0.005008 — Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y PUMP cierra 02:31 con 4 h -2,22% (1 h -1,49%, vol 1,11x
-- 2026-10-22 00:32 UTC · compra PUMP 150.00 USD a 0.005174 — Momentum de 24 h: PUMP (23,7 M/día) +6,18% en 24 h, 4 h +1,71%, 1 h +0,84% (no estirada), -0,96% del máximo de 48 h, vol 0,85x (flojo). Re-e
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
