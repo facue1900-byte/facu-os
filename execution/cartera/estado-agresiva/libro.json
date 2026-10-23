@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792758660000
+      "vigilado_hasta": 1792762260000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792758660000
+      "vigilado_hasta": 1792762260000
     },
     "PEPEUSDT": {
       "nivel": "trading",
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792758660000
+      "vigilado_hasta": 1792762260000
     }
   },
   "comisiones_usd": 22.57653299999997,
