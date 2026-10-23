@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 488.4922870348314,
+  "usdt": 638.344032123439,
   "posiciones": {
-    "DOGEUSDT": {
-      "nivel": "trading",
-      "cantidad": 1896.8354430379745,
-      "entrada": 0.079,
-      "maximo": 0.08069,
-      "reglas": {
-        "stop": 3.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792780260000
-    },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.0625532234634073,
@@ -48,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792780260000
+      "vigilado_hasta": 1792783860000
     },
     "ENAUSDT": {
       "nivel": "trading",
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792780260000
+      "vigilado_hasta": 1792783860000
     }
   },
-  "comisiones_usd": 22.87967999999997,
+  "comisiones_usd": 23.02968199999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2198,6 +2176,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: ENA (31,6 M/día) 24 h +7,59%, sigue subiendo en 4 h (+3,41%), 1 h +1,05% (no estirada, < +4%), volumen 4 h 1,85x, a -5,97% del máximo de 48 h (con recorrido). BTC 4 h -0,46%: sin bloqueo. Stop 5% por defecto. Invalida si pierde el stop o si la próxima hora vuelve 1 h roja con volumen < 1x (el empuje era el volumen)."
+    },
+    {
+      "ms": 1792783933828,
+      "fecha": "2026-10-23 19:32 UTC",
+      "lado": "sell",
+      "par": "DOGEUSDT",
+      "cantidad": 1896.8354430379745,
+      "precio": 0.07908,
+      "usd": 150.0017,
+      "comision": 0.150002,
+      "motivo": "Rotación por regla de 24 h: abierta 19:32 del 22/10 a 0,079 con tesis de rebote en soporte; 24 h después en ~0,0791 (+0,1%), nunca llegó a +8% ni al stop. 1 h -0,55%, 4 h -1,37%, volumen 0,38x: sin empuje. Se libera la plata para otra tesis.",
+      "resultado_pct": 0.1
     }
   ]
 }
