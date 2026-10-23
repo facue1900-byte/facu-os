@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Mail de OBSESSION a la base de Puzzle: 450 por día desde puzzle.bsas, 15:25.
+  Facu lo pidió el 23/10/2026 ("dejatelo programado para hacerlo vos solo").
+
+  enviar.py corre con auto, así que no hace nada (sale 0) si:
+    - es el 31/10 o después,
+    - la última tanda fue hace menos de 24 h (límite de Gmail: puzzle.bsas ya fue
+      suspendida el 28/09),
+    - no queda nadie pendiente de la campaña.
+  Antes de mandar lee las bajas y rebotes de la bandeja (sync-bajas).
+  Si se corta, correr.sh le manda mail a Facu y el día siguiente sigue donde quedó.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.mail-obsession.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.mail-obsession.plist
+
+  Sacar después del evento:
+    launchctl unload ~/Library/LaunchAgents/com.facu.mail-obsession.plist
+    rm ~/Library/LaunchAgents/com.facu.mail-obsession.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.mail-obsession</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>mail-obsession</string>
+        <string>--</string>
+        <string>cd /Users/Facu/facu-os/active/astronomy/puzzle-early-bird &amp;&amp; /Users/Facu/facu-os/.venv/bin/python enviar.py --campana aumento --sync-bajas --send --auto</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>15</integer>
+        <key>Minute</key>
+        <integer>25</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/mail-obsession.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/mail-obsession.log</string>
+</dict>
+</plist>
