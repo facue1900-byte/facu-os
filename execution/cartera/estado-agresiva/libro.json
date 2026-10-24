@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 681.5138022894381,
+  "usdt": 777.1123388278996,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792823460000
-    },
-    "ERAUSDT": {
-      "nivel": "trading",
-      "cantidad": 1038.4615384615386,
-      "entrada": 0.0962,
-      "maximo": 0.0962,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792823580000
+      "vigilado_hasta": 1792827060000
     }
   },
-  "comisiones_usd": 23.57314499999997,
+  "comisiones_usd": 23.66883899999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2236,6 +2214,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum de 24 h: ERA +36% en 24 h, 4 h +10,56% (sigue subiendo) con volumen 2,37x, 1 h -1,83% (no estirada). Velas horarias con mínimos crecientes desde 00 UTC (0,0755 -> 0,0883 -> 0,0867 -> 0,0831 -> 0,0875 -> 0,0899 -> 0,0932). Liquidez justa (21,6 M/día, ~1-2,5 M por hora) y rango horario de 5-10%: tamaño chico (100 USD, ~11%) en vez de 150. Stop 5% por defecto. Invalida con cierre horario debajo de 0,0899 (mínimo de la vela de 05 UTC: se rompe la escalera de mínimos) o con el stop."
+    },
+    {
+      "ms": 1792824240000,
+      "fecha": "2026-10-24 06:44 UTC",
+      "lado": "sell",
+      "par": "ERAUSDT",
+      "cantidad": 1038.4615384615386,
+      "precio": 0.09215,
+      "usd": 95.6942,
+      "comision": 0.095694,
+      "motivo": "Stop automático en 0.09215 (entrada 0.0962, máximo 0.097).",
+      "resultado_pct": -4.21
     }
   ]
 }
