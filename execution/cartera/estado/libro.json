@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 291.92392565302345,
+  "usdt": 316.47475025302344,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792850700000
+      "vigilado_hasta": 1792857840000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792850700000
+      "vigilado_hasta": 1792857840000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792850700000
+      "vigilado_hasta": 1792857840000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792850700000
+      "vigilado_hasta": 1792857840000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792850700000
+      "vigilado_hasta": 1792857840000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -120,25 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792850700000
-    },
-    "SUIUSDT": {
-      "nivel": "medio",
-      "cantidad": 26.663701067615655,
-      "entrada": 1.124,
-      "maximo": 1.1468,
-      "reglas": {
-        "stop": 18.0,
-        "trail": 20.0,
-        "tp": [
-          [
-            50.0,
-            0.33
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792850700000
+      "vigilado_hasta": 1792857840000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -156,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792850700000
+      "vigilado_hasta": 1792857840000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -174,10 +156,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792850700000
+      "vigilado_hasta": 1792857840000
     }
   },
-  "comisiones_usd": 2.3667530000000006,
+  "comisiones_usd": 2.3913280000000006,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1185,6 +1167,18 @@
       "usd": 32.7672,
       "comision": 0.032767,
       "motivo": "Stop automático en 142.9096 (entrada 174.28, máximo 176.15).",
+      "resultado_pct": -18.0
+    },
+    {
+      "ms": 1792851360000,
+      "fecha": "2026-10-24 14:16 UTC",
+      "lado": "sell",
+      "par": "SUIUSDT",
+      "cantidad": 26.663701067615655,
+      "precio": 0.9216800000000002,
+      "usd": 24.5754,
+      "comision": 0.024575,
+      "motivo": "Stop automático en 0.92168 (entrada 1.124, máximo 1.1468).",
       "resultado_pct": -18.0
     }
   ]
