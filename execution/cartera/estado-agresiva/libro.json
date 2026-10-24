@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 777.1123388278996,
-  "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.06305570867715561,
-      "entrada": 2376.47,
-      "maximo": 2390.24,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792852260000
-    }
-  },
-  "comisiones_usd": 23.66883899999997,
+  "usdt": 921.7856751210151,
+  "posiciones": {},
+  "comisiones_usd": 23.81365699999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2226,6 +2203,18 @@
       "comision": 0.095694,
       "motivo": "Stop automático en 0.09215 (entrada 0.0962, máximo 0.097).",
       "resultado_pct": -4.21
+    },
+    {
+      "ms": 1792855931959,
+      "fecha": "2026-10-24 15:32 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.06305570867715561,
+      "precio": 2296.67,
+      "usd": 144.8182,
+      "comision": 0.144818,
+      "motivo": "Tesis de rebote rota: la vela de 14 UTC cerró en 2342,57, debajo de la invalidación escrita (cierre horario < 2351,55), y la de 15 UTC sigue perforando (mínimo 2282,46 con 120 M, 8x lo normal). Venta por invalidación, no por stop (2270,73 sin tocar).",
+      "resultado_pct": -3.36
     }
   ]
 }
