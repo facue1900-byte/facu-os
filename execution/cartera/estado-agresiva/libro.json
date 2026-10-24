@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 921.7856751210151,
-  "posiciones": {},
-  "comisiones_usd": 23.81365699999997,
+  "usdt": 771.7856751210151,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.001882118467833735,
+      "entrada": 79617.73,
+      "maximo": 79617.73,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792859580000
+    }
+  },
+  "comisiones_usd": 23.96365699999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2215,6 +2238,18 @@
       "comision": 0.144818,
       "motivo": "Tesis de rebote rota: la vela de 14 UTC cerró en 2342,57, debajo de la invalidación escrita (cierre horario < 2351,55), y la de 15 UTC sigue perforando (mínimo 2282,46 con 120 M, 8x lo normal). Venta por invalidación, no por stop (2270,73 sin tocar).",
       "resultado_pct": -3.36
+    },
+    {
+      "ms": 1792859532707,
+      "fecha": "2026-10-24 16:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.001882118467833735,
+      "precio": 79617.73,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: BTC barrió el mínimo de 48 h hasta 79220,74 en la vela de 15 UTC con 169 M (8x lo normal) y la vela de 16 UTC no hace mínimo nuevo (mínimo 79580) con volumen que se seca (27,8 M a media hora): agotamiento de la venta. Precio +0,51% del mínimo de 48 h, BTC -1,44% en 4 h (< 3%, sin bloqueo). 150 USD (~16%), stop 5% por defecto. Invalida con cierre horario debajo de 79220,74 (mínimo nuevo: el soporte no aguantó) o con el stop."
     }
   ]
 }
