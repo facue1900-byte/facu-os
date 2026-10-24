@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-24 05:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-24 06:33 UTC
 
-**Total: 931.33 USD (-6.87%)** desde 2026-10-07 23:06 UTC · USDT libre 781.51 · comisiones 23.47 · 181 operaciones
+**Total: 931.00 USD (-6.90%)** desde 2026-10-07 23:06 UTC · USDT libre 681.51 · comisiones 23.57 · 182 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **931.33** |
+| **Esta carpeta** | **931.00** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 970.12 |
+| hodl btc | 970.81 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 149.81 | -0.02% | 2,270.73 |
+| ETH | trading | 150.00 | +0.10% | 2,270.73 |
+| ERA | trading | 99.48 | -0.42% | 0.09139 |
 
 ## Últimas operaciones
 
+- 2026-10-24 06:32 UTC · compra ERA 100.00 USD a 0.0962 — Momentum de 24 h: ERA +36% en 24 h, 4 h +10,56% (sigue subiendo) con volumen 2,37x, 1 h -1,83% (no estirada). Velas horarias con mínimos cre
 - 2026-10-23 23:32 UTC · compra ETH 150.00 USD a 2,376.47 — Rebote en soporte: ETH (512 M/día) a +0,91% del mínimo de 48 h; la vela de 23 UTC no hace mínimo nuevo (2357,96 > 2351,55 de la de 22 UTC) y
 - 2026-10-23 22:20 UTC · venta ENA 143.36 USD a 0.20292 — Stop automático en 0.20292 (entrada 0.2121, máximo 0.2136).
 - 2026-10-23 21:32 UTC · venta ETH 150.10 USD a 2,399.54 — Rotación por regla de 24 h: abierta 21:32 del 22/10 a 2395,56 (rebote en soporte); 24 h después en ~2399 (+0,15%), nunca llegó a +8% ni al s
@@ -23,6 +25,5 @@
 - 2026-10-23 08:31 UTC · compra PEPE 150.00 USD a 4.75e-06 — Momentum de 24 h: PEPE (42,7 M/día) 24 h +7,48%, sigue subiendo en 4 h (+5,1%), 1 h +2,38% (no estirada, < +4%), volumen 4 h 1,75x, a -1,04%
 - 2026-10-22 21:32 UTC · compra ETH 150.00 USD a 2,395.56 — Rebote en soporte: ETH (750 M/día) tocó el mínimo de 48 h hacia las 16 UTC y desde ahí no hizo mínimo nuevo (16:32 +0,09% → 20:32 +1,02% → 2
 - 2026-10-22 19:32 UTC · compra DOGE 150.00 USD a 0.079 — Rebote en soporte: DOGE (47,8 M/día) tocó el mínimo de 48 h y lleva 2 horas sin hacer mínimo nuevo (18:32 +0,73% del mínimo, 19:32 +1,48%), 
-- 2026-10-22 02:31 UTC · venta PUMP 145.04 USD a 0.005008 — Salida por invalidación: la tesis de momentum pedía 4 h positivo al cierre horario y PUMP cierra 02:31 con 4 h -2,22% (1 h -1,49%, vol 1,11x
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

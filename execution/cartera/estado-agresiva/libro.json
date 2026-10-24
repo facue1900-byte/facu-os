@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 781.5138022894381,
+  "usdt": 681.5138022894381,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792819860000
+      "vigilado_hasta": 1792823460000
+    },
+    "ERAUSDT": {
+      "nivel": "trading",
+      "cantidad": 1038.4615384615386,
+      "entrada": 0.0962,
+      "maximo": 0.0962,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792823580000
     }
   },
-  "comisiones_usd": 23.473144999999967,
+  "comisiones_usd": 23.57314499999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2202,6 +2224,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: ETH (512 M/día) a +0,91% del mínimo de 48 h; la vela de 23 UTC no hace mínimo nuevo (2357,96 > 2351,55 de la de 22 UTC) y cierra arriba, 1 h +0,24%, 17 M operados a media hora. BTC 4 h -0,5%: sin bloqueo. Stop 5% por defecto. Invalida si cierra una vela horaria debajo de 2351,55 (mínimo nuevo de 48 h) o si salta el stop."
+    },
+    {
+      "ms": 1792823561950,
+      "fecha": "2026-10-24 06:32 UTC",
+      "lado": "buy",
+      "par": "ERAUSDT",
+      "nivel": "trading",
+      "cantidad": 1038.4615384615386,
+      "precio": 0.0962,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum de 24 h: ERA +36% en 24 h, 4 h +10,56% (sigue subiendo) con volumen 2,37x, 1 h -1,83% (no estirada). Velas horarias con mínimos crecientes desde 00 UTC (0,0755 -> 0,0883 -> 0,0867 -> 0,0831 -> 0,0875 -> 0,0899 -> 0,0932). Liquidez justa (21,6 M/día, ~1-2,5 M por hora) y rango horario de 5-10%: tamaño chico (100 USD, ~11%) en vez de 150. Stop 5% por defecto. Invalida con cierre horario debajo de 0,0899 (mínimo de la vela de 05 UTC: se rompe la escalera de mínimos) o con el stop."
     }
   ]
 }
