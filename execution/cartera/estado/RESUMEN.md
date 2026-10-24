@@ -1,29 +1,29 @@
-# Carpeta cripto ficticia — 2026-10-23 22:06 UTC
+# Carpeta cripto ficticia — 2026-10-24 00:06 UTC
 
-**Total: 922.55 USD (-7.75%)** desde 2026-10-07 20:58 UTC · USDT libre 259.19 · comisiones 2.33 · 83 operaciones
+**Total: 917.42 USD (-8.26%)** desde 2026-10-07 20:58 UTC · USDT libre 291.92 · comisiones 2.37 · 84 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **922.55** |
+| **Esta carpeta** | **917.42** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 975.46 |
-| plan inicial sin tocar | 914.20 |
+| hodl btc | 972.19 |
+| plan inicial sin tocar | 904.96 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 292.32 | -2.46% | 63,673.5 |
-| ETH | conservador | 93.19 | -6.71% | 1,940.46 |
-| SOL | medio | 62.46 | -10.68% | 95.2922 |
-| BNB | conservador | 48.05 | -3.81% | 582.173 |
-| LINK | medio | 35.72 | -10.60% | 10.9609 |
-| AAVE | medio | 33.82 | -15.35% | 142.91 |
-| XRP | medio | 27.57 | -7.99% | 1.16653 |
-| SUI | medio | 26.06 | -13.05% | 0.92168 |
-| TAO | medio | 22.25 | -10.91% | 241.6 |
-| LTC | medio | 21.91 | -12.29% | 54.243 |
+| BTC | conservador | 291.34 | -2.79% | 63,673.5 |
+| ETH | conservador | 92.61 | -7.30% | 1,940.46 |
+| SOL | medio | 61.84 | -11.57% | 95.2922 |
+| BNB | conservador | 47.90 | -4.11% | 582.173 |
+| LINK | medio | 35.35 | -11.53% | 10.9609 |
+| XRP | medio | 27.27 | -9.00% | 1.16653 |
+| SUI | medio | 25.64 | -14.46% | 0.92168 |
+| TAO | medio | 21.96 | -12.08% | 241.6 |
+| LTC | medio | 21.59 | -13.56% | 54.243 |
 
 ## Últimas operaciones
 
+- 2026-10-23 22:50 UTC · venta AAVE 32.77 USD a 142.91 — Stop automático en 142.9096 (entrada 174.28, máximo 176.15).
 - 2026-10-22 08:02 UTC · venta AVAX 32.77 USD a 9.20942 — Stop automático en 9.20942 (entrada 11.231, máximo 11.261).
 - 2026-10-22 06:07 UTC · venta WLD 35.23 USD a 0.5457 — Venta por tesis, no por stop: la invalidación declarada al comprar (00:05 del 21/10) era alejarse >10% del máximo de 90 d; hoy está a 12,1% 
 - 2026-10-22 06:07 UTC · venta CRV 31.36 USD a 0.372 — Venta por tesis, no por stop: la invalidación declarada al comprar (00:05 del 22/10) era alejarse >10% del máximo de 90 d; hoy está a 10,6% 
@@ -33,6 +33,5 @@
 - 2026-10-21 16:07 UTC · compra CVX 35.00 USD a 2.635 — Riesgo/momentum: CVX sostuvo dos ciclos a <5% del máximo de 90 d (0,8% a 14:05, 3,1% a 16:05), 7d +39,1%, 90d +122%; velas de 1 h parejas (l
 - 2026-10-21 04:07 UTC · compra INJ 38.00 USD a 9.017 — Riesgo/momentum: INJ sostuvo dos ciclos a <5% del máximo de 90 d (1,6% a 02:05, 4,1% a 04:05), 7d +17,9%, 90d +74,6%, 21,3 M/día; velas de 1
 - 2026-10-21 00:09 UTC · compra WLD 38.00 USD a 0.588 — Riesgo/momentum: WLD sostuvo dos ciclos a <5% del máximo de 90 d (4,4% a 22:05, 4,9% a 00:05), 7d +18,9%, 30d +28,5%, 101 M/día; velas de 1 
-- 2026-10-18 12:07 UTC · venta INJ 19.85 USD a 8.432 — Tesis rota (invalidación declarada desde la compra y repetida cada ciclo): alejarse >10% del máximo de 90 d aunque no toque el stop. A 12:05
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

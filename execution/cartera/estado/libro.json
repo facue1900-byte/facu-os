@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 259.18949285302347,
+  "usdt": 291.92392565302345,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792793100000
+      "vigilado_hasta": 1792800240000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792793100000
+      "vigilado_hasta": 1792800240000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792793100000
+      "vigilado_hasta": 1792800240000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792793100000
+      "vigilado_hasta": 1792800240000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,25 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792793100000
-    },
-    "AAVEUSDT": {
-      "nivel": "medio",
-      "cantidad": 0.2292862061051182,
-      "entrada": 174.28,
-      "maximo": 176.15,
-      "reglas": {
-        "stop": 18.0,
-        "trail": 20.0,
-        "tp": [
-          [
-            50.0,
-            0.33
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792793100000
+      "vigilado_hasta": 1792800240000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -138,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792793100000
+      "vigilado_hasta": 1792800240000
     },
     "SUIUSDT": {
       "nivel": "medio",
@@ -156,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792793100000
+      "vigilado_hasta": 1792800240000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -174,7 +156,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792793100000
+      "vigilado_hasta": 1792800240000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -192,10 +174,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792793100000
+      "vigilado_hasta": 1792800240000
     }
   },
-  "comisiones_usd": 2.3339860000000003,
+  "comisiones_usd": 2.3667530000000006,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1191,6 +1173,18 @@
       "usd": 32.7672,
       "comision": 0.032767,
       "motivo": "Stop automático en 9.20942 (entrada 11.231, máximo 11.261).",
+      "resultado_pct": -18.0
+    },
+    {
+      "ms": 1792795800000,
+      "fecha": "2026-10-23 22:50 UTC",
+      "lado": "sell",
+      "par": "AAVEUSDT",
+      "cantidad": 0.2292862061051182,
+      "precio": 142.9096,
+      "usd": 32.7672,
+      "comision": 0.032767,
+      "motivo": "Stop automático en 142.9096 (entrada 174.28, máximo 176.15).",
       "resultado_pct": -18.0
     }
   ]
