@@ -4,57 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 471.78567512101506,
+  "usdt": 774.7836256128069,
   "posiciones": {
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.001882118467833735,
-      "entrada": 79617.73,
-      "maximo": 81033.69,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792942260000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.1250792961837668,
-      "entrada": 1198.04,
-      "maximo": 1218.46,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792942260000
-    },
     "ENAUSDT": {
       "nivel": "trading",
       "cantidad": 743.6724565756823,
       "entrada": 0.2015,
-      "maximo": 0.2015,
+      "maximo": 0.2057,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792942380000
+      "vigilado_hasta": 1792945860000
     }
   },
-  "comisiones_usd": 24.263656999999967,
+  "comisiones_usd": 24.566957999999968,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2318,6 +2274,30 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: ENA +7,87% en 24 h, 4 h +2,75% (sigue subiendo), 1 h +0,4% (no estirada), volumen 4 h 1,5x, 26,8 M/día. A -5,62% del máximo de 48 h. Invalida: stop 5% del precio de entrada, o 4 h roja con 24 h de vuelta debajo de +5%; si en 24 h no llega a +8%, rota."
+    },
+    {
+      "ms": 1792945927484,
+      "fecha": "2026-10-25 16:32 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.001882118467833735,
+      "precio": 80624.0,
+      "usd": 151.7439,
+      "comision": 0.151744,
+      "motivo": "Rotación por tiempo: abierta 16:32 del 24/10 a 79617,73, cumple 24 h en +1,27% sin llegar a +8% ni al stop (76982). Tesis de rebote nunca se invalidó pero tampoco despegó: BTC 4 h +0,22% con 0,57x. Sale y libera plata.",
+      "resultado_pct": 1.26
+    },
+    {
+      "ms": 1792945928276,
+      "fecha": "2026-10-25 16:32 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.1250792961837668,
+      "precio": 1211.69,
+      "usd": 151.5573,
+      "comision": 0.151557,
+      "motivo": "Tesis de momentum invalidada según lo escrito al entrar: 4 h roja (-0,15%) y 24 h de vuelta debajo de +5% (+4,58%), 1 h +0,07%, volumen 0,87x. Sale en +1,2% aprox. antes de que se convierta en pérdida.",
+      "resultado_pct": 1.14
     }
   ]
 }
