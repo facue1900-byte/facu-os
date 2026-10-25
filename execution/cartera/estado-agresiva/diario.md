@@ -2176,3 +2176,16 @@ Momentum 24 h (reentrada): ZEC +6,3% en 24 h, 4 h +2,29% (sigue subiendo), 1 h +
 ## 2026-10-25 19:31 UTC — nota
 19:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: ENA, NEAR, ZEC 60 min revisados, sin disparos. Mercado plano y seco: 1 h roja chica casi general (-0,76/+0,03%), 4 h plana-verde (-0,68/+1,67%), 24 h verde chica salvo WLD/SUI/PEPE, volumen 4 h 0,24-1,04x. 11 pares sobre 20 M/día. BTC -0,07% en 4 h (vol 0,67x): sin bloqueo. ENA (abierta 15:32 a 0,2015): 0,2066, +2,53%, 24 h +9,95%, 4 h +1,67%: tesis viva, stop 0,19855 (trailing). NEAR (abierta 17:32 a 4,67): 4,576, -2,01%, 24 h +2,47% (< 5%) pero 4 h +0,53% verde: invalidación pide las dos, no se cumple; stop 4,44505. ZEC (abierta 17:32 a 1229,74): 1223,05, -0,54%, 24 h +2,7% (< 5%) pero 4 h +1% verde: no invalida, stop 1175,87. Sin entradas: ruptura: nadie con volumen ≥ 1,5x (BNB -0,81% del máximo con 0,45x). Momentum: sólo ENA (ya en cartera). Rebote: nadie en mínimo de 48 h (BTC +1,72%, SUI +2,58%); WLD -12,2% y PEPE -7,2% en 48 h: cuchillos. 3 posiciones (~16% c/u), resto en USDT (~51%). Resultado acumulado -7,57% contra HODL BTC -3,17%.
 
+## 2026-10-25 20:31 UTC — Venta NEARUSDT
+146.45 USD a 4.564 (-2.27% contra la compra).
+
+Tesis de momentum invalidada según lo escrito al entrar: 4 h roja (-2,27%) y 24 h debajo de +5% (+1,99%), 1 h -0,31%, volumen 0,68x. Sale antes de acercarse al stop (4,445).
+
+## 2026-10-25 20:31 UTC — Venta ZECUSDT
+148.31 USD a 1,217.08 (-1.03% contra la compra).
+
+Tesis de momentum invalidada según lo escrito al entrar: 4 h roja (-0,16%) y 24 h debajo de +5% (+1,01%), 1 h -0,21%, volumen 0,85x. Sale chico en pérdida antes de que crezca.
+
+## 2026-10-25 20:32 UTC — nota
+20:31 UTC — Sin disparos, sin entradas, 2 salidas (NEAR, ZEC). Vigilante: ENA, NEAR, ZEC 60 min revisados, sin disparos. Mercado plano y seco: 1 h plana-roja (-0,53/0%), 4 h roja chica casi general (-2,27/+0,44%), 24 h verde chica salvo WLD/SUI/PEPE, volumen 4 h 0,2-0,85x. 11 pares sobre 20 M/día. BTC -0,31% en 4 h (vol 0,58x): sin bloqueo. Salidas por la invalidación escrita al entrar (4 h roja Y 24 h < 5%): NEAR (abierta 17:32 a 4,67) 4 h -2,27%, 24 h +1,99%: vendida a 4,564, -2,27%. ZEC (abierta 17:32 a 1229,74) 4 h -0,16%, 24 h +1,01%: vendida a 1217,08, -1,03%. ENA (abierta 15:32 a 0,2015): 0,2063, +2,38%, 24 h +8,35%, 4 h +0,44% verde: tesis viva, stop 0,19855 (trailing); rota a las 15:32 del 26/10 si no llega a +8%. Sin entradas: ruptura: nadie con volumen ≥ 1,5x (BNB -0,92% del máximo con 0,38x). Momentum: sólo ENA (ya en cartera). Rebote: nadie en mínimo de 48 h (BTC +1,69%, SUI +2,48%); WLD -11,4% y PEPE -6,2% en 48 h: cuchillos. 1 posición (ENA ~16%), resto en USDT (~84%): debajo de 2 posiciones, pero sin tesis la plata queda parada.
+

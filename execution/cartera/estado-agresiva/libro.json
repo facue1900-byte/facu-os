@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 474.7836256128069,
+  "usdt": 769.2448787612751,
   "posiciones": {
     "ENAUSDT": {
       "nivel": "trading",
@@ -26,54 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792956660000
-    },
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 32.08779443254818,
-      "entrada": 4.67,
-      "maximo": 4.679,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792956660000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.12185502626571469,
-      "entrada": 1229.74,
-      "maximo": 1237.76,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792956660000
+      "vigilado_hasta": 1792960260000
     }
   },
-  "comisiones_usd": 24.866957999999965,
+  "comisiones_usd": 25.161713999999964,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2366,6 +2322,30 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h (reentrada): ZEC +6,3% en 24 h, 4 h +2,29% (sigue subiendo), 1 h +1,21% (no estirada), volumen 4 h 1,07x, 116 M/día, a -2% del máximo de 48 h. Salió hace 1 h por 4 h roja y 24 h < 5%; ahora vuelve a cumplir las tres condiciones. Invalida: stop 5% del precio de entrada, o 4 h roja con 24 h de vuelta debajo de +5%; si en 24 h no llega a +8%, rota."
+    },
+    {
+      "ms": 1792960312681,
+      "fecha": "2026-10-25 20:31 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 32.08779443254818,
+      "precio": 4.564,
+      "usd": 146.4487,
+      "comision": 0.146449,
+      "motivo": "Tesis de momentum invalidada según lo escrito al entrar: 4 h roja (-2,27%) y 24 h debajo de +5% (+1,99%), 1 h -0,31%, volumen 0,68x. Sale antes de acercarse al stop (4,445).",
+      "resultado_pct": -2.27
+    },
+    {
+      "ms": 1792960313510,
+      "fecha": "2026-10-25 20:31 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.12185502626571469,
+      "precio": 1217.08,
+      "usd": 148.3073,
+      "comision": 0.148307,
+      "motivo": "Tesis de momentum invalidada según lo escrito al entrar: 4 h roja (-0,16%) y 24 h debajo de +5% (+1,01%), 1 h -0,21%, volumen 0,85x. Sale chico en pérdida antes de que crezca.",
+      "resultado_pct": -1.03
     }
   ]
 }
