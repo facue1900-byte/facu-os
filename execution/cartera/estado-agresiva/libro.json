@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 621.7856751210151,
+  "usdt": 471.78567512101506,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792938660000
+      "vigilado_hasta": 1792942260000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.1250792961837668,
       "entrada": 1198.04,
-      "maximo": 1198.04,
+      "maximo": 1218.46,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792938780000
+      "vigilado_hasta": 1792942260000
+    },
+    "ENAUSDT": {
+      "nivel": "trading",
+      "cantidad": 743.6724565756823,
+      "entrada": 0.2015,
+      "maximo": 0.2015,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792942380000
     }
   },
-  "comisiones_usd": 24.113656999999968,
+  "comisiones_usd": 24.263656999999967,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2284,6 +2306,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: ZEC +5,34% en 24 h, 4 h +0,94% (sigue subiendo), 1 h -0,64% (no estirada), 126 M/día. Débil en volumen (0,79x) y a -4,87% del máximo de 48 h. Invalida: stop 5% del precio de entrada, o 4 h roja con 24 h de vuelta debajo de +5%; si en 24 h no llega a +8%, rota."
+    },
+    {
+      "ms": 1792942334069,
+      "fecha": "2026-10-25 15:32 UTC",
+      "lado": "buy",
+      "par": "ENAUSDT",
+      "nivel": "trading",
+      "cantidad": 743.6724565756823,
+      "precio": 0.2015,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h: ENA +7,87% en 24 h, 4 h +2,75% (sigue subiendo), 1 h +0,4% (no estirada), volumen 4 h 1,5x, 26,8 M/día. A -5,62% del máximo de 48 h. Invalida: stop 5% del precio de entrada, o 4 h roja con 24 h de vuelta debajo de +5%; si en 24 h no llega a +8%, rota."
     }
   ]
 }

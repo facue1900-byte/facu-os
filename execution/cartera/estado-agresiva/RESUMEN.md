@@ -1,20 +1,22 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-25 14:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-25 15:32 UTC
 
-**Total: 923.06 USD (-7.69%)** desde 2026-10-07 23:06 UTC · USDT libre 621.79 · comisiones 24.11 · 186 operaciones
+**Total: 925.52 USD (-7.45%)** desde 2026-10-07 23:06 UTC · USDT libre 471.79 · comisiones 24.26 · 187 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **923.06** |
+| **Esta carpeta** | **925.52** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 965.55 |
+| hodl btc | 968.84 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 151.24 | +0.92% | 76,982 |
-| ZEC | trading | 150.04 | +0.13% | 1,138.14 |
+| ZEC | trading | 152.20 | +1.57% | 1,157.54 |
+| BTC | trading | 151.75 | +1.27% | 76,982 |
+| ENA | trading | 149.78 | -0.05% | 0.191425 |
 
 ## Últimas operaciones
 
+- 2026-10-25 15:32 UTC · compra ENA 150.00 USD a 0.2015 — Momentum 24 h: ENA +7,87% en 24 h, 4 h +2,75% (sigue subiendo), 1 h +0,4% (no estirada), volumen 4 h 1,5x, 26,8 M/día. A -5,62% del máximo d
 - 2026-10-25 14:32 UTC · compra ZEC 150.00 USD a 1,198.04 — Momentum 24 h: ZEC +5,34% en 24 h, 4 h +0,94% (sigue subiendo), 1 h -0,64% (no estirada), 126 M/día. Débil en volumen (0,79x) y a -4,87% del
 - 2026-10-24 16:32 UTC · compra BTC 150.00 USD a 79,617.7 — Rebote en soporte: BTC barrió el mínimo de 48 h hasta 79220,74 en la vela de 15 UTC con 169 M (8x lo normal) y la vela de 16 UTC no hace mín
 - 2026-10-24 15:32 UTC · venta ETH 144.82 USD a 2,296.67 — Tesis de rebote rota: la vela de 14 UTC cerró en 2342,57, debajo de la invalidación escrita (cierre horario < 2351,55), y la de 15 UTC sigue
@@ -24,6 +26,5 @@
 - 2026-10-23 22:20 UTC · venta ENA 143.36 USD a 0.20292 — Stop automático en 0.20292 (entrada 0.2121, máximo 0.2136).
 - 2026-10-23 21:32 UTC · venta ETH 150.10 USD a 2,399.54 — Rotación por regla de 24 h: abierta 21:32 del 22/10 a 2395,56 (rebote en soporte); 24 h después en ~2399 (+0,15%), nunca llegó a +8% ni al s
 - 2026-10-23 19:32 UTC · venta DOGE 150.00 USD a 0.07908 — Rotación por regla de 24 h: abierta 19:32 del 22/10 a 0,079 con tesis de rebote en soporte; 24 h después en ~0,0791 (+0,1%), nunca llegó a +
-- 2026-10-23 17:32 UTC · compra ENA 150.00 USD a 0.2121 — Momentum de 24 h: ENA (31,6 M/día) 24 h +7,59%, sigue subiendo en 4 h (+3,41%), 1 h +1,05% (no estirada, < +4%), volumen 4 h 1,85x, a -5,97%
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
