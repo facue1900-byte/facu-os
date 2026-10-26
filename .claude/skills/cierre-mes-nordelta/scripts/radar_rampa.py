@@ -24,9 +24,8 @@ import openpyxl
 # Fechas confirmadas por Facu el 27/07/2026.
 RAMPA = [
     ("La Jaula",            "2026-08",  2_000_000),
-    # Cafetería: paga las expensas de agosto en septiembre, dos meses de expensas
-    # solas (sep y oct), y recién en noviembre arranca el alquiler.
-    ("Cafeteria",           "2026-11",  3_500_000),
+    # Cafetería: el alquiler arranca en mar-27, no en nov-26 (Facu, 26/10/2026).
+    ("Cafeteria",           "2027-03",  3_500_000),
     # Peak One: la obra arrancó recién en oct-26; alquiler desde mar-27 (Facu, 16/10/2026).
     # Los $4M son el valor BASE: en marzo se cobra ajustado por IPC trimestral.
     ("Peak One",            "2027-03",  4_000_000),
