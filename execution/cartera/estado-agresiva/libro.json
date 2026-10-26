@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 648.2830991084194,
+  "usdt": 668.4014758776501,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793014320000
+      "vigilado_hasta": 1793018220000
     },
-    "UNIUSDT": {
+    "QNTUSDT": {
       "nivel": "trading",
-      "cantidad": 17.076923076923077,
-      "entrada": 7.02,
-      "maximo": 7.117,
+      "cantidad": 0.45177045177045183,
+      "entrada": 221.13,
+      "maximo": 221.13,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793014320000
+      "vigilado_hasta": 1793018280000
     }
   },
-  "comisiones_usd": 25.881051999999965,
+  "comisiones_usd": 26.101290999999968,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2428,6 +2428,30 @@
       "comision": 0.147331,
       "motivo": "Invalidación de momentum cumplida: 24 h cayó a +4,18% (< 5%) con 4 h -0,24% roja y 1 h -1,59% con volumen 1,75x (volumen de venta). Tesis muerta, se sale antes del stop.",
       "resultado_pct": -1.68
+    },
+    {
+      "ms": 1793018275598,
+      "fecha": "2026-10-26 12:37 UTC",
+      "lado": "sell",
+      "par": "UNIUSDT",
+      "cantidad": 17.076923076923077,
+      "precio": 7.041,
+      "usd": 120.2386,
+      "comision": 0.120239,
+      "motivo": "Invalidación de momentum cumplida: 24 h cayó a +4,87% (< 5%) con 4 h -0,33% roja (volumen 0,65x). Tesis muerta, se sale antes del stop.",
+      "resultado_pct": 0.3
+    },
+    {
+      "ms": 1793018279677,
+      "fecha": "2026-10-26 12:37 UTC",
+      "lado": "buy",
+      "par": "QNTUSDT",
+      "nivel": "trading",
+      "cantidad": 0.45177045177045183,
+      "precio": 221.13,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum de 24 h: QNT (30,1 M/día) +21,73% en 24 h, sigue subiendo en 4 h (+11,44%, volumen 7,87x) y no está estirada (1 h +2,66% < 4%), a -0,99% del máximo de 48 h. Ya subió mucho: tamaño chico (100 USD). Invalida: 4 h se pone roja o pierde el stop 5%. Si en 24 h no llega a +8%, rota."
     }
   ]
 }
