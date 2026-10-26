@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 668.4014758776501,
+  "usdt": 763.4559599435842,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793021880000
-    },
-    "QNTUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.45177045177045183,
-      "entrada": 221.13,
-      "maximo": 221.7,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793021880000
+      "vigilado_hasta": 1793025060000
     }
   },
-  "comisiones_usd": 26.101290999999968,
+  "comisiones_usd": 26.196440999999968,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2452,6 +2430,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum de 24 h: QNT (30,1 M/día) +21,73% en 24 h, sigue subiendo en 4 h (+11,44%, volumen 7,87x) y no está estirada (1 h +2,66% < 4%), a -0,99% del máximo de 48 h. Ya subió mucho: tamaño chico (100 USD). Invalida: 4 h se pone roja o pierde el stop 5%. Si en 24 h no llega a +8%, rota."
+    },
+    {
+      "ms": 1793022840000,
+      "fecha": "2026-10-26 13:54 UTC",
+      "lado": "sell",
+      "par": "QNTUSDT",
+      "cantidad": 0.45177045177045183,
+      "precio": 210.61499999999998,
+      "usd": 95.1496,
+      "comision": 0.09515,
+      "motivo": "Stop automático en 210.615 (entrada 221.13, máximo 221.7).",
+      "resultado_pct": -4.76
     }
   ]
 }
