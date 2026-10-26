@@ -77,7 +77,10 @@ ABREV = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "
 OBRA = {"Inversiones"}
 REPARTO = {"Retiro de Ganancia Richi"}
 DESCUADRE = {"Ajuste de caja"}
-NO_OPERATIVO = OBRA | REPARTO | DESCUADRE
+# Suscribir o rescatar el FCI mueve plata del Banco al fondo y vuelta: no es
+# ingreso ni gasto (Facu, 26/10/2026). Va como egreso Banco + ingreso Medio «FCI».
+FCI = {"Fondo Común de Inversión"}
+NO_OPERATIVO = OBRA | REPARTO | DESCUADRE | FCI
 
 
 def plata(n, dec=0):
@@ -272,12 +275,16 @@ def calcular(filas, anio, mes_corte):
         i = fecha.month
         if i not in m:
             continue
+        if f["tipo"] == "Ingreso" and f["local"] in FCI:
+            continue
         if f["tipo"] == "Ingreso":
             if not es_aporte(f["local"]):
                 m[i]["ing"] += f["monto"]
             else:
                 m[i]["aporte"] += f["monto"]
         else:
+            if f["cat"] in FCI:
+                continue
             if f["cat"] in OBRA:
                 m[i]["obra"] += f["monto"]
             elif f["cat"] in REPARTO:
