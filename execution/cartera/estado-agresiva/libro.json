@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 769.2448787612751,
-  "posiciones": {
-    "ENAUSDT": {
-      "nivel": "trading",
-      "cantidad": 743.6724565756823,
-      "entrada": 0.2015,
-      "maximo": 0.2116,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1792974660000
-    }
-  },
-  "comisiones_usd": 25.161713999999964,
+  "usdt": 921.0995222352205,
+  "posiciones": {},
+  "comisiones_usd": 25.313720999999965,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2346,6 +2323,18 @@
       "comision": 0.148307,
       "motivo": "Tesis de momentum invalidada según lo escrito al entrar: 4 h roja (-0,16%) y 24 h debajo de +5% (+1,01%), 1 h -0,21%, volumen 0,85x. Sale chico en pérdida antes de que crezca.",
       "resultado_pct": -1.03
+    },
+    {
+      "ms": 1792978304903,
+      "fecha": "2026-10-26 01:31 UTC",
+      "lado": "sell",
+      "par": "ENAUSDT",
+      "cantidad": 743.6724565756823,
+      "precio": 0.2044,
+      "usd": 152.0067,
+      "comision": 0.152007,
+      "motivo": "Tesis de momentum invalidada según lo escrito al entrar: 24 h volvió debajo de +5% (+4,6%) con 4 h roja (-0,58%), 1 h -1,49%, volumen 1,36x. Sale en ganancia chica antes de acercarse al stop (0,20102).",
+      "resultado_pct": 1.44
     }
   ]
 }

@@ -2201,3 +2201,11 @@ Tesis de momentum invalidada según lo escrito al entrar: 4 h roja (-0,16%) y 24
 ## 2026-10-26 00:32 UTC — nota
 00:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: ENA 60 min revisados, sin disparos. Mercado plano y seco: 1 h plana-verde (-0,24/+0,26%), 4 h plana-roja (-1,61/+0,48%), 24 h roja chica salvo ENA +5,78%, NEAR +1,89% y ZEC +0,5%, volumen 4 h 0,47-1,44x. 11 pares sobre 20 M/día. BTC -0,23% en 4 h (vol 1,12x): sin bloqueo. ENA (abierta 15:32 a 0,2015): 0,2069, +2,68%, 24 h +5,78% (≥ 5%), 4 h +0,15% verde: tesis viva, stop 0,20102 (trailing) a -2,8% del precio; rota a las 15:32 del 26/10 si no llega a +8%. Sin entradas: ruptura: nadie con volumen ≥ 1,5x (ZEC 1,44x pero a -1,97% del máximo de 48 h y 4 h roja; BTC -1,12%, BNB -1,08% con 1,12/0,53x). Momentum: sólo ENA (ya en cartera); NEAR 24 h +1,89% (< 5%). Rebote: nadie en el mínimo de 48 h (BTC +1,37% con 1 h +0,19%, ETH +2,33%); PEPE +1,42% del mínimo con 1 h +0,23% pero 24 h -5,09% y no es grande: no alcanza. 1 posición (ENA ~17%), resto en USDT (~83%): sin tesis la plata queda parada. Resultado acumulado -7,69% contra HODL BTC -3,51%.
 
+## 2026-10-26 01:31 UTC — Venta ENAUSDT
+152.01 USD a 0.2044 (+1.44% contra la compra).
+
+Tesis de momentum invalidada según lo escrito al entrar: 24 h volvió debajo de +5% (+4,6%) con 4 h roja (-0,58%), 1 h -1,49%, volumen 1,36x. Sale en ganancia chica antes de acercarse al stop (0,20102).
+
+## 2026-10-26 01:31 UTC — nota
+01:31 UTC — Sin disparos, sin entradas, 1 salida (ENA). Vigilante: ENA 60 min revisados, sin disparos. Mercado rojo chico: 1 h roja general (-1,83/-0,06%), 4 h plana-roja (-1,39/+0,42%), 24 h roja salvo ENA +4,6%, volumen 4 h 0,51-1,49x. 11 pares sobre 20 M/día. BTC -0,43% en 4 h (vol 1,37x): sin bloqueo. Salida: ENA (abierta 15:32 del 25/10 a 0,2015) cumplió la invalidación escrita: 24 h +4,6% (< 5%) con 4 h -0,58% roja; vendida a 0,2044, +1,44%. Sin entradas: ruptura: nadie en el máximo de 48 h (BNB -1,12%, BTC -1,44%; ZEC 1,49x pero a -2,59% y 24 h roja). Momentum: nadie con +5% en 24 h. Rebote: BTC +0,9% y SUI +1,21% del mínimo de 48 h con 1 h roja: siguen cayendo; PEPE +0,47% con 24 h -5,76% y no es grande: cuchillo. 0 posiciones, 100% USDT: sin tesis la plata queda parada. Resultado acumulado -7,89% contra HODL BTC.
+
