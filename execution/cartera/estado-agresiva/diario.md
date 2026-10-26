@@ -2212,3 +2212,16 @@ Tesis de momentum invalidada según lo escrito al entrar: 24 h volvió debajo de
 ## 2026-10-26 02:32 UTC — nota
 02:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: sin posiciones, nada que revisar. Mercado rojo general con volumen que se despierta: 1 h roja general (-0,92/-0,18%), 4 h roja general (-2,48/-0,62%), 24 h roja salvo ENA +4,85%, NEAR +0,67% y UNI +0,6%, volumen 4 h 0,61-1,64x (BTC 1,63x, ETH 1,56x, ZEC 1,64x: volumen de venta). 12 pares sobre 20 M/día. BTC -1,06% en 4 h (vol 1,63x): sin bloqueo (umbral -3%). Sin entradas: ruptura: nadie cerca del máximo de 48 h (BNB -1,59%, BTC -1,83%); el volumen ≥ 1,5x de BTC/ETH/ZEC acompaña la caída, no una ruptura. Momentum: nadie con +5% en 24 h (ENA +4,85% con 4 h -2,45%). Rebote: BTC a +0,49% del mínimo de 48 h, SUI +0,89%, PEPE +0,95%, ETH +1,09%, pero 1 h sigue roja en todos: no dejaron de caer, no hay base. 0 posiciones, 100% USDT: sin tesis la plata queda parada. Resultado acumulado -7,89% contra HODL BTC -4,37%.
 
+## 2026-10-26 03:32 UTC — Compra BTCUSDT (trading)
+150.00 USD a 79,642.01. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: BTC (622 M/día) a +0,49% del mínimo de 48 h (79.220,74) y dejó de caer: mínimos de 1 h más altos en las últimas dos horas (01:00 79.390 → 02:00 79.470 → 03:00 79.515), 1 h +0,03%, 4 h -0,68% (sin bloqueo). Invalida: pierde el mínimo de 48 h (79.220); stop ajustado a 1,5% (~78.430, debajo del mínimo). Si en 24 h no llega a +8%, rota.
+
+## 2026-10-26 03:32 UTC — Reglas BTCUSDT
+Antes {'stop': 5.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]} → ahora {'stop': 1.5, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]}.
+
+Ajuste más estricto (no se aleja): el soporte es el mínimo de 48 h en 79.220; un stop de 1,5% (~78.447) queda justo debajo. Si pierde el mínimo, la tesis de rebote murió.
+
+## 2026-10-26 03:32 UTC — nota
+03:31 UTC — Sin disparos, 1 entrada (BTC), sin salidas. Vigilante: sin posiciones abiertas, nada que revisar. Mercado rojo chico frenando: 1 h plana (-0,32/+0,23%), 4 h roja general (-3,11/-0,23%), 24 h roja salvo ENA +3,26% y UNI +0,19%, volumen 4 h 0,57-1,54x. 12 pares sobre 20 M/día. BTC -0,68% en 4 h (vol 1,54x): sin bloqueo. Entrada: BTC rebote en soporte a +0,49% del mínimo de 48 h (79.220,74) con mínimos horarios más altos 01:00→02:00→03:00 (79.390/79.470/79.515): dejó de caer. 150 USD a 79.642, stop ajustado a 1,5% (debajo del mínimo de 48 h), trailing 5%, tomas +8%/+15%. Invalida: pierde 79.220. Sin más: ruptura: nadie cerca del máximo de 48 h (BNB -1,61%, BTC -1,84%). Momentum: nadie con +5% en 24 h. Rebote: SUI +0,42% del mínimo pero 1 h -0,26% (sigue cayendo, no es grande); ETH +1,05% con 1 h +0,06%: a mirar la próxima hora. 1 posición (BTC ~16%), resto en USDT (~84%).
+

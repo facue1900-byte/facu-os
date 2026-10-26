@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 921.0995222352205,
-  "posiciones": {},
-  "comisiones_usd": 25.313720999999965,
+  "usdt": 771.0995222352205,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.0018815446772375535,
+      "entrada": 79642.01,
+      "maximo": 79642.01,
+      "reglas": {
+        "stop": 1.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1792985580000
+    }
+  },
+  "comisiones_usd": 25.463720999999964,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2335,6 +2358,18 @@
       "comision": 0.152007,
       "motivo": "Tesis de momentum invalidada según lo escrito al entrar: 24 h volvió debajo de +5% (+4,6%) con 4 h roja (-0,58%), 1 h -1,49%, volumen 1,36x. Sale en ganancia chica antes de acercarse al stop (0,20102).",
       "resultado_pct": 1.44
+    },
+    {
+      "ms": 1792985554357,
+      "fecha": "2026-10-26 03:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.0018815446772375535,
+      "precio": 79642.01,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: BTC (622 M/día) a +0,49% del mínimo de 48 h (79.220,74) y dejó de caer: mínimos de 1 h más altos en las últimas dos horas (01:00 79.390 → 02:00 79.470 → 03:00 79.515), 1 h +0,03%, 4 h -0,68% (sin bloqueo). Invalida: pierde el mínimo de 48 h (79.220); stop ajustado a 1,5% (~78.430, debajo del mínimo). Si en 24 h no llega a +8%, rota."
     }
   ]
 }
