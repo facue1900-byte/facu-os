@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 621.0995222352205,
+  "usdt": 501.09952223522055,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792999860000
+      "vigilado_hasta": 1793003460000
     },
     "ENAUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1792999860000
+      "vigilado_hasta": 1793003460000
+    },
+    "UNIUSDT": {
+      "nivel": "trading",
+      "cantidad": 17.076923076923077,
+      "entrada": 7.02,
+      "maximo": 7.02,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793003640000
     }
   },
-  "comisiones_usd": 25.613720999999963,
+  "comisiones_usd": 25.733720999999964,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2404,6 +2426,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: ENA (33,5 M/día) +7,93% en 24 h, sigue subiendo en 4 h (+1,66%) y no está estirada (1 h +0,24%), a -1,61% del máximo de 48 h. Reentrada: la salida de las 01:31 (a 0,2044) fue porque 24 h cayó a +4,6% con 4 h roja; hoy se recompuso. Volumen flojo (0,72x), por eso tamaño chico. Invalida: 24 h vuelve debajo de +5% con 4 h roja, o stop 5%. Si en 24 h no llega a +8%, rota."
+    },
+    {
+      "ms": 1793003584788,
+      "fecha": "2026-10-26 08:33 UTC",
+      "lado": "buy",
+      "par": "UNIUSDT",
+      "nivel": "trading",
+      "cantidad": 17.076923076923077,
+      "precio": 7.02,
+      "usd": 120.0,
+      "comision": 0.12,
+      "motivo": "Momentum de 24 h: UNI (22 M/día) +5,03% en 24 h, sigue subiendo en 4 h (+1,39%) y no está estirada (1 h +1,07%), a -0,27% del máximo de 48 h. Volumen flojo (0,74x) y 24 h justo en el umbral: tamaño chico (120 USD). Invalida: 24 h vuelve debajo de +5% con 4 h roja, o stop 5%. Si en 24 h no llega a +8%, rota."
     }
   ]
 }
