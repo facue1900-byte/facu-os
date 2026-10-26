@@ -58,10 +58,17 @@ Ctas Ctes: Fabric pagó $12.179.103,05 (queda −$2,66); Bigg pagó $3.202.137,9
 $1.030.768,81 = efectivo $559.303,14 + ND recupero $471.465,67.
 
 🔴 **Pagos pendientes al 26/10 (ya con el banco de octubre):** AVN (unidad 0467) sin pagar
-desde el 18/06 — períodos 06 a 09-2026, $8.707.030,92 con 09 incompleto (falta bajar 3 de 4
-liquidaciones). Borrador a Lucas Hoffman en el hilo «0467- Expensas» (26/10, sin enviar).
-Olivos FCA 23970 sep $1.354.029,10 (venció 10/10) · R&S FC 4028 + 4108 $1.029.365,01 ·
-Giaccio FC 191 $653.400 · OSECAC $28.000 + FAECYS $7.131,54 + CEC $42.789,22 (vto 31/10) ·
+desde el 18/06. **Estado de deuda de AVN al 26/10** (Lucas Hoffman, xlsx en
+`Principio de mes/AVN/`): capital $25.216.129,52 = expensas 06–09/2026 **$10.926.355,82** (lo
+del Paseo) + partida municipal 057-145971-0 **$14.289.773,70** (cuotas 05/2025, 01–04/2026: es
+la de **Noreventos**, no se paga desde el Paseo). Intereses: la planilla dice tasa 6% pero la
+columna da #REF!, sin calcular. Lucas espera el mail de José Chouhy y después las boletas 2F.
+✅ 26/10 Facu pagó Olivos FCA 23970 $1.354.029,10, R&S 4028+4108 $1.029.365 y Giaccio FC 191
+$653.400 (mails con comprobante mandados el 26/10; cargados en Movimientos 659–661 y
+Supabase el 26/10, verificar_dashboard OK). Sindicatos: Mati cargó «Pagué sindicatos $79.000»
+por caja el 26/10 (fila 656; la deuda era $77.920,76). Olivos: pedido el estado de cuenta (¿jul y ago FCA 23782
+$1.343.834,77 pagadas?). Savini: echeq diferido al **25/11** por $40.679.679,70 + FV 0003-3502
+(30% anticipo acopio, neto $101.114.808) sin pagar. ·
 sueldo Facu $1.053.933,12. **Savini FV 0003-3494 $40.679.679,70** (ingeniería de detalle,
 14/10): Facu mandó un echeq el 26/10 que todavía no debitó — si es por el total, el Macro
 ($28,3 M) no alcanza sin rescatar del FCI.
