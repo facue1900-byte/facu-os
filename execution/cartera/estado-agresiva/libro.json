@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793018220000
+      "vigilado_hasta": 1793021880000
     },
     "QNTUSDT": {
       "nivel": "trading",
       "cantidad": 0.45177045177045183,
       "entrada": 221.13,
-      "maximo": 221.13,
+      "maximo": 221.7,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793018280000
+      "vigilado_hasta": 1793021880000
     }
   },
   "comisiones_usd": 26.101290999999968,
