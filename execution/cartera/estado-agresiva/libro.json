@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.0018815446772375535,
       "entrada": 79642.01,
-      "maximo": 80300.0,
+      "maximo": 80548.78,
       "reglas": {
         "stop": 1.5,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793003460000
+      "vigilado_hasta": 1793007060000
     },
     "ENAUSDT": {
       "nivel": "trading",
       "cantidad": 719.7406340057637,
       "entrada": 0.2082,
-      "maximo": 0.2114,
+      "maximo": 0.2126,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793003460000
+      "vigilado_hasta": 1793007060000
     },
     "UNIUSDT": {
       "nivel": "trading",
       "cantidad": 17.076923076923077,
       "entrada": 7.02,
-      "maximo": 7.02,
+      "maximo": 7.117,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793003640000
+      "vigilado_hasta": 1793007060000
     }
   },
   "comisiones_usd": 25.733720999999964,
