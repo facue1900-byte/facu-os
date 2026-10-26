@@ -36,6 +36,9 @@ LOCALES = {
     "Meta Escuelita": "meta", "Parrilla": "parrilla", "Pizzeria": "canchera",
     "Cafeteria": "cafeteria", "Mini mercado": "market",
     "Alquiler Cancha / Cumpleaños": None,   # no es un local: no se imputa
+    # Pase Banco -> FCI (Facu, 26/10/2026): la contrapartida de la suscripcion,
+    # con Medio «FCI». No es un cobro de nadie.
+    "Fondo Común de Inversión": None,
 }
 
 

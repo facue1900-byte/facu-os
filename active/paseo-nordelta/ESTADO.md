@@ -26,6 +26,46 @@ no llegó el resumen). Cierra al centavo; los −$0,69 de *Saldo Actual* son los
 10/09, pagada 11/09, quedó fuera de las expensas de sep ya mandadas → $241.395 en I4).
 La FC 0002-14 de Rhino está **anulada** (salió con el mismo contenido que la 13): no falta nada.
 
+✅ **Aporte de Richi $25.000.000 del 23/10 — CARGADO (26/10).** Tres transferencias a la
+cuenta Macro del Paseo: $100.000 y $5.900.000 desde Santander, $19.000.000 desde Macro.
+En Movimientos filas 634–636 (Medio Banco, para que el dedupe del extracto de octubre
+no las duplique), en Supabase con su id en K, y en Gastos Obra filas 125–127 (ya
+estaban, con Fx 1536; el blue del 23/10 da 1555 promedio — Facu decide si se corrige).
+Comprobantes en `Comprobantes de pago/2026/Octubre 2026/Aportes Richi/`.
+`comprobar_capital.py` CIERRA: caja + banco $52.645.526.
+
+**Cafetería: el alquiler arranca en MARZO 2027, no en noviembre** (Facu, 26/10). Corrido
+en `radar_rampa.py`.
+
+**Extracto Macro de octubre:** Facu lo pasa a principio de noviembre.
+
+✅ **Banco Macro OCTUBRE cargado hasta el 26/10** (desde «Últimos Movimientos», 26/10 13:01:
+`Resumen de Banco.../2026/` no tiene resumen todavía). 19 filas, Movimientos 637–655, saldo
+$28.301.389,43 = banco al centavo. **Cuando llegue el resumen de octubre: cargar SÓLO lo
+posterior al 26/10** y corregir las dos filas agregadas «AL 26/10» (Ley 25413 $261.798,79 y
+SIRCREB $1.143.064,14) con el total del mes — el dedupe por (mes, monto) NO las reconoce.
+El VEP del 19/10 ($797.246,96) entró partido en dos filas (F931 + CM): tampoco lo reconoce.
+
+**FCI (Facu, 26/10): $27.000.000 suscriptos el 14 y 15/10 son plata del Paseo.** Se cargan
+como pase: Egreso Banco «Fondo Común de Inversión» + Ingreso Medio **«FCI»** por lo mismo.
+Configuración A33/C33, Dashboard fila 78, Saldo Actual fila 4. `reporte_inversores.py` los
+saca del resultado. El rescate va al revés (Egreso FCI + Ingreso Banco); el rendimiento,
+como ingreso aparte.
+
+Resultado operativo de octubre al 26/10: **+$13.452.754** (ing $25,45 M, egr $12,00 M).
+`comprobar_capital.py` CIERRA en $60.986.923 (caja + banco + FCI).
+Ctas Ctes: Fabric pagó $12.179.103,05 (queda −$2,66); Bigg pagó $3.202.137,95 y debe
+$1.030.768,81 = efectivo $559.303,14 + ND recupero $471.465,67.
+
+🔴 **Pagos pendientes al 26/10 (ya con el banco de octubre):** AVN (unidad 0467) sin pagar
+desde el 18/06 — períodos 06 a 09-2026, $8.707.030,92 con 09 incompleto (falta bajar 3 de 4
+liquidaciones). Borrador a Lucas Hoffman en el hilo «0467- Expensas» (26/10, sin enviar).
+Olivos FCA 23970 sep $1.354.029,10 (venció 10/10) · R&S FC 4028 + 4108 $1.029.365,01 ·
+Giaccio FC 191 $653.400 · OSECAC $28.000 + FAECYS $7.131,54 + CEC $42.789,22 (vto 31/10) ·
+sueldo Facu $1.053.933,12. **Savini FV 0003-3494 $40.679.679,70** (ingeniería de detalle,
+14/10): Facu mandó un echeq el 26/10 que todavía no debitó — si es por el total, el Macro
+($28,3 M) no alcanza sin rescatar del FCI.
+
 **Abierto (con dueño):**
 - 🔴 Facu: el **link público** del Master Plan («cualquiera con el link») — el token de
   `google_auth` no tiene permiso para cambiarlo. Compartir → Acceso general → Restringido
@@ -86,7 +126,7 @@ potencial de $51,4M/mes. Cada mes de atraso en un alta cuesta entre $2M y $15M.
 | Mes | Alta | Alquiler |
 |---|---|---|
 | ago-2026 | La Jaula | $2M |
-| nov-2026 | Cafetería | $3,5M |
+| ~~nov-2026~~ mar-2027 | Cafetería (corrida el 26/10) | $3,5M |
 | ene-2027 | Pizzería $2M + Salón Multiespacios $2,5M + Heladería nueva $5M — 🔴 16/10: la galería recién arrancó obra en oct, esta fecha no se sostiene (falta fecha de Facu) | $9,5M |
 | mar-2027 | Peak One (corrido de dic-26 el 16/10: la obra arrancó en oct; $4M es base, se cobra con IPC) | $4M + IPC |
 | ~jul-2027 | Market | $4M |
