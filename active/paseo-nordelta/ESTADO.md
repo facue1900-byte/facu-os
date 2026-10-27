@@ -60,8 +60,10 @@ $1.030.768,81 = efectivo $559.303,14 + ND recupero $471.465,67.
 🔴 **Pagos pendientes al 26/10 (ya con el banco de octubre):** AVN (unidad 0467) sin pagar
 desde el 18/06. **Estado de deuda de AVN al 26/10** (Lucas Hoffman, xlsx en
 `Principio de mes/AVN/`): capital $25.216.129,52 = expensas 06–09/2026 **$10.926.355,82** (lo
-del Paseo) + partida municipal 057-145971-0 **$14.289.773,70** (cuotas 05/2025, 01–04/2026: es
-la de **Noreventos**, no se paga desde el Paseo). Intereses: la planilla dice tasa 6% pero la
+del Paseo) + partida municipal 057-145971-0 «Noreventos (Nordelta-Plaza-Futbol)» **$14.289.773,70**
+(cuotas 05/2025, 01–04/2026). **Es deuda del Paseo** (facturada a MAHNI = Paseo; «Noreventos» es
+el nombre viejo en la partida, no el otro negocio — corregido por Facu 27/10). Es la partida de
+las canchas: el reclamo de la 2F se descuenta de acá. Intereses: la planilla dice tasa 6% pero la
 columna da #REF!, sin calcular. Lucas espera el mail de José Chouhy y después las boletas 2F.
 ✅ 26/10 Facu pagó Olivos FCA 23970 $1.354.029,10, R&S 4028+4108 $1.029.365 y Giaccio FC 191
 $653.400 (mails con comprobante mandados el 26/10; cargados en Movimientos 659–661 y
