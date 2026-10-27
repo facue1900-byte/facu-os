@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 713.4895621833004,
+  "usdt": 513.4895621833004,
   "posiciones": {
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.15182255453985913,
       "entrada": 1316.01,
-      "maximo": 1316.83,
+      "maximo": 1317.45,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793136660000
+      "vigilado_hasta": 1793140260000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 42.46546227417641,
+      "entrada": 4.705,
+      "maximo": 4.705,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793140320000
     }
   },
-  "comisiones_usd": 26.546624999999967,
+  "comisiones_usd": 26.746624999999966,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2466,6 +2488,18 @@
       "usd": 200.0,
       "comision": 0.2,
       "motivo": "Momentum 24 h: ZEC +6,36% en 24 h, +3,79% en 4 h y sigue subiendo (1 h +1,75%, no estirada < 4%), volumen 4 h 1,57x, a -0,17% del máximo de 48 h y 156 M/día. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h roja con 24 h debajo de +5%, o pérdida del stop."
+    },
+    {
+      "ms": 1793140318700,
+      "fecha": "2026-10-27 22:31 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 42.46546227417641,
+      "precio": 4.705,
+      "usd": 200.0,
+      "comision": 0.2,
+      "motivo": "Momentum 24 h: NEAR +5,36% en 24 h, +1,4% en 4 h y sigue subiendo (1 h +0,51%, no estirada < 4%), volumen 4 h 1,15x (>= 1x, el filtro que vengo pidiendo), 94 M/día, a -2,21% del máximo de 48 h. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h roja con 24 h debajo de +5%, o pérdida del stop; rota 22:3x del 28/10 si no llegó a +8%."
     }
   ]
 }
