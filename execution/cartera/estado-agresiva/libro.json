@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 763.4559599435842,
-  "posiciones": {
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.0018815446772375535,
-      "entrada": 79642.01,
-      "maximo": 80844.7,
-      "reglas": {
-        "stop": 1.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793068260000
-    }
-  },
-  "comisiones_usd": 26.196440999999968,
+  "usdt": 913.4895621833004,
+  "posiciones": {},
+  "comisiones_usd": 26.346624999999968,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2442,6 +2419,18 @@
       "comision": 0.09515,
       "motivo": "Stop automático en 210.615 (entrada 221.13, máximo 221.7).",
       "resultado_pct": -4.76
+    },
+    {
+      "ms": 1793071934348,
+      "fecha": "2026-10-27 03:32 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.0018815446772375535,
+      "precio": 79819.41,
+      "usd": 150.1838,
+      "comision": 0.150184,
+      "motivo": "Regla de 24 h: abierta 26/10 03:32 a 79.642, a las 24 h está en ~79.817 (+0,22%), sin tocar +8% ni el stop. Tesis de rebote agotada sin recorrido: se saca y se rota.",
+      "resultado_pct": 0.22
     }
   ]
 }

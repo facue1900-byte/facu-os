@@ -1,19 +1,19 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-27 02:31 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-27 03:32 UTC
 
-**Total: 913.90 USD (-8.61%)** desde 2026-10-07 23:06 UTC · USDT libre 763.46 · comisiones 26.20 · 201 operaciones
+**Total: 913.49 USD (-8.65%)** desde 2026-10-07 23:06 UTC · USDT libre 913.49 · comisiones 26.35 · 202 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **913.90** |
+| **Esta carpeta** | **913.49** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 960.79 |
+| hodl btc | 959.15 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 150.45 | +0.40% | 78,447.4 |
 
 ## Últimas operaciones
 
+- 2026-10-27 03:32 UTC · venta BTC 150.18 USD a 79,819.4 — Regla de 24 h: abierta 26/10 03:32 a 79.642, a las 24 h está en ~79.817 (+0,22%), sin tocar +8% ni el stop. Tesis de rebote agotada sin reco
 - 2026-10-26 13:54 UTC · venta QNT 95.15 USD a 210.615 — Stop automático en 210.615 (entrada 221.13, máximo 221.7).
 - 2026-10-26 12:37 UTC · compra QNT 100.00 USD a 221.13 — Momentum de 24 h: QNT (30,1 M/día) +21,73% en 24 h, sigue subiendo en 4 h (+11,44%, volumen 7,87x) y no está estirada (1 h +2,66% < 4%), a -
 - 2026-10-26 12:37 UTC · venta UNI 120.24 USD a 7.041 — Invalidación de momentum cumplida: 24 h cayó a +4,87% (< 5%) con 4 h -0,33% roja (volumen 0,65x). Tesis muerta, se sale antes del stop.
@@ -23,6 +23,5 @@
 - 2026-10-26 03:32 UTC · compra BTC 150.00 USD a 79,642 — Rebote en soporte: BTC (622 M/día) a +0,49% del mínimo de 48 h (79.220,74) y dejó de caer: mínimos de 1 h más altos en las últimas dos horas
 - 2026-10-26 01:31 UTC · venta ENA 152.01 USD a 0.2044 — Tesis de momentum invalidada según lo escrito al entrar: 24 h volvió debajo de +5% (+4,6%) con 4 h roja (-0,58%), 1 h -1,49%, volumen 1,36x.
 - 2026-10-25 20:31 UTC · venta ZEC 148.31 USD a 1,217.08 — Tesis de momentum invalidada según lo escrito al entrar: 4 h roja (-0,16%) y 24 h debajo de +5% (+1,01%), 1 h -0,21%, volumen 0,85x. Sale ch
-- 2026-10-25 20:31 UTC · venta NEAR 146.45 USD a 4.564 — Tesis de momentum invalidada según lo escrito al entrar: 4 h roja (-2,27%) y 24 h debajo de +5% (+1,99%), 1 h -0,31%, volumen 0,68x. Sale an
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
