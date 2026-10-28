@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793179860000
+      "vigilado_hasta": 1793183520000
     },
     "PEPEUSDT": {
       "nivel": "trading",
       "cantidad": 40363636.36363637,
       "entrada": 4.95e-06,
-      "maximo": 5e-06,
+      "maximo": 5.05e-06,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793179860000
+      "vigilado_hasta": 1793183520000
     }
   },
   "comisiones_usd": 27.556031999999963,
