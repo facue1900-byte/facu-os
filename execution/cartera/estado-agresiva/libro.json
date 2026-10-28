@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 722.4872298101054,
+  "usdt": 522.4872298101054,
   "posiciones": {
     "ZECUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793172660000
+      "vigilado_hasta": 1793176260000
+    },
+    "PEPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 40363636.36363637,
+      "entrada": 4.95e-06,
+      "maximo": 4.95e-06,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793176380000
     }
   },
-  "comisiones_usd": 27.356031999999963,
+  "comisiones_usd": 27.556031999999963,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2526,6 +2548,18 @@
       "comision": 0.103796,
       "motivo": "Stop automático en 4.769e-06 (entrada 4.59e-06, máximo 5.02e-06).",
       "resultado_pct": 3.9
+    },
+    {
+      "ms": 1793176344790,
+      "fecha": "2026-10-28 08:32 UTC",
+      "lado": "buy",
+      "par": "PEPEUSDT",
+      "nivel": "trading",
+      "cantidad": 40363636.36363637,
+      "precio": 4.95e-06,
+      "usd": 200.0,
+      "comision": 0.2,
+      "motivo": "Momentum 24 h: PEPE +15,12% en 24 h, 4 h +2,48% y subiendo, 1 h +1,85% (no estirada < 4%), volumen 4 h 1,77x (>= 1x), 65 M/día, a -1,39% del máximo de 48 h. Reentrada con tesis nueva tras el stop por trailing de las 05:17. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h roja con 24 h debajo de +5%, o pérdida del stop; rota 08:3x del 29/10 si no llegó a +8%."
     }
   ]
 }

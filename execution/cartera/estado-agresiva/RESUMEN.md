@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-28 07:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-28 08:32 UTC
 
-**Total: 921.16 USD (-7.88%)** desde 2026-10-07 23:06 UTC · USDT libre 722.49 · comisiones 27.36 · 208 operaciones
+**Total: 922.11 USD (-7.79%)** desde 2026-10-07 23:06 UTC · USDT libre 522.49 · comisiones 27.56 · 209 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **921.16** |
+| **Esta carpeta** | **922.11** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 972.52 |
+| hodl btc | 978.87 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ZEC | trading | 198.67 | -0.57% | 1,264.4 |
+| ZEC | trading | 200.23 | +0.21% | 1,264.4 |
+| PEPE | trading | 199.40 | -0.20% | 4.7e-06 |
 
 ## Últimas operaciones
 
+- 2026-10-28 08:32 UTC · compra PEPE 200.00 USD a 4.95e-06 — Momentum 24 h: PEPE +15,12% en 24 h, 4 h +2,48% y subiendo, 1 h +1,85% (no estirada < 4%), volumen 4 h 1,77x (>= 1x), 65 M/día, a -1,39% del
 - 2026-10-28 05:17 UTC · venta PEPE 103.80 USD a 4.769e-06 — Stop automático en 4.769e-06 (entrada 4.59e-06, máximo 5.02e-06).
 - 2026-10-28 02:11 UTC · venta PEPE 107.89 USD a 4.9572e-06 — Toma de ganancia +8% en 4.9572e-06: vende 50% de lo que quedaba.
 - 2026-10-28 01:32 UTC · venta NEAR 197.72 USD a 4.656 — Tesis invalidada según lo escrito: 4 h -0,49% roja Y 24 h +4,02% debajo de +5% (volumen 0,68x). Sale a ~-1,2% antes de que llegue al stop; l
@@ -23,6 +25,5 @@
 - 2026-10-27 03:32 UTC · venta BTC 150.18 USD a 79,819.4 — Regla de 24 h: abierta 26/10 03:32 a 79.642, a las 24 h está en ~79.817 (+0,22%), sin tocar +8% ni el stop. Tesis de rebote agotada sin reco
 - 2026-10-26 13:54 UTC · venta QNT 95.15 USD a 210.615 — Stop automático en 210.615 (entrada 221.13, máximo 221.7).
 - 2026-10-26 12:37 UTC · compra QNT 100.00 USD a 221.13 — Momentum de 24 h: QNT (30,1 M/día) +21,73% en 24 h, sigue subiendo en 4 h (+11,44%, volumen 7,87x) y no está estirada (1 h +2,66% < 4%), a -
-- 2026-10-26 12:37 UTC · venta UNI 120.24 USD a 7.041 — Invalidación de momentum cumplida: 24 h cayó a +4,87% (< 5%) con 4 h -0,33% roja (volumen 0,65x). Tesis muerta, se sale antes del stop.
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
