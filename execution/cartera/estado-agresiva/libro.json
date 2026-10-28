@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 513.4895621833004,
+  "usdt": 313.48956218330045,
   "posiciones": {
     "ZECUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793143860000
+      "vigilado_hasta": 1793147460000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793143860000
+      "vigilado_hasta": 1793147460000
+    },
+    "PEPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 43529411.76470588,
+      "entrada": 4.59e-06,
+      "maximo": 4.59e-06,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793147580000
     }
   },
-  "comisiones_usd": 26.746624999999966,
+  "comisiones_usd": 26.946624999999965,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2500,6 +2522,18 @@
       "usd": 200.0,
       "comision": 0.2,
       "motivo": "Momentum 24 h: NEAR +5,36% en 24 h, +1,4% en 4 h y sigue subiendo (1 h +0,51%, no estirada < 4%), volumen 4 h 1,15x (>= 1x, el filtro que vengo pidiendo), 94 M/día, a -2,21% del máximo de 48 h. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h roja con 24 h debajo de +5%, o pérdida del stop; rota 22:3x del 28/10 si no llegó a +8%."
+    },
+    {
+      "ms": 1793147545533,
+      "fecha": "2026-10-28 00:32 UTC",
+      "lado": "buy",
+      "par": "PEPEUSDT",
+      "nivel": "trading",
+      "cantidad": 43529411.76470588,
+      "precio": 4.59e-06,
+      "usd": 200.0,
+      "comision": 0.2,
+      "motivo": "Momentum 24 h: PEPE +5,53% en 24 h, 4 h +1,78% y subiendo, 1 h -0,43% (no estirada), volumen 4 h 1,12x (>= 1x, el filtro que le venía pidiendo), 28,9 M/día, a -0,87% del máximo de 48 h. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h roja con 24 h debajo de +5%, o pérdida del stop; rota 00:3x del 29/10 si no llegó a +8%."
     }
   ]
 }
