@@ -15,3 +15,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-28 04:16 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 1.56, var_4h 0.32) pero ningun par junta todo: DOGE var_24h 2.86<3; SUI vol 0.91; ZEC vol 0.63; HYPE var_4h<0; NEAR vs_max -2.77. PEPE ya en cartera, sin salida por reglas. Me quedo en USDT.
 
+## 2026-10-28 06:20 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 1.65, var_4h 0.05); solo PEPE (ya en cartera, var_4h -1.24 sin cortar la regla de salida) y HAEDAL (var_4h -2.18, vs_max -13.9) tienen vol_4h>=1.3 y ninguno cumple. Me quedo en USDT.
+
