@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 720.3204657824765,
-  "posiciones": {
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 40363636.36363637,
-      "entrada": 4.95e-06,
-      "maximo": 5.05e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793205060000
-    }
-  },
-  "comisiones_usd": 27.754062999999963,
+  "usdt": 913.7713666915674,
+  "posiciones": {},
+  "comisiones_usd": 27.947707999999963,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2550,6 +2527,18 @@
       "comision": 0.198031,
       "motivo": "Tesis invalidada según lo escrito: 4 h -0,52% roja Y 24 h +4,4% debajo de +5% (volumen 0,46x). Sale a ~-1% antes del stop y de la rotación de las 16:38; libera cupo.",
       "resultado_pct": -0.89
+    },
+    {
+      "ms": 1793205960000,
+      "fecha": "2026-10-28 16:46 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 40363636.36363637,
+      "precio": 4.797499999999999e-06,
+      "usd": 193.6445,
+      "comision": 0.193645,
+      "motivo": "Stop automático en 4.7975e-06 (entrada 4.95e-06, máximo 5.05e-06).",
+      "resultado_pct": -3.08
     }
   ]
 }
