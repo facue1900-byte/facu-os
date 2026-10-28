@@ -12,3 +12,6 @@ Capital ficticio: 1,000.00 USDT.
 
 [v1] BTC ok (var_24h 1.58, var_4h 0.21); PEPE var_24h 15.55>=3, var_4h 8.73>0, var_1h 1.43<=2.5, vs_max -0.2>=-1.5, vol_4h 3.76>=1.3, unica candidata · invalida: stop 7% / var_24h<0 y var_4h<-2
 
+## 2026-10-28 04:16 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 1.56, var_4h 0.32) pero ningun par junta todo: DOGE var_24h 2.86<3; SUI vol 0.91; ZEC vol 0.63; HYPE var_4h<0; NEAR vs_max -2.77. PEPE ya en cartera, sin salida por reglas. Me quedo en USDT.
+
