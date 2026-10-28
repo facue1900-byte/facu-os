@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793154660000
+      "vigilado_hasta": 1793158260000
     },
     "PEPEUSDT": {
       "nivel": "trading",
@@ -50,7 +50,7 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1793154660000
+      "vigilado_hasta": 1793158260000
     }
   },
   "comisiones_usd": 27.252235999999964,
