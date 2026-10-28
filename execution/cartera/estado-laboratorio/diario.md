@@ -36,3 +36,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-28 18:17 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.11, var_4h 0.14); ningun par con var_24h>=3, var_4h>0 y vol_4h>=1.3 (PEPE var_24h 8.97, var_4h 0.21 pero vol 0.99 y ya en cartera). PEPE: var_24h>0, sin salida por reglas (~16 h de 48). Me quedo en USDT.
 
+## 2026-10-28 20:17 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 0.6, var_4h 0.82); solo PEPE (ya en cartera, vs_max -3.06) y LTC (var_4h -0.03) tienen var_24h>=3 y ninguno entra. PEPE: var_24h>0, sin salida por reglas (~18 h de 48). Me quedo en USDT.
+
