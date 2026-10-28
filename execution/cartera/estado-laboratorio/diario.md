@@ -18,3 +18,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-28 06:20 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 1.65, var_4h 0.05); solo PEPE (ya en cartera, var_4h -1.24 sin cortar la regla de salida) y HAEDAL (var_4h -2.18, vs_max -13.9) tienen vol_4h>=1.3 y ninguno cumple. Me quedo en USDT.
 
+## 2026-10-28 08:17 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 1.62, var_4h 0.21); solo PEPE (ya en cartera, var_24h 13.5 y var_4h 1.04, sin salida por reglas; 8 h de 48) y HAEDAL (vol 1.16, vs_max -15.1) rondan el filtro y ninguno entra. Me quedo en USDT.
+
