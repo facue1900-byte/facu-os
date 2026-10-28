@@ -1,18 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-28 19:34 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-28 20:32 UTC
 
-**Total: 913.77 USD (-8.62%)** desde 2026-10-07 23:06 UTC · USDT libre 913.77 · comisiones 27.95 · 211 operaciones
+**Total: 912.78 USD (-8.72%)** desde 2026-10-07 23:06 UTC · USDT libre 713.77 · comisiones 28.15 · 212 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **913.77** |
+| **Esta carpeta** | **912.78** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 977.23 |
+| hodl btc | 976.24 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| PEPE | trading | 199.01 | -0.40% | 4.8e-06 |
 
 ## Últimas operaciones
 
+- 2026-10-28 20:32 UTC · compra PEPE 200.00 USD a 5.05e-06 — Momentum 24 h: PEPE +11,78% en 24 h, 4 h +3,5% y subiendo, 1 h +1,21% (no estirada < 4%), volumen 4 h 2,64x (>= 1,5x, la condición que fijé 
 - 2026-10-28 16:46 UTC · venta PEPE 193.64 USD a 4.7975e-06 — Stop automático en 4.7975e-06 (entrada 4.95e-06, máximo 5.05e-06).
 - 2026-10-28 11:33 UTC · venta ZEC 198.03 USD a 1,304.36 — Tesis invalidada según lo escrito: 4 h -0,52% roja Y 24 h +4,4% debajo de +5% (volumen 0,46x). Sale a ~-1% antes del stop y de la rotación d
 - 2026-10-28 08:32 UTC · compra PEPE 200.00 USD a 4.95e-06 — Momentum 24 h: PEPE +15,12% en 24 h, 4 h +2,48% y subiendo, 1 h +1,85% (no estirada < 4%), volumen 4 h 1,77x (>= 1x), 65 M/día, a -1,39% del
@@ -22,6 +24,5 @@
 - 2026-10-28 00:32 UTC · compra PEPE 200.00 USD a 4.59e-06 — Momentum 24 h: PEPE +5,53% en 24 h, 4 h +1,78% y subiendo, 1 h -0,43% (no estirada), volumen 4 h 1,12x (>= 1x, el filtro que le venía pidien
 - 2026-10-27 22:31 UTC · compra NEAR 200.00 USD a 4.705 — Momentum 24 h: NEAR +5,36% en 24 h, +1,4% en 4 h y sigue subiendo (1 h +0,51%, no estirada < 4%), volumen 4 h 1,15x (>= 1x, el filtro que ve
 - 2026-10-27 16:38 UTC · compra ZEC 200.00 USD a 1,316.01 — Momentum 24 h: ZEC +6,36% en 24 h, +3,79% en 4 h y sigue subiendo (1 h +1,75%, no estirada < 4%), volumen 4 h 1,57x, a -0,17% del máximo de 
-- 2026-10-27 03:32 UTC · venta BTC 150.18 USD a 79,819.4 — Regla de 24 h: abierta 26/10 03:32 a 79.642, a las 24 h está en ~79.817 (+0,22%), sin tocar +8% ni el stop. Tesis de rebote agotada sin reco
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
