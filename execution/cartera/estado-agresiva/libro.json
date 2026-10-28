@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 618.7951433395172,
+  "usdt": 722.4872298101054,
   "posiciones": {
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.15182255453985913,
       "entrada": 1316.01,
-      "maximo": 1327.45,
+      "maximo": 1330.95,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,34 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793161860000
-    },
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 21764705.88235294,
-      "entrada": 4.59e-06,
-      "maximo": 5.02e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [
-        8.0
-      ],
-      "vigilado_hasta": 1793161860000
+      "vigilado_hasta": 1793165460000
     }
   },
-  "comisiones_usd": 27.252235999999964,
+  "comisiones_usd": 27.356031999999963,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2538,6 +2514,18 @@
       "comision": 0.107892,
       "motivo": "Toma de ganancia +8% en 4.9572e-06: vende 50% de lo que quedaba.",
       "resultado_pct": 8.0
+    },
+    {
+      "ms": 1793164620000,
+      "fecha": "2026-10-28 05:17 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 21764705.88235294,
+      "precio": 4.7689999999999996e-06,
+      "usd": 103.7959,
+      "comision": 0.103796,
+      "motivo": "Stop automático en 4.769e-06 (entrada 4.59e-06, máximo 5.02e-06).",
+      "resultado_pct": 3.9
     }
   ]
 }
