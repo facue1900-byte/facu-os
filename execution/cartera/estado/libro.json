@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 276.47475025302344,
+  "usdt": 387.2374756904632,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793304480000
+      "vigilado_hasta": 1793311500000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793304480000
+      "vigilado_hasta": 1793311500000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,25 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793304480000
-    },
-    "SOLUSDT": {
-      "nivel": "medio",
-      "cantidad": 0.6017554427329835,
-      "entrada": 116.21,
-      "maximo": 116.81,
-      "reglas": {
-        "stop": 18.0,
-        "trail": 20.0,
-        "tp": [
-          [
-            50.0,
-            0.33
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793304480000
+      "vigilado_hasta": 1793311500000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,43 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793304480000
-    },
-    "LINKUSDT": {
-      "nivel": "medio",
-      "cantidad": 2.989451634622578,
-      "entrada": 13.367,
-      "maximo": 13.506,
-      "reglas": {
-        "stop": 18.0,
-        "trail": 20.0,
-        "tp": [
-          [
-            50.0,
-            0.33
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793304480000
-    },
-    "TAOUSDT": {
-      "nivel": "medio",
-      "cantidad": 0.08594287680660702,
-      "entrada": 290.6,
-      "maximo": 302.0,
-      "reglas": {
-        "stop": 18.0,
-        "trail": 20.0,
-        "tp": [
-          [
-            50.0,
-            0.33
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793304480000
+      "vigilado_hasta": 1793311500000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -156,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793304480000
+      "vigilado_hasta": 1793311500000
     },
     "HYPEUSDT": {
       "nivel": "riesgo",
@@ -178,10 +124,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793304480000
+      "vigilado_hasta": 1793311500000
     }
   },
-  "comisiones_usd": 2.4313280000000006,
+  "comisiones_usd": 2.5422020000000005,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1214,6 +1160,42 @@
       "usd": 40.0,
       "comision": 0.04,
       "motivo": "Tesis fijada a las 12:05 y 14:05: HYPE dos ciclos seguidos a <5% del máximo de 90 d (4,6% -> 0,0%), 7d +24,2%, 30d +11,7%, 101,7 M/día, y por primera vez en 70 ciclos BTC acompaña (7d +0,3%, a 6,5% del máximo). Entrada chica (~4,3%, bajo el tope de 5%) porque el 1d +19,2% es una vela grande y compro en el máximo. Invalida: pierde el 15% (stop) o el trailing 15%; si en 2-3 ciclos vuelve a >10% del máximo con BTC 7d otra vez negativo, se reconsidera."
+    },
+    {
+      "ms": 1793306820000,
+      "fecha": "2026-10-29 20:47 UTC",
+      "lado": "sell",
+      "par": "LINKUSDT",
+      "cantidad": 2.989451634622578,
+      "precio": 10.96094,
+      "usd": 32.7672,
+      "comision": 0.032767,
+      "motivo": "Stop automático en 10.96094 (entrada 13.367, máximo 13.506).",
+      "resultado_pct": -18.0
+    },
+    {
+      "ms": 1793306820000,
+      "fecha": "2026-10-29 20:47 UTC",
+      "lado": "sell",
+      "par": "SOLUSDT",
+      "cantidad": 0.6017554427329835,
+      "precio": 95.29220000000001,
+      "usd": 57.3426,
+      "comision": 0.057343,
+      "motivo": "Stop automático en 95.2922 (entrada 116.21, máximo 116.81).",
+      "resultado_pct": -18.0
+    },
+    {
+      "ms": 1793306520000,
+      "fecha": "2026-10-29 20:42 UTC",
+      "lado": "sell",
+      "par": "TAOUSDT",
+      "cantidad": 0.08594287680660702,
+      "precio": 241.60000000000002,
+      "usd": 20.7638,
+      "comision": 0.020764,
+      "motivo": "Stop automático en 241.6 (entrada 290.6, máximo 302).",
+      "resultado_pct": -16.86
     }
   ]
 }
