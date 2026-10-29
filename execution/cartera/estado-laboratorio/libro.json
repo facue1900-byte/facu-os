@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 80841.96
   },
-  "usdt": 597.1001975951905,
+  "usdt": 393.9601975951905,
   "posiciones": {
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 2.2472429505977893,
       "entrada": 88.66,
-      "maximo": 92.15,
+      "maximo": 96.97,
       "reglas": {
         "stop": 7.0,
         "trail": 8.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793284560000
+      "vigilado_hasta": 1793290980000
     },
     "UNIUSDT": {
       "nivel": "trading",
       "cantidad": 27.340335515548283,
       "entrada": 7.332,
-      "maximo": 7.332,
+      "maximo": 7.521,
       "reglas": {
         "stop": 7.0,
         "trail": 8.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793284680000
+      "vigilado_hasta": 1793290980000
+    },
+    "ENAUSDT": {
+      "nivel": "trading",
+      "cantidad": 941.7023665893271,
+      "entrada": 0.2155,
+      "maximo": 0.2155,
+      "reglas": {
+        "stop": 7.0,
+        "trail": 8.0,
+        "tp": [
+          [
+            10.0,
+            0.5
+          ],
+          [
+            20.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793291100000
     }
   },
-  "comisiones_usd": 0.797498,
+  "comisiones_usd": 1.000638,
   "operaciones": [
     {
       "ms": 1793153807285,
@@ -100,6 +122,18 @@
       "usd": 200.66,
       "comision": 0.20066,
       "motivo": "[v1] filtro BTC ok (var_24h 0.72, var_4h 1.12); top20 vol; var_24h 3.99>=3, var_4h 2.29>0, var_1h 1.81<=2.5, vs_max -0.41>=-1.5, vol_4h 1.95>=1.3; mayor vol entre candidatos validos (HYPE ya en cartera); 2da entrada del dia, 2 posiciones · invalida: stop 7% / cierre bajo la zona de maximo"
+    },
+    {
+      "ms": 1793291098282,
+      "fecha": "2026-10-29 16:24 UTC",
+      "lado": "buy",
+      "par": "ENAUSDT",
+      "nivel": "trading",
+      "cantidad": 941.7023665893271,
+      "precio": 0.2155,
+      "usd": 203.14,
+      "comision": 0.20314,
+      "motivo": "[v1] filtro BTC ok (var_24h 1.0, var_4h 1.72); top20 vol; var_24h 9.68>=3, var_4h 4.77>0, var_1h 0.61<=2.5, vs_max -1.1>=-1.5, vol_4h 2.35>=1.3; mayor vol entre validos no en cartera (LINK 2.25, PUMP 1.98); 3ra entrada del dia, 3 posiciones · invalida: stop 7% / cierre bajo la zona de maximo"
     }
   ]
 }

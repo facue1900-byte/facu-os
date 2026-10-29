@@ -78,3 +78,11 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-29 14:37 UTC — nota
 [v1] HYPE en cartera sin salida por reglas (var_24h 14.4>0, ~2 h de 48). PEPE no entra (vol_4h 0.95<1.3), ENA vs_max -2.36<-1.5, PUMP vs_max -3.75. Entro UNI.
 
+## 2026-10-29 16:24 UTC — Compra ENAUSDT (trading)
+203.14 USD a 0.2155. Stop 7.0% · trailing 8.0% · tomas [[10.0, 0.5], [20.0, 1.0]].
+
+[v1] filtro BTC ok (var_24h 1.0, var_4h 1.72); top20 vol; var_24h 9.68>=3, var_4h 4.77>0, var_1h 0.61<=2.5, vs_max -1.1>=-1.5, vol_4h 2.35>=1.3; mayor vol entre validos no en cartera (LINK 2.25, PUMP 1.98); 3ra entrada del dia, 3 posiciones · invalida: stop 7% / cierre bajo la zona de maximo
+
+## 2026-10-29 16:24 UTC — nota
+[v1] HYPE y UNI sin salida por reglas (var_24h>0, <48 h). Entro ENA; LINK y PUMP tambien validos pero menor vol_4h.
+
