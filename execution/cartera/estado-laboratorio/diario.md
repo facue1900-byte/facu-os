@@ -54,3 +54,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-29 06:17 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h -0.92, var_4h 0.2); solo PEPE (ya en cartera, vol 1.11<1.3, vs_max -3.25) e INIT (var_4h -4.27, vs_max -17) tienen var_24h>=3 y ninguno entra. PEPE: var_24h 6.5>0, sin salida por reglas (~28 h de 48). Me quedo en USDT.
 
+## 2026-10-29 08:19 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h -1.74, var_4h -0.24); AIUSDT var_24h 3.08 y vol 7.71 pero var_4h 0.0 (no >0, lectura conservadora), INIT var_4h -2.62 y vs_max -17.7. PEPE en cartera: var_24h 0.0 (no <0) y var_4h -1.98, no cumple tendencia rota; sin salida por reglas (~30 h de 48). Me quedo en USDT.
+
