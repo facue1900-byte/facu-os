@@ -65,3 +65,8 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-29 10:19 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h -1.69, var_4h 0.19); unico par con var_24h>=3 es INIT (vol 0.7<1.3, vs_max -13.9). Vendido PEPE por tendencia rota (var_24h -0.6<0 y var_4h -2.18<-2). Me quedo en USDT.
 
+## 2026-10-29 12:18 UTC — Compra HYPEUSDT (trading)
+199.44 USD a 88.66. Stop 7.0% · trailing 8.0% · tomas [[10.0, 0.5], [20.0, 1.0]].
+
+[v1] filtro BTC ok (var_24h -0.74, var_4h 0.1); top20 vol; var_24h 9.98>=3, var_4h 11.95>0, var_1h 0.75<=2.5, vs_max -0.11>=-1.5, vol_4h 9.66>=1.3 · invalida: stop 7% / cierre bajo la zona de maximo
+
