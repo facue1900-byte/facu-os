@@ -345,9 +345,9 @@ def armar(guion_path):
             filtros.append(f"[2:a]aresample=48000,aformat=channel_layouts=stereo,afade=in:d=0.02,"
                            f"adelay={int(inicio_voz * 1000)}:all=1,volume=1.5,apad=whole_dur={total:.3f},asplit[voz][sc]")
             filtros.append("[musica][sc]sidechaincompress=threshold=0.04:ratio=5:attack=8:release=280[md]")
-            filtros.append(f"[voz][md]amix=inputs=2:normalize=0,alimiter=limit=0.7:level=disabled,atrim=0:{total:.3f}[a]")
+            filtros.append(f"[voz][md]amix=inputs=2:normalize=0,aresample=192000,alimiter=limit=0.7:level=disabled,aresample=48000,atrim=0:{total:.3f}[a]")
         else:
-            filtros.append(f"[musica]alimiter=limit=0.7:level=disabled,atrim=0:{total:.3f}[a]")
+            filtros.append(f"[musica]aresample=192000,alimiter=limit=0.7:level=disabled,aresample=48000,atrim=0:{total:.3f}[a]")
         ff(*entradas, "-filter_complex", ";".join(filtros), "-map", "[a]", "-ac", 2, "-ar", 48000, tmp / "audio.wav")
 
         # --- textos y mux

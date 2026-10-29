@@ -4,6 +4,9 @@
 # Lo corre launchd todos los días (execution/launchd/com.facu.reels-diarios.plist), a través de
 # execution/launchd/correr.sh (red, registro de corridas y mail si falla).
 #
+# --permission-mode dontAsk: ~/.claude/settings.json tiene defaultMode «auto» y el headless lo heredaba
+# — el 29/10 el agente hizo un git commit que no estaba en la lista. Con dontAsk, lo que no está
+# en --allowedTools se niega sin preguntar (probado headless: git y `echo >` DENEGADOS, ls permitido).
 # Reglas de archivos: sólo Edit(...) (cubre también Write); rutas absolutas con // adelante (con
 # una sola / son relativas al repo). Probado headless el 28/10/2026: qa.json, pendiente.lock y
 # los .py quedan DENEGADOS; guion.json en la carpeta del día, permitido.
@@ -56,6 +59,7 @@ Comandos exactos (otro camino al Python está bloqueado):
   $PY $RD/publicar.py \"\$DIA/NN-slug\" --send
   $PY $RD/pedir_filmacion.py \"\$DIA/filmar.md\" --send" \
   --model sonnet \
+  --permission-mode dontAsk \
   --allowedTools "WebSearch" "WebFetch" "Read" "Glob" "Grep" \
     "Edit(/$DIA/**)" \
     "Edit(/$RD/aprendizajes.md)" "Edit(/$RD/competencia.md)" "Edit(/$RD/referencias.md)" "Edit(/$RD/material.json)" \
