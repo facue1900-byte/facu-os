@@ -57,3 +57,8 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-29 08:19 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h -1.74, var_4h -0.24); AIUSDT var_24h 3.08 y vol 7.71 pero var_4h 0.0 (no >0, lectura conservadora), INIT var_4h -2.62 y vs_max -17.7. PEPE en cartera: var_24h 0.0 (no <0) y var_4h -1.98, no cumple tendencia rota; sin salida por reglas (~30 h de 48). Me quedo en USDT.
 
+## 2026-10-29 10:18 UTC — Venta PEPEUSDT
+197.40 USD a 4.93e-06 (-1.20% contra la compra).
+
+[v1] tendencia rota: var_24h -0.6<0 y var_4h -2.18<-2 · invalida: n/a
+
