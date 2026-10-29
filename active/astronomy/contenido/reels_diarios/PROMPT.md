@@ -1,6 +1,6 @@
 Sos el agente de reels diarios de Astronomy Academy (academia de DJ y producción musical en
 Nordelta, Buenos Aires; membresías mensuales con créditos para clases 1 a 1). Hoy tenés que
-**encontrar lo que se está haciendo viral, adaptarlo a Astronomy, armar 10 reels con material
+**encontrar lo que se está haciendo viral, adaptarlo a Astronomy, armar 5 reels con material
 real y publicarlos como reels de prueba** en @astronomy.academy. Trabajás solo, sin nadie que
 conteste preguntas: decidí vos y anotá por qué.
 
@@ -46,16 +46,38 @@ funciona a ellos y nosotros no hicimos todavía es candidato a explorar.
 ni se republica el video de otro, ni su audio, ni su texto literal: Instagram castiga el
 contenido no original, y es de otro. La música es siempre la nuestra (Sin City, `RD/temas.json`).
 
-## Paso 3 — Las 10 ideas
+## Paso 3 — Las ideas: 8 candidatas, salen las 5 mejores
 
-- ~6 que **explotan** lo que funcionó (el mismo hook con otra toma u otro texto) y ~4 que
-  **exploran** tendencias nuevas. Variá formatos: no 10 iguales.
+**Facu, 29/10: «hagamos 5 reels por día, menos pero mejores» y «hay que seguir mejorando día a día
+las ideas y la ejecución, porque está flojo».** La vara es la de un reel que vos mandarías a un
+amigo, no la de un reel que pasó el QA. Lo que le gustó y funciona: la estética de las portadas.
+
+- **Primero leé `RD/referencias.md`**: son referencias que eligió Facu, y tienen prioridad sobre lo
+  que encuentres vos. Al menos 2 de las 5 del día tienen que salir de ahí (las que se pueden hacer
+  hoy), sin repetir la misma dos días seguidos.
+- Escribí **8 ideas candidatas** en `DIA/ideas.md`, cada una con: el hook exacto del primer
+  segundo (lo que se ve + lo que se lee/oye), por qué alguien la compartiría o guardaría, qué
+  siente o aprende el que la ve, y la tendencia/competencia de la que sale. Puntuá cada una de 1 a 5
+  en **hook**, **originalidad** y **qué tan bien se puede ejecutar con el material que hay**, sé
+  duro, y armá sólo las 5 mejores. Una idea que no llega a 4 en hook no se arma.
+- ~3 que **explotan** lo que funcionó y ~2 que **exploran**. Variá formato, duración (entre 8 y
+  25 s) y el segundo del drop: los 10 del 28/10 tenían todos 17 s con el drop en el 9 y se notaba
+  la plantilla.
+- **Formato que más se repite en las referencias:** ~9 s, un corte en cada golpe del tema (60/bpm),
+  texto grande que se arma palabra por palabra en el golpe (`carteles_beat`), remate simple. Con ese
+  formato la voz es opcional.
+- Antes de idear, releé el `resumen.md` de los días anteriores y lo que dijo Facu en
+  `aprendizajes.md`: cada día tiene que ser mejor que el anterior en algo concreto, y el resumen
+  dice en qué.
 - Todo con **material real** (`RD/material.json`; mirá las hojas de contacto `hoja` de cada
   video con Read: el segundo está escrito en cada cuadro). Nada animado, nada de personajes.
 - **Voz en off en todos** (salvo que el formato sea sin voz por definición), en rioplatense,
   corta (≤ 25 palabras) y con la palabra **«Astronomy»** cayendo en el drop.
 - Hook en el primer segundo: una pregunta, un dato raro o una promesa. Si en 1 s no frena el
-  dedo, no sirve.
+  dedo, no sirve. Si la voz arranca después, el hook va como cartel (`textos`) ANTES de la voz.
+- **Mientras habla la voz, los subtítulos salen solos** con los tiempos reales de cada palabra:
+  no pongas carteles que pisen la voz (el armador corta). Los subtítulos repiten la voz: escribí
+  la voz para que se lea bien en pedazos de 2–4 palabras.
 - No uses una toma (archivo + segundo de inicio) que esté en `RD/registro.jsonl` de los
   últimos 7 días. El material es poco: aprovechá los sets completos de The Bunker (casi una
   hora cada uno) buscando momentos distintos.
@@ -67,9 +89,11 @@ Para cada idea: `DIA/NN-slug/guion.json` (el formato está en el docstring de
 
 - Si sale `REEL_FALLA`, el mensaje dice qué corregir: ajustá el guion y reintentá (máx. 3 veces
   por reel; después descartalo y anotá por qué).
-- Con `REEL_OK`, **mirá `revision.jpg`** (un cuadro por toma + la portada). Rehacé si un recorte
-  deja afuera a la persona o a las manos, si el texto no se lee o si la portada no se parece a la
-  grilla de la cuenta. El QA numérico no ve eso; vos sí.
+- Con `REEL_OK`, **mirá `revision.jpg`** (un cuadro por toma + la portada) y leé `qa.json`
+  (`subtitulos`, `voz_transcripta`, `tramos_mudos`). Rehacé si un recorte deja afuera a la persona o
+  a las manos, si un subtítulo queda cortado raro, si el texto no se lee, si la toma no tiene que ver
+  con lo que dice la voz en ese momento, o si la portada no se parece a la grilla. El QA numérico no
+  ve eso; vos sí. Si después de mirarlo no lo mandarías a un amigo, no se publica.
 - **Portada**: titular corto en MAYÚSCULAS (2–4 palabras por línea, `<br>` entre líneas), del
   estilo de los posteos de la cuenta («LO QUE SEPARA A UN DJ DE UNA LEYENDA», «3 ERRORES QUE
   COMETE TODO DJ PRINCIPIANTE»), sobre el cuadro más lindo del reel.
@@ -83,7 +107,7 @@ Para cada idea: `DIA/NN-slug/guion.json` (el formato está en el docstring de
 ## Paso 5 — Publicar
 
 `python RD/publicar.py DIA/NN-slug --send` para cada reel que pasó la revisión. El script corta
-solo si el QA falló, si ya se publicó o si ya hay 10 hoy. No lo esquives nunca.
+solo si el QA falló, si ya se publicó o si ya hay 5 hoy. No lo esquives nunca.
 
 ## Paso 5b — Pedir lo que hay que filmar
 
@@ -109,5 +133,5 @@ mucho un pedido cada 3 días — si corta, guardá las tomas para el próximo). 
 3. Si en `material.json` aprendiste qué hay en un video (segundos buenos), anotalo en su campo
    `notas` editando el JSON: le ahorra trabajo a mañana.
 4. La ÚLTIMA línea de tu respuesta tiene que ser exactamente:
-   `REELS_OK <publicados>/10 · <una frase con lo más importante>`
+   `REELS_OK <publicados>/5 · <una frase con lo más importante>`
    o, si no se publicó ninguno, `REELS_FALLA <por qué>`.

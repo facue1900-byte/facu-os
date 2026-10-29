@@ -1,5 +1,5 @@
 #!/bin/bash
-# Reels diarios: un Claude headless busca tendencias, arma 10 reels con material real y los
+# Reels diarios: un Claude headless busca tendencias, arma 5 reels con material real y los
 # publica como reels de prueba en @astronomy.academy (instrucciones en PROMPT.md).
 # Lo corre launchd todos los días (execution/launchd/com.facu.reels-diarios.plist), a través de
 # execution/launchd/correr.sh (red, registro de corridas y mail si falla).
@@ -39,7 +39,7 @@ trap 'rmdir "$CANDADO"; rm -f "$CORRIDA"' EXIT
 
 { date; echo; } >> "$LOG"
 ANTES=$(publicados)
-if [ "$ANTES" -ge 10 ]; then
+if [ "$ANTES" -ge 5 ]; then
   echo "ya hay $ANTES publicados hoy: nada que hacer" >> "$LOG"
   exit 0
 fi
@@ -58,7 +58,7 @@ Comandos exactos (otro camino al Python está bloqueado):
   --model sonnet \
   --allowedTools "WebSearch" "WebFetch" "Read" "Glob" "Grep" \
     "Edit(/$DIA/**)" \
-    "Edit(/$RD/aprendizajes.md)" "Edit(/$RD/competencia.md)" "Edit(/$RD/material.json)" \
+    "Edit(/$RD/aprendizajes.md)" "Edit(/$RD/competencia.md)" "Edit(/$RD/referencias.md)" "Edit(/$RD/material.json)" \
     "Bash(mkdir -p $DIA/:*)" "Bash(mkdir -p \"$DIA/:*)" "Bash(ls:*)" \
     "Bash($PY $RD/leer_trials.py:*)" "Bash($PY $RD/armar_reel.py:*)" "Bash($PY $RD/publicar.py:*)" \
     "Bash($PY $RD/portada.py:*)" "Bash($PY $RD/indexar_material.py:*)" "Bash($PY $RD/pedir_filmacion.py:*)" \

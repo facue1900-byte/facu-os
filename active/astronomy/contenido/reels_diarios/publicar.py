@@ -27,7 +27,7 @@ import sys
 
 from comun import AQUI, OS, PY, REGISTRO, registro
 
-MAX_POR_DIA = 10
+MAX_POR_DIA = 5
 LOCK = AQUI / ".publicar.lock"
 
 
