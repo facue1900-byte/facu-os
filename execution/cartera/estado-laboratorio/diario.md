@@ -89,3 +89,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-29 16:37 UTC — Toma HYPEUSDT (vigilante)
 109.58 USD a 97.526 (+10.00%). Toma de ganancia +10% en 97.526: vende 50% de lo que quedaba.
 
+## 2026-10-29 18:18 UTC — nota
+[v1] Sin entrada: ya hay 3 posiciones (HYPE, UNI, ENA), tope de regla. Sin salida por reglas: var_24h>0 en las tres y <48 h. HYPE tomo +10% en 97.526 (vigilante). Me quedo con el resto en USDT.
+
