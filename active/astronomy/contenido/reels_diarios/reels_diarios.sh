@@ -58,7 +58,7 @@ Comandos exactos (otro camino al Python está bloqueado):
   --model sonnet \
   --allowedTools "WebSearch" "WebFetch" "Read" "Glob" "Grep" \
     "Edit(/$DIA/**)" \
-    "Edit(/$RD/aprendizajes.md)" "Edit(/$RD/competencia.md)" "Edit(/$RD/material.json)" \
+    "Edit(/$RD/aprendizajes.md)" "Edit(/$RD/competencia.md)" "Edit(/$RD/referencias.md)" "Edit(/$RD/material.json)" \
     "Bash(mkdir -p $DIA/:*)" "Bash(mkdir -p \"$DIA/:*)" "Bash(ls:*)" \
     "Bash($PY $RD/leer_trials.py:*)" "Bash($PY $RD/armar_reel.py:*)" "Bash($PY $RD/publicar.py:*)" \
     "Bash($PY $RD/portada.py:*)" "Bash($PY $RD/indexar_material.py:*)" "Bash($PY $RD/pedir_filmacion.py:*)" \

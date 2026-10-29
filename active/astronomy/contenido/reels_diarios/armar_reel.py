@@ -19,6 +19,10 @@ Guion (las claves con * son obligatorias):
  "textos": [{"texto": "...", "desde": 0, "hasta": 2.5, "pos": "arriba|centro|abajo"}],
           # carteles a mano SÓLO donde no habla la voz (ej. el hook antes de que arranque):
           # mientras habla, los subtítulos salen SOLOS de los tiempos reales de la voz (Whisper).
+ "carteles_beat": [{"texto": "DEJÁ EL CELULAR", "desde": 0.0, "cada": 1, "hasta": 3.0}],
+          # texto GRANDE al centro que se arma palabra por palabra, una cada `cada` golpes del tema
+          # (formato de las referencias de Facu del 29/10: «GIVE ME A SIGN», «PUT THAT PHONE DOWN…»).
+          # Queda completo hasta `hasta`. Cuenta como cartel: no puede pisar la voz.
  "voz": {"texto": "...", "palabra_drop": "Astronomy"},   # la palabra cae justo en el drop
  "antes_del_drop": "filtro",           # filtro (build con pasa-bajos) | seco (silencio y golpe)
  "portada"*: {"titular": "LO QUE NADIE<br>TE MUESTRA", "ceja": "THE BUNKER", "toma": 0, "segundo": 1.0},
@@ -92,25 +96,40 @@ def toma(t, out, n_cuadros):
        "-c:v", "libx264", "-crf", "17", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", FPS, "-an", out)
 
 
-def placa_texto(texto, pos, out):
+def placa_texto(texto, pos, out, completo=None):
     """Texto en el lenguaje de la cuenta: mayúsculas, Helvetica Neue Medium, blanco, centrado,
     con sombra difusa. Respeta las zonas que tapa la interfaz de Reels (abajo y a la derecha)."""
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    tam = 74
+    grande = pos == "grande"
+    # Con `completo`, el tamaño y el corte de líneas se calculan sobre el texto ENTERO: al armarse
+    # palabra por palabra las líneas no saltan de lugar.
+    base = (completo or texto).upper()
+    tam, alto_max, piso = (150, 900, 70) if grande else (74, 560, 46)
     while True:
-        f = ImageFont.truetype(FUENTE, tam, index=10)
-        lineas = envolver(texto.upper(), f, d, 860)
+        f = ImageFont.truetype(FUENTE, tam, index=1 if grande else 10)
+        lineas = envolver(base, f, d, 860)
         alto = len(lineas) * int(tam * 1.12)
         ancho_max = max(d.textlength(l, font=f) for l in lineas)
-        if (alto < 560 and ancho_max <= 900) or tam <= 46:
+        if (alto < alto_max and ancho_max <= 900) or tam <= piso:
             break
         tam -= 4
+    if completo:
+        quedan = len(texto.split())
+        visibles = []
+        for l in lineas:
+            n = len(l.split())
+            visibles.append(" ".join(l.split()[:max(0, quedan)]))
+            quedan -= n
+        lineas = visibles
     # «abajo» termina como mucho a 1500 px: más abajo lo tapan el caption y los botones de Reels.
-    y = {"arriba": 300, "centro": (H - alto) // 2 - 80, "abajo": 1500 - alto, "sub": 1200}.get(pos, 300)
+    y = {"arriba": 300, "centro": (H - alto) // 2 - 80, "abajo": 1500 - alto, "sub": 1200,
+         "grande": (H - alto) // 2 - 60}.get(pos, 300)
     sombra = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     ds = ImageDraw.Draw(sombra)
     for i, l in enumerate(lineas):
+        if not l:
+            continue
         lw = d.textlength(l, font=f)
         xy = ((W - 60 - lw) / 2, y + i * int(tam * 1.12))   # corrido 30 px a la izquierda: botones de IG
         ds.text(xy, l, font=f, fill=(0, 0, 0, 200))
@@ -333,6 +352,18 @@ def armar(guion_path):
 
         # --- textos y mux
         textos = list(g.get("textos", []))
+        golpe = 60 / tema["bpm"]
+        for cb in g.get("carteles_beat", []):
+            ws = cb["texto"].split()
+            paso = golpe * float(cb.get("cada", 1))
+            hasta = float(cb.get("hasta", cb["desde"] + paso * (len(ws) + 1)))
+            for k in range(1, len(ws) + 1):
+                a = cb["desde"] + paso * (k - 1)
+                b = a + paso if k < len(ws) else hasta
+                if b <= a:
+                    falla(f"el cartel «{cb['texto']}» no entra: `hasta` ({hasta}s) es antes de la última palabra")
+                textos.append({"texto": " ".join(ws[:k]), "completo": cb["texto"], "desde": round(a, 3),
+                               "hasta": round(b, 3), "pos": "grande"})
         if inicio_voz is not None:
             fin_voz = inicio_voz + dur_voz
             for tx in textos:
@@ -345,7 +376,7 @@ def armar(guion_path):
         ins, cad, prev = ["-i", tmp / "video.mp4", "-i", tmp / "audio.wav"], [], "[0:v]"
         for i, tx in enumerate(textos):
             png = tmp / f"tx{i}.png"
-            placa_texto(tx["texto"], tx.get("pos", "arriba"), png)
+            placa_texto(tx["texto"], tx.get("pos", "arriba"), png, tx.get("completo"))
             ins += ["-i", png]
             cad.append(f"{prev}[{i + 2}:v]overlay=0:0:enable='between(t,{tx['desde']:.3f},{tx['hasta'] - 0.001:.3f})'[o{i}]")
             prev = f"[o{i}]"
