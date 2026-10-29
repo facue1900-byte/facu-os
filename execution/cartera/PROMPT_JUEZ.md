@@ -21,10 +21,18 @@ Las carpetas (leé con `git show origin/<rama>:<ruta>`, sin cambiarte de rama):
 | Agresiva | `claude/cartera-agresiva` | `execution/cartera/estado-agresiva/` | 07/10/2026 |
 | Laboratorio | `claude/cartera-laboratorio` | `execution/cartera/estado-laboratorio/` | 27/10/2026 |
 | DCA BTC | `claude/cartera-dca` | `execution/cartera/estado-dca/` | 27/10/2026 |
+| Torneo (~33 estrategias en código) | `claude/cartera-torneo` | `execution/cartera/estado-torneo/` | 29/10/2026 |
 
 En cada una: `RESUMEN.md`, `historial.csv` y `libro.json`. Si una rama o un archivo no existe,
 o el último snapshot tiene más de 6 horas (24 h y 8 días para la DCA, que corre los lunes),
 **eso es lo primero del veredicto**: una carpeta que dejó de correr no se juzga, se arregla.
+
+El torneo no tiene `libro.json` ni `historial.csv`: leé `RESUMEN.md` y `vivo.json` (una fila por
+estrategia, cada una arrancó con 1.000 USD). En el veredicto va **una sola fila** para el torneo: la
+estrategia líder, su resultado y cuántas de las ~33 le ganan a USDT y a HODL BTC. El torneo corre cada
+4 h: más de 8 h sin actualizar es una falla. Las alarmas de récord y +20% valen también para cada
+estrategia del torneo. `execution/cartera/estado-torneo/HISTORIA.md` (en `main`) dice qué funcionó
+antes en cada tipo de mercado: usalo para contexto, no como resultado.
 
 La carpeta de 10.000 USD vive en la Mac de Facu y no la ves desde acá: decilo, no la inventes.
 
