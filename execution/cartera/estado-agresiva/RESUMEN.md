@@ -1,22 +1,24 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-29 13:34 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-29 14:48 UTC
 
-**Total: 912.29 USD (-8.77%)** desde 2026-10-07 23:06 UTC · USDT libre 202.67 · comisiones 29.34 · 219 operaciones
+**Total: 916.29 USD (-8.37%)** desde 2026-10-07 23:06 UTC · USDT libre 52.67 · comisiones 29.49 · 220 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **912.29** |
+| **Esta carpeta** | **916.29** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 962.93 |
+| hodl btc | 973.84 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 200.91 | +0.56% | 2,242.53 |
-| BTC | trading | 200.38 | +0.29% | 77,907.5 |
-| HYPE | trading | 158.06 | +5.48% | 87.5425 |
-| BNB | trading | 150.27 | +0.28% | 723.031 |
+| BTC | trading | 202.65 | +1.43% | 77,907.5 |
+| ETH | trading | 202.26 | +1.23% | 2,242.53 |
+| HYPE | trading | 158.24 | +5.60% | 87.5425 |
+| BNB | trading | 150.91 | +0.71% | 723.031 |
+| ENA | trading | 149.56 | -0.19% | 0.19836 |
 
 ## Últimas operaciones
 
+- 2026-10-29 14:48 UTC · compra ENA 150.00 USD a 0.2088 — Momentum 24 h: ENA +7,72% en 24 h, 4 h +3,0% y subiendo, 1 h +1,55% (no estirada), volumen 4 h 1,79x, 42,9 M/día, a -3,37% del máximo de 48 
 - 2026-10-29 12:39 UTC · compra BNB 150.00 USD a 741.57 — Rebote en soporte: BNB (205 M/día) tocó el mínimo de 48 h (738,30) en la vela de 11:00 tras venta con volumen 4,36x; la vela de 12:00 hizo m
 - 2026-10-29 11:33 UTC · compra HYPE 150.00 USD a 86.11 — Momentum 24 h: HYPE +5,65% en 24 h, 4 h +9,1% y subiendo, 1 h +0,65% (no estirada), volumen 4 h 6,87x, 40,5 M/día, a -1,43% del máximo de 48
 - 2026-10-29 08:32 UTC · venta PEPE 144.54 USD a 4.9e-06 — Invalidación de momentum cumplida: 4 h -2,57% roja con 24 h -0,61% (< +5%), a -5,93% del máximo de 48 h. Salgo antes del stop (4,86e-06) com
@@ -26,6 +28,5 @@
 - 2026-10-29 02:29 UTC · venta PEPE 194.70 USD a 4.921e-06 — Stop automático en 4.921e-06 (entrada 5.05e-06, máximo 5.18e-06).
 - 2026-10-28 20:32 UTC · compra PEPE 200.00 USD a 5.05e-06 — Momentum 24 h: PEPE +11,78% en 24 h, 4 h +3,5% y subiendo, 1 h +1,21% (no estirada < 4%), volumen 4 h 2,64x (>= 1,5x, la condición que fijé 
 - 2026-10-28 16:46 UTC · venta PEPE 193.64 USD a 4.7975e-06 — Stop automático en 4.7975e-06 (entrada 4.95e-06, máximo 5.05e-06).
-- 2026-10-28 11:33 UTC · venta ZEC 198.03 USD a 1,304.36 — Tesis invalidada según lo escrito: 4 h -0,52% roja Y 24 h +4,4% debajo de +5% (volumen 0,46x). Sale a ~-1% antes del stop y de la rotación d
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
