@@ -92,3 +92,16 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-29 18:18 UTC — nota
 [v1] Sin entrada: ya hay 3 posiciones (HYPE, UNI, ENA), tope de regla. Sin salida por reglas: var_24h>0 en las tres y <48 h. HYPE tomo +10% en 97.526 (vigilante). Me quedo con el resto en USDT.
 
+## 2026-10-29 20:18 UTC — Venta ENAUSDT
+193.99 USD a 0.206 (-4.41% contra la compra).
+
+[v1] tendencia rota: var_24h -2.6<0 y var_4h -4.14<-2 · invalida: n/a
+
+## 2026-10-29 20:18 UTC — Venta UNIUSDT
+193.60 USD a 7.081 (-3.42% contra la compra).
+
+[v1] tendencia rota: var_24h -2.26<0 y var_4h -3.96<-2 · invalida: n/a
+
+## 2026-10-29 20:19 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h -1.18, var_4h -1.1) pero ningun par cumple var_24h>=3 y var_4h>0 con vol/vs_max (PARTIU var_4h 24 pero var_1h -3.99, vs_max -12.3; PEPE var_4h -3.34). Vendidos ENA y UNI por tendencia rota. HYPE sigue (var_24h 15.45>0, <48 h). Me quedo en USDT.
+

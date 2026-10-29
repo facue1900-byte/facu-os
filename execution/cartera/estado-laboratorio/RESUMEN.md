@@ -1,21 +1,21 @@
-# Carpeta cripto LABORATORIO (reglas del entrenador, objetivo +20%/mes) — 2026-10-29 18:18 UTC
+# Carpeta cripto LABORATORIO (reglas del entrenador, objetivo +20%/mes) — 2026-10-29 20:19 UTC
 
-**Total: 1,006.58 USD (+0.66%)** desde 2026-10-27 22:37 UTC · USDT libre 503.43 · comisiones 1.11 · 6 operaciones
+**Total: 995.88 USD (-0.41%)** desde 2026-10-27 22:37 UTC · USDT libre 890.63 · comisiones 1.50 · 8 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **1,006.58** |
+| **Esta carpeta** | **995.88** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 999.78 |
+| hodl btc | 993.69 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ENA | trading | 198.79 | -2.04% | 0.200415 |
-| UNI | trading | 197.81 | -1.32% | 6.91932 |
-| HYPE | trading | 106.54 | +6.95% | 89.9208 |
+| HYPE | trading | 105.25 | +5.65% | 89.9208 |
 
 ## Últimas operaciones
 
+- 2026-10-29 20:18 UTC · venta UNI 193.60 USD a 7.081 — [v1] tendencia rota: var_24h -2.26<0 y var_4h -3.96<-2 · invalida: n/a
+- 2026-10-29 20:18 UTC · venta ENA 193.99 USD a 0.206 — [v1] tendencia rota: var_24h -2.6<0 y var_4h -4.14<-2 · invalida: n/a
 - 2026-10-29 16:37 UTC · venta HYPE 109.58 USD a 97.526 — Toma de ganancia +10% en 97.526: vende 50% de lo que quedaba.
 - 2026-10-29 16:24 UTC · compra ENA 203.14 USD a 0.2155 — [v1] filtro BTC ok (var_24h 1.0, var_4h 1.72); top20 vol; var_24h 9.68>=3, var_4h 4.77>0, var_1h 0.61<=2.5, vs_max -1.1>=-1.5, vol_4h 2.35>=
 - 2026-10-29 14:37 UTC · compra UNI 200.66 USD a 7.332 — [v1] filtro BTC ok (var_24h 0.72, var_4h 1.12); top20 vol; var_24h 3.99>=3, var_4h 2.29>0, var_1h 1.81<=2.5, vs_max -0.41>=-1.5, vol_4h 1.95

@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 80841.96
   },
-  "usdt": 503.43292328719053,
+  "usdt": 890.6329389868863,
   "posiciones": {
     "HYPEUSDT": {
       "nivel": "trading",
@@ -28,54 +28,10 @@
       "tomas_hechas": [
         10.0
       ],
-      "vigilado_hasta": 1793297820000
-    },
-    "UNIUSDT": {
-      "nivel": "trading",
-      "cantidad": 27.340335515548283,
-      "entrada": 7.332,
-      "maximo": 7.521,
-      "reglas": {
-        "stop": 7.0,
-        "trail": 8.0,
-        "tp": [
-          [
-            10.0,
-            0.5
-          ],
-          [
-            20.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793297820000
-    },
-    "ENAUSDT": {
-      "nivel": "trading",
-      "cantidad": 941.7023665893271,
-      "entrada": 0.2155,
-      "maximo": 0.2178,
-      "reglas": {
-        "stop": 7.0,
-        "trail": 8.0,
-        "tp": [
-          [
-            10.0,
-            0.5
-          ],
-          [
-            20.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793297820000
+      "vigilado_hasta": 1793305080000
     }
   },
-  "comisiones_usd": 1.11022,
+  "comisiones_usd": 1.497808,
   "operaciones": [
     {
       "ms": 1793153807285,
@@ -148,6 +104,30 @@
       "comision": 0.109582,
       "motivo": "Toma de ganancia +10% en 97.526: vende 50% de lo que quedaba.",
       "resultado_pct": 10.0
+    },
+    {
+      "ms": 1793305138606,
+      "fecha": "2026-10-29 20:18 UTC",
+      "lado": "sell",
+      "par": "ENAUSDT",
+      "cantidad": 941.7023665893271,
+      "precio": 0.206,
+      "usd": 193.9907,
+      "comision": 0.193991,
+      "motivo": "[v1] tendencia rota: var_24h -2.6<0 y var_4h -4.14<-2 · invalida: n/a",
+      "resultado_pct": -4.41
+    },
+    {
+      "ms": 1793305139426,
+      "fecha": "2026-10-29 20:18 UTC",
+      "lado": "sell",
+      "par": "UNIUSDT",
+      "cantidad": 27.340335515548283,
+      "precio": 7.081,
+      "usd": 193.5969,
+      "comision": 0.193597,
+      "motivo": "[v1] tendencia rota: var_24h -2.26<0 y var_4h -3.96<-2 · invalida: n/a",
+      "resultado_pct": -3.42
     }
   ]
 }
