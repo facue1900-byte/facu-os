@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 52.66868248972759,
+  "usdt": 133.50676348972758,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0025004661780036568,
       "entrada": 79905.1,
-      "maximo": 81537.36,
+      "maximo": 81900.0,
       "reglas": {
         "stop": 2.5,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793285220000
+      "vigilado_hasta": 1793289000000
     },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.08642279693238002,
       "entrada": 2311.89,
-      "maximo": 2353.87,
+      "maximo": 2373.0,
       "reglas": {
         "stop": 3.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793285220000
+      "vigilado_hasta": 1793289000000
     },
     "HYPEUSDT": {
       "nivel": "trading",
-      "cantidad": 1.7402160027871327,
+      "cantidad": 0.8701080013935664,
       "entrada": 86.11,
-      "maximo": 92.15,
+      "maximo": 94.65,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -69,14 +69,16 @@
           ]
         ]
       },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793285220000
+      "tomas_hechas": [
+        8.0
+      ],
+      "vigilado_hasta": 1793289000000
     },
     "BNBUSDT": {
       "nivel": "trading",
       "cantidad": 0.2020712812006958,
       "entrada": 741.57,
-      "maximo": 749.72,
+      "maximo": 753.0,
       "reglas": {
         "stop": 2.5,
         "trail": 5.0,
@@ -92,13 +94,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793285220000
+      "vigilado_hasta": 1793289000000
     },
     "ENAUSDT": {
       "nivel": "trading",
       "cantidad": 717.6724137931034,
       "entrada": 0.2088,
-      "maximo": 0.2088,
+      "maximo": 0.2145,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -114,10 +116,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793285340000
+      "vigilado_hasta": 1793289000000
     }
   },
-  "comisiones_usd": 29.486943999999955,
+  "comisiones_usd": 29.567862999999956,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2758,6 +2760,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: ENA +7,72% en 24 h, 4 h +3,0% y subiendo, 1 h +1,55% (no estirada), volumen 4 h 1,79x, 42,9 M/día, a -3,37% del máximo de 48 h. Era el 'a mirar' de las 13:34 (pasó +5% en 24 h sin estirarse). 150 USD porque quedan ~200 en USDT y es la 5ª posición. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h roja con 24 h < +5%, o el stop; rota 14:4x del 30/10 si no llegó a +8%."
+    },
+    {
+      "ms": 1793286540000,
+      "fecha": "2026-10-29 15:09 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 0.8701080013935664,
+      "precio": 92.9988,
+      "usd": 80.919,
+      "comision": 0.080919,
+      "motivo": "Toma de ganancia +8% en 92.9988: vende 50% de lo que quedaba.",
+      "resultado_pct": 8.0
     }
   ]
 }
