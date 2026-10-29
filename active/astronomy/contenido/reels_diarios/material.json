@@ -7,7 +7,7 @@
   "orientacion": "horizontal",
   "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/The Bunker__Full Sets__GUEVA @ _Astronomy Academy_ - The Bunker.mp4.jpg",
   "paso_hoja": 30,
-  "notas": ""
+  "notas": "manos CDJ: 150,540,930,1170,1230,1560s; cara 600,990,1380,1440,3150s; humo 180,510,1110s; 780 y 2010 tapan la cabeza (usado 29/10 en 5 reels)"
  },
  {
   "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/The Bunker/Full Sets/Natcheo @ Astronomy Academy - _The Bunker_.mp4",
@@ -17,7 +17,7 @@
   "orientacion": "horizontal",
   "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/The Bunker__Full Sets__Natcheo @ Astronomy Academy - _The Bunker_.mp4.jpg",
   "paso_hoja": 30,
-  "notas": ""
+  "notas": "300-390s,480-510s,2640s manos desde arriba en CDJ; 1710-1920s bajo (x≈0.4); 1050s,1200s DJ (usado 28/10)"
  },
  {
   "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/The Bunker/Reels/Natcheo Reel_4.mp4",
@@ -27,7 +27,7 @@
   "orientacion": "vertical",
   "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/The Bunker__Reels__Natcheo Reel_4.mp4.jpg",
   "paso_hoja": 5,
-  "notas": ""
+  "notas": "vertical; bajo en vivo todo el clip (usado 28/10)"
  },
  {
   "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/The Bunker/Reels/Recorte 1 - Swaggy.mp4",
@@ -37,7 +37,7 @@
   "orientacion": "horizontal",
   "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/The Bunker__Reels__Recorte 1 - Swaggy.mp4.jpg",
   "paso_hoja": 5,
-  "notas": ""
+  "notas": "6s y 10s primeros planos de consola; 16-36s DJ de frente (x≈0.45); 30s se agarra los auriculares (usado 28/10)"
  },
  {
   "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/The Bunker/Reels/Recorte 2 GUEVA.mp4",
@@ -107,7 +107,7 @@
   "orientacion": "vertical",
   "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/Fotos del estudio__IMG_7864.MOV.jpg",
   "paso_hoja": 5,
-  "notas": ""
+  "notas": "0s sala con CDJ+parlante, 6s cabina de producción con DAW, 10s persona en el sillón (usado 28/10)"
  },
  {
   "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Fotos del estudio/Videos/1.mov",
@@ -207,7 +207,7 @@
   "orientacion": "vertical",
   "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/Fotos del estudio__Videos__Astronomy2.mov.jpg",
   "paso_hoja": 5,
-  "notas": ""
+  "notas": "0s teclado/consola, 6s neón, 10s jog wheel, 16s manos en pads (usado 28/10)"
  },
  {
   "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Fotos del estudio/Videos/Astronomy_V_L.mov",
@@ -217,6 +217,76 @@
   "orientacion": "vertical",
   "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/Fotos del estudio__Videos__Astronomy_V_L.mov.jpg",
   "paso_hoja": 5,
+  "notas": "0s consola, 6s neón con hiedra, 10s consola, 16s manos (usado 28/10)"
+ },
+ {
+  "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Material filmado/Clases/IMG_3482-b.mov",
+  "duracion": 52.78,
+  "ancho": 1920,
+  "alto": 1080,
+  "orientacion": "horizontal",
+  "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/Material filmado__Clases__IMG_3482-b.mov.jpg",
+  "paso_hoja": 5,
+  "notas": ""
+ },
+ {
+  "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Material filmado/Clases/IMG_3482.MOV",
+  "duracion": 181.49,
+  "ancho": 1920,
+  "alto": 1080,
+  "orientacion": "horizontal",
+  "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/Material filmado__Clases__IMG_3482.MOV.jpg",
+  "paso_hoja": 30,
+  "notas": ""
+ },
+ {
+  "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Material filmado/Clases/IMG_3485.MOV",
+  "duracion": 293.82,
+  "ancho": 1920,
+  "alto": 1080,
+  "orientacion": "horizontal",
+  "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/Material filmado__Clases__IMG_3485.MOV.jpg",
+  "paso_hoja": 30,
+  "notas": ""
+ },
+ {
+  "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Material filmado/Clases/IMG_3486.MOV",
+  "duracion": 239.89,
+  "ancho": 1920,
+  "alto": 1080,
+  "orientacion": "horizontal",
+  "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/Material filmado__Clases__IMG_3486.MOV.jpg",
+  "paso_hoja": 30,
+  "notas": ""
+ },
+ {
+  "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Material filmado/Clases/IMG_3487.MOV",
+  "duracion": 154.56,
+  "ancho": 1920,
+  "alto": 1080,
+  "orientacion": "horizontal",
+  "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/Material filmado__Clases__IMG_3487.MOV.jpg",
+  "paso_hoja": 30,
+  "notas": ""
+ },
+ {
+  "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Material filmado/Fer_astronomy/IMG_6959.MOV",
+  "duracion": 121.18,
+  "ancho": 3840,
+  "alto": 2160,
+  "orientacion": "horizontal",
+  "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/Material filmado__Fer_astronomy__IMG_6959.MOV.jpg",
+  "paso_hoja": 30,
+  "notas": ""
+ },
+ {
+  "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Material filmado/Fer_astronomy/IMG_6960.MOV",
+  "duracion": 296.34,
+  "ancho": 3840,
+  "alto": 2160,
+  "orientacion": "horizontal",
+  "hoja": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_material/Material filmado__Fer_astronomy__IMG_6960.MOV.jpg",
+  "paso_hoja": 30,
   "notas": ""
  }
 ]
