@@ -86,3 +86,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-29 16:24 UTC — nota
 [v1] HYPE y UNI sin salida por reglas (var_24h>0, <48 h). Entro ENA; LINK y PUMP tambien validos pero menor vol_4h.
 
+## 2026-10-29 16:37 UTC — Toma HYPEUSDT (vigilante)
+109.58 USD a 97.526 (+10.00%). Toma de ganancia +10% en 97.526: vende 50% de lo que quedaba.
+
