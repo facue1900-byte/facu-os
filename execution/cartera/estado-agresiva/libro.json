@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 358.27286851334964,
+  "usdt": 502.6686824897276,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793259060000
+      "vigilado_hasta": 1793262660000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793259060000
-    },
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 29498031.496062994,
-      "entrada": 5.08e-06,
-      "maximo": 5.12e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793259060000
+      "vigilado_hasta": 1793262660000
     }
   },
-  "comisiones_usd": 28.89240399999996,
+  "comisiones_usd": 29.03694399999996,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2666,6 +2644,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: PEPE +6,28% en 24 h, 4 h +1,8% y subiendo, 1 h +0,59% (no estirada), volumen 4 h 1,5x (cumple la condición de reentrada tras el stop de las 02:29: >= 1,5x con 4 h y 1 h verdes), 109 M/día, a -2,87% del máximo de 48 h. Tamaño reducido (150) por dos stops seguidos en el par. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h roja con 24 h debajo de +5%, o el stop; rota 05:3x del 30/10 si no llegó a +8%."
+    },
+    {
+      "ms": 1793262728064,
+      "fecha": "2026-10-29 08:32 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 29498031.496062994,
+      "precio": 4.9e-06,
+      "usd": 144.5404,
+      "comision": 0.14454,
+      "motivo": "Invalidación de momentum cumplida: 4 h -2,57% roja con 24 h -0,61% (< +5%), a -5,93% del máximo de 48 h. Salgo antes del stop (4,86e-06) como fijé a las 05:32.",
+      "resultado_pct": -3.54
     }
   ]
 }
