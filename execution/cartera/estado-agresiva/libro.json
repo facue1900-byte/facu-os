@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 713.7713666915674,
-  "posiciones": {
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 39564356.43564357,
-      "entrada": 5.05e-06,
-      "maximo": 5.18e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793237460000
-    }
-  },
-  "comisiones_usd": 28.147707999999962,
+  "usdt": 908.2728685133496,
+  "posiciones": {},
+  "comisiones_usd": 28.342403999999963,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2574,6 +2551,18 @@
       "usd": 200.0,
       "comision": 0.2,
       "motivo": "Momentum 24 h: PEPE +11,78% en 24 h, 4 h +3,5% y subiendo, 1 h +1,21% (no estirada < 4%), volumen 4 h 2,64x (>= 1,5x, la condición que fijé para reentrar tras el stop de las 16:46), 106 M/día, a -3,82% del máximo de 48 h. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h roja con 24 h debajo de +5%, o pérdida del stop; rota 20:3x del 29/10 si no llegó a +8%."
+    },
+    {
+      "ms": 1793240940000,
+      "fecha": "2026-10-29 02:29 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 39564356.43564357,
+      "precio": 4.921e-06,
+      "usd": 194.6962,
+      "comision": 0.194696,
+      "motivo": "Stop automático en 4.921e-06 (entrada 5.05e-06, máximo 5.18e-06).",
+      "resultado_pct": -2.55
     }
   ]
 }
