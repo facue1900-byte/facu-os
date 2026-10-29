@@ -1,0 +1,11 @@
+[
+ {"tema": "go-back", "titulo": "Sin City - Go Back", "bpm": 128, "drop": 30.03,
+  "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_musica/go-back.wav",
+  "fuente_drop": "medido 27/10 (R2, correlación) y re-chequeado 28/10 en la envolvente de graves"},
+ {"tema": "space-miami", "titulo": "Sin City - Space Miami", "bpm": 128, "drop": 30.02,
+  "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_musica/space-miami.wav",
+  "fuente_drop": "28/10: ataque de graves 30,06 s menos el desvío del detector medido sobre go-back (0,045 s)"},
+ {"tema": "not-the-same", "titulo": "Sin City - Bitch We're Not The Same", "bpm": 130, "drop": 29.56,
+  "archivo": "/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-diarios/_musica/not-the-same.wav",
+  "fuente_drop": "28/10: ataque de graves 29,605 s menos 0,045 s; el título no va en el caption"}
+]
