@@ -844,10 +844,13 @@ def con_noticias(ests: list[Estrategia]) -> list[Estrategia]:
 def vivo(desde: str) -> dict:
     D = Datos()
     ests = con_noticias(estrategias())
-    inicio = next(i for i, t in enumerate(D.t) if t >= ms(desde))
+    inicio = next((i for i, t in enumerate(D.t) if t >= ms(desde)), D.n)
     fin = D.n - 1
-    if fin <= inicio:
-        raise SystemExit(f"todavía no hay velas cerradas desde {desde}")
+    if fin <= inicio:  # recién arrancado: no es una falla, pero tampoco hay tabla que mostrar
+        DIR.mkdir(parents=True, exist_ok=True)
+        (DIR / "RESUMEN.md").write_text(f"# Torneo cripto en vivo\n\nArranca el {desde}: todavía no cerró "
+                                        f"ninguna vela de 4 h desde entonces (última: {fecha(D.t[fin])} UTC).\n")
+        return {"hasta": fecha(D.t[fin] + H4), "filas": [{"estrategia": "ninguna todavía", "final": CAPITAL}]}
     filas = []
     for e in ests:
         r = correr(e, D, inicio, fin)
