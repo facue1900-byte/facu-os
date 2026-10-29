@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 352.6686824897276,
+  "usdt": 202.6686824897276,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793273520000
+      "vigilado_hasta": 1793277480000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793273520000
+      "vigilado_hasta": 1793277480000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.7402160027871327,
       "entrada": 86.11,
-      "maximo": 86.11,
+      "maximo": 89.0,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793273640000
+      "vigilado_hasta": 1793277480000
+    },
+    "BNBUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.2020712812006958,
+      "entrada": 741.57,
+      "maximo": 741.57,
+      "reglas": {
+        "stop": 2.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793277600000
     }
   },
-  "comisiones_usd": 29.186943999999958,
+  "comisiones_usd": 29.336943999999956,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2690,6 +2712,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: HYPE +5,65% en 24 h, 4 h +9,1% y subiendo, 1 h +0,65% (no estirada), volumen 4 h 6,87x, 40,5 M/día, a -1,43% del máximo de 48 h (casi ruptura). Tamaño 150 (no 200) porque la 4 h ya corrió +9%: riesgo de entrar tarde. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 1 h roja > -2% con volumen cayendo bajo 1,5x, 4 h roja con 24 h < +5%, o el stop; rota 11:3x del 30/10 si no llegó a +8%."
+    },
+    {
+      "ms": 1793277542481,
+      "fecha": "2026-10-29 12:39 UTC",
+      "lado": "buy",
+      "par": "BNBUSDT",
+      "nivel": "trading",
+      "cantidad": 0.2020712812006958,
+      "precio": 741.57,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: BNB (205 M/día) tocó el mínimo de 48 h (738,30) en la vela de 11:00 tras venta con volumen 4,36x; la vela de 12:00 hizo mínimo más alto (739,04) con 1 h +0,19% y volumen cayendo (8,2 M vs 44 M de las 10:00): dejó de caer. 150 USD (no 200) porque está correlacionada con la apuesta BTC/ETH. Stop 2,5% (~723, debajo del mínimo de 48 h), trailing 5%, tomas +8%/+15%. Invalida: cierre horario debajo de 738,30 o BTC -3% en 4 h; rota 12:3x del 30/10 si no llegó a +8%."
     }
   ]
 }
