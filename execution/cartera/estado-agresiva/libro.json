@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 752.8877726536234,
-  "posiciones": {
-    "HYPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.5780328559393428,
-      "entrada": 94.96,
-      "maximo": 95.21,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793313060000
-    }
-  },
-  "comisiones_usd": 30.488013999999957,
+  "usdt": 895.4773231741057,
+  "posiciones": {},
+  "comisiones_usd": 30.630745999999956,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2754,6 +2731,18 @@
       "comision": 0.197538,
       "motivo": "Invalidación de rebote cumplida (fijada 21:32): la vela horaria de 21:00 cerró en 79.033 < 79.710, y la de 22:00 sigue ahí (79.032). 4 h -2,17% con 3,74x de volumen en la venta, a -3,5% del máximo de 48 h. La tesis de rebote murió; salgo antes del stop 77.907.",
       "resultado_pct": -1.13
+    },
+    {
+      "ms": 1793315280000,
+      "fecha": "2026-10-29 23:08 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 1.5780328559393428,
+      "precio": 90.44949999999999,
+      "usd": 142.7323,
+      "comision": 0.142732,
+      "motivo": "Stop automático en 90.4495 (entrada 94.96, máximo 95.21).",
+      "resultado_pct": -4.75
     }
   ]
 }
