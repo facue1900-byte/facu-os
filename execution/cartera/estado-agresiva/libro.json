@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793291580000
+      "vigilado_hasta": 1793295060000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793291580000
+      "vigilado_hasta": 1793295060000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 0.8701080013935664,
       "entrada": 86.11,
-      "maximo": 97.12,
+      "maximo": 97.74,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -72,7 +72,7 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1793291580000
+      "vigilado_hasta": 1793295060000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -94,7 +94,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793291580000
+      "vigilado_hasta": 1793295060000
     },
     "ENAUSDT": {
       "nivel": "trading",
@@ -116,7 +116,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793291580000
+      "vigilado_hasta": 1793295060000
     }
   },
   "comisiones_usd": 29.567862999999956,
