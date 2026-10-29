@@ -342,3 +342,14 @@ El script falló bien (no operó sin precio) y la rutina avisó con `CARTERA_FAL
 ese dominio desde la nube (una corrida con `curl`), no desde la Mac. Se arregla habilitando el
 dominio en Network access del entorno. Además, `api.binance.com` da 451 desde IPs de EE.UU.:
 para datos públicos usar el espejo `data-api.binance.vision`.
+
+## 28/10/2026 — `claude -p`: las reglas de archivo son Edit(...) y las rutas absolutas llevan //
+
+Armando el agente de reels diarios (`active/astronomy/contenido/reels_diarios/`), los deny de
+`--disallowedTools "Write(**/qa.json)"` NO bloqueaban nada: el CLI avisa que «Write(path) is not
+matched by file permission checks — only Edit(path) rules are» (Edit cubre Write). Y una ruta
+`Edit(/Users/...)` con una sola barra es relativa al repo: para absolutas va `Edit(//Users/...)`, y
+`**/x` sin `//` sólo mira adentro del repo. Probado headless con haiku pidiéndole escribir 5
+archivos: con `Edit(//**/qa.json)` queda denegado, con `Edit(//<carpeta del día>/**)` permitido.
+**Lección:** un permiso de un agente que corre solo se prueba headless pidiéndole que haga lo
+prohibido; leer la regla no alcanza.

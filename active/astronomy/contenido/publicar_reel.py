@@ -5,10 +5,11 @@ Sin --send: crea el contenedor, sube el video y espera a que Instagram lo proces
 pero NO publica — el contenedor queda listo y vence a las 24 h. Con --send, además publica y
 relee el posteo de Instagram.
 
-    .venv/bin/python active/astronomy/contenido/publicar_reel.py VIDEO.mp4 --texto TEXTO.txt [--prueba auto|manual] [--send]
+    .venv/bin/python active/astronomy/contenido/publicar_reel.py VIDEO.mp4 --texto TEXTO.txt [--portada IMG.jpg] [--prueba auto|manual] [--send]
 
 --prueba: reel de prueba (sólo a no seguidores). `auto` = Instagram lo pasa a los seguidores si
 rinde bien en 72 h (graduation_strategy=SS_PERFORMANCE); `manual` = lo pasás vos desde la app.
+--portada: JPG 9:16 que va de tapa (cover_url); sale de reels_diarios/portada.py.
 """
 import argparse
 import json
@@ -30,6 +31,7 @@ def main():
     ap.add_argument("video")
     ap.add_argument("--texto", required=True, help="archivo con el caption")
     ap.add_argument("--prueba", choices=["auto", "manual"])
+    ap.add_argument("--portada", help="JPG de tapa (cover_url)")
     ap.add_argument("--send", action="store_true")
     a = ap.parse_args()
     video = pathlib.Path(a.video)
@@ -59,6 +61,16 @@ def main():
             print(f"video en storage temporal ({video.stat().st_size / 1e6:.1f} MB)")
 
             datos = {"media_type": "REELS", "video_url": link, "caption": caption, "access_token": tok}
+            if a.portada:
+                tapa = pathlib.Path(a.portada)
+                n_tapa = f"{int(time.time())}-tapa-{tapa.stem.replace(' ', '_')}.jpg"
+                r = cli.post(f"{sb}/storage/v1/object/{BUCKET}/{n_tapa}", content=tapa.read_bytes(),
+                             headers={**sbh, "content-type": "image/jpeg"})
+                if r.status_code >= 300:
+                    sys.exit(f"No se pudo subir la portada al storage: {r.text}")
+                f_tapa = cli.post(f"{sb}/storage/v1/object/sign/{BUCKET}/{n_tapa}", headers=sbh, json={"expiresIn": 3600}).json()
+                datos["cover_url"] = f"{sb}/storage/v1{f_tapa['signedURL']}"
+                print("portada en storage temporal")
             if a.prueba:
                 datos["trial_params"] = json.dumps({"graduation_strategy": "SS_PERFORMANCE" if a.prueba == "auto" else "MANUAL"})
             c = cli.post(f"{API}/{yo['id']}/media", data=datos).json()
@@ -81,16 +93,36 @@ def main():
             pub = cli.post(f"{API}/{yo['id']}/media_publish", data={"creation_id": c["id"], "access_token": tok}).json()
             if "id" not in pub:
                 sys.exit(f"Instagram no publicó: {pub}")
-            m = cli.get(f"{API}/{pub['id']}", params={
-                "fields": "id,permalink,media_product_type,timestamp,caption", "access_token": tok}).json()
-            print("PUBLICADO", json.dumps(m, ensure_ascii=False, indent=1))
+            # Una línea parseable apenas Instagram confirma: si lo que sigue falla, el que llama
+            # igual sabe que se publicó y no lo vuelve a subir.
+            print(f"PUBLICADO_ID {pub['id']}", flush=True)
+            try:
+                m = cli.get(f"{API}/{pub['id']}", params={
+                    "fields": "id,permalink,media_product_type,timestamp,caption", "access_token": tok}).json()
+                if "permalink" in m:
+                    print(f"PUBLICADO_LINK {m['permalink']}", flush=True)
+                print("PUBLICADO", json.dumps(m, ensure_ascii=False, indent=1))
+            except Exception as e:  # noqa: BLE001 — ya está publicado: no se falla por la relectura
+                print(f"OJO: publicado pero no se pudo releer: {e}")
         finally:
-            cli.request("DELETE", f"{sb}/storage/v1/object/{BUCKET}", headers=sbh, json={"prefixes": [nombre]})
-            r = cli.delete(f"{sb}/storage/v1/bucket/{BUCKET}", headers=sbh)
-            print("storage temporal borrado" if r.status_code < 300 else f"OJO: quedó el bucket {BUCKET}: {r.text}")
+            limpiar(cli, sb, sbh)
 
 
 BUCKET = "reels-temp"
+
+
+def limpiar(cli, sb, sbh):
+    """Borra TODO lo del bucket temporal (también lo que dejó una corrida que murió a la mitad) y el
+    bucket. Nunca revienta: corre después de publicar."""
+    try:
+        objs = cli.post(f"{sb}/storage/v1/object/list/{BUCKET}", headers=sbh, json={"prefix": "", "limit": 1000}).json()
+        nombres = [o["name"] for o in objs if isinstance(o, dict) and o.get("name")] if isinstance(objs, list) else []
+        if nombres:
+            cli.request("DELETE", f"{sb}/storage/v1/object/{BUCKET}", headers=sbh, json={"prefixes": nombres})
+        r = cli.delete(f"{sb}/storage/v1/bucket/{BUCKET}", headers=sbh)
+        print("storage temporal borrado" if r.status_code < 300 else f"OJO: quedó el bucket {BUCKET} (status {r.status_code})")
+    except Exception as e:  # noqa: BLE001
+        print(f"OJO: no se pudo limpiar el bucket {BUCKET}: {e}")
 
 
 def storage():
