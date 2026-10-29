@@ -26,6 +26,7 @@ números, en `aprendizajes.md`. Una referencia que ya se usó 2 veces sin rendir
 | 5 | instagram.com/reel/DewfNScOktt (joyería) | «MOVE YOUR THUMB to the beat» con un pulgar dibujado; cada producto entra en un golpe. | «MOVÉ EL PULGAR AL RITMO» → un detalle del estudio por golpe (jog, fader, pad, neón). | SÍ (sin el dibujo: el texto alcanza). |
 | 6 | instagram.com/reel/De90x1LI9yD (open day) | Cartel escrito a mano que pasa por distintos lugares mientras se completa «PUT THAT PHONE DOWN AND COME TO OUR OPEN-DAY»; cierra con el flyer. | «DEJÁ EL CELULAR Y VENÍ A MEZCLAR». Ya probado con `carteles_beat` el 29/10: funciona. Mejor todavía con un cartel real filmado. | SÍ con carteles; el cartel real hay que filmarlo. |
 | 7 | instagram.com/reel/DesgAIqJ_Ou (3 tendencias de carrusel) | (a) «Me da vergüenza pedirte… un Porsche. Pero [producto] sí me lo podés regalar» → se comparte como indirecta. (b) «Abrí la foto» estilo foto de WhatsApp de una sola vez → al deslizar, el producto. (c) «Se acaba el año y siento que no hice nada» → la mejor foto de cada mes. | (a) «Me da vergüenza pedirte un viaje a Ibiza… pero una membresía en Astronomy sí me la podés regalar» (cumpleaños, diciembre). (b) «Abrí la foto» → la cabina: «tu próximo set». (c) enero→octubre con fotos de clases y eventos. | (a) y (b) SÍ como reel (tomas fijas + `carteles_beat`). (c) cuando haya fotos de todo el año. |
+| 8 | instagram.com/reel/Dch_9neN_-4 (lámpara) | Un pincel pinta de rojo sobre «you can't buy happiness»; donde pasa la pintura el texto queda blanco y CAMBIA: «you can buy a lamp». La frase hecha dada vuelta + la pintura en vivo retienen hasta el final (10 s). | «No podés comprar talento» → pintura → «podés comprar horas en la cabina». O «el oído no se compra» → «se entrena. Astronomy». | NO: hay que filmar la mano pintando una hoja blanca (10 s, fijo). El texto se compone después separando lo pintado por color — lo arma el hilo principal. |
 
 ## Para el próximo pedido de filmación (`pedir_filmacion.py`)
 
@@ -33,5 +34,7 @@ números, en `aprendizajes.md`. Una referencia que ya se usó 2 veces sin rendir
   4–5 lugares del estudio: puerta, cabina, CDJs, sillón, neón. 2 s en cada lugar.
 - El profe **haciendo como que agarra algo en el aire** frente a la cámara (para la notificación
   falsa, ref. 4): agarrarla, estirarla, tirarla. 3 tomas de 3 s.
+- Una **mano pintando con pincel y pintura roja** (o negra) una hoja blanca grande pegada a la pared,
+  de arriba abajo, en 8–10 s, celular fijo y buena luz pareja (ref. 8).
 - Material en Drive que mandó Facu el 29/10: `Material filmado/Clases/` y
   `Material filmado/Fer_astronomy/`: **clases reales**. Usar eso primero.
