@@ -1,16 +1,16 @@
-# Carpeta cripto LABORATORIO (reglas del entrenador, objetivo +20%/mes) — 2026-10-28 22:16 UTC
+# Carpeta cripto LABORATORIO (reglas del entrenador, objetivo +20%/mes) — 2026-10-29 00:17 UTC
 
-**Total: 1,001.80 USD (+0.18%)** desde 2026-10-27 22:37 UTC · USDT libre 800.00 · comisiones 0.20 · 1 operaciones
+**Total: 1,003.80 USD (+0.38%)** desde 2026-10-27 22:37 UTC · USDT libre 800.00 · comisiones 0.20 · 1 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **1,001.80** |
+| **Esta carpeta** | **1,003.80** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 1,005.02 |
+| hodl btc | 1,005.49 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| PEPE | trading | 201.80 | +1.00% | 4.81e-06 |
+| PEPE | trading | 203.80 | +2.00% | 4.81e-06 |
 
 ## Últimas operaciones
 
