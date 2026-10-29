@@ -52,6 +52,9 @@ contenido no original, y es de otro. La música es siempre la nuestra (Sin City,
 las ideas y la ejecución, porque está flojo».** La vara es la de un reel que vos mandarías a un
 amigo, no la de un reel que pasó el QA. Lo que le gustó y funciona: la estética de las portadas.
 
+- **Primero leé `RD/referencias.md`**: son referencias que eligió Facu, y tienen prioridad sobre lo
+  que encuentres vos. Al menos 2 de las 5 del día tienen que salir de ahí (las que se pueden hacer
+  hoy), sin repetir la misma dos días seguidos.
 - Escribí **8 ideas candidatas** en `DIA/ideas.md`, cada una con: el hook exacto del primer
   segundo (lo que se ve + lo que se lee/oye), por qué alguien la compartiría o guardaría, qué
   siente o aprende el que la ve, y la tendencia/competencia de la que sale. Puntuá cada una de 1 a 5
@@ -60,6 +63,9 @@ amigo, no la de un reel que pasó el QA. Lo que le gustó y funciona: la estéti
 - ~3 que **explotan** lo que funcionó y ~2 que **exploran**. Variá formato, duración (entre 8 y
   25 s) y el segundo del drop: los 10 del 28/10 tenían todos 17 s con el drop en el 9 y se notaba
   la plantilla.
+- **Formato que más se repite en las referencias:** ~9 s, un corte en cada golpe del tema (60/bpm),
+  texto grande que se arma palabra por palabra en el golpe (`carteles_beat`), remate simple. Con ese
+  formato la voz es opcional.
 - Antes de idear, releé el `resumen.md` de los días anteriores y lo que dijo Facu en
   `aprendizajes.md`: cada día tiene que ser mejor que el anterior en algo concreto, y el resumen
   dice en qué.

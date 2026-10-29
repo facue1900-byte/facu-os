@@ -32,3 +32,9 @@ nuevo. Corto, con fecha y con número. Si algo deja de ser cierto, se borra.
 - 28/10: texto blanco sobre tomas claras del estudio (sala con la pared blanca) no se lee → `efecto: oscuro` + `pos: abajo`.
 - 28/10: IG no entrega likes/vistas de otras cuentas por WebFetch; la competencia no se puede medir así.
 - 28/10: se publicaron 10 reels nuevos de formatos distintos (swipe falso, loading, POV, process, etc.). Leer sus números el 31/10 para ver qué formato gana.
+
+## 29/10
+- 29/10: set completo de GUEVA = mina de tomas (manos en CDJ ~150, 540, 930, 1170, 1230, 1560 s; cara 600, 990, 1380 s; humo 180, 510, 1110 s; cuidado: 780 y 2010 tapa la cabeza). Los segundos de la hoja de contacto pueden correrse ±1 s: siempre mirar `revision.jpg`.
+- 29/10: armador: `efecto: slam` + `antes_del_drop: seco` clipea el audio (pico 0 dB); `space-miami` con drop 7 dio «mudo en 0.0». Usar `go-back` + `filtro`.
+- 29/10: los `textos` NO interpretan `<br>` (sale literal); sólo la portada. Un cartel no puede pisar la voz.
+- 29/10: publicados 5 de formatos y largos distintos (9–22 s, drops 5–14). Medir el 01/11: promesa «3 segundos», timelapse, dato, POV, pregunta.

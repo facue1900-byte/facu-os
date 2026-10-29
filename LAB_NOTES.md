@@ -353,3 +353,12 @@ matched by file permission checks — only Edit(path) rules are» (Edit cubre Wr
 archivos: con `Edit(//**/qa.json)` queda denegado, con `Edit(//<carpeta del día>/**)` permitido.
 **Lección:** un permiso de un agente que corre solo se prueba headless pidiéndole que haga lo
 prohibido; leer la regla no alcanza.
+
+## 29/10/2026 — el `claude -p` heredaba el modo «auto» de la config global
+
+El agente de reels diarios hizo un `git commit` que no estaba en su `--allowedTools`:
+`~/.claude/settings.json` tiene `defaultMode: auto` y el headless lo hereda, así que un
+clasificador aprobaba comandos fuera de la lista. Con eso, un comando de shell podía escribir el
+registro o un qa.json esquivando los deny de `Edit(...)`. Fix: `--permission-mode dontAsk`
+(niega todo lo que no está listado; probado headless). **Lección:** todo agente headless que
+toca el mundo va con `--permission-mode dontAsk` explícito; no alcanza con `--allowedTools`.
