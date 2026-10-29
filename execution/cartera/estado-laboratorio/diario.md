@@ -70,3 +70,11 @@ Capital ficticio: 1,000.00 USDT.
 
 [v1] filtro BTC ok (var_24h -0.74, var_4h 0.1); top20 vol; var_24h 9.98>=3, var_4h 11.95>0, var_1h 0.75<=2.5, vs_max -0.11>=-1.5, vol_4h 9.66>=1.3 · invalida: stop 7% / cierre bajo la zona de maximo
 
+## 2026-10-29 14:37 UTC — Compra UNIUSDT (trading)
+200.66 USD a 7.332. Stop 7.0% · trailing 8.0% · tomas [[10.0, 0.5], [20.0, 1.0]].
+
+[v1] filtro BTC ok (var_24h 0.72, var_4h 1.12); top20 vol; var_24h 3.99>=3, var_4h 2.29>0, var_1h 1.81<=2.5, vs_max -0.41>=-1.5, vol_4h 1.95>=1.3; mayor vol entre candidatos validos (HYPE ya en cartera); 2da entrada del dia, 2 posiciones · invalida: stop 7% / cierre bajo la zona de maximo
+
+## 2026-10-29 14:37 UTC — nota
+[v1] HYPE en cartera sin salida por reglas (var_24h 14.4>0, ~2 h de 48). PEPE no entra (vol_4h 0.95<1.3), ENA vs_max -2.36<-1.5, PUMP vs_max -3.75. Entro UNI.
+
