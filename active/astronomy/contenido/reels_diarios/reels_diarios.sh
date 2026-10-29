@@ -1,5 +1,5 @@
 #!/bin/bash
-# Reels diarios: un Claude headless busca tendencias, arma 10 reels con material real y los
+# Reels diarios: un Claude headless busca tendencias, arma 5 reels con material real y los
 # publica como reels de prueba en @astronomy.academy (instrucciones en PROMPT.md).
 # Lo corre launchd todos los días (execution/launchd/com.facu.reels-diarios.plist), a través de
 # execution/launchd/correr.sh (red, registro de corridas y mail si falla).
@@ -39,7 +39,7 @@ trap 'rmdir "$CANDADO"; rm -f "$CORRIDA"' EXIT
 
 { date; echo; } >> "$LOG"
 ANTES=$(publicados)
-if [ "$ANTES" -ge 10 ]; then
+if [ "$ANTES" -ge 5 ]; then
   echo "ya hay $ANTES publicados hoy: nada que hacer" >> "$LOG"
   exit 0
 fi
