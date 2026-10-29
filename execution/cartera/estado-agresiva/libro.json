@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 283.70878180869306,
+  "usdt": 364.4201279238365,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793302260000
+      "vigilado_hasta": 1793305860000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,31 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793302260000
-    },
-    "HYPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.8701080013935664,
-      "entrada": 86.11,
-      "maximo": 97.74,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [
-        8.0
-      ],
-      "vigilado_hasta": 1793302260000
+      "vigilado_hasta": 1793305860000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -94,10 +70,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793302260000
+      "vigilado_hasta": 1793305860000
     }
   },
-  "comisiones_usd": 29.718214999999958,
+  "comisiones_usd": 29.799006999999957,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2762,6 +2738,18 @@
       "comision": 0.150352,
       "motivo": "Invalidación de momentum cumplida (fijada 18:31): 4 h cerró roja (-2,24%) con 24 h en 0,0% (< +5%), volumen 2,1x en la caída. La tesis murió; salgo antes del stop 0,2069 y libero caja.",
       "resultado_pct": 0.34
+    },
+    {
+      "ms": 1793304240000,
+      "fecha": "2026-10-29 20:04 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 0.8701080013935664,
+      "precio": 92.853,
+      "usd": 80.7921,
+      "comision": 0.080792,
+      "motivo": "Stop automático en 92.853 (entrada 86.11, máximo 97.74).",
+      "resultado_pct": 7.83
     }
   ]
 }
