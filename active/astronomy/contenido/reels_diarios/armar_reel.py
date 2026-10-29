@@ -17,6 +17,12 @@ Guion (las claves con * son obligatorias):
           # se pegan en orden; la suma de `dur` es el largo del reel. `x` = dónde centrar el recorte
           # 9:16 en un cuadro horizontal (0 izquierda … 1 derecha). efecto: slam | oscuro | null.
  "textos": [{"texto": "...", "desde": 0, "hasta": 2.5, "pos": "arriba|centro|abajo"}],
+          # carteles a mano SÓLO donde no habla la voz (ej. el hook antes de que arranque):
+          # mientras habla, los subtítulos salen SOLOS de los tiempos reales de la voz (Whisper).
+ "carteles_beat": [{"texto": "DEJÁ EL CELULAR", "desde": 0.0, "cada": 1, "hasta": 3.0}],
+          # texto GRANDE al centro que se arma palabra por palabra, una cada `cada` golpes del tema
+          # (formato de las referencias de Facu del 29/10: «GIVE ME A SIGN», «PUT THAT PHONE DOWN…»).
+          # Queda completo hasta `hasta`. Cuenta como cartel: no puede pisar la voz.
  "voz": {"texto": "...", "palabra_drop": "Astronomy"},   # la palabra cae justo en el drop
  "antes_del_drop": "filtro",           # filtro (build con pasa-bajos) | seco (silencio y golpe)
  "portada"*: {"titular": "LO QUE NADIE<br>TE MUESTRA", "ceja": "THE BUNKER", "toma": 0, "segundo": 1.0},
@@ -90,31 +96,69 @@ def toma(t, out, n_cuadros):
        "-c:v", "libx264", "-crf", "17", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", FPS, "-an", out)
 
 
-def placa_texto(texto, pos, out):
+def placa_texto(texto, pos, out, completo=None):
     """Texto en el lenguaje de la cuenta: mayúsculas, Helvetica Neue Medium, blanco, centrado,
     con sombra difusa. Respeta las zonas que tapa la interfaz de Reels (abajo y a la derecha)."""
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    tam = 74
+    grande = pos == "grande"
+    # Con `completo`, el tamaño y el corte de líneas se calculan sobre el texto ENTERO: al armarse
+    # palabra por palabra las líneas no saltan de lugar.
+    base = (completo or texto).upper()
+    tam, alto_max, piso = (150, 900, 70) if grande else (74, 560, 46)
     while True:
-        f = ImageFont.truetype(FUENTE, tam, index=10)
-        lineas = envolver(texto.upper(), f, d, 860)
+        f = ImageFont.truetype(FUENTE, tam, index=1 if grande else 10)
+        lineas = envolver(base, f, d, 860)
         alto = len(lineas) * int(tam * 1.12)
         ancho_max = max(d.textlength(l, font=f) for l in lineas)
-        if (alto < 560 and ancho_max <= 900) or tam <= 46:
+        if (alto < alto_max and ancho_max <= 900) or tam <= piso:
             break
         tam -= 4
+    if completo:
+        quedan = len(texto.split())
+        visibles = []
+        for l in lineas:
+            n = len(l.split())
+            visibles.append(" ".join(l.split()[:max(0, quedan)]))
+            quedan -= n
+        lineas = visibles
     # «abajo» termina como mucho a 1500 px: más abajo lo tapan el caption y los botones de Reels.
-    y = {"arriba": 300, "centro": (H - alto) // 2 - 80, "abajo": 1500 - alto}.get(pos, 300)
+    y = {"arriba": 300, "centro": (H - alto) // 2 - 80, "abajo": 1500 - alto, "sub": 1200,
+         "grande": (H - alto) // 2 - 60}.get(pos, 300)
     sombra = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     ds = ImageDraw.Draw(sombra)
     for i, l in enumerate(lineas):
+        if not l:
+            continue
         lw = d.textlength(l, font=f)
         xy = ((W - 60 - lw) / 2, y + i * int(tam * 1.12))   # corrido 30 px a la izquierda: botones de IG
         ds.text(xy, l, font=f, fill=(0, 0, 0, 200))
         d.text(xy, l, font=f, fill=(255, 255, 255, 255))
     sombra = sombra.filter(ImageFilter.GaussianBlur(14))
     Image.alpha_composite(sombra, im).save(out)
+
+
+def subtitulos(texto, pal, inicio):
+    """Subtítulos de 1 a 4 palabras con los tiempos REALES de cada palabra (Whisper), corridos al
+    lugar de la voz en el reel. Se escribe el texto del guion (bien escrito) si Whisper oyó la
+    misma cantidad de palabras; si no, lo que oyó Whisper."""
+    escritas = texto.split()
+    palabras_ = escritas if len(escritas) == len(pal) else [p[2] for p in pal]
+    grupos, actual = [], []
+    for w, p in zip(palabras_, pal):
+        actual.append((w, p[0], p[1]))
+        largo = len(" ".join(x[0] for x in actual))
+        if len(actual) == 4 or largo >= 16 or w[-1] in ".,?!:;":
+            grupos.append(actual)
+            actual = []
+    if actual:
+        grupos.append(actual)
+    subs = []
+    for i, gr in enumerate(grupos):
+        a = inicio + gr[0][1]
+        b = inicio + (grupos[i + 1][0][1] if i + 1 < len(grupos) else gr[-1][2] + 0.35)
+        subs.append((" ".join(x[0] for x in gr), a, b))
+    return subs
 
 
 def envolver(texto, f, d, ancho):
@@ -179,6 +223,28 @@ def palabras(wav):
     return [(w.start, w.end, w.word.strip()) for s in segs for w in s.words]
 
 
+def refinar(pal, wav):
+    """Whisper pone mal el inicio de la palabra que sigue a una pausa (hasta 0,5 s antes: el
+    subtítulo aparecía antes que la voz). Si en el inicio que dio Whisper la voz está en silencio,
+    se corre al primer cuadro de 10 ms donde la voz realmente suena."""
+    import numpy as np
+    pcm = subprocess.run([FF, "-nostdin", "-v", "error", "-i", str(wav), "-f", "f32le", "-ac", "1", "-ar", "16000", "-"],
+                         capture_output=True, check=True).stdout
+    x = np.frombuffer(pcm, dtype=np.float32)
+    env = np.array([np.sqrt((x[i:i + 160] ** 2).mean()) for i in range(0, len(x) - 160, 160)])
+    umbral = max(env.max() * 0.06, 1e-4)
+    nuevas = []
+    for k, (a, b, w) in enumerate(pal):
+        i = int(a * 100)
+        if i < len(env) and env[i] < umbral:
+            tope = min(len(env), int(min(b, a + 0.7) * 100))
+            j = next((j for j in range(i, tope) if env[j] >= umbral), None)
+            if j is not None:
+                a = j / 100
+        nuevas.append((a, max(b, a + 0.05), w))
+    return nuevas
+
+
 def normal(s):
     return re.sub(r"[^a-záéíóúñü]", "", s.lower())
 
@@ -230,7 +296,7 @@ def armar(guion_path):
         if g.get("voz"):
             vwav = tmp / "voz.wav"
             qa["modelo_voz"] = voz(g["voz"]["texto"], vwav)
-            pal = palabras(vwav)
+            pal = refinar(palabras(vwav), vwav)
             qa["voz_transcripta"] = " ".join(p[2] for p in pal)
             parecido = difflib.SequenceMatcher(None, normal(g["voz"]["texto"]), normal(qa["voz_transcripta"])).ratio()
             qa["voz_parecido"] = round(parecido, 2)
@@ -269,24 +335,48 @@ def armar(guion_path):
                            f"volume='0.45+0.55*t/{pre:.3f}':eval=frame,afade=in:d=0.4[build]")
         filtros.append(f"[1:a]aresample=48000,afade=in:d=0.004,afade=out:st={max(0.1, total - drop - 0.8):.2f}:d=0.8,"
                        f"adelay={int(drop * 1000)}:all=1[dropa]")
-        filtros.append("[build][dropa]amix=inputs=2:normalize=0,volume=0.6[musica]")
+        # apad: sidechaincompress corta en el input MÁS CORTO; sin esto el audio terminaba con la voz
+        # y los últimos segundos del reel quedaban mudos (los 10 del 28/10/2026).
+        filtros.append(f"[build][dropa]amix=inputs=2:normalize=0,volume=0.6,apad=whole_dur={total:.3f}[musica]")
         entradas = ["-ss", dt - pre, "-t", pre, "-i", tema["archivo"],
                     "-ss", dt, "-t", total - drop, "-i", tema["archivo"]]
         if inicio_voz is not None:
             entradas += ["-i", tmp / "voz.wav"]
             filtros.append(f"[2:a]aresample=48000,aformat=channel_layouts=stereo,afade=in:d=0.02,"
-                           f"adelay={int(inicio_voz * 1000)}:all=1,volume=1.5,asplit[voz][sc]")
+                           f"adelay={int(inicio_voz * 1000)}:all=1,volume=1.5,apad=whole_dur={total:.3f},asplit[voz][sc]")
             filtros.append("[musica][sc]sidechaincompress=threshold=0.04:ratio=5:attack=8:release=280[md]")
-            filtros.append(f"[voz][md]amix=inputs=2:normalize=0,alimiter=limit=0.85:level=disabled,atrim=0:{total:.3f}[a]")
+            filtros.append(f"[voz][md]amix=inputs=2:normalize=0,aresample=192000,alimiter=limit=0.7:level=disabled,aresample=48000,atrim=0:{total:.3f}[a]")
         else:
-            filtros.append(f"[musica]alimiter=limit=0.85:level=disabled,atrim=0:{total:.3f}[a]")
+            filtros.append(f"[musica]aresample=192000,alimiter=limit=0.7:level=disabled,aresample=48000,atrim=0:{total:.3f}[a]")
         ff(*entradas, "-filter_complex", ";".join(filtros), "-map", "[a]", "-ac", 2, "-ar", 48000, tmp / "audio.wav")
 
         # --- textos y mux
+        textos = list(g.get("textos", []))
+        golpe = 60 / tema["bpm"]
+        for cb in g.get("carteles_beat", []):
+            ws = cb["texto"].split()
+            paso = golpe * float(cb.get("cada", 1))
+            hasta = float(cb.get("hasta", cb["desde"] + paso * (len(ws) + 1)))
+            for k in range(1, len(ws) + 1):
+                a = cb["desde"] + paso * (k - 1)
+                b = a + paso if k < len(ws) else hasta
+                if b <= a:
+                    falla(f"el cartel «{cb['texto']}» no entra: `hasta` ({hasta}s) es antes de la última palabra")
+                textos.append({"texto": " ".join(ws[:k]), "completo": cb["texto"], "desde": round(a, 3),
+                               "hasta": round(b, 3), "pos": "grande"})
+        if inicio_voz is not None:
+            fin_voz = inicio_voz + dur_voz
+            for tx in textos:
+                if tx["desde"] < fin_voz and tx["hasta"] > inicio_voz:
+                    falla(f"el cartel «{tx['texto']}» ({tx['desde']}–{tx['hasta']}s) pisa la voz ({inicio_voz:.2f}–"
+                          f"{fin_voz:.2f}s): mientras habla, los subtítulos salen solos. Sacalo o ponelo fuera de la voz")
+            subs = subtitulos(g["voz"]["texto"], pal, inicio_voz)
+            qa["subtitulos"] = [[t, round(a, 2), round(b, 2)] for t, a, b in subs]
+            textos += [{"texto": t, "desde": a, "hasta": b, "pos": "sub"} for t, a, b in subs]
         ins, cad, prev = ["-i", tmp / "video.mp4", "-i", tmp / "audio.wav"], [], "[0:v]"
-        for i, tx in enumerate(g.get("textos", [])):
+        for i, tx in enumerate(textos):
             png = tmp / f"tx{i}.png"
-            placa_texto(tx["texto"], tx.get("pos", "arriba"), png)
+            placa_texto(tx["texto"], tx.get("pos", "arriba"), png, tx.get("completo"))
             ins += ["-i", png]
             cad.append(f"{prev}[{i + 2}:v]overlay=0:0:enable='between(t,{tx['desde']:.3f},{tx['hasta'] - 0.001:.3f})'[o{i}]")
             prev = f"[o{i}]"
@@ -321,6 +411,14 @@ def armar(guion_path):
     pico = float(re.search(r"max_volume: (-?[\d.]+)", vd).group(1))
     media = float(re.search(r"mean_volume: (-?[\d.]+)", vd).group(1))
     mb = mp4.stat().st_size / 1e6
+    import numpy as np
+    pcm = subprocess.run([FF, "-nostdin", "-v", "error", "-i", str(mp4), "-vn", "-ac", "1", "-ar", "8000", "-f", "f32le", "-"],
+                         capture_output=True, check=True).stdout
+    x = np.frombuffer(pcm, dtype=np.float32)
+    dur_audio = len(x) / 8000
+    db = [20 * np.log10(np.sqrt((x[i:i + 2000] ** 2).mean()) + 1e-9) for i in range(0, len(x) - 2000, 2000)]
+    mudos = [round(i * 0.25, 2) for i, v in enumerate(db) if v < -45]
+    qa.update({"duracion_audio": round(dur_audio, 2), "tramos_mudos": mudos})
     qa.update({"duracion_final": round(dur, 2), "tamano": f"{w}x{h}", "pico_db": pico, "media_db": media,
                "mb": round(mb, 1), "cortes": cortes})
     problemas = []
@@ -332,6 +430,10 @@ def armar(guion_path):
         problemas.append(f"el audio clipea (pico {pico} dB)")
     if media < -32:
         problemas.append(f"el audio casi no se oye (media {media} dB)")
+    if abs(dur_audio - total) > 0.15:
+        problemas.append(f"el audio dura {dur_audio:.2f}s y el reel {total}s")
+    if mudos:
+        problemas.append(f"hay audio mudo (< -45 dB) en {mudos[:6]}s")
     if mb > MAX_MB:
         problemas.append(f"pesa {mb:.0f} MB y el límite de subida es {MAX_MB}")
     qa["problemas"] = problemas
