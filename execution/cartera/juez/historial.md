@@ -8,3 +8,4 @@
 2026-10-29 · 3niveles=-8.14% agresiva=-8.48% laboratorio=+0.38% dca=-0.01% · ninguna gana a HODL; apagar 3 niveles y Agresiva
 2026-10-29 · 3niveles=-9.08% agresiva=-9.21% laboratorio=+0.26% dca=-0.01% torneo=sin datos · solo Laboratorio gana, 1 día; apagar 3 niveles y Agresiva
 2026-10-29 · 3niveles=-9.22% agresiva=-9.20% laboratorio=-0.32% dca=-0.01% torneo(P2)=+0.25% · ninguna gana a USDT con historia; apagar 3 niveles y Agresiva
+2026-10-29 · 3niveles=-8.82% agresiva=-8.12% laboratorio=+0.66% dca=-0.01% torneo(P2)=+2.19% · Lab gana 2 días; apagar 3 niveles y Agresiva; récord torneo
