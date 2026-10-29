@@ -1,24 +1,24 @@
-# Carpeta cripto ficticia — 2026-10-29 04:07 UTC
+# Carpeta cripto ficticia — 2026-10-29 06:08 UTC
 
-**Total: 904.73 USD (-9.53%)** desde 2026-10-07 20:58 UTC · USDT libre 316.47 · comisiones 2.39 · 85 operaciones
+**Total: 909.17 USD (-9.08%)** desde 2026-10-07 20:58 UTC · USDT libre 316.47 · comisiones 2.39 · 85 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **904.73** |
+| **Esta carpeta** | **909.17** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 956.77 |
-| plan inicial sin tocar | 882.17 |
+| hodl btc | 961.87 |
+| plan inicial sin tocar | 890.12 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 286.72 | -4.33% | 63,673.5 |
-| ETH | conservador | 89.52 | -10.39% | 1,940.46 |
-| SOL | medio | 59.88 | -14.37% | 95.2922 |
-| BNB | conservador | 48.33 | -3.24% | 582.173 |
-| LINK | medio | 33.97 | -15.00% | 10.9609 |
-| XRP | medio | 27.12 | -9.52% | 1.16653 |
-| LTC | medio | 21.52 | -13.82% | 54.243 |
-| TAO | medio | 21.20 | -15.11% | 241.6 |
+| BTC | conservador | 288.25 | -3.82% | 63,673.5 |
+| ETH | conservador | 90.14 | -9.77% | 1,940.46 |
+| SOL | medio | 60.38 | -13.66% | 95.2922 |
+| BNB | conservador | 48.85 | -2.20% | 582.173 |
+| LINK | medio | 34.41 | -13.88% | 10.9609 |
+| XRP | medio | 27.39 | -8.62% | 1.16653 |
+| LTC | medio | 21.80 | -12.71% | 54.243 |
+| TAO | medio | 21.47 | -14.04% | 241.6 |
 
 ## Últimas operaciones
 
