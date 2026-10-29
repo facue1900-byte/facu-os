@@ -1,23 +1,23 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-29 18:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-29 19:32 UTC
 
-**Total: 918.79 USD (-8.12%)** desde 2026-10-07 23:06 UTC · USDT libre 133.51 · comisiones 29.57 · 221 operaciones
+**Total: 920.36 USD (-7.96%)** desde 2026-10-07 23:06 UTC · USDT libre 283.71 · comisiones 29.72 · 222 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **918.79** |
+| **Esta carpeta** | **920.36** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 968.72 |
+| hodl btc | 972.18 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 201.58 | +0.89% | 77,907.5 |
-| ETH | trading | 201.09 | +0.64% | 2,260.57 |
-| ENA | trading | 150.21 | +0.24% | 0.20691 |
-| BNB | trading | 150.09 | +0.16% | 723.031 |
-| HYPE | trading | 82.31 | +9.86% | 92.853 |
+| BTC | trading | 202.30 | +1.25% | 77,907.5 |
+| ETH | trading | 201.85 | +1.03% | 2,260.57 |
+| BNB | trading | 150.62 | +0.51% | 723.031 |
+| HYPE | trading | 81.88 | +9.28% | 92.853 |
 
 ## Últimas operaciones
 
+- 2026-10-29 19:32 UTC · venta ENA 150.35 USD a 0.2095 — Invalidación de momentum cumplida (fijada 18:31): 4 h cerró roja (-2,24%) con 24 h en 0,0% (< +5%), volumen 2,1x en la caída. La tesis murió
 - 2026-10-29 15:09 UTC · venta HYPE 80.92 USD a 92.9988 — Toma de ganancia +8% en 92.9988: vende 50% de lo que quedaba.
 - 2026-10-29 14:48 UTC · compra ENA 150.00 USD a 0.2088 — Momentum 24 h: ENA +7,72% en 24 h, 4 h +3,0% y subiendo, 1 h +1,55% (no estirada), volumen 4 h 1,79x, 42,9 M/día, a -3,37% del máximo de 48 
 - 2026-10-29 12:39 UTC · compra BNB 150.00 USD a 741.57 — Rebote en soporte: BNB (205 M/día) tocó el mínimo de 48 h (738,30) en la vela de 11:00 tras venta con volumen 4,36x; la vela de 12:00 hizo m
@@ -27,6 +27,5 @@
 - 2026-10-29 04:32 UTC · compra ETH 200.00 USD a 2,311.89 — Rebote en soporte: ETH tocó el mínimo de 48 h (2.293) a las 02:00 y las velas de 03:00 y 04:00 hicieron mínimos más altos (2.302 / 2.305); 1
 - 2026-10-29 04:32 UTC · compra BTC 200.00 USD a 79,905.1 — Rebote en soporte: BTC tocó el mínimo de 48 h (79.710) a las 02:00 y las velas de 03:00 y 04:00 hicieron mínimos más altos (79.764 / 79.782)
 - 2026-10-29 02:29 UTC · venta PEPE 194.70 USD a 4.921e-06 — Stop automático en 4.921e-06 (entrada 5.05e-06, máximo 5.18e-06).
-- 2026-10-28 20:32 UTC · compra PEPE 200.00 USD a 5.05e-06 — Momentum 24 h: PEPE +11,78% en 24 h, 4 h +3,5% y subiendo, 1 h +1,21% (no estirada < 4%), volumen 4 h 2,64x (>= 1,5x, la condición que fijé 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

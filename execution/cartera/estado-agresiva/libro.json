@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 133.50676348972758,
+  "usdt": 283.70878180869306,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793298660000
+      "vigilado_hasta": 1793302260000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793298660000
+      "vigilado_hasta": 1793302260000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -72,7 +72,7 @@
       "tomas_hechas": [
         8.0
       ],
-      "vigilado_hasta": 1793298660000
+      "vigilado_hasta": 1793302260000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -94,32 +94,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793298660000
-    },
-    "ENAUSDT": {
-      "nivel": "trading",
-      "cantidad": 717.6724137931034,
-      "entrada": 0.2088,
-      "maximo": 0.2178,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793298660000
+      "vigilado_hasta": 1793302260000
     }
   },
-  "comisiones_usd": 29.567862999999956,
+  "comisiones_usd": 29.718214999999958,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2772,6 +2750,18 @@
       "comision": 0.080919,
       "motivo": "Toma de ganancia +8% en 92.9988: vende 50% de lo que quedaba.",
       "resultado_pct": 8.0
+    },
+    {
+      "ms": 1793302341179,
+      "fecha": "2026-10-29 19:32 UTC",
+      "lado": "sell",
+      "par": "ENAUSDT",
+      "cantidad": 717.6724137931034,
+      "precio": 0.2095,
+      "usd": 150.3524,
+      "comision": 0.150352,
+      "motivo": "Invalidación de momentum cumplida (fijada 18:31): 4 h cerró roja (-2,24%) con 24 h en 0,0% (< +5%), volumen 2,1x en la caída. La tesis murió; salgo antes del stop 0,2069 y libero caja.",
+      "resultado_pct": 0.34
     }
   ]
 }
