@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 316.47475025302344,
+  "usdt": 276.47475025302344,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793283180000
+      "vigilado_hasta": 1793290380000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793283180000
+      "vigilado_hasta": 1793290380000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793283180000
+      "vigilado_hasta": 1793290380000
     },
     "SOLUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793283180000
+      "vigilado_hasta": 1793290380000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -102,7 +102,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793283180000
+      "vigilado_hasta": 1793290380000
     },
     "LINKUSDT": {
       "nivel": "medio",
@@ -120,7 +120,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793283180000
+      "vigilado_hasta": 1793290380000
     },
     "TAOUSDT": {
       "nivel": "medio",
@@ -138,7 +138,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793283180000
+      "vigilado_hasta": 1793290380000
     },
     "LTCUSDT": {
       "nivel": "medio",
@@ -156,10 +156,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793283180000
+      "vigilado_hasta": 1793290380000
+    },
+    "HYPEUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 0.41491018585816636,
+      "entrada": 96.31,
+      "maximo": 96.31,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793290560000
     }
   },
-  "comisiones_usd": 2.3913280000000006,
+  "comisiones_usd": 2.4313280000000006,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1180,6 +1202,18 @@
       "comision": 0.024575,
       "motivo": "Stop automático en 0.92168 (entrada 1.124, máximo 1.1468).",
       "resultado_pct": -18.0
+    },
+    {
+      "ms": 1793290512236,
+      "fecha": "2026-10-29 16:15 UTC",
+      "lado": "buy",
+      "par": "HYPEUSDT",
+      "nivel": "riesgo",
+      "cantidad": 0.41491018585816636,
+      "precio": 96.31,
+      "usd": 40.0,
+      "comision": 0.04,
+      "motivo": "Tesis fijada a las 12:05 y 14:05: HYPE dos ciclos seguidos a <5% del máximo de 90 d (4,6% -> 0,0%), 7d +24,2%, 30d +11,7%, 101,7 M/día, y por primera vez en 70 ciclos BTC acompaña (7d +0,3%, a 6,5% del máximo). Entrada chica (~4,3%, bajo el tope de 5%) porque el 1d +19,2% es una vela grande y compro en el máximo. Invalida: pierde el 15% (stop) o el trailing 15%; si en 2-3 ciclos vuelve a >10% del máximo con BTC 7d otra vez negativo, se reconsidera."
     }
   ]
 }
