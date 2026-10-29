@@ -6,3 +6,4 @@
 2026-10-28 · 3niveles=-8.53% agresiva=-8.31% laboratorio=-0.34% dca=-0.01% · ninguna gana; apagar 3 niveles y Agresiva, Lab/DCA recién arrancan
 2026-10-28 · 3niveles=-8.68% agresiva=-8.62% laboratorio=-0.54% dca=-0.01% · ninguna gana; apagar 3 niveles y Agresiva, Lab/DCA recién arrancan
 2026-10-29 · 3niveles=-8.14% agresiva=-8.48% laboratorio=+0.38% dca=-0.01% · ninguna gana a HODL; apagar 3 niveles y Agresiva
+2026-10-29 · 3niveles=-9.08% agresiva=-9.21% laboratorio=+0.26% dca=-0.01% torneo=sin datos · solo Laboratorio gana, 1 día; apagar 3 niveles y Agresiva
