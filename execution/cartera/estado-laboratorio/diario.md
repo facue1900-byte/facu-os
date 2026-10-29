@@ -105,3 +105,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-29 20:19 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h -1.18, var_4h -1.1) pero ningun par cumple var_24h>=3 y var_4h>0 con vol/vs_max (PARTIU var_4h 24 pero var_1h -3.99, vs_max -12.3; PEPE var_4h -3.34). Vendidos ENA y UNI por tendencia rota. HYPE sigue (var_24h 15.45>0, <48 h). Me quedo en USDT.
 
+## 2026-10-29 22:16 UTC — nota
+[v1] Sin entrada: filtro BTC cortado (var_24h -3.19 < -2, var_4h -2.7 < -1.5), no se abre nada. HYPE sigue: var_24h 13.64>0, ~10 h de 48, sin salida por reglas. Me quedo en USDT.
+
