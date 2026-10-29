@@ -4,35 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 555.5474072941407,
+  "usdt": 752.8877726536234,
   "posiciones": {
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.0025004661780036568,
-      "entrada": 79905.1,
-      "maximo": 81971.0,
-      "reglas": {
-        "stop": 2.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793309460000
-    },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.5780328559393428,
       "entrada": 94.96,
-      "maximo": 94.96,
+      "maximo": 95.21,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793309580000
+      "vigilado_hasta": 1793313060000
     }
   },
-  "comisiones_usd": 30.290475999999956,
+  "comisiones_usd": 30.488013999999957,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2764,6 +2742,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: HYPE +16,9% en 24 h, 4 h +0,47% y la 1 h +2,53% (no estirada), volumen 4 h 2,55x, 147 M/día, a -2,8% del máximo de 48 h. Fuerza relativa: es la única grande verde en 24 h en una tarde de venta general. Re-entrada tras el trailing de 20:04 (92,85). 150 USD. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h roja con 24 h < +5%, o el stop; rota 21:3x del 30/10 si no llegó a +8%."
+    },
+    {
+      "ms": 1793313144679,
+      "fecha": "2026-10-29 22:32 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.0025004661780036568,
+      "precio": 79000.43,
+      "usd": 197.5379,
+      "comision": 0.197538,
+      "motivo": "Invalidación de rebote cumplida (fijada 21:32): la vela horaria de 21:00 cerró en 79.033 < 79.710, y la de 22:00 sigue ahí (79.032). 4 h -2,17% con 3,74x de volumen en la venta, a -3,5% del máximo de 48 h. La tesis de rebote murió; salgo antes del stop 77.907.",
+      "resultado_pct": -1.13
     }
   ]
 }
