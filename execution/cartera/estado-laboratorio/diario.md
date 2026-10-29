@@ -62,3 +62,6 @@ Capital ficticio: 1,000.00 USDT.
 
 [v1] tendencia rota: var_24h -0.6<0 y var_4h -2.18<-2 · invalida: n/a
 
+## 2026-10-29 10:19 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h -1.69, var_4h 0.19); unico par con var_24h>=3 es INIT (vol 0.7<1.3, vs_max -13.9). Vendido PEPE por tendencia rota (var_24h -0.6<0 y var_4h -2.18<-2). Me quedo en USDT.
+
