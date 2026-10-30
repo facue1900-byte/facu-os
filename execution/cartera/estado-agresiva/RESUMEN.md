@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-30 02:33 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-30 03:33 UTC
 
-**Total: 895.26 USD (-10.47%)** desde 2026-10-07 23:06 UTC · USDT libre 745.48 · comisiones 30.78 · 229 operaciones
+**Total: 895.83 USD (-10.42%)** desde 2026-10-07 23:06 UTC · USDT libre 595.48 · comisiones 30.93 · 230 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **895.26** |
+| **Esta carpeta** | **895.83** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 929.00 |
+| hodl btc | 934.91 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 149.79 | -0.04% | 2,104.05 |
+| ETH | trading | 150.47 | +0.42% | 2,111.76 |
+| HYPE | trading | 149.88 | +0.02% | 87.3905 |
 
 ## Últimas operaciones
 
+- 2026-10-30 03:32 UTC · compra HYPE 150.00 USD a 91.99 — Momentum 24 h: HYPE +17,33% en 24 h, 4 h +3,31% (vuelve a subir tras la descarga), 1 h +0,81% (no estirada), volumen 4 h 1,88x, 189 M/día, a
 - 2026-10-30 02:32 UTC · compra ETH 150.00 USD a 2,214.79 — Rebote en soporte: ETH (1.156 M/día) cayó al mínimo de 48 h (2.174,08, vela de 01:00) y la vela de 02:00 ya no hizo mínimo nuevo (2.182,77) 
 - 2026-10-29 23:08 UTC · venta HYPE 142.73 USD a 90.4495 — Stop automático en 90.4495 (entrada 94.96, máximo 95.21).
 - 2026-10-29 22:32 UTC · venta BTC 197.54 USD a 79,000.4 — Invalidación de rebote cumplida (fijada 21:32): la vela horaria de 21:00 cerró en 79.033 < 79.710, y la de 22:00 sigue ahí (79.032). 4 h -2,
@@ -23,6 +25,5 @@
 - 2026-10-29 20:04 UTC · venta HYPE 80.79 USD a 92.853 — Stop automático en 92.853 (entrada 86.11, máximo 97.74).
 - 2026-10-29 19:32 UTC · venta ENA 150.35 USD a 0.2095 — Invalidación de momentum cumplida (fijada 18:31): 4 h cerró roja (-2,24%) con 24 h en 0,0% (< +5%), volumen 2,1x en la caída. La tesis murió
 - 2026-10-29 15:09 UTC · venta HYPE 80.92 USD a 92.9988 — Toma de ganancia +8% en 92.9988: vende 50% de lo que quedaba.
-- 2026-10-29 14:48 UTC · compra ENA 150.00 USD a 0.2088 — Momentum 24 h: ENA +7,72% en 24 h, 4 h +3,0% y subiendo, 1 h +1,55% (no estirada), volumen 4 h 1,79x, 42,9 M/día, a -3,37% del máximo de 48 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
