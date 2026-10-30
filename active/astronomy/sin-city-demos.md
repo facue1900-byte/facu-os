@@ -83,3 +83,9 @@ No se pudieron (lo hace Facu o falta un dato):
   trae el texto de "si no es lo que esperabas", que es plantilla). La cuenta sigue pausada y la pregunta de Rowen (21/10)
   sobre cuál cuenta conservar, sin responder.
 - El seguimiento de la primera tanda vencía el 29/10 y no se hizo.
+
+## Decisiones de Facu (30/10)
+- **Defora: EN PAUSA.** Facu quiere definir primero si ese sello los representa. No contestar nada hasta que diga.
+- **Trackstack: se queda thesincitysound@gmail.com.** Borrador de respuesta a Rowen en el hilo, en studio@ (30/10):
+  pide cerrar studio@ y pasar el historial de envíos (Catch & Release, Nervous, Trick) a thesincitysound@, o poder leer
+  las respuestas antes del cierre. 🔴 Sin enviar: espera OK de Facu.
