@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793340540000
+      "vigilado_hasta": 1793347500000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793340540000
+      "vigilado_hasta": 1793347500000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793340540000
+      "vigilado_hasta": 1793347500000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793340540000
+      "vigilado_hasta": 1793347500000
     },
     "HYPEUSDT": {
       "nivel": "riesgo",
@@ -106,7 +106,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793340540000
+      "vigilado_hasta": 1793347500000
     }
   },
   "comisiones_usd": 2.5626820000000006,
