@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793341860000
+      "vigilado_hasta": 1793345460000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.6289814110229373,
       "entrada": 91.99,
-      "maximo": 93.82,
+      "maximo": 94.01,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793341860000
+      "vigilado_hasta": 1793345460000
     }
   },
   "comisiones_usd": 30.930745999999953,
