@@ -111,7 +111,7 @@ No lo dejes para el final.
         "primero_sin": "enviados-ultimas.csv",
         "texto": """Hola{nombre},
 
-{Faltan} para OBSESSION: LA fiesta de Halloween, el sábado 31 de octubre en Palacio Alsina.
+{Faltan}: OBSESSION, LA fiesta de Halloween, el sábado 31 de octubre en Palacio Alsina.
 
 Se agotó la Preventa 1 y el precio ya subió. Cada tanda que se termina, sube de nuevo.
 
@@ -130,7 +130,8 @@ def faltan(hoy=None):
     n = (EVENTO - (hoy or date.today())).days
     if n < 1:
         sys.exit(f"El evento es el {EVENTO:%d/%m}: faltan {n} días. Frenado.")
-    return "falta 1 día" if n == 1 else f"faltan {n} días"
+    # 30/10: la víspera dice "es mañana" (pedido de Facu), no "falta 1 día".
+    return "es mañana" if n == 1 else f"faltan {n} días"
 
 
 NOMBRES_PROHIBIDOS = r"\b(puzzle|obsession|astronomy|gay|puto|trolo|cogid\w*|pija|concha|forro|boludo|pete)\b"
