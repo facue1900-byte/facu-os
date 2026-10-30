@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.06765878480578294,
       "entrada": 2214.79,
-      "maximo": 2259.02,
+      "maximo": 2262.49,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793370900000
+      "vigilado_hasta": 1793374920000
     },
     "TRXUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793370900000
+      "vigilado_hasta": 1793374920000
     }
   },
   "comisiones_usd": 31.22981399999995,
