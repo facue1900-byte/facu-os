@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 445.47732317410566,
+  "usdt": 594.3963440078919,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,29 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793359860000
-    },
-    "HYPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.6289814110229373,
-      "entrada": 91.99,
-      "maximo": 94.01,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793359860000
+      "vigilado_hasta": 1793364420000
     },
     "TRXUSDT": {
       "nivel": "trading",
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793359860000
+      "vigilado_hasta": 1793364420000
     }
   },
-  "comisiones_usd": 31.08074599999995,
+  "comisiones_usd": 31.22981399999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2846,6 +2824,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: TRX (205 M/día) bajó al mínimo de 48 h tras la descarga y dejó de caer: la vela de 10:00 no hizo mínimo nuevo, 1 h +1,68%, 4 h +0,48% (ya no cae), volumen 4 h 1,5x, a +2,95% del mínimo de 48 h. BTC -1,42% en 4 h: sin bloqueo. 150 USD. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: cierre horario debajo del mínimo de 48 h (~3% abajo de la entrada), o el stop; rota 10:3x del 31/10 si no llegó a +8%."
+    },
+    {
+      "ms": 1793364468460,
+      "fecha": "2026-10-30 12:47 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 1.6289814110229373,
+      "precio": 91.51,
+      "usd": 149.0681,
+      "comision": 0.149068,
+      "motivo": "Invalidación de la tesis de momentum: 24 h cayó a +2,24% (< +5%) con 4 h roja (-0,2%) y volumen 0,43x. La condición escrita en la entrada se cumplió: salgo y libero el lugar.",
+      "resultado_pct": -0.52
     }
   ]
 }

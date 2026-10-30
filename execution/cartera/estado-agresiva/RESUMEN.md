@@ -1,21 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-30 11:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-30 12:47 UTC
 
-**Total: 899.83 USD (-10.02%)** desde 2026-10-07 23:06 UTC · USDT libre 445.48 · comisiones 31.08 · 231 operaciones
+**Total: 892.04 USD (-10.80%)** desde 2026-10-07 23:06 UTC · USDT libre 594.40 · comisiones 31.23 · 232 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **899.83** |
+| **Esta carpeta** | **892.04** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 934.58 |
+| hodl btc | 929.83 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 152.18 | +1.55% | 2,146.07 |
-| HYPE | trading | 152.10 | +1.50% | 89.3095 |
-| TRX | trading | 150.07 | +0.15% | 0.323855 |
+| ETH | trading | 150.93 | +0.72% | 2,146.07 |
+| TRX | trading | 146.71 | -2.10% | 0.323855 |
 
 ## Últimas operaciones
 
+- 2026-10-30 12:47 UTC · venta HYPE 149.07 USD a 91.51 — Invalidación de la tesis de momentum: 24 h cayó a +2,24% (< +5%) con 4 h roja (-0,2%) y volumen 0,43x. La condición escrita en la entrada se
 - 2026-10-30 10:32 UTC · compra TRX 150.00 USD a 0.3387 — Rebote en soporte: TRX (205 M/día) bajó al mínimo de 48 h tras la descarga y dejó de caer: la vela de 10:00 no hizo mínimo nuevo, 1 h +1,68%
 - 2026-10-30 03:32 UTC · compra HYPE 150.00 USD a 91.99 — Momentum 24 h: HYPE +17,33% en 24 h, 4 h +3,31% (vuelve a subir tras la descarga), 1 h +0,81% (no estirada), volumen 4 h 1,88x, 189 M/día, a
 - 2026-10-30 02:32 UTC · compra ETH 150.00 USD a 2,214.79 — Rebote en soporte: ETH (1.156 M/día) cayó al mínimo de 48 h (2.174,08, vela de 01:00) y la vela de 02:00 ya no hizo mínimo nuevo (2.182,77) 
@@ -25,6 +25,5 @@
 - 2026-10-29 20:42 UTC · venta ETH 195.37 USD a 2,260.57 — Stop automático en 2,260.5725 (entrada 2,311.89, máximo 2,379.55).
 - 2026-10-29 20:32 UTC · venta BNB 146.10 USD a 723.031 — Stop automático en 723.03075 (entrada 741.57, máximo 754.29).
 - 2026-10-29 20:04 UTC · venta HYPE 80.79 USD a 92.853 — Stop automático en 92.853 (entrada 86.11, máximo 97.74).
-- 2026-10-29 19:32 UTC · venta ENA 150.35 USD a 0.2095 — Invalidación de momentum cumplida (fijada 18:31): 4 h cerró roja (-2,24%) con 24 h en 0,0% (< +5%), volumen 2,1x en la caída. La tesis murió
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
