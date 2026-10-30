@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.06765878480578294,
       "entrada": 2214.79,
-      "maximo": 2222.9,
+      "maximo": 2246.22,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793331060000
+      "vigilado_hasta": 1793334720000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.6289814110229373,
       "entrada": 91.99,
-      "maximo": 91.99,
+      "maximo": 93.08,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793331180000
+      "vigilado_hasta": 1793334720000
     }
   },
   "comisiones_usd": 30.930745999999953,
