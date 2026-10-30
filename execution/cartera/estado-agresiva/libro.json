@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 594.3963440078919,
+  "usdt": 739.3230614126749,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793395860000
-    },
-    "TRXUSDT": {
-      "nivel": "trading",
-      "cantidad": 442.4269264836138,
-      "entrada": 0.3387,
-      "maximo": 0.3409,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793395860000
+      "vigilado_hasta": 1793399460000
     }
   },
-  "comisiones_usd": 31.22981399999995,
+  "comisiones_usd": 31.37488599999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2836,6 +2814,18 @@
       "comision": 0.149068,
       "motivo": "Invalidación de la tesis de momentum: 24 h cayó a +2,24% (< +5%) con 4 h roja (-0,2%) y volumen 0,43x. La condición escrita en la entrada se cumplió: salgo y libero el lugar.",
       "resultado_pct": -0.52
+    },
+    {
+      "ms": 1793399528549,
+      "fecha": "2026-10-30 22:32 UTC",
+      "lado": "sell",
+      "par": "TRXUSDT",
+      "cantidad": 442.4269264836138,
+      "precio": 0.3279,
+      "usd": 145.0718,
+      "comision": 0.145072,
+      "motivo": "Invalidación del rebote en soporte: la vela horaria de 21:00 cerró en 0,3288 (< 0,329, el piso escrito en la entrada) y la de 22:00 sigue abajo (0,3281, a +0,15% del mínimo de 48 h, 4 h -0,55%, 0,15x). El soporte no sostuvo: salgo antes del stop y libero el lugar.",
+      "resultado_pct": -3.19
     }
   ]
 }
