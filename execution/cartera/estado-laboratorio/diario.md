@@ -108,3 +108,9 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-29 22:16 UTC — nota
 [v1] Sin entrada: filtro BTC cortado (var_24h -3.19 < -2, var_4h -2.7 < -1.5), no se abre nada. HYPE sigue: var_24h 13.64>0, ~10 h de 48, sin salida por reglas. Me quedo en USDT.
 
+## 2026-10-29 23:43 UTC — Stop HYPEUSDT (vigilante)
+101.04 USD a 89.9208 (+1.42%). Stop automático en 89.9208 (entrada 88.66, máximo 97.74).
+
+## 2026-10-30 00:16 UTC — nota
+[v1] Sin entrada: filtro BTC cortado (var_24h -4.18 < -2, var_4h -1.44). Stop automatico de HYPE salto a 89.9208 en la vigilancia (+1.42%). Sin posiciones abiertas. Me quedo en USDT.
+

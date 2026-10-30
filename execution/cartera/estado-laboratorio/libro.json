@@ -4,34 +4,9 @@
     "capital": 1000.0,
     "btc": 80841.96
   },
-  "usdt": 890.6329389868863,
-  "posiciones": {
-    "HYPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.1236214752988947,
-      "entrada": 88.66,
-      "maximo": 97.74,
-      "reglas": {
-        "stop": 7.0,
-        "trail": 8.0,
-        "tp": [
-          [
-            10.0,
-            0.5
-          ],
-          [
-            20.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [
-        10.0
-      ],
-      "vigilado_hasta": 1793312100000
-    }
-  },
-  "comisiones_usd": 1.497808,
+  "usdt": 991.5688440009872,
+  "posiciones": {},
+  "comisiones_usd": 1.598845,
   "operaciones": [
     {
       "ms": 1793153807285,
@@ -128,6 +103,18 @@
       "comision": 0.193597,
       "motivo": "[v1] tendencia rota: var_24h -2.26<0 y var_4h -3.96<-2 · invalida: n/a",
       "resultado_pct": -3.42
+    },
+    {
+      "ms": 1793317380000,
+      "fecha": "2026-10-29 23:43 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 1.1236214752988947,
+      "precio": 89.9208,
+      "usd": 101.0369,
+      "comision": 0.101037,
+      "motivo": "Stop automático en 89.9208 (entrada 88.66, máximo 97.74).",
+      "resultado_pct": 1.42
     }
   ]
 }
