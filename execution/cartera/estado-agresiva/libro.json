@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 595.4773231741057,
+  "usdt": 445.47732317410566,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793352660000
+      "vigilado_hasta": 1793356260000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793352660000
+      "vigilado_hasta": 1793356260000
+    },
+    "TRXUSDT": {
+      "nivel": "trading",
+      "cantidad": 442.4269264836138,
+      "entrada": 0.3387,
+      "maximo": 0.3387,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793356380000
     }
   },
-  "comisiones_usd": 30.930745999999953,
+  "comisiones_usd": 31.08074599999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2812,6 +2834,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: HYPE +17,33% en 24 h, 4 h +3,31% (vuelve a subir tras la descarga), 1 h +0,81% (no estirada), volumen 4 h 1,88x, 189 M/día, a -5,86% del máximo de 48 h. Fuerza relativa: la grande que más aguantó la venta general. Re-entrada tras el stop de 23:08 (90,45): la 4 h ya no es roja. 150 USD. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h roja con 24 h < +5%, o el stop; rota 03:3x del 31/10 si no llegó a +8%."
+    },
+    {
+      "ms": 1793356352649,
+      "fecha": "2026-10-30 10:32 UTC",
+      "lado": "buy",
+      "par": "TRXUSDT",
+      "nivel": "trading",
+      "cantidad": 442.4269264836138,
+      "precio": 0.3387,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: TRX (205 M/día) bajó al mínimo de 48 h tras la descarga y dejó de caer: la vela de 10:00 no hizo mínimo nuevo, 1 h +1,68%, 4 h +0,48% (ya no cae), volumen 4 h 1,5x, a +2,95% del mínimo de 48 h. BTC -1,42% en 4 h: sin bloqueo. 150 USD. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: cierre horario debajo del mínimo de 48 h (~3% abajo de la entrada), o el stop; rota 10:3x del 31/10 si no llegó a +8%."
     }
   ]
 }
