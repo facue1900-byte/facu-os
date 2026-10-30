@@ -1,42 +1,42 @@
-# Veredicto de las carpetas cripto — 2026-10-29 18:55 UTC
+# Veredicto de las carpetas cripto — 2026-10-30 00:55 UTC
 
-**En una línea:** 3 niveles (-8,82%) y Agresiva (-8,12%) siguen perdiendo contra USDT (0%) y HODL BTC (~-3,1%). Laboratorio (+0,66%) es la única con historia que le gana a los dos, pero lleva 2 días. La líder del Torneo es un HODL 50/50 (+2,19% en 16 h). Ninguna demuestra todavía que le gane a quedarse quieto.
+**En una línea:** ninguna carpeta le gana a quedarse en USDT (0%). La que menos pierde es la DCA BTC (-0,01% en su foto del 27/10; -0,39% al precio de hoy), seguida por el Laboratorio (-0,84%, pero +2,96 pp arriba de HODL BTC). 3 niveles (-11,51%) y Agresiva (-10,45%) siguen perdiendo contra USDT y contra HODL BTC. En el Torneo la "líder" es no hacer nada: 27 de 33 estrategias siguen en 1.000 sin operar y ninguna le gana a USDT.
 
 | Carpeta | Total | Desde inicio | vs HODL BTC | Ventana común | 7 días | Peor caída | Comisiones | Ops |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 3 niveles | 911.76 | -8.82% | -5.68 pp (HODL -3.15%) | -0.19% (HODL -0.16%) | -0.74% (HODL -0.40%) | -10.42% (HODL -6.10%) | 2.43 USD (2.8% de la pérdida) | 86 |
-| Agresiva | 918.79 | -8.12% | -4.99 pp (HODL -3.13%) | +0.76% (HODL -0.38%) | -1.79% (HODL -0.70%) | -9.70% (HODL -6.27%) | 29.57 USD (36.4% de la pérdida) | 221 |
-| Laboratorio | 1006.58 | +0.66% | +0.68 pp (HODL -0.02%) | +0.66% (HODL -0.02%) | falta (arrancó 27/10) | -0.87% (HODL -2.07%) | 1.11 USD (16.9% de la ganancia) | 6 |
+| 3 niveles | 884.94 | -11.51% | -5.28 pp (HODL -6.23%) | -3.13% (HODL -3.33%) | -3.88% (HODL -3.78%) | -12.08% (HODL -7.73%) | 2.54 USD (2.2% de la pérdida) | 89 |
+| Agresiva | 895.48 | -10.45% | -2.86 pp (HODL -7.59%) | -1.79% (HODL -4.98%) | -4.20% (HODL -5.44%) | -10.45% (HODL -9.33%) | 30.63 USD (29.3% de la pérdida) | 228 |
+| Laboratorio | 991.57 | -0.84% | +2.96 pp (HODL -3.80%) | -0.84% (HODL -3.80%) | falta (arrancó 27/10) | -2.35% (HODL -4.61%) | 1.60 USD (19.0% de la pérdida) | 9 |
 | DCA BTC | 999.90 | -0.01% | -0.02 pp (HODL +0.01%, al 27/10) | 0.00% (un solo snapshot) | falta (arrancó 27/10) | -0.01% (un solo snapshot) | 0.10 USD (toda la pérdida) | 1 |
-| Torneo — líder P2 HODL 50/50 BTC-ETH | 1021.92 | +2.19% (16 h) | +0.10 pp (P1 HODL BTC +2.09%) | falta (arrancó 29/10 00:00) | falta | -0.41% | 1.00 USD | 2 |
+| Torneo — líder P0 USDT quieto (empatada con 26 más en 1.000) | 1000.00 | 0.00% (24 h) | +2.6 pp (P1 HODL BTC -2.6%) | falta (arrancó 29/10 00:00) | falta | 0.00% | 0.00 USD | 0 |
 | 10.000 USD (Mac) | — | — | — | — | — | — | — | — |
 
 Notas de medición:
-- **Ventana común** = desde el 27/10 22:37 UTC. Base: último snapshot en o antes de ese momento (3 niveles 22:07, Agresiva 22:32, Laboratorio 22:37; DCA tiene un solo snapshot, 22:38). El Torneo arrancó después, no entra.
-- **7 días** = contra el último snapshot en o antes de 7 días antes del último (3 niveles 22/10 18:06, Agresiva 22/10 18:32).
-- **Frescura (ahora 18:50 UTC):** 3 niveles 18:07, Agresiva 18:32, Laboratorio 18:18 (todas < 1 h). DCA 27/10 22:38 (44 h; corre los lunes, límite 8 días). Torneo: `vivo.json` generado 16:41, última vela 16:00 (límite 8 h). **Todas corren.**
-- **Torneo:** 33 estrategias, 16 h de vida. Le ganan a USDT 4 de 33 (P2, P1, P3, P4); a USDT **y** a HODL BTC (P1, +2,09%) sólo 1 de 33 (P2). 29 siguen en 1.000 sin operar. El campo `hodl_btc` de `vivo.json` sigue sin coincidir con P1 (dice +0,53% contra +2,09%); tomé P1 como HODL. Conviene revisarlo.
-- **Torneo y la hora:** su foto es de las 16:00; las otras carpetas son de las 18:xx, y en ese rato BTC bajó (el HODL de 3 niveles pasó de 978,98 a 968,54 entre 16:15 y 18:07). No es comparable hora a hora.
-- **DCA:** su valor y su HODL son del 27/10 (no tiene snapshots entre cuotas); no refleja lo que se movió BTC desde entonces.
+- **Ventana común** = desde el 27/10 22:37 UTC. Base: último snapshot en o antes de ese momento (3 niveles 22:07, Agresiva 22:32, Laboratorio 22:37). DCA tiene un solo snapshot (22:38). El Torneo arrancó después, no entra.
+- **7 días** = contra el último snapshot en o antes de 7 días antes del último (3 niveles 23/10 00:06, Agresiva 23/10 00:32).
+- **Frescura (ahora 00:51 UTC):** 3 niveles 00:06, Agresiva 00:32, Laboratorio 00:16 (todas < 1 h). DCA 27/10 22:38 (50 h; corre los lunes, límite 8 días). Torneo: `vivo.json` generado 00:42, última vela 00:00 (límite 8 h). **Todas corren.**
+- **DCA a precio de hoy:** su foto es del 27/10 y no refleja que BTC bajó. Con el precio de BTC que implica el HODL del Laboratorio a las 00:16 (77.768, mismo BTC de inicio que la DCA), su cuota de 0,0012356 BTC vale 96,09 → total **996,09 (-0,39%)** contra HODL BTC -3,79%. Es cálculo, no el snapshot oficial; la tabla deja el oficial.
+- **Torneo:** 33 estrategias, 24 h de vida. Le ganan a USDT **0 de 33**; a HODL BTC (P1, -2,6%) 30 de 33 — pero 27 de esas 30 es porque no operaron. Las únicas que operaron y le ganan a HODL: P4 60/40 (-1,6%) y L1/L1N (-1,4%). Mercado según el torneo: "BTC arriba de la media 200, bajando 30 d".
 - **La carpeta de 10.000 USD** vive en la Mac de Facu: desde la nube no se ve y no se juzga.
 - Peor caída sobre `total_usd` del `historial.csv` (capital inicial como primer máximo); HODL BTC con su propia columna. Comisiones y ops del `libro.json` (la suma por operación coincide con `comisiones_usd` en las cuatro).
-- Historial del Torneo para el récord: armado con las 3 versiones de `vivo.json` en git (08:41, 12:45, 16:41).
 
 ## Qué pasó desde ayer
 
-- **3 niveles:** +0,03% en 24 h (911,50 → 911,76), con BTC plano-bajista. Una operación: compra de HYPE por 40 USD (16:15). 276 USD en USDT. -9,4% desde su máximo de 1.006,50.
-- **Agresiva:** +0,55% en 24 h (913,77 → 918,79). Diez operaciones: dos salidas de PEPE en pérdida (02:29 -2,55%, 08:32 -3,54%), entradas en BTC y ETH (04:32), HYPE (11:33), BNB (12:39) y ENA (14:48), y toma de ganancia +8% en la mitad de HYPE (15:09). Comisiones 29,57 USD: más de un tercio de lo que pierde. En la ventana común es la que mejor anda de las viejas (+0,76% contra -0,38% de HODL).
-- **Laboratorio:** +1,21% en 24 h (994,59 → 1.006,58). Vendió PEPE con -1,2% (10:18), compró HYPE (12:18), UNI (14:37) y ENA (16:24), y tomó +10% en la mitad de HYPE (16:37). Hizo récord de 1.015,43 a las 16:24 y bajó a 1.006,58.
+- **3 niveles:** -3,67% en 24 h (918,62 → 884,94), con HODL BTC -3,76%. Tres stops automáticos a la noche: TAO -16,9% (20:42), LINK -18,0% y SOL -18,0% (20:47). Antes compró HYPE por 40 USD (16:15). 387 USD en USDT, -12,1% desde su máximo de 1.006,50.
+- **Agresiva:** -2,15% en 24 h (915,15 → 895,48), con HODL BTC -5,29%. Dieciséis operaciones: entró y salió de PEPE, BTC, ETH, BNB, ENA y HYPE dos veces; ganó en HYPE (+8,0% y +7,8%) y perdió en casi todo lo demás (PEPE -2,6% y -3,5%, BNB -2,5%, ETH -2,2%, BTC -1,1%, HYPE -4,75% en el último stop de 23:08). Quedó 100% en USDT. Las comisiones ya son 30,63 USD: casi un tercio de lo que pierde.
+- **Laboratorio:** -1,02% en 24 h (1.001,80 → 991,57), con HODL BTC -4,28%. Vendió PEPE (-1,2%), compró HYPE, UNI y ENA; tomó +10% en la mitad de HYPE (16:37), salió de ENA (-4,4%) y UNI (-3,4%) a las 20:18 y el resto de HYPE por stop con +1,4% (23:43). Quedó 100% en USDT. Ayer hizo récord de 1.015,43; hoy está 2,35% abajo de ese máximo.
 - **DCA BTC:** sin cambios; próxima cuota el lunes 02/11.
-- **Torneo:** las cuatro que compraron BTC/ETH de entrada (P1–P4) subieron a récord con la vela de las 16:00; el resto sigue sin operar.
-- **Alarmas:** **récord en el Torneo** (P2 1.021,92, también P1, P3 y P4 en su máximo) → mail mandado a facue1900@gmail.com. Laboratorio también tocó récord hoy (16:24) pero ya se había avisado hoy (`alertas.json`), no se repite; y su último snapshot ya no es el máximo. Ninguna carpeta ni estrategia cerca de +20% (la mejor, +2,19%).
+- **Torneo:** BTC y ETH bajaron y arrastraron a las cuatro que compraron de entrada (P1–P4, ayer en récord) a entre -1,6% y -3,4%. L1/L1N operaron dos veces y van -1,4%. El resto sigue sin operar.
+- **Alarmas:** ninguna. Ninguna carpeta ni estrategia está en su máximo **y** arriba del capital inicial, y la mejor está en 0%, lejos de +20%. No se mandó mail.
 
 ## Recomendación
 
-- **3 niveles — apagar.** 21 días (≥14), -8,82% contra 0% de USDT y -3,15% de HODL BTC; en 7 días -0,74%, peor que HODL (-0,40%): no mejoró. Lo decide Facu.
-- **Agresiva — apagar.** 21 días, -8,12% contra 0% y -3,13% de HODL. En 7 días -1,79%, peor que HODL (-0,70%). 29,57 USD en comisiones en 221 operaciones: 3 de los 8 puntos que pierde. Lo único a su favor es la ventana común (+0,76%), dos días. Lo decide Facu.
-- **Laboratorio — seguir.** +0,66%, arriba de USDT y de HODL BTC (+0,68 pp). Dos días y seis operaciones; no hay con qué juzgarlo.
+- **3 niveles — apagar.** 22 días (≥14), -11,51% contra 0% de USDT y -6,23% de HODL BTC; en 7 días -3,88%, peor que HODL (-3,78%): no mejoró. Lo decide Facu.
+- **Agresiva — apagar.** 22 días, -10,45% contra 0% y -7,59% de HODL. En 7 días perdió 4,20% más (le ganó a HODL, -5,44%, pero sigue perdiendo plata): no mejoró. 30,63 USD en comisiones en 228 operaciones. Lo decide Facu.
+- **Laboratorio — seguir.** -0,84%, abajo de USDT pero +2,96 pp arriba de HODL BTC, con una caída máxima (-2,35%) que es la mitad de la de HODL (-4,61%). Dos días y nueve operaciones; no hay con qué juzgarlo.
 - **DCA BTC — seguir.** Una cuota; es la referencia barata contra la que se miden las otras.
-- **Torneo — seguir.** 16 h de vida; la líder es un HODL, no una estrategia activa.
+- **Torneo — seguir.** 24 h de vida; la que va primera es no operar.
 
-**¿Key real de Binance?** Hoy, claramente no (la sección formal arranca el 07/11/2026). Las dos carpetas con 21 días pierden contra USDT y contra HODL BTC, y ninguna otra tiene más de dos días.
+**¿Key real de Binance?** No (la sección formal arranca el 07/11/2026). Ninguna carpeta le gana a USDT, y las dos con 22 días pierden más de 10%.
+
+JUEZ_OK lider=DCA BTC mejor_que_usdt=0 apagar=3 niveles,Agresiva avisos=0
