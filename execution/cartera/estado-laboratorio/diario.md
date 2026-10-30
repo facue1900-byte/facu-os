@@ -135,3 +135,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-30 14:44 UTC — nota
 [v1] Sin entrada: filtro BTC cortado (var_24h -5.16 < -2), no se abre nada. Vigilancia sin disparos, sin posiciones abiertas. Me quedo en USDT.
 
+## 2026-10-30 16:33 UTC — nota
+[v1] Sin entrada: filtro BTC cortado (var_24h -4.64 < -2), no se abre nada. Vigilancia sin disparos, sin posiciones abiertas. Me quedo en USDT.
+
