@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 387.2374756904632,
+  "usdt": 407.6964961904632,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793318700000
+      "vigilado_hasta": 1793325900000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793318700000
+      "vigilado_hasta": 1793325900000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793318700000
+      "vigilado_hasta": 1793325900000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -84,25 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793318700000
-    },
-    "LTCUSDT": {
-      "nivel": "medio",
-      "cantidad": 0.37755102040816324,
-      "entrada": 66.15,
-      "maximo": 66.33,
-      "reglas": {
-        "stop": 18.0,
-        "trail": 20.0,
-        "tp": [
-          [
-            50.0,
-            0.33
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793318700000
+      "vigilado_hasta": 1793325900000
     },
     "HYPEUSDT": {
       "nivel": "riesgo",
@@ -124,10 +106,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793318700000
+      "vigilado_hasta": 1793325900000
     }
   },
-  "comisiones_usd": 2.5422020000000005,
+  "comisiones_usd": 2.5626820000000006,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1196,6 +1178,18 @@
       "comision": 0.020764,
       "motivo": "Stop automático en 241.6 (entrada 290.6, máximo 302).",
       "resultado_pct": -16.86
+    },
+    {
+      "ms": 1793319480000,
+      "fecha": "2026-10-30 00:18 UTC",
+      "lado": "sell",
+      "par": "LTCUSDT",
+      "cantidad": 0.37755102040816324,
+      "precio": 54.24300000000001,
+      "usd": 20.4795,
+      "comision": 0.02048,
+      "motivo": "Stop automático en 54.243 (entrada 66.15, máximo 66.33).",
+      "resultado_pct": -18.0
     }
   ]
 }

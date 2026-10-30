@@ -1,25 +1,25 @@
-# Carpeta cripto ficticia — 2026-10-30 00:06 UTC
+# Carpeta cripto ficticia — 2026-10-30 02:06 UTC
 
-**Total: 884.94 USD (-11.51%)** desde 2026-10-07 20:58 UTC · USDT libre 387.24 · comisiones 2.54 · 89 operaciones
+**Total: 876.28 USD (-12.37%)** desde 2026-10-07 20:58 UTC · USDT libre 407.70 · comisiones 2.56 · 90 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **884.94** |
+| **Esta carpeta** | **876.28** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 937.74 |
-| plan inicial sin tocar | 850.72 |
+| hodl btc | 918.41 |
+| plan inicial sin tocar | 838.56 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 281.02 | -6.23% | 63,673.5 |
-| ETH | conservador | 87.50 | -12.42% | 1,940.46 |
-| BNB | conservador | 45.21 | -9.49% | 582.173 |
-| HYPE | riesgo | 37.16 | -7.00% | 83.079 |
-| XRP | medio | 26.07 | -13.00% | 1.16653 |
-| LTC | medio | 20.74 | -16.95% | 54.243 |
+| BTC | conservador | 275.23 | -8.17% | 63,673.5 |
+| ETH | conservador | 85.06 | -14.85% | 1,940.46 |
+| BNB | conservador | 45.68 | -8.56% | 582.173 |
+| HYPE | riesgo | 37.09 | -7.19% | 83.079 |
+| XRP | medio | 25.52 | -14.84% | 1.16653 |
 
 ## Últimas operaciones
 
+- 2026-10-30 00:18 UTC · venta LTC 20.48 USD a 54.243 — Stop automático en 54.243 (entrada 66.15, máximo 66.33).
 - 2026-10-29 20:42 UTC · venta TAO 20.76 USD a 241.6 — Stop automático en 241.6 (entrada 290.6, máximo 302).
 - 2026-10-29 20:47 UTC · venta SOL 57.34 USD a 95.2922 — Stop automático en 95.2922 (entrada 116.21, máximo 116.81).
 - 2026-10-29 20:47 UTC · venta LINK 32.77 USD a 10.9609 — Stop automático en 10.96094 (entrada 13.367, máximo 13.506).
@@ -29,6 +29,5 @@
 - 2026-10-22 08:02 UTC · venta AVAX 32.77 USD a 9.20942 — Stop automático en 9.20942 (entrada 11.231, máximo 11.261).
 - 2026-10-22 06:07 UTC · venta WLD 35.23 USD a 0.5457 — Venta por tesis, no por stop: la invalidación declarada al comprar (00:05 del 21/10) era alejarse >10% del máximo de 90 d; hoy está a 12,1% 
 - 2026-10-22 06:07 UTC · venta CRV 31.36 USD a 0.372 — Venta por tesis, no por stop: la invalidación declarada al comprar (00:05 del 22/10) era alejarse >10% del máximo de 90 d; hoy está a 10,6% 
-- 2026-10-22 04:06 UTC · venta INJ 34.45 USD a 8.182 — Venta por tesis, no por stop: la invalidación declarada al comprar (04:05 del 21/10) era alejarse >10% del máximo de 90 d; hoy está a 13,1% 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
