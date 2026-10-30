@@ -1,6 +1,6 @@
 """Manda el mail de early birds de OBSESSION a la base de Puzzle.
 
---campana:      cuál mail (early, preventa1, ultimas, aumento).
+--campana:      cuál mail (early, preventa1, ultimas, aumento, repaso).
 --sync-bajas:   antes que nada, lee de puzzle.bsas las respuestas "baja" y los rebotes
                 ("address not found") y los suma a bajas.txt / rebotes.txt. Obligatorio: cada una tiene su log.
 Sin flags:      manda UNA prueba a Facu. No toca a nadie de la base.
@@ -123,15 +123,19 @@ No lo dejes para el final.
 """ + PIE,
     },
 }
+# 30/10 noche: Facu pidió volver a mandarle a toda la base, 450 por día, hasta la fiesta.
+# Mismo mail que "aumento" con log propio; primero los que lo recibieron hace más tiempo.
+CAMPANAS["repaso"] = dict(CAMPANAS["aumento"], log="enviados-repaso.csv", primero_sin=None,
+                          orden_por="enviados-aumento.csv")
 
 
 def faltan(hoy=None):
     """'faltan 10 días' / 'falta 1 día'. Frena si el evento ya pasó o es hoy."""
     n = (EVENTO - (hoy or date.today())).days
-    if n < 1:
-        sys.exit(f"El evento es el {EVENTO:%d/%m}: faltan {n} días. Frenado.")
-    # 30/10: la víspera dice "es mañana" (pedido de Facu), no "falta 1 día".
-    return "es mañana" if n == 1 else f"faltan {n} días"
+    if n < 0:
+        sys.exit(f"El evento fue el {EVENTO:%d/%m}. Frenado.")
+    # 30/10: la víspera dice "es mañana" (pedido de Facu) y el día del evento, "es hoy".
+    return "es hoy" if n == 0 else "es mañana" if n == 1 else f"faltan {n} días"
 
 
 NOMBRES_PROHIBIDOS = r"\b(puzzle|obsession|astronomy|gay|puto|trolo|cogid\w*|pija|concha|forro|boludo|pete)\b"
@@ -200,7 +204,13 @@ def leer_lista(archivo):
     return {l.strip().lower() for l in archivo.read_text().splitlines() if l.strip()}
 
 
-def destinatarios(log, primero_sin=None):
+def recibido(log):
+    """email → cuándo le llegó en esa campaña ('' si nunca)."""
+    with log.open() as f:
+        return {row["email"]: row["enviado"] for row in csv.DictReader(f)}
+
+
+def destinatarios(log, primero_sin=None, orden_por=None):
     personas = leer_base()
     enviados, baja, rebote = ya_enviados(log), leer_lista(BAJAS), leer_lista(REBOTES)
     afuera = {"menor de 18": 0, "baja": 0, "rebotó": 0, "ya enviado": 0, "mail inválido": 0}
@@ -226,6 +236,9 @@ def destinatarios(log, primero_sin=None):
         # sorted es estable: dentro de cada grupo se mantiene el orden por entradas.
         ya = ya_enviados(AQUI / primero_sin)
         lista.sort(key=lambda p: p["email"] in ya)
+    if orden_por:
+        cuando = recibido(AQUI / orden_por)
+        lista.sort(key=lambda p: cuando.get(p["email"], ""))
     return personas, lista, afuera
 
 
@@ -335,7 +348,7 @@ def main():
                     return
     if a.sync_bajas:
         sync_bajas(google_auth.gmail(a.cuenta).users().messages())
-    personas, lista, afuera = destinatarios(log, c.get("primero_sin"))
+    personas, lista, afuera = destinatarios(log, c.get("primero_sin"), c.get("orden_por"))
     print(f"Campaña: {a.campana} · asunto: {c['asunto'].format(faltan=faltan())}")
     print(f"Base: {len(personas)} · pendientes de envío: {len(lista)} · afuera: {afuera}")
     if a.contar:
