@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Chequeo diario de la pauta de Astronomy Academy — todos los días a las 11:00.
+
+  Corre `reporte_embudo.py --chequeo` (sólo lectura): ¿cada conjunto activo gastó ayer al
+  menos el 40% de su presupuesto?, ¿la web registra las visitas de los anuncios que van a
+  la web?, ¿el token de Instagram y el bot de comentarios andan?
+
+  Nació el 30/10/2026: el conjunto de los videos de José pasó a un público de ~65 mil
+  (sólo gente del Instagram + similar 1%) y un público chico puede dejar de gastar sin
+  que Meta avise. El reporte de los lunes llegaba tarde para eso.
+
+  Si está todo bien, NO avisa nada (no roba la pantalla). Si hay FALLA, sale con código 1
+  y correr.sh manda notificación + mail a Facu con la cola del log.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.chequeo-pauta.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.chequeo-pauta.plist
+  Probar ya:
+    launchctl start com.facu.chequeo-pauta && tail -20 ~/facu-os/data/logs/chequeo-pauta.log
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.chequeo-pauta</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>chequeo-pauta</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/active/astronomy/pauta/reporte_embudo.py --chequeo</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>11</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/chequeo-pauta.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/chequeo-pauta.log</string>
+</dict>
+</plist>
