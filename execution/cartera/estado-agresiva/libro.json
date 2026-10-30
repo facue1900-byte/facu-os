@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793356260000
+      "vigilado_hasta": 1793359860000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793356260000
+      "vigilado_hasta": 1793359860000
     },
     "TRXUSDT": {
       "nivel": "trading",
       "cantidad": 442.4269264836138,
       "entrada": 0.3387,
-      "maximo": 0.3387,
+      "maximo": 0.3409,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793356380000
+      "vigilado_hasta": 1793359860000
     }
   },
   "comisiones_usd": 31.08074599999995,
