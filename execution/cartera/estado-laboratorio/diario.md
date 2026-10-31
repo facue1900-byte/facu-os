@@ -171,3 +171,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-31 14:16 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.33, var_4h 0.11) pero ningun par cumple vs_max_48h>=-1.5 (mejor LINK -3.6) ni volumen_4h_vs_promedio>=1.3 (max 0.55 NEAR). Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-10-31 16:17 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 0.37, var_4h 0.11) pero ningun par cumple volumen_4h_vs_promedio>=1.3 (max ~0.46 NEAR) ni vs_max_48h>=-1.5. Sin posiciones, sin disparos. Me quedo en USDT.
+
