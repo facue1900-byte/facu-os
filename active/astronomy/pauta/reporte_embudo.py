@@ -192,19 +192,54 @@ def clientes(cli, a, b):
     order by n.primera""")
 
 
+def gasto_de_ayer(cli, avisos):
+    """Un conjunto activo que no gasta no avisa: Meta lo deja en ACTIVE y no lo muestra.
+    Pasa con un público chico (el de Instagram del 30/10 es ~65 mil). Mira AYER, el
+    último día cerrado, y se saltea los conjuntos creados hace menos de 2 días."""
+    fallos = []
+    ayer = (dt.datetime.now(AR) - dt.timedelta(days=1)).date().isoformat()
+    tres = (dt.datetime.now(AR) - dt.timedelta(days=3)).date().isoformat()
+    conjuntos = meta(cli, f"{CUENTA}/adsets", fields="name,daily_budget,created_time,optimization_goal",
+                     filtering=json.dumps([{"field": "effective_status", "operator": "IN", "value": ["ACTIVE"]}]), limit=100)
+    for c in conjuntos:
+        presupuesto = int(c.get("daily_budget") or 0) / 100
+        creado = dt.datetime.strptime(c["created_time"], "%Y-%m-%dT%H:%M:%S%z")
+        if not presupuesto or creado > dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=2):
+            continue
+        dia = meta(cli, f"{c['id']}/insights", fields="spend",
+                   time_range=json.dumps({"since": ayer, "until": ayer}))
+        gasto = float(dia[0]["spend"]) if dia else 0.0
+        print(f"Gasto de ayer ({ayer}) · {c['name'][:55]}: US${gasto:.2f} de US${presupuesto:.2f}")
+        if gasto < presupuesto * 0.4:
+            fallos.append(f"«{c['name']}» está ACTIVO y ayer gastó US${gasto:.2f} de US${presupuesto:.2f}: "
+                          "Meta no lo está mostrando (público chico, anuncio rechazado o tarjeta)")
+        if c.get("optimization_goal") == "CONVERSATIONS":
+            t = meta(cli, f"{c['id']}/insights", fields="spend,actions",
+                     time_range=json.dumps({"since": tres, "until": ayer}))
+            acc = {x["action_type"]: float(x["value"]) for x in (t[0].get("actions", []) if t else [])}
+            if t and float(t[0]["spend"]) >= presupuesto and not acc.get(CONV):
+                avisos.append(f"«{c['name']}» gastó US${float(t[0]['spend']):.2f} en 3 días y no trajo NINGÚN chat de WhatsApp")
+    return fallos
+
+
 def chequeo(cli):
     """Cada pieza que puede dejar de registrar sin que nadie lo note. Devuelve fallos."""
     fallos, avisos = [], []
-    activos = meta(cli, f"{CUENTA}/ads", fields="name,effective_status",
+    activos = meta(cli, f"{CUENTA}/ads", fields="name,effective_status,creative{object_story_spec,call_to_action,asset_feed_spec}",
                    filtering=json.dumps([{"field": "effective_status", "operator": "IN", "value": ["ACTIVE"]}]), limit=100)
     print(f"Anuncios activos en Meta: {len(activos)}")
     for x in activos:
         print(f"   · {x['name']}")
+    # Sólo los anuncios que mandan a la web dejan visitas. Desde el 09/10 todos van a
+    # WhatsApp y este chequeo daba FALLA todos los lunes: una alarma que siempre suena
+    # deja de mirarse (30/10/2026).
+    a_web = [x for x in activos if utm_de_anuncio(x.get("creative")) not in ("whatsapp", "-")]
     v = sql(cli, """select count(*) n, max(created_at) ultimo from lead_events
                     where utm_source='meta' and created_at > now() - interval '48 hours'""")[0]
-    print(f"Visitas de pauta (utm_source=meta) en 48 h: {v['n']} · última {v['ultimo']}")
-    if activos and not v["n"]:
-        fallos.append("hay anuncios activos y la web no registró NINGUNA visita de pauta en 48 h: el tracker o los links están rotos")
+    print(f"Visitas de pauta (utm_source=meta) en 48 h: {v['n']} · última {v['ultimo']} · anuncios activos a la web: {len(a_web)}")
+    if a_web and not v["n"]:
+        fallos.append("hay anuncios activos a la web y no se registró NINGUNA visita de pauta en 48 h: el tracker o los links están rotos")
+    fallos += gasto_de_ayer(cli, avisos)
     t = sql(cli, "select vence_en, renovado_en, array_length(media_ids,1) posts from instagram_cuenta where id=1")
     if not t:
         fallos.append("instagram_cuenta vacía: el bot de comentarios no tiene token")

@@ -8,6 +8,22 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-10-30 · FAIL ✓ · Pauta: el chequeo de los lunes daba FALLA siempre, y no miraba si se gastaba
+
+**Dónde:** `active/astronomy/pauta/reporte_embudo.py` (`chequeo`, nuevo `gasto_de_ayer`).
+
+**Qué pasó:** desde el 09/10 ningún anuncio activo manda a la web, pero el chequeo exigía visitas
+de pauta en 48 h con cualquier anuncio activo: FALLA todos los lunes, o sea ruido. Y al pasar los
+videos de José a un público de ~65 mil (30/10) no había nada que avisara si Meta dejaba de gastar.
+
+**Causa raíz:** el chequeo contaba anuncios activos, no anuncios activos *a la web*; y el gasto
+real nunca se medía contra el presupuesto.
+
+**Fix:** visitas sólo si hay anuncios activos con UTM web. Nuevo: cada conjunto activo (de más de
+2 días) tiene que haber gastado ayer ≥ 40% de su presupuesto, si no FALLA; conjunto de WhatsApp con
+3 días de gasto y 0 chats → AVISO. Probado con datos reales (OK) y con gasto 0 simulado (FALLA).
+Plist diario `com.facu.chequeo-pauta` (11:00) escrito; la instalación la hace Facu.
+
 ### 2026-10-21 · FAIL ✓ · Paseo: una factura pagaba dos débitos, y el extracto sin resumen no se podía leer
 
 **Dónde:** `cierre-mes-nordelta/scripts/extracto_a_movimientos.py` (`resolver_con_facturas`, `texto_pdf`).
