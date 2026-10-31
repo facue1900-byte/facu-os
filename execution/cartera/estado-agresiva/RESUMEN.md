@@ -1,19 +1,19 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-31 22:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-31 23:32 UTC
 
-**Total: 888.91 USD (-11.11%)** desde 2026-10-07 23:06 UTC · USDT libre 789.76 · comisiones 31.85 · 237 operaciones
+**Total: 887.85 USD (-11.22%)** desde 2026-10-07 23:06 UTC · USDT libre 887.85 · comisiones 31.94 · 238 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **888.91** |
+| **Esta carpeta** | **887.85** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 933.13 |
+| hodl btc | 931.73 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| LINK | trading | 99.15 | -0.75% | 11.3649 |
 
 ## Últimas operaciones
 
+- 2026-10-31 23:32 UTC · venta LINK 98.19 USD a 11.688 — Tesis invalidada según lo anotado: 4 h roja (-1,87%) y 24 h debajo de +5% (+1,95%), 1 h -0,79%. Salgo antes del stop por la condición escrit
 - 2026-10-31 19:32 UTC · compra LINK 100.00 USD a 11.892 — Momentum 24 h: LINK 24 h +6,76%, 4 h +2,66%, 1 h +1,05% (no estirada), 25 M/día, a -0,17% del máximo de 48 h. Volumen flojo (0,49x): por eso
 - 2026-10-31 19:32 UTC · venta NEAR 108.77 USD a 4.457 — Tesis invalidada según lo anotado en la entrada: 4 h roja (-0,47%) y 24 h de nuevo debajo de +5% (+2,62%), 1 h -1,17%. Salgo antes del stop,
 - 2026-10-31 16:32 UTC · compra NEAR 110.00 USD a 4.503 — Momentum 24 h: NEAR cumple la condición que dejé anotada a las 15:32 (24 h pasa +5%: +5,08%, 4 h sigue +1,49%, 1 h +0,69% no estirada), 75 M
@@ -23,6 +23,5 @@
 - 2026-10-30 10:32 UTC · compra TRX 150.00 USD a 0.3387 — Rebote en soporte: TRX (205 M/día) bajó al mínimo de 48 h tras la descarga y dejó de caer: la vela de 10:00 no hizo mínimo nuevo, 1 h +1,68%
 - 2026-10-30 03:32 UTC · compra HYPE 150.00 USD a 91.99 — Momentum 24 h: HYPE +17,33% en 24 h, 4 h +3,31% (vuelve a subir tras la descarga), 1 h +0,81% (no estirada), volumen 4 h 1,88x, 189 M/día, a
 - 2026-10-30 02:32 UTC · compra ETH 150.00 USD a 2,214.79 — Rebote en soporte: ETH (1.156 M/día) cayó al mínimo de 48 h (2.174,08, vela de 01:00) y la vela de 02:00 ya no hizo mínimo nuevo (2.182,77) 
-- 2026-10-29 23:08 UTC · venta HYPE 142.73 USD a 90.4495 — Stop automático en 90.4495 (entrada 94.96, máximo 95.21).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

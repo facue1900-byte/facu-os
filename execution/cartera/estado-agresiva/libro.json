@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 789.756919934217,
-  "posiciones": {
-    "LINKUSDT": {
-      "nivel": "trading",
-      "cantidad": 8.400605449041374,
-      "entrada": 11.892,
-      "maximo": 11.963,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793485860000
-    }
-  },
-  "comisiones_usd": 31.845579999999952,
+  "usdt": 887.8450101461242,
+  "posiciones": {},
+  "comisiones_usd": 31.94376599999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2874,6 +2851,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum 24 h: LINK 24 h +6,76%, 4 h +2,66%, 1 h +1,05% (no estirada), 25 M/día, a -0,17% del máximo de 48 h. Volumen flojo (0,49x): por eso entro chico (~11%), mismo tamaño que la NEAR que acaba de fallar. Reglas por defecto. Invalida: stop 5%, o 4 h roja con 24 h de nuevo debajo de +5%; si rompe el máximo de 48 h y vuelve abajo con volumen, también. Rota 01/11 19:32 si no llega a +8%."
+    },
+    {
+      "ms": 1793489540860,
+      "fecha": "2026-10-31 23:32 UTC",
+      "lado": "sell",
+      "par": "LINKUSDT",
+      "cantidad": 8.400605449041374,
+      "precio": 11.688,
+      "usd": 98.1863,
+      "comision": 0.098186,
+      "motivo": "Tesis invalidada según lo anotado: 4 h roja (-1,87%) y 24 h debajo de +5% (+1,95%), 1 h -0,79%. Salgo antes del stop por la condición escrita.",
+      "resultado_pct": -1.72
     }
   ]
 }
