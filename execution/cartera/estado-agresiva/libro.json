@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 891.0982589815188,
-  "posiciones": {},
-  "comisiones_usd": 31.52681299999995,
+  "usdt": 781.0982589815188,
+  "posiciones": {
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 24.403730846102597,
+      "entrada": 4.503,
+      "maximo": 4.503,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793464380000
+    }
+  },
+  "comisiones_usd": 31.63681299999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2815,6 +2838,18 @@
       "comision": 0.151927,
       "motivo": "Rotación por regla de 24 h: entró el 30/10 02:32 y a las 02:32 del 31/10 está en +1,37%, sin llegar a +8% ni al stop (2.149). Volumen 4 h 0,16x, 1 h +0,05%: el momentum no siguió. Salgo y libero el lugar.",
       "resultado_pct": 1.39
+    },
+    {
+      "ms": 1793464360509,
+      "fecha": "2026-10-31 16:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 24.403730846102597,
+      "precio": 4.503,
+      "usd": 110.0,
+      "comision": 0.11,
+      "motivo": "Momentum 24 h: NEAR cumple la condición que dejé anotada a las 15:32 (24 h pasa +5%: +5,08%, 4 h sigue +1,49%, 1 h +0,69% no estirada), 75 M/día, -3,84% del máximo de 48 h con recorrido. Volumen flojo (0,5x): por eso entro chico (~12%). Reglas por defecto: stop 5%, trailing 5%, mitad a +8%, resto a +15%. Invalida: stop 5%, o 4 h roja con 24 h de nuevo debajo de +5%; rota a las 24 h si no llega a +8%."
     }
   ]
 }
