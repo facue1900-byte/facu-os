@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 781.0982589815188,
+  "usdt": 789.756919934217,
   "posiciones": {
-    "NEARUSDT": {
+    "LINKUSDT": {
       "nivel": "trading",
-      "cantidad": 24.403730846102597,
-      "entrada": 4.503,
-      "maximo": 4.569,
+      "cantidad": 8.400605449041374,
+      "entrada": 11.892,
+      "maximo": 11.892,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793471460000
+      "vigilado_hasta": 1793475180000
     }
   },
-  "comisiones_usd": 31.63681299999995,
+  "comisiones_usd": 31.845579999999952,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2850,6 +2850,30 @@
       "usd": 110.0,
       "comision": 0.11,
       "motivo": "Momentum 24 h: NEAR cumple la condición que dejé anotada a las 15:32 (24 h pasa +5%: +5,08%, 4 h sigue +1,49%, 1 h +0,69% no estirada), 75 M/día, -3,84% del máximo de 48 h con recorrido. Volumen flojo (0,5x): por eso entro chico (~12%). Reglas por defecto: stop 5%, trailing 5%, mitad a +8%, resto a +15%. Invalida: stop 5%, o 4 h roja con 24 h de nuevo debajo de +5%; rota a las 24 h si no llega a +8%."
+    },
+    {
+      "ms": 1793475145621,
+      "fecha": "2026-10-31 19:32 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 24.403730846102597,
+      "precio": 4.457,
+      "usd": 108.7674,
+      "comision": 0.108767,
+      "motivo": "Tesis invalidada según lo anotado en la entrada: 4 h roja (-0,47%) y 24 h de nuevo debajo de +5% (+2,62%), 1 h -1,17%. Salgo antes del stop, por la condición escrita, no por miedo.",
+      "resultado_pct": -1.02
+    },
+    {
+      "ms": 1793475149563,
+      "fecha": "2026-10-31 19:32 UTC",
+      "lado": "buy",
+      "par": "LINKUSDT",
+      "nivel": "trading",
+      "cantidad": 8.400605449041374,
+      "precio": 11.892,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum 24 h: LINK 24 h +6,76%, 4 h +2,66%, 1 h +1,05% (no estirada), 25 M/día, a -0,17% del máximo de 48 h. Volumen flojo (0,49x): por eso entro chico (~11%), mismo tamaño que la NEAR que acaba de fallar. Reglas por defecto. Invalida: stop 5%, o 4 h roja con 24 h de nuevo debajo de +5%; si rompe el máximo de 48 h y vuelve abajo con volumen, también. Rota 01/11 19:32 si no llega a +8%."
     }
   ]
 }

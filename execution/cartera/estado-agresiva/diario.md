@@ -2810,3 +2810,16 @@ Momentum 24 h: NEAR cumple la condición que dejé anotada a las 15:32 (24 h pas
 ## 2026-10-31 18:32 UTC — nota
 18:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: NEAR 60 min, sin disparos. Mercado: plano y muerto: solo 14 pares pasan el piso de 20 M/día; 1 h plana (-1,55/+0,64%), 4 h verde casi total y chica (-9,34/+2,66%), 24 h chica (LSK +31,8%, NEAR +6,38%, ZEC +5,2%, LINK +4,88%; TRX -6,67%); volumen 4 h 0,11-0,58x salvo LSK (1,8x). BTC +0,37% en 4 h (0,4x): sin bloqueo. Posición: NEAR a 4,556 (+1,18%), tesis viva y mejorando (24 h +6,38%, 4 h +2,66%, 1 h +0,64%, -0,39% del máximo de 48 h); se queda. Stop 4,341 (subió con el trailing). Si rompe el máximo de 48 h con volumen, mejor. Sin entradas: ruptura: nadie arriba del máximo de 48 h; LINK a -0,39% con 0,38x: sin volumen, no. Momentum: ZEC cumple la letra al ras (24 h +5,2%, 4 h +0,47%, 1 h +0,02%) pero 0,29x: el mismo caso al ras sin volumen que vengo descartando, no. LINK 24 h +4,88% no llega. LSK 4 h -9,34%, +63,5% del mínimo: pump que gira, no. Rebote: TRX a +0,88% del mínimo con 1 h +0,13% pero 4 h -2,28% y 0,48x; HYPE a +1,95% con 0,39x: sin volumen, no. BTC/ETH/SOL/BNB/XRP planos con 0,11-0,4x: no. A mirar: LINK si rompe el máximo de 48 h con >= 1,5x; ZEC si el volumen acompaña. 1 posición (~12%), resto en USDT.
 
+## 2026-10-31 19:32 UTC — Venta NEARUSDT
+108.77 USD a 4.457 (-1.02% contra la compra).
+
+Tesis invalidada según lo anotado en la entrada: 4 h roja (-0,47%) y 24 h de nuevo debajo de +5% (+2,62%), 1 h -1,17%. Salgo antes del stop, por la condición escrita, no por miedo.
+
+## 2026-10-31 19:32 UTC — Compra LINKUSDT (trading)
+100.00 USD a 11.892. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: LINK 24 h +6,76%, 4 h +2,66%, 1 h +1,05% (no estirada), 25 M/día, a -0,17% del máximo de 48 h. Volumen flojo (0,49x): por eso entro chico (~11%), mismo tamaño que la NEAR que acaba de fallar. Reglas por defecto. Invalida: stop 5%, o 4 h roja con 24 h de nuevo debajo de +5%; si rompe el máximo de 48 h y vuelve abajo con volumen, también. Rota 01/11 19:32 si no llega a +8%.
+
+## 2026-10-31 19:32 UTC — nota
+19:32 UTC — Sin disparos, 1 salida (NEAR), 1 entrada (LINK). Vigilante: NEAR 60 min, sin disparos. Mercado: plano y muerto: solo 14 pares pasan el piso de 20 M/día; 1 h plana (-1,17/+1,29%), 4 h plana (-4,95/+2,66%), 24 h chica (LSK +30,9%, LINK +6,76%, ZEC +4,08%, NEAR +2,62%; TRX -7,14%); volumen 4 h 0,09-0,69x salvo LSK (1,29x). BTC -0,04% en 4 h (0,34x): sin bloqueo. Salida: NEAR a 4,457 (-1,02%) — se cumplió la invalidación escrita (4 h roja -0,47% y 24 h volvió a +2,62%, debajo de +5%). Lección: entrar en momentum al ras con 0,5x de volumen en mercado muerto no sostiene; anotarlo. Entrada: LINK por momentum (24 h +6,76%, 4 h +2,66%, 1 h +1,05%), 25 M/día, -0,17% del máximo de 48 h; volumen 0,49x, por eso chica (100 USD, ~11%) a 11,892; reglas por defecto; invalida stop o 4 h roja con 24 h debajo de +5%; rota 01/11 19:32. Sin otras: ZEC 24 h +4,08% y 4 h -0,38%: no. LSK 4 h -4,95%, +68% del mínimo: pump que gira, no. Rebote: TRX a +0,59% del mínimo con 1 h -0,58%: sigue haciendo mínimos; HYPE a +2,03% con 0,34x: sin volumen, no. BTC/ETH/SOL/BNB/XRP planos con 0,09-0,34x: no. A mirar: LINK si rompe el máximo de 48 h con >= 1,5x (sumaría convicción). 1 posición (~11%), resto en USDT.
+

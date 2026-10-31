@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-31 18:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-10-31 19:32 UTC
 
-**Total: 892.16 USD (-10.78%)** desde 2026-10-07 23:06 UTC · USDT libre 781.10 · comisiones 31.64 · 235 operaciones
+**Total: 889.64 USD (-11.04%)** desde 2026-10-07 23:06 UTC · USDT libre 789.76 · comisiones 31.85 · 237 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **892.16** |
+| **Esta carpeta** | **889.64** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 933.94 |
+| hodl btc | 932.38 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| NEAR | trading | 111.06 | +1.07% | 4.34055 |
+| LINK | trading | 99.88 | -0.02% | 11.2974 |
 
 ## Últimas operaciones
 
+- 2026-10-31 19:32 UTC · compra LINK 100.00 USD a 11.892 — Momentum 24 h: LINK 24 h +6,76%, 4 h +2,66%, 1 h +1,05% (no estirada), 25 M/día, a -0,17% del máximo de 48 h. Volumen flojo (0,49x): por eso
+- 2026-10-31 19:32 UTC · venta NEAR 108.77 USD a 4.457 — Tesis invalidada según lo anotado en la entrada: 4 h roja (-0,47%) y 24 h de nuevo debajo de +5% (+2,62%), 1 h -1,17%. Salgo antes del stop,
 - 2026-10-31 16:32 UTC · compra NEAR 110.00 USD a 4.503 — Momentum 24 h: NEAR cumple la condición que dejé anotada a las 15:32 (24 h pasa +5%: +5,08%, 4 h sigue +1,49%, 1 h +0,69% no estirada), 75 M
 - 2026-10-31 02:32 UTC · venta ETH 151.93 USD a 2,245.49 — Rotación por regla de 24 h: entró el 30/10 02:32 y a las 02:32 del 31/10 está en +1,37%, sin llegar a +8% ni al stop (2.149). Volumen 4 h 0,
 - 2026-10-30 22:32 UTC · venta TRX 145.07 USD a 0.3279 — Invalidación del rebote en soporte: la vela horaria de 21:00 cerró en 0,3288 (< 0,329, el piso escrito en la entrada) y la de 22:00 sigue ab
@@ -22,7 +24,5 @@
 - 2026-10-30 03:32 UTC · compra HYPE 150.00 USD a 91.99 — Momentum 24 h: HYPE +17,33% en 24 h, 4 h +3,31% (vuelve a subir tras la descarga), 1 h +0,81% (no estirada), volumen 4 h 1,88x, 189 M/día, a
 - 2026-10-30 02:32 UTC · compra ETH 150.00 USD a 2,214.79 — Rebote en soporte: ETH (1.156 M/día) cayó al mínimo de 48 h (2.174,08, vela de 01:00) y la vela de 02:00 ya no hizo mínimo nuevo (2.182,77) 
 - 2026-10-29 23:08 UTC · venta HYPE 142.73 USD a 90.4495 — Stop automático en 90.4495 (entrada 94.96, máximo 95.21).
-- 2026-10-29 22:32 UTC · venta BTC 197.54 USD a 79,000.4 — Invalidación de rebote cumplida (fijada 21:32): la vela horaria de 21:00 cerró en 79.033 < 79.710, y la de 22:00 sigue ahí (79.032). 4 h -2,
-- 2026-10-29 21:32 UTC · compra HYPE 150.00 USD a 94.96 — Momentum 24 h: HYPE +16,9% en 24 h, 4 h +0,47% y la 1 h +2,53% (no estirada), volumen 4 h 2,55x, 147 M/día, a -2,8% del máximo de 48 h. Fuer
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
