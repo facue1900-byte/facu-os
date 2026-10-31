@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 739.3230614126749,
-  "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.06765878480578294,
-      "entrada": 2214.79,
-      "maximo": 2262.49,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793410260000
-    }
-  },
-  "comisiones_usd": 31.37488599999995,
+  "usdt": 891.0982589815188,
+  "posiciones": {},
+  "comisiones_usd": 31.52681299999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2826,6 +2803,18 @@
       "comision": 0.145072,
       "motivo": "Invalidación del rebote en soporte: la vela horaria de 21:00 cerró en 0,3288 (< 0,329, el piso escrito en la entrada) y la de 22:00 sigue abajo (0,3281, a +0,15% del mínimo de 48 h, 4 h -0,55%, 0,15x). El soporte no sostuvo: salgo antes del stop y libero el lugar.",
       "resultado_pct": -3.19
+    },
+    {
+      "ms": 1793413939153,
+      "fecha": "2026-10-31 02:32 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.06765878480578294,
+      "precio": 2245.49,
+      "usd": 151.9271,
+      "comision": 0.151927,
+      "motivo": "Rotación por regla de 24 h: entró el 30/10 02:32 y a las 02:32 del 31/10 está en +1,37%, sin llegar a +8% ni al stop (2.149). Volumen 4 h 0,16x, 1 h +0,05%: el momentum no siguió. Salgo y libero el lugar.",
+      "resultado_pct": 1.39
     }
   ]
 }
