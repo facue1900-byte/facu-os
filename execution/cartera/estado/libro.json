@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 407.6964961904632,
+  "usdt": 443.728570504657,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793433900000
+      "vigilado_hasta": 1793441100000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793433900000
+      "vigilado_hasta": 1793441100000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793433900000
+      "vigilado_hasta": 1793441100000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -84,32 +84,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793433900000
-    },
-    "HYPEUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 0.41491018585816636,
-      "entrada": 96.31,
-      "maximo": 97.74,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793433900000
+      "vigilado_hasta": 1793441100000
     }
   },
-  "comisiones_usd": 2.5626820000000006,
+  "comisiones_usd": 2.598750000000001,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1190,6 +1168,18 @@
       "comision": 0.02048,
       "motivo": "Stop automático en 54.243 (entrada 66.15, máximo 66.33).",
       "resultado_pct": -18.0
+    },
+    {
+      "ms": 1793441203325,
+      "fecha": "2026-10-31 10:06 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 0.41491018585816636,
+      "precio": 86.93,
+      "usd": 36.0681,
+      "comision": 0.036068,
+      "motivo": "Rotación por tesis invalidada, no por stop: la compra del 29/10 16:05 era momentum cerca del máximo de 90 d y su propio motivo decía reconsiderar si volvía a >10% del máximo con BTC 7d negativo. Hoy HYPE 87,01 está a 11% del máximo, 1d -3,3%, el volumen cayó de 208 M a 34 M/día y BTC lleva 21 ciclos con 7d negativo (-4,3%). Sin momentum no hay tesis; se sale ~4,5% arriba del stop (83,08) en vez de esperar que salte. La plata queda en USDT, no se reinvierte en este ciclo. Invalidaría esta venta: HYPE volviendo a <5% del máximo con volumen >= 10 M dos ciclos seguidos y BTC con 7d positivo (sería una reentrada nueva, con tesis nueva).",
+      "resultado_pct": -9.74
     }
   ]
 }

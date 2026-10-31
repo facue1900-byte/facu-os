@@ -1,24 +1,24 @@
-# Carpeta cripto ficticia — 2026-10-31 08:06 UTC
+# Carpeta cripto ficticia — 2026-10-31 10:06 UTC
 
-**Total: 880.62 USD (-11.94%)** desde 2026-10-07 20:58 UTC · USDT libre 407.70 · comisiones 2.56 · 90 operaciones
+**Total: 880.73 USD (-11.93%)** desde 2026-10-07 20:58 UTC · USDT libre 443.73 · comisiones 2.60 · 91 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **880.62** |
+| **Esta carpeta** | **880.73** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 926.76 |
-| plan inicial sin tocar | 861.70 |
+| hodl btc | 928.03 |
+| plan inicial sin tocar | 862.73 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 277.73 | -7.33% | 63,673.5 |
-| ETH | conservador | 87.06 | -12.85% | 1,940.46 |
-| BNB | conservador | 45.33 | -9.24% | 582.173 |
-| HYPE | riesgo | 36.57 | -8.49% | 83.079 |
-| XRP | medio | 26.24 | -12.44% | 1.16653 |
+| BTC | conservador | 278.11 | -7.20% | 63,673.5 |
+| ETH | conservador | 87.10 | -12.81% | 1,940.46 |
+| BNB | conservador | 45.51 | -8.89% | 582.173 |
+| XRP | medio | 26.29 | -12.27% | 1.16653 |
 
 ## Últimas operaciones
 
+- 2026-10-31 10:06 UTC · venta HYPE 36.07 USD a 86.93 — Rotación por tesis invalidada, no por stop: la compra del 29/10 16:05 era momentum cerca del máximo de 90 d y su propio motivo decía reconsi
 - 2026-10-30 00:18 UTC · venta LTC 20.48 USD a 54.243 — Stop automático en 54.243 (entrada 66.15, máximo 66.33).
 - 2026-10-29 20:42 UTC · venta TAO 20.76 USD a 241.6 — Stop automático en 241.6 (entrada 290.6, máximo 302).
 - 2026-10-29 20:47 UTC · venta SOL 57.34 USD a 95.2922 — Stop automático en 95.2922 (entrada 116.21, máximo 116.81).
@@ -28,6 +28,5 @@
 - 2026-10-23 22:50 UTC · venta AAVE 32.77 USD a 142.91 — Stop automático en 142.9096 (entrada 174.28, máximo 176.15).
 - 2026-10-22 08:02 UTC · venta AVAX 32.77 USD a 9.20942 — Stop automático en 9.20942 (entrada 11.231, máximo 11.261).
 - 2026-10-22 06:07 UTC · venta WLD 35.23 USD a 0.5457 — Venta por tesis, no por stop: la invalidación declarada al comprar (00:05 del 21/10) era alejarse >10% del máximo de 90 d; hoy está a 12,1% 
-- 2026-10-22 06:07 UTC · venta CRV 31.36 USD a 0.372 — Venta por tesis, no por stop: la invalidación declarada al comprar (00:05 del 22/10) era alejarse >10% del máximo de 90 d; hoy está a 10,6% 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
