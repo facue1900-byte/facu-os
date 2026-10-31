@@ -174,3 +174,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-31 16:17 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.37, var_4h 0.11) pero ningun par cumple volumen_4h_vs_promedio>=1.3 (max ~0.46 NEAR) ni vs_max_48h>=-1.5. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-10-31 18:17 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 1.42, var_4h 0.4) pero ningun par cumple todo: unico con volumen_4h_vs_promedio>=1.3 es LSK (1.73) pero var_4h -8.65 y vs_max_48h -13.52; NEAR/LINK en zona de maximo y subiendo pero vol 0.54/0.35. Sin posiciones, sin disparos. Me quedo en USDT.
+
