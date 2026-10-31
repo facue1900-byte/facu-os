@@ -10,7 +10,7 @@
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| LINK | trading | 99.71 | -0.19% | 11.3649 |
+| LINK | trading | 99.70 | -0.20% | 11.3649 |
 
 ## Últimas operaciones
 
