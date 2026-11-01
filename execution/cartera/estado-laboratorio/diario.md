@@ -204,3 +204,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-01 12:18 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.29, var_4h -0.64) pero ningun par cumple var_24h>=3 y var_4h>0 (mejor UNI var_24h 2.61, var_4h -1.71; BNB vol 1.3 pero var_24h 0.95). Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-01 14:17 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 0.73, var_4h -0.04). UNI cumple tendencia/zona (var_24h 5.17, var_4h 1.71, var_1h 0.44, vs_max -0.3) pero volumen_4h_vs_promedio 0.99<1.3; ZEC vol 1.43 pero var_24h -2.74 y vs_max -4.24. Sin posiciones, sin disparos. Me quedo en USDT.
+
