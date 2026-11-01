@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 635.7143066149371,
+  "usdt": 764.3555260379122,
   "posiciones": {
     "TRXUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793568660000
-    },
-    "SOLUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.3750132345156167,
-      "entrada": 94.45,
-      "maximo": 94.45,
-      "reglas": {
-        "stop": 1.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793568780000
+      "vigilado_hasta": 1793572260000
     }
   },
-  "comisiones_usd": 32.45176299999996,
+  "comisiones_usd": 32.58053299999996,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2956,6 +2934,18 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Rebote en soporte: SOL (68 M/día) tocó el mínimo de 48 h a 93,68 en la vela de 19:00; la de 20:00 cerró verde sin perforarlo (mín 93,81, cierre 94,34) y la de 21:00 sigue verde (mín 94,15) con volumen 4 h 1,03x: se cumple lo anotado a las 20:32. Tamaño ~15%. Stop ajustado a 1,5% (~93,0), debajo del mínimo de 48 h: si lo perfora, la tesis muere. Invalida: mínimo nuevo debajo de 93,68. Rota 02/11 21:32 si no llega a +8%."
+    },
+    {
+      "ms": 1793572313169,
+      "fecha": "2026-11-01 22:31 UTC",
+      "lado": "sell",
+      "par": "SOLUSDT",
+      "cantidad": 1.3750132345156167,
+      "precio": 93.65,
+      "usd": 128.77,
+      "comision": 0.12877,
+      "motivo": "Rebote en soporte invalidado según lo anotado: SOL hizo mínimo nuevo de 48 h (~93,13, debajo de 93,68) — está a +0,47% del mínimo con 1 h -0,83%, 4 h -0,74% y volumen 1,3x de venta. Salgo antes del stop (93,03) por la condición escrita.",
+      "resultado_pct": -0.85
     }
   ]
 }
