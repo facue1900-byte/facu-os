@@ -20,3 +20,4 @@
 2026-11-01 · 3niveles=-11.82% agresiva=-11.19% laboratorio=-0.84% dca=-0.01% torneo(A7)=+4.43% · sin avisos; ninguna carpeta gana USDT; apagar 3niveles y Agresiva
 2026-11-01 · 3niveles=-11.59% agresiva=-11.08% laboratorio=-0.84% dca=-0.01% torneo(A7)=+4.44% · récord torneo L8, mail; apagar 3niveles y Agresiva
 2026-11-01 · 3niveles=-11.53% agresiva=-11.32% laboratorio=-0.84% dca=-0.01% torneo(A7)=+4.82% · récord P7/L8 sin mail (ya avisado hoy); apagar 3niveles y Agresiva
+2026-11-01 · 3niveles=-11.59% agresiva=-11.20% laboratorio=-0.84% dca=-0.01% torneo(A7)=+4.05% · récord P7 sin mail (ya avisado hoy); apagar 3niveles y Agresiva
