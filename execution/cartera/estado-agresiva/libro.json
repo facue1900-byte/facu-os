@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 887.8450101461242,
-  "posiciones": {},
-  "comisiones_usd": 31.94376599999995,
+  "usdt": 767.8450101461242,
+  "posiciones": {
+    "TRXUSDT": {
+      "nivel": "trading",
+      "cantidad": 390.1073869183208,
+      "entrada": 0.3073,
+      "maximo": 0.3073,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793493180000
+    }
+  },
+  "comisiones_usd": 32.06376599999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2863,6 +2886,18 @@
       "comision": 0.098186,
       "motivo": "Tesis invalidada según lo anotado: 4 h roja (-1,87%) y 24 h debajo de +5% (+1,95%), 1 h -0,79%. Salgo antes del stop por la condición escrita.",
       "resultado_pct": -1.72
+    },
+    {
+      "ms": 1793493152163,
+      "fecha": "2026-11-01 00:32 UTC",
+      "lado": "buy",
+      "par": "TRXUSDT",
+      "nivel": "trading",
+      "cantidad": 390.1073869183208,
+      "precio": 0.3073,
+      "usd": 120.0,
+      "comision": 0.12,
+      "motivo": "Rebote en soporte: TRX (68 M/día) venía pegada al mínimo de 48 h haciendo mínimos; esta hora deja de caer con fuerza (1 h +2,24%, 4 h +2,0%) y volumen 4 h 1,05x — la condición anotada desde el 31/10 (dejar de hacer mínimo con volumen >= 1x). A +2,85% del mínimo, -14,58% del máximo: recorrido amplio. Tamaño ~13%. Reglas por defecto. Invalida: stop 5% (debajo del mínimo de 48 h), o vuelve a hacer mínimo nuevo; rota 02/11 00:32 si no llega a +8%."
     }
   ]
 }
