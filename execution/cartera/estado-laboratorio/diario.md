@@ -198,3 +198,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-01 08:16 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.75, var_4h 0.16) pero ningun par cumple volumen_4h_vs_promedio>=1.3 junto con tendencia: UNI 1.14 (var_24h 4.19, vs_max -0.95) y LINK 0.74 (vs_max -1.67); unico con vol es XPL (2.59) pero var_24h -7.35, vs_max -13.95. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-01 10:16 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 0.95, var_4h 0.16). UNI tiene volumen (1.35) y var_24h 4.43 pero var_4h -0.27 (no sigue subiendo); AVAX vol 1.37 y var_24h 5.18 pero var_4h -0.49 y vs_max -2.01; BNB vol 1.42 pero var_24h 1.26<3. Sin posiciones, sin disparos. Me quedo en USDT.
+
