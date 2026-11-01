@@ -213,3 +213,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-01 18:16 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.42, var_4h -0.12) pero ningun par cumple var_24h>=3 y var_4h>0 (mejor BNB/TRX var_24h 0.47/1.55, vol 1.05/0.44); unico con volumen cercano es BNB 1.05. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-01 20:16 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 0.28, var_4h -0.47) pero ningun par cumple var_24h>=3 y var_4h>0 (mejor TRX var_24h 2.76, var_4h -0.06, vol 0.3; UNI var_24h -0.07). Ademas ninguno llega a volumen_4h_vs_promedio>=1.3 (max SOL 0.96). Sin posiciones, sin disparos. Me quedo en USDT.
+
