@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793518260000
+      "vigilado_hasta": 1793521860000
     },
     "AVAXUSDT": {
       "nivel": "trading",
       "cantidad": 14.517102615694165,
       "entrada": 8.946,
-      "maximo": 8.946,
+      "maximo": 8.983,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793518380000
+      "vigilado_hasta": 1793521860000
     }
   },
   "comisiones_usd": 32.193765999999954,
