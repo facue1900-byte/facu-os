@@ -192,3 +192,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-01 04:17 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.76, var_4h 0.11) pero ningun par cumple volumen_4h_vs_promedio>=1.3 (max TRX 1.11, con var_24h -4.84) ni var_24h>=3 junto a vs_max_48h>=-1.5. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-01 06:17 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 0.75, var_4h 0.29). Unico con volumen_4h_vs_promedio>=1.3 es XPL (5.66) pero var_24h -8.82, var_4h -10.9, vs_max -15. UNI cumple tendencia/zona (var_24h 3.57, var_4h 1.99, var_1h 1.1, vs_max -0.67) pero vol 0.96. Sin posiciones, sin disparos. Me quedo en USDT.
+
