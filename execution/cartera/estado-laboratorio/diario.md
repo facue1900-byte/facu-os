@@ -210,3 +210,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-01 16:16 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.52, var_4h 0.18). UNI tiene volumen (1.36) pero var_24h 2.67<3, var_4h -0.23 y vs_max -2.31; ningun otro par junta var_24h>=3 con volumen>=1.3. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-01 18:16 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 0.42, var_4h -0.12) pero ningun par cumple var_24h>=3 y var_4h>0 (mejor BNB/TRX var_24h 0.47/1.55, vol 1.05/0.44); unico con volumen cercano es BNB 1.05. Sin posiciones, sin disparos. Me quedo en USDT.
+
