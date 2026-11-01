@@ -183,3 +183,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-10-31 22:16 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.87, var_4h 0.01) pero ningun par cumple volumen_4h_vs_promedio>=1.3: unico es LSK (1.56) con var_4h -11.67 y vs_max_48h -22.89; LINK cumple tendencia y zona de maximo (var_24h 4.15, vs_max -1.1) pero vol 0.67. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-01 00:16 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h -0.05, var_4h -0.05) pero ningun par cumple volumen_4h_vs_promedio>=1.3 (max 0.83 TRX, con var_24h -4.97) ni vs_max_48h>=-1.5 (mejor ETH -0.57, vol 0.29, var_24h 0.26<3). Sin posiciones, sin disparos. Me quedo en USDT.
+
