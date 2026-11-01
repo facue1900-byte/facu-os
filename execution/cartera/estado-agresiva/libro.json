@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 767.8450101461242,
+  "usdt": 637.8450101461242,
   "posiciones": {
     "TRXUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793514660000
+      "vigilado_hasta": 1793518260000
+    },
+    "AVAXUSDT": {
+      "nivel": "trading",
+      "cantidad": 14.517102615694165,
+      "entrada": 8.946,
+      "maximo": 8.946,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793518380000
     }
   },
-  "comisiones_usd": 32.06376599999995,
+  "comisiones_usd": 32.193765999999954,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2898,6 +2920,18 @@
       "usd": 120.0,
       "comision": 0.12,
       "motivo": "Rebote en soporte: TRX (68 M/día) venía pegada al mínimo de 48 h haciendo mínimos; esta hora deja de caer con fuerza (1 h +2,24%, 4 h +2,0%) y volumen 4 h 1,05x — la condición anotada desde el 31/10 (dejar de hacer mínimo con volumen >= 1x). A +2,85% del mínimo, -14,58% del máximo: recorrido amplio. Tamaño ~13%. Reglas por defecto. Invalida: stop 5% (debajo del mínimo de 48 h), o vuelve a hacer mínimo nuevo; rota 02/11 00:32 si no llega a +8%."
+    },
+    {
+      "ms": 1793518332746,
+      "fecha": "2026-11-01 07:32 UTC",
+      "lado": "buy",
+      "par": "AVAXUSDT",
+      "nivel": "trading",
+      "cantidad": 14.517102615694165,
+      "precio": 8.946,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Momentum 24 h: AVAX 24 h +5,71%, 4 h +3,24%, 1 h +0,22% (no estirada), volumen 4 h 2,81x (cumple la lección: momentum pide >= 1x), 21,1 M/día, a -1,3% del máximo de 48 h. Tamaño ~15%. Reglas por defecto. Invalida: stop 5%, o 4 h roja con 24 h debajo de +5%; si rompe el máximo de 48 h con >= 1,5x, sumaría. Rota 02/11 07:32 si no llega a +8%."
     }
   ]
 }
