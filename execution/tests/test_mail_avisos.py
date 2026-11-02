@@ -60,6 +60,17 @@ def test_sin_red_nunca_manda_mail():
     assert decidir("reporte-pauta", 75, [corrida(0, 75)], None, AHORA)[0] is False
 
 
+def test_la_carpeta_ficticia_nunca_manda_mail_por_falla():
+    fallas = [corrida(8, 1), corrida(4, 1), corrida(0, 1)]
+    assert decidir("paper-trading", 1, fallas, None, AHORA)[0] is False
+
+
+def test_sin_log_el_mail_no_muestra_jerga():
+    m = armar("reporte-equipo", 1, "")
+    assert "código" not in m.texto and "Detalle técnico" not in m.html
+    assert "Qué hacer" in m.texto
+
+
 def test_una_tarea_desconocida_igual_arma_el_mail():
     m = armar("tarea-nueva", 1, "algo\n!!! se rompió esto\n")
     assert m.asunto.startswith("SISTEMA · 🟡")
