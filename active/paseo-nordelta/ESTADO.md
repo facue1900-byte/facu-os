@@ -1,6 +1,6 @@
 # Paseo Nordelta — estado
 
-Última actualización: 2026-10-10 (sección de abajo). Lo que sigue después de
+Última actualización: 2026-11-02 (bloque de noviembre: memoria `retomar-cierre-noviembre-paseo`). Lo que sigue después de
 «Historia al 27/07» quedó como registro: varios números de ahí ya cambiaron.
 
 ## Vigente al 10/10/2026 (auditoría completa)
@@ -29,10 +29,29 @@ La FC 0002-14 de Rhino está **anulada** (salió con el mismo contenido que la 1
 ✅ **Aporte de Richi $25.000.000 del 23/10 — CARGADO (26/10).** Tres transferencias a la
 cuenta Macro del Paseo: $100.000 y $5.900.000 desde Santander, $19.000.000 desde Macro.
 En Movimientos filas 634–636 (Medio Banco, para que el dedupe del extracto de octubre
-no las duplique), en Supabase con su id en K, y en Gastos Obra filas 125–127 (ya
+no las duplique), en Supabase con su id en K, y en Gastos Obra filas 122–124 (ya
 estaban, con Fx 1536; el blue del 23/10 da 1555 promedio — Facu decide si se corrige).
 Comprobantes en `Comprobantes de pago/2026/Octubre 2026/Aportes Richi/`.
 `comprobar_capital.py` CIERRA: caja + banco $52.645.526.
+
+✅ **Aportes de Richi conciliados contra el extracto de MAHNI (02/11).** Por banco:
+**$93.105.000** al 30/10 ($89.525.000 en 14 transferencias con CUIT 20163040086 + depósito
+de $3.580.000 del 10/03, sin nombre en el extracto). Banco = sólo lo que figura en el
+extracto de MAHNI; lo que entró a otra cuenta, incluido el Macro personal de Facu, es caja.
+
+✅ **Gastos Obra corregido (02/11, con OK de Facu).** Borradas por cuenta doble las filas
+de Richi de derechos de construcción, fondo y áridos (08/07, $25.975.013) y sueldo parcial
+de Facu ($1.180.000). Corregidas las fechas de 5 aportes. Richi queda en **$205.262.000 /
+US$139.233,85**. Copia previa: `data/logs/gastos_obra_antes_2026-11-02.json`.
+
+🔴 **Dos diferencias contra el Master Plan, sin corregir:**
+- **$6.000.000 de Richi del 10/03** (Gastos Obra fila 30): Facu confirma que los puso, pero
+  no están en Movimientos ni en el extracto. Falta saber por dónde entraron o qué pagaron.
+- **$20.000.000 de Richi** (Movimientos fila 77): dice 02/03 y Facu confirma 03/02. Corregir
+  también en Supabase, no sólo en el sheet.
+
+🟡 **Gastos Obra, fila 60 ($79.953, 20/05, Facundo):** parece duplicada con «Aporte de
+capital» del mismo día y monto, y la fecha está como texto. Falta que Facu confirme.
 
 **Cafetería: el alquiler arranca en MARZO 2027, no en noviembre** (Facu, 26/10). Corrido
 en `radar_rampa.py`.
@@ -136,7 +155,8 @@ potencial de $51,4M/mes. Cada mes de atraso en un alta cuesta entre $2M y $15M.
 |---|---|---|
 | ago-2026 | La Jaula | $2M |
 | ~~nov-2026~~ mar-2027 | Cafetería (corrida el 26/10) | $3,5M |
-| ene-2027 | Pizzería $2M + Salón Multiespacios $2,5M + Heladería nueva $5M — 🔴 16/10: la galería recién arrancó obra en oct, esta fecha no se sostiene (falta fecha de Facu) | $9,5M |
+| nov-2026 | Salón Multiespacios $1M (esquema de Marina, sube a $3M en dic-27; ene-feb 27 sólo expensas) | $1M |
+| ene-2027 | Pizzería $2M + Heladería nueva $5M — 🔴 16/10: la galería recién arrancó obra en oct, esta fecha no se sostiene (falta fecha de Facu) | $9,5M |
 | mar-2027 | Peak One (corrido de dic-26 el 16/10: la obra arrancó en oct; $4M es base, se cobra con IPC) | $4M + IPC |
 | ~jul-2027 | Market | $4M |
 | post-Market | Comercios 1 a 6 | $12M |

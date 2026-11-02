@@ -30,7 +30,7 @@ o el último snapshot tiene más de 6 horas (24 h y 8 días para la DCA, que cor
 El torneo no tiene `libro.json` ni `historial.csv`: leé `RESUMEN.md` y `vivo.json` (una fila por
 estrategia, cada una arrancó con 1.000 USD). En el veredicto va **una sola fila** para el torneo: la
 estrategia líder, su resultado y cuántas de las ~33 le ganan a USDT y a HODL BTC. El torneo corre cada
-4 h: más de 8 h sin actualizar es una falla. Las alarmas de récord y +20% valen también para cada
+4 h: más de 8 h sin actualizar es una falla. La alarma de +20% vale también para cada
 estrategia del torneo. `execution/cartera/estado-torneo/HISTORIA.md` (en `main`) dice qué funcionó
 antes en cada tipo de mercado: usalo para contexto, no como resultado.
 
@@ -78,25 +78,38 @@ orden: eso no se negocia.
 
 ## 4. Alarmas: avisarle a Facu por mail
 
-Facu quiere enterarse sin tener que preguntar. Hay **dos** eventos que disparan un aviso, por
-carpeta:
+Facu (02/11/2026): «no quiero muchos mails, sólo en días clave o cuando pasa algo inesperado». Los
+**récords ya no mandan mail**: un máximo de +0,12% es ruido. Se anotan en VEREDICTO.md y nada más.
+Hay **tres** eventos que sí:
 
-- **Récord:** el `total_usd` del último snapshot es el más alto de todo su `historial.csv` **y**
-  está por encima del capital inicial (un máximo mientras pierde no es récord).
-- **Objetivo +20%:** el resultado de los últimos 30 días (o desde el inicio, si tiene menos de
-  30) es **+20% o más**.
+| Evento | Cuándo | `nivel` | Máximo |
+|---|---|---|---|
+| `objetivo` | una carpeta o estrategia hace **+20% o más** en 30 días (o desde el inicio, si tiene menos) | `bueno` | 1 por carpeta cada 7 días |
+| `revision` | la primera corrida desde el **07/11/2026**: el sí o no a la key real | `reporte` | 1 sola vez |
+| `parada` | una carpeta pasó su límite de frescura (sección 2): dejó de medir | `revisar` | 1 por carpeta cada 3 días |
 
-Antes de avisar, leé `execution/cartera/juez/alertas.json` (`{"<carpeta>": {"record": "<fecha>",
-"objetivo": "<fecha>"}}`): **como mucho un mail por carpeta y por evento por día UTC.** Si ya se
-avisó hoy, no se repite. Después de mandar, actualizá el archivo.
+Antes de avisar, leé `execution/cartera/juez/alertas.json` (`{"<carpeta>": {"<evento>": "<fecha>"}}`;
+para `revision`, usá `"general"` como carpeta) y respetá el máximo. Después de mandar, actualizalo. Las
+marcas viejas de `record` se ignoran.
 
-El aviso va con la herramienta de Gmail, **sólo a facue1900@gmail.com** (es Facu, nadie más; sin
-CC ni CCO):
+El mail se arma con el formato único de facu-os, nunca a mano:
 
-- Asunto: `Cripto ficticia: <récord|+20%> en <carpeta> (<total> USD, <resultado>%)`
-- Cuerpo, 5 líneas como mucho: el número, desde cuándo, contra HODL BTC, qué lo explicó (las
-  2–3 operaciones que más sumaron) y que es plata FICTICIA. Link a
-  `https://github.com/facue1900-byte/facu-os/blob/claude/cartera-juez/execution/cartera/juez/VEREDICTO.md`.
+```bash
+python3 execution/mail_format.py <<'JSON'
+{"area": "cripto", "nivel": "bueno", "titulo": "Torneo A7 llegó a +20%",
+ "resumen": "Una frase: qué pasó y qué significa. Plata FICTICIA.",
+ "kpis": [["Total", "1.204,10 USD", "verde"], ["Resultado", "+20,41%", "verde"], ["Contra HODL BTC", "+23,27 pp", "verde"]],
+ "accion": "Qué tiene que hacer Facu, o «Nada todavía» y por qué.",
+ "secciones": [["Qué lo explicó", ["Las 2 o 3 operaciones que más sumaron"]]],
+ "link": "https://github.com/facue1900-byte/facu-os/blob/claude/cartera-juez/execution/cartera/juez/VEREDICTO.md",
+ "link_texto": "Ver el veredicto", "origen": "juez de carpetas cripto"}
+JSON
+```
+
+Devuelve un JSON con `asunto`, `html` y `texto`. Mandalo con la herramienta de Gmail, **sólo a
+facue1900@gmail.com** (es Facu, nadie más; sin CC ni CCO): el asunto tal cual, y el cuerpo en `html` si
+la herramienta acepta HTML, si no en `texto`. Números con punto de miles y coma decimal; tonos: `verde`,
+`ambar`, `rojo`, `neutro`. Máximo 4 kpis y 3 puntos.
 
 Si no hay evento, no se manda nada. Nunca mandes un mail a otra dirección ni por otro motivo.
 Si Gmail falla, anotalo en VEREDICTO.md y en la última línea; no lo marques como avisado.

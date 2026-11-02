@@ -18,7 +18,7 @@
 # se mantiene al día sola. La foto se vuelve a publicar cuando cambian los CARGOS
 # (principio de mes): `deuda_efectivo.py --cobros-en-planilla` + deploy.sh.
 #
-# Cualquier falla corta en ese paso y le manda un mail a Facu (a él solo).
+# Cualquier falla corta en ese paso; el aviso a Facu sale de correr.sh.
 
 set -uo pipefail
 PY=/Users/Facu/facu-os/.venv/bin/python
@@ -28,23 +28,9 @@ DESDE=$(date -v-60d +%Y-%m-%d)
 
 exec > >(tee "$LOG") 2>&1
 
+# El mail lo decide correr.sh (execution/avisar.py). Mandaba uno propio además: llegaban dos.
 avisar() {
   echo "!!! $1"
-  "$PY" - "$1" "$LOG" <<'EOF'
-import sys, os, base64
-from email.mime.text import MIMEText
-sys.path.insert(0, "/Users/Facu/facu-os")
-from dotenv import load_dotenv
-load_dotenv("/Users/Facu/facu-os/.env")
-from execution.google_auth import gmail
-para = os.environ["MAIL_FACU"]
-cuerpo = open(sys.argv[2]).read()[-6000:]
-m = MIMEText(f"{sys.argv[1]}\n\n--- log ---\n{cuerpo}")
-m["to"], m["subject"] = para, f"🔴 Paseo · efectivo diario frenado: {sys.argv[1][:60]}"
-gmail().users().messages().send(
-    userId="me", body={"raw": base64.urlsafe_b64encode(m.as_bytes()).decode()}).execute()
-print(f"    mail a {para}")
-EOF
   exit 1
 }
 
