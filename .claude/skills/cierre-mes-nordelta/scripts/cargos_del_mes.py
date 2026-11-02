@@ -40,6 +40,9 @@ import json
 import os
 import re
 import sys
+import time
+
+from googleapiclient.errors import HttpError
 
 sys.path.insert(0, "/Users/Facu/facu-os")
 from execution.google_auth import sheets  # noqa: E402
@@ -101,6 +104,16 @@ LOCALES = {
         "layout": None, "iva": False, "cobra_por": "Efectivo",
         # expensas PACTADAS en $1.000.000, no las de la hoja (Facu 27/07/2026)
         "alquiler": 0, "partido": False, "expensas_pactadas": 1_000_000,
+        # Esquema de Marina (WhatsApp 22/09/2026, Facu lo confirmó el 02/11/2026).
+        # Ene y feb 2027 sólo expensas. De agosto a diciembre 2027 «llegar a 3»,
+        # sin escalones definidos: hay que pedirlos, por eso el script avisa.
+        "alquiler_por_mes": {
+            "2026-11": 1_000_000, "2026-12": 1_000_000,
+            "2027-01": 0, "2027-02": 0,
+            "2027-03": 1_500_000, "2027-04": 1_500_000,
+            "2027-05": 1_500_000, "2027-06": 1_500_000,
+            "2027-07": 2_000_000,
+        },
     },
     "La Jaula / torneo": {
         # Su cuenta corriente es la pestaña `Futbol`, que NO se escribe fila por
@@ -168,26 +181,44 @@ def plata(x):
     return f"${x:,.2f}"
 
 
+def _con_reintento_429(pedido, esperas=(65, 65, 65)):
+    """Ejecuta un pedido a Sheets; si Google contesta 429, espera y reintenta.
+
+    El tope es 60 lecturas y 60 escrituras por minuto, y una corrida con
+    --escribir los pasa: el 02/11/2026 cortó dos veces a mitad de camino y dejó
+    un local sin bloque. Un 429 es un rechazo (no se aplicó nada), así que
+    reintentarlo no duplica ni en un append. Cualquier otro error sigue subiendo.
+    """
+    for espera in (*esperas, None):
+        try:
+            return pedido.execute()
+        except HttpError as e:
+            if e.resp.status != 429 or espera is None:
+                raise
+            print(f"  (cuota de Sheets: espero {espera}s y reintento)", flush=True)
+            time.sleep(espera)
+
+
 class Planillas:
     def __init__(self):
         self.s = sheets(cuenta="facu")
 
     def leer(self, sid, rango, render="FORMATTED_VALUE"):
-        return self.s.spreadsheets().values().get(
+        return _con_reintento_429(self.s.spreadsheets().values().get(
             spreadsheetId=sid, range=rango, valueRenderOption=render
-        ).execute().get("values", [])
+        )).get("values", [])
 
     def escribir(self, sid, rango, valores):
-        return self.s.spreadsheets().values().update(
+        return _con_reintento_429(self.s.spreadsheets().values().update(
             spreadsheetId=sid, range=rango, valueInputOption="USER_ENTERED",
             body={"values": valores},
-        ).execute()
+        ))
 
     def append(self, sid, rango, filas):
-        return self.s.spreadsheets().values().append(
+        return _con_reintento_429(self.s.spreadsheets().values().append(
             spreadsheetId=sid, range=rango, valueInputOption="USER_ENTERED",
             insertDataOption="INSERT_ROWS", body={"values": filas},
-        ).execute()
+        ))
 
     def fondos(self, sid, rango):
         """Colores de fondo de un rango, fila por fila. [[{r,g,b}, ...], ...].
@@ -746,6 +777,14 @@ def proponer(p, anio, mes, expensas):
 
         # --- alquiler del mes corriente
         alq = cfg["alquiler"]
+        if "alquiler_por_mes" in cfg:
+            tabla = cfg["alquiler_por_mes"]
+            clave_mes = f"{anio}-{mes:02d}"
+            if clave_mes in tabla:
+                alq = tabla[clave_mes]
+            elif clave_mes > max(tabla):
+                avisos.append(f"{local}: el esquema pactado no define {clave_mes}. "
+                              f"Va en 0 — pedile el número a Facu.")
         if alq == "del mes anterior":
             if not cfg["pestania"]:
                 avisos.append(f"{local}: sin pestaña, no puedo leer el alquiler.")
@@ -854,7 +893,9 @@ def escribir_cargos(p, propuesta, anio, mes):
     filas = []
     for local, per, concepto, monto, iva in propuesta:
         a, m = (int(x) for x in per.split("-"))
-        ya = cargos_existentes(p, a, m)
+        # Un cargo de $0 legítimo (Peak One sin alquiler) se compara contra las filas
+        # en $0: si no, cada re-corrida lo volvía a agregar (02/11/2026, fila 208).
+        ya = cargos_existentes(p, a, m, incluir_cero=monto == 0)
         if (local, concepto) in ya:
             print(f"  ya estaba: {local} {per} {concepto} — no lo toco")
             continue

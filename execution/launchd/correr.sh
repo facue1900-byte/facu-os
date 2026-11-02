@@ -8,9 +8,9 @@
 #   2. Anota cada corrida en data/logs/tareas.jsonl (tarea, inicio, fin, código). El
 #      radar de las 7:30 lo lee y dice qué tarea falló o NO corrió (Mac apagada,
 #      plist sin cargar): ese caso no lo puede avisar la tarea misma.
-#   3. Si sale con error: notificación de macOS + mail a Facu (a él solo) con la cola
-#      del log. SIEMPRE, aunque la tarea mande el suyo: el suyo puede fallar justo por
-#      lo mismo que la rompió (token, Gmail). Un mail de más es mejor que ninguno.
+#   3. Si sale con error: notificación de macOS, y avisar.py decide si además va un mail
+#      a Facu (a él solo): no por cada falla, ver la regla ahí. Es el ÚNICO mail de falla:
+#      las tareas no mandan el suyo, así no llegan dos por lo mismo.
 #
 # NO reintenta la tarea entera a propósito: casi todas escriben o mandan algo, y repetir
 # una corrida a medias duplica plata o mails. El reintento va adentro de cada script, en
@@ -47,12 +47,16 @@ registrar() {
 
 echo "=== $NOMBRE · $(date '+%d/%m/%Y %H:%M') ==="
 
+# La red se decide UNA vez. Volver a preguntar después del loop perdió el radar y el efectivo
+# del 01/11 y el reporte de pauta del 02/11/2026: la Mac recién despierta contestó bien la
+# primera y mal la segunda, y la tarea moría con "15 minutos" escrito a los 19 segundos.
+HAY_RED=0
 for i in $(seq 1 30); do
-  host -W 3 www.googleapis.com >/dev/null 2>&1 && break
+  if host -W 3 www.googleapis.com >/dev/null 2>&1; then HAY_RED=1; break; fi
   [[ $i -eq 1 ]] && echo "Sin red todavía: espero hasta 15 minutos..."
   sleep 30
 done
-if ! host -W 3 www.googleapis.com >/dev/null 2>&1; then
+if [[ $HAY_RED -eq 0 ]]; then
   echo "!!! Sin red después de 15 minutos: no corrió."
   registrar 75
   notificar "No corrió: sin red 15 minutos. El radar lo va a marcar."
@@ -69,7 +73,7 @@ registrar $CODIGO
 if [[ $CODIGO -ne 0 ]]; then
   notificar "FALLÓ (código $CODIGO). Detalle en data/logs/."
   cat "$SAL" "$ERR" > "$SAL.cola"
-  "$PY" "$OS/execution/avisar.py" "$NOMBRE salió con código $CODIGO" "$SAL.cola" \
+  "$PY" "$OS/execution/avisar.py" --tarea "$NOMBRE" --codigo "$CODIGO" "$SAL.cola" \
     || echo "!!! Tampoco pude mandar el mail de aviso. Queda el registro para el radar."
   rm -f "$SAL.cola"
 fi

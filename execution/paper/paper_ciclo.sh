@@ -27,9 +27,22 @@ if ! $PAPER snapshot > /dev/null 2>> "$LOG"; then
   exit 2
 fi
 
-if grep -q "^PAPER_OK" "$LOG"; then
-  grep "^PAPER_OK" "$LOG" | tail -1 >> "$OUT/ciclos.log"
+# Que el juez de la nube la vea. Va al final de cada salida y su falla no cambia el resultado
+# del ciclo: la operación ya está hecha, y en el veredicto queda la fecha vieja a la vista.
+publicar() {
+  /bin/bash "$OS/execution/paper/publicar_historial.sh" >> "$LOG" 2>&1 \
+    || avisar "No se pudo publicar el historial: el juez la ve con dato viejo"
+}
+
+# Claude a veces escribe la línea final con formato (`PAPER_OK ...` o **PAPER_OK ...**): el
+# 02/11/2026 eso dio una falla falsa con el ciclo terminado bien. Tiene que seguir siendo el
+# comienzo de la línea; lo que se saca es sólo el formato.
+CIERRE='^[`*[:space:]]*PAPER_OK'
+if grep -qE "$CIERRE" "$LOG"; then
+  grep -E "$CIERRE" "$LOG" | tail -1 | tr -d '`*' | sed 's/^[[:space:]]*//' >> "$OUT/ciclos.log"
+  publicar
   exit 0
 fi
 avisar "FALLA: el ciclo no cerró. Mirá data/paper/ultima-corrida.txt"
+publicar
 exit 1
