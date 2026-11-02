@@ -378,3 +378,39 @@ clasificador aprobaba comandos fuera de la lista. Con eso, un comando de shell p
 registro o un qa.json esquivando los deny de `Edit(...)`. Fix: `--permission-mode dontAsk`
 (niega todo lo que no está listado; probado headless). **Lección:** todo agente headless que
 toca el mundo va con `--permission-mode dontAsk` explícito; no alcanza con `--allowedTools`.
+
+## 02/11/2026 — tres fallas silenciosas de las tareas programadas, y un script que el cron iba a deshacer
+
+**`correr.sh` decía «sin red 15 minutos» a los 19 segundos.** Preguntaba por la red en el loop y otra
+vez después: con la Mac recién despierta la primera dio bien y la segunda mal, y la tarea moría.
+Perdió el radar y el efectivo del 01/11 y el reporte de pauta del 02/11. Fix: se decide una sola vez.
+`execution/tests/test_correr_red.py` falló contra el código viejo antes del arreglo.
+
+**La carpeta de 10.000 estuvo 62 h sin correr y nadie se enteró.** No pasaba por `correr.sh`, así que
+el radar no la miraba. Se pasó a `correr.sh` con horario fijo; la causa exacta de por qué `StartInterval`
+dejó de disparar no se confirmó. Al probarla apareció otra: Claude escribió `PAPER_OK` entre backticks,
+el `grep "^PAPER_OK"` no lo vio y una corrida buena mandó mail de falla.
+
+**`cursodj-a-silver.mjs` no iba a durar una hora.** `reconcileSubscriptions` corre cada hora, ve el cobro
+de octubre como `cursodj` y reescribía `plan_id`. Se arregló antes de aplicar y se corrió el reconcile real
+después: quedó Silver. **Lección:** un script de migración con fecha se prueba contra los crons que
+escriben esa misma columna, no sólo con su simulación.
+
+## 02/11/2026 — `cargos_del_mes.py` se cortó a la mitad por la cuota de Sheets
+
+La corrida con `--escribir` pasó el tope de 60 lecturas/escrituras por minuto y murió dos veces: una
+antes de CARGOS y otra a mitad de Peak One. Las dos se retomaron bien por el dedupe, pero la segunda
+destapó otro bug: **un cargo de $0 no se reconocía como existente** (el dedupe ignora las filas en $0 a
+propósito), así que cada re-corrida duplicaba «Peak One / Alquiler» (CARGOS 208; ya pasó en oct, 176/187).
+Fix: `_con_reintento_429` en `Planillas` (un 429 no aplica nada, reintentar es seguro; probado con 429
+que se recupera, 429 agotado y 500) y el dedupe compara $0 contra $0. **El fix del dedupe no se corrió
+contra la planilla**: la re-corrida quedó frenada junto con el borrado de la fila 208.
+
+## 02/11/2026 — emisión de facturas desde el Chrome de Facu, sin `emitir.js`
+
+Los 6 comprobantes de noviembre salieron con la extensión, porque Facu no quiere una segunda ventana.
+El robot sigue siendo más seguro para tipear, pero exige el puerto 9333. Se perdió tiempo en dos cosas que
+los controles frenaron antes de emitir: el concepto quedó vacío en una factura y en `003 Viáticos Exento`
+en una nota de débito (el click cayó en otro renglón porque el viewport cambió de alto). **El dato a
+controlar es siempre el campo releído antes de emitir, nunca el click.** FC 21 tuvo un rechazo de WSAA que
+se resolvió con Solicitar CAE, sin reemitir: el número no se perdió. Detalle en la memoria de Bejerman.

@@ -16,7 +16,6 @@ import html
 import json
 import re
 import sys
-from email.message import EmailMessage
 
 from comun import AQUI, OS
 
@@ -40,10 +39,7 @@ def a_html(md):
             out.append(f"<li>{re.sub(r'^\s*[-*] ', '', t)}</li>")
         elif t.strip():
             out.append(f"<p>{t}</p>")
-    return "<div style='font-family:Helvetica,Arial,sans-serif;max-width:640px'>" + "\n".join(out) + (
-        f"<hr><p style='color:#888;font-size:12px'>Cuando lo tengan, pásenlo (AirDrop o Drive) a la Mac de Facu, "
-        f"carpeta <b>~/{CARPETA_SUBIDA}</b>: el agente de reels lo levanta solo al día siguiente.<br>"
-        "Generado por facu-os · reels diarios de Astronomy.</p></div>")
+    return "<div style='font-size:14px;line-height:1.45;color:#222;margin-top:12px'>" + "\n".join(out) + "</div>"
 
 
 def main():
@@ -55,7 +51,16 @@ def main():
     if len(md) < 200:
         sys.exit("PEDIDO_FALLA: el pedido es demasiado corto para que alguien sepa qué filmar")
     titulo = next((l[2:].strip() for l in md.splitlines() if l.startswith("# ")), "Tomas para filmar")
-    asunto = f"Astronomy · para filmar: {titulo}"
+    sys.path.insert(0, str(OS / "execution"))
+    from mail_format import render
+    # El título ya encabeza el mail: el cuerpo arranca después de la línea "# ...".
+    cuerpo = "\n".join(l for l in md.splitlines() if not l.startswith("# "))
+    correo = render(
+        area="astronomy", nivel="revisar", titulo=f"Para filmar: {titulo}",
+        accion=f"Cuando lo tengan, pásenlo (AirDrop o Drive) a la Mac de Facu, carpeta ~/{CARPETA_SUBIDA}. El agente de reels lo levanta solo al día siguiente.",
+        html_extra=a_html(cuerpo), origen="reels diarios de Astronomy",
+    )
+    asunto = correo.asunto
     if not a.send:
         print(f"PARA: {', '.join(PARA)}\nASUNTO: {asunto}\n\n{md}\n\nPEDIDO_SIN_SEND")
         return
@@ -65,13 +70,8 @@ def main():
         if dias < DIAS_ENTRE:
             sys.exit(f"PEDIDO_FALLA: el último pedido salió hace {dias} días ({ultimo['asunto']}); "
                      f"se espera {DIAS_ENTRE}. Sumá las tomas nuevas al próximo.")
-    sys.path.insert(0, str(OS / "execution"))
     from google_auth import gmail
-    msg = EmailMessage()
-    msg["To"] = ", ".join(PARA)
-    msg["Subject"] = asunto
-    msg.set_content(md)
-    msg.add_alternative(a_html(md), subtype="html")
+    msg = correo.mime(PARA)
     gmail().users().messages().send(userId="me", body={"raw": base64.urlsafe_b64encode(msg.as_bytes()).decode()}).execute()
     with LOG.open("a") as f:
         f.write(json.dumps({"fecha": datetime.date.today().isoformat(), "asunto": asunto, "archivo": a.archivo},
