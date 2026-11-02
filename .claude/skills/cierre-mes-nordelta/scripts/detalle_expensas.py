@@ -144,7 +144,7 @@ def leer_detalle(fmt, raw, cab, col):
 def inputs_del_mes(sv, anio, mes):
     """{concepto: costo total del predio} del renglón del mes en `INPUTS EXPENSAS`.
     La columna A es una fecha: se busca formateada («septiembre 2026»)."""
-    rango = "INPUTS EXPENSAS!A4:O14"
+    rango = "INPUTS EXPENSAS!A4:O40"
     fmt = sv.values().get(spreadsheetId=MASTER, range=rango,
                           valueRenderOption="FORMATTED_VALUE").execute().get("values", [])
     raw = sv.values().get(spreadsheetId=MASTER, range=rango,

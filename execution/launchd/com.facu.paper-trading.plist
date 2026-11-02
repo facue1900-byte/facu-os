@@ -15,6 +15,8 @@
     ~/facu-os/.venv/bin/python ~/facu-os/execution/paper/paper.py estado
 
   Corre sólo con la Mac prendida: si está dormida, el ciclo se hace al despertar.
+  Con horario fijo y por correr.sh desde el 02/11/2026: con StartInterval dejó de correr el
+  30/10 sin avisar, y fuera de correr.sh el radar no podía verlo.
 -->
 <plist version="1.0">
 <dict>
@@ -23,13 +25,22 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>-lc</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>paper-trading</string>
+        <string>--</string>
         <string>/Users/Facu/facu-os/execution/paper/paper_ciclo.sh</string>
     </array>
     <key>WorkingDirectory</key>
     <string>/Users/Facu/facu-os</string>
-    <key>StartInterval</key>
-    <integer>14400</integer>
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Hour</key><integer>0</integer><key>Minute</key><integer>20</integer></dict>
+        <dict><key>Hour</key><integer>4</integer><key>Minute</key><integer>20</integer></dict>
+        <dict><key>Hour</key><integer>8</integer><key>Minute</key><integer>20</integer></dict>
+        <dict><key>Hour</key><integer>12</integer><key>Minute</key><integer>20</integer></dict>
+        <dict><key>Hour</key><integer>16</integer><key>Minute</key><integer>20</integer></dict>
+        <dict><key>Hour</key><integer>20</integer><key>Minute</key><integer>20</integer></dict>
+    </array>
     <key>RunAtLoad</key>
     <false/>
     <key>StandardOutPath</key>

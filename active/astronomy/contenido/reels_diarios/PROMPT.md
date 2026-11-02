@@ -52,15 +52,21 @@ contenido no original, y es de otro. La música es siempre la nuestra (Sin City,
 las ideas y la ejecución, porque está flojo».** La vara es la de un reel que vos mandarías a un
 amigo, no la de un reel que pasó el QA. Lo que le gustó y funciona: la estética de las portadas.
 
-- **Primero leé `RD/referencias.md`**: son referencias que eligió Facu, y tienen prioridad sobre lo
-  que encuentres vos. Al menos 2 de las 5 del día tienen que salir de ahí (las que se pueden hacer
-  hoy), sin repetir la misma dos días seguidos.
+- **Primero leé `RD/referencias.md`. Facu, 02/11: el agente vuelve a prenderse «con las refes que te
+  di». Las 5 del día salen de ahí** (de las que se pueden hacer hoy). Una referencia puede repetirse
+  de un día a otro, pero con otras tomas y otro remate, y nunca dos veces el mismo día. Las
+  tendencias y la competencia del paso 2 sirven para afinar esas 5, no para reemplazarlas. Si no
+  llegás a 5 que mandarías a un amigo, publicá menos: no se rellena con ideas propias.
+- **Por qué se pausó el 29/10** («medio chotos, no me generan nada»): sin historia ni personas, mismo
+  set violeta + frase genérica, y sin el truco o el remate de la referencia. Cada reel conserva el
+  truco y el remate de su referencia, y va con gente real: primero las clases de
+  `Material filmado/Clases/` y `Material filmado/Fer_astronomy/`, después el resto.
 - Escribí **8 ideas candidatas** en `DIA/ideas.md`, cada una con: el hook exacto del primer
   segundo (lo que se ve + lo que se lee/oye), por qué alguien la compartiría o guardaría, qué
   siente o aprende el que la ve, y la tendencia/competencia de la que sale. Puntuá cada una de 1 a 5
   en **hook**, **originalidad** y **qué tan bien se puede ejecutar con el material que hay**, sé
   duro, y armá sólo las 5 mejores. Una idea que no llega a 4 en hook no se arma.
-- ~3 que **explotan** lo que funcionó y ~2 que **exploran**. Variá formato, duración (entre 8 y
+- Variá formato, duración (entre 8 y
   25 s) y el segundo del drop: los 10 del 28/10 tenían todos 17 s con el drop en el 9 y se notaba
   la plantilla.
 - **Formato que más se repite en las referencias:** ~9 s, un corte en cada golpe del tema (60/bpm),
