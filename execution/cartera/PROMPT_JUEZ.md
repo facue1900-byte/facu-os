@@ -34,7 +34,9 @@ estrategia líder, su resultado y cuántas de las ~33 le ganan a USDT y a HODL B
 estrategia del torneo. `execution/cartera/estado-torneo/HISTORIA.md` (en `main`) dice qué funcionó
 antes en cada tipo de mercado: usalo para contexto, no como resultado.
 
-La carpeta de 10.000 USD vive en la Mac de Facu y no la ves desde acá: decilo, no la inventes.
+La carpeta **Original** (10.000 USD) opera en la Mac de Facu y publica su `historial.csv` en la rama
+`claude/cartera-original` (en la raíz; sin `libro.json`, así que comisiones y ops van `falta`). Corre sólo
+con la Mac prendida: un dato viejo se muestra con su fecha, pero **no** es una falla ni dispara `parada`.
 
 ## 2. Medir (en Python, biblioteca estándar, nada a ojo)
 
@@ -46,6 +48,10 @@ Para cada carpeta, del `historial.csv` y el `libro.json`:
   operaciones; qué % de la pérdida o ganancia se fue en comisiones.
 
 Un número que no podés calcular porque falta el dato se dice que falta. No se estima.
+
+Además corré `python3 execution/cartera/escenarios.py`: lleva todas las cajas a 10.000 USD y arma los
+repartos. Su salida va tal cual en VEREDICTO.md; esos números no se recalculan a mano. Si sale con
+error, copiá lo que dice sobre el dato que falta.
 
 ## 3. Escribir
 
@@ -59,22 +65,29 @@ Reescribí `execution/cartera/juez/VEREDICTO.md` entero:
 | Carpeta | Total | Desde inicio | vs HODL BTC | Ventana común | 7 días | Peor caída | Comisiones | Ops |
 ...
 
+## Si fueran 10.000
+<salida de escenarios.py>
+
 ## Qué pasó desde ayer
 ## Recomendación
-<para cada carpeta: seguir / apagar / revisar, con el número que lo justifica>
+<para cada carpeta: seguir / revisar, con el número que lo justifica>
 ```
 
-Criterio para recomendar **apagar**: lleva 14 días o más, va por debajo de USDT **y** de HODL
-BTC, y en los últimos 7 días tampoco mejoró. Vos recomendás; apagar lo decide Facu.
+**Hasta el 27/01/2027 no se recomienda apagar ninguna carpeta por resultado** (Facu, 02/11/2026: «25 días
+no es nada, quiero más días de referencia»). Los números malos se muestran igual, sin suavizarlos.
+`revisar` es para algo técnico que no mide bien. En la última línea va `apagar=ninguna`.
 
 Agregá además una línea por día al final de `execution/cartera/juez/historial.md`:
-`<fecha> · <carpeta>=<resultado%> ... · <veredicto en 10 palabras>`.
+`<fecha> · régimen=<regimen_hoy de vivo.json> · <carpeta>=<resultado%> ... · <veredicto en 10 palabras>`.
 
-**Desde el 07/11/2026 en adelante**, VEREDICTO.md lleva arriba de todo una sección
-`## ¿Key real de Binance?` con un **sí o no** y por qué. Sólo puede ser **sí** si alguna carpeta
-le ganó al mejor de USDT y HODL BTC, neto de comisiones, durante 30 días o más, y sin una caída
+**La decisión es el 27/01/2027** (90 días desde la última largada, el Torneo). Antes de esa fecha, la
+sección de recomendación termina con «Key real: se decide el 27/01/2027». **Desde el 27/01/2027 en
+adelante**, VEREDICTO.md lleva arriba de todo una sección `## ¿Key real de Binance?` con un **sí o no** y
+por qué, y una recomendación de seguir o apagar por carpeta. Sólo puede ser **sí** si alguna carpeta
+le ganó al mejor de USDT y HODL BTC, neto de comisiones, durante 90 días o más, y sin una caída
 peor que la de HODL BTC. Si es sí, igual la key va sin permiso de retiro y con OK de Facu por
-orden: eso no se negocia.
+orden: eso no se negocia. Si `juez/historial.md` muestra un solo régimen de BTC en esos 90 días, decilo
+y recomendá estirar el plazo: ninguna carpeta se habrá probado en otro tipo de mercado.
 
 ## 4. Alarmas: avisarle a Facu por mail
 
@@ -85,7 +98,7 @@ Hay **tres** eventos que sí:
 | Evento | Cuándo | `nivel` | Máximo |
 |---|---|---|---|
 | `objetivo` | una carpeta o estrategia hace **+20% o más** en 30 días (o desde el inicio, si tiene menos) | `bueno` | 1 por carpeta cada 7 días |
-| `revision` | la primera corrida desde el **07/11/2026**: el sí o no a la key real | `reporte` | 1 sola vez |
+| `revision` | la primera corrida desde el **27/01/2027**: el sí o no a la key real | `reporte` | 1 sola vez |
 | `parada` | una carpeta pasó su límite de frescura (sección 2): dejó de medir | `revisar` | 1 por carpeta cada 3 días |
 
 Antes de avisar, leé `execution/cartera/juez/alertas.json` (`{"<carpeta>": {"<evento>": "<fecha>"}}`;

@@ -30,6 +30,10 @@ ENTRE_MAILS = timedelta(days=3)
 FRECUENTE = timedelta(hours=36)
 # Una sola falla ya es información: gasto de pauta frenado, o la caja del Paseo sin actualizar.
 A_LA_PRIMERA = {"chequeo-pauta", "efectivo-diario"}
+# Facu, 02/11/2026, ante «paper-trading salió con código 1»: «si me mandás algo, que sea súper
+# claro y clave para tomar decisiones». Un ciclo caído de plata ficticia no le pide ninguna
+# decisión: no manda mail nunca y lo marca el radar.
+SIN_MAIL = {"paper-trading"}
 
 # tarea: (área, nivel, nombre para el asunto, qué significa)
 TAREAS = {
@@ -50,6 +54,8 @@ def decidir(tarea, codigo, registros, ultimo_mail, ahora):
     """(mandar, motivo). `registros` = corridas de esta tarea, la actual al final."""
     if codigo == 75:
         return False, "sin red: lo marca el radar"
+    if tarea in SIN_MAIL:
+        return False, "no pide ninguna decisión: lo marca el radar"
     previas = registros[:-1]
     if tarea not in A_LA_PRIMERA and len(registros) >= 2:
         gap = datetime.fromisoformat(registros[-1]["inicio"]) - datetime.fromisoformat(previas[-1]["inicio"])
@@ -103,7 +109,7 @@ def armar(tarea, codigo, log):
         area=area, nivel=nivel, titulo=titulo, resumen=significa,
         accion=f"Abrí una sesión de Claude y escribí «falló {tarea}». Se revisa y se arregla ahí.",
         secciones=[("Qué se vio", lineas_clave(log))],
-        detalle=f"{tarea} · código {codigo}\n{cola}" if cola else f"{tarea} · código {codigo}",
+        detalle=cola or None,  # Sin log no hay detalle: un «código 1» solo no le dice nada a Facu.
         origen="tareas programadas de la Mac",
     )
 
