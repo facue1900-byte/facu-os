@@ -4,12 +4,12 @@
     "capital": 1000.0,
     "btc": 80841.96
   },
-  "usdt": 900.0,
+  "usdt": 800.0,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
-      "cantidad": 0.0012356213685069427,
-      "entrada": 80850.01,
+      "cantidad": 0.002516817500397556,
+      "entrada": 79385.9705633959,
       "maximo": 80850.01,
       "reglas": {
         "stop": 60.0,
@@ -20,7 +20,7 @@
       "vigilado_hasta": 1793140740000
     }
   },
-  "comisiones_usd": 0.1,
+  "comisiones_usd": 0.2,
   "operaciones": [
     {
       "ms": 1793140684781,
@@ -33,6 +33,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "DCA semanal: primera cuota fija de BTC, sin mirar precio"
+    },
+    {
+      "ms": 1793627775771,
+      "fecha": "2026-11-02 13:56 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "conservador",
+      "cantidad": 0.0012811961318906135,
+      "precio": 77974.01,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "DCA semanal: cuota fija de BTC, sin mirar precio"
     }
   ]
 }
