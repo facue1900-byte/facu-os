@@ -8,9 +8,9 @@
 #   2. Anota cada corrida en data/logs/tareas.jsonl (tarea, inicio, fin, código). El
 #      radar de las 7:30 lo lee y dice qué tarea falló o NO corrió (Mac apagada,
 #      plist sin cargar): ese caso no lo puede avisar la tarea misma.
-#   3. Si sale con error: notificación de macOS + mail a Facu (a él solo) con la cola
-#      del log. SIEMPRE, aunque la tarea mande el suyo: el suyo puede fallar justo por
-#      lo mismo que la rompió (token, Gmail). Un mail de más es mejor que ninguno.
+#   3. Si sale con error: notificación de macOS, y avisar.py decide si además va un mail
+#      a Facu (a él solo): no por cada falla, ver la regla ahí. Es el ÚNICO mail de falla:
+#      las tareas no mandan el suyo, así no llegan dos por lo mismo.
 #
 # NO reintenta la tarea entera a propósito: casi todas escriben o mandan algo, y repetir
 # una corrida a medias duplica plata o mails. El reintento va adentro de cada script, en
@@ -73,7 +73,7 @@ registrar $CODIGO
 if [[ $CODIGO -ne 0 ]]; then
   notificar "FALLÓ (código $CODIGO). Detalle en data/logs/."
   cat "$SAL" "$ERR" > "$SAL.cola"
-  "$PY" "$OS/execution/avisar.py" "$NOMBRE salió con código $CODIGO" "$SAL.cola" \
+  "$PY" "$OS/execution/avisar.py" --tarea "$NOMBRE" --codigo "$CODIGO" "$SAL.cola" \
     || echo "!!! Tampoco pude mandar el mail de aviso. Queda el registro para el radar."
   rm -f "$SAL.cola"
 fi
