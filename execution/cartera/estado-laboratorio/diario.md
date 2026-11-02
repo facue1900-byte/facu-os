@@ -243,3 +243,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-02 14:23 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h -0.24, var_4h -0.13) pero ningun par cumple var_24h>=3 (mejor TRX 2.38 con vol 0.65; ETH 0.77 vol 1.5; ZEC 1.56 vol 1.04). Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-02 16:56 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h -0.85, var_4h -0.41) pero ningun par cumple var_24h>=3 (mejor TRX 2.04 con var_4h 0.82, vol 1.17; ETH -0.02 vol 1.97). Sin posiciones, sin disparos. Me quedo en USDT.
+
