@@ -40,6 +40,9 @@ import json
 import os
 import re
 import sys
+import time
+
+from googleapiclient.errors import HttpError
 
 sys.path.insert(0, "/Users/Facu/facu-os")
 from execution.google_auth import sheets  # noqa: E402
@@ -168,26 +171,44 @@ def plata(x):
     return f"${x:,.2f}"
 
 
+def _con_reintento_429(pedido, esperas=(65, 65, 65)):
+    """Ejecuta un pedido a Sheets; si Google contesta 429, espera y reintenta.
+
+    El tope es 60 lecturas y 60 escrituras por minuto, y una corrida con
+    --escribir los pasa: el 02/11/2026 cortó dos veces a mitad de camino y dejó
+    un local sin bloque. Un 429 es un rechazo (no se aplicó nada), así que
+    reintentarlo no duplica ni en un append. Cualquier otro error sigue subiendo.
+    """
+    for espera in (*esperas, None):
+        try:
+            return pedido.execute()
+        except HttpError as e:
+            if e.resp.status != 429 or espera is None:
+                raise
+            print(f"  (cuota de Sheets: espero {espera}s y reintento)", flush=True)
+            time.sleep(espera)
+
+
 class Planillas:
     def __init__(self):
         self.s = sheets(cuenta="facu")
 
     def leer(self, sid, rango, render="FORMATTED_VALUE"):
-        return self.s.spreadsheets().values().get(
+        return _con_reintento_429(self.s.spreadsheets().values().get(
             spreadsheetId=sid, range=rango, valueRenderOption=render
-        ).execute().get("values", [])
+        )).get("values", [])
 
     def escribir(self, sid, rango, valores):
-        return self.s.spreadsheets().values().update(
+        return _con_reintento_429(self.s.spreadsheets().values().update(
             spreadsheetId=sid, range=rango, valueInputOption="USER_ENTERED",
             body={"values": valores},
-        ).execute()
+        ))
 
     def append(self, sid, rango, filas):
-        return self.s.spreadsheets().values().append(
+        return _con_reintento_429(self.s.spreadsheets().values().append(
             spreadsheetId=sid, range=rango, valueInputOption="USER_ENTERED",
             insertDataOption="INSERT_ROWS", body={"values": filas},
-        ).execute()
+        ))
 
     def fondos(self, sid, rango):
         """Colores de fondo de un rango, fila por fila. [[{r,g,b}, ...], ...].
@@ -854,7 +875,9 @@ def escribir_cargos(p, propuesta, anio, mes):
     filas = []
     for local, per, concepto, monto, iva in propuesta:
         a, m = (int(x) for x in per.split("-"))
-        ya = cargos_existentes(p, a, m)
+        # Un cargo de $0 legítimo (Peak One sin alquiler) se compara contra las filas
+        # en $0: si no, cada re-corrida lo volvía a agregar (02/11/2026, fila 208).
+        ya = cargos_existentes(p, a, m, incluir_cero=monto == 0)
         if (local, concepto) in ya:
             print(f"  ya estaba: {local} {per} {concepto} — no lo toco")
             continue

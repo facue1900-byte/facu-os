@@ -70,3 +70,35 @@ No se pudieron (lo hace Facu o falta un dato):
 - Diynamic y Monaberry: sólo escuchan archivos descargables → 20/10 les mandamos los 2 MP3 320 adjuntos, uno por mail (el SoundCloud logueado en Chrome NO es el de Sin City, no se pudo habilitar la descarga). Solomun: si las voces son de librería (Splice, etc.), mandar instrumental.
 - Autorespuestas: Stush, Defected, Cr2, Snatch (sólo Trackstack).
 - 🔴 **Trackstack contestó (Rowen, 21/10 02:09):** la cuenta está suspendida porque hay **dos cuentas para el mismo artista Sin City**: thesincitysound@gmail.com y studio@astronomyofficial.com, y tienen la regla de una sola cuenta por artista. Piden que expliquemos por qué hay dos y cuál nos quedamos. Facu tiene que decidir cuál. Recomendación: **thesincitysound@gmail.com**, porque es la del proyecto y studio@ es de la Academy. Después se contesta en el mismo hilo desde studio@.
+
+## Respuestas 21–30/10 (revisado en studio@ el 30/10)
+- 🔥 **Defora CONFIRMÓ (27/10):** escuchó los 4 tracks en el estudio y quiere un **EP de 4 tracks**; fecha posible
+  **enero/febrero 2027** (nov, dic y ene ya están ocupados). Antes pide aclarar los derechos de las voces (su mail del 21/10).
+  🔴 **Sin contestar**: desde el 21/10 studio@ no mandó ningún mail. Faltan la respuesta sobre las voces (IA parcial,
+  ¿de dónde salen?) y los pre-masters WAV a −6 dB.
+- ❌ Atlantic Progression (22/10) · ❌ Comparsa (22/10: "están muy buenos", no es la línea del sello, que sigamos mandando) ·
+  ❌ SELECTECHouse (21/10: buscan afro house).
+- Pangea (23/10): respuesta de rutina ("si encaja, te escribimos").
+- Trackstack: **Nervous** y **Trick** dejaron review el 26/10 (el veredicto está adentro de Trackstack, no en el mail; el mail
+  trae el texto de "si no es lo que esperabas", que es plantilla). La cuenta sigue pausada y la pregunta de Rowen (21/10)
+  sobre cuál cuenta conservar, sin responder.
+- El seguimiento de la primera tanda vencía el 29/10 y no se hizo.
+
+## Decisiones de Facu (30/10)
+- **Defora: EN PAUSA.** Facu quiere definir primero si ese sello los representa. No contestar nada hasta que diga.
+- **Trackstack: se queda thesincitysound@gmail.com.** Borrador de respuesta a Rowen en el hilo, en studio@ (30/10):
+  pide cerrar studio@ y pasar el historial de envíos (Catch & Release, Nervous, Trick) a thesincitysound@, o poder leer
+  las respuestas antes del cierre. 🔴 Sin enviar: espera OK de Facu.
+
+## 02/11/2026: ronda de noviembre (Facu: "seguí mandando por donde puedas")
+Script `Desktop/Facu/SIN CITY/enviar_demos_3.py`, 5 mails desde studio@, cargados en el Tracker, seguimiento 23/11:
+- Nuevos, los 3 temas (Always In The Game, Bitch We're Not The Same, Go Back): Magnetic Magazine Recordings, Data Transmission, Deep House Amsterdam. Mail visto en la fuente de cada uno.
+- ⚠️ Deep House Amsterdam NO llegó a nadie: autorespuesta de Lex, ya no está; premieres a wessel@deephouseamsterdam.com. Sin reenviar, espera OK de Facu.
+- Pidieron más: Comparsa (Always In The Game, en su hilo), Hotoven (Space Miami adjunto, en su hilo).
+- Research 02/11 (`~` 40 pistas): casi todo el tech house mediano recibe por Trackstack/LabelRadar; lo gratis y abierto se agotó. Las búsquedas web genéricas ya no rinden.
+Frenados, esperan a Facu:
+- Baikonur: el form exige UNA playlist privada de SoundCloud con 2-4 temas; hay que crearla logueado como Sin City (Chrome está en otra cuenta).
+- Sweat It Out: el form obliga a aceptar T&Cs.
+- Trackstack: sigue pausada; respuesta a Rowen en borrador. Destraba Catch & Release (shortlist), Hot Creations, Bibi, Kittball.
+Sin canal confirmado: Jango, Glasgow Underground ("For Demos" vacío), Magna. Afuera: Leap4rog (último release 2022), Tech Me House (vende campañas).
+Pendiente 10/11: seguimiento de la tanda del 20/10, sumándoles "Always In The Game" a los que no lo tienen (incluye los 3 borradores viejos de Two Mountains, Lost, Slightly Sizzled: reescribir, ya recibieron otro mail).

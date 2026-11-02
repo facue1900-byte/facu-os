@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Reels diarios de Astronomy Academy — todos los días a las 16:10.
+
+  Un Claude headless (Sonnet) lee cómo rindieron los reels anteriores, busca tendencias en la
+  web, arma 10 reels con material real + voz + drop de Sin City + portada con la estética de la
+  grilla, y los publica como REELS DE PRUEBA (sólo a no seguidores) en @astronomy.academy.
+  Instrucciones: active/astronomy/contenido/reels_diarios/PROMPT.md. Autorizado por Facu el
+  28/10/2026 sólo para reels de prueba.
+
+  A las 16:10 para que los reels salgan entre las 17 y las 19 (arman ~1-2 h).
+  Si la Mac está dormida, corre al despertar.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.reels-diarios.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.reels-diarios.plist
+  Probar ya:
+    launchctl start com.facu.reels-diarios
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.reels-diarios</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>reels-diarios</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/active/astronomy/contenido/reels_diarios/reels_diarios.sh</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>16</integer>
+        <key>Minute</key>
+        <integer>10</integer>
+    </dict>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/reels-diarios.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/reels-diarios.log</string>
+</dict>
+</plist>

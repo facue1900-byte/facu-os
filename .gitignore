@@ -30,3 +30,5 @@ execution/cartera/estado-agresiva/
 # whatsapp-web.js cache/session (wa_tanda)
 execution/wa_tanda/.wwebjs_cache/
 execution/wa_tanda/.wwebjs_auth/
+execution/cartera/estado-torneo/
+execution/cartera/torneo-cache/

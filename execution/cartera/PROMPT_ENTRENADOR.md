@@ -32,7 +32,15 @@ git show origin/claude/cartera-agresiva:execution/cartera/estado-agresiva/libro.
 git show origin/claude/cartera-cripto:execution/cartera/estado/diario.md | tail -n 400
 git show origin/claude/cartera-cripto:execution/cartera/estado/libro.json
 git show origin/claude/cartera-dca:execution/cartera/estado-dca/RESUMEN.md
+git show origin/claude/cartera-torneo:execution/cartera/estado-torneo/RESUMEN.md
+cat execution/cartera/estado-torneo/HISTORIA.md   # viene de main: qué funcionó antes, por tipo de mercado
 ```
+
+El **torneo** son ~33 estrategias escritas en código (`execution/cartera/torneo.py`), mismo capital
+y mismas velas. Es tu mejor fuente para proponer reglas: una regla que en `HISTORIA.md` pierde en
+el mercado de hoy (fila "En un mercado como el de hoy") y en 2025-2026, no entra al laboratorio
+aunque suene bien. Si una estrategia del torneo le gana a todas en vivo **y** en la historia, podés
+copiar sus reglas al laboratorio (diciendo cuál copiaste).
 
 Y el propio laboratorio: `execution/cartera/estado-laboratorio/` (libro, diario, historial,
 `REGLAS_LAB.md`, `ENTRENADOR.md`).

@@ -8,6 +8,22 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-10-30 · FAIL ✓ · Pauta: el chequeo de los lunes daba FALLA siempre, y no miraba si se gastaba
+
+**Dónde:** `active/astronomy/pauta/reporte_embudo.py` (`chequeo`, nuevo `gasto_de_ayer`).
+
+**Qué pasó:** desde el 09/10 ningún anuncio activo manda a la web, pero el chequeo exigía visitas
+de pauta en 48 h con cualquier anuncio activo: FALLA todos los lunes, o sea ruido. Y al pasar los
+videos de José a un público de ~65 mil (30/10) no había nada que avisara si Meta dejaba de gastar.
+
+**Causa raíz:** el chequeo contaba anuncios activos, no anuncios activos *a la web*; y el gasto
+real nunca se medía contra el presupuesto.
+
+**Fix:** visitas sólo si hay anuncios activos con UTM web. Nuevo: cada conjunto activo (de más de
+2 días) tiene que haber gastado ayer ≥ 40% de su presupuesto, si no FALLA; conjunto de WhatsApp con
+3 días de gasto y 0 chats → AVISO. Probado con datos reales (OK) y con gasto 0 simulado (FALLA).
+Plist diario `com.facu.chequeo-pauta` (11:00) escrito; la instalación la hace Facu.
+
 ### 2026-10-21 · FAIL ✓ · Paseo: una factura pagaba dos débitos, y el extracto sin resumen no se podía leer
 
 **Dónde:** `cierre-mes-nordelta/scripts/extracto_a_movimientos.py` (`resolver_con_facturas`, `texto_pdf`).
@@ -342,3 +358,50 @@ El script falló bien (no operó sin precio) y la rutina avisó con `CARTERA_FAL
 ese dominio desde la nube (una corrida con `curl`), no desde la Mac. Se arregla habilitando el
 dominio en Network access del entorno. Además, `api.binance.com` da 451 desde IPs de EE.UU.:
 para datos públicos usar el espejo `data-api.binance.vision`.
+
+## 28/10/2026 — `claude -p`: las reglas de archivo son Edit(...) y las rutas absolutas llevan //
+
+Armando el agente de reels diarios (`active/astronomy/contenido/reels_diarios/`), los deny de
+`--disallowedTools "Write(**/qa.json)"` NO bloqueaban nada: el CLI avisa que «Write(path) is not
+matched by file permission checks — only Edit(path) rules are» (Edit cubre Write). Y una ruta
+`Edit(/Users/...)` con una sola barra es relativa al repo: para absolutas va `Edit(//Users/...)`, y
+`**/x` sin `//` sólo mira adentro del repo. Probado headless con haiku pidiéndole escribir 5
+archivos: con `Edit(//**/qa.json)` queda denegado, con `Edit(//<carpeta del día>/**)` permitido.
+**Lección:** un permiso de un agente que corre solo se prueba headless pidiéndole que haga lo
+prohibido; leer la regla no alcanza.
+
+## 29/10/2026 — el `claude -p` heredaba el modo «auto» de la config global
+
+El agente de reels diarios hizo un `git commit` que no estaba en su `--allowedTools`:
+`~/.claude/settings.json` tiene `defaultMode: auto` y el headless lo hereda, así que un
+clasificador aprobaba comandos fuera de la lista. Con eso, un comando de shell podía escribir el
+registro o un qa.json esquivando los deny de `Edit(...)`. Fix: `--permission-mode dontAsk`
+(niega todo lo que no está listado; probado headless). **Lección:** todo agente headless que
+toca el mundo va con `--permission-mode dontAsk` explícito; no alcanza con `--allowedTools`.
+
+## 02/11/2026 — tres fallas silenciosas de las tareas programadas, y un script que el cron iba a deshacer
+
+**`correr.sh` decía «sin red 15 minutos» a los 19 segundos.** Preguntaba por la red en el loop y otra
+vez después: con la Mac recién despierta la primera dio bien y la segunda mal, y la tarea moría.
+Perdió el radar y el efectivo del 01/11 y el reporte de pauta del 02/11. Fix: se decide una sola vez.
+`execution/tests/test_correr_red.py` falló contra el código viejo antes del arreglo.
+
+**La carpeta de 10.000 estuvo 62 h sin correr y nadie se enteró.** No pasaba por `correr.sh`, así que
+el radar no la miraba. Se pasó a `correr.sh` con horario fijo; la causa exacta de por qué `StartInterval`
+dejó de disparar no se confirmó. Al probarla apareció otra: Claude escribió `PAPER_OK` entre backticks,
+el `grep "^PAPER_OK"` no lo vio y una corrida buena mandó mail de falla.
+
+**`cursodj-a-silver.mjs` no iba a durar una hora.** `reconcileSubscriptions` corre cada hora, ve el cobro
+de octubre como `cursodj` y reescribía `plan_id`. Se arregló antes de aplicar y se corrió el reconcile real
+después: quedó Silver. **Lección:** un script de migración con fecha se prueba contra los crons que
+escriben esa misma columna, no sólo con su simulación.
+
+## 02/11/2026 — `cargos_del_mes.py` se cortó a la mitad por la cuota de Sheets
+
+La corrida con `--escribir` pasó el tope de 60 lecturas/escrituras por minuto y murió dos veces: una
+antes de CARGOS y otra a mitad de Peak One. Las dos se retomaron bien por el dedupe, pero la segunda
+destapó otro bug: **un cargo de $0 no se reconocía como existente** (el dedupe ignora las filas en $0 a
+propósito), así que cada re-corrida duplicaba «Peak One / Alquiler» (CARGOS 208; ya pasó en oct, 176/187).
+Fix: `_con_reintento_429` en `Planillas` (un 429 no aplica nada, reintentar es seguro; probado con 429
+que se recupera, 429 agotado y 500) y el dedupe compara $0 contra $0. **El fix del dedupe no se corrió
+contra la planilla**: la re-corrida quedó frenada junto con el borrado de la fila 208.
