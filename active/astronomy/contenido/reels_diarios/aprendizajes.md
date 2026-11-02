@@ -37,4 +37,14 @@ nuevo. Corto, con fecha y con número. Si algo deja de ser cierto, se borra.
 - 29/10: set completo de GUEVA = mina de tomas (manos en CDJ ~150, 540, 930, 1170, 1230, 1560 s; cara 600, 990, 1380 s; humo 180, 510, 1110 s; cuidado: 780 y 2010 tapa la cabeza). Los segundos de la hoja de contacto pueden correrse ±1 s: siempre mirar `revision.jpg`.
 - 29/10: armador: `efecto: slam` + `antes_del_drop: seco` clipea el audio (pico 0 dB); `space-miami` con drop 7 dio «mudo en 0.0». Usar `go-back` + `filtro`.
 - 29/10: los `textos` NO interpretan `<br>` (sale literal); sólo la portada. Un cartel no puede pisar la voz.
+- 02/11 (147 h / 104 h): los 5 de ciencia 3D del 28/10 siguen arriba (961–1.396 vistas); los 5 del 29/10 con sets de GUEVA y voz genérica quedaron entre 119 y 189 vistas, 0 guardados. El material real largo sin formato de referencia no rinde.
+- 02/11: recorte vertical de clase en horizontal (1080p, 9:16): no entran alumno y profe parados al lado; el armador sólo centra en y, así que el zoom > 1.3 corta las manos del CDJ. Pedir clases filmadas vertical con los dos en cuadro.
+- 02/11: `space-miami`+`filtro` → «mudo en 0.0»; `filtro` con voz → clipea (0 dB). Usar `go-back` + `filtro` sin voz, y `go-back` + `seco` con voz.
+- 02/11: no publicar menores (IMG_3486 tiene un nene): pedir OK de los padres.
+- 02/11: publicados 4 con las refes 3, 5, 6 y 7a, cortes cada golpe, 8–11 s. Medir el 05/11: cuál formato junta más compartidos/guardados.
 - 29/10: publicados 5 de formatos y largos distintos (9–22 s, drops 5–14). Medir el 01/11: promesa «3 segundos», timelapse, dato, POV, pregunta.
+
+## 02/11 — Facu vio los 4 publicados: «son malísimos, la edición es muy mala y no tiene coherencia con las imágenes»
+- Mirando `revision.jpg`: todas las tomas son el mismo plano (pared de madera, una persona mirando abajo, la misma controladora). Cortar eso en el golpe no da ritmo, parece un salto. El texto no tiene nada que ver con lo que se ve: «un viaje a Ibiza» sobre una alumna en la controladora; «dame una señal» sin ninguna señal, que es el truco de la referencia.
+- Copiar el formato de una referencia sin tener las imágenes que la hacen funcionar no sirve. Si el material no muestra lo que dice el texto, esa idea no se arma.
+- La vara «lo mandarías a un amigo» no filtró nada: el agente aprobó estos 4 mirando cuadros sueltos, sin ver el video en movimiento.

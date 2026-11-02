@@ -1,32 +1,37 @@
 # Referencias que mandó Facu — PRIORIDAD sobre lo que encuentre el agente
 
 Facu (29/10/2026): «acá te paso muchas ideas para plagiar y usar con nuestro contenido».
-Se toma la estructura, el ritmo y el remate; el video, el audio y el texto son nuestros.
+Se toma la estructura, el ritmo y el remate; el video y el texto son nuestros. El audio puede ser
+el de la referencia (Facu, 02/11): no hace falta Sin City en todos.
 Cada vez que se usa una, anotarlo en `resumen.md` (cuál y cómo se adaptó) y, cuando haya
 números, en `aprendizajes.md`. Una referencia que ya se usó 2 veces sin rendir, se deja.
 
-## Lo que tienen en común casi todas (aprendido el 29/10)
+## Lo que tienen en común (visto cuadro por cuadro el 02/11, sin escuchar el audio)
 
-- **Duran ~9 s.** Las nuestras del 28/10 duraban 17 s.
-- **Un corte en cada golpe (o cada 2) del tema.** El golpe = 60 / bpm del tema (`temas.json`):
-  a 128 bpm, 0,469 s; dos golpes, 0,9375 s. Usá `dur` múltiplos de eso.
-- **El texto se arma palabra por palabra al ritmo**, grande y al centro → `carteles_beat` en el
-  guion (ver el docstring de `armar_reel.py`).
-- **Un remate simple** (juego de palabras, una orden, una sorpresa) y cierre con el producto.
-- Varias van **sin voz**: el texto en el golpe ES el mensaje. Con este formato, la voz es opcional.
+- **Texto e imagen son el mismo chiste.** Si sacás la imagen, el texto no se entiende. Si la toma no muestra lo que dice el texto, no se arma.
+- **Cada toma es distinta de la anterior**: otro objeto, otro fondo u otro lugar. Si todas son el mismo plano, cortar al ritmo parece un error.
+- El corte al golpe y la duración (~9 s) son la forma, no el truco. Por copiar sólo eso salieron mal los del 02/11.
+- Una transición se mira cuadro a cuadro (30 fps). En una hoja a 2,5 fps no se ve para qué lado va: por eso la v1 del pulgar salió para un solo lado.
+- La **7 no es un reel**, y la 1 y la 4 piden composición aparte.
 
 ## Las referencias
 
-| # | Link | Qué hace | Adaptación Astronomy | ¿Se puede hoy? |
-|---|---|---|---|---|
-| 1 | instagram.com/reel/Deyot_CAaeN (@yannikframes) | Arranca como un reel ajeno adentro de Instagram (interfaz a la vista), «sale» al selector de apps del iPhone, pasa por Safari y la calculadora, abre Fotos y la tarjeta se agranda al video real. Te hace creer que deslizaste vos. | Reel de un DJ que se equivoca → selector de apps → Safari «clases de DJ zona norte» → Fotos → The Bunker en el drop. | NO con el armador (hay que dibujar la interfaz del iPhone): lo arma el hilo principal aparte. |
-| 2 | instagram.com/reel/DeW8LJXRiYH | «Heeee… Stop! Look at… this, this, this… aaand»: abre en un círculo chico, después un corte por palabra mostrando el espacio. | «Pará. Mirá… esto, esto, esto… y esto»: cabina, CDJs, monitores, neón, el set. | SÍ: `carteles_beat` + cortes de 1 golpe. |
-| 3 | instagram.com/reel/De642CERisd (Sprinhaus) | «GIVE ME A SIGN» palabra por palabra sobre la vidriera, cortes de productos con signos, remate «GO BUY YOUR SIGN». | «DAME UNA SEÑAL» → cortes del estudio → «ESTA ES TU SEÑAL / VENÍ A MEZCLAR». | SÍ. |
-| 4 | instagram.com/reel/DeSv-vwSuXY | Una notificación de Instagram («This can be a HOOK») y la persona juega con ella: la quema, la estira, la tira. | Notificación «Astronomy: tu clase de prueba te espera» y el profe la agarra y la tira a la consola. | NO: hay que filmar al profe actuando la interacción. Pedirlo. |
-| 5 | instagram.com/reel/DewfNScOktt (joyería) | «MOVE YOUR THUMB to the beat» con un pulgar dibujado; cada producto entra en un golpe. | «MOVÉ EL PULGAR AL RITMO» → un detalle del estudio por golpe (jog, fader, pad, neón). | SÍ (sin el dibujo: el texto alcanza). |
-| 6 | instagram.com/reel/De90x1LI9yD (open day) | Cartel escrito a mano que pasa por distintos lugares mientras se completa «PUT THAT PHONE DOWN AND COME TO OUR OPEN-DAY»; cierra con el flyer. | «DEJÁ EL CELULAR Y VENÍ A MEZCLAR». Ya probado con `carteles_beat` el 29/10: funciona. Mejor todavía con un cartel real filmado. | SÍ con carteles; el cartel real hay que filmarlo. |
-| 7 | instagram.com/reel/DesgAIqJ_Ou (3 tendencias de carrusel) | (a) «Me da vergüenza pedirte… un Porsche. Pero [producto] sí me lo podés regalar» → se comparte como indirecta. (b) «Abrí la foto» estilo foto de WhatsApp de una sola vez → al deslizar, el producto. (c) «Se acaba el año y siento que no hice nada» → la mejor foto de cada mes. | (a) «Me da vergüenza pedirte un viaje a Ibiza… pero una membresía en Astronomy sí me la podés regalar» (cumpleaños, diciembre). (b) «Abrí la foto» → la cabina: «tu próximo set». (c) enero→octubre con fotos de clases y eventos. | (a) y (b) SÍ como reel (tomas fijas + `carteles_beat`). (c) cuando haya fotos de todo el año. |
-| 8 | instagram.com/reel/Dch_9neN_-4 (lámpara) | Un pincel pinta de rojo sobre «you can't buy happiness»; donde pasa la pintura el texto queda blanco y CAMBIA: «you can buy a lamp». La frase hecha dada vuelta + la pintura en vivo retienen hasta el final (10 s). | «No podés comprar talento» → pintura → «podés comprar horas en la cabina». O «el oído no se compra» → «se entrena. Astronomy». | NO: hay que filmar la mano pintando una hoja blanca (10 s, fijo). El texto se compone después separando lo pintado por color — lo arma el hilo principal. |
+| # | Link | Qué hace de verdad | El truco que no se puede perder | Para Astronomy | ¿Se puede hoy? |
+|---|---|---|---|---|---|
+| 1 | instagram.com/reel/Deyot_CAaeN (@yannikframes, 39 mil likes) | Parece un reel ajeno con la interfaz de Instagram. Pasa al selector de apps del iPhone (Safari, Calculadora, Fotos); la tarjeta de Fotos se abre y entra un video de viaje muy editado, con recortes y marcos rojos. | Creés que deslizaste vos. Es una grabación de pantalla real. | Reel de un DJ que se equivoca → selector de apps → Fotos → The Bunker. | NO: hace falta una grabación de pantalla de un iPhone y mucha edición. |
+| 2 | instagram.com/reel/DeW8LJXRiYH (1,5 mil likes) | Abre en un círculo chico, se agranda y dice «Stop! Look at this, this, this… aaand»; cada «this» es OTRO lugar del espacio, con cámara en movimiento. Cierra con el logo. | El lugar es tan llamativo que cada corte sorprende. | «Pará. Mirá esto, esto, esto… y» → logo. | A MEDIAS: hay pocas tomas abiertas y distintas del estudio. Mejor filmar un recorrido. |
+| 3 | instagram.com/reel/De642CERisd (Sprinhaus) | «GIVE ME A SIGN» sobre la vidriera. Corta a tazas y platos con signos del zodíaco. Cierra «GO BUY YOUR SIGN» en la vidriera de noche. | Doble sentido: «sign» es señal Y signo, y los productos TIENEN signos. | No sirve «dame una señal». Hace falta otro doble sentido que se vea: idea a probar, «DAME UNA MANO» → manos del profe guiando las del alumno → «VENÍ, TE DAMOS UNA MANO». | NO: hay que ver si esas tomas existen o filmarlas. |
+| 4 | instagram.com/reel/DeSv-vwSuXY (@benspinelli, 27 mil likes) | Una notificación de Instagram flota sobre la persona en 3 lugares: la prende fuego, la estira y la rompe, la agarra y la tira. | La persona actúa con algo que no existe. | Notificación «Tu clase de prueba te espera»: el profe la agarra y la tira a la consola. | NO: filmar 3 tomas de 3 s y componer aparte. |
+| 5 | instagram.com/reel/DewfNScOktt (joyería) | 3,6 s en negro: un pulgar dibujado sube y baja al ritmo bajo «MOVE YOUR THUMB to the beat». Después, 12 productos en 6 s, SIN TEXTO: cada foto empuja a la anterior en el golpe, UNA VEZ PARA CADA LADO, igual que el pulgar. | Vos movés el pulgar para los dos lados y parece que movés las fotos. Facu, 02/11: si las fotos van para un solo lado, está mal de base. | Pulgar literal de la referencia + consola, sintes, parlante, DJ, mural, frente, neón, en diagonal. | SÍ: `Reels-a-mano/02-pulgar/pulgar-v3.mp4`. PUBLICADO como prueba el 02/11: instagram.com/reel/DfQeBzCF6lk |
+| 6 | instagram.com/reel/De90x1LI9yD (coworking, 3,5 mil likes) | Un cuaderno REAL escrito a mano, siempre en el mismo lugar del cuadro, mientras atrás cambian el lugar y la gente. La frase se va completando y al final el cuaderno es el flyer. | Un objeto real que no se mueve y un mundo que cambia atrás. Con texto sobreimpreso se pierde. | «DEJÁ EL CELULAR Y VENÍ A MEZCLAR» en cuaderno + sala, cabina, gente. | NO: hay que filmarlo (es corto). |
+| 7 | instagram.com/reel/DesgAIqJ_Ou (@andrea.contenido) | NO es un reel para copiar: es una chica explicando 3 tendencias de CARRUSEL, en 2 min. (a) Slides de diseño: «Me da vergüenza pedirte…» / «que me regales un Porsche 911» / «pero un tratamiento en Guaguacoa sí me puedes regalar», con un perrito al lado del producto. (b) «Abre la foto» como foto de WhatsApp → al deslizar, el producto. (c) «Siento que no hice nada este año» → una foto por mes. | Se manda a alguien como indirecta y el remate está al deslizar. | (a) «Me da vergüenza pedirte… un viaje a Ibiza / pero una membresía en Astronomy sí me la podés regalar». | SÍ como CARRUSEL, no como reel. Va al feed: necesita OK de Facu. |
+| 8 | instagram.com/reel/Dch_9neN_-4 (lámpara, 8 mil likes) | Toma fija: un pincel pinta de rojo sobre «you can't buy happiness» y donde pasa, el texto se vuelve blanco y cambia a «you can buy a lamp». | La frase cambia mientras la pintura avanza. | «No podés comprar talento» → «podés comprar horas en la cabina». | SÍ, sobre el video original (Facu, 02/11): `Reels-a-mano/03-lampara/lampara-v5.mp4`, sin publicar. Frase de Facu: «you can't buy happiness» → «you can buy a DJ COURSE». Sólo cambia la última línea blanca. |
+
+## Material
+
+- **El frente del estudio cambió** (Facu, 02/11): usar `Fotos del estudio/Frente/` (`frente-dia.jpg`, `frente-noche.jpg`). El frente de madera pintada con ASTRONOMY de `Videos/2.mov` y `Astronomy_V_L.mov` quedó viejo: no usarlo.
+- Al cambiarle la frase a un video ajeno, tocar lo mínimo: cuantas menos letras se borran, menos errores se ven cuando pasa la mano o el pincel.
+- Facu acepta usar el video de la referencia tal cual y cambiarle lo que dice, si conserva el truco.
 
 ## Para el próximo pedido de filmación (`pedir_filmacion.py`)
 
