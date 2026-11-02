@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 764.3555260379122,
-  "posiciones": {
-    "TRXUSDT": {
-      "nivel": "trading",
-      "cantidad": 390.1073869183208,
-      "entrada": 0.3073,
-      "maximo": 0.3215,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793575860000
-    }
-  },
-  "comisiones_usd": 32.58053299999996,
+  "usdt": 886.2980628032881,
+  "posiciones": {},
+  "comisiones_usd": 32.70259799999996,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2946,6 +2923,18 @@
       "comision": 0.12877,
       "motivo": "Rebote en soporte invalidado según lo anotado: SOL hizo mínimo nuevo de 48 h (~93,13, debajo de 93,68) — está a +0,47% del mínimo con 1 h -0,83%, 4 h -0,74% y volumen 1,3x de venta. Salgo antes del stop (93,03) por la condición escrita.",
       "resultado_pct": -0.85
+    },
+    {
+      "ms": 1793579504082,
+      "fecha": "2026-11-02 00:31 UTC",
+      "lado": "sell",
+      "par": "TRXUSDT",
+      "cantidad": 390.1073869183208,
+      "precio": 0.3129,
+      "usd": 122.0646,
+      "comision": 0.122065,
+      "motivo": "Regla de 24 h: entró 01/11 00:32 por rebote en soporte y no llegó a +8% ni al stop (máx ~+2%). Tesis no invalidada (sin mínimo nuevo, +3,64% del mínimo de 48 h) pero lateral y sin volumen (0,18x): sale y rota a caja.",
+      "resultado_pct": 1.82
     }
   ]
 }
