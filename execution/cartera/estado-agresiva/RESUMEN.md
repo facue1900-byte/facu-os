@@ -1,22 +1,22 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-02 15:35 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-02 16:57 UTC
 
-**Total: 883.11 USD (-11.69%)** desde 2026-10-07 23:06 UTC · USDT libre 286.30 · comisiones 33.30 · 248 operaciones
+**Total: 878.73 USD (-12.13%)** desde 2026-10-07 23:06 UTC · USDT libre 620.38 · comisiones 33.64 · 250 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **883.11** |
+| **Esta carpeta** | **878.73** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 934.79 |
+| hodl btc | 930.58 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 199.31 | -0.25% | 2,257.63 |
-| SOL | trading | 138.11 | -1.25% | 92.9616 |
-| HYPE | trading | 129.85 | -0.01% | 85.0031 |
-| XRP | trading | 129.54 | -0.26% | 1.23998 |
+| XRP | trading | 129.61 | -0.20% | 1.23998 |
+| HYPE | trading | 128.74 | -0.87% | 85.0031 |
 
 ## Últimas operaciones
 
+- 2026-11-02 16:56 UTC · venta ETH 197.77 USD a 2,268.74 — Ruptura invalidada: la vela de 15:00 cerró 2273,41, debajo de 2283 (condición de salida escrita). 16:00 sigue abajo (2268,74), -2,1% del máx
+- 2026-11-02 15:58 UTC · venta SOL 136.64 USD a 92.9616 — Stop automático en 92.96155 (entrada 95.15, máximo 95.95).
 - 2026-11-02 15:35 UTC · compra HYPE 130.00 USD a 86.21 — Rebote en soporte con la regla de dos horas: HYPE perforó el viejo piso 85,33 en la vela de 12:00 y marcó mínimo de 48 h nuevo en 85,15; las
 - 2026-11-02 08:37 UTC · compra XRP 130.00 USD a 1.2525 — Rebote en soporte con la regla de dos horas: XRP marcó el mínimo de 48 h en 1,2423 (vela de 00:00), se acercó de nuevo en la de 06:00 (1,247
 - 2026-11-02 01:33 UTC · compra SOL 140.00 USD a 95.15 — Rebote en soporte, con la lección de ayer (dos horas sin mínimo nuevo): SOL tocó el mínimo de 48 h a 93,18 en la vela de 22:00 y las de 23:0
@@ -25,7 +25,5 @@
 - 2026-11-01 22:31 UTC · venta SOL 128.77 USD a 93.65 — Rebote en soporte invalidado según lo anotado: SOL hizo mínimo nuevo de 48 h (~93,13, debajo de 93,68) — está a +0,47% del mínimo con 1 h -0
 - 2026-11-01 21:32 UTC · compra SOL 130.00 USD a 94.45 — Rebote en soporte: SOL (68 M/día) tocó el mínimo de 48 h a 93,68 en la vela de 19:00; la de 20:00 cerró verde sin perforarlo (mín 93,81, cie
 - 2026-11-01 09:32 UTC · venta AVAX 128.00 USD a 8.817 — Tesis de momentum invalidada según lo anotado: 4 h roja (-1,45%) y 24 h debajo de +5% (+4,64%), 1 h -0,33%. Salgo antes del stop por la cond
-- 2026-11-01 07:32 UTC · compra AVAX 130.00 USD a 8.946 — Momentum 24 h: AVAX 24 h +5,71%, 4 h +3,24%, 1 h +0,22% (no estirada), volumen 4 h 2,81x (cumple la lección: momentum pide >= 1x), 21,1 M/dí
-- 2026-11-01 00:32 UTC · compra TRX 120.00 USD a 0.3073 — Rebote en soporte: TRX (68 M/día) venía pegada al mínimo de 48 h haciendo mínimos; esta hora deja de caer con fuerza (1 h +2,24%, 4 h +2,0%)
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

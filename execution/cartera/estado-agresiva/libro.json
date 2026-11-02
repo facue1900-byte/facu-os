@@ -4,52 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 286.2980628032881,
+  "usdt": 620.3783664640608,
   "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.08717239453580045,
-      "entrada": 2292.01,
-      "maximo": 2317.84,
-      "reglas": {
-        "stop": 1.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793633640000
-    },
-    "SOLUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.46988964792433,
-      "entrada": 95.15,
-      "maximo": 95.95,
-      "reglas": {
-        "stop": 2.3,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793633640000
-    },
     "XRPUSDT": {
       "nivel": "trading",
       "cantidad": 103.68862275449102,
@@ -70,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793633640000
+      "vigilado_hasta": 1793638560000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 1.5064377682403436,
       "entrada": 86.21,
-      "maximo": 86.21,
+      "maximo": 86.4,
       "reglas": {
         "stop": 1.4,
         "trail": 5.0,
@@ -92,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793633760000
+      "vigilado_hasta": 1793638560000
     }
   },
-  "comisiones_usd": 33.30259799999997,
+  "comisiones_usd": 33.63701199999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3072,6 +3028,30 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Rebote en soporte con la regla de dos horas: HYPE perforó el viejo piso 85,33 en la vela de 12:00 y marcó mínimo de 48 h nuevo en 85,15; las de 13:00 (mín 85,27, cerró verde 86,16), 14:00 (mín 85,79, cerró verde 86,21) y 15:00 en curso (mín 85,81) no lo perforan, pisos subiendo; 1 h +0,02%, volumen 4 h 1,86x, +1,27% del mínimo. BTC -0,08% en 4 h: sin bloqueo. Tamaño ~15%. Stop 1,4% (~85,0), debajo del mínimo de 48 h. Invalida: mínimo nuevo debajo de 85,15. Rota 03/11 15:35 si no llega a +8%."
+    },
+    {
+      "ms": 1793635080000,
+      "fecha": "2026-11-02 15:58 UTC",
+      "lado": "sell",
+      "par": "SOLUSDT",
+      "cantidad": 1.46988964792433,
+      "precio": 92.96155,
+      "usd": 136.6432,
+      "comision": 0.136643,
+      "motivo": "Stop automático en 92.96155 (entrada 95.15, máximo 95.95).",
+      "resultado_pct": -2.3
+    },
+    {
+      "ms": 1793638608775,
+      "fecha": "2026-11-02 16:56 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.08717239453580045,
+      "precio": 2268.74,
+      "usd": 197.7715,
+      "comision": 0.197771,
+      "motivo": "Ruptura invalidada: la vela de 15:00 cerró 2273,41, debajo de 2283 (condición de salida escrita). 16:00 sigue abajo (2268,74), -2,1% del máximo de 48 h. Salgo antes del stop ~2257,6.",
+      "resultado_pct": -1.02
     }
   ]
 }
