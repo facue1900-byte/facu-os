@@ -56,10 +56,11 @@ Supabase. En Dashboard: febrero caja $0 → $20 M, marzo caja $32 M → $12 M; t
 día lo pagó el Paseo y el otro Facu ($180.000 y $100.000, 30/04). Movimientos filas 669–672 y
 Supabase, como aporte de Facu + egreso `Inversiones`, igual que los focos de luz. Caja no se mueve.
 
-🔴 **$6.000.000 de Richi del 10/03** (Gastos Obra fila 30): Facu confirma que Richi se los
-pagó al Paseo; por no estar en el extracto de MAHNI serían caja. Sin cargar en Movimientos:
-sumarlos lleva la caja del libro de $4.463.534 a $10.463.534. Falta saber si esa plata está o
-se gastó sin anotar.
+✅ **$6.000.000 de Richi del 10/03 cargados (02/11, OK de Facu):** Movimientos filas 673–674 y
+Supabase, aporte en Caja + egreso `Inversiones` «Obra SIN DETALLE». Facu informó caja
+$4.463.534, igual al libro, por eso la plata se dio por gastada sin anotar (no consta conteo
+físico). Richi: banco $93.105.000 + caja $154.980.000 = $248.085.000 + US$6.000 caja.
+🟡 Falta el detalle de esos $6.000.000 de obra: si aparece, corregir la observación.
 
 🟡 **Gastos Obra, para que Facu confirme:**
 - 12 filas con fecha distinta a la del Master Plan, de 1 a 14 días (7, 8, 9, 37, 40–44, 54,
