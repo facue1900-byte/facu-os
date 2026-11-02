@@ -24,3 +24,4 @@
 2026-11-02 · 3niveles=-11.41% agresiva=-11.37% laboratorio=-0.84% dca=-0.01% torneo(A7)=+3.23% · récord torneo P7, mail; apagar 3niveles y Agresiva
 2026-11-02 · 3niveles=-11.34% agresiva=-11.57% laboratorio=-0.84% dca=-0.01% torneo(A7)=+3.57% · récord P7 sin mail (ya avisado hoy); apagar 3niveles y Agresiva
 2026-11-02 · 3niveles=-11.55% agresiva=-11.57% laboratorio=-0.84% dca=-0.01% torneo(A7)=+1.61% · sin récords ni mail; apagar 3niveles y Agresiva
+2026-11-02 · régimen=BTC arriba de la media 200, bajando 30 d · 3niveles=-11.91% agresiva=-12.33% laboratorio=-0.84% dca=-0.38% torneo(L9)=+1.03% original=-1.04% · sólo Torneo arriba de USDT; nadie en +20%, sin mail
