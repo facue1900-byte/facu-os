@@ -414,3 +414,16 @@ los controles frenaron antes de emitir: el concepto quedó vacío en una factura
 en una nota de débito (el click cayó en otro renglón porque el viewport cambió de alto). **El dato a
 controlar es siempre el campo releído antes de emitir, nunca el click.** FC 21 tuvo un rechazo de WSAA que
 se resolvió con Solicitar CAE, sin reemitir: el número no se perdió. Detalle en la memoria de Bejerman.
+
+## 02/11/2026 — reels diarios: el agente confundió un comando negado con «Bash bloqueado»
+
+Primera corrida real con `dontAsk` (el fix del 29/10 se probó con comandos sueltos, nunca una corrida
+entera): el agente armó un solo comando con `RD=...; PY=...; $PY ...; $PY ...; ls ...`. Esa forma no
+matchea ningún `Bash(...)` de la lista y se negó, que es lo correcto. Con esa única negativa concluyó
+«Bash está bloqueado», cortó sin reintentar y salió con 0 reels. Detrás había otra falla: `mkdir -p`
+sobre la carpeta del día (ruta entre comillas y con espacios) también se negaba, aunque tenía regla.
+Fix: el encabezado del prompt fija la forma de llamar a Bash (un comando por llamada, sin variables,
+sin mkdir: `Write` crea la carpeta) y dice que una negativa es de ese comando; se sacaron las reglas
+de mkdir. Probado headless con los mismos permisos: indexar, leer_trials, Write y armar_reel, 0 negativas.
+**Lección:** un permiso de agente headless se prueba también con la forma en que el agente escribe de
+verdad los comandos y con una corrida entera, no sólo con el comando ideal.
