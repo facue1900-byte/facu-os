@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793619060000
+      "vigilado_hasta": 1793622780000
     },
     "SOLUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793619060000
+      "vigilado_hasta": 1793622780000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793619060000
+      "vigilado_hasta": 1793622780000
     }
   },
   "comisiones_usd": 33.172597999999965,
