@@ -22,3 +22,4 @@
 2026-11-01 · 3niveles=-11.53% agresiva=-11.32% laboratorio=-0.84% dca=-0.01% torneo(A7)=+4.82% · récord P7/L8 sin mail (ya avisado hoy); apagar 3niveles y Agresiva
 2026-11-01 · 3niveles=-11.59% agresiva=-11.20% laboratorio=-0.84% dca=-0.01% torneo(A7)=+4.05% · récord P7 sin mail (ya avisado hoy); apagar 3niveles y Agresiva
 2026-11-02 · 3niveles=-11.41% agresiva=-11.37% laboratorio=-0.84% dca=-0.01% torneo(A7)=+3.23% · récord torneo P7, mail; apagar 3niveles y Agresiva
+2026-11-02 · 3niveles=-11.34% agresiva=-11.57% laboratorio=-0.84% dca=-0.01% torneo(A7)=+3.57% · récord P7 sin mail (ya avisado hoy); apagar 3niveles y Agresiva
