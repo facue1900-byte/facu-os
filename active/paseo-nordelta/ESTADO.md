@@ -29,7 +29,7 @@ La FC 0002-14 de Rhino está **anulada** (salió con el mismo contenido que la 1
 ✅ **Aporte de Richi $25.000.000 del 23/10 — CARGADO (26/10).** Tres transferencias a la
 cuenta Macro del Paseo: $100.000 y $5.900.000 desde Santander, $19.000.000 desde Macro.
 En Movimientos filas 634–636 (Medio Banco, para que el dedupe del extracto de octubre
-no las duplique), en Supabase con su id en K, y en Gastos Obra filas 122–124 (ya
+no las duplique), en Supabase con su id en K, y en Gastos Obra filas 120–122 (ya
 estaban, con Fx 1536; el blue del 23/10 da 1555 promedio — Facu decide si se corrige).
 Comprobantes en `Comprobantes de pago/2026/Octubre 2026/Aportes Richi/`.
 `comprobar_capital.py` CIERRA: caja + banco $52.645.526.
@@ -44,14 +44,22 @@ de Richi de derechos de construcción, fondo y áridos (08/07, $25.975.013) y su
 de Facu ($1.180.000). Corregidas las fechas de 5 aportes. Richi queda en **$205.262.000 /
 US$139.233,85**. Copia previa: `data/logs/gastos_obra_antes_2026-11-02.json`.
 
-🔴 **Dos diferencias contra el Master Plan, sin corregir:**
-- **$6.000.000 de Richi del 10/03** (Gastos Obra fila 30): Facu confirma que los puso, pero
-  no están en Movimientos ni en el extracto. Falta saber por dónde entraron o qué pagaron.
-- **$20.000.000 de Richi** (Movimientos fila 77): dice 02/03 y Facu confirma 03/02. Corregir
-  también en Supabase, no sólo en el sheet.
+✅ **$20.000.000 de Richi pasados del 02/03 al 03/02 (02/11, Facu):** Movimientos fila 77 y
+Supabase. En Dashboard: febrero caja $0 → $20 M, marzo caja $32 M → $12 M; total sin cambios.
 
-🟡 **Gastos Obra, fila 60 ($79.953, 20/05, Facundo):** parece duplicada con «Aporte de
-capital» del mismo día y monto, y la fecha está como texto. Falta que Facu confirme.
+✅ **Duplicados borrados de Gastos Obra (02/11):** Facundo «Aporte de capital» $79.953 del
+20/05 (queda «casa electricidad») y Paseo «Pague a Daniel arreglos» $600.000 del 09/10
+(queda rejilla; el Master Plan y Supabase tienen un solo pago). Copia previa:
+`data/logs/gastos_obra_y_mp77_antes_2026-11-02_b.json`.
+
+🔴 **$6.000.000 de Richi del 10/03** (Gastos Obra fila 30): Facu confirma que los puso, pero
+no están en Movimientos ni en el extracto. Falta saber por dónde entraron o qué pagaron.
+
+🟡 **Gastos Obra, para que Facu confirme:**
+- Filas 45 y 47 (Facundo, $180.000 y $100.000, 30/04): mismos montos que las filas 41 y 40
+  (Paseo, 27/04), con un solo pago de cada uno en el Master Plan.
+- 12 filas con fecha distinta a la del Master Plan, de 1 a 14 días (7, 8, 9, 37, 40–44, 54,
+  59, 74). No se corrigieron: no hay fuente que diga cuál fecha es la buena.
 
 **Cafetería: el alquiler arranca en MARZO 2027, no en noviembre** (Facu, 26/10). Corrido
 en `radar_rampa.py`.
