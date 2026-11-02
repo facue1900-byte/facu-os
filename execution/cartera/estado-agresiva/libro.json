@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793590260000
+      "vigilado_hasta": 1793593860000
     },
     "SOLUSDT": {
       "nivel": "trading",
       "cantidad": 1.46988964792433,
       "entrada": 95.15,
-      "maximo": 95.79,
+      "maximo": 95.95,
       "reglas": {
         "stop": 2.3,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793590260000
+      "vigilado_hasta": 1793593860000
     }
   },
   "comisiones_usd": 33.04259799999996,
