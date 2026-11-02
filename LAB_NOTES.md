@@ -395,3 +395,13 @@ el `grep "^PAPER_OK"` no lo vio y una corrida buena mandó mail de falla.
 de octubre como `cursodj` y reescribía `plan_id`. Se arregló antes de aplicar y se corrió el reconcile real
 después: quedó Silver. **Lección:** un script de migración con fecha se prueba contra los crons que
 escriben esa misma columna, no sólo con su simulación.
+
+## 02/11/2026 — `cargos_del_mes.py` se cortó a la mitad por la cuota de Sheets
+
+La corrida con `--escribir` pasó el tope de 60 lecturas/escrituras por minuto y murió dos veces: una
+antes de CARGOS y otra a mitad de Peak One. Las dos se retomaron bien por el dedupe, pero la segunda
+destapó otro bug: **un cargo de $0 no se reconocía como existente** (el dedupe ignora las filas en $0 a
+propósito), así que cada re-corrida duplicaba «Peak One / Alquiler» (CARGOS 208; ya pasó en oct, 176/187).
+Fix: `_con_reintento_429` en `Planillas` (un 429 no aplica nada, reintentar es seguro; probado con 429
+que se recupera, 429 agotado y 500) y el dedupe compara $0 contra $0. **El fix del dedupe no se corrió
+contra la planilla**: la re-corrida quedó frenada junto con el borrado de la fila 208.
