@@ -89,3 +89,15 @@ No se pudieron (lo hace Facu o falta un dato):
 - **Trackstack: se queda thesincitysound@gmail.com.** Borrador de respuesta a Rowen en el hilo, en studio@ (30/10):
   pide cerrar studio@ y pasar el historial de envíos (Catch & Release, Nervous, Trick) a thesincitysound@, o poder leer
   las respuestas antes del cierre. 🔴 Sin enviar: espera OK de Facu.
+
+## 02/11/2026: ronda de noviembre (Facu: "seguí mandando por donde puedas")
+Script `Desktop/Facu/SIN CITY/enviar_demos_3.py`, 5 mails desde studio@, cargados en el Tracker, seguimiento 23/11:
+- Nuevos, los 3 temas (Always In The Game, Bitch We're Not The Same, Go Back): Magnetic Magazine Recordings, Data Transmission, Deep House Amsterdam. Mail visto en la fuente de cada uno.
+- Pidieron más: Comparsa (Always In The Game, en su hilo), Hotoven (Space Miami adjunto, en su hilo).
+- Research 02/11 (`~` 40 pistas): casi todo el tech house mediano recibe por Trackstack/LabelRadar; lo gratis y abierto se agotó. Las búsquedas web genéricas ya no rinden.
+Frenados, esperan a Facu:
+- Baikonur: el form exige UNA playlist privada de SoundCloud con 2-4 temas; hay que crearla logueado como Sin City (Chrome está en otra cuenta).
+- Sweat It Out: el form obliga a aceptar T&Cs.
+- Trackstack: sigue pausada; respuesta a Rowen en borrador. Destraba Catch & Release (shortlist), Hot Creations, Bibi, Kittball.
+Sin canal confirmado: Jango, Glasgow Underground ("For Demos" vacío), Magna. Afuera: Leap4rog (último release 2022), Tech Me House (vende campañas).
+Pendiente 10/11: seguimiento de la tanda del 20/10, sumándoles "Always In The Game" a los que no lo tienen (incluye los 3 borradores viejos de Two Mountains, Lost, Slightly Sizzled: reescribir, ya recibieron otro mail).
