@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 546.2980628032881,
+  "usdt": 416.2980628032881,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793604960000
+      "vigilado_hasta": 1793608560000
     },
     "SOLUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793604960000
+      "vigilado_hasta": 1793608560000
+    },
+    "XRPUSDT": {
+      "nivel": "trading",
+      "cantidad": 103.68862275449102,
+      "entrada": 1.2525,
+      "maximo": 1.2525,
+      "reglas": {
+        "stop": 1.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793608680000
     }
   },
-  "comisiones_usd": 33.04259799999996,
+  "comisiones_usd": 33.172597999999965,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3004,6 +3026,18 @@
       "usd": 140.0,
       "comision": 0.14,
       "motivo": "Rebote en soporte, con la lección de ayer (dos horas sin mínimo nuevo): SOL tocó el mínimo de 48 h a 93,18 en la vela de 22:00 y las de 23:00, 00:00 y 01:00 no lo perforaron (mín 93,68 / 93,83 / 94,04, pisos subiendo); 1 h +1,18%, volumen 4 h 2,15x, +2,19% del mínimo. Tamaño ~16%. Stop 2,3% (~93,07), debajo del mínimo de 48 h. Invalida: mínimo nuevo debajo de 93,18. Rota 03/11 01:32 si no llega a +8%."
+    },
+    {
+      "ms": 1793608666897,
+      "fecha": "2026-11-02 08:37 UTC",
+      "lado": "buy",
+      "par": "XRPUSDT",
+      "nivel": "trading",
+      "cantidad": 103.68862275449102,
+      "precio": 1.2525,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Rebote en soporte con la regla de dos horas: XRP marcó el mínimo de 48 h en 1,2423 (vela de 00:00), se acercó de nuevo en la de 06:00 (1,2474) y las de 07:00 (1,2486) y 08:00 (1,2489) no lo perforaron, pisos subiendo; 1 h +0,17%, volumen 4 h 2,0x, +0,83% del mínimo. BTC -0,26% en 4 h: sin bloqueo. Tamaño ~15%. Stop 1% (~1,240), debajo del mínimo de 48 h. Invalida: mínimo nuevo debajo de 1,2423. Rota 03/11 08:37 si no llega a +8%."
     }
   ]
 }
