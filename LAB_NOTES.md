@@ -405,3 +405,12 @@ propósito), así que cada re-corrida duplicaba «Peak One / Alquiler» (CARGOS 
 Fix: `_con_reintento_429` en `Planillas` (un 429 no aplica nada, reintentar es seguro; probado con 429
 que se recupera, 429 agotado y 500) y el dedupe compara $0 contra $0. **El fix del dedupe no se corrió
 contra la planilla**: la re-corrida quedó frenada junto con el borrado de la fila 208.
+
+## 02/11/2026 — emisión de facturas desde el Chrome de Facu, sin `emitir.js`
+
+Los 6 comprobantes de noviembre salieron con la extensión, porque Facu no quiere una segunda ventana.
+El robot sigue siendo más seguro para tipear, pero exige el puerto 9333. Se perdió tiempo en dos cosas que
+los controles frenaron antes de emitir: el concepto quedó vacío en una factura y en `003 Viáticos Exento`
+en una nota de débito (el click cayó en otro renglón porque el viewport cambió de alto). **El dato a
+controlar es siempre el campo releído antes de emitir, nunca el click.** FC 21 tuvo un rechazo de WSAA que
+se resolvió con Solicitar CAE, sin reemitir: el número no se perdió. Detalle en la memoria de Bejerman.
