@@ -93,6 +93,7 @@ No se pudieron (lo hace Facu o falta un dato):
 ## 02/11/2026: ronda de noviembre (Facu: "seguí mandando por donde puedas")
 Script `Desktop/Facu/SIN CITY/enviar_demos_3.py`, 5 mails desde studio@, cargados en el Tracker, seguimiento 23/11:
 - Nuevos, los 3 temas (Always In The Game, Bitch We're Not The Same, Go Back): Magnetic Magazine Recordings, Data Transmission, Deep House Amsterdam. Mail visto en la fuente de cada uno.
+- ⚠️ Deep House Amsterdam NO llegó a nadie: autorespuesta de Lex, ya no está; premieres a wessel@deephouseamsterdam.com. Sin reenviar, espera OK de Facu.
 - Pidieron más: Comparsa (Always In The Game, en su hilo), Hotoven (Space Miami adjunto, en su hilo).
 - Research 02/11 (`~` 40 pistas): casi todo el tech house mediano recibe por Trackstack/LabelRadar; lo gratis y abierto se agotó. Las búsquedas web genéricas ya no rinden.
 Frenados, esperan a Facu:
