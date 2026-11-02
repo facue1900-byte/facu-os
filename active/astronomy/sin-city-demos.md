@@ -96,9 +96,9 @@ Script `Desktop/Facu/SIN CITY/enviar_demos_3.py`, 5 mails desde studio@, cargado
 - ⚠️ Deep House Amsterdam NO llegó a nadie: autorespuesta de Lex, ya no está; premieres a wessel@deephouseamsterdam.com. Sin reenviar, espera OK de Facu.
 - Pidieron más: Comparsa (Always In The Game, en su hilo), Hotoven (Space Miami adjunto, en su hilo).
 - Research 02/11 (`~` 40 pistas): casi todo el tech house mediano recibe por Trackstack/LabelRadar; lo gratis y abierto se agotó. Las búsquedas web genéricas ya no rinden.
+- Sweat It Out (02/11, OK de Facu): formulario enviado con los 3 temas, confirmación en pantalla. El tilde de T&Cs no enlaza a ningún texto y la web no los publica: se aceptaron sin poder leerlos. Si piden firmar algo, leerlo antes.
 Frenados, esperan a Facu:
 - Baikonur: el form exige UNA playlist privada de SoundCloud con 2-4 temas; hay que crearla logueado como Sin City (Chrome está en otra cuenta).
-- Sweat It Out: el form obliga a aceptar T&Cs.
 - Trackstack: sigue pausada; respuesta a Rowen en borrador. Destraba Catch & Release (shortlist), Hot Creations, Bibi, Kittball.
 Sin canal confirmado: Jango, Glasgow Underground ("For Demos" vacío), Magna. Afuera: Leap4rog (último release 2022), Tech Me House (vende campañas).
 Pendiente 10/11: seguimiento de la tanda del 20/10, sumándoles "Always In The Game" a los que no lo tienen (incluye los 3 borradores viejos de Two Mountains, Lost, Slightly Sizzled: reescribir, ya recibieron otro mail).
