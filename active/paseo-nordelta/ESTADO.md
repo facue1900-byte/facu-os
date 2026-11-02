@@ -52,19 +52,23 @@ Supabase. En Dashboard: febrero caja $0 → $20 M, marzo caja $32 M → $12 M; t
 (queda rejilla; el Master Plan y Supabase tienen un solo pago). Copia previa:
 `data/logs/gastos_obra_y_mp77_antes_2026-11-02_b.json`.
 
-🔴 **$6.000.000 de Richi del 10/03** (Gastos Obra fila 30): Facu confirma que los puso, pero
-no están en Movimientos ni en el extracto. Falta saber por dónde entraron o qué pagaron.
+✅ **Segundo día de tortu y ayudantes cargado (02/11, Facu):** no eran duplicados. El primer
+día lo pagó el Paseo y el otro Facu ($180.000 y $100.000, 30/04). Movimientos filas 669–672 y
+Supabase, como aporte de Facu + egreso `Inversiones`, igual que los focos de luz. Caja no se mueve.
+
+🔴 **$6.000.000 de Richi del 10/03** (Gastos Obra fila 30): Facu confirma que Richi se los
+pagó al Paseo; por no estar en el extracto de MAHNI serían caja. Sin cargar en Movimientos:
+sumarlos lleva la caja del libro de $4.463.534 a $10.463.534. Falta saber si esa plata está o
+se gastó sin anotar.
 
 🟡 **Gastos Obra, para que Facu confirme:**
-- Filas 45 y 47 (Facundo, $180.000 y $100.000, 30/04): mismos montos que las filas 41 y 40
-  (Paseo, 27/04), con un solo pago de cada uno en el Master Plan.
 - 12 filas con fecha distinta a la del Master Plan, de 1 a 14 días (7, 8, 9, 37, 40–44, 54,
   59, 74). No se corrigieron: no hay fuente que diga cuál fecha es la buena.
 
 **Cafetería: el alquiler arranca en MARZO 2027, no en noviembre** (Facu, 26/10). Corrido
 en `radar_rampa.py`.
 
-**Extracto Macro de octubre:** Facu lo pasa a principio de noviembre.
+✅ **Banco Macro OCTUBRE completo (02/11, «Últimos Movimientos» al 30/10, sin resumen mensual):** NETO −$16.792.458,00 = Movimientos al centavo; saldo $5.167.534,62. Filas 653/654 con el total del mes (Ley 25413 $293.486,41, SIRCREB $1.208.437,23), FCI $20.000.000 del 30/10 en 667/668: FCI total $47.000.000. `extracto_a_movimientos.py` no lee este formato. 🔴 Echeq Savini $40.679.679,70 el 25/11: el Macro no alcanza sin rescatar del FCI.
 
 ✅ **Banco Macro OCTUBRE cargado hasta el 26/10** (desde «Últimos Movimientos», 26/10 13:01:
 `Resumen de Banco.../2026/` no tiene resumen todavía). 19 filas, Movimientos 637–655, saldo
