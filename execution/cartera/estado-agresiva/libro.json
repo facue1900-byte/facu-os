@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 876.7448633440608,
-  "posiciones": {},
-  "comisiones_usd": 33.89363499999997,
+  "usdt": 746.7448633440608,
+  "posiciones": {
+    "XRPUSDT": {
+      "nivel": "trading",
+      "cantidad": 104.26300578034682,
+      "entrada": 1.2456,
+      "maximo": 1.2456,
+      "reglas": {
+        "stop": 1.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793647980000
+    }
+  },
+  "comisiones_usd": 34.02363499999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3031,6 +3054,18 @@
       "comision": 0.128571,
       "motivo": "Stop automático en 1.239975 (entrada 1.2525, máximo 1.264).",
       "resultado_pct": -1.0
+    },
+    {
+      "ms": 1793647979658,
+      "fecha": "2026-11-02 19:32 UTC",
+      "lado": "buy",
+      "par": "XRPUSDT",
+      "nivel": "trading",
+      "cantidad": 104.26300578034682,
+      "precio": 1.2456,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Rebote en soporte con la regla de dos horas: XRP marcó mínimo de 48 h en 1,2355 en la vela de 17:00 (la que saltó el stop anterior); 18:00 (mín 1,2371) y 19:00 en curso (mín 1,2400) no lo perforan, pisos subiendo; 1 h +0,23%, volumen 4 h 2,39x, +0,83% del mínimo; 24 h -0,07%, 48 h -0,51%: grande, líquida y sin tendencia bajista. BTC -0,73% en 4 h: sin bloqueo. Tamaño ~15%. Stop 1% (~1,233), debajo del mínimo de 48 h. Invalida: mínimo nuevo debajo de 1,2355. Rota 03/11 19:35 si no llega a +8%."
     }
   ]
 }

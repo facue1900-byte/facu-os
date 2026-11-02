@@ -1,18 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-02 18:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-02 19:33 UTC
 
-**Total: 876.74 USD (-12.33%)** desde 2026-10-07 23:06 UTC · USDT libre 876.74 · comisiones 33.89 · 252 operaciones
+**Total: 876.65 USD (-12.34%)** desde 2026-10-07 23:06 UTC · USDT libre 746.74 · comisiones 34.02 · 253 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **876.74** |
+| **Esta carpeta** | **876.65** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 925.34 |
+| hodl btc | 924.50 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| XRP | trading | 129.90 | +0.02% | 1.23314 |
 
 ## Últimas operaciones
 
+- 2026-11-02 19:32 UTC · compra XRP 130.00 USD a 1.2456 — Rebote en soporte con la regla de dos horas: XRP marcó mínimo de 48 h en 1,2355 en la vela de 17:00 (la que saltó el stop anterior); 18:00 (
 - 2026-11-02 17:45 UTC · venta XRP 128.57 USD a 1.23997 — Stop automático en 1.239975 (entrada 1.2525, máximo 1.264).
 - 2026-11-02 17:10 UTC · venta HYPE 128.05 USD a 85.0031 — Stop automático en 85.00306 (entrada 86.21, máximo 86.4).
 - 2026-11-02 16:56 UTC · venta ETH 197.77 USD a 2,268.74 — Ruptura invalidada: la vela de 15:00 cerró 2273,41, debajo de 2283 (condición de salida escrita). 16:00 sigue abajo (2268,74), -2,1% del máx
@@ -22,6 +24,5 @@
 - 2026-11-02 01:33 UTC · compra SOL 140.00 USD a 95.15 — Rebote en soporte, con la lección de ayer (dos horas sin mínimo nuevo): SOL tocó el mínimo de 48 h a 93,18 en la vela de 22:00 y las de 23:0
 - 2026-11-02 01:33 UTC · compra ETH 200.00 USD a 2,292.01 — Ruptura con volumen: ETH superó el máximo de 48 h (2283,19, vela de 00:00) — la de 01:00 marcó 2298,76 y va en ~2293, +0,4% arriba, con volu
 - 2026-11-02 00:31 UTC · venta TRX 122.06 USD a 0.3129 — Regla de 24 h: entró 01/11 00:32 por rebote en soporte y no llegó a +8% ni al stop (máx ~+2%). Tesis no invalidada (sin mínimo nuevo, +3,64%
-- 2026-11-01 22:31 UTC · venta SOL 128.77 USD a 93.65 — Rebote en soporte invalidado según lo anotado: SOL hizo mínimo nuevo de 48 h (~93,13, debajo de 93,68) — está a +0,47% del mínimo con 1 h -0
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
