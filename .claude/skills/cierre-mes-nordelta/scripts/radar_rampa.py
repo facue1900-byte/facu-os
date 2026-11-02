@@ -36,7 +36,10 @@ RAMPA = [
     # con Fabric si entra la parrilla, con otro inquilino si no. NO va acá porque
     # el radar sigue compromisos, y en el escenario sin parrilla todavía no hay
     # nadie firmado para ese local.
-    ("Salon Multiespacios", "2027-01",  2_500_000),
+    # Esquema de Marina (22/09, confirmado 02/11/2026): $1M nov-dic 26, ene-feb 27 sólo
+    # expensas, $1,5M mar-jun 27, $2M jul 27, llega a $3M en dic 27. El detalle mes a mes
+    # vive en `alquiler_por_mes` de cargos_del_mes.py; acá va sólo el primer escalón.
+    ("Salon Multiespacios", "2026-11",  1_000_000),
     # Heladería nueva (123,7 m²): $5M + ~$1M de expensas. Hoy la heladería vieja
     # paga ~$1,9M todo concepto porque se demuele, así que el neto es menor.
     ("Heladeria",           "2027-01",  5_000_000),
@@ -55,7 +58,7 @@ RAMPA = [
 # Monto de expensas segun la pestaña Alquileres, para poder descontarlo.
 SOLO_EXPENSAS = {
     "Peak One": 1_710_269,           # hasta febrero 2027 inclusive (alta corrida a mar-27)
-    "Salon Multiespacios": 818_244,  # hasta diciembre 2026 inclusive
+    "Salon Multiespacios": 1_000_000,  # expensas pactadas; hasta octubre 2026 sin alquiler
     "Cafeteria": 979_912,            # septiembre y octubre 2026
 }
 
