@@ -1,7 +1,8 @@
 # Referencias que mandó Facu — PRIORIDAD sobre lo que encuentre el agente
 
 Facu (29/10/2026): «acá te paso muchas ideas para plagiar y usar con nuestro contenido».
-Se toma la estructura, el ritmo y el remate; el video, el audio y el texto son nuestros.
+Se toma la estructura, el ritmo y el remate; el video y el texto son nuestros. El audio puede ser
+el de la referencia (Facu, 02/11): no hace falta Sin City en todos.
 Cada vez que se usa una, anotarlo en `resumen.md` (cuál y cómo se adaptó) y, cuando haya
 números, en `aprendizajes.md`. Una referencia que ya se usó 2 veces sin rendir, se deja.
 
