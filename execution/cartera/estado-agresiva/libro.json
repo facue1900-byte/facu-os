@@ -4,9 +4,54 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 886.2980628032881,
-  "posiciones": {},
-  "comisiones_usd": 32.70259799999996,
+  "usdt": 546.2980628032881,
+  "posiciones": {
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.08717239453580045,
+      "entrada": 2292.01,
+      "maximo": 2292.01,
+      "reglas": {
+        "stop": 1.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793583240000
+    },
+    "SOLUSDT": {
+      "nivel": "trading",
+      "cantidad": 1.46988964792433,
+      "entrada": 95.15,
+      "maximo": 95.15,
+      "reglas": {
+        "stop": 2.3,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793583240000
+    }
+  },
+  "comisiones_usd": 33.04259799999996,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -2935,6 +2980,30 @@
       "comision": 0.122065,
       "motivo": "Regla de 24 h: entró 01/11 00:32 por rebote en soporte y no llegó a +8% ni al stop (máx ~+2%). Tesis no invalidada (sin mínimo nuevo, +3,64% del mínimo de 48 h) pero lateral y sin volumen (0,18x): sale y rota a caja.",
       "resultado_pct": 1.82
+    },
+    {
+      "ms": 1793583180381,
+      "fecha": "2026-11-02 01:33 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.08717239453580045,
+      "precio": 2292.01,
+      "usd": 200.0,
+      "comision": 0.2,
+      "motivo": "Ruptura con volumen: ETH superó el máximo de 48 h (2283,19, vela de 00:00) — la de 01:00 marcó 2298,76 y va en ~2293, +0,4% arriba, con volumen 4 h 3,56x; 1 h +0,83% (no estirada), BTC +0,88% en 4 h acompaña. Tamaño ~22%. Stop ajustado a 1,5% (~2259), debajo del piso de la vela de ruptura. Invalida: vuelve y cierra una hora debajo de 2283 (ruptura falsa). Rota 03/11 01:32 si no llega a +8%."
+    },
+    {
+      "ms": 1793583184486,
+      "fecha": "2026-11-02 01:33 UTC",
+      "lado": "buy",
+      "par": "SOLUSDT",
+      "nivel": "trading",
+      "cantidad": 1.46988964792433,
+      "precio": 95.15,
+      "usd": 140.0,
+      "comision": 0.14,
+      "motivo": "Rebote en soporte, con la lección de ayer (dos horas sin mínimo nuevo): SOL tocó el mínimo de 48 h a 93,18 en la vela de 22:00 y las de 23:00, 00:00 y 01:00 no lo perforaron (mín 93,68 / 93,83 / 94,04, pisos subiendo); 1 h +1,18%, volumen 4 h 2,15x, +2,19% del mínimo. Tamaño ~16%. Stop 2,3% (~93,07), debajo del mínimo de 48 h. Invalida: mínimo nuevo debajo de 93,18. Rota 03/11 01:32 si no llega a +8%."
     }
   ]
 }
