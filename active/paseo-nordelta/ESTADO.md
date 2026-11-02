@@ -1,6 +1,6 @@
 # Paseo Nordelta — estado
 
-Última actualización: 2026-10-10 (sección de abajo). Lo que sigue después de
+Última actualización: 2026-11-02 (bloque de noviembre: memoria `retomar-cierre-noviembre-paseo`). Lo que sigue después de
 «Historia al 27/07» quedó como registro: varios números de ahí ya cambiaron.
 
 ## Vigente al 10/10/2026 (auditoría completa)
@@ -136,7 +136,8 @@ potencial de $51,4M/mes. Cada mes de atraso en un alta cuesta entre $2M y $15M.
 |---|---|---|
 | ago-2026 | La Jaula | $2M |
 | ~~nov-2026~~ mar-2027 | Cafetería (corrida el 26/10) | $3,5M |
-| ene-2027 | Pizzería $2M + Salón Multiespacios $2,5M + Heladería nueva $5M — 🔴 16/10: la galería recién arrancó obra en oct, esta fecha no se sostiene (falta fecha de Facu) | $9,5M |
+| nov-2026 | Salón Multiespacios $1M (esquema de Marina, sube a $3M en dic-27; ene-feb 27 sólo expensas) | $1M |
+| ene-2027 | Pizzería $2M + Heladería nueva $5M — 🔴 16/10: la galería recién arrancó obra en oct, esta fecha no se sostiene (falta fecha de Facu) | $9,5M |
 | mar-2027 | Peak One (corrido de dic-26 el 16/10: la obra arrancó en oct; $4M es base, se cobra con IPC) | $4M + IPC |
 | ~jul-2027 | Market | $4M |
 | post-Market | Comercios 1 a 6 | $12M |

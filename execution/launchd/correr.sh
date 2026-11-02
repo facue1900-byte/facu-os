@@ -47,12 +47,16 @@ registrar() {
 
 echo "=== $NOMBRE · $(date '+%d/%m/%Y %H:%M') ==="
 
+# La red se decide UNA vez. Volver a preguntar después del loop perdió el radar y el efectivo
+# del 01/11 y el reporte de pauta del 02/11/2026: la Mac recién despierta contestó bien la
+# primera y mal la segunda, y la tarea moría con "15 minutos" escrito a los 19 segundos.
+HAY_RED=0
 for i in $(seq 1 30); do
-  host -W 3 www.googleapis.com >/dev/null 2>&1 && break
+  if host -W 3 www.googleapis.com >/dev/null 2>&1; then HAY_RED=1; break; fi
   [[ $i -eq 1 ]] && echo "Sin red todavía: espero hasta 15 minutos..."
   sleep 30
 done
-if ! host -W 3 www.googleapis.com >/dev/null 2>&1; then
+if [[ $HAY_RED -eq 0 ]]; then
   echo "!!! Sin red después de 15 minutos: no corrió."
   registrar 75
   notificar "No corrió: sin red 15 minutos. El radar lo va a marcar."
