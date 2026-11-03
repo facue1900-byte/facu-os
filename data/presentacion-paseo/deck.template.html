@@ -263,7 +263,10 @@ h3{font-weight:500; font-size:clamp(15px,1.35vw,19px); letter-spacing:-.005em; m
   .caption h2{font-size:54px;} .caption p{font-size:25px;max-width:62ch;}
   .arg h3{font-size:25px;} .arg p{font-size:20px;}
   .contact dd{font-size:21px;} .contact dt{font-size:13px;}
+  /* Diez locales: dos filas de cinco, para que la grilla quede pareja. */
+  .grid--5{grid-template-columns:repeat(5,1fr);} .grid--5 .tile{min-height:262px; padding:26px 22px!important; gap:12px;} .grid--5 .tile__note{margin-top:22px;}
 }
+@media screen and (min-width:1081px){ .grid--5{grid-template-columns:repeat(5,1fr);} }
 </style>
 
 <nav class="nav" aria-label="Láminas"></nav>
@@ -319,12 +322,13 @@ h3{font-weight:500; font-size:clamp(15px,1.35vw,19px); letter-spacing:-.005em; m
     <div class="cota"><span>03 &middot; Ya en el paseo</span></div>
     <p class="eyebrow">Ya en el paseo</p>
     <h2>Lo que ya está funcionando.</h2>
-    <div class="grid">
+    <div class="grid grid--5">
       <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>Fabric</h3></div><p class="tile__rubro">Gastronomía</p><p class="tile__note">Sushi. ~350 m² sobre la galería principal.</p></article>
       <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>BIGG</h3></div><p class="tile__rubro">Entrenamiento</p><p class="tile__note">Centro de entrenamiento sobre la Plaza Central.</p></article>
       <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>BOSS</h3></div><p class="tile__rubro">Hamburguesería</p><p class="tile__note">Gastronomía rápida.</p></article>
       <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>La Jaula</h3></div><p class="tile__rubro">Fútbol</p><p class="tile__note">Torneos y alquiler de la cancha, todas las semanas.</p></article>
       <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>Escuelas de fútbol</h3></div><p class="tile__rubro">Deporte infantil</p><p class="tile__note">Dos escuelitas activas, con entrenamiento durante la semana.</p></article>
+      <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>Astronomy</h3></div><p class="tile__rubro">Música</p><p class="tile__note">Estudio de producción musical y clases de DJ.</p></article>
       <article class="tile"><div class="tile__top"><span class="dot dot--soon"></span><h3>Peak One</h3></div><p class="tile__rubro">Wellness</p><p class="tile__note">En obra: 750 m² de entrenamiento y recuperación.</p></article>
       <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>Volta + Open 25</h3></div><p class="tile__rubro">Heladería · Kiosko</p><p class="tile__note">~115 m². Se renueva con la heladería nueva del proyecto.</p></article>
       <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>Pole Position</h3></div><p class="tile__rubro">Lavadero</p><p class="tile__note">Lavadero de autos dentro del predio.</p></article>
