@@ -182,6 +182,8 @@ expensas solas (sep y oct) antes del alquiler.
 
 ## Frentes abiertos
 
+- 🔴 **Precios de oferta del 03/11 (Facu), no pasados a `radar_rampa.py` ni a `Alquileres`:** pizzería $2,5M, Market $4M, tira 8 locales a $2M (el radar tiene 6). Ppt en `~/Desktop/Paseo Nordelta/Presentacion locatarios/`.
+
 - Parrilla para los 354 m² de Fabric: sin firmar. Mudar a Fabric al local de 88,3 m² no
   genera plata ($13,5M en los dos escenarios) — no moverlo sin la parrilla firmada.
 - Comercios 1-6 y Market: no construidos. La fecha de los Comercios (2028-01) es un
