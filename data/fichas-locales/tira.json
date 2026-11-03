@@ -1,0 +1,111 @@
+{
+  "slug": "tira",
+  "nombre": "Locales de servicios",
+  "titulo": "Ocho locales<br>de servicios.",
+  "bajada": "Locales de 29,7 m² sobre el paseo, junto al Market, para los rubros de todos los días. Se entregan en obra en gris.",
+  "disponibilidad": "En obra · Julio 2027 aprox.",
+  "portada_img": "servicios",
+  "portada_alt": "La tira de locales de servicios del Paseo Nordelta al atardecer",
+  "portada_meta": [
+    {
+      "k": "Superficie",
+      "v": "29,7 m² c/u"
+    },
+    {
+      "k": "Locales",
+      "v": "8"
+    },
+    {
+      "k": "Entrega",
+      "v": "Obra en gris"
+    }
+  ],
+  "h_local": "Ocho locales<br>de 29,7 m².",
+  "superficies": [
+    {
+      "n": "29,7",
+      "u": "m²",
+      "l": "Cada local",
+      "acc": true
+    },
+    {
+      "n": "3,30",
+      "u": "m",
+      "l": "De frente sobre el paseo"
+    },
+    {
+      "n": "9",
+      "u": "m",
+      "l": "De fondo"
+    }
+  ],
+  "plano": {
+    "tipo": "svg",
+    "svg": "<svg class=\"pl\" viewBox=\"0 0 620 262\" role=\"img\" aria-label=\"Esquema del Market y los ocho locales de servicios\"><text x=\"310\" y=\"36\" class=\"mini\" text-anchor=\"middle\">AV. DE LOS COLEGIOS</text><rect x=\"21.0\" y=\"62\" width=\"161.0\" height=\"109.8\" class=\"loc off\"/><text x=\"101.5\" y=\"118.9\" class=\"sub\" text-anchor=\"middle\">Market</text><rect x=\"182.0\" y=\"62\" width=\"40.3\" height=\"109.8\" class=\"loc libre\"/><text x=\"202.2\" y=\"120.9\" class=\"num\" text-anchor=\"middle\">1</text><rect x=\"222.3\" y=\"62\" width=\"40.3\" height=\"109.8\" class=\"loc libre\"/><text x=\"242.4\" y=\"120.9\" class=\"num\" text-anchor=\"middle\">2</text><rect x=\"262.6\" y=\"62\" width=\"40.3\" height=\"109.8\" class=\"loc libre\"/><text x=\"282.7\" y=\"120.9\" class=\"num\" text-anchor=\"middle\">3</text><text x=\"350.2\" y=\"120.9\" class=\"mini\" text-anchor=\"middle\">PASO</text><rect x=\"397.5\" y=\"62\" width=\"40.3\" height=\"109.8\" class=\"loc libre\"/><text x=\"417.6\" y=\"120.9\" class=\"num\" text-anchor=\"middle\">4</text><rect x=\"437.8\" y=\"62\" width=\"40.3\" height=\"109.8\" class=\"loc libre\"/><text x=\"457.9\" y=\"120.9\" class=\"num\" text-anchor=\"middle\">5</text><rect x=\"478.0\" y=\"62\" width=\"40.3\" height=\"109.8\" class=\"loc libre\"/><text x=\"498.1\" y=\"120.9\" class=\"num\" text-anchor=\"middle\">6</text><rect x=\"518.3\" y=\"62\" width=\"40.3\" height=\"109.8\" class=\"loc libre\"/><text x=\"538.4\" y=\"120.9\" class=\"num\" text-anchor=\"middle\">7</text><rect x=\"558.5\" y=\"62\" width=\"40.3\" height=\"109.8\" class=\"loc libre\"/><text x=\"578.7\" y=\"120.9\" class=\"num\" text-anchor=\"middle\">8</text><text x=\"310\" y=\"205.8\" class=\"acc\" text-anchor=\"middle\">cada local: 3,30 m de frente × 9,00 m de fondo</text></svg>",
+    "cap": "Esquema sobre el plano de etapa 2 · medidas aproximadas"
+  },
+  "puntos": [
+    "<b>Para rubros de todos los días:</b> farmacia, barbería, estética, librería, kiosco.",
+    "<b>Sin cocina ni obra pesada:</b> pensados para abrir rápido.",
+    "<b>Frente hacia el paseo</b> y la plaza central.",
+    "<b>Al lado del Market</b>, que suma circulación propia.",
+    "<b>De paso al Wellness Center</b> de 750 m², en obra.",
+    "<b>Obra en gris:</b> la terminación se define con el locatario."
+  ],
+  "h_cierre": "Entre el Market<br>y el Wellness.",
+  "mapa_ref": "Sector 12 · sobre el lateral de la avenida, frente a la plaza",
+  "condiciones": [
+    {
+      "k": "Alquiler",
+      "v": "$2.000.000",
+      "n": "Por local, por mes, en pesos. Los alquileres del paseo ajustan por IPC, trimestralmente."
+    },
+    {
+      "k": "Expensas",
+      "v": "$780.000",
+      "n": "Por local. Aproximadas. Se liquidan todos los meses según el gasto real del predio."
+    },
+    {
+      "k": "Entrega",
+      "v": "Obra en gris",
+      "n": "El local se entrega terminado en gris. La puesta a punto se acuerda con el locatario."
+    },
+    {
+      "k": "Disponible",
+      "v": "Julio 2027",
+      "n": "Fecha aproximada, según el avance de obra."
+    }
+  ],
+  "nota": "El paseo ya funciona: La Jaula y las escuelas de fútbol, BIGG y Fabric traen gente de lunes a lunes, no sólo el fin de semana, y el Wellness Center de 750 m² ya está en obra. Medidas aproximadas, sobre el plano de etapa 2 — se verifican en obra.",
+  "story": {
+    "titulo": "Ocho locales<br>de servicios.",
+    "bajada": "De 29,7 m² cada uno, sobre el paseo y junto al Market.",
+    "datos": [
+      {
+        "n": "8",
+        "u": "",
+        "l": "Locales"
+      },
+      {
+        "n": "29,7",
+        "u": "m²",
+        "l": "Cada uno"
+      },
+      {
+        "n": "3,30",
+        "u": "m",
+        "l": "De frente"
+      }
+    ],
+    "cta_l": "Mandanos tu propuesta a",
+    "bajada_plano": ""
+  },
+  "ubicador": {
+    "tag": "Acá están los locales",
+    "alt": "Plano general del Paseo Nordelta con los locales de servicios marcados"
+  },
+  "story2": {
+    "titulo": "Entre el Market<br>y el Wellness.",
+    "bajada": "La tira mira al paseo y a la plaza central, en el recorrido de quienes vienen a entrenar."
+  }
+}

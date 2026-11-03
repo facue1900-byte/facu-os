@@ -107,20 +107,5 @@
   "story2": {
     "titulo": "Sobre el sendero<br>principal.",
     "bajada": "La cafetería queda entre el salón multiespacios y la plaza central, en el eje que cruza todo el que entra al paseo."
-  },
-  "galeria": {
-    "h": "Así se imagina<br>el sector.",
-    "fotos": [
-      {
-        "src": "cafe-exterior",
-        "cap": "Imagen ilustrativa · el local con su galería semicubierta y el deck"
-      },
-      {
-        "src": "cafe-sendero",
-        "cap": "Render del proyecto · el sendero principal, con la galería a la derecha"
-      }
-    ],
-    "nota": "El local se entrega en obra en gris: la terminación y el equipamiento los define el locatario.",
-    "titulo": "Renders"
   }
 }
