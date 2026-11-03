@@ -55,15 +55,22 @@ Hoy es $HOY. DIA = $DIA
 Comandos exactos (otro camino al Python está bloqueado):
   $PY $RD/indexar_material.py
   $PY $RD/leer_trials.py
-  $PY $RD/armar_reel.py \"\$DIA/NN-slug/guion.json\"
-  $PY $RD/publicar.py \"\$DIA/NN-slug\" --send
-  $PY $RD/pedir_filmacion.py \"\$DIA/filmar.md\" --send" \
+  $PY $RD/armar_reel.py \"$DIA/NN-slug/guion.json\"
+  $PY $RD/publicar.py \"$DIA/NN-slug\" --send
+  $PY $RD/pedir_filmacion.py \"$DIA/filmar.md\" --send
+
+Cómo llamar a Bash, o se niega:
+- Un solo comando por llamada, con las rutas completas escritas como arriba.
+- Nada de variables (RD=..., \$PY) ni de encadenar con ; o &&. Sí se puede terminar en | tail -30.
+- No uses mkdir: la carpeta se crea sola cuando escribís guion.json con la herramienta Write.
+- Si Bash niega un comando, es por la forma de ESE comando, no porque Bash esté bloqueado.
+  Reescribilo simple y seguí. REELS_FALLA es sólo si ya corriste los comandos tal cual están arriba y fallan." \
   --model sonnet \
   --permission-mode dontAsk \
   --allowedTools "WebSearch" "WebFetch" "Read" "Glob" "Grep" \
     "Edit(/$DIA/**)" \
     "Edit(/$RD/aprendizajes.md)" "Edit(/$RD/competencia.md)" "Edit(/$RD/referencias.md)" "Edit(/$RD/material.json)" \
-    "Bash(mkdir -p $DIA/:*)" "Bash(mkdir -p \"$DIA/:*)" "Bash(ls:*)" \
+    "Bash(ls:*)" \
     "Bash($PY $RD/leer_trials.py:*)" "Bash($PY $RD/armar_reel.py:*)" "Bash($PY $RD/publicar.py:*)" \
     "Bash($PY $RD/portada.py:*)" "Bash($PY $RD/indexar_material.py:*)" "Bash($PY $RD/pedir_filmacion.py:*)" \
   --disallowedTools "Edit(//**/qa.json)" "Edit(//**/registro.jsonl)" "Edit(//**/pendiente.lock)" \
