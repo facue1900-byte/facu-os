@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 746.9386421461452,
+  "usdt": 616.9386421461452,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793694660000
+      "vigilado_hasta": 1793698260000
+    },
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.05730460528347843,
+      "entrada": 2266.31,
+      "maximo": 2266.31,
+      "reglas": {
+        "stop": 1.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793698380000
     }
   },
-  "comisiones_usd": 34.283958999999975,
+  "comisiones_usd": 34.41395899999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3090,6 +3112,18 @@
       "comision": 0.130324,
       "motivo": "Invalidación escrita cumplida: la vela de 00:00 marcó mínimo 76663,90, debajo de 76705 (mínimo de 48 h de las 19:00, condición de salida anotada). Aunque recuperó a ~77100 (barrida y vuelta), la regla anotada era salida manual ahí; volumen 4 h 0,78x, sin convicción para reinterpretarla. Salgo antes del stop ~76075.",
       "resultado_pct": 0.35
+    },
+    {
+      "ms": 1793698335801,
+      "fecha": "2026-11-03 09:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.05730460528347843,
+      "precio": 2266.31,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Rebote en soporte (condición anotada 08:31: ETH si deja de hacer mínimos con >= 1x): mínimo de 48 h 2237,38 intacto; pisos 06:00-09:00 2241,15 / 2244,15 / 2250,68 / 2256,97 subiendo; 07:00 y 09:00 verdes (09:00 2257,58 -> ~2266), volumen 4 h 1,16x, 4 h +0,8%, 1 h +0,4% (no estirada), +1,3% del mínimo, 48 h -0,18%: grande, líquida, sin tendencia bajista. BTC +0,43% en 4 h: sin bloqueo. Tamaño ~15%. Stop 1,5% (~2232), debajo del mínimo de 48 h. Invalida: mínimo nuevo debajo de 2237,38 (salida manual ahí, antes del stop). Rota 04/11 09:31 si no llega a +8%."
     }
   ]
 }
