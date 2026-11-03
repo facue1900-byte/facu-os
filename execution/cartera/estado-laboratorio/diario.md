@@ -282,3 +282,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-03 16:17 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.11, var_4h 0.21). Unico con var_24h>=3 es PEPE (4.73, vol 2.51) pero var_4h -0.61 (no >0); XRP 2.17 var_4h -0.36. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-03 18:17 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 0.86, var_4h 0.38). Candidatos con var_24h>=3 fallan: ZEC 5.2 (vs_max -4.72, vol 0.64), XRP 3.31 (vol 0.6), PEPE 4.51 (var_4h -0.2), HYPE 3.15 (var_4h -0.38, vol 1.35), UNI y SUI (var_4h<=0 / vol<1.3). Sin posiciones, sin disparos. Me quedo en USDT.
+
