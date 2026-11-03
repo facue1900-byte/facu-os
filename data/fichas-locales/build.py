@@ -161,9 +161,9 @@ def hoja_galeria(d: dict) -> str:
     )
     return f"""
 <section class="hoja">
-  <div class="cota"><span>{{N}} &middot; La galer&iacute;a</span></div>
+  <div class="cota"><span>{{N}} &middot; {g.get('titulo','La galer&iacute;a')}</span></div>
   <div class="hoja__body">
-    <p class="eyebrow">La galer&iacute;a</p>
+    <p class="eyebrow">{g.get('titulo','La galer&iacute;a')}</p>
     <h2>{g['h']}</h2>
     <div class="renders">{fotos}</div>
     <p class="nota">{g['nota']}</p>
