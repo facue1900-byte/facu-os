@@ -1,0 +1,508 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paseo Nordelta</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+@font-face{font-family:"Neue Haas Display";src:url("{{FONT:Light}}") format("truetype");font-weight:300;font-display:swap;}
+@font-face{font-family:"Neue Haas Display";src:url("{{FONT:Roman}}") format("truetype");font-weight:400;font-display:swap;}
+@font-face{font-family:"Neue Haas Display";src:url("{{FONT:Medium}}") format("truetype");font-weight:500;font-display:swap;}
+@font-face{font-family:"Neue Haas Display";src:url("{{FONT:Bold}}") format("truetype");font-weight:700;font-display:swap;}
+
+/* Un solo mundo visual: el del paseo al anochecer. Negro cálido con tierra adentro,
+   off-white de cal, y el acento sale del acero Corten de la escultura de la plaza. */
+:root{
+  --ground:#171614; --ground-2:#1e1c19; --card:#211f1b;
+  --ink:#f2ece1; --ink-2:#b9b1a4; --ink-3:#7d766b;
+  --corten:#c4622d; --corten-hi:#d97742;
+  --line:rgba(242,236,225,.13); --line-2:rgba(242,236,225,.07);
+  --grot:"Neue Haas Display","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--grot); font-weight:400; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} *{animation:none!important;transition:none!important;} }
+
+/* ---------- Estructura de slide ---------- */
+.deck{scroll-snap-type:y mandatory; height:100vh; overflow-y:auto;}
+.slide{
+  scroll-snap-align:start; position:relative; min-height:100vh;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(28px,5vw,80px) clamp(24px,6vw,110px);
+  border-bottom:1px solid var(--line-2); overflow:hidden;
+}
+/* La cota: una línea de plano que corre por el borde y marca en qué lámina estás. */
+.cota{
+  position:absolute; left:clamp(10px,2.2vw,34px); top:0; bottom:0; width:1px;
+  background:var(--line); display:flex; align-items:center; justify-content:center;
+}
+.cota span{
+  font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--ink-3);
+  background:var(--ground); padding:9px 0; writing-mode:vertical-rl; transform:rotate(180deg);
+}
+.slide--photo .cota{background:rgba(242,236,225,.28);}
+.slide--photo .cota span{background:transparent;color:rgba(242,236,225,.8);}
+
+.eyebrow{
+  font-family:var(--mono); font-size:clamp(10px,1vw,12px); font-weight:500;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--corten); margin:0 0 clamp(16px,2vw,26px);
+}
+h1,h2{font-weight:300; letter-spacing:-.025em; text-wrap:balance; margin:0;}
+h1{font-size:clamp(38px,7.2vw,104px); line-height:.98;}
+h2{font-size:clamp(28px,4.4vw,62px); line-height:1.04;}
+h3{font-weight:500; font-size:clamp(15px,1.35vw,19px); letter-spacing:-.005em; margin:0;}
+.lede{font-size:clamp(16px,1.65vw,23px); font-weight:300; line-height:1.5; color:var(--ink-2); max-width:60ch; margin:clamp(18px,2.4vw,32px) 0 0;}
+.body{font-size:clamp(14px,1.15vw,16px); color:var(--ink-2); max-width:62ch; margin:0;}
+
+/* ---------- Portada ---------- */
+.cover{padding:0; justify-content:flex-end;}
+.cover__img{position:absolute; inset:0;}
+.cover__img img{width:100%; height:100%; object-fit:cover; display:block;}
+.cover__img::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(23,22,20,.62) 0%,rgba(23,22,20,.18) 38%,rgba(23,22,20,.92) 88%);
+}
+.cover__body{position:relative; padding:clamp(28px,5vw,80px) clamp(24px,6vw,110px);}
+.cover__logo{width:clamp(200px,26vw,380px); height:auto; display:block; margin-bottom:clamp(20px,3vw,38px);}
+.cover__meta{
+  display:flex; flex-wrap:wrap; gap:clamp(14px,2.4vw,38px); margin-top:clamp(22px,3vw,40px);
+  padding-top:clamp(18px,2.4vw,28px); border-top:1px solid rgba(242,236,225,.22);
+  font-family:var(--mono); font-size:clamp(11px,1.05vw,13px); letter-spacing:.05em; color:rgba(242,236,225,.88);
+}
+
+/* ---------- Slides de foto ---------- */
+.slide--photo{padding:0; justify-content:flex-end;}
+.photo{position:absolute; inset:0;}
+.photo img{width:100%; height:100%; object-fit:cover; display:block;}
+.photo::after{content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(23,22,20,.5) 0%,rgba(23,22,20,0) 34%,rgba(23,22,20,.88) 92%);}
+.caption{position:relative; padding:clamp(28px,5vw,80px) clamp(24px,6vw,110px); max-width:min(760px,92%);}
+.caption h2{font-size:clamp(24px,3.4vw,46px);}
+.caption p{margin:clamp(10px,1.2vw,16px) 0 0; font-size:clamp(14px,1.2vw,17px); color:rgba(242,236,225,.82); max-width:56ch;}
+
+/* ---------- Datos ---------- */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px; background:var(--line-2); border:1px solid var(--line-2); margin-top:clamp(28px,4vw,52px);}
+.stat{background:var(--ground); padding:clamp(20px,2.4vw,32px);}
+.stat__n{font-weight:300; font-size:clamp(30px,3.8vw,50px); line-height:1; letter-spacing:-.035em; font-variant-numeric:tabular-nums;}
+.stat__n small{font-family:var(--mono); font-size:.32em; letter-spacing:.02em; color:var(--ink-3); margin-left:.5em; vertical-align:.35em;}
+.stat__l{font-size:13px; color:var(--ink-3); margin-top:12px; line-height:1.4;}
+
+/* ---------- Grilla de locales ---------- */
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-2); border:1px solid var(--line-2); margin-top:clamp(24px,3.4vw,44px);}
+.tile{background:var(--ground-2); padding:clamp(17px,1.9vw,25px); display:flex; flex-direction:column; gap:7px; min-height:118px;}
+.tile__top{display:flex; align-items:center; gap:9px;}
+.dot{width:7px; height:7px; border-radius:50%; flex:none;}
+.dot--on{background:var(--corten);}
+.dot--soon{background:transparent; box-shadow:inset 0 0 0 1px var(--ink-3);}
+.tile__rubro{font-family:var(--mono); font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3);}
+.tile__note{font-size:12.5px; color:var(--ink-3); line-height:1.45; margin-top:auto;}
+.legend{display:flex; flex-wrap:wrap; gap:clamp(16px,2vw,30px); margin-top:22px; font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; color:var(--ink-3);}
+.legend span{display:flex; align-items:center; gap:9px;}
+
+/* ---------- Cronograma ---------- */
+.plan{margin-top:clamp(26px,3.4vw,46px); border-top:1px solid var(--line);}
+.plan__row{display:grid; grid-template-columns:minmax(96px,140px) 1fr minmax(0,1.15fr); gap:clamp(14px,2.4vw,40px); align-items:baseline; padding:clamp(15px,1.8vw,23px) 0; border-bottom:1px solid var(--line-2);}
+.plan__when{font-family:var(--mono); font-size:clamp(12px,1.15vw,15px); letter-spacing:.08em; color:var(--corten); text-transform:uppercase; font-variant-numeric:tabular-nums;}
+.plan__what{font-size:clamp(15px,1.45vw,20px); font-weight:400;}
+.plan__note{font-size:13.5px; color:var(--ink-3); line-height:1.45;}
+
+/* ---------- Locales nuevos: plano + fichas ---------- */
+.split{display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1fr); gap:clamp(24px,3.4vw,58px); align-items:center; margin-top:clamp(18px,2.4vw,34px);}
+.plano{background:#f2ece1; padding:clamp(14px,2vw,26px); border:1px solid var(--line);}
+.plano img{width:auto; max-width:100%; max-height:52vh; height:auto; display:block; margin:0 auto; mix-blend-mode:multiply;}
+.plano__cap{font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:#7d766b; margin-top:12px;}
+.units{display:flex; flex-direction:column; gap:1px; background:var(--line-2); border:1px solid var(--line-2);}
+.unit{background:var(--ground-2); padding:clamp(16px,1.9vw,24px); display:flex; align-items:baseline; justify-content:space-between; gap:20px;}
+.unit__m2{font-weight:300; font-size:clamp(26px,3vw,40px); letter-spacing:-.03em; line-height:1;}
+.unit__m2 small{font-family:var(--mono); font-size:.3em; color:var(--ink-3); margin-left:.45em; vertical-align:.4em;}
+.unit__t{font-size:14px; color:var(--ink-2); text-align:right; line-height:1.4;}
+
+/* ---------- Mapa del paseo ---------- */
+.mapa{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:clamp(20px,2.6vw,40px); align-items:center; margin-top:clamp(14px,1.8vw,26px);}
+.mapa__img{position:relative; line-height:0; border:1px solid var(--line);}
+.mapa__img img{width:100%; height:auto; display:block;}
+.pin{
+  position:absolute; transform:translate(-50%,-50%);
+  width:clamp(21px,1.9vw,27px); height:clamp(21px,1.9vw,27px); border-radius:50%;
+  background:var(--corten); color:#fff; border:1.5px solid rgba(255,255,255,.82);
+  font-family:var(--mono); font-size:clamp(10px,.85vw,12px); font-weight:500;
+  display:flex; align-items:center; justify-content:center; line-height:1;
+  box-shadow:0 2px 10px rgba(0,0,0,.5);
+}
+.pin--libre{background:var(--ink); color:var(--ground); border-color:var(--corten);}
+.mapa__lista{list-style:none; margin:0; padding:0; counter-reset:m; display:grid; grid-template-columns:1fr 1fr; gap:clamp(10px,1.2vw,17px) clamp(16px,1.8vw,28px);}
+.mapa__lista li{counter-increment:m; display:grid; grid-template-columns:19px 1fr; gap:10px; align-items:baseline;}
+.mapa__lista li::before{
+  content:counter(m); font-family:var(--mono); font-size:10px; color:var(--corten);
+  border:1px solid var(--corten); border-radius:50%; width:19px; height:19px; flex:none;
+  display:flex; align-items:center; justify-content:center; align-self:start;
+}
+.mapa__lista b{font-weight:500; font-size:clamp(12.5px,1.02vw,14.5px);}
+.mapa__lista span{grid-column:2; display:block; font-size:clamp(11px,.88vw,12.5px); color:var(--ink-3); line-height:1.4; margin-top:2px;}
+.mapa__lista em{font-style:normal; color:var(--corten-hi);}
+
+/* El local que SI se ofrece se lee distinto de los que ya tienen dueno. */
+.unit--libre{background:var(--card); box-shadow:inset 3px 0 0 var(--corten);}
+.unit--libre .unit__t b{font-weight:500; color:var(--corten-hi);}
+.unit__t b{font-weight:500;}
+
+/* ---------- Galería de tres fotos ---------- */
+.galeria{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,1.8vw,26px); margin-top:clamp(22px,3vw,40px);}
+.galeria figure{margin:0; display:flex; flex-direction:column; gap:13px;}
+.galeria img{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid var(--line-2);}
+.galeria figcaption{font-size:clamp(12px,1.02vw,14px); color:var(--ink-3); line-height:1.45;}
+
+/* ---------- Plantas dibujadas ---------- */
+.dibujos{display:flex; flex-direction:column; gap:clamp(4px,.6vw,9px);}
+.pl{width:100%; max-width:540px; height:auto; display:block; margin:0 auto;}
+.tira7{width:100%; max-width:500px; height:auto; display:block; margin:0 auto;}
+.tres{width:100%; max-width:250px; height:auto; display:block;}
+.dib-lado{display:flex; flex-direction:column; gap:clamp(16px,2vw,26px);}
+
+.loc{fill:rgba(242,236,225,.055); stroke:var(--ink); stroke-width:2.2; stroke-linejoin:round;}
+.loc.libre{fill:rgba(196,98,45,.16); stroke:var(--corten-hi); stroke-width:2.6;}
+.loc.off{fill:rgba(242,236,225,.03); stroke:var(--ink-3); stroke-width:1.6;}
+.cl{stroke:var(--ink-3); stroke-width:1;}
+.cot{font-family:var(--mono); font-size:12px; fill:var(--ink-3); letter-spacing:.04em;}
+.big{font-family:var(--grot); font-weight:300; font-size:28px; fill:var(--ink); letter-spacing:-.02em;}
+.sub{font-family:var(--grot); font-size:13px; fill:var(--ink-3);}
+.acc{font-family:var(--grot); font-size:13px; fill:var(--corten-hi);}
+.mini{font-family:var(--mono); font-size:10px; fill:var(--ink-3); letter-spacing:.16em;}
+.num{font-family:var(--mono); font-size:11px; fill:var(--ink-3);}
+.numacc{font-family:var(--mono); font-size:11px; fill:var(--corten-hi);}
+.med--libre{box-shadow:inset 3px 0 0 var(--corten);}
+.med--libre b{font-weight:500; color:var(--corten-hi);}
+
+/* ---------- La tira de servicios ---------- */
+.tira{margin-top:clamp(14px,1.8vw,24px); display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:clamp(24px,3.4vw,56px); align-items:center;}
+.medidas{display:flex; flex-direction:column; gap:1px; background:var(--line-2); border:1px solid var(--line-2);}
+.med{background:var(--ground-2); padding:clamp(13px,1.5vw,19px) clamp(16px,1.8vw,24px);}
+.med__n{margin:0; font-weight:300; font-size:clamp(21px,2.3vw,30px); line-height:1; letter-spacing:-.03em;}
+.med__n small{font-family:var(--mono); font-size:.3em; color:var(--ink-3); margin-left:.45em; vertical-align:.4em;}
+.med__l{margin:9px 0 0; font-size:12.5px; color:var(--ink-3); line-height:1.4;}
+.plano--ancho{padding:clamp(10px,1.2vw,18px);}
+.plano--ancho img{width:100%; max-height:25vh; height:auto; object-fit:contain;}
+.stats--3{margin-top:clamp(14px,1.8vw,24px);}
+.stats--3 .stat{padding:clamp(15px,1.7vw,22px);}
+.stats--3 .stat__n{font-size:clamp(24px,2.8vw,36px);}
+
+/* ---------- Argumentos ---------- */
+.args{display:grid; grid-template-columns:repeat(auto-fit,minmax(245px,1fr)); gap:clamp(22px,3vw,48px); margin-top:clamp(28px,4vw,52px);}
+.args--4{grid-template-columns:repeat(4,1fr); gap:clamp(16px,2vw,32px); margin-top:clamp(22px,2.6vw,36px);}
+.args--4 p{font-size:clamp(12.5px,1vw,14px);}
+.args--4 + .contact{margin-top:clamp(20px,2.4vw,32px);}
+.arg{display:flex; flex-direction:column; gap:11px; padding-top:20px; border-top:1px solid var(--corten);}
+.arg p{margin:0; font-size:14.5px; color:var(--ink-2); line-height:1.5;}
+
+/* ---------- Contacto ---------- */
+.contact{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:1px; background:var(--line-2); border:1px solid var(--line-2); margin-top:clamp(28px,4vw,52px);}
+.contact div{background:var(--ground-2); padding:clamp(20px,2.4vw,30px);}
+.contact dt{font-family:var(--mono); font-size:10.5px; letter-spacing:.15em; text-transform:uppercase; color:var(--ink-3); margin:0 0 11px;}
+.contact dd{margin:0; font-size:clamp(15px,1.4vw,18px); line-height:1.45;}
+.contact a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--corten); padding-bottom:2px;}
+.contact a:hover,.contact a:focus-visible{color:var(--corten-hi);}
+:focus-visible{outline:2px solid var(--corten-hi); outline-offset:3px;}
+
+/* ---------- Navegación ---------- */
+.nav{position:fixed; right:clamp(12px,1.8vw,26px); top:50%; transform:translateY(-50%); z-index:50; display:flex; flex-direction:column; gap:9px;}
+.nav a{width:7px; height:7px; border-radius:50%; background:rgba(242,236,225,.26); transition:background .2s,transform .2s;}
+.nav a:hover,.nav a:focus-visible{background:var(--corten-hi); transform:scale(1.4);}
+.nav a[aria-current="true"]{background:var(--corten); transform:scale(1.4);}
+.hint{position:fixed; left:50%; bottom:20px; transform:translateX(-50%); z-index:50;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
+  background:rgba(23,22,20,.82); padding:8px 15px; border:1px solid var(--line); transition:opacity .5s;}
+
+@media screen and (max-width:1080px){ .grid{grid-template-columns:repeat(2,1fr);} }
+@media screen and (max-width:820px){
+  .deck{scroll-snap-type:none;}
+  .slide{min-height:auto; padding-top:56px; padding-bottom:56px;}
+  .cover,.slide--photo{min-height:88vh;}
+  .plano img{max-height:none;}
+  .mapa{grid-template-columns:1fr;}
+  .mapa__lista{grid-template-columns:1fr;}
+  .tira{grid-template-columns:1fr;}
+  .grid{grid-template-columns:1fr;}
+  .split{grid-template-columns:1fr;}
+  .plan__row{grid-template-columns:1fr; gap:6px;}
+  .cota{display:none;}
+  .nav{display:none;}
+}
+
+/* ---------- Impresión: una lámina por página, apaisada ---------- */
+@page{size:1600px 900px; margin:0;}
+@media print{
+  html,body{background:var(--ground)!important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  .deck{height:auto; overflow:visible; scroll-snap-type:none; width:100%;}
+  .slide,.cover{background:var(--ground); width:100%;}
+  .slide,.cover{min-height:0; height:900px; page-break-after:always; break-after:page; border-bottom:none;}
+  .slide{justify-content:flex-start; padding:66px 84px;}
+  .cover,.slide--photo{padding:0; justify-content:flex-end;}
+  .slide h2{font-size:44px;} .slide .eyebrow{margin-bottom:20px;}
+  .lede{font-size:19px; margin-top:22px;}
+  .stats,.grid,.plan,.args,.contact{margin-top:30px;}
+  .split{margin-top:26px; align-items:start;}
+  .plano img{max-height:430px;}
+  .mapa{margin-top:24px;} .mapa__img img{max-height:470px; object-fit:contain;}
+  .plano--ancho img{max-height:250px;}
+  .tile{min-height:0; padding:19px;}
+  .plan__row{padding:15px 0;}
+  .nav,.hint{display:none!important;}
+  .pin,.mapa__img .pin{box-shadow:none!important;filter:none!important;backdrop-filter:none!important;}
+  /* Se lee en el celular por WhatsApp: el texto de las láminas va más grande. */
+  .lede{font-size:25px!important;}
+  .slide .stat__l{font-size:21px;} .stat{padding:30px;}
+  .grid{margin-top:22px!important;} .tile{padding:18px 24px!important;} .tile h3{font-size:23px;} .tile__rubro{font-size:13px;} .tile__note{font-size:18px;}
+  .legend{font-size:15px;}
+  .galeria figcaption{font-size:21px;}
+  .mapa__lista b{font-size:18px;} .mapa__lista span{font-size:16px;}
+  .plan{margin-top:18px!important;} .plan__row{padding:17px 0!important; grid-template-columns:235px 330px 1fr!important;} .plan__when{font-size:14px; white-space:nowrap;} .plan__what{font-size:26px;} .plan__note{font-size:20px;}
+  .caption h2{font-size:54px;} .caption p{font-size:25px;max-width:62ch;}
+  .arg h3{font-size:25px;} .arg p{font-size:20px;}
+  .contact dd{font-size:21px;} .contact dt{font-size:13px;}
+}
+</style>
+
+<nav class="nav" aria-label="Láminas"></nav>
+<p class="hint" id="hint">← → para navegar</p>
+
+<main class="deck" id="deck">
+
+  <!-- 01 -->
+  <section class="slide cover" data-t="Portada">
+    <div class="cover__img"><img src="{{IMG:acceso}}" alt="Render del acceso a Paseo Nordelta con el Market a la derecha"></div>
+    <div class="cover__body">
+      <img class="cover__logo" src="{{IMG:logo}}" alt="Paseo Nordelta">
+      <h1>Un plan<br>en sí mismo.</h1>
+      <div class="cover__meta">
+        <span>Av. de los Colegios 160 · Nordelta</span>
+        <span>Gastronomía · Deporte · Wellness · Eventos</span>
+        <span>Presentación para marcas · Noviembre 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="slide" data-t="La propuesta">
+    <div class="cota"><span>01 &middot; La propuesta</span></div>
+    <p class="eyebrow">La propuesta</p>
+    <h2>Un paseo al aire libre<br>que ya está funcionando.</h2>
+    <p class="lede">Paseo Nordelta no abre: se transforma. Sobre un predio que ya recibe gente todos los días
+      &mdash;la cancha, las escuelas de fútbol, el gimnasio y la gastronomía en marcha&mdash; estamos construyendo
+      el paseo comercial que le faltaba a esa circulación. Para una marca, eso cambia el punto de partida:
+      no hay que esperar a que el lugar se llene.</p>
+    <div class="stats">
+      <div class="stat"><p class="stat__n">9.800<small>m²</small></p><p class="stat__l">Superficie del predio, sobre Av. de los Colegios 160</p></div>
+      <div class="stat"><p class="stat__n">1</p><p class="stat__l">Cancha de fútbol propia, con torneos todo el año</p></div>
+      <div class="stat"><p class="stat__n">3</p><p class="stat__l">Locales gastronómicos nuevos, en obra</p></div>
+      <div class="stat"><p class="stat__n">8</p><p class="stat__l">Locales de servicios, en obra</p></div>
+      <div class="stat"><p class="stat__n">1</p><p class="stat__l">Market, en obra</p></div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="slide slide--photo" data-t="Plaza Central">
+    <div class="cota"><span>02 &middot; Plaza Central</span></div>
+    <div class="photo"><img src="{{IMG:plaza-carteles}}" alt="Render de la Plaza Central con BIGG, Fabric y Shock BA"></div>
+    <div class="caption">
+      <h2>La Plaza Central.</h2>
+      <p>El corazón del paseo: gastronomía y heladería alrededor de la escultura de acero Corten.
+        Es el punto donde se cruzan los que vienen a entrenar, los que traen a los chicos y los que vienen a comer.</p>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="slide" data-t="Ya está">
+    <div class="cota"><span>03 &middot; Ya en el paseo</span></div>
+    <p class="eyebrow">Ya en el paseo</p>
+    <h2>Lo que ya está funcionando.</h2>
+    <div class="grid">
+      <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>Fabric</h3></div><p class="tile__rubro">Gastronomía</p><p class="tile__note">Sushi. ~350 m² sobre la galería principal.</p></article>
+      <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>BIGG</h3></div><p class="tile__rubro">Entrenamiento</p><p class="tile__note">Centro de entrenamiento sobre la Plaza Central.</p></article>
+      <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>BOSS</h3></div><p class="tile__rubro">Hamburguesería</p><p class="tile__note">Gastronomía rápida.</p></article>
+      <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>La Jaula</h3></div><p class="tile__rubro">Fútbol</p><p class="tile__note">Torneos y alquiler de la cancha, todas las semanas.</p></article>
+      <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>Escuelas de fútbol</h3></div><p class="tile__rubro">Deporte infantil</p><p class="tile__note">Dos escuelitas activas, con entrenamiento durante la semana.</p></article>
+      <article class="tile"><div class="tile__top"><span class="dot dot--soon"></span><h3>Peak One</h3></div><p class="tile__rubro">Wellness</p><p class="tile__note">En obra: 750 m² de entrenamiento y recuperación.</p></article>
+      <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>Volta + Open 25</h3></div><p class="tile__rubro">Heladería · Kiosko</p><p class="tile__note">~115 m². Se renueva con la heladería nueva del proyecto.</p></article>
+      <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>Pole Position</h3></div><p class="tile__rubro">Lavadero</p><p class="tile__note">Lavadero de autos dentro del predio.</p></article>
+      <article class="tile"><div class="tile__top"><span class="dot dot--on"></span><h3>Salón de eventos</h3></div><p class="tile__rubro">Eventos</p><p class="tile__note">Eventos sociales, activaciones y fechas de música.</p></article>
+    </div>
+    <p class="legend"><span><i class="dot dot--on"></i> Operativo, noviembre 2026</span><span><i class="dot dot--soon"></i> En obra</span></p>
+  </section>
+
+  <!-- 06 -->
+  <section class="slide" data-t="El paseo">
+    <div class="cota"><span>04 &middot; El paseo</span></div>
+    <p class="eyebrow">El paseo</p>
+    <h2>Todo al aire libre.</h2>
+    <div class="galeria">
+      <figure><img src="{{IMG:jaula}}" alt="El sector deportivo con deck, mesas y contenedores">
+        <figcaption>El sector deportivo. La gente llega por acá y se queda.</figcaption></figure>
+      <figure><img src="{{IMG:senderos}}" alt="Senderos con jacarandás en flor">
+        <figcaption>Senderos, no pasillos. Se camina de un local al otro entre jacarandás.</figcaption></figure>
+      <figure><img src="{{IMG:galeria}}" alt="La galería gastronómica con frentes vidriados">
+        <figcaption>La galería gastronómica, con la vereda como parte del salón.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section class="slide" data-t="El mapa">
+    <div class="cota"><span>05 &middot; El mapa</span></div>
+    <p class="eyebrow">El mapa</p>
+    <h2>Qué hay en cada sector.</h2>
+    <div class="mapa">
+      <div class="mapa__img">
+        <img src="{{IMG:aerea-wellness}}" alt="Vista aérea del paseo con los doce sectores numerados">
+        <span class="pin" style="left:47%; top:17%">1</span>
+        <span class="pin" style="left:43%; top:30%">2</span>
+        <span class="pin" style="left:78%; top:19%">3</span>
+        <span class="pin" style="left:67%; top:42%">4</span>
+        <span class="pin" style="left:47%; top:41%">5</span>
+        <span class="pin" style="left:20%; top:32%">6</span>
+        <span class="pin" style="left:86%; top:65%">7</span>
+        <span class="pin" style="left:22%; top:73%">8</span>
+        <span class="pin pin--libre" style="left:36%; top:55%">9</span>
+        <span class="pin" style="left:9%; top:23%">10</span>
+        <span class="pin" style="left:57%; top:92%">11</span>
+        <span class="pin pin--libre" style="left:89%; top:37%">12</span>
+      </div>
+      <ol class="mapa__lista">
+        <li><b>Cancha de fútbol</b><span>La Jaula: torneos y alquiler. Escuelas de fútbol.</span></li>
+        <li><b>Patio deportivo</b><span>Deck, mesas y contenedores.</span></li>
+        <li><b>Wellness Center</b><span>Peak One, 750 m². <em>En obra.</em></span></li>
+        <li><b>Plaza Central</b><span>La escultura de acero Corten.</span></li>
+        <li><b>Fabric (próximamente restaurante Pata Negra)</b><span>Gastronomía.</span></li>
+        <li><b>BIGG</b><span>Centro de entrenamiento, sobre la plaza.</span></li>
+        <li><b>Market</b><span>Minimercado, en obra. <em>Buscando operador.</em></span></li>
+        <li><b>Salón Multiespacios</b><span>Consultorios, clases y cumpleaños. Hoy funciona como salón de eventos.</span></li>
+        <li><b>Café de especialidad</b><span><em>Disponible hoy.</em> 130 m² cubiertos, galería y deck.</span></li>
+        <li><b>Los tres locales nuevos</b><span>En obra. <em>Pizzería disponible.</em> Fabric y Shock BA, asignados.</span></li>
+        <li><b>Acceso</b><span>Av. de los Colegios 160, con estacionamiento propio.</span></li>
+        <li><b>8 locales de servicios</b><span>En obra, de 30 m² cada uno. <em>Por asignar.</em> Farmacia, barbería, estética, librería, kiosco.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide slide--photo" data-t="La cafetería">
+    <div class="cota"><span>06 &middot; La cafetería</span></div>
+    <div class="photo"><img src="{{IMG:cafe-exterior}}" alt="Render de la cafetería con galería semicubierta y deck"></div>
+    <div class="caption">
+      <h2>La cafetería. Disponible hoy.</h2>
+      <p>130 m² cubiertos, 52 m² de galería semicubierta y 39 m² de deck, sobre el sendero principal, entre el salón y la plaza.<span style="display:block;margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,236,225,.62)">Imagen ilustrativa</span></p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide" data-t="Lo que viene">
+    <div class="cota"><span>07 &middot; Lo que viene</span></div>
+    <p class="eyebrow">Lo que viene</p>
+    <h2>Lo que se está construyendo.</h2>
+    <div class="plan">
+      <div class="plan__row"><p class="plan__when">Hoy</p><p class="plan__what">Cafetería</p><p class="plan__note">Disponible, en obra en gris y con entrega inmediata.</p></div>
+      <div class="plan__row"><p class="plan__when">En obra</p><p class="plan__what">Wellness Center</p><p class="plan__note">Peak One: 750 m² de entrenamiento y recuperación, con patio propio para entrenar al aire libre.</p></div>
+      <div class="plan__row"><p class="plan__when">Enero 2027 aprox.</p><p class="plan__what">La galería nueva</p><p class="plan__note">Tres locales gastronómicos con cocina propia: Fabric, la heladería Shock BA y la pizzería, todavía disponible.</p></div>
+      <div class="plan__row"><p class="plan__when">Julio 2027 aprox.</p><p class="plan__what">Market</p><p class="plan__note">Minimercado junto al acceso principal.</p></div>
+      <div class="plan__row"><p class="plan__when">Julio 2027 aprox.</p><p class="plan__what">8 locales de servicios</p><p class="plan__note">Sobre la avenida, para rubros que no necesitan cocina ni obra pesada.</p></div>
+    </div>
+  </section>
+
+  <!-- 11b -->
+  <section class="slide slide--photo" data-t="Wellness">
+    <div class="cota"><span>08 &middot; Wellness Center</span></div>
+    <div class="photo"><img src="{{IMG:peak-sendero}}" alt="Render del Wellness Center con su patio de entrenamiento al aire libre"></div>
+    <div class="caption">
+      <h2>El Wellness Center.</h2>
+      <p>750 m² cerrados y un patio de entrenamiento al aire libre. Otro motivo para venir al paseo todas las semanas.<span style="display:block;margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,236,225,.62)">Imagen ilustrativa</span></p>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide slide--photo" data-t="La galería">
+    <div class="cota"><span>09 &middot; La galería nueva</span></div>
+    <div class="photo"><img src="{{IMG:render-galeria-dia-shock}}" alt="Render de la galería nueva con pizzería, Fabric y Shock BA"></div>
+    <div class="caption">
+      <h2>La galería nueva.</h2>
+      <p>Tres locales gastronómicos de 48, 88 y 124 m², con la vereda como parte del salón. Fabric y Shock BA ya están; la pizzería de 48 m² sigue disponible.<span style="display:block;margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,236,225,.62)">Imagen ilustrativa</span></p>
+    </div>
+  </section>
+
+  <!-- 12b -->
+  <section class="slide slide--photo" data-t="Servicios">
+    <div class="cota"><span>10 &middot; Locales de servicios</span></div>
+    <div class="photo"><img src="{{IMG:servicios}}" alt="Render de la tira de locales de servicios"></div>
+    <div class="caption">
+      <h2>Ocho locales de servicios y un Market.</h2>
+      <p>En obra, de 30 m² cada local: farmacia, barbería, estética, librería, kiosco. Todavía por asignar.<span style="display:block;margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,236,225,.62)">Imagen ilustrativa</span></p>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide" data-t="Contacto">
+    <div class="cota"><span>11 &middot; Sumate</span></div>
+    <p class="eyebrow">Para marcas</p>
+    <h2>Por qué estar acá.</h2>
+    <div class="args args--4">
+      <div class="arg"><h3>Público que ya circula</h3><p>La cancha, las escuelas de fútbol y el gimnasio traen gente todos los días. No depende del fin de semana.</p></div>
+      <div class="arg"><h3>Un flujo, no una vidriera</h3><p>Quien viene por una cosa se cruza con todas las demás.</p></div>
+      <div class="arg"><h3>Más que un alquiler</h3><p>Local, presencia de marca y activaciones en los eventos del paseo.</p></div>
+      <div class="arg"><h3>Entrar mientras crece</h3><p>Las mejores ubicaciones se definen ahora.</p></div>
+    </div>
+    <dl class="contact">
+      <div><dt>Dirección</dt><dd>Av. de los Colegios 160<br>Nordelta, Tigre</dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:paseonordelta@gmail.com">paseonordelta@gmail.com</a></dd></div>
+      <div><dt>Instagram</dt><dd><a href="https://instagram.com/paseonordelta">@paseonordelta</a></dd></div>
+      <div><dt>Web</dt><dd><a href="https://paseonordelta.com">paseonordelta.com</a></dd></div>
+    </dl>
+    <p class="legend"><span>Renders e imágenes ilustrativas. Medidas sujetas a verificación en obra.</span></p>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  var deck = document.getElementById("deck");
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var nav = document.querySelector(".nav");
+
+  slides.forEach(function(s, i){
+    s.id = "l" + (i + 1);
+    var a = document.createElement("a");
+    a.href = "#l" + (i + 1);
+    a.setAttribute("aria-label", "Lámina " + (i + 1) + ": " + s.dataset.t);
+    nav.appendChild(a);
+  });
+  var dots = Array.prototype.slice.call(nav.children);
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var i = slides.indexOf(e.target);
+      dots.forEach(function(d, j){ d.setAttribute("aria-current", j === i ? "true" : "false"); });
+    });
+  }, { root: deck, threshold: 0.55 });
+  slides.forEach(function(s){ io.observe(s); });
+
+  function ir(paso){
+    var actual = 0, mejor = Infinity;
+    slides.forEach(function(s, i){
+      var d = Math.abs(s.getBoundingClientRect().top);
+      if (d < mejor) { mejor = d; actual = i; }
+    });
+    var destino = Math.min(slides.length - 1, Math.max(0, actual + paso));
+    slides[destino].scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  document.addEventListener("keydown", function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); ir(1); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); ir(-1); }
+  });
+
+  var hint = document.getElementById("hint");
+  setTimeout(function(){ hint.style.opacity = "0"; }, 4200);
+})();
+</script>

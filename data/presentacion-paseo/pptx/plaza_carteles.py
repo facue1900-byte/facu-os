@@ -1,4 +1,4 @@
-"""Cambia los carteles del render de la plaza: KIOSKO → FABRIC, HELADERIA → SCHOCK BA. Parte de img/plaza.jpg, que no se toca."""
+"""Cambia los carteles del render de la plaza: KIOSKO → FABRIC, HELADERIA → SHOCK BA. Parte de img/plaza.jpg, que no se toca."""
 import pathlib
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont,ImageFilter
@@ -31,5 +31,5 @@ def rotulo(t,cx,cy,alto):
     l=l.resize((w,h),Image.LANCZOS).filter(ImageFilter.GaussianBlur(.45))
     out.paste(Image.new('RGB',(w,h),(214,208,197)),(0,0),l)
 c=src(330,147); rotulo('FABRIC',c[0],c[1],20)
-c=src(1110,147); rotulo('SCHOCK BA',c[0],c[1],20)
+c=src(1110,147); rotulo('SHOCK BA',c[0],c[1],20)
 out.save(B/'plaza-carteles.jpg',quality=92)

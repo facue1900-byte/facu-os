@@ -15,7 +15,7 @@ const LOCALES={
  pizzeria:{archivo:'Pizzeria',nombre:'Pizzería',titulo:'La pizzería\nde la galería nueva',bajada:'47,9 m² a estrenar en la galería gastronómica, con cocina prevista en el proyecto.',chip:'DISPONIBLE · ENERO 2027 APROX.',foto:'render-galeria-dia.jpg',ilu:true,
   stats:[['47,9','m²','A estrenar'],['1','','Cocina prevista en el proyecto'],['3','','Locales gastronómicos en la galería']],
   tituloLocal:'47,9 m² con cocina propia',fotoLocal:'galeria-noche.jpg',planoCap:'Imagen ilustrativa · la galería de noche',
-  puntos:['Local a estrenar, se entrega en obra en gris','Cocina prevista desde el proyecto','Frente vidriado sobre la galería semicubierta','Al lado de Fabric y la heladería Schock BA'],
+  puntos:['Local a estrenar, se entrega en obra en gris','Cocina prevista desde el proyecto','Frente vidriado sobre la galería semicubierta','Al lado de Fabric y la heladería Shock BA'],
   ubi:'ubi-pizzeria.png',tituloUbi:'En la galería gastronómica nueva',textoUbi:'Junto a la cancha y a la plaza del sector deportivo, en un bloque de tres locales gastronómicos con la vereda como parte del salón.',
   alquiler:'$2.500.000',expensas:'$780.000',entrega:'Enero 2027',entregaNota:'Fecha aproximada. Se entrega en obra en gris.'},
  market:{archivo:'Market',nombre:'Market',titulo:'El Market\ndel paseo',bajada:'Unos 119 m² junto al acceso principal, a la cabeza de la tira de locales de servicios.',chip:'EN OBRA · JULIO 2027 APROX.',foto:'acceso.jpg',ilu:true,
@@ -45,7 +45,7 @@ function nuevo(titulo){
  return p;
 }
 function foto(p,s,img,titulo,texto,ilu=true){const C=p.SchemeColor;
- s.addImage({path:A(img),x:0,y:0,w:13.333,h:7.5,objectName:'Foto',altText:titulo});
+ s.addImage({path:A(img),x:0,y:0,w:13.333,h:7.5,objectName:'Foto '+img,altText:titulo});
  s.addImage({path:A('velo.png'),x:0,y:0,w:13.333,h:7.5,objectName:'Velo',altText:''});
  s.addText(titulo,{placeholder:'title'});
  s.addText(texto,{x:.6,y:5.92,w:9.2,h:.8,fontSize:17,color:C.background1,margin:0,valign:'top',isTextBox:true,objectName:'Texto'});
@@ -145,12 +145,12 @@ async function general(){const p=nuevo('Paseo Nordelta · Presentación general'
   s.addText([{text:a,options:{bold:true,color:C.background1,breakLine:true,fontSize:13}},{text:b,options:{color:C.background2,fontSize:12}}],{x:x+.3,y,w:2.45,h:.82,margin:0,valign:'top',isTextBox:true,objectName:'Sector'});});
  s=p.addSlide({masterName:'FOTO'}); foto(p,s,'cafe-exterior.jpg','La cafetería, disponible hoy','130 m² cubiertos, 52 m² de galería semicubierta y 39 m² de deck, sobre el sendero principal.');
  s=p.addSlide({masterName:'CONTENIDO'}); s.addText('Lo que se viene',{placeholder:'title'});
- [['HOY','Cafetería','Disponible, en obra en gris y con entrega inmediata'],['EN OBRA','Wellness Center','Peak One: 750 m² y patio propio para entrenar al aire libre'],['ENERO 2027 APROX.','La galería nueva','Tres locales gastronómicos: Fabric, Schock BA y la pizzería, disponible'],['JULIO 2027 APROX.','Market','Junto al acceso principal, buscando operador'],['JULIO 2027 APROX.','8 locales de servicios','Para rubros que no necesitan cocina ni obra pesada']].forEach((d,i)=>{const y=1.5+i*1.04;card(p,s,.6,y,12.1,.92);
+ [['HOY','Cafetería','Disponible, en obra en gris y con entrega inmediata'],['EN OBRA','Wellness Center','Peak One: 750 m² y patio propio para entrenar al aire libre'],['ENERO 2027 APROX.','La galería nueva','Tres locales gastronómicos: Fabric, Shock BA y la pizzería, disponible'],['JULIO 2027 APROX.','Market','Junto al acceso principal, buscando operador'],['JULIO 2027 APROX.','8 locales de servicios','Para rubros que no necesitan cocina ni obra pesada']].forEach((d,i)=>{const y=1.5+i*1.04;card(p,s,.6,y,12.1,.92);
   s.addText(d[0],{x:.85,y,w:2.4,h:.92,fontSize:12,bold:true,color:C.accent2,margin:0,valign:'middle',isTextBox:true,objectName:'Fecha'});
   s.addText(d[1],{x:3.3,y,w:3,h:.92,fontSize:18,color:C.background1,margin:0,valign:'middle',isTextBox:true,objectName:'Qué'});
   s.addText(d[2],{x:6.4,y,w:6.1,h:.92,fontSize:14,color:C.background2,margin:0,valign:'middle',isTextBox:true,objectName:'Detalle'});});
  s=p.addSlide({masterName:'FOTO'}); foto(p,s,'peak-sendero.jpg','El Wellness Center','750 m² cerrados y un patio de entrenamiento al aire libre. Otro motivo para venir al paseo todas las semanas.');
- s=p.addSlide({masterName:'FOTO'}); foto(p,s,'render-galeria-dia.jpg','La galería nueva','Tres locales gastronómicos de 48, 88 y 124 m². Fabric y Schock BA ya están; la pizzería de 48 m² sigue disponible.');
+ s=p.addSlide({masterName:'FOTO'}); foto(p,s,'render-galeria-dia.jpg','La galería nueva','Tres locales gastronómicos de 48, 88 y 124 m². Fabric y Shock BA ya están; la pizzería de 48 m² sigue disponible.');
  s=p.addSlide({masterName:'FOTO'}); foto(p,s,'servicios.jpg','Ocho locales de servicios y un Market','En obra, de 30 m² cada local: farmacia, barbería, estética, librería, kiosco. Todavía por asignar.');
  s=p.addSlide({masterName:'CONTENIDO'}); s.addText('Por qué estar acá',{placeholder:'title'});
  [['Público que ya circula','La cancha, las escuelas y el gimnasio traen gente todos los días, no sólo el fin de semana.'],['Un flujo, no una vidriera','Quien viene por una cosa se cruza con todas las demás.'],['Más que un alquiler','Local, presencia de marca y activaciones en los eventos del paseo.'],['Entrar mientras crece','Las mejores ubicaciones se definen ahora.']].forEach(([a,b],i)=>{const x=.6+i*3.05;card(p,s,x,1.5,2.95,3.2);s.addText(a,{x:x+.22,y:1.72,w:2.5,h:.85,fontSize:18,bold:true,color:C.background1,margin:0,valign:'top',isTextBox:true,objectName:'Argumento'});s.addText(b,{x:x+.22,y:2.62,w:2.5,h:1.95,fontSize:15,color:C.background2,margin:0,valign:'top',isTextBox:true,objectName:'Detalle'});});
