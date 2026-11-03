@@ -182,6 +182,8 @@ expensas solas (sep y oct) antes del alquiler.
 
 ## Frentes abiertos
 
+- 🔴 **Cafetería sin inquilino otra vez (03/11):** Alex Coffee se cerró el 26/10 y se bajó el 02/11 (WhatsApp de Facu). El alta de marzo-27 ($3,5M) de la rampa y de `radar_rampa.py` no tiene quién la pague hasta cerrar otro.
+
 - 🔴 **Precios de oferta del 03/11 (Facu), no pasados a `radar_rampa.py` ni a `Alquileres`:** pizzería $2,5M, Market $4M, tira 8 locales a $2M (el radar tiene 6). Ppt en `~/Desktop/Paseo Nordelta/Presentacion locatarios/`.
 
 - Parrilla para los 354 m² de Fabric: sin firmar. Mudar a Fabric al local de 88,3 m² no
