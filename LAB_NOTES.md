@@ -435,3 +435,5 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
 **Arreglo:** los 3 IDs a la lista; un comentario que es sólo la palabra se responde en cualquier posteo (`c076180`, probado rompiendo la línea); `reporte_embudo.py` avisa `fuera_de_lista`.
 **Lección:** un filtro que descarta a un cliente tiene que avisar. Y la respuesta privada de Instagram vence a los 7 días: pasado eso no hay rescate por API.
 
+**Corrección del mismo día:** el estado `respondido` no prueba la entrega. A @angelitodicheii la API le dio OK y el chat de Instagram dice que la cuenta no acepta solicitudes de mensaje. Lo reporté como entregado leyendo la API y la respuesta pública, sin mirar el chat: la prueba de un DM es el chat. Instagram tampoco avisa por API, así que el bot no lo puede detectar.
+
