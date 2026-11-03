@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 486.9386421461452,
+  "usdt": 619.9389407949891,
   "posiciones": {
-    "XRPUSDT": {
-      "nivel": "trading",
-      "cantidad": 104.26300578034682,
-      "entrada": 1.2456,
-      "maximo": 1.2914,
-      "reglas": {
-        "stop": 1.0,
-        "trail": 3.5,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793730720000
-    },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.05730460528347843,
@@ -48,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793730720000
+      "vigilado_hasta": 1793734320000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.10587458423009195,
       "entrada": 1226.64,
-      "maximo": 1226.64,
+      "maximo": 1229.63,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793730780000
+      "vigilado_hasta": 1793734320000
     }
   },
-  "comisiones_usd": 34.54395899999998,
+  "comisiones_usd": 34.67709199999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3158,6 +3136,18 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Momentum de 24 h: ZEC +5,17% en 24 h, sigue subiendo en 4 h (+2,69%), 1 h +0,26% (no estirada). Estructura horaria de mínimos crecientes 1183,53/1187,91/1190/1205,6/1214,54 (14:00-18:00) y máximos nuevos del día 1228,27/1229,23; 48 h ya plano (-0,14%), sale de la tendencia bajista que la descartaba antes. Contra: volumen 4 h 0,69x y -4,74% del máximo de 48 h, por eso tamaño ~15% y no más. BTC +0,47% en 4 h: sin bloqueo. Stop 5% por defecto (~1164). Invalida: cierre horario debajo de 1205,6 (mínimo de 17:00) — salida manual ahí. Rota 04/11 18:32 si no llega a +8%."
+    },
+    {
+      "ms": 1793734409647,
+      "fecha": "2026-11-03 19:33 UTC",
+      "lado": "sell",
+      "par": "XRPUSDT",
+      "cantidad": 104.26300578034682,
+      "precio": 1.2769,
+      "usd": 133.1334,
+      "comision": 0.133133,
+      "motivo": "Rotación por 24 h (entrada 02/11 19:32): +2,5% sin llegar a +8% ni al stop. La ruptura de 1,2914 (13:00) fue mecha y nunca cerró arriba; hoy a -1,12% del máximo con 0,47x y 4 h -0,28%: tesis de ruptura sin confirmar, se libera la plata.",
+      "resultado_pct": 2.51
     }
   ]
 }
