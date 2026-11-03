@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 616.7448633440608,
+  "usdt": 746.9386421461452,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793662260000
-    },
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.001690062544156414,
-      "entrada": 76843.31,
-      "maximo": 76946.01,
-      "reglas": {
-        "stop": 1.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793662260000
+      "vigilado_hasta": 1793665860000
     }
   },
-  "comisiones_usd": 34.15363499999997,
+  "comisiones_usd": 34.283958999999975,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3100,6 +3078,18 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Rebote en soporte con la regla de dos horas (condición anotada a las 21:32): BTC marcó mínimo de 48 h 76705 en la vela de 19:00; 20:00 (mín 76714,76) y 21:00 (mín 76723,25, cerró verde 76779,72 -> 76838,01) no lo perforan, y la de 22:00 en curso tampoco (mín 76834,01), pisos subiendo; 1 h +0,05%, volumen 4 h 1,02x, +0,22% del mínimo; 48 h -0,87%: grande, líquida y sin tendencia bajista. BTC -0,19% en 4 h: sin bloqueo. Tamaño ~15%. Stop 1% (~76,1k; el código no deja menos), debajo del mínimo de 48 h. Invalida: mínimo nuevo debajo de 76705 (salida manual ahí, antes del stop). Rota 03/11 22:31 si no llega a +8%."
+    },
+    {
+      "ms": 1793665955419,
+      "fecha": "2026-11-03 00:32 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.001690062544156414,
+      "precio": 77112.0,
+      "usd": 130.3241,
+      "comision": 0.130324,
+      "motivo": "Invalidación escrita cumplida: la vela de 00:00 marcó mínimo 76663,90, debajo de 76705 (mínimo de 48 h de las 19:00, condición de salida anotada). Aunque recuperó a ~77100 (barrida y vuelta), la regla anotada era salida manual ahí; volumen 4 h 0,78x, sin convicción para reinterpretarla. Salgo antes del stop ~76075.",
+      "resultado_pct": 0.35
     }
   ]
 }
