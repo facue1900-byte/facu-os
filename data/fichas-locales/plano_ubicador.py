@@ -39,6 +39,14 @@ LOCALES = {
         "rect": (730.0, 394.0, 790.0, 448.0),
         "que": "SEMICUBIERTO + LOCAL 13 + COCINA 14",
     },
+    "market": {
+        "rect": (286.0, 221.0, 338.0, 322.0),
+        "que": "SUPERMERCADO 1",
+    },
+    "tira": {
+        "rect": (286.0, 323.0, 338.0, 552.0),
+        "que": "la tira de LOCAL 2",
+    },
 }
 
 

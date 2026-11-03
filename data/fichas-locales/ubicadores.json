@@ -24,5 +24,31 @@
       "alto_caja": "29.03%"
     },
     "que": "SEMICUBIERTO + LOCAL 13 + COCINA 14"
+  },
+  "market": {
+    "entero": {
+      "x": "13.80%",
+      "y": "31.37%",
+      "alto_caja": "12.55%"
+    },
+    "zoom": {
+      "x": "35.29%",
+      "y": "50.08%",
+      "alto_caja": "32.26%"
+    },
+    "que": "SUPERMERCADO 1"
+  },
+  "tira": {
+    "entero": {
+      "x": "13.80%",
+      "y": "51.98%",
+      "alto_caja": "28.44%"
+    },
+    "zoom": {
+      "x": "15.57%",
+      "y": "50.02%",
+      "alto_caja": "32.26%"
+    },
+    "que": "la tira de LOCAL 2"
   }
 }
