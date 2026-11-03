@@ -1,20 +1,20 @@
-# Carpeta cripto ficticia — 2026-11-03 00:06 UTC
+# Carpeta cripto ficticia — 2026-11-03 02:06 UTC
 
-**Total: 878.33 USD (-12.17%)** desde 2026-10-07 20:58 UTC · USDT libre 443.73 · comisiones 2.60 · 91 operaciones
+**Total: 879.47 USD (-12.05%)** desde 2026-10-07 20:58 UTC · USDT libre 443.73 · comisiones 2.60 · 91 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **878.33** |
+| **Esta carpeta** | **879.47** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 919.76 |
-| plan inicial sin tocar | 844.85 |
+| hodl btc | 923.32 |
+| plan inicial sin tocar | 844.70 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 275.63 | -8.03% | 63,673.5 |
-| ETH | conservador | 87.36 | -12.55% | 1,940.46 |
-| BNB | conservador | 45.29 | -9.33% | 582.173 |
-| XRP | medio | 26.33 | -12.16% | 1.16653 |
+| BTC | conservador | 276.70 | -7.68% | 63,673.5 |
+| ETH | conservador | 87.52 | -12.39% | 1,940.46 |
+| BNB | conservador | 45.19 | -9.53% | 582.173 |
+| XRP | medio | 26.33 | -12.13% | 1.16653 |
 
 ## Últimas operaciones
 
