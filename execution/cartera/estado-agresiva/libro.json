@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 616.9386421461452,
+  "usdt": 486.9386421461452,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793727120000
+      "vigilado_hasta": 1793730720000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793727120000
+      "vigilado_hasta": 1793730720000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.10587458423009195,
+      "entrada": 1226.64,
+      "maximo": 1226.64,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793730780000
     }
   },
-  "comisiones_usd": 34.41395899999998,
+  "comisiones_usd": 34.54395899999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3124,6 +3146,18 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Rebote en soporte (condición anotada 08:31: ETH si deja de hacer mínimos con >= 1x): mínimo de 48 h 2237,38 intacto; pisos 06:00-09:00 2241,15 / 2244,15 / 2250,68 / 2256,97 subiendo; 07:00 y 09:00 verdes (09:00 2257,58 -> ~2266), volumen 4 h 1,16x, 4 h +0,8%, 1 h +0,4% (no estirada), +1,3% del mínimo, 48 h -0,18%: grande, líquida, sin tendencia bajista. BTC +0,43% en 4 h: sin bloqueo. Tamaño ~15%. Stop 1,5% (~2232), debajo del mínimo de 48 h. Invalida: mínimo nuevo debajo de 2237,38 (salida manual ahí, antes del stop). Rota 04/11 09:31 si no llega a +8%."
+    },
+    {
+      "ms": 1793730778632,
+      "fecha": "2026-11-03 18:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.10587458423009195,
+      "precio": 1226.64,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Momentum de 24 h: ZEC +5,17% en 24 h, sigue subiendo en 4 h (+2,69%), 1 h +0,26% (no estirada). Estructura horaria de mínimos crecientes 1183,53/1187,91/1190/1205,6/1214,54 (14:00-18:00) y máximos nuevos del día 1228,27/1229,23; 48 h ya plano (-0,14%), sale de la tendencia bajista que la descartaba antes. Contra: volumen 4 h 0,69x y -4,74% del máximo de 48 h, por eso tamaño ~15% y no más. BTC +0,47% en 4 h: sin bloqueo. Stop 5% por defecto (~1164). Invalida: cierre horario debajo de 1205,6 (mínimo de 17:00) — salida manual ahí. Rota 04/11 18:32 si no llega a +8%."
     }
   ]
 }
