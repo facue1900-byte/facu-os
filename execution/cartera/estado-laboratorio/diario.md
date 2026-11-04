@@ -303,3 +303,8 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-04 06:16 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 1.6, var_4h 2.14). Candidatos con var_24h>=3 fallan: ENA (7.24, var_4h 6.92, vs_max -0.39) por volumen 1.28 < 1.3; ZEC vs_max -2.04; SUI vs_max -1.54; PEPE vol 1.17; UNI vol 1.19; NEAR vol 1.19 y vs_max -8.1. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-04 08:16 UTC — Compra UNIUSDT (trading)
+198.31 USD a 7.48. Stop 7.0% · trailing 8.0% · tomas [[10.0, 0.5], [20.0, 1.0]].
+
+[v1] BTC ok (var_24h 2.27, var_4h 1.29); UNI var_24h 5.66>=3, var_4h 4.0>0, var_1h 0.15<=2.5, vs_max_48h -0.85>=-1.5, vol4h 1.81>=1.3 (mayor entre SUI 1.78, ENA 1.53, NEAR no por vs_max) · invalida: stop 7% / trail 8% / var_24h<0 y var_4h<-2
+

@@ -1,18 +1,20 @@
-# Carpeta cripto LABORATORIO (reglas del entrenador, objetivo +20%/mes) — 2026-11-04 06:16 UTC
+# Carpeta cripto LABORATORIO (reglas del entrenador, objetivo +20%/mes) — 2026-11-04 08:16 UTC
 
-**Total: 991.57 USD (-0.84%)** desde 2026-10-27 22:37 UTC · USDT libre 991.57 · comisiones 1.60 · 9 operaciones
+**Total: 991.40 USD (-0.86%)** desde 2026-10-27 22:37 UTC · USDT libre 793.26 · comisiones 1.80 · 10 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **991.57** |
+| **Esta carpeta** | **991.40** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 962.39 |
+| hodl btc | 969.40 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| UNI | trading | 198.14 | +0.01% | 6.9564 |
 
 ## Últimas operaciones
 
+- 2026-11-04 08:16 UTC · compra UNI 198.31 USD a 7.48 — [v1] BTC ok (var_24h 2.27, var_4h 1.29); UNI var_24h 5.66>=3, var_4h 4.0>0, var_1h 0.15<=2.5, vs_max_48h -0.85>=-1.5, vol4h 1.81>=1.3 (mayor
 - 2026-10-29 23:43 UTC · venta HYPE 101.04 USD a 89.9208 — Stop automático en 89.9208 (entrada 88.66, máximo 97.74).
 - 2026-10-29 20:18 UTC · venta UNI 193.60 USD a 7.081 — [v1] tendencia rota: var_24h -2.26<0 y var_4h -3.96<-2 · invalida: n/a
 - 2026-10-29 20:18 UTC · venta ENA 193.99 USD a 0.206 — [v1] tendencia rota: var_24h -2.6<0 y var_4h -4.14<-2 · invalida: n/a
