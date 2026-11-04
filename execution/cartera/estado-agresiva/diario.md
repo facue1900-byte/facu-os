@@ -3269,3 +3269,16 @@ Momentum de 24 h: SUI +5,41% en 24 h, sigue subiendo en 4 h (+4,78%), 1 h +0,17%
 ## 2026-11-04 17:32 UTC — nota
 17:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: BNB, BTC, ETH, NEAR y SUI 58-60 min, sin disparos. Mercado: pausa tras el empujón: 4 h verde casi total (-0,53/+4,67%), 1 h roja pareja (-3,39/0,0%); volumen 4 h 1,0-5,24x. BTC +2,61% en 4 h (3,53x), -0,97% del máximo de 48 h: sin bloqueo. Posiciones: BTC 80404 (+4,77%), stop ~77136; BNB 716,07 (+4,02%), stop ~685,5; rotan 05/11 04:31. ETH 2427,89 (-0,37%), 4 h +4,67%, 5,24x, -0,92% del máximo: viva; rota 05/11 15:32. NEAR 4,086 (-2,18%), 24 h +6,5%, 4 h +1,92%: viva, cerca de la invalidación (cierre debajo de 4,052 = -3%); rota 05/11 15:32. SUI 0,9347 (-1,04%), 24 h +4,09% pero 4 h +3,18% verde: viva (invalida sólo con 4 h roja + 24 h < +5%, o cierre debajo de 0,9162); rota 05/11 16:32. Sin entradas: 5 posiciones (tope de la disciplina); además nadie rompe máximo de 48 h (ETH -0,92%, BNB -0,8%, BTC -0,97%) y la 1 h roja general no es momento de perseguir. A mirar: NEAR salida si cierre debajo de 4,052 o 4 h roja; SUI si 4 h pasa a rojo; ETH ruptura del máximo de 48 h; BTC/BNB cerca de +8% (toma de la mitad). 5 posiciones (~78%), resto en USDT.
 
+## 2026-11-04 18:32 UTC — Venta NEARUSDT
+127.91 USD a 4.114 (-1.51% contra la compra).
+
+Invalidación anotada 17:31 cumplida: 4 h pasó a rojo (-0,75%), 1 h -0,05%, -3,51% del máximo de 48 h; 24 h todavía +7,8% pero el impulso se apagó. Salida manual a ~4,115 (-1,5%) antes del stop 3,9957.
+
+## 2026-11-04 18:32 UTC — Compra UNIUSDT (trading)
+115.00 USD a 7.668. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: UNI +5,87% en 24 h, sigue subiendo en 4 h (+1,64%), 1 h +0,16% (no estirada), -1,46% del máximo de 48 h, volumen 4 h 1,61x. Reemplaza a NEAR. Tamaño ~13% (correlacionada con el resto). Invalida: cierre horario -3% desde la entrada o 4 h vuelve a rojo con 24 h debajo de +5% — salida manual. Rota 05/11 18:32 si no llega a +8%.
+
+## 2026-11-04 18:32 UTC — nota
+18:31 UTC — Sin disparos, 1 entrada (UNI), 1 salida manual (NEAR). Vigilante: BNB, BTC, ETH, NEAR y SUI 60 min, sin disparos. Mercado: verde moderado: 4 h mixta (-8,12/+2,36%), 1 h plana-verde (-0,4/+0,55%, TRUMP +5,21% aparte); volumen 4 h 1,0-4,11x. BTC +1,62% en 4 h (2,91x), -0,69% del máximo de 48 h: sin bloqueo. Salida: NEAR a 4,114 (-1,51%) — se cumplió lo anotado (4 h roja -0,75%). Entrada: UNI momentum (24 h +5,87%, 4 h +1,64%, 1 h +0,16%, 1,61x) 115 USD a 7,668. Posiciones: BTC 80602 (+5,03%), stop ~77136; BNB 718,62 (+4,39%), -0,39% del máximo, stop ~685,5; rotan 05/11 04:31. ETH 2433,86 (-0,13%), 4 h +2,36%, 4,11x, -0,6% del máximo: viva; rota 05/11 15:32. SUI 0,9364 (-0,86%), 4 h +0,62%, 24 h +4,6%: viva (invalida con 4 h roja + 24 h < +5% o cierre debajo de 0,9162); rota 05/11 16:32. Descartes: ZEC/ENA/PEPE 4 h roja; nadie rompe el máximo de 48 h con >= 1,5x (BNB -0,39%, ETH -0,6%, BTC -0,69% al filo). A mirar: BNB/ETH/BTC ruptura del máximo de 48 h; SUI si 4 h pasa a rojo; UNI cierre debajo de 7,438 (-3%); BTC/BNB cerca de +8% (toma de la mitad). 5 posiciones (~78%), resto en USDT.
+

@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 190.7552659435462,
+  "usdt": 203.53857808623235,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793813460000
+      "vigilado_hasta": 1793817060000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793813460000
+      "vigilado_hasta": 1793817060000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -70,29 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793813460000
-    },
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 31.091692602346185,
-      "entrada": 4.177,
-      "maximo": 4.206,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793813460000
+      "vigilado_hasta": 1793817060000
     },
     "SUIUSDT": {
       "nivel": "trading",
@@ -114,10 +92,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793813460000
+      "vigilado_hasta": 1793817060000
+    },
+    "UNIUSDT": {
+      "nivel": "trading",
+      "cantidad": 14.982394366197184,
+      "entrada": 7.668,
+      "maximo": 7.668,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793817180000
     }
   },
-  "comisiones_usd": 36.38854999999999,
+  "comisiones_usd": 36.63146099999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3370,6 +3370,30 @@
       "usd": 115.0,
       "comision": 0.115,
       "motivo": "Momentum de 24 h: SUI +5,41% en 24 h, sigue subiendo en 4 h (+4,78%), 1 h +0,17% (no estirada), -1,25% del máximo de 48 h, volumen 4 h 2,99x. Estaba anotada desde la mañana esperando lugar. Tamaño ~13% (más chico: 5ta posición del mismo movimiento correlacionado). Invalida: cierre horario -3% desde la entrada o 4 h vuelve a rojo con 24 h debajo de +5% — salida manual. Rota 05/11 16:32 si no llega a +8%."
+    },
+    {
+      "ms": 1793817126601,
+      "fecha": "2026-11-04 18:32 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 31.091692602346185,
+      "precio": 4.114,
+      "usd": 127.9112,
+      "comision": 0.127911,
+      "motivo": "Invalidación anotada 17:31 cumplida: 4 h pasó a rojo (-0,75%), 1 h -0,05%, -3,51% del máximo de 48 h; 24 h todavía +7,8% pero el impulso se apagó. Salida manual a ~4,115 (-1,5%) antes del stop 3,9957.",
+      "resultado_pct": -1.51
+    },
+    {
+      "ms": 1793817133238,
+      "fecha": "2026-11-04 18:32 UTC",
+      "lado": "buy",
+      "par": "UNIUSDT",
+      "nivel": "trading",
+      "cantidad": 14.982394366197184,
+      "precio": 7.668,
+      "usd": 115.0,
+      "comision": 0.115,
+      "motivo": "Momentum de 24 h: UNI +5,87% en 24 h, sigue subiendo en 4 h (+1,64%), 1 h +0,16% (no estirada), -1,46% del máximo de 48 h, volumen 4 h 1,61x. Reemplaza a NEAR. Tamaño ~13% (correlacionada con el resto). Invalida: cierre horario -3% desde la entrada o 4 h vuelve a rojo con 24 h debajo de +5% — salida manual. Rota 05/11 18:32 si no llega a +8%."
     }
   ]
 }
