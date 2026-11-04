@@ -3245,3 +3245,16 @@ Invalidación anotada cumplida: 4 h pasó a rojo (-2,62%), 1 h -0,39%, -3,67% de
 ## 2026-11-04 14:32 UTC — nota
 14:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: BNB y BTC 60 min, sin disparos. Mercado: plano tras el enfriamiento: 4 h mixta (-2,55/+0,28%), 1 h verde chica pareja (-0,01/+2,07%); volumen 4 h 0,49-1,26x, nadie con volumen. BTC +0,05% en 4 h (0,97x), -0,09% del máximo de 48 h: sin bloqueo. Posiciones: BTC 78590 (+2,41%), lejos de 75736; stop ~74782. BNB 702,68 (+2,08%), lejos de 680,74; stop ~670. Rotan 05/11 04:31. Sin entradas: ruptura nadie (BTC -0,09% del máximo pero 0,97x, no >= 1,5x); momentum ZEC 24 h +9,91% pero 4 h 0,0% y 0,96x, ENA 24 h +5,76% pero 4 h -1,48%: no siguen subiendo en 4 h; rebote TRX +0,63% del mínimo de 48 h (venía +0,76%: sigue acercándose al piso, 4 h -0,53%, 24 h -1,02%) — no confirmó, descarto. Nada claro, plata en USDT. A mirar: BTC ruptura del máximo de 48 h con >= 1,5x (sumar o no); ZEC si 4 h vuelve a verde y rompe ~-1,15% que le falta con volumen; TRX si toca el mínimo y frena; BTC 75736 y BNB 680,74 al cierre. 2 posiciones (~35%), resto en USDT.
 
+## 2026-11-04 15:32 UTC — Compra ETHUSDT (trading)
+130.00 USD a 2,436.99. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: ETH +5,98% en 24 h, sigue subiendo en 4 h (+4,68%), 1 h +2,43% (no estirada), -0,53% del máximo de 48 h con volumen 4 h 4,11x (el más fuerte del radar, al filo de ruptura). Tamaño ~15%. Stop 5% por defecto. Invalida: cierre horario -3% desde la entrada o 4 h vuelve a rojo — salida manual. Rota 05/11 15:32 si no llega a +8%.
+
+## 2026-11-04 15:32 UTC — Compra NEARUSDT (trading)
+130.00 USD a 4.177. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: NEAR +8,64% en 24 h, sigue subiendo en 4 h (+2,6%), 1 h +0,92% (no estirada), 48 h ya positiva (+4,36%: se resolvió la objeción de tendencia bajista), -1,9% del máximo de 48 h, volumen 4 h 2,26x. Tamaño ~15%. Stop 5% por defecto. Invalida: cierre horario -3% desde la entrada, 24 h debajo de +5% con 4 h roja — salida manual. Rota 05/11 15:32 si no llega a +8%.
+
+## 2026-11-04 15:32 UTC — nota
+15:32 UTC — Sin disparos, 2 entradas (ETH, NEAR), sin salidas. Vigilante: BNB y BTC 60 min, sin disparos. Mercado: verde parejo y con volumen: 4 h verde casi total (-0,53/+4,68%), 1 h verde (-0,3/+3,36%); volumen 4 h 1,09-4,11x. BTC +2,65% en 4 h (2,75x), -0,78% del máximo de 48 h: sin bloqueo. Posiciones: BTC 80600 (+5,03%), stop ~77136; BNB 715,76 (+3,98%), stop ~685,5; rotan 05/11 04:31. Entradas: ETH momentum (24 h +5,98%, 4 h +4,68%, 1 h +2,43%, 4,11x) 130 USD a 2436,99; NEAR momentum (24 h +8,64%, 4 h +2,6%, 48 h ya +4,36%, 2,26x) 130 USD a 4,177. Descartes: PEPE (24 h +6,95%, 1 h +3,36%) y ENA (24 h +8,48%) cumplen pero salieron hace 2-3 h y no sumo más beta correlacionada; ZEC 1 h roja y -2,28% del máximo, sigue la condición de ruptura; WLD cumple pero ya son 4 posiciones del mismo rebote. A mirar: ETH ruptura del máximo de 48 h; ETH/NEAR salida si cierre -3% desde la entrada o 4 h roja; BTC/BNB cerca de +8% (toma de la mitad). 4 posiciones (~65%), resto en USDT.
+

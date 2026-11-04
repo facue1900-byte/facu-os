@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 565.7552659435462,
+  "usdt": 305.7552659435462,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0022781131476545696,
       "entrada": 76741.14,
-      "maximo": 78718.0,
+      "maximo": 81196.01,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793802660000
+      "vigilado_hasta": 1793806260000
     },
     "BNBUSDT": {
       "nivel": "trading",
       "cantidad": 0.1886575923531719,
       "entrada": 688.39,
-      "maximo": 705.7,
+      "maximo": 721.59,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,54 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793802660000
+      "vigilado_hasta": 1793806260000
+    },
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.05329115014833873,
+      "entrada": 2436.99,
+      "maximo": 2436.99,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793806380000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 31.091692602346185,
+      "entrada": 4.177,
+      "maximo": 4.177,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793806380000
     }
   },
-  "comisiones_usd": 36.01354999999998,
+  "comisiones_usd": 36.273549999999986,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3268,6 +3312,30 @@
       "comision": 0.126956,
       "motivo": "Invalidación anotada cumplida: 4 h pasó a rojo (-2,62%), 1 h -0,39%, -3,67% del máximo de 48 h; 24 h bajó a +4,32% (ya no cumple +5%). Salida manual a ~0,1785 (-2,3%) antes del stop 0,1760.",
       "resultado_pct": -2.24
+    },
+    {
+      "ms": 1793806341536,
+      "fecha": "2026-11-04 15:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.05329115014833873,
+      "precio": 2436.99,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Momentum de 24 h: ETH +5,98% en 24 h, sigue subiendo en 4 h (+4,68%), 1 h +2,43% (no estirada), -0,53% del máximo de 48 h con volumen 4 h 4,11x (el más fuerte del radar, al filo de ruptura). Tamaño ~15%. Stop 5% por defecto. Invalida: cierre horario -3% desde la entrada o 4 h vuelve a rojo — salida manual. Rota 05/11 15:32 si no llega a +8%."
+    },
+    {
+      "ms": 1793806347300,
+      "fecha": "2026-11-04 15:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 31.091692602346185,
+      "precio": 4.177,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Momentum de 24 h: NEAR +8,64% en 24 h, sigue subiendo en 4 h (+2,6%), 1 h +0,92% (no estirada), 48 h ya positiva (+4,36%: se resolvió la objeción de tendencia bajista), -1,9% del máximo de 48 h, volumen 4 h 2,26x. Tamaño ~15%. Stop 5% por defecto. Invalida: cierre horario -3% desde la entrada, 24 h debajo de +5% con 4 h roja — salida manual. Rota 05/11 15:32 si no llega a +8%."
     }
   ]
 }
