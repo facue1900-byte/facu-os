@@ -1,20 +1,22 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-04 04:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-04 05:32 UTC
 
-**Total: 873.59 USD (-12.64%)** desde 2026-10-07 23:06 UTC · USDT libre 568.91 · comisiones 35.24 · 262 operaciones
+**Total: 876.22 USD (-12.38%)** desde 2026-10-07 23:06 UTC · USDT libre 438.91 · comisiones 35.37 · 263 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **873.59** |
+| **Esta carpeta** | **876.22** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 922.03 |
+| hodl btc | 930.84 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 174.81 | -0.01% | 72,904.1 |
-| BNB | trading | 129.87 | +0.00% | 653.971 |
+| BTC | trading | 176.48 | +0.94% | 73,715.9 |
+| BNB | trading | 131.22 | +1.04% | 660.915 |
+| PEPE | trading | 129.61 | -0.20% | 4.69e-06 |
 
 ## Últimas operaciones
 
+- 2026-11-04 05:32 UTC · compra PEPE 130.00 USD a 4.94e-06 — Momentum de 24 h: PEPE +5,11% en 24 h, sigue subiendo en 4 h (+3,13%) y 1 h +1,02% (no estirada), -1,4% del máximo de 48 h, +7,63% del mínim
 - 2026-11-04 04:32 UTC · compra BNB 130.00 USD a 688.39 — Rebote en soporte: BNB tocó 680,74 en la vela de 03:00 (mínimo de 48 h) y cerró 686,16 con 14,8 M (~3x lo de las horas previas); la de 04:00
 - 2026-11-04 04:32 UTC · compra BTC 175.00 USD a 76,741.1 — Rebote en soporte: BTC tocó 75736 en la vela de 03:00 (mínimo de 48 h) y cerró 76496 con 134,5 M de volumen (~2,5x, martillo); la de 04:00 n
 - 2026-11-04 03:02 UTC · venta ETH 127.92 USD a 2,232.32 — Stop automático en 2,232.3153 (entrada 2,266.31, máximo 2,309).
@@ -24,6 +26,5 @@
 - 2026-11-03 09:32 UTC · compra ETH 130.00 USD a 2,266.31 — Rebote en soporte (condición anotada 08:31: ETH si deja de hacer mínimos con >= 1x): mínimo de 48 h 2237,38 intacto; pisos 06:00-09:00 2241,
 - 2026-11-03 00:32 UTC · venta BTC 130.32 USD a 77,112 — Invalidación escrita cumplida: la vela de 00:00 marcó mínimo 76663,90, debajo de 76705 (mínimo de 48 h de las 19:00, condición de salida ano
 - 2026-11-02 22:32 UTC · compra BTC 130.00 USD a 76,843.3 — Rebote en soporte con la regla de dos horas (condición anotada a las 21:32): BTC marcó mínimo de 48 h 76705 en la vela de 19:00; 20:00 (mín 
-- 2026-11-02 19:32 UTC · compra XRP 130.00 USD a 1.2456 — Rebote en soporte con la regla de dos horas: XRP marcó mínimo de 48 h en 1,2355 en la vela de 17:00 (la que saltó el stop anterior); 18:00 (
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

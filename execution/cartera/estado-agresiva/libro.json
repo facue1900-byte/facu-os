@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 568.9129240783093,
+  "usdt": 438.9129240783093,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0022781131476545696,
       "entrada": 76741.14,
-      "maximo": 76741.14,
+      "maximo": 77595.64,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793766780000
+      "vigilado_hasta": 1793770260000
     },
     "BNBUSDT": {
       "nivel": "trading",
       "cantidad": 0.1886575923531719,
       "entrada": 688.39,
-      "maximo": 688.39,
+      "maximo": 695.7,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793766780000
+      "vigilado_hasta": 1793770260000
+    },
+    "PEPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 26289473.684210528,
+      "entrada": 4.94e-06,
+      "maximo": 4.94e-06,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793770380000
     }
   },
-  "comisiones_usd": 35.23631999999998,
+  "comisiones_usd": 35.36631999999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3196,6 +3218,18 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Rebote en soporte: BNB tocó 680,74 en la vela de 03:00 (mínimo de 48 h) y cerró 686,16 con 14,8 M (~3x lo de las horas previas); la de 04:00 no hace mínimo nuevo (mín 685,76), +1,14% del mínimo, volumen 4 h 2,07x, 1 h +0,34%. Correlacionada con BTC: tamaño acotado ~15%. Stop 5% por defecto. Invalida: cierre horario debajo de 680,74 — salida manual ahí. Rota 05/11 04:31 si no llega a +8%."
+    },
+    {
+      "ms": 1793770335709,
+      "fecha": "2026-11-04 05:32 UTC",
+      "lado": "buy",
+      "par": "PEPEUSDT",
+      "nivel": "trading",
+      "cantidad": 26289473.684210528,
+      "precio": 4.94e-06,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Momentum de 24 h: PEPE +5,11% en 24 h, sigue subiendo en 4 h (+3,13%) y 1 h +1,02% (no estirada), -1,4% del máximo de 48 h, +7,63% del mínimo; volumen 4 h 0,91x (flojo: tamaño acotado ~15%). Stop 5% por defecto. Invalida: 24 h vuelve debajo de +3% con 4 h roja, o cierre horario debajo del arranque de la suba de 4 h (-3% desde la entrada) — salida manual. Rota 05/11 05:31 si no llega a +8%."
     }
   ]
 }
