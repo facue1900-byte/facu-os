@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793824260000
+      "vigilado_hasta": 1793827920000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793824260000
+      "vigilado_hasta": 1793827920000
     },
     "UNIUSDT": {
       "nivel": "trading",
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793824260000
+      "vigilado_hasta": 1793827920000
     }
   },
   "comisiones_usd": 36.87374399999999,
