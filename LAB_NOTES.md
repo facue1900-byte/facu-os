@@ -427,3 +427,13 @@ sin mkdir: `Write` crea la carpeta) y dice que una negativa es de ese comando; s
 de mkdir. Probado headless con los mismos permisos: indexar, leer_trials, Write y armar_reel, 0 negativas.
 **Lección:** un permiso de agente headless se prueba también con la forma en que el agente escribe de
 verdad los comandos y con una corrida entera, no sólo con el comando ideal.
+
+## 03/11/2026 — Duplicar un anuncio dejó sin DM a los que comentaron «Gold»
+
+**Síntoma:** comentarios «Gold» en los videos de pauta sin mensaje privado (Facu lo notó).
+**Causa raíz:** duplicar un anuncio crea un posteo con otro media ID, y el bot sólo respondía en `instagram_cuenta.media_ids`. `fuera_de_lista` no avisaba a nadie: se rompió en silencio 24 días.
+**Arreglo:** los 3 IDs a la lista; un comentario que es sólo la palabra se responde en cualquier posteo (`c076180`, probado rompiendo la línea); `reporte_embudo.py` avisa `fuera_de_lista`.
+**Lección:** un filtro que descarta a un cliente tiene que avisar. Y la respuesta privada de Instagram vence a los 7 días: pasado eso no hay rescate por API.
+
+**Corrección del mismo día:** el estado `respondido` no prueba la entrega. A @angelitodicheii la API le dio OK y el chat de Instagram dice que la cuenta no acepta solicitudes de mensaje. Lo reporté como entregado leyendo la API y la respuesta pública, sin mirar el chat: la prueba de un DM es el chat. Instagram tampoco avisa por API, así que el bot no lo puede detectar.
+
