@@ -297,3 +297,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-04 02:16 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.23, var_4h -1.28 > -1.5). Solo ZEC y UNI tienen var_24h>=3 (5.88 y 3.8) pero var_4h -2.14/-1.66, vs_max -6.45/-4.23 y vol 0.76/0.81; el resto <3. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-04 04:16 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h -0.16, var_4h -0.55). Con var_24h>=3: ZEC (var_4h -1.05, vs_max -6.3), PEPE (vs_max -2.59, vol 0.78), UNI (vs_max -2.92, vol 1.08): ninguno cumple todas. Sin posiciones, sin disparos. Me quedo en USDT.
+
