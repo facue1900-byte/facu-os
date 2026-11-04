@@ -1,22 +1,24 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-04 06:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-04 07:32 UTC
 
-**Total: 879.60 USD (-12.04%)** desde 2026-10-07 23:06 UTC · USDT libre 308.91 · comisiones 35.50 · 264 operaciones
+**Total: 879.87 USD (-12.01%)** desde 2026-10-07 23:06 UTC · USDT libre 178.91 · comisiones 35.63 · 265 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **879.60** |
+| **Esta carpeta** | **879.87** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 937.44 |
+| hodl btc | 939.69 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 177.73 | +1.66% | 74,255.8 |
-| BNB | trading | 132.10 | +1.71% | 666.264 |
-| PEPE | trading | 130.92 | +0.81% | 4.77e-06 |
-| ENA | trading | 129.94 | +0.05% | 0.173565 |
+| BTC | trading | 178.15 | +1.90% | 74,455.7 |
+| BNB | trading | 132.67 | +2.16% | 670.111 |
+| PEPE | trading | 130.92 | +0.81% | 4.78e-06 |
+| UNI | trading | 129.84 | -0.03% | 7.1136 |
+| ENA | trading | 129.37 | -0.38% | 0.17461 |
 
 ## Últimas operaciones
 
+- 2026-11-04 07:32 UTC · compra UNI 130.00 USD a 7.488 — Momentum de 24 h: UNI +6,43% en 24 h, sigue subiendo en 4 h (+5,35%), 1 h +1,56% (no estirada), -0,01% del máximo de 48 h con volumen 4 h 1,
 - 2026-11-04 06:32 UTC · compra ENA 130.00 USD a 0.1827 — Momentum de 24 h: ENA +8,49% en 24 h, sigue subiendo en 4 h (+8,17%), 1 h +2,29% (no estirada), -0,05% del máximo de 48 h, volumen 4 h 1,4x 
 - 2026-11-04 05:32 UTC · compra PEPE 130.00 USD a 4.94e-06 — Momentum de 24 h: PEPE +5,11% en 24 h, sigue subiendo en 4 h (+3,13%) y 1 h +1,02% (no estirada), -1,4% del máximo de 48 h, +7,63% del mínim
 - 2026-11-04 04:32 UTC · compra BNB 130.00 USD a 688.39 — Rebote en soporte: BNB tocó 680,74 en la vela de 03:00 (mínimo de 48 h) y cerró 686,16 con 14,8 M (~3x lo de las horas previas); la de 04:00
@@ -26,6 +28,5 @@
 - 2026-11-03 19:33 UTC · venta XRP 133.13 USD a 1.2769 — Rotación por 24 h (entrada 02/11 19:32): +2,5% sin llegar a +8% ni al stop. La ruptura de 1,2914 (13:00) fue mecha y nunca cerró arriba; hoy
 - 2026-11-03 18:32 UTC · compra ZEC 130.00 USD a 1,226.64 — Momentum de 24 h: ZEC +5,17% en 24 h, sigue subiendo en 4 h (+2,69%), 1 h +0,26% (no estirada). Estructura horaria de mínimos crecientes 118
 - 2026-11-03 09:32 UTC · compra ETH 130.00 USD a 2,266.31 — Rebote en soporte (condición anotada 08:31: ETH si deja de hacer mínimos con >= 1x): mínimo de 48 h 2237,38 intacto; pisos 06:00-09:00 2241,
-- 2026-11-03 00:32 UTC · venta BTC 130.32 USD a 77,112 — Invalidación escrita cumplida: la vela de 00:00 marcó mínimo 76663,90, debajo de 76705 (mínimo de 48 h de las 19:00, condición de salida ano
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
