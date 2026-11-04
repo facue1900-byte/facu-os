@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 445.57912279846556,
+  "usdt": 335.57912279846556,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793827920000
+      "vigilado_hasta": 1793831460000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793827920000
+      "vigilado_hasta": 1793831460000
     },
     "UNIUSDT": {
       "nivel": "trading",
       "cantidad": 14.982394366197184,
       "entrada": 7.668,
-      "maximo": 7.699,
+      "maximo": 7.752,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793827920000
+      "vigilado_hasta": 1793831460000
+    },
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.04508566645879148,
+      "entrada": 2437.36,
+      "maximo": 2437.36,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793831580000
     }
   },
-  "comisiones_usd": 36.87374399999999,
+  "comisiones_usd": 36.98374399999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3374,6 +3396,18 @@
       "comision": 0.129064,
       "motivo": "Invalidación anotada 19:32 cumplida: 4 h quedó roja (-0,56% < -0,3%), volumen 4 h 0,83x (se apagó el 4-5x de la entrada), -1,17% del máximo de 48 h sin ruptura; 24 h +5,7% pero el impulso de 4 h ya no acompaña. Salida manual a ~2420 (-0,7%) antes del stop 2323,97.",
       "resultado_pct": -0.62
+    },
+    {
+      "ms": 1793831541797,
+      "fecha": "2026-11-04 22:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.04508566645879148,
+      "precio": 2437.36,
+      "usd": 110.0,
+      "comision": 0.11,
+      "motivo": "Momentum de 24 h (condición anotada 20:31/21:32 cumplida): ETH +6,29% en 24 h, 4 h volvió a verde (+0,59%), 1 h +0,79% (no estirada), -0,51% del máximo de 48 h, 48 h +8%. Volumen 4 h flojo (0,68x): tamaño menor (~12%). Invalida: cierre horario debajo de ~2370 (-3%) o 4 h vuelve a rojo (< -0,3%) — salida manual. Rota 05/11 22:31 si no llega a +8%."
     }
   ]
 }
