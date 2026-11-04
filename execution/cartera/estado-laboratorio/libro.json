@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 80841.96
   },
-  "usdt": 793.2588440009872,
+  "usdt": 594.9388440009873,
   "posiciones": {
     "UNIUSDT": {
       "nivel": "trading",
       "cantidad": 26.485520053475934,
       "entrada": 7.48,
-      "maximo": 7.48,
+      "maximo": 7.55,
       "reglas": {
         "stop": 7.0,
         "trail": 8.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793780220000
+      "vigilado_hasta": 1793787360000
+    },
+    "SUIUSDT": {
+      "nivel": "trading",
+      "cantidad": 217.23868421052632,
+      "entrada": 0.912,
+      "maximo": 0.912,
+      "reglas": {
+        "stop": 7.0,
+        "trail": 8.0,
+        "tp": [
+          [
+            10.0,
+            0.5
+          ],
+          [
+            20.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793787480000
     }
   },
-  "comisiones_usd": 1.797155,
+  "comisiones_usd": 1.995475,
   "operaciones": [
     {
       "ms": 1793153807285,
@@ -150,6 +172,18 @@
       "usd": 198.31,
       "comision": 0.19831,
       "motivo": "[v1] BTC ok (var_24h 2.27, var_4h 1.29); UNI var_24h 5.66>=3, var_4h 4.0>0, var_1h 0.15<=2.5, vs_max_48h -0.85>=-1.5, vol4h 1.81>=1.3 (mayor entre SUI 1.78, ENA 1.53, NEAR no por vs_max) · invalida: stop 7% / trail 8% / var_24h<0 y var_4h<-2"
+    },
+    {
+      "ms": 1793787449756,
+      "fecha": "2026-11-04 10:17 UTC",
+      "lado": "buy",
+      "par": "SUIUSDT",
+      "nivel": "trading",
+      "cantidad": 217.23868421052632,
+      "precio": 0.912,
+      "usd": 198.32,
+      "comision": 0.19832,
+      "motivo": "[v1] BTC ok (var_24h 1.8, var_4h 0.65); SUI var_24h 4.07>=3, var_4h 1.66>0, var_1h -0.08<=2.5, vs_max_48h -0.72>=-1.5, vol4h 1.73>=1.3 (mayor; UNI 1.66 ya en cartera; ZEC vol 1.06, NEAR vs_max -1.9, PEPE vol 1.23 no cumplen) · invalida: stop 7% / trail 8% / var_24h<0 y var_4h<-2"
     }
   ]
 }

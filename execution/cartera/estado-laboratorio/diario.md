@@ -308,3 +308,8 @@ Capital ficticio: 1,000.00 USDT.
 
 [v1] BTC ok (var_24h 2.27, var_4h 1.29); UNI var_24h 5.66>=3, var_4h 4.0>0, var_1h 0.15<=2.5, vs_max_48h -0.85>=-1.5, vol4h 1.81>=1.3 (mayor entre SUI 1.78, ENA 1.53, NEAR no por vs_max) · invalida: stop 7% / trail 8% / var_24h<0 y var_4h<-2
 
+## 2026-11-04 10:17 UTC — Compra SUIUSDT (trading)
+198.32 USD a 0.912. Stop 7.0% · trailing 8.0% · tomas [[10.0, 0.5], [20.0, 1.0]].
+
+[v1] BTC ok (var_24h 1.8, var_4h 0.65); SUI var_24h 4.07>=3, var_4h 1.66>0, var_1h -0.08<=2.5, vs_max_48h -0.72>=-1.5, vol4h 1.73>=1.3 (mayor; UNI 1.66 ya en cartera; ZEC vol 1.06, NEAR vs_max -1.9, PEPE vol 1.23 no cumplen) · invalida: stop 7% / trail 8% / var_24h<0 y var_4h<-2
+
