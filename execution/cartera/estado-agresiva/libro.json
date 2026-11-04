@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 316.6439492265182,
+  "usdt": 445.57912279846556,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793820660000
+      "vigilado_hasta": 1793824260000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,29 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793820660000
-    },
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.05329115014833873,
-      "entrada": 2436.99,
-      "maximo": 2446.28,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793820660000
+      "vigilado_hasta": 1793824260000
     },
     "UNIUSDT": {
       "nivel": "trading",
@@ -92,10 +70,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793820660000
+      "vigilado_hasta": 1793824260000
     }
   },
-  "comisiones_usd": 36.74467999999999,
+  "comisiones_usd": 36.87374399999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3384,6 +3362,18 @@
       "comision": 0.113219,
       "motivo": "Invalidación anotada 16:32 cumplida: 4 h pasó a rojo (-1,24%) con 24 h debajo de +5% (+3,99%), -2,64% del máximo de 48 h. Salida manual a ~0,931 (-1,4%) antes del stop 0,9028.",
       "resultado_pct": -1.45
+    },
+    {
+      "ms": 1793824325952,
+      "fecha": "2026-11-04 20:32 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.05329115014833873,
+      "precio": 2421.87,
+      "usd": 129.0642,
+      "comision": 0.129064,
+      "motivo": "Invalidación anotada 19:32 cumplida: 4 h quedó roja (-0,56% < -0,3%), volumen 4 h 0,83x (se apagó el 4-5x de la entrada), -1,17% del máximo de 48 h sin ruptura; 24 h +5,7% pero el impulso de 4 h ya no acompaña. Salida manual a ~2420 (-0,7%) antes del stop 2323,97.",
+      "resultado_pct": -0.62
     }
   ]
 }
