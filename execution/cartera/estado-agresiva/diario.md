@@ -3172,3 +3172,16 @@ Salida manual anotada: la vela de 01:00 cerró 1202,12, debajo de 1205,6 (mínim
 ## 2026-11-04 03:32 UTC — nota
 03:31 UTC — 1 disparo (stop ETH), sin entradas. Vigilante: ETH 60 min, stop automático a 2232,32 (-1,5%) a las 03:02. Carpeta 100% en USDT (873,91; -12,61%). Mercado: rojo parejo con volumen que vuelve: 4 h roja total (-3,55/+0,06%), 1 h plana (-0,12/+1,26%); volumen 4 h 0,81-2,0x. BTC -1,62% en 4 h (1,59x), +0,61% del mínimo de 48 h: sin bloqueo (pide caída > 3%). Sin entradas: rebote: BTC (mín 75736 vs 76154 de las 02:00), ETH, BNB, SOL, DOGE, XRP y SUI hicieron mínimo nuevo en la vela de 03:00 en curso y recién rebotan de la mecha: la regla pide que la última hora ya no haga mínimo nuevo, no se cumple. Ruptura: nadie cerca del máximo de 48 h salvo TRX (-0,71% con 0,81x, pide >= 1,5x): no. Momentum: nadie con 24 h >= +5% (ZEC +3,44% con 4 h -3,55%): no. Caja en USDT es la decisión. A mirar: BTC/BNB/SOL/DOGE si la próxima hora no perfora el mínimo de la de 03:00 (BTC 75736, BNB 681, SOL 89,86) con >= 1,5x — rebote en soporte; TRX si rompe el máximo de 48 h con >= 1,5x. 0 posiciones.
 
+## 2026-11-04 04:32 UTC — Compra BTCUSDT (trading)
+175.00 USD a 76,741.14. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: BTC tocó 75736 en la vela de 03:00 (mínimo de 48 h) y cerró 76496 con 134,5 M de volumen (~2,5x, martillo); la de 04:00 no hace mínimo nuevo (mín 76434), +1,33% del mínimo de 48 h, volumen 4 h 1,7x, 1 h +0,32% (no estirada). BTC 4 h -0,65%: sin bloqueo. Stop 5% por defecto. Invalida: cierre horario debajo de 75736 (mínimo de 03:00) — salida manual ahí. Rota 05/11 04:31 si no llega a +8%.
+
+## 2026-11-04 04:32 UTC — Compra BNBUSDT (trading)
+130.00 USD a 688.39. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: BNB tocó 680,74 en la vela de 03:00 (mínimo de 48 h) y cerró 686,16 con 14,8 M (~3x lo de las horas previas); la de 04:00 no hace mínimo nuevo (mín 685,76), +1,14% del mínimo, volumen 4 h 2,07x, 1 h +0,34%. Correlacionada con BTC: tamaño acotado ~15%. Stop 5% por defecto. Invalida: cierre horario debajo de 680,74 — salida manual ahí. Rota 05/11 04:31 si no llega a +8%.
+
+## 2026-11-04 04:32 UTC — nota
+04:32 UTC — Sin disparos, 2 entradas (BTC, BNB), sin salidas. Vigilante: carpeta en USDT, nada que vigilar. Mercado: rebote chico con volumen: 1 h verde casi total (-0,09/+0,83%), 4 h roja casi total (-1,93/+0,13%); volumen 4 h 0,84-2,17x. BTC -0,65% en 4 h (1,7x), +1,33% del mínimo de 48 h: sin bloqueo. Se cumplió lo anotado a las 03:31: la vela de 03:00 cerró como martillo con volumen alto y la de 04:00 no perforó su mínimo. Entradas: BTC rebote en soporte — 175 USD (~20%) a 76741, salida manual si cierre horario debajo de 75736, stop 5% (~72904). BNB rebote en soporte — 130 USD (~15%) a 688,39, salida manual si cierre debajo de 680,74, stop ~654. Rotan 05/11 04:31. Sin otras: SOL (2,03x, mín 89,86 intacto) y DOGE (2,17x) cumplían también, pero ya hay dos correlacionadas: no sumo más beta. Ruptura: TRX -0,93% del máximo con 0,91x: no. Momentum: ZEC 24 h +4,96% pero 4 h -1,93%: no. A mirar: BTC 75736 y BNB 680,74 al cierre; SOL si sigue sin perforar 89,86 y BTC confirma; TRX si rompe el máximo de 48 h con >= 1,5x. 2 posiciones (~35%), resto en USDT.
+

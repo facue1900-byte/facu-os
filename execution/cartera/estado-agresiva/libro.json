@@ -4,9 +4,54 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 873.9129240783093,
-  "posiciones": {},
-  "comisiones_usd": 34.93131999999998,
+  "usdt": 568.9129240783093,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.0022781131476545696,
+      "entrada": 76741.14,
+      "maximo": 76741.14,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793766780000
+    },
+    "BNBUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.1886575923531719,
+      "entrada": 688.39,
+      "maximo": 688.39,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793766780000
+    }
+  },
+  "comisiones_usd": 35.23631999999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3127,6 +3172,30 @@
       "comision": 0.127922,
       "motivo": "Stop automático en 2,232.3153 (entrada 2,266.31, máximo 2,309).",
       "resultado_pct": -1.5
+    },
+    {
+      "ms": 1793766738762,
+      "fecha": "2026-11-04 04:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.0022781131476545696,
+      "precio": 76741.14,
+      "usd": 175.0,
+      "comision": 0.175,
+      "motivo": "Rebote en soporte: BTC tocó 75736 en la vela de 03:00 (mínimo de 48 h) y cerró 76496 con 134,5 M de volumen (~2,5x, martillo); la de 04:00 no hace mínimo nuevo (mín 76434), +1,33% del mínimo de 48 h, volumen 4 h 1,7x, 1 h +0,32% (no estirada). BTC 4 h -0,65%: sin bloqueo. Stop 5% por defecto. Invalida: cierre horario debajo de 75736 (mínimo de 03:00) — salida manual ahí. Rota 05/11 04:31 si no llega a +8%."
+    },
+    {
+      "ms": 1793766742646,
+      "fecha": "2026-11-04 04:32 UTC",
+      "lado": "buy",
+      "par": "BNBUSDT",
+      "nivel": "trading",
+      "cantidad": 0.1886575923531719,
+      "precio": 688.39,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Rebote en soporte: BNB tocó 680,74 en la vela de 03:00 (mínimo de 48 h) y cerró 686,16 con 14,8 M (~3x lo de las horas previas); la de 04:00 no hace mínimo nuevo (mín 685,76), +1,14% del mínimo, volumen 4 h 2,07x, 1 h +0,34%. Correlacionada con BTC: tamaño acotado ~15%. Stop 5% por defecto. Invalida: cierre horario debajo de 680,74 — salida manual ahí. Rota 05/11 04:31 si no llega a +8%."
     }
   ]
 }
