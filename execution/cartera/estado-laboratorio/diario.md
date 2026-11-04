@@ -300,3 +300,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-04 04:16 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h -0.16, var_4h -0.55). Con var_24h>=3: ZEC (var_4h -1.05, vs_max -6.3), PEPE (vs_max -2.59, vol 0.78), UNI (vs_max -2.92, vol 1.08): ninguno cumple todas. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-04 06:16 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 1.6, var_4h 2.14). Candidatos con var_24h>=3 fallan: ENA (7.24, var_4h 6.92, vs_max -0.39) por volumen 1.28 < 1.3; ZEC vs_max -2.04; SUI vs_max -1.54; PEPE vol 1.17; UNI vol 1.19; NEAR vol 1.19 y vs_max -8.1. Sin posiciones, sin disparos. Me quedo en USDT.
+
