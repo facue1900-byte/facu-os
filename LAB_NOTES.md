@@ -437,3 +437,17 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
 
 **Corrección del mismo día:** el estado `respondido` no prueba la entrega. A @angelitodicheii la API le dio OK y el chat de Instagram dice que la cuenta no acepta solicitudes de mensaje. Lo reporté como entregado leyendo la API y la respuesta pública, sin mirar el chat: la prueba de un DM es el chat. Instagram tampoco avisa por API, así que el bot no lo puede detectar.
 
+
+## 04/11/2026 — El espejo de Mercado Pago quedó clavado en el 22/10 y se declaraba sano
+
+**Dónde:** `astronomy-members/lib/espejoMp.ts` (`sincronizarEspejo`, `pedirReporte`). Fix: `496c63f`.
+
+**Qué pasó:** Luqui mandó a AA - Cobranzas una captura de `/admin/mp` que terminaba en el 22/10. Hacía 13 días que la pantalla no traía salidas ni saldo real ($783.134,84 contra $2.187.273,46). Lo vio una persona mirando, no un chequeo.
+
+**Causa raíz:** se pedía siempre un reporte desde el 01/07, y MP pasó a rechazar los rangos de 90 días o más (400 `interval_too_long`). El rechazo sólo llegaba a un `console.error`. El cron seguía bajando el último archivo, le cuadraba el saldo y escribía `error: null`: la frescura se medía por la hora de la corrida, no por la del dato. El 400 está probado el 04/11; que arrancó el 22/10 es inferencia, porque ahí termina la lista de reportes.
+
+**Fix:** rango móvil de 30 días desde medianoche AR, con prueba de encaje antes de escribir, y rojo si el reporte tiene más de 24 h (6 h si MP rechaza el pedido). También se dejó de escribir un reporte que no cuadra.
+
+**Trampa nueva:** `date_created` de MP trae la hora UTC con un `-04:00` falso. Leído tal cual, «pedir cada 40 min» era cada casi 5 h y cualquier alerta de antigüedad salta 4 h tarde. La encontró el agente `numeros`.
+
+**Lección:** cuadrar contra un archivo viejo prueba que el archivo es coherente, no que está al día. Un chequeo de frescura tiene que medir la edad del dato, no la de la corrida.
