@@ -32,3 +32,4 @@
 2026-11-04 · régimen=BTC arriba de la media 200, bajando 30 d · 3niveles=-11.74% agresiva=-12.19% laboratorio=-0.84% dca=-0.38% torneo(L9)=+0.50% original=-1.04% · sólo Torneo L9 apenas arriba de USDT; nadie en +20%, sin mail
 2026-11-04 · régimen=BTC arriba de la media 200, bajando 30 d · 3niveles=-11.52% agresiva=-12.04% laboratorio=-0.84% dca=-0.38% torneo(P0)=+0.00% original=-1.04% · nadie le gana a USDT; Torneo 0 de 33; sin mail
 2026-11-04 · régimen=BTC arriba de la media 200, bajando 30 d · 3niveles=-11.25% agresiva=-12.14% laboratorio=-1.25% dca=-0.38% torneo(L9)=+2.03% original=-1.04% · sólo Torneo arriba de USDT (12 de 33); nadie en +20%, sin mail
+2026-11-04 · régimen=BTC arriba de la media 200, bajando 30 d · 3niveles=-9.78% agresiva=-11.87% laboratorio=-0.85% dca=-0.38% torneo(L9)=+5.48% original=-1.04% · sólo Torneo arriba de USDT (17 de 33); nadie en +20%, sin mail
