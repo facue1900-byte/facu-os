@@ -102,3 +102,10 @@ Frenados, esperan a Facu:
 - Trackstack: sigue pausada; respuesta a Rowen en borrador. Destraba Catch & Release (shortlist), Hot Creations, Bibi, Kittball.
 Sin canal confirmado: Jango, Glasgow Underground ("For Demos" vacío), Magna. Afuera: Leap4rog (último release 2022), Tech Me House (vende campañas).
 Pendiente 10/11: seguimiento de la tanda del 20/10, sumándoles "Always In The Game" a los que no lo tienen (incluye los 3 borradores viejos de Two Mountains, Lost, Slightly Sizzled: reescribir, ya recibieron otro mail).
+
+## 04/11/2026: SoundCloud revisado, logueado como Sin City (Insights, 6/10 al 4/11)
+98 plays, 6 descargas, 1 comentario, 0 likes, 0 reposts. Histórico: 378 plays, 7 descargas, 4 comentarios.
+- Descargas: Go Back 3, Bitch We're Not The Same 2, Always In The Game 1. Cinco el 20/10 y una el 27/10.
+- Quién: **Defora Records 3** (visible). Los otros dos nombres los tapa SoundCloud sin Artist Pro: Diynamic 2 lo dijo Facu; el tercero, 1 por resta. SoundCloud no dice qué tema bajó cada uno.
+- Reporte como foto a Vlado por WhatsApp 04/11 12:26 (OK de Facu): `Desktop/Facu/SIN CITY/sin-city-promo/reporte-soundcloud-04-11.png`.
+- Tracker sin corregir: Raw Division (rebotó) y Snatch! (sólo Trackstack) figuran "Enviado" en la tanda del 20/10.
