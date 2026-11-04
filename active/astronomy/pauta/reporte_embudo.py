@@ -254,6 +254,10 @@ def chequeo(cli):
     malos = sum(x["n"] for x in c if x["estado"] in ("fallo", "fallo_incierto"))
     if malos:
         fallos.append(f"{malos} comentario(s) en fallo/fallo_incierto en 7 días: mirar `detalle` en instagram_comentarios")
+    # Pidió un plan en un posteo que no está en media_ids: nadie le escribió.
+    fuera = [x for x in c if x["estado"] == "fuera_de_lista"]
+    if fuera:
+        avisos.append(f"{fuera[0]['n']} comentario(s) pidieron un plan en un posteo fuera de la lista y NO recibieron mensaje (último {fuera[0]['ultimo']}): la respuesta privada vence a los 7 días, mirar instagram_comentarios")
     # `apagado` no es una falla: es el bot haciendo lo que tiene que hacer con
     # INSTAGRAM_AUTORESPUESTA sin prender. Sí es un aviso, por si alguien lo apagó.
     apag = [x for x in c if x["estado"] == "apagado"]
