@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 438.9129240783093,
+  "usdt": 308.9129240783093,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0022781131476545696,
       "entrada": 76741.14,
-      "maximo": 77595.64,
+      "maximo": 78164.0,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793770260000
+      "vigilado_hasta": 1793773860000
     },
     "BNBUSDT": {
       "nivel": "trading",
       "cantidad": 0.1886575923531719,
       "entrada": 688.39,
-      "maximo": 695.7,
+      "maximo": 701.33,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793770260000
+      "vigilado_hasta": 1793773860000
     },
     "PEPEUSDT": {
       "nivel": "trading",
       "cantidad": 26289473.684210528,
       "entrada": 4.94e-06,
-      "maximo": 4.94e-06,
+      "maximo": 5.02e-06,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793770380000
+      "vigilado_hasta": 1793773860000
+    },
+    "ENAUSDT": {
+      "nivel": "trading",
+      "cantidad": 710.8374384236454,
+      "entrada": 0.1827,
+      "maximo": 0.1827,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793773980000
     }
   },
-  "comisiones_usd": 35.36631999999998,
+  "comisiones_usd": 35.49631999999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3230,6 +3252,18 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Momentum de 24 h: PEPE +5,11% en 24 h, sigue subiendo en 4 h (+3,13%) y 1 h +1,02% (no estirada), -1,4% del máximo de 48 h, +7,63% del mínimo; volumen 4 h 0,91x (flojo: tamaño acotado ~15%). Stop 5% por defecto. Invalida: 24 h vuelve debajo de +3% con 4 h roja, o cierre horario debajo del arranque de la suba de 4 h (-3% desde la entrada) — salida manual. Rota 05/11 05:31 si no llega a +8%."
+    },
+    {
+      "ms": 1793773932233,
+      "fecha": "2026-11-04 06:32 UTC",
+      "lado": "buy",
+      "par": "ENAUSDT",
+      "nivel": "trading",
+      "cantidad": 710.8374384236454,
+      "precio": 0.1827,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Momentum de 24 h: ENA +8,49% en 24 h, sigue subiendo en 4 h (+8,17%), 1 h +2,29% (no estirada), -0,05% del máximo de 48 h, volumen 4 h 1,4x (casi ruptura, falta 1,5x). Tamaño acotado ~15% porque 4 h ya corrió mucho. Stop 5% por defecto. Invalida: cierre horario -3% desde la entrada o 4 h vuelve a rojo — salida manual. Rota 05/11 06:31 si no llega a +8%."
     }
   ]
 }
