@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.0022781131476545696,
       "entrada": 76741.14,
-      "maximo": 78374.42,
+      "maximo": 78488.01,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793777460000
+      "vigilado_hasta": 1793781120000
     },
     "BNBUSDT": {
       "nivel": "trading",
       "cantidad": 0.1886575923531719,
       "entrada": 688.39,
-      "maximo": 705.38,
+      "maximo": 705.7,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793777460000
+      "vigilado_hasta": 1793781120000
     },
     "PEPEUSDT": {
       "nivel": "trading",
       "cantidad": 26289473.684210528,
       "entrada": 4.94e-06,
-      "maximo": 5.03e-06,
+      "maximo": 5.18e-06,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793777460000
+      "vigilado_hasta": 1793781120000
     },
     "ENAUSDT": {
       "nivel": "trading",
@@ -92,13 +92,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793777460000
+      "vigilado_hasta": 1793781120000
     },
     "UNIUSDT": {
       "nivel": "trading",
       "cantidad": 17.34375,
       "entrada": 7.488,
-      "maximo": 7.488,
+      "maximo": 7.548,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -114,7 +114,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793777580000
+      "vigilado_hasta": 1793781120000
     }
   },
   "comisiones_usd": 35.626319999999986,
