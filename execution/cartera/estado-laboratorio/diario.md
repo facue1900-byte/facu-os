@@ -316,3 +316,11 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-04 12:18 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.96, var_4h -0.42). Solo ZEC tiene var_24h>=3 (6.71, vol 1.45) pero var_4h -0.03 (no >0) y vs_max -2.76 < -1.5; NEAR 2.84 var_4h -1.06. Posiciones UNI y SUI: ni 48h ni var_24h<0, sin salidas. Sin disparos. Max posiciones 2/3, no se abre nada.
 
+## 2026-11-04 14:18 UTC — Venta UNIUSDT
+193.40 USD a 7.302 (-2.38% contra la compra).
+
+[v1] tendencia rota: var_24h -0.67<0 y var_4h -2.22<-2 · invalida: n/a (salida)
+
+## 2026-11-04 14:18 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 1.32, var_4h -0.25). Con var_24h>=3 solo ZEC (6.96, var_4h -2.69, vol 0.88) y NEAR (3.05, var_4h -2.83); fallan. Vendida UNI por tendencia rota. SUI sigue (var_24h 0.7, <48h). Sin disparos.
+
