@@ -329,3 +329,8 @@ Capital ficticio: 1,000.00 USDT.
 
 [v1] BTC ok (var_24h 3.67, var_4h 2.92); ETH var_24h 6.15>=3, var_4h 5.41>0, var_1h 0.55<=2.5, vs_max_48h -0.43>=-1.5, vol4h 4.91>=1.3 (mayor entre candidatos; SOL 3.75, DOGE 3.25, ADA 3.39) · invalida: stop 7% / trail 8% / var_24h<0 y var_4h<-2
 
+## 2026-11-04 18:17 UTC — Compra BTCUSDT (conservador)
+198.30 USD a 80,647. Stop 7.0% · trailing 8.0% · tomas [[10.0, 0.5], [20.0, 1.0]].
+
+[v1] BTC ok (var_24h 3.92, var_4h 1.61); BTC var_24h>=3, var_4h>0, var_1h 0.26<=2.5, vs_max_48h -0.71>=-1.5, vol4h 2.85>=1.3 (mayor entre elegibles; ETH ya en cartera, BNB 2.29, UNI 1.59) · invalida: stop 7% / trail 8% / var_24h<0 y var_4h<-2
+
