@@ -313,3 +313,6 @@ Capital ficticio: 1,000.00 USDT.
 
 [v1] BTC ok (var_24h 1.8, var_4h 0.65); SUI var_24h 4.07>=3, var_4h 1.66>0, var_1h -0.08<=2.5, vs_max_48h -0.72>=-1.5, vol4h 1.73>=1.3 (mayor; UNI 1.66 ya en cartera; ZEC vol 1.06, NEAR vs_max -1.9, PEPE vol 1.23 no cumplen) · invalida: stop 7% / trail 8% / var_24h<0 y var_4h<-2
 
+## 2026-11-04 12:18 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 0.96, var_4h -0.42). Solo ZEC tiene var_24h>=3 (6.71, vol 1.45) pero var_4h -0.03 (no >0) y vs_max -2.76 < -1.5; NEAR 2.84 var_4h -1.06. Posiciones UNI y SUI: ni 48h ni var_24h<0, sin salidas. Sin disparos. Max posiciones 2/3, no se abre nada.
+

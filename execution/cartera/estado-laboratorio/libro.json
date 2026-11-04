@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793787360000
+      "vigilado_hasta": 1793794680000
     },
     "SUIUSDT": {
       "nivel": "trading",
       "cantidad": 217.23868421052632,
       "entrada": 0.912,
-      "maximo": 0.912,
+      "maximo": 0.9196,
       "reglas": {
         "stop": 7.0,
         "trail": 8.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793787480000
+      "vigilado_hasta": 1793794680000
     }
   },
   "comisiones_usd": 1.995475,
