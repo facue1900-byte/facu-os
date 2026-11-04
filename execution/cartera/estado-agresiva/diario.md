@@ -3221,3 +3221,16 @@ Momentum de 24 h: UNI +6,43% en 24 h, sigue subiendo en 4 h (+5,35%), 1 h +1,56%
 ## 2026-11-04 11:32 UTC — nota
 11:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: BNB, BTC, ENA, PEPE y UNI 60 min, sin disparos. Mercado: verde chico y parejo: 4 h verde casi total (-0,56/+2,57%), 1 h plana (-0,09/+1,09%); volumen 4 h 0,64-1,57x. BTC +0,71% en 4 h (0,77x), -0,02% del máximo de 48 h: sin bloqueo. Posiciones: BTC 78706 (+2,56%), lejos de 75736; BNB 704,5 (+2,34%), lejos de 680,74; rotan 05/11 04:31. PEPE 0,00000509 (+3,04%), 24 h +6,47%, 4 h +2,0%: viva; rota 05/11 05:31. ENA 0,1848 (+1,15%), 4 h +2,16% (recupera impulso), -0,05% del máximo: viva; rota 05/11 06:31. UNI 7,477 (-0,15%), 4 h +0,04% (al filo del rojo), 0,98x: viva pero floja; si la próxima pasada 4 h queda roja, salida manual; rota 05/11 07:31. Sin entradas: 5 posiciones (tope de la disciplina). ZEC (-0,8% del máximo, 1,35x) sigue sin romper con >= 1,5x; SUI (1,57x, -0,42% del máximo, 24 h +3,63%) no rompe ni cumple momentum; NEAR (48 h -0,75%) no. A mirar: UNI salida si 4 h roja o cierre debajo de 7,263 (-3%); PEPE/ENA igual regla; BTC 75736 y BNB 680,74 al cierre; si se libera lugar, ZEC o SUI con ruptura >= 1,5x. 5 posiciones (~80%), resto en USDT.
 
+## 2026-11-04 12:32 UTC — Venta UNIUSDT
+129.09 USD a 7.443 (-0.60% contra la compra).
+
+Invalidación anotada 11:32 cumplida: 4 h pasó a rojo (-0,49%), 1,04x, -1,38% del máximo de 48 h; el momentum de 24 h se apagó (+2,36%, ya no cumple +5%). Salida manual a ~7,456 (-0,43%) para liberar lugar.
+
+## 2026-11-04 12:32 UTC — Venta PEPEUSDT
+131.18 USD a 4.99e-06 (+1.01% contra la compra).
+
+Invalidación de entrada cumplida: 24 h volvió debajo de +3% (+1,84%) con 4 h roja (-1,96%), 1 h -0,8%, -3,67% del máximo de 48 h, 0,82x. Salida manual a ~0,00000498 (+0,8%) antes de que el pullback llegue al stop.
+
+## 2026-11-04 12:33 UTC — nota
+12:32 UTC — Sin disparos, sin entradas, 2 salidas manuales (UNI, PEPE). Vigilante: BNB, BTC, ENA, PEPE y UNI 60 min, sin disparos. Mercado: el rebote se apaga: 4 h roja casi total (-1,96/+0,2%), 1 h roja (-1,32/+0,09%); volumen 4 h 0,6-1,51x. BTC -0,22% en 4 h (0,77x), -0,49% del máximo de 48 h: sin bloqueo. Salidas: UNI a 7,443 (-0,6%) — se cumplió lo anotado a las 11:32 (4 h roja -0,49%, 24 h +2,36% ya no es momentum). PEPE a 0,00000499 (+1,01%) — invalidación de entrada cumplida (24 h +1,84% < +3% con 4 h -1,96%). Posiciones: BTC 78330 (+2,07%), lejos de 75736; BNB 701,14 (+1,85%), lejos de 680,74; rotan 05/11 04:31. ENA 0,1822 (-0,27%), 4 h +0,17% (verde al filo), 24 h +5,5%: viva pero floja; salida si 4 h roja o cierre debajo de 0,1772 (-3%); rota 05/11 06:31. Sin entradas: ruptura nadie (el más cerca BTC -0,49% con 0,77x); rebote nadie en el mínimo de 48 h (TRX +0,82% pero 4 h -1,05%, sigue cayendo); momentum sólo ZEC (24 h +6,95%, 4 h +0,2%, 1,51x) pero -2,54% del máximo y 1 h roja: no persigo, sigue la condición de ruptura arriba del máximo de 48 h con >= 1,5x. A mirar: ENA salida si 4 h roja; BTC 75736 y BNB 680,74 al cierre; ZEC/SUI con ruptura >= 1,5x; TRX si frena en el mínimo de 48 h. 3 posiciones (~50%), resto en USDT.
+

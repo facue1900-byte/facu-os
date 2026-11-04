@@ -1,23 +1,23 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-04 11:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-04 12:33 UTC
 
-**Total: 885.55 USD (-11.45%)** desde 2026-10-07 23:06 UTC · USDT libre 178.91 · comisiones 35.63 · 265 operaciones
+**Total: 878.65 USD (-12.14%)** desde 2026-10-07 23:06 UTC · USDT libre 438.93 · comisiones 35.89 · 267 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **885.55** |
+| **Esta carpeta** | **878.65** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 945.67 |
+| hodl btc | 941.01 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 179.29 | +2.55% | 74,769.8 |
-| PEPE | trading | 133.81 | +3.04% | 4.92e-06 |
-| BNB | trading | 132.90 | +2.33% | 670.415 |
-| ENA | trading | 131.01 | +0.88% | 0.17556 |
-| UNI | trading | 129.63 | -0.19% | 7.1725 |
+| BTC | trading | 178.40 | +2.05% | 74,782.1 |
+| BNB | trading | 132.23 | +1.82% | 670.415 |
+| ENA | trading | 129.09 | -0.60% | 0.176035 |
 
 ## Últimas operaciones
 
+- 2026-11-04 12:32 UTC · venta PEPE 131.18 USD a 4.99e-06 — Invalidación de entrada cumplida: 24 h volvió debajo de +3% (+1,84%) con 4 h roja (-1,96%), 1 h -0,8%, -3,67% del máximo de 48 h, 0,82x. Sal
+- 2026-11-04 12:32 UTC · venta UNI 129.09 USD a 7.443 — Invalidación anotada 11:32 cumplida: 4 h pasó a rojo (-0,49%), 1,04x, -1,38% del máximo de 48 h; el momentum de 24 h se apagó (+2,36%, ya no
 - 2026-11-04 07:32 UTC · compra UNI 130.00 USD a 7.488 — Momentum de 24 h: UNI +6,43% en 24 h, sigue subiendo en 4 h (+5,35%), 1 h +1,56% (no estirada), -0,01% del máximo de 48 h con volumen 4 h 1,
 - 2026-11-04 06:32 UTC · compra ENA 130.00 USD a 0.1827 — Momentum de 24 h: ENA +8,49% en 24 h, sigue subiendo en 4 h (+8,17%), 1 h +2,29% (no estirada), -0,05% del máximo de 48 h, volumen 4 h 1,4x 
 - 2026-11-04 05:32 UTC · compra PEPE 130.00 USD a 4.94e-06 — Momentum de 24 h: PEPE +5,11% en 24 h, sigue subiendo en 4 h (+3,13%) y 1 h +1,02% (no estirada), -1,4% del máximo de 48 h, +7,63% del mínim
@@ -26,7 +26,5 @@
 - 2026-11-04 03:02 UTC · venta ETH 127.92 USD a 2,232.32 — Stop automático en 2,232.3153 (entrada 2,266.31, máximo 2,309).
 - 2026-11-04 02:32 UTC · venta ZEC 126.31 USD a 1,192.98 — Salida manual anotada: la vela de 01:00 cerró 1202,12, debajo de 1205,6 (mínimo de 17:00 que invalidaba el momentum). 02:00 sigue cayendo (1
 - 2026-11-03 19:33 UTC · venta XRP 133.13 USD a 1.2769 — Rotación por 24 h (entrada 02/11 19:32): +2,5% sin llegar a +8% ni al stop. La ruptura de 1,2914 (13:00) fue mecha y nunca cerró arriba; hoy
-- 2026-11-03 18:32 UTC · compra ZEC 130.00 USD a 1,226.64 — Momentum de 24 h: ZEC +5,17% en 24 h, sigue subiendo en 4 h (+2,69%), 1 h +0,26% (no estirada). Estructura horaria de mínimos crecientes 118
-- 2026-11-03 09:32 UTC · compra ETH 130.00 USD a 2,266.31 — Rebote en soporte (condición anotada 08:31: ETH si deja de hacer mínimos con >= 1x): mínimo de 48 h 2237,38 intacto; pisos 06:00-09:00 2241,
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 178.9129240783093,
+  "usdt": 438.92665500758557,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0022781131476545696,
       "entrada": 76741.14,
-      "maximo": 78705.0,
+      "maximo": 78718.0,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793791860000
+      "vigilado_hasta": 1793795460000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,35 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793791860000
-    },
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 26289473.684210528,
-      "entrada": 4.94e-06,
-      "maximo": 5.18e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793791860000
+      "vigilado_hasta": 1793795460000
     },
     "ENAUSDT": {
       "nivel": "trading",
       "cantidad": 710.8374384236454,
       "entrada": 0.1827,
-      "maximo": 0.1848,
+      "maximo": 0.1853,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -92,32 +70,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793791860000
-    },
-    "UNIUSDT": {
-      "nivel": "trading",
-      "cantidad": 17.34375,
-      "entrada": 7.488,
-      "maximo": 7.55,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793791860000
+      "vigilado_hasta": 1793795460000
     }
   },
-  "comisiones_usd": 35.626319999999986,
+  "comisiones_usd": 35.88659399999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3298,6 +3254,30 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Momentum de 24 h: UNI +6,43% en 24 h, sigue subiendo en 4 h (+5,35%), 1 h +1,56% (no estirada), -0,01% del máximo de 48 h con volumen 4 h 1,7x (al filo de ruptura). Quinta posición, tamaño acotado ~15% por correlación con el rebote general. Stop 5% por defecto. Invalida: cierre horario -3% desde la entrada o 4 h vuelve a rojo — salida manual. Rota 05/11 07:31 si no llega a +8%."
+    },
+    {
+      "ms": 1793795553644,
+      "fecha": "2026-11-04 12:32 UTC",
+      "lado": "sell",
+      "par": "UNIUSDT",
+      "cantidad": 17.34375,
+      "precio": 7.443,
+      "usd": 129.0895,
+      "comision": 0.12909,
+      "motivo": "Invalidación anotada 11:32 cumplida: 4 h pasó a rojo (-0,49%), 1,04x, -1,38% del máximo de 48 h; el momentum de 24 h se apagó (+2,36%, ya no cumple +5%). Salida manual a ~7,456 (-0,43%) para liberar lugar.",
+      "resultado_pct": -0.6
+    },
+    {
+      "ms": 1793795554413,
+      "fecha": "2026-11-04 12:32 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 26289473.684210528,
+      "precio": 4.99e-06,
+      "usd": 131.1845,
+      "comision": 0.131184,
+      "motivo": "Invalidación de entrada cumplida: 24 h volvió debajo de +3% (+1,84%) con 4 h roja (-1,96%), 1 h -0,8%, -3,67% del máximo de 48 h, 0,82x. Salida manual a ~0,00000498 (+0,8%) antes de que el pullback llegue al stop.",
+      "resultado_pct": 1.01
     }
   ]
 }
