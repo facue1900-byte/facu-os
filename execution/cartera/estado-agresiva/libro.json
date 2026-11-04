@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 438.92665500758557,
+  "usdt": 565.7552659435462,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793795460000
+      "vigilado_hasta": 1793799060000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793795460000
-    },
-    "ENAUSDT": {
-      "nivel": "trading",
-      "cantidad": 710.8374384236454,
-      "entrada": 0.1827,
-      "maximo": 0.1853,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793795460000
+      "vigilado_hasta": 1793799060000
     }
   },
-  "comisiones_usd": 35.88659399999998,
+  "comisiones_usd": 36.01354999999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3278,6 +3256,18 @@
       "comision": 0.131184,
       "motivo": "Invalidación de entrada cumplida: 24 h volvió debajo de +3% (+1,84%) con 4 h roja (-1,96%), 1 h -0,8%, -3,67% del máximo de 48 h, 0,82x. Salida manual a ~0,00000498 (+0,8%) antes de que el pullback llegue al stop.",
       "resultado_pct": 1.01
+    },
+    {
+      "ms": 1793799120978,
+      "fecha": "2026-11-04 13:32 UTC",
+      "lado": "sell",
+      "par": "ENAUSDT",
+      "cantidad": 710.8374384236454,
+      "precio": 0.1786,
+      "usd": 126.9556,
+      "comision": 0.126956,
+      "motivo": "Invalidación anotada cumplida: 4 h pasó a rojo (-2,62%), 1 h -0,39%, -3,67% del máximo de 48 h; 24 h bajó a +4,32% (ya no cumple +5%). Salida manual a ~0,1785 (-2,3%) antes del stop 0,1760.",
+      "resultado_pct": -2.24
     }
   ]
 }
