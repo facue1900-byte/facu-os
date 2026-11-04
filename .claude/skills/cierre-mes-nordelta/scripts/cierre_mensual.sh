@@ -9,6 +9,8 @@
 #      cierre nunca vuelve a la app: sin este paso, la app muestra meses
 #      incompletos y nadie se entera.
 #   2. Arma el reporte para inversores y lo deja EN BORRADORES. No manda (regla 10).
+#   3. Concilia el extracto de cierre del mes anterior. Si no cierra, o falta el PDF,
+#      sale con error y correr.sh avisa a Facu: el borrador no se manda sin mirar eso.
 #
 # El paso 1 puede fallar sin frenar el 2: el reporte sale del Master Plan, que no
 # depende de Supabase. Pero el fallo queda gritado en el log, no escondido.
@@ -22,7 +24,7 @@ echo "CIERRE DE MES — $(date '+%d/%m/%Y %H:%M')"
 echo "=================================================================="
 
 echo
-echo "--- 1/2 · Sincronizando Supabase con el Master Plan ---"
+echo "--- 1/3 · Sincronizando Supabase con el Master Plan ---"
 if "$PY" "$S/sincronizar_supabase.py" --aplicar; then
   echo "    sincronizacion OK"
   sync_ok=1
@@ -34,16 +36,25 @@ else
 fi
 
 echo
-echo "--- 2/2 · Reporte para inversores ---"
+echo "--- 2/3 · Reporte para inversores ---"
 if ! "$PY" "$S/reporte_inversores.py" --borrador; then
   echo "!!! EL REPORTE FALLO. No hay borrador nuevo en Gmail."
   exit 1
 fi
 
 echo
-if [[ $sync_ok -eq 1 ]]; then
-  echo "Listo: la app y el Master Plan dicen lo mismo, y el borrador espera en Gmail."
+echo "--- 3/3 · Conciliacion del mes anterior ---"
+if "$S/conciliar_mes_anterior.sh"; then
+  conciliado=1
 else
-  echo "Borrador listo, PERO la sincronizacion con la app fallo — ver arriba."
+  echo "!!! LA CONCILIACION NO CERRO O NO SE PUDO HACER: ver arriba, antes de mandar el borrador."
+  conciliado=0
+fi
+
+echo
+if [[ $sync_ok -eq 1 && $conciliado -eq 1 ]]; then
+  echo "Listo: la app y el Master Plan dicen lo mismo, el banco concilia y el borrador espera en Gmail."
+else
+  echo "Borrador listo, PERO hay algo para mirar (sincronizacion=$sync_ok, conciliacion=$conciliado) — ver arriba."
   exit 1
 fi
