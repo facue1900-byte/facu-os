@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 619.9389407949891,
+  "usdt": 746.1188960283093,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793755860000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.10587458423009195,
-      "entrada": 1226.64,
-      "maximo": 1245.13,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793755860000
+      "vigilado_hasta": 1793759460000
     }
   },
-  "comisiones_usd": 34.67709199999998,
+  "comisiones_usd": 34.80339799999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3148,6 +3126,18 @@
       "comision": 0.133133,
       "motivo": "Rotación por 24 h (entrada 02/11 19:32): +2,5% sin llegar a +8% ni al stop. La ruptura de 1,2914 (13:00) fue mecha y nunca cerró arriba; hoy a -1,12% del máximo con 0,47x y 4 h -0,28%: tesis de ruptura sin confirmar, se libera la plata.",
       "resultado_pct": 2.51
+    },
+    {
+      "ms": 1793759531396,
+      "fecha": "2026-11-04 02:32 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.10587458423009195,
+      "precio": 1192.98,
+      "usd": 126.3063,
+      "comision": 0.126306,
+      "motivo": "Salida manual anotada: la vela de 01:00 cerró 1202,12, debajo de 1205,6 (mínimo de 17:00 que invalidaba el momentum). 02:00 sigue cayendo (1192,6, mín 1191,2), 4 h -2,94%, 0,8x: tesis de momentum de 24 h rota, no espero al stop ~1183.",
+      "resultado_pct": -2.74
     }
   ]
 }
