@@ -291,3 +291,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-03 22:18 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 1.14, var_4h 0.3). Solo ZEC tiene var_24h>=3 (6.11, var_4h 1.14) pero vs_max_48h -4.49 y vol 0.66; el resto <3 (XRP 2.38, PEPE 2.72, SUI 2.75) con vol<1.3. Sin posiciones, sin disparos. Me quedo en USDT.
 
+## 2026-11-04 00:16 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 0.4, var_4h -0.54). Solo ZEC tiene var_24h>=3 (5.75) pero var_4h -0.49, vs_max -5.25 y vol 0.55; el resto <3 (XRP 1.95, SUI 2.24) con vol<1.3. Sin posiciones, sin disparos. Me quedo en USDT.
+
