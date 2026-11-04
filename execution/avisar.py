@@ -39,7 +39,7 @@ SIN_MAIL = {"paper-trading"}
 TAREAS = {
     "efectivo-diario": ("paseo", "urgente", "Efectivo diario frenado", "La caja de efectivo del Paseo puede haber quedado sin actualizar."),
     "alerta-rampa": ("paseo", "urgente", "Alerta de rampa sin correr", "Este mes no se chequeó si hay alquileres atrasados."),
-    "reporte-inversores": ("paseo", "urgente", "Reporte a inversores sin armar", "El borrador del mes para los inversores no se generó."),
+    "reporte-inversores": ("paseo", "urgente", "Cierre de mes: mirar antes de mandar", "No se generó el borrador para inversores, o el banco no concilió, o falta el extracto. No mandes el borrador sin ver data/logs/reporte-inversores.log."),
     "chequeo-pauta": ("astronomy", "revisar", "Pauta: algo dejó de funcionar", "Un anuncio puede no estar gastando, o algo dejó de registrarse."),
     "reporte-pauta": ("astronomy", "revisar", "Reporte de pauta con problemas", "El informe de la semana falló, o algo dejó de registrarse."),
     "reporte-equipo": ("astronomy", "revisar", "Reporte del equipo sin salir", "El mail de los viernes no llegó al equipo."),

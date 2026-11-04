@@ -677,7 +677,8 @@ class ConNoticias(Estrategia):
 
 def leer_noticias() -> list[dict]:
     """`noticias.jsonl` en TORNEO_DIR: una línea por lectura, {"fecha": "YYYY-MM-DD HH:MM", "sesgo":
-    "riesgo_dentro"|"neutral"|"riesgo_fuera", "motivo": ..., "fuentes": [...]}. Fecha en UTC."""
+    "riesgo_dentro"|"neutral"|"riesgo_fuera", "motivo": ..., "fuentes": [...], "busqueda": "ok"|"sin_dato"}.
+    Fecha en UTC. `sin_dato` = no apareció nada fresco: el sesgo queda neutral, pero no es una lectura real."""
     arch = DIR / "noticias.jsonl"
     if not arch.exists():
         return []
@@ -856,8 +857,16 @@ def vivo(desde: str) -> dict:
         r = correr(e, D, inicio, fin)
         filas.append({"estrategia": e.nombre, "personalidad": e.personalidad, **r})
     filas.sort(key=lambda x: -x["final"])
+    # La vara es P1: mismo costo y mismo momento de entrada que el resto. `correr` da el precio crudo de BTC
+    # desde la apertura de la largada, que no se puede operar: se guarda aparte para no compararse contra eso.
+    ret_p1 = next(f["ret"] for f in filas if f["estrategia"].startswith("P1 "))
+    for f in filas:
+        f["btc_precio_crudo"], f["hodl_btc"] = f["hodl_btc"], ret_p1
+    lect = leer_noticias()
+    sin_dato = sum(1 for x in lect if x.get("busqueda") == "sin_dato")
     out = {"generado": fecha(int(time.time() * 1000)), "desde": fecha(D.t[inicio]), "hasta": fecha(D.t[fin] + H4),
-           "regimen_hoy": regimen(D, fin), "capital": CAPITAL, "filas": filas}
+           "regimen_hoy": regimen(D, fin), "capital": CAPITAL, "noticias_lecturas": len(lect),
+           "noticias_sin_dato": sin_dato, "filas": filas}
     DIR.mkdir(parents=True, exist_ok=True)
     (DIR / "vivo.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
     lineas = [f"# Torneo cripto en vivo — {out['hasta']} UTC", "",
@@ -870,7 +879,8 @@ def vivo(desde: str) -> dict:
     p1 = next(f for f in filas if f["estrategia"].startswith("P1 "))
     lineas += ["", f"Le ganan a USDT y a HODL BTC (P1, {_pct(p1['ret'])}): "
                f"{sum(1 for f in filas if f['ret'] > 0 and f['ret'] > p1['ret'])} de {len(filas)}. "
-               "Qué funcionó antes en cada tipo de mercado: `HISTORIA.md`."]
+               f"Lecturas de noticias sin dato fresco: {sin_dato} de {len(lect)} (ese día el freno de noticias "
+               "no midió nada). Qué funcionó antes en cada tipo de mercado: `HISTORIA.md`."]
     (DIR / "RESUMEN.md").write_text("\n".join(lineas) + "\n")
     return out
 

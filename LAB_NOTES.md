@@ -8,6 +8,23 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-04 · FAIL ✓ · Paseo: una rutina podía mandarle el reporte a Richi sola, y las rutinas "en la nube" no eran de la nube
+
+**Qué pasó.** Revisando los agentes que corren con la Mac apagada: `Conciliacion mensual`
+(`trig_01PGsAkK6F7Ponc8V7HFaGYC`) tenía orden de mandarle el reporte a inversores a Richi sin OK si sus
+controles cerraban, con definiciones anteriores al arreglo de `reporte_inversores.py`. Nunca llegó a mandarlo:
+en su única corrida faltaba el extracto. La próxima era el 10/11.
+
+**Causa.** Es una tarea de Cowork atada a la Mac (`bound_device_uuid`): usa carpetas locales y el Chrome de
+Facu. Figura en la lista de rutinas igual que las de la nube, y `succeeded` no dice qué hizo.
+
+**Arreglo.** Rutina vieja apagada, sin borrar. La conciliación pasó a `cierre_mensual.sh` (día 16, ya con el
+extracto), que no manda nada. Si no cierra o falta el PDF, avisa.
+
+**Lo no obvio.** Una rutina creada por API NO se puede atar a la compu: `bound_device_uuid` se ignora en create y
+update, y corre sin carpetas ni Chrome (probado: `trig_01TNYyNLjfyNMjQf9R4i2Ake`, apagada). Para ver si una rutina
+trabajó, mirar `get_run_log`, no el estado.
+
 ### 2026-10-30 · FAIL ✓ · Pauta: el chequeo de los lunes daba FALLA siempre, y no miraba si se gastaba
 
 **Dónde:** `active/astronomy/pauta/reporte_embudo.py` (`chequeo`, nuevo `gasto_de_ayer`).
