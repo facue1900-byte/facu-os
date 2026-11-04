@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 305.7552659435462,
+  "usdt": 190.7552659435462,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793806260000
+      "vigilado_hasta": 1793809860000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793806260000
+      "vigilado_hasta": 1793809860000
     },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.05329115014833873,
       "entrada": 2436.99,
-      "maximo": 2436.99,
+      "maximo": 2446.28,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,13 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793806380000
+      "vigilado_hasta": 1793809860000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 31.091692602346185,
       "entrada": 4.177,
-      "maximo": 4.177,
+      "maximo": 4.206,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -92,10 +92,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793806380000
+      "vigilado_hasta": 1793809860000
+    },
+    "SUIUSDT": {
+      "nivel": "trading",
+      "cantidad": 121.63578613022764,
+      "entrada": 0.9445,
+      "maximo": 0.9445,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793809980000
     }
   },
-  "comisiones_usd": 36.273549999999986,
+  "comisiones_usd": 36.38854999999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3336,6 +3358,18 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Momentum de 24 h: NEAR +8,64% en 24 h, sigue subiendo en 4 h (+2,6%), 1 h +0,92% (no estirada), 48 h ya positiva (+4,36%: se resolvió la objeción de tendencia bajista), -1,9% del máximo de 48 h, volumen 4 h 2,26x. Tamaño ~15%. Stop 5% por defecto. Invalida: cierre horario -3% desde la entrada, 24 h debajo de +5% con 4 h roja — salida manual. Rota 05/11 15:32 si no llega a +8%."
+    },
+    {
+      "ms": 1793809931288,
+      "fecha": "2026-11-04 16:32 UTC",
+      "lado": "buy",
+      "par": "SUIUSDT",
+      "nivel": "trading",
+      "cantidad": 121.63578613022764,
+      "precio": 0.9445,
+      "usd": 115.0,
+      "comision": 0.115,
+      "motivo": "Momentum de 24 h: SUI +5,41% en 24 h, sigue subiendo en 4 h (+4,78%), 1 h +0,17% (no estirada), -1,25% del máximo de 48 h, volumen 4 h 2,99x. Estaba anotada desde la mañana esperando lugar. Tamaño ~13% (más chico: 5ta posición del mismo movimiento correlacionado). Invalida: cierre horario -3% desde la entrada o 4 h vuelve a rojo con 24 h debajo de +5% — salida manual. Rota 05/11 16:32 si no llega a +8%."
     }
   ]
 }
