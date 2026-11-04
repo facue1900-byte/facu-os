@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 203.53857808623235,
+  "usdt": 316.6439492265182,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793817060000
+      "vigilado_hasta": 1793820660000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793817060000
+      "vigilado_hasta": 1793820660000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -70,35 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793817060000
-    },
-    "SUIUSDT": {
-      "nivel": "trading",
-      "cantidad": 121.63578613022764,
-      "entrada": 0.9445,
-      "maximo": 0.9503,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793817060000
+      "vigilado_hasta": 1793820660000
     },
     "UNIUSDT": {
       "nivel": "trading",
       "cantidad": 14.982394366197184,
       "entrada": 7.668,
-      "maximo": 7.668,
+      "maximo": 7.699,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -114,10 +92,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793817180000
+      "vigilado_hasta": 1793820660000
     }
   },
-  "comisiones_usd": 36.63146099999999,
+  "comisiones_usd": 36.74467999999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3394,6 +3372,18 @@
       "usd": 115.0,
       "comision": 0.115,
       "motivo": "Momentum de 24 h: UNI +5,87% en 24 h, sigue subiendo en 4 h (+1,64%), 1 h +0,16% (no estirada), -1,46% del máximo de 48 h, volumen 4 h 1,61x. Reemplaza a NEAR. Tamaño ~13% (correlacionada con el resto). Invalida: cierre horario -3% desde la entrada o 4 h vuelve a rojo con 24 h debajo de +5% — salida manual. Rota 05/11 18:32 si no llega a +8%."
+    },
+    {
+      "ms": 1793820757099,
+      "fecha": "2026-11-04 19:32 UTC",
+      "lado": "sell",
+      "par": "SUIUSDT",
+      "cantidad": 121.63578613022764,
+      "precio": 0.9308,
+      "usd": 113.2186,
+      "comision": 0.113219,
+      "motivo": "Invalidación anotada 16:32 cumplida: 4 h pasó a rojo (-1,24%) con 24 h debajo de +5% (+3,99%), -2,64% del máximo de 48 h. Salida manual a ~0,931 (-1,4%) antes del stop 0,9028.",
+      "resultado_pct": -1.45
     }
   ]
 }
