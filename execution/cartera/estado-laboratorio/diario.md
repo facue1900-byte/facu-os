@@ -324,3 +324,8 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-04 14:18 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 1.32, var_4h -0.25). Con var_24h>=3 solo ZEC (6.96, var_4h -2.69, vol 0.88) y NEAR (3.05, var_4h -2.83); fallan. Vendida UNI por tendencia rota. SUI sigue (var_24h 0.7, <48h). Sin disparos.
 
+## 2026-11-04 16:17 UTC — Compra ETHUSDT (conservador)
+198.74 USD a 2,439.4. Stop 7.0% · trailing 8.0% · tomas [[10.0, 0.5], [20.0, 1.0]].
+
+[v1] BTC ok (var_24h 3.67, var_4h 2.92); ETH var_24h 6.15>=3, var_4h 5.41>0, var_1h 0.55<=2.5, vs_max_48h -0.43>=-1.5, vol4h 4.91>=1.3 (mayor entre candidatos; SOL 3.75, DOGE 3.25, ADA 3.39) · invalida: stop 7% / trail 8% / var_24h<0 y var_4h<-2
+
