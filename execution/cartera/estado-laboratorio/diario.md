@@ -334,3 +334,6 @@ Capital ficticio: 1,000.00 USDT.
 
 [v1] BTC ok (var_24h 3.92, var_4h 1.61); BTC var_24h>=3, var_4h>0, var_1h 0.26<=2.5, vs_max_48h -0.71>=-1.5, vol4h 2.85>=1.3 (mayor entre elegibles; ETH ya en cartera, BNB 2.29, UNI 1.59) · invalida: stop 7% / trail 8% / var_24h<0 y var_4h<-2
 
+## 2026-11-04 20:16 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 2.88, var_4h -0.54). Ningún par tiene var_4h>0 (ZEC -2.47, ETH -1.03, NEAR -2.96, UNI -1.52); fallan. Posiciones SUI/ETH/BTC: ni 48h ni (var_24h<0 y var_4h<-2), sin salidas. Sin disparos. 3/3 posiciones.
+

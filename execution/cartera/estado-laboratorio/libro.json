@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793816100000
+      "vigilado_hasta": 1793823300000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793816100000
+      "vigilado_hasta": 1793823300000
     },
     "BTCUSDT": {
       "nivel": "conservador",
       "cantidad": 0.002456405073964314,
       "entrada": 80647.0,
-      "maximo": 80647.0,
+      "maximo": 80669.26,
       "reglas": {
         "stop": 7.0,
         "trail": 8.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793816280000
+      "vigilado_hasta": 1793823300000
     }
   },
   "comisiones_usd": 2.585912,
