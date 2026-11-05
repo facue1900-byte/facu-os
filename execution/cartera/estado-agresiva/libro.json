@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793845860000
+      "vigilado_hasta": 1793849460000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793845860000
+      "vigilado_hasta": 1793849460000
     },
     "UNIUSDT": {
       "nivel": "trading",
@@ -70,13 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793845860000
+      "vigilado_hasta": 1793849460000
     },
     "AAVEUSDT": {
       "nivel": "trading",
       "cantidad": 0.7510148849797023,
       "entrada": 133.02,
-      "maximo": 133.28,
+      "maximo": 133.4,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -92,7 +92,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793845860000
+      "vigilado_hasta": 1793849460000
     }
   },
   "comisiones_usd": 37.19321099999999,
