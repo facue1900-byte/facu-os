@@ -3404,3 +3404,16 @@ Rebote en soporte: BTC tocó el mínimo de 48 h (75.568) hace 3 h y las últimas
 ## 2026-11-05 18:32 UTC — nota
 18:31 UTC — Sin disparos, 1 entrada, sin salidas. Vigilante: sin posiciones. Mercado: caída frenando — 4 h roja total (-6,11/-0,22%, salvo stable RWUSD), 1 h mixta-verde (-0,54/+3,83%), volumen 4 h alto (1,31-4,36x). BTC -2,83% en 4 h (3,81x), 1 h +0,16%, +0,67% del mínimo de 48 h: SIN bloqueo (arriba de -3%). Entrada: BTC 175 USD a 76.123 — rebote en soporte (mínimo 75.568 hace 3 h, 3 velas de 1 h sin mínimo nuevo); stop 2,5% (~74.220), trail 5%, TP 8%/15%; invalida cierre 1 h debajo de 75.568. Descartes: ETH 1 h -0,2% y SOL hizo mínimo nuevo esta hora (88,76): todavía caen; BNB +1,75% del mínimo, no está en soporte; XRP/DOGE/ADA/LINK/SUI 4 h -3,4 a -4,4%, alts más débiles que BTC; ENA/TRUMP rebotes de 1 h fuertes pero 4 h -6%/meme: cuchillo; ruptura y momentum nadie (todo 24 h rojo salvo INJ +1,93%). A mirar: BTC invalidación; ETH/SOL si dejan de hacer mínimos con 1 h verde para segunda entrada de rebote. 1 posición (~20%), resto en USDT.
 
+## 2026-11-05 19:32 UTC — Compra ETHUSDT (trading)
+175.00 USD a 2,253.25. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: ETH tocó el mínimo de 48 h (2.236,78) hace 3 h y las velas de 1 h siguientes no hicieron mínimo nuevo (2.240,79/2.248,41/2.242,86/2.245,00); 1 h +0,02%, 4 h -0,01% (dejó de caer), volumen 1,2x; BTC 4 h +0,04%, sin bloqueo. Stop 2,5% (~2.198, debajo del mínimo con margen). Invalida: cierre de 1 h debajo de 2.236,78.
+
+## 2026-11-05 19:32 UTC — Reglas ETHUSDT
+Antes {'stop': 5.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]} → ahora {'stop': 2.5, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]}.
+
+Stop 2,5% (~2.198): debajo del mínimo de 48 h 2.236,78 con margen; si rompe el soporte la tesis de rebote muere. Invalida: cierre 1 h < 2.236,78.
+
+## 2026-11-05 19:32 UTC — nota
+19:31 UTC — Sin disparos, 1 entrada, sin salidas. Vigilante: BTC 58 min, sin disparos. Mercado: la caída frenó — 4 h plana-verde (-0,9/+3,08%), 1 h plana (-0,83/+1,52%), volumen 4 h encendido (0,86-2,11x). BTC +0,04% en 4 h (1,54x), 1 h -0,04%, +0,65% del mínimo de 48 h: sin bloqueo. Posición: BTC 76.018 (-0,14%), sin mínimo nuevo (velas 75.818/75.701/75.882 sobre 75.568): tesis viva; stop ~74.220; invalida cierre 1 h < 75.568; rota 06/11 18:32. Entrada: ETH 175 USD a 2.253,25 — rebote en soporte (mínimo 2.236,78 hace 3 h, 4 velas sin mínimo nuevo, 4 h -0,01%); stop 2,5% (~2.197), trail 5%, TP 8%/15%; invalida cierre 1 h < 2.236,78. Ojo: BTC y ETH correlacionados, ~40% expuesto al mismo rebote. Descartes: SOL 4 h -0,9% y 1 h -0,26%, todavía cae; XRP 4 h -0,82%: cae; ruptura nadie (todos -2% a -25% del máximo); momentum nadie (INJ 24 h +3,48% < +5%, +15,8% del mínimo: estirada); ZEC/TRUMP rebotes de 1 h desde lejos del mínimo: no es soporte. A mirar: BTC/ETH invalidación; SOL si deja de hacer mínimos. 2 posiciones (~40%), resto en USDT.
+

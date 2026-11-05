@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-05 18:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-05 19:32 UTC
 
-**Total: 874.80 USD (-12.52%)** desde 2026-10-07 23:06 UTC · USDT libre 700.01 · comisiones 37.90 · 283 operaciones
+**Total: 874.65 USD (-12.53%)** desde 2026-10-07 23:06 UTC · USDT libre 525.01 · comisiones 38.07 · 284 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **874.80** |
+| **Esta carpeta** | **874.65** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 914.52 |
+| hodl btc | 914.60 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 174.79 | -0.02% | 74,219.9 |
+| ETH | trading | 174.84 | +0.01% | 2,196.92 |
+| BTC | trading | 174.80 | -0.01% | 74,219.9 |
 
 ## Últimas operaciones
 
+- 2026-11-05 19:32 UTC · compra ETH 175.00 USD a 2,253.25 — Rebote en soporte: ETH tocó el mínimo de 48 h (2.236,78) hace 3 h y las velas de 1 h siguientes no hicieron mínimo nuevo (2.240,79/2.248,41/
 - 2026-11-05 18:32 UTC · compra BTC 175.00 USD a 76,123 — Rebote en soporte: BTC tocó el mínimo de 48 h (75.568) hace 3 h y las últimas 3 velas de 1 h ya no hacen mínimo nuevo (75.642/75.818/75.701)
 - 2026-11-05 12:32 UTC · venta AAVE 98.53 USD a 131.2 — Invalidación anotada cumplida: 4 h -1,72% (< -0,3%) con 24 h +0,74% (< +5%), 1 h -1,04%, mínimo de 6 h 131,23. El momentum que justificó la 
 - 2026-11-05 05:32 UTC · venta UNI 113.82 USD a 7.597 — Invalidación anotada cumplida: 4 h pasó a rojo (-0,41%) con 24 h cayendo a +4,14% (< +5%); 1 h -0,87%, -2,8% del máximo de 48 h. El momentum
@@ -23,6 +25,5 @@
 - 2026-11-05 00:32 UTC · compra AAVE 100.00 USD a 133.02 — Momentum de 24 h: AAVE +5,53% en 24 h, sigue subiendo en 4 h (+1,87%), 1 h +0,9% (no estirada), -2,96% del máximo de 48 h. Volumen 4 h flojo
 - 2026-11-04 22:32 UTC · compra ETH 110.00 USD a 2,437.36 — Momentum de 24 h (condición anotada 20:31/21:32 cumplida): ETH +6,29% en 24 h, 4 h volvió a verde (+0,59%), 1 h +0,79% (no estirada), -0,51%
 - 2026-11-04 20:32 UTC · venta ETH 129.06 USD a 2,421.87 — Invalidación anotada 19:32 cumplida: 4 h quedó roja (-0,56% < -0,3%), volumen 4 h 0,83x (se apagó el 4-5x de la entrada), -1,17% del máximo 
-- 2026-11-04 19:32 UTC · venta SUI 113.22 USD a 0.9308 — Invalidación anotada 16:32 cumplida: 4 h pasó a rojo (-1,24%) con 24 h debajo de +5% (+3,99%), -2,64% del máximo de 48 h. Salida manual a ~0
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
