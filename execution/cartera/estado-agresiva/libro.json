@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 525.0082398037357,
+  "usdt": 698.3911207346133,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793910660000
-    },
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.07758792854765338,
-      "entrada": 2253.25,
-      "maximo": 2269.61,
-      "reglas": {
-        "stop": 2.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793910660000
+      "vigilado_hasta": 1793914260000
     }
   },
-  "comisiones_usd": 38.07381299999999,
+  "comisiones_usd": 38.247368999999985,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3460,6 +3438,18 @@
       "usd": 175.0,
       "comision": 0.175,
       "motivo": "Rebote en soporte: ETH tocó el mínimo de 48 h (2.236,78) hace 3 h y las velas de 1 h siguientes no hicieron mínimo nuevo (2.240,79/2.248,41/2.242,86/2.245,00); 1 h +0,02%, 4 h -0,01% (dejó de caer), volumen 1,2x; BTC 4 h +0,04%, sin bloqueo. Stop 2,5% (~2.198, debajo del mínimo con margen). Invalida: cierre de 1 h debajo de 2.236,78."
+    },
+    {
+      "ms": 1793914323806,
+      "fecha": "2026-11-05 21:32 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.07758792854765338,
+      "precio": 2236.9,
+      "usd": 173.5564,
+      "comision": 0.173556,
+      "motivo": "Tesis de rebote en soporte rota: la vela de 1 h de las 21:00 hizo mínimo nuevo de 48 h en 2.219,15 (debajo del soporte 2.236,78) y el precio sigue debajo (~2.236). Ya no 'deja de caer'. Salgo antes del stop 2.197 y no espero el cierre de la vela.",
+      "resultado_pct": -0.73
     }
   ]
 }
