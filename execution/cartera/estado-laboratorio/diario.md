@@ -364,3 +364,17 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-05 14:19 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 0.12, var_4h -1.04). Ningun par con var_24h>=3 ni var_4h>0 (todos var_4h negativo). BTC/ETH/SUI: ninguna lleva 48h (SUI desde 04/11 10:17) ni cumple var_24h<0 y var_4h<-2 (SUI var_24h -2.4, var_4h -1.53), sin salidas. Sin disparos.
 
+## 2026-11-05 15:27 UTC — Stop ETHUSDT (vigilante)
+184.64 USD a 2,268.642 (-7.00%). Stop automático en 2,268.642 (entrada 2,439.4, máximo 2,444.75).
+
+## 2026-11-05 15:01 UTC — Stop SUIUSDT (vigilante)
+191.19 USD a 0.880072 (-3.50%). Stop automático en 0.880072 (entrada 0.912, máximo 0.9566).
+
+## 2026-11-05 16:17 UTC — Venta BTCUSDT
+187.64 USD a 76,389.01 (-5.28% contra la compra).
+
+[v1] tendencia rota: BTC var_24h -5.21<0 y var_4h -4.17<-2 · además filtro BTC bloquea entradas nuevas
+
+## 2026-11-05 16:17 UTC — nota
+[v1] Sin entrada: filtro BTC cerrado (var_24h -5.21, var_4h -4.17). Ningun par con var_4h>0. BTC vendido por tendencia rota. Carpeta 100% USDT.
+
