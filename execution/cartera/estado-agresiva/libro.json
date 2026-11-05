@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 698.3911207346133,
-  "posiciones": {
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.002296611760359975,
-      "entrada": 76123.01,
-      "maximo": 76559.8,
-      "reglas": {
-        "stop": 2.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793917860000
-    }
-  },
-  "comisiones_usd": 38.247368999999985,
+  "usdt": 872.5801154465933,
+  "posiciones": {},
+  "comisiones_usd": 38.421731999999984,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3450,6 +3427,18 @@
       "comision": 0.173556,
       "motivo": "Tesis de rebote en soporte rota: la vela de 1 h de las 21:00 hizo mínimo nuevo de 48 h en 2.219,15 (debajo del soporte 2.236,78) y el precio sigue debajo (~2.236). Ya no 'deja de caer'. Salgo antes del stop 2.197 y no espero el cierre de la vela.",
       "resultado_pct": -0.73
+    },
+    {
+      "ms": 1793921523216,
+      "fecha": "2026-11-05 23:32 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.002296611760359975,
+      "precio": 75922.0,
+      "usd": 174.3634,
+      "comision": 0.174363,
+      "motivo": "Tesis de rebote en soporte rota: la vela de 1 h de las 23:00 hizo mínimo nuevo de 48 h en 75.208,42, debajo del soporte 75.568. Ya no 'deja de caer' (mismo criterio que la salida de ETH 21:32). Salgo con ~-0,4% antes del stop 74.220, aunque el precio recuperó a ~75.890.",
+      "resultado_pct": -0.26
     }
   ]
 }
