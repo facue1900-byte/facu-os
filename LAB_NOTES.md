@@ -468,3 +468,15 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
 **Trampa nueva:** `date_created` de MP trae la hora UTC con un `-04:00` falso. Leído tal cual, «pedir cada 40 min» era cada casi 5 h y cualquier alerta de antigüedad salta 4 h tarde. La encontró el agente `numeros`.
 
 **Lección:** cuadrar contra un archivo viejo prueba que el archivo es coherente, no que está al día. Un chequeo de frescura tiene que medir la edad del dato, no la de la corrida.
+
+## 05/11/2026 — Dos publicaciones programadas murieron porque launchd no deja a `shasum` leer el Desktop
+
+**Dónde:** `active/astronomy/contenido/publicar_generico_una_vez.sh` y `publicar_pulgar_una_vez.sh`.
+
+**Qué pasó:** `pulgar-v4` (04/11 18:07) y el video genérico (05/11 12:00) no salieron. El log decía «cambió desde el OK» con el hash vacío, aunque el archivo era idéntico. En el pulgar, además, el mail de aviso falló por un corte de red y la memoria siguió diciendo «sale hoy 18:00» sin que nadie lo mirara.
+
+**Causa raíz:** `--ensayo` se probó desde la sesión, que tiene permiso de macOS sobre el Desktop. Bajo launchd, `shasum` da `Operation not permitted`. Probado con un job descartable: `[[ -s ]]` y la escritura de bash andan, `shasum` falla, el Python del venv lee y escribe (tiene su permiso en TCC). El script comparaba el hash vacío sin chequearlo y lo reportaba como «cambió».
+
+**Fix:** el genérico hashea con el Python del venv y distingue «no pude leer» de «cambió». El pulgar no se tocó: su fecha pasó y necesita un OK nuevo de todos modos.
+
+**Lección:** un ensayo desde la sesión no prueba lo que va a pasar bajo launchd. Lo que toca el Desktop en una tarea programada se ensaya con `launchctl submit`.

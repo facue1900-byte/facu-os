@@ -16,7 +16,10 @@ if [[ $1 != --ensayo && $HOY > $DIA ]]; then
 fi
 if [[ $1 != --ensayo && $HOY != "$DIA" ]]; then echo "todavía no es $DIA"; exit 0; fi
 for f in "$VIDEO" "$P/portada.jpg" "$P/texto-reel.txt"; do [[ -s $f ]] || { echo "falta $f" >&2; exit 1; }; done
-ACTUAL=$(shasum -a 256 "$VIDEO" | cut -d' ' -f1)
+# Con Python y no con shasum: bajo launchd, macOS le niega el Desktop a shasum (el Python del venv
+# tiene permiso). Así se perdieron pulgar-v4 el 04/11 y este el 05/11 a las 12:00 (Lab Note 05/11).
+ACTUAL=$("$PY" -c 'import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],"rb").read()).hexdigest())' "$VIDEO")
+[[ -n $ACTUAL ]] || { echo "no pude leer el video para chequear el hash: no se publica (el video no necesariamente cambió)" >&2; exit 1; }
 [[ $ACTUAL == "$SHA" ]] || { echo "el video cambió desde el OK de Facu ($ACTUAL): no se publica" >&2; exit 1; }
 if [[ $1 == --ensayo ]]; then echo "ENSAYO_OK: archivos y hash bien, no se publicó nada"; exit 0; fi
 
