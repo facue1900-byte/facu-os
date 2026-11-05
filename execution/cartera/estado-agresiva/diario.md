@@ -3334,3 +3334,16 @@ Invalidación anotada 22:32 cumplida: 4 h pasó a rojo (-0,33% < -0,3%), volumen
 ## 2026-11-05 03:32 UTC — nota
 03:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: AAVE, BNB, BTC y UNI 60 min, sin disparos. Mercado: 4 h verde casi pareja (-0,43/+2,49%), 1 h plana-verde (-0,59/+1,67%), volumen 4 h apagado (0,24-0,96x, TRUMP 1,49x aparte). BTC +0,25% en 4 h (0,7x), -0,6% del máximo de 48 h: sin bloqueo. Posiciones: BTC 80688 (+5,14%), stop ~77136; BNB 716,78 (+4,12%), -0,9% del máximo, 4 h -0,43%, stop ~687,2; ninguna cerca de +8% — rotan a las 04:31 (24 h sin toma ni stop). UNI 7,751 (+1,08%), 24 h +9,18%, 4 h +1,72%: viva; invalida con cierre debajo de 7,438 o 4 h roja con 24 h < +5%; rota 05/11 18:32. AAVE 132,86 (-0,12%), 24 h +6,28%, 4 h +0,9%: viva; invalida con 4 h < -0,3% y 24 h < +5% o cierre debajo de ~129,03; rota 06/11 00:31. Sin entradas: SOL (24 h +6,18%, 4 h +1,15%, 1 h +0,33%, -1,46% del máximo) y LINK (24 h +7,68%, 4 h +1,3%, 1 h +0,94%) cumplen momentum en papel pero con 0,56-0,66x; las dos entradas de ETH por momentum sin volumen salieron en rojo — exijo >= 1x para no regalar comisión. Ruptura nadie (BTC -0,6%, UNI -0,79%, ETH -0,77%, todos < 1x); rebote TRX +0,22% del mínimo con 24 h -0,62% y baja volatilidad: no. A mirar: rotación BTC/BNB a las 04:31 (salida si no llegaron a +8%); SOL/LINK si el volumen 4 h pasa 1x; UNI/AAVE invalidación. 4 posiciones (~61%), resto en USDT.
 
+## 2026-11-05 04:32 UTC — Venta BTCUSDT
+183.33 USD a 80,476 (+4.87% contra la compra).
+
+Rotación por regla de 24 h: entró 04/11 04:32, sin llegar a +8% ni al stop (máx ~+5,3%). 4 h -0,09% con 0,58x, -0,89% del máximo de 48 h: sin ruptura. Se libera para rotar.
+
+## 2026-11-05 04:32 UTC — Venta BNBUSDT
+134.91 USD a 715.13 (+3.88% contra la compra).
+
+Rotación por regla de 24 h: entró 04/11 04:32, sin llegar a +8% ni al stop (máx ~+4,9%). 4 h -0,51% con 1,04x, -1,16% del máximo de 48 h: sin ruptura. Se libera para rotar.
+
+## 2026-11-05 04:32 UTC — nota
+04:31 UTC — Sin disparos, sin entradas, 2 salidas por rotación (BTC, BNB). Vigilante: AAVE, BNB, BTC y UNI 60 min, sin disparos. Mercado: 4 h plana-verde (-0,66/+2,02%, TRUMP aparte), 1 h plana (-0,3/+0,6%), volumen 4 h apagado (0,24-1,04x). BTC -0,09% en 4 h (0,58x), -0,89% del máximo de 48 h: sin bloqueo. Salidas: BTC a 80476 (+4,87%) y BNB a 715,13 (+3,88%) — 24 h sin +8% ni stop, se rotan según la regla. Posiciones: UNI 7,69 aprox (24 h +7,24%, 4 h +0,67%): viva; invalida con cierre debajo de 7,438 o 4 h roja con 24 h < +5%; rota 05/11 18:32. AAVE ~132,7 (24 h +4,07%, 4 h +0,78%): viva al filo — sale si 4 h < -0,3% con 24 h < +5% o cierre debajo de ~129,03; rota 06/11 00:31. Sin entradas: momentum LINK (24 h +5,62%, 4 h +1,43%, 1 h +0,13%) y ZEC (24 h +8,18%, 4 h +2,02%) cumplen en papel pero con 0,65x y 0,44x — sostengo el filtro de volumen >= 1x tras las dos salidas en rojo de ETH; ETH 24 h +6,35% con 4 h +0,14% y 0,48x: no; ruptura nadie (BTC -0,89%, ETH -1,03%, todos < 1,5x); rebote TRX +0,35% del mínimo, 24 h -0,68%, baja volatilidad: no. Nada claro, plata en USDT. A mirar: LINK/ZEC si volumen 4 h pasa 1x; BTC/ETH ruptura del máximo de 48 h con >= 1,5x; AAVE invalidación. 2 posiciones (~25%), resto en USDT.
+
