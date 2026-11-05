@@ -1,22 +1,24 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-04 23:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-05 00:32 UTC
 
-**Total: 879.13 USD (-12.09%)** desde 2026-10-07 23:06 UTC · USDT libre 335.58 · comisiones 36.98 · 276 operaciones
+**Total: 881.13 USD (-11.89%)** desde 2026-10-07 23:06 UTC · USDT libre 235.58 · comisiones 37.08 · 277 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **879.13** |
+| **Esta carpeta** | **881.13** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 967.14 |
+| hodl btc | 970.47 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 183.36 | +4.88% | 77,136.2 |
-| BNB | trading | 135.69 | +4.48% | 687.249 |
-| UNI | trading | 115.14 | +0.22% | 7.429 |
-| ETH | trading | 109.36 | -0.48% | 2,322.51 |
+| BTC | trading | 183.99 | +5.24% | 77,136.2 |
+| BNB | trading | 136.18 | +4.86% | 687.249 |
+| UNI | trading | 115.86 | +0.85% | 7.429 |
+| ETH | trading | 109.62 | -0.24% | 2,322.51 |
+| AAVE | trading | 99.90 | +0.00% | 126.369 |
 
 ## Últimas operaciones
 
+- 2026-11-05 00:32 UTC · compra AAVE 100.00 USD a 133.02 — Momentum de 24 h: AAVE +5,53% en 24 h, sigue subiendo en 4 h (+1,87%), 1 h +0,9% (no estirada), -2,96% del máximo de 48 h. Volumen 4 h flojo
 - 2026-11-04 22:32 UTC · compra ETH 110.00 USD a 2,437.36 — Momentum de 24 h (condición anotada 20:31/21:32 cumplida): ETH +6,29% en 24 h, 4 h volvió a verde (+0,59%), 1 h +0,79% (no estirada), -0,51%
 - 2026-11-04 20:32 UTC · venta ETH 129.06 USD a 2,421.87 — Invalidación anotada 19:32 cumplida: 4 h quedó roja (-0,56% < -0,3%), volumen 4 h 0,83x (se apagó el 4-5x de la entrada), -1,17% del máximo 
 - 2026-11-04 19:32 UTC · venta SUI 113.22 USD a 0.9308 — Invalidación anotada 16:32 cumplida: 4 h pasó a rojo (-1,24%) con 24 h debajo de +5% (+3,99%), -2,64% del máximo de 48 h. Salida manual a ~0
@@ -26,6 +28,5 @@
 - 2026-11-04 15:32 UTC · compra NEAR 130.00 USD a 4.177 — Momentum de 24 h: NEAR +8,64% en 24 h, sigue subiendo en 4 h (+2,6%), 1 h +0,92% (no estirada), 48 h ya positiva (+4,36%: se resolvió la obj
 - 2026-11-04 15:32 UTC · compra ETH 130.00 USD a 2,436.99 — Momentum de 24 h: ETH +5,98% en 24 h, sigue subiendo en 4 h (+4,68%), 1 h +2,43% (no estirada), -0,53% del máximo de 48 h con volumen 4 h 4,
 - 2026-11-04 13:32 UTC · venta ENA 126.96 USD a 0.1786 — Invalidación anotada cumplida: 4 h pasó a rojo (-2,62%), 1 h -0,39%, -3,67% del máximo de 48 h; 24 h bajó a +4,32% (ya no cumple +5%). Salid
-- 2026-11-04 12:32 UTC · venta PEPE 131.18 USD a 4.99e-06 — Invalidación de entrada cumplida: 24 h volvió debajo de +3% (+1,84%) con 4 h roja (-1,96%), 1 h -0,8%, -3,67% del máximo de 48 h, 0,82x. Sal
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

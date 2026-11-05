@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 335.57912279846556,
+  "usdt": 235.57912279846556,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793835060000
+      "vigilado_hasta": 1793838660000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793835060000
+      "vigilado_hasta": 1793838660000
     },
     "UNIUSDT": {
       "nivel": "trading",
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793835060000
+      "vigilado_hasta": 1793838660000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -92,10 +92,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793835060000
+      "vigilado_hasta": 1793838660000
+    },
+    "AAVEUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.7510148849797023,
+      "entrada": 133.02,
+      "maximo": 133.02,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793838780000
     }
   },
-  "comisiones_usd": 36.98374399999999,
+  "comisiones_usd": 37.08374399999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3408,6 +3430,18 @@
       "usd": 110.0,
       "comision": 0.11,
       "motivo": "Momentum de 24 h (condición anotada 20:31/21:32 cumplida): ETH +6,29% en 24 h, 4 h volvió a verde (+0,59%), 1 h +0,79% (no estirada), -0,51% del máximo de 48 h, 48 h +8%. Volumen 4 h flojo (0,68x): tamaño menor (~12%). Invalida: cierre horario debajo de ~2370 (-3%) o 4 h vuelve a rojo (< -0,3%) — salida manual. Rota 05/11 22:31 si no llega a +8%."
+    },
+    {
+      "ms": 1793838734066,
+      "fecha": "2026-11-05 00:32 UTC",
+      "lado": "buy",
+      "par": "AAVEUSDT",
+      "nivel": "trading",
+      "cantidad": 0.7510148849797023,
+      "precio": 133.02,
+      "usd": 100.0,
+      "comision": 0.1,
+      "motivo": "Momentum de 24 h: AAVE +5,53% en 24 h, sigue subiendo en 4 h (+1,87%), 1 h +0,9% (no estirada), -2,96% del máximo de 48 h. Volumen 4 h flojo (0,75x): tamaño menor (~11%). Invalida: cierre horario debajo de -3% desde la entrada o 4 h vuelve a rojo (< -0,3%) con 24 h < +5% — salida manual. Rota 06/11 00:31 si no llega a +8%."
     }
   ]
 }
