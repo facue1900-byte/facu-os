@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793901840000
+      "vigilado_hasta": 1793909040000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793901840000
+      "vigilado_hasta": 1793909040000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793901840000
+      "vigilado_hasta": 1793909040000
     },
     "XRPUSDT": {
       "nivel": "medio",
@@ -84,7 +84,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793901840000
+      "vigilado_hasta": 1793909040000
     }
   },
   "comisiones_usd": 2.598750000000001,
