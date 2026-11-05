@@ -1,5 +1,6 @@
 #!/bin/bash
-# Publica UNA vez, el 04/11/2026, pulgar-v4 como reel de prueba (Facu, 03/11: «subilo mañana dale»).
+# Publica UNA vez, el 06/11/2026 18:00, pulgar-v4 como reel de prueba (Facu, 03/11: «subilo mañana dale»;
+# el 04/11 no salió porque launchd no deja a shasum leer el Desktop, y Facu dio «ok» el 05/11 para el 06/11).
 # Sólo ese día y sólo ese archivo. Si la Mac estuvo apagada todo el día, NO lo sube después: falla,
 # y correr.sh avisa. La marca evita una segunda publicación aunque launchd dispare otra vez.
 #   --ensayo: chequea todo menos la fecha, y no publica.
@@ -8,7 +9,7 @@ P="/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Ree
 VIDEO="$P/pulgar-v4.mp4"
 SHA=40e4bf73a2c70edc333296aade16b383771dd2b43254e385db01b58d44d2ae97
 MARCA="$P/.publicado-v4"
-DIA=2026-11-04
+DIA=2026-11-06
 
 if [[ -e $MARCA ]]; then echo "ya publicado: $(cat "$MARCA")"; exit 0; fi
 HOY=$(date +%F)
@@ -17,7 +18,9 @@ if [[ $1 != --ensayo && $HOY > $DIA ]]; then
 fi
 if [[ $1 != --ensayo && $HOY != "$DIA" ]]; then echo "todavía no es $DIA"; exit 0; fi
 for f in "$VIDEO" "$P/portada.jpg" "$P/texto-reel.txt"; do [[ -s $f ]] || { echo "falta $f" >&2; exit 1; }; done
-ACTUAL=$(shasum -a 256 "$VIDEO" | cut -d' ' -f1)
+# Con Python: bajo launchd, macOS le niega el Desktop a shasum (Lab Note 05/11).
+ACTUAL=$("$OS/.venv/bin/python" -c 'import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],"rb").read()).hexdigest())' "$VIDEO")
+[[ -n $ACTUAL ]] || { echo "no pude leer pulgar-v4 para chequear el hash: no se publica (no necesariamente cambió)" >&2; exit 1; }
 [[ $ACTUAL == "$SHA" ]] || { echo "pulgar-v4 cambió desde que Facu lo aprobó ($ACTUAL): no se publica" >&2; exit 1; }
 if [[ $1 == --ensayo ]]; then echo "ENSAYO_OK: archivos y hash bien, no se publicó nada"; exit 0; fi
 
@@ -30,7 +33,7 @@ LINK=$(sed -n 's/^PUBLICADO_LINK //p' "$SALIDA" | head -1)
 echo "$ID $LINK" > "$MARCA"
 ID="$ID" LINK="$LINK" SHA="$ACTUAL" P="$P" "$OS/.venv/bin/python" - <<'PY'
 import json, os
-l = {"fecha": "2026-11-04", "carpeta": os.environ["P"], "slug": "pulgar-sin-city-a-mano",
+l = {"fecha": "2026-11-06", "carpeta": os.environ["P"], "slug": "pulgar-sin-city-a-mano",
      "formato": "Pulgar v4: mismo reel que v3 con Go Back de Sin City, todo a la grilla del tema",
      "tema": "go-back", "media_id": os.environ["ID"], "permalink": os.environ["LINK"],
      "sha": os.environ["SHA"][:20], "voz": "", "tomas": []}
