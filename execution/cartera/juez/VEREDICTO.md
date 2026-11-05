@@ -9,7 +9,7 @@
 | Laboratorio | 987,85 | -1,21% | -0,89 pp (HODL -0,32%) | -1,21% (HODL -0,32%) | -1,47% (HODL +0,59%) | -3,10% (HODL -6,13%) | 2,59 USD (21,3% de la pérdida) | 14 |
 | DCA BTC | 996,25 | -0,38% | +3,17 pp (HODL -3,55%) | falta (primer snapshot 27/10 22:38, 1 min después del corte) | -0,37% (HODL -3,56%) | -0,38% (HODL -3,56%) | 0,20 USD (5,3% de la pérdida) | 2 |
 | Torneo — líder L9 compra pánico en tendencia alcista (15 de 33 le ganan a USDT; 9 le ganan a HODL BTC) | 1.049,40 | +4,94% (desde 29/10) | +4,38 pp (HODL BTC +0,56%) | falta (arrancó 29/10 00:00) | ≈ desde inicio (+4,94%) | -5,64% | 1,00 USD (2,0% de la ganancia) | 5 |
-| Original 10.000 (Mac) | 9.896,38 | -1,04% | +2,28 pp (HODL -3,32%) | -1,04% (HODL -0,04%) | -0,84% (HODL +0,94%) | -1,22% (HODL -9,44%) | falta | falta |
+| Original 10.000 (Mac) | 9.896,38 | -1,04% | +2,29 pp (HODL -3,32%) | -1,04% (HODL -0,04%) | -0,84% (HODL +0,94%) | -1,22% (HODL -9,44%) | falta | falta |
 
 Notas de medición:
 - **Ventana común** = desde el 27/10 22:37 UTC; base = último snapshot en o antes de ese momento. **7 días** = base en o antes del 29/10 06:51 UTC.
@@ -64,7 +64,7 @@ Hasta el 27/01/2027 no se apaga nada por resultado; los números van sin suaviza
 - **Laboratorio: seguir.** -1,21%, 0,89 pp abajo de HODL BTC, pero con peor caída -3,10% contra -6,13% de HODL.
 - **DCA BTC: seguir.** -0,38%, +3,17 pp sobre HODL; la cuota semanal corre bien.
 - **Torneo: seguir.** L9 +4,94% y 15 de 33 arriba de USDT, pero en 7 días es ruido.
-- **Original: seguir.** -1,04%, +2,28 pp sobre HODL BTC; faltan comisiones y ops (no publica `libro.json`).
+- **Original: seguir.** -1,04%, +2,29 pp sobre HODL BTC; faltan comisiones y ops (no publica `libro.json`).
 
 Key real: se decide el 27/01/2027.
 
