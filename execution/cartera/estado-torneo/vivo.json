@@ -1,282 +1,12 @@
 {
- "generado": "2026-11-05 12:41",
+ "generado": "2026-11-05 16:41",
  "desde": "2026-10-29 00:00",
- "hasta": "2026-11-05 12:00",
+ "hasta": "2026-11-05 16:00",
  "regimen_hoy": "BTC arriba de la media 200, bajando 30 d",
  "capital": 1000.0,
  "noticias_lecturas": 8,
  "noticias_sin_dato": 0,
  "filas": [
-  {
-   "estrategia": "L9 compra pánico sólo en tendencia alcista, 14 monedas",
-   "personalidad": "laboratorio",
-   "final": 1048.3192466099638,
-   "ret": 0.048319246609963784,
-   "dd": -0.056360232607186145,
-   "ops": 5,
-   "comisiones": 1.0,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 205.84,
-    "ETH": 214.58,
-    "SOL": 201.52,
-    "LINK": 216.92,
-    "AVAX": 211.03
-   },
-   "usdt": 0.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "P7 canasta grande con media de 200 d por moneda",
-   "personalidad": "prudente",
-   "final": 1040.3491401416934,
-   "ret": 0.04034914014169333,
-   "dd": -0.03955666184350204,
-   "ops": 3,
-   "comisiones": 0.99,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 339.64,
-    "ETH": 354.06,
-    "BNB": 338.2
-   },
-   "usdt": 10.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "L8 compra pánico (RSI<30), vende RSI>55, grandes",
-   "personalidad": "laboratorio",
-   "final": 1035.038347557489,
-   "ret": 0.035038347557489136,
-   "dd": -0.019779925837373757,
-   "ops": 2,
-   "comisiones": 0.6608810845443851,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "ETH": 354.06,
-    "BTC": 342.91
-   },
-   "usdt": 339.12,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "L3 cruce de medias 50/200 en BTC",
-   "personalidad": "laboratorio",
-   "final": 1027.6596855679209,
-   "ret": 0.027659685567920755,
-   "dd": -0.036849576919706806,
-   "ops": 1,
-   "comisiones": 1.0,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 1029.2
-   },
-   "usdt": 0.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "A7 top 5 por 90 d, mensual, con filtro",
-   "personalidad": "agresiva",
-   "final": 1027.4864747387905,
-   "ret": 0.027486474738790623,
-   "dd": -0.09069515804916628,
-   "ops": 5,
-   "comisiones": 0.98,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "NEAR": 193.49,
-    "SOL": 197.49,
-    "LINK": 212.58,
-    "AVAX": 206.81,
-    "LTC": 198.63
-   },
-   "usdt": 20.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "P5 BTC sólo arriba de su media de 200 d",
-   "personalidad": "prudente",
-   "final": 1027.3830887122417,
-   "ret": 0.02738308871224171,
-   "dd": -0.03648351704254815,
-   "ops": 1,
-   "comisiones": 0.99,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 1018.91
-   },
-   "usdt": 10.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "P6 BTC sólo arriba de su media de 100 d",
-   "personalidad": "prudente",
-   "final": 1027.3830887122417,
-   "ret": 0.02738308871224171,
-   "dd": -0.03648351704254815,
-   "ops": 1,
-   "comisiones": 0.99,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 1018.91
-   },
-   "usdt": 10.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "P2 HODL 50/50 BTC-ETH",
-   "personalidad": "prudente",
-   "final": 1024.4525366782157,
-   "ret": 0.024452536678215564,
-   "dd": -0.07334733457327058,
-   "ops": 2,
-   "comisiones": 0.999,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 502.58,
-    "ETH": 522.41
-   },
-   "usdt": 1.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "P3 canasta BTC/ETH/BNB rebalanceo mensual",
-   "personalidad": "prudente",
-   "final": 1007.2425921396041,
-   "ret": 0.007242592139603987,
-   "dd": -0.0741332871935324,
-   "ops": 3,
-   "comisiones": 0.99,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 502.58,
-    "ETH": 314.08,
-    "BNB": 182.09
-   },
-   "usdt": 10.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "D2 DCA 50/50 BTC-ETH 100 por semana",
-   "personalidad": "dca",
-   "final": 1004.9472586002388,
-   "ret": 0.004947258600238813,
-   "dd": -0.0036842305053311764,
-   "ops": 2,
-   "comisiones": 0.1,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 51.46,
-    "ETH": 53.64
-   },
-   "usdt": 900.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "P1 HODL BTC",
-   "personalidad": "prudente",
-   "final": 1003.6417141260298,
-   "ret": 0.0036417141260298713,
-   "dd": -0.07380310916563737,
-   "ops": 1,
-   "comisiones": 0.999,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 1004.15
-   },
-   "usdt": 1.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "D1 DCA BTC 100 por semana",
-   "personalidad": "dca",
-   "final": 1002.7659685567921,
-   "ret": 0.002765968556792231,
-   "dd": -0.003707234548667837,
-   "ops": 1,
-   "comisiones": 0.1,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 102.92
-   },
-   "usdt": 900.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "D3 DCA inteligente BTC (x2 abajo de la media 200)",
-   "personalidad": "dca",
-   "final": 1002.7659685567921,
-   "ret": 0.002765968556792231,
-   "dd": -0.003707234548667837,
-   "ops": 1,
-   "comisiones": 0.1,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 102.92
-   },
-   "usdt": 900.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "P4 60% BTC / 40% USDT rebalanceo mensual",
-   "personalidad": "prudente",
-   "final": 1002.1872156913091,
-   "ret": 0.0021872156913091967,
-   "dd": -0.04471889834701315,
-   "ops": 1,
-   "comisiones": 0.6,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 603.09
-   },
-   "usdt": 400.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "D4 DCA BTC 77 por semana (todo en 13 semanas)",
-   "personalidad": "dca",
-   "final": 1002.1276681206093,
-   "ret": 0.002127668120609272,
-   "dd": -0.002852160994095798,
-   "ops": 1,
-   "comisiones": 0.07692307692307693,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "BTC": 79.17
-   },
-   "usdt": 923.08,
-   "btc_precio_crudo": -0.011721893977774012
-  },
   {
    "estrategia": "P0 USDT quieto",
    "personalidad": "prudente",
@@ -285,12 +15,12 @@
    "dd": 0.0,
    "ops": 0,
    "comisiones": 0.0,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 0,
    "ganadoras": null,
    "posiciones": {},
    "usdt": 1000.0,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "P8 compra BTC tras caer 15% (vende +10%)",
@@ -300,12 +30,12 @@
    "dd": 0.0,
    "ops": 0,
    "comisiones": 0.0,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 0,
    "ganadoras": null,
    "posiciones": {},
    "usdt": 1000.0,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "L2 cruce de medias 20/50 en las grandes",
@@ -315,12 +45,12 @@
    "dd": 0.0,
    "ops": 0,
    "comisiones": 0.0,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 0,
    "ganadoras": null,
    "posiciones": {},
    "usdt": 1000.0,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "L5 ruptura de 20 d en las grandes, sale en 10 d",
@@ -330,12 +60,12 @@
    "dd": 0.0,
    "ops": 0,
    "comisiones": 0.0,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 0,
    "ganadoras": null,
    "posiciones": {},
    "usdt": 1000.0,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "L4 cruce 20/50 en las 14",
@@ -345,12 +75,47 @@
    "dd": -0.01376357327689548,
    "ops": 2,
    "comisiones": 0.1418187099038381,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 1,
    "ganadoras": 0.0,
    "posiciones": {},
    "usdt": 998.89,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "D2 DCA 50/50 BTC-ETH 100 por semana",
+   "personalidad": "dca",
+   "final": 998.4367181509442,
+   "ret": -0.001563281849055742,
+   "dd": -0.007303691612798868,
+   "ops": 2,
+   "comisiones": 0.1,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 48.67,
+    "ETH": 49.92
+   },
+   "usdt": 900.0,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "D4 DCA BTC 77 por semana (todo en 13 semanas)",
+   "personalidad": "dca",
+   "final": 997.8400876170817,
+   "ret": -0.0021599123829182387,
+   "dd": -0.00488785663042024,
+   "ops": 1,
+   "comisiones": 0.07692307692307693,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 74.88
+   },
+   "usdt": 923.08,
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "L7 ruptura de 20 d con filtro BTC, 14 monedas",
@@ -360,12 +125,46 @@
    "dd": -0.009915218327272268,
    "ops": 2,
    "comisiones": 0.29774613568641334,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 1,
    "ganadoras": 0.0,
    "posiciones": {},
    "usdt": 997.6,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "D1 DCA BTC 100 por semana",
+   "personalidad": "dca",
+   "final": 997.1921139022063,
+   "ret": -0.0028078860977936992,
+   "dd": -0.006349658198988806,
+   "ops": 1,
+   "comisiones": 0.1,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 97.34
+   },
+   "usdt": 900.0,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "D3 DCA inteligente BTC (x2 abajo de la media 200)",
+   "personalidad": "dca",
+   "final": 997.1921139022063,
+   "ret": -0.0028078860977936992,
+   "dd": -0.006349658198988806,
+   "ops": 1,
+   "comisiones": 0.1,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 97.34
+   },
+   "usdt": 900.0,
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "L6 ruptura de 55 d (tortugas), sale en 20 d, 14 monedas",
@@ -375,30 +174,30 @@
    "dd": -0.009915218327272268,
    "ops": 2,
    "comisiones": 0.2973293206801536,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 1,
    "ganadoras": 0.0,
    "posiciones": {},
    "usdt": 997.18,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
-   "estrategia": "A2 Agresiva con filtro BTC y stops anchos",
-   "personalidad": "agresiva",
-   "final": 995.0513892386986,
-   "ret": -0.004948610761301486,
-   "dd": -0.014278860569715057,
+   "estrategia": "L8 compra pánico (RSI<30), vende RSI>55, grandes",
+   "personalidad": "laboratorio",
+   "final": 991.8915554700272,
+   "ret": -0.008108444529972725,
+   "dd": -0.04691446033839597,
    "ops": 2,
-   "comisiones": 0.4001509492444789,
-   "hodl_btc": 0.0036417141260298713,
+   "comisiones": 0.6608810845443851,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 0,
    "ganadoras": null,
    "posiciones": {
-    "AVAX": 196.36,
-    "ETH": 199.44
+    "ETH": 329.44,
+    "BTC": 324.31
    },
-   "usdt": 599.85,
-   "btc_precio_crudo": -0.011721893977774012
+   "usdt": 339.12,
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "L1N reglas del Laboratorio v1 (4 h) + freno de noticias",
@@ -408,67 +207,52 @@
    "dd": -0.024157094385138245,
    "ops": 2,
    "comisiones": 0.385721093,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 1,
    "ganadoras": 0.0,
    "posiciones": {},
    "usdt": 985.54,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
-   "estrategia": "A4 top 3 por 30 d, rota cada semana",
-   "personalidad": "agresiva",
-   "final": 984.6230292457338,
-   "ret": -0.01537697075426614,
-   "dd": -0.05373591886957341,
+   "estrategia": "P7 canasta grande con media de 200 d por moneda",
+   "personalidad": "prudente",
+   "final": 984.2185617514274,
+   "ret": -0.015781438248572588,
+   "dd": -0.06140733349009497,
    "ops": 3,
-   "comisiones": 0.9800000000000002,
-   "hodl_btc": 0.0036417141260298713,
+   "comisiones": 0.99,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 0,
    "ganadoras": null,
    "posiciones": {
-    "TRX": 295.08,
-    "BTC": 336.21,
-    "BNB": 334.79
+    "BTC": 321.22,
+    "ETH": 329.44,
+    "BNB": 325.02
    },
-   "usdt": 20.0,
-   "btc_precio_crudo": -0.011721893977774012
+   "usdt": 10.0,
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
-   "estrategia": "A5 top 3 por 30 d, semanal, sólo con BTC alcista",
-   "personalidad": "agresiva",
-   "final": 984.6230292457338,
-   "ret": -0.01537697075426614,
-   "dd": -0.05373591886957341,
-   "ops": 3,
-   "comisiones": 0.9800000000000002,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 0,
-   "ganadoras": null,
-   "posiciones": {
-    "TRX": 295.08,
-    "BTC": 336.21,
-    "BNB": 334.79
-   },
-   "usdt": 20.0,
-   "btc_precio_crudo": -0.011721893977774012
-  },
-  {
-   "estrategia": "L1 reglas del Laboratorio v1 (4 h)",
+   "estrategia": "L9 compra pánico sólo en tendencia alcista, 14 monedas",
    "personalidad": "laboratorio",
-   "final": 984.5397185931092,
-   "ret": -0.015460281406890819,
-   "dd": -0.024157094385138245,
-   "ops": 3,
-   "comisiones": 0.5828281673814,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 1,
-   "ganadoras": 0.0,
+   "final": 980.3712115569649,
+   "ret": -0.01962878844303506,
+   "dd": -0.0786561725222259,
+   "ops": 5,
+   "comisiones": 1.0,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
    "posiciones": {
-    "ETH": 196.41
+    "BTC": 194.68,
+    "ETH": 199.66,
+    "SOL": 188.36,
+    "LINK": 201.47,
+    "AVAX": 197.67
    },
-   "usdt": 788.43,
-   "btc_precio_crudo": -0.011721893977774012
+   "usdt": 0.0,
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "P5N BTC sólo arriba de su media de 200 d + freno de noticias",
@@ -478,46 +262,184 @@
    "dd": -0.03648351704254815,
    "ops": 2,
    "comisiones": 1.959071795296464,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 1,
    "ganadoras": 0.0,
    "posiciones": {},
    "usdt": 978.1,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "P5 BTC sólo arriba de su media de 200 d",
+   "personalidad": "prudente",
+   "final": 972.2019276318425,
+   "ret": -0.027798072368157456,
+   "dd": -0.061170320539951306,
+   "ops": 1,
+   "comisiones": 0.99,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 963.65
+   },
+   "usdt": 10.0,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "P6 BTC sólo arriba de su media de 100 d",
+   "personalidad": "prudente",
+   "final": 972.2019276318425,
+   "ret": -0.027798072368157456,
+   "dd": -0.061170320539951306,
+   "ops": 1,
+   "comisiones": 0.99,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 963.65
+   },
+   "usdt": 10.0,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "L3 cruce de medias 50/200 en BTC",
+   "personalidad": "laboratorio",
+   "final": 971.9211390220631,
+   "ret": -0.02807886097793688,
+   "dd": -0.06176952938618829,
+   "ops": 1,
+   "comisiones": 1.0,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 973.38
+   },
+   "usdt": 0.0,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "L1 reglas del Laboratorio v1 (4 h)",
+   "personalidad": "laboratorio",
+   "final": 971.2799692798689,
+   "ret": -0.028720030720131184,
+   "dd": -0.03011079373956993,
+   "ops": 4,
+   "comisiones": 0.7658628738421296,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 2,
+   "ganadoras": 0.0,
+   "posiciones": {},
+   "usdt": 971.28,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "P4 60% BTC / 40% USDT rebalanceo mensual",
+   "personalidad": "prudente",
+   "final": 969.5255859489872,
+   "ret": -0.03047441405101281,
+   "dd": -0.04596526805576584,
+   "ops": 1,
+   "comisiones": 0.6,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 570.38
+   },
+   "usdt": 400.0,
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "A1 reglas de la Agresiva actual (4 h)",
    "personalidad": "agresiva",
-   "final": 976.9434110727614,
-   "ret": -0.023056588927238608,
-   "dd": -0.02738354010851074,
-   "ops": 7,
-   "comisiones": 1.365960616133309,
-   "hodl_btc": 0.0036417141260298713,
-   "vueltas": 3,
+   "final": 969.1096120142358,
+   "ret": -0.030890387985764156,
+   "dd": -0.037657945541795246,
+   "ops": 8,
+   "comisiones": 1.5537680482624037,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 4,
    "ganadoras": 0.0,
+   "posiciones": {},
+   "usdt": 969.11,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "A2 Agresiva con filtro BTC y stops anchos",
+   "personalidad": "agresiva",
+   "final": 968.7957000076974,
+   "ret": -0.031204299992302564,
+   "dd": -0.03410431745617537,
+   "ops": 2,
+   "comisiones": 0.4001509492444789,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
    "posiciones": {
-    "ETH": 195.75
+    "AVAX": 183.93,
+    "ETH": 185.57
    },
-   "usdt": 781.49,
-   "btc_precio_crudo": -0.011721893977774012
+   "usdt": 599.85,
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "A6 top 3 por 30 d, semanal, filtro + sólo si suben",
    "personalidad": "agresiva",
-   "final": 967.9680484122184,
-   "ret": -0.032031951587781604,
+   "final": 965.3802905633448,
+   "ret": -0.034619709436655155,
    "dd": -0.04713934746588122,
    "ops": 1,
    "comisiones": 0.3266666666666667,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 0,
    "ganadoras": null,
    "posiciones": {
-    "TRX": 295.08
+    "TRX": 292.49
    },
    "usdt": 673.33,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "P2 HODL 50/50 BTC-ETH",
+   "personalidad": "prudente",
+   "final": 960.9725106859098,
+   "ret": -0.03902748931409017,
+   "dd": -0.07334733457327058,
+   "ops": 2,
+   "comisiones": 0.999,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 475.32,
+    "ETH": 486.1
+   },
+   "usdt": 1.0,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "A7 top 5 por 90 d, mensual, con filtro",
+   "personalidad": "agresiva",
+   "final": 957.411854317535,
+   "ret": -0.04258814568246494,
+   "dd": -0.10072057876431939,
+   "ops": 5,
+   "comisiones": 0.98,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "NEAR": 178.54,
+    "SOL": 184.6,
+    "LINK": 197.44,
+    "AVAX": 193.72,
+    "LTC": 184.52
+   },
+   "usdt": 20.0,
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "A5N top 3 por 30 d, semanal, sólo con BTC alcista + freno de noticias",
@@ -527,46 +449,120 @@
    "dd": -0.05373591886957341,
    "ops": 6,
    "comisiones": 1.9174566228395156,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 3,
    "ganadoras": 0.0,
    "posiciones": {},
    "usdt": 956.52,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "P3 canasta BTC/ETH/BNB rebalanceo mensual",
+   "personalidad": "prudente",
+   "final": 951.1379311322893,
+   "ret": -0.04886206886771072,
+   "dd": -0.0741332871935324,
+   "ops": 3,
+   "comisiones": 0.99,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 475.32,
+    "ETH": 292.24,
+    "BNB": 174.99
+   },
+   "usdt": 10.0,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "A4 top 3 por 30 d, rota cada semana",
+   "personalidad": "agresiva",
+   "final": 950.7992742763014,
+   "ret": -0.0492007257236986,
+   "dd": -0.055990851807489195,
+   "ops": 3,
+   "comisiones": 0.9800000000000002,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "TRX": 292.49,
+    "BTC": 317.97,
+    "BNB": 321.74
+   },
+   "usdt": 20.0,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "A5 top 3 por 30 d, semanal, sólo con BTC alcista",
+   "personalidad": "agresiva",
+   "final": 950.7992742763014,
+   "ret": -0.0492007257236986,
+   "dd": -0.055990851807489195,
+   "ops": 3,
+   "comisiones": 0.9800000000000002,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "TRX": 292.49,
+    "BTC": 317.97,
+    "BNB": 321.74
+   },
+   "usdt": 20.0,
+   "btc_precio_crudo": -0.06532444936295467
+  },
+  {
+   "estrategia": "P1 HODL BTC",
+   "personalidad": "prudente",
+   "final": 949.2601006050637,
+   "ret": -0.05073989939493628,
+   "dd": -0.07586009095803348,
+   "ops": 1,
+   "comisiones": 0.999,
+   "hodl_btc": -0.05073989939493628,
+   "vueltas": 0,
+   "ganadoras": null,
+   "posiciones": {
+    "BTC": 949.68
+   },
+   "usdt": 1.0,
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "A8 medianas top 2 por 14 d, semanal, filtro, stop 15%",
    "personalidad": "agresiva",
-   "final": 951.9520726183276,
-   "ret": -0.048047927381672406,
+   "final": 948.0704358450174,
+   "ret": -0.05192956415498262,
    "dd": -0.07070902119882172,
    "ops": 1,
    "comisiones": 0.49,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 0,
    "ganadoras": null,
    "posiciones": {
-    "TRX": 442.62
+    "TRX": 438.73
    },
    "usdt": 510.0,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
   },
   {
    "estrategia": "A3 la que más subió en 7 d, rota cada día",
    "personalidad": "agresiva",
-   "final": 802.5199471909406,
-   "ret": -0.19748005280905945,
-   "dd": -0.20064438588056965,
+   "final": 747.7542890047487,
+   "ret": -0.2522457109952513,
+   "dd": -0.25633309413398764,
    "ops": 7,
    "comisiones": 5.848585772740925,
-   "hodl_btc": 0.0036417141260298713,
+   "hodl_btc": -0.05073989939493628,
    "vueltas": 3,
    "ganadoras": 0.0,
    "posiciones": {
-    "ETH": 788.99
+    "ETH": 734.14
    },
    "usdt": 14.71,
-   "btc_precio_crudo": -0.011721893977774012
+   "btc_precio_crudo": -0.06532444936295467
   }
  ]
 }
