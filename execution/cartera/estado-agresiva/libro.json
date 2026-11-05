@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 662.8661912973082,
+  "usdt": 776.5736200473082,
   "posiciones": {
-    "UNIUSDT": {
-      "nivel": "trading",
-      "cantidad": 14.982394366197184,
-      "entrada": 7.668,
-      "maximo": 7.82,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793853060000
-    },
     "AAVEUSDT": {
       "nivel": "trading",
       "cantidad": 0.7510148849797023,
@@ -48,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793853060000
+      "vigilado_hasta": 1793856660000
     }
   },
-  "comisiones_usd": 37.51145899999999,
+  "comisiones_usd": 37.62527999999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3412,6 +3390,18 @@
       "comision": 0.134915,
       "motivo": "Rotación por regla de 24 h: entró 04/11 04:32, sin llegar a +8% ni al stop (máx ~+4,9%). 4 h -0,51% con 1,04x, -1,16% del máximo de 48 h: sin ruptura. Se libera para rotar.",
       "resultado_pct": 3.88
+    },
+    {
+      "ms": 1793856732440,
+      "fecha": "2026-11-05 05:32 UTC",
+      "lado": "sell",
+      "par": "UNIUSDT",
+      "cantidad": 14.982394366197184,
+      "precio": 7.597,
+      "usd": 113.8213,
+      "comision": 0.113821,
+      "motivo": "Invalidación anotada cumplida: 4 h pasó a rojo (-0,41%) con 24 h cayendo a +4,14% (< +5%); 1 h -0,87%, -2,8% del máximo de 48 h. El momentum que justificó la entrada se fue: salida manual antes del stop 7,429.",
+      "resultado_pct": -0.93
     }
   ]
 }
