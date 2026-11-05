@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 875.0082398037357,
-  "posiciones": {},
-  "comisiones_usd": 37.72381299999999,
+  "usdt": 700.0082398037357,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.002296611760359975,
+      "entrada": 76123.01,
+      "maximo": 76123.01,
+      "reglas": {
+        "stop": 2.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793903580000
+    }
+  },
+  "comisiones_usd": 37.89881299999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3391,6 +3414,18 @@
       "comision": 0.098533,
       "motivo": "Invalidación anotada cumplida: 4 h -1,72% (< -0,3%) con 24 h +0,74% (< +5%), 1 h -1,04%, mínimo de 6 h 131,23. El momentum que justificó la entrada no está: salida manual antes del stop 127,19.",
       "resultado_pct": -1.37
+    },
+    {
+      "ms": 1793903556115,
+      "fecha": "2026-11-05 18:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.002296611760359975,
+      "precio": 76123.01,
+      "usd": 175.0,
+      "comision": 0.175,
+      "motivo": "Rebote en soporte: BTC tocó el mínimo de 48 h (75.568) hace 3 h y las últimas 3 velas de 1 h ya no hacen mínimo nuevo (75.642/75.818/75.701); 1 h +0,16%, 4 h -2,83% (salió del bloqueo de -3%), volumen 3,81x. Stop 2,5% (~74.200, debajo del mínimo con margen) en vez de 5%: la tesis muere antes. Invalida: cierre de 1 h debajo de 75.568 o BTC 4 h vuelve a < -3% con nuevo mínimo."
     }
   ]
 }

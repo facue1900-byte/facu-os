@@ -1,18 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-05 17:31 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-05 18:32 UTC
 
-**Total: 875.01 USD (-12.50%)** desde 2026-10-07 23:06 UTC · USDT libre 875.01 · comisiones 37.72 · 282 operaciones
+**Total: 874.80 USD (-12.52%)** desde 2026-10-07 23:06 UTC · USDT libre 700.01 · comisiones 37.90 · 283 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **875.01** |
+| **Esta carpeta** | **874.80** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 913.66 |
+| hodl btc | 914.52 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| BTC | trading | 174.79 | -0.02% | 74,219.9 |
 
 ## Últimas operaciones
 
+- 2026-11-05 18:32 UTC · compra BTC 175.00 USD a 76,123 — Rebote en soporte: BTC tocó el mínimo de 48 h (75.568) hace 3 h y las últimas 3 velas de 1 h ya no hacen mínimo nuevo (75.642/75.818/75.701)
 - 2026-11-05 12:32 UTC · venta AAVE 98.53 USD a 131.2 — Invalidación anotada cumplida: 4 h -1,72% (< -0,3%) con 24 h +0,74% (< +5%), 1 h -1,04%, mínimo de 6 h 131,23. El momentum que justificó la 
 - 2026-11-05 05:32 UTC · venta UNI 113.82 USD a 7.597 — Invalidación anotada cumplida: 4 h pasó a rojo (-0,41%) con 24 h cayendo a +4,14% (< +5%); 1 h -0,87%, -2,8% del máximo de 48 h. El momentum
 - 2026-11-05 04:32 UTC · venta BNB 134.91 USD a 715.13 — Rotación por regla de 24 h: entró 04/11 04:32, sin llegar a +8% ni al stop (máx ~+4,9%). 4 h -0,51% con 1,04x, -1,16% del máximo de 48 h: si
@@ -22,6 +24,5 @@
 - 2026-11-04 22:32 UTC · compra ETH 110.00 USD a 2,437.36 — Momentum de 24 h (condición anotada 20:31/21:32 cumplida): ETH +6,29% en 24 h, 4 h volvió a verde (+0,59%), 1 h +0,79% (no estirada), -0,51%
 - 2026-11-04 20:32 UTC · venta ETH 129.06 USD a 2,421.87 — Invalidación anotada 19:32 cumplida: 4 h quedó roja (-0,56% < -0,3%), volumen 4 h 0,83x (se apagó el 4-5x de la entrada), -1,17% del máximo 
 - 2026-11-04 19:32 UTC · venta SUI 113.22 USD a 0.9308 — Invalidación anotada 16:32 cumplida: 4 h pasó a rojo (-1,24%) con 24 h debajo de +5% (+3,99%), -2,64% del máximo de 48 h. Salida manual a ~0
-- 2026-11-04 18:32 UTC · compra UNI 115.00 USD a 7.668 — Momentum de 24 h: UNI +5,87% en 24 h, sigue subiendo en 4 h (+1,64%), 1 h +0,16% (no estirada), -1,46% del máximo de 48 h, volumen 4 h 1,61x
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
