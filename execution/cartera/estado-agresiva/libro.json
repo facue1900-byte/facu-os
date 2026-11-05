@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 235.57912279846556,
+  "usdt": 344.9363017448255,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793842260000
+      "vigilado_hasta": 1793845860000
     },
     "BNBUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793842260000
+      "vigilado_hasta": 1793845860000
     },
     "UNIUSDT": {
       "nivel": "trading",
@@ -70,29 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793842260000
-    },
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.04508566645879148,
-      "entrada": 2437.36,
-      "maximo": 2444.75,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793842260000
+      "vigilado_hasta": 1793845860000
     },
     "AAVEUSDT": {
       "nivel": "trading",
@@ -114,10 +92,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793842260000
+      "vigilado_hasta": 1793845860000
     }
   },
-  "comisiones_usd": 37.08374399999999,
+  "comisiones_usd": 37.19321099999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3442,6 +3420,18 @@
       "usd": 100.0,
       "comision": 0.1,
       "motivo": "Momentum de 24 h: AAVE +5,53% en 24 h, sigue subiendo en 4 h (+1,87%), 1 h +0,9% (no estirada), -2,96% del máximo de 48 h. Volumen 4 h flojo (0,75x): tamaño menor (~11%). Invalida: cierre horario debajo de -3% desde la entrada o 4 h vuelve a rojo (< -0,3%) con 24 h < +5% — salida manual. Rota 06/11 00:31 si no llega a +8%."
+    },
+    {
+      "ms": 1793845946237,
+      "fecha": "2026-11-05 02:32 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.04508566645879148,
+      "precio": 2427.97,
+      "usd": 109.4666,
+      "comision": 0.109467,
+      "motivo": "Invalidación anotada 22:32 cumplida: 4 h pasó a rojo (-0,33% < -0,3%), volumen 4 h 0,57x, -0,89% del máximo de 48 h sin ruptura; 24 h +8,19% pero el impulso de 4 h no acompaña. Salida manual a ~2428 (-0,4%) antes del stop 2322,5.",
+      "resultado_pct": -0.39
     }
   ]
 }
