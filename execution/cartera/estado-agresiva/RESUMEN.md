@@ -1,19 +1,19 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-05 11:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-05 12:32 UTC
 
-**Total: 876.06 USD (-12.39%)** desde 2026-10-07 23:06 UTC · USDT libre 776.57 · comisiones 37.63 · 281 operaciones
+**Total: 875.01 USD (-12.50%)** desde 2026-10-07 23:06 UTC · USDT libre 875.01 · comisiones 37.72 · 282 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **876.06** |
+| **Esta carpeta** | **875.01** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 965.13 |
+| hodl btc | 960.69 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| AAVE | trading | 99.49 | -0.41% | 127.186 |
 
 ## Últimas operaciones
 
+- 2026-11-05 12:32 UTC · venta AAVE 98.53 USD a 131.2 — Invalidación anotada cumplida: 4 h -1,72% (< -0,3%) con 24 h +0,74% (< +5%), 1 h -1,04%, mínimo de 6 h 131,23. El momentum que justificó la 
 - 2026-11-05 05:32 UTC · venta UNI 113.82 USD a 7.597 — Invalidación anotada cumplida: 4 h pasó a rojo (-0,41%) con 24 h cayendo a +4,14% (< +5%); 1 h -0,87%, -2,8% del máximo de 48 h. El momentum
 - 2026-11-05 04:32 UTC · venta BNB 134.91 USD a 715.13 — Rotación por regla de 24 h: entró 04/11 04:32, sin llegar a +8% ni al stop (máx ~+4,9%). 4 h -0,51% con 1,04x, -1,16% del máximo de 48 h: si
 - 2026-11-05 04:32 UTC · venta BTC 183.33 USD a 80,476 — Rotación por regla de 24 h: entró 04/11 04:32, sin llegar a +8% ni al stop (máx ~+5,3%). 4 h -0,09% con 0,58x, -0,89% del máximo de 48 h: si
@@ -23,6 +23,5 @@
 - 2026-11-04 20:32 UTC · venta ETH 129.06 USD a 2,421.87 — Invalidación anotada 19:32 cumplida: 4 h quedó roja (-0,56% < -0,3%), volumen 4 h 0,83x (se apagó el 4-5x de la entrada), -1,17% del máximo 
 - 2026-11-04 19:32 UTC · venta SUI 113.22 USD a 0.9308 — Invalidación anotada 16:32 cumplida: 4 h pasó a rojo (-1,24%) con 24 h debajo de +5% (+3,99%), -2,64% del máximo de 48 h. Salida manual a ~0
 - 2026-11-04 18:32 UTC · compra UNI 115.00 USD a 7.668 — Momentum de 24 h: UNI +5,87% en 24 h, sigue subiendo en 4 h (+1,64%), 1 h +0,16% (no estirada), -1,46% del máximo de 48 h, volumen 4 h 1,61x
-- 2026-11-04 18:32 UTC · venta NEAR 127.91 USD a 4.114 — Invalidación anotada 17:31 cumplida: 4 h pasó a rojo (-0,75%), 1 h -0,05%, -3,51% del máximo de 48 h; 24 h todavía +7,8% pero el impulso se 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

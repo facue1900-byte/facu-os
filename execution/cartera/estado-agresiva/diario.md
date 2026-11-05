@@ -3373,3 +3373,11 @@ Invalidación anotada cumplida: 4 h pasó a rojo (-0,41%) con 24 h cayendo a +4,
 ## 2026-11-05 11:32 UTC — nota
 11:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: AAVE 60 min, sin disparos. Mercado: 4 h plana (-2,74/+0,62%, UNI aparte), 1 h plana (-1,06/+0,13%), volumen 4 h apagado (0,23-1,14x). BTC -0,1% en 4 h (0,79x), -1,13% del máximo de 48 h: sin bloqueo. Posición: AAVE 132,44 (~-0,4%), 4 h +0,03%, 24 h +0,48%, 1 h -0,03%: viva por la regla anotada pero sin impulso; sale si 4 h < -0,3% o cierre debajo de ~129,03; stop 127,19; rota 06/11 00:31. Sin entradas: momentum nadie (ETH 24 h +3,83%, LINK +3,19%, SOL +3,1%: todos < +5%); ruptura nadie (BNB -0,98%, BTC -1,13%, ETH -1,34%, todos < 1x); rebote TRX +0,28% del mínimo con 1 h +0,13% pero 24 h -0,16% y baja volatilidad: no alcanza para cubrir comisión; HYPE +1,37% del mínimo con 1 h -0,26% y 4 h -1,36%: sigue cayendo, no. Nada claro, plata en USDT. A mirar: BTC/BNB ruptura con >= 1,5x; ETH/SOL si 24 h pasa +5% con 4 h verde y volumen >= 1x; HYPE si deja de hacer mínimos; AAVE invalidación. 1 posición (~11%), resto en USDT.
 
+## 2026-11-05 12:32 UTC — Venta AAVEUSDT
+98.53 USD a 131.2 (-1.37% contra la compra).
+
+Invalidación anotada cumplida: 4 h -1,72% (< -0,3%) con 24 h +0,74% (< +5%), 1 h -1,04%, mínimo de 6 h 131,23. El momentum que justificó la entrada no está: salida manual antes del stop 127,19.
+
+## 2026-11-05 12:32 UTC — nota
+12:32 UTC — Sin disparos, sin entradas, 1 salida manual (AAVE). Vigilante: AAVE 61 min, sin disparos. Mercado: 4 h roja total salvo TRX (-3,71/+0,09%), 1 h roja total (-1,37/0%), volumen 4 h apagado (0,32-1,28x). BTC -0,6% en 4 h (0,71x), -1,46% del máximo de 48 h: sin bloqueo (umbral -3%). Salida: AAVE a 131,2 (-1,37%) — invalidación anotada cumplida (4 h -1,72% < -0,3%, 24 h +0,74%). Sin entradas: momentum nadie (ETH 24 h +4,06% < +5% con 4 h -0,5%; LINK +3,38%, SOL +3,28% con 4 h roja); ruptura nadie (BTC -1,46%, BNB -1,58%, ETH -1,71%, todos < 1x); rebote TRX +0,25% del mínimo con 1 h 0% y 24 h -0,13%: baja volatilidad, no cubre comisión; HYPE +1,1% del mínimo con 1 h -0,67% y 1,28x: sigue cayendo, no; TRUMP meme -24% del máximo: no. Nada claro, todo en USDT. A mirar: HYPE si deja de hacer mínimos con volumen; BTC/ETH ruptura del máximo de 48 h con >= 1,5x; ETH si 24 h pasa +5% con 4 h verde y >= 1x. 0 posiciones, 100% USDT.
+

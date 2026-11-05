@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 776.5736200473082,
-  "posiciones": {
-    "AAVEUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.7510148849797023,
-      "entrada": 133.02,
-      "maximo": 133.88,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793878260000
-    }
-  },
-  "comisiones_usd": 37.62527999999999,
+  "usdt": 875.0082398037357,
+  "posiciones": {},
+  "comisiones_usd": 37.72381299999999,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3402,6 +3379,18 @@
       "comision": 0.113821,
       "motivo": "Invalidación anotada cumplida: 4 h pasó a rojo (-0,41%) con 24 h cayendo a +4,14% (< +5%); 1 h -0,87%, -2,8% del máximo de 48 h. El momentum que justificó la entrada se fue: salida manual antes del stop 7,429.",
       "resultado_pct": -0.93
+    },
+    {
+      "ms": 1793881967628,
+      "fecha": "2026-11-05 12:32 UTC",
+      "lado": "sell",
+      "par": "AAVEUSDT",
+      "cantidad": 0.7510148849797023,
+      "precio": 131.2,
+      "usd": 98.5332,
+      "comision": 0.098533,
+      "motivo": "Invalidación anotada cumplida: 4 h -1,72% (< -0,3%) con 24 h +0,74% (< +5%), 1 h -1,04%, mínimo de 6 h 131,23. El momentum que justificó la entrada no está: salida manual antes del stop 127,19.",
+      "resultado_pct": -1.37
     }
   ]
 }
