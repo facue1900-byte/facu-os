@@ -109,3 +109,8 @@ Pendiente 10/11: seguimiento de la tanda del 20/10, sumándoles "Always In The G
 - Quién: **Defora Records 3** (visible). Los otros dos nombres los tapa SoundCloud sin Artist Pro: Diynamic 2 lo dijo Facu; el tercero, 1 por resta. SoundCloud no dice qué tema bajó cada uno.
 - Reporte como foto a Vlado por WhatsApp 04/11 12:26 (OK de Facu): `Desktop/Facu/SIN CITY/sin-city-promo/reporte-soundcloud-04-11.png`.
 - Tracker sin corregir: Raw Division (rebotó) y Snatch! (sólo Trackstack) figuran "Enviado" en la tanda del 20/10.
+
+## Respuestas 30/10 al 05/11 (revisado en studio@ el 05/11)
+- ❌ Hotoven (02/11, Space Miami): no encaja, que sigamos mandando. ❌ Comparsa (05/11, Always In The Game): "increíble", no encaja con la curaduría, les gusta escuchar lo nuestro.
+- Trackstack: **Libero** dejó review el 05/11; el veredicto está adentro de Trackstack (pausada).
+- Sin mail nuevo de Defora (último 27/10) ni de Diynamic (bajó 2 en SoundCloud). Soporte de Trackstack no contestó nada nuevo.
