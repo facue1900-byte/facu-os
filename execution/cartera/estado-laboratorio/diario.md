@@ -343,3 +343,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-05 00:16 UTC — nota
 [v1] Sin entrada: filtro BTC ok (var_24h 4.49, var_4h 0.72). Max posiciones 3/3 y ningun par con vol4h>=1.3 (todos <1). BTC/ETH/SUI: ninguna lleva 48h ni cumple var_24h<0 y var_4h<-2, sin salidas. Sin disparos.
 
+## 2026-11-05 02:16 UTC — nota
+[v1] Sin entrada: filtro BTC ok (var_24h 5.99, var_4h 0.01). Max posiciones 3/3 y ningun par con vol4h>=1.3 (BTC 0.67, ETH 0.55, TRUMP 1.11 con var_24h negativa). BTC/ETH/SUI: ninguna lleva 48h ni cumple var_24h<0 y var_4h<-2 (UNI/SUI var_4h -1.51/-0.96 con var_24h>0), sin salidas. Sin disparos.
+
