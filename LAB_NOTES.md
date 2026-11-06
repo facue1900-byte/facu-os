@@ -480,3 +480,13 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
 **Fix:** el genérico hashea con el Python del venv y distingue «no pude leer» de «cambió». El pulgar no se tocó: su fecha pasó y necesita un OK nuevo de todos modos.
 
 **Lección:** un ensayo desde la sesión no prueba lo que va a pasar bajo launchd. Lo que toca el Desktop en una tarea programada se ensaya con `launchctl submit`.
+
+## 06/11/2026 — El efectivo diario dijo «no coinciden» dos mañanas cuando era la red
+
+**Dónde:** `.claude/skills/cierre-mes-nordelta/scripts/efectivo_diario.sh`, paso 1.
+
+**Qué pasó:** el 05/11 y el 06/11 el job cortó con «la app y la planilla no coinciden». En los dos casos fue un timeout de red al bajar el Master Plan; el 06/11 la corrida duró 1 h 38 min. Corrido a mano a las 09:54: 655 = 655, nada que volcar. No se perdió ningún cobro.
+
+**Fix:** el mensaje ahora dice que el paso 1 se corta por diferencia O por no poder bajar los datos, y manda a mirar el error. Queda sin resolver por qué la red de la Mac falla a esa hora.
+
+**Lección:** el mismo patrón que el `shasum` del 05/11: un chequeo que no pudo leer no tiene que reportar un veredicto.

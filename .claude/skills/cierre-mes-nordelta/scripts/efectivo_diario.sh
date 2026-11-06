@@ -54,7 +54,7 @@ fi
 
 echo; echo "--- 1/2 · ¿La app y la planilla dicen lo mismo? ---"
 "$PY" "$S/sincronizar_supabase.py" --aplicar --estricto \
-  || avisar "la app y la planilla no coinciden (paso 1)"
+  || avisar "paso 1 cortado: o la app y la planilla no coinciden, o no se pudo bajar una de las dos (mirar el error de arriba; el 05 y 06/11/2026 fue timeout de red, no diferencia)"
 
 echo; echo "--- 2/2 · Volcando cobros en efectivo a las pestañas ---"
 "$PY" "$S/volcar_cobros.py" --desde "$DESDE" --solo-efectivo --escribir \
