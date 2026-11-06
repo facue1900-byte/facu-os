@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.07782521211905376,
       "entrada": 2246.38,
-      "maximo": 2251.0,
+      "maximo": 2254.26,
       "reglas": {
         "stop": 2.5,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794000660000
+      "vigilado_hasta": 1794004260000
     },
     "ZECUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794000660000
+      "vigilado_hasta": 1794004260000
     }
   },
   "comisiones_usd": 39.118198999999976,
