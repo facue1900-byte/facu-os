@@ -186,6 +186,26 @@ en `feed` y `story`. Los otros 63 quedan de banco para rotar cuando se gasten.
 Regla de rotación: si un creativo pasa 4 días con el costo por conversación 50% arriba
 del promedio del conjunto, se apaga y entra otro del banco.
 
+### Formato a probar: alguien de Astronomy hablando a cámara (06/11/2026, pedido de Facu)
+
+Facu marcó que este formato es para promocionar Academy. Las referencias están en
+`contenido/reels_diarios/referencias.md`, filas **9, 10 y 11**: el detalle de cada una
+vive ahí y no se repite acá.
+
+- **Qué es:** Facu, Vlado o un profe habla a cámara en la cabina, encuadrado en la mitad
+  de abajo. Arriba aparece una tarjeta por frase (captura de la app, noticia de la
+  electrónica con fecha o gráfico de dos líneas) y abajo va un subtítulo de 1 a 3 palabras.
+- **Por qué:** es el formato de las cuentas que más comentarios juntan (la 9 tiene más
+  comentarios que likes). Además se filma en 10 minutos y sin producción, y pone una
+  cara humana donde hoy la pauta compra clics sin intención.
+- **Qué vende:** sólo membresías (Gold de default). El Curso de DJ, las clases online y la
+  Carrera entran como ángulo, nunca como producto suelto.
+- **Cómo cierra:** con «comentá GOLD», que ya conecta con el bot de DMs.
+- **Primero orgánico:** se publica como reel de prueba. Si junta comentarios «GOLD» o le
+  gana en vistas a los otros reels de prueba, pasa a la pauta como creativo. Ahí se juzga
+  con la regla de rotación de arriba.
+- **Lo que falta:** filmar la toma a cámara, que ya está en el pedido de filmación.
+
 ---
 
 ## 4. Presupuesto y umbrales de decisión

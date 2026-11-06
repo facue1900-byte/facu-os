@@ -1,13 +1,14 @@
 #!/bin/bash
-# Publica UNA vez, el 05/11/2026: el video genérico como reel de prueba, y prende su anuncio ya
-# creado en pausa (Facu, 04/11: «dale te doy el ok»). Ni antes ni después de ese día.
+# Publica UNA vez, el 07/11/2026 12:00: el video genérico como reel de prueba, y prende su anuncio ya
+# creado en pausa (Facu, 04/11: «dale te doy el ok»; el 05/11 no salió por shasum bajo launchd, y
+# Facu dio «dale» el 06/11 para el 07/11). Ni antes ni después de ese día.
 # Cada parte tiene su marca: si una falla, relanzar no repite la otra.
 #   --ensayo: chequea todo menos la fecha, y no publica ni prende nada.
 OS=/Users/Facu/facu-os
 P="/Users/Facu/Desktop/Productoras/Astronomy/Academia/Contenido/Pauta Online/Reels-a-mano/05-generico-membresia"
 VIDEO="$P/generico-sin-capcut.mp4"
 SHA=3de686b47453f0481c731b8a67e2a4ce3739efa3ddf7e7d385eff5c7d7d5c380
-DIA=2026-11-05
+DIA=2026-11-07
 PY="$OS/.venv/bin/python"
 
 HOY=$(date +%F)
@@ -34,7 +35,7 @@ if [[ ! -e "$P/.publicado-reel" ]]; then
     echo "$ID $LINK" > "$P/.publicado-reel"
     ID="$ID" LINK="$LINK" SHA="$ACTUAL" P="$P" "$PY" - <<'PY'
 import json, os
-l = {"fecha": "2026-11-05", "carpeta": os.environ["P"], "slug": "generico-membresia",
+l = {"fecha": "2026-11-07", "carpeta": os.environ["P"], "slug": "generico-membresia",
      "formato": "Video genérico de la academia de Facu, sin el cierre de CapCut",
      "tema": "audio-original", "media_id": os.environ["ID"], "permalink": os.environ["LINK"],
      "sha": os.environ["SHA"][:20], "voz": "", "tomas": []}
