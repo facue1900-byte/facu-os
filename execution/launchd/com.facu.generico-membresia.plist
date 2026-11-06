@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.facu.generico-membresia</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+		<string>generico-membresia</string>
+		<string>--</string>
+		<string>/Users/Facu/facu-os/active/astronomy/contenido/publicar_generico_una_vez.sh</string>
+	</array>
+	<key>RunAtLoad</key>
+	<false/>
+	<key>StandardErrorPath</key>
+	<string>/Users/Facu/facu-os/data/logs/generico-membresia.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/Facu/facu-os/data/logs/generico-membresia.log</string>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Day</key>
+		<integer>7</integer>
+		<key>Hour</key>
+		<integer>12</integer>
+		<key>Minute</key>
+		<integer>0</integer>
+		<key>Month</key>
+		<integer>11</integer>
+	</dict>
+	<key>WorkingDirectory</key>
+	<string>/Users/Facu/facu-os</string>
+</dict>
+</plist>
