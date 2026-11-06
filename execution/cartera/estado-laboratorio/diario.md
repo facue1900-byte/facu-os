@@ -408,3 +408,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-06 12:18 UTC — nota
 [v2] Sin entrada: filtro BTC cerrado (var_24h -4.41 < -2; var_4h 0.62). Carpeta 100% USDT, sin posiciones. Sin disparos.
 
+## 2026-11-06 14:20 UTC — nota
+[v2] Sin entrada: filtro BTC cerrado (var_24h -3.33 < -2; var_4h -0.51). ZEC cumplía var_24h/var_4h pero volumen_4h 1.06<1.3. Carpeta 100% USDT, sin posiciones. Sin disparos.
+
