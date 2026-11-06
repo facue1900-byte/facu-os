@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793982660000
+      "vigilado_hasta": 1793986260000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.12987808954957766,
       "entrada": 1346.07,
-      "maximo": 1364.47,
+      "maximo": 1378.0,
       "reglas": {
         "stop": 3.5,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793982660000
+      "vigilado_hasta": 1793986260000
     },
     "XRPUSDT": {
       "nivel": "trading",
       "cantidad": 145.97945891783567,
       "entrada": 1.1976,
-      "maximo": 1.1976,
+      "maximo": 1.1997,
       "reglas": {
         "stop": 2.5,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793982780000
+      "vigilado_hasta": 1793986260000
     }
   },
   "comisiones_usd": 38.946731999999976,
