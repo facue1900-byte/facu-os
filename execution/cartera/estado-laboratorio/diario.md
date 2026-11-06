@@ -420,3 +420,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-06 20:17 UTC — nota
 [v2] Sin entrada: filtro BTC abierto (var_24h -0.5, var_4h -0.21). ZEC (var_4h -1.88, vol 0.7, vs_max_48h -3.23) y PEPE (var_4h -1.17, vol 0.36, vs_max_48h -2.69) cumplen var_24h pero no var_4h>0, volumen ni zona de maximo. Ningun par cumple todo. Carpeta 100% USDT, sin posiciones. Sin disparos.
 
+## 2026-11-06 22:16 UTC — nota
+[v2] Sin entrada: filtro BTC abierto (var_24h 0.38, var_4h 0.28). Solo ZEC tiene var_24h>=3 (5.54) pero var_4h -0.53, vol 0.39, vs_max_48h -3.98. Ningun par cumple todo. Carpeta 100% USDT, sin posiciones. Sin disparos.
+
