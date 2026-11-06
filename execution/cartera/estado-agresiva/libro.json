@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 697.5801154465933,
+  "usdt": 522.5801154465933,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793975460000
+      "vigilado_hasta": 1793979060000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.12987808954957766,
+      "entrada": 1346.07,
+      "maximo": 1346.07,
+      "reglas": {
+        "stop": 3.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793979180000
     }
   },
-  "comisiones_usd": 38.59673199999998,
+  "comisiones_usd": 38.77173199999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3474,6 +3496,18 @@
       "usd": 175.0,
       "comision": 0.175,
       "motivo": "Rebote en soporte: ETH lleva ~10 velas de 1 h (desde 23:00 del 05/11) sin perder el mínimo de 48 h 2.206; la vela 09:00 es verde (+0,9% 1 h, +0,95% 4 h) con volumen 4 h 0,98x (al borde del >= 1x que me había puesto) y BTC acompaña (+0,75% 1 h). Invalida: cierre 1 h < 2.206 o mínimo nuevo de 48 h. Stop ajustado a 2,5% (~2.190, debajo del mínimo)."
+    },
+    {
+      "ms": 1793979165737,
+      "fecha": "2026-11-06 15:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.12987808954957766,
+      "precio": 1346.07,
+      "usd": 175.0,
+      "comision": 0.175,
+      "motivo": "Momentum de 24 h: ZEC +8,68% en 24 h, +4,21% en 4 h con volumen 4 h 2,26x (el más fuerte del radar), 1 h -1,04% (no estirada, < +4%). Velas 12:00 y 14:00 con volumen 22,7 y 38,3 M USD empujando de 1.291 a 1.360; mecha a 1.388 (máximo de 48 h) rechazada. Invalida: cierre 1 h < 1.300 (piso de las velas 13:00-14:00). Stop 3,5% (~1.300) en vez de 5% porque ahí muere la tesis."
     }
   ]
 }

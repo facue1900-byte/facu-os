@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-06 14:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-06 15:32 UTC
 
-**Total: 871.02 USD (-12.90%)** desde 2026-10-07 23:06 UTC · USDT libre 697.58 · comisiones 38.60 · 287 operaciones
+**Total: 870.10 USD (-12.99%)** desde 2026-10-07 23:06 UTC · USDT libre 522.58 · comisiones 38.77 · 288 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **871.02** |
+| **Esta carpeta** | **870.10** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 907.77 |
+| hodl btc | 907.35 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 173.44 | -0.79% | 2,190.22 |
+| ZEC | trading | 174.72 | -0.06% | 1,298.96 |
+| ETH | trading | 172.79 | -1.16% | 2,190.22 |
 
 ## Últimas operaciones
 
+- 2026-11-06 15:32 UTC · compra ZEC 175.00 USD a 1,346.07 — Momentum de 24 h: ZEC +8,68% en 24 h, +4,21% en 4 h con volumen 4 h 2,26x (el más fuerte del radar), 1 h -1,04% (no estirada, < +4%). Velas 
 - 2026-11-06 09:32 UTC · compra ETH 175.00 USD a 2,246.38 — Rebote en soporte: ETH lleva ~10 velas de 1 h (desde 23:00 del 05/11) sin perder el mínimo de 48 h 2.206; la vela 09:00 es verde (+0,9% 1 h,
 - 2026-11-05 23:32 UTC · venta BTC 174.36 USD a 75,922 — Tesis de rebote en soporte rota: la vela de 1 h de las 23:00 hizo mínimo nuevo de 48 h en 75.208,42, debajo del soporte 75.568. Ya no 'deja 
 - 2026-11-05 21:32 UTC · venta ETH 173.56 USD a 2,236.9 — Tesis de rebote en soporte rota: la vela de 1 h de las 21:00 hizo mínimo nuevo de 48 h en 2.219,15 (debajo del soporte 2.236,78) y el precio
@@ -23,6 +25,5 @@
 - 2026-11-05 05:32 UTC · venta UNI 113.82 USD a 7.597 — Invalidación anotada cumplida: 4 h pasó a rojo (-0,41%) con 24 h cayendo a +4,14% (< +5%); 1 h -0,87%, -2,8% del máximo de 48 h. El momentum
 - 2026-11-05 04:32 UTC · venta BNB 134.91 USD a 715.13 — Rotación por regla de 24 h: entró 04/11 04:32, sin llegar a +8% ni al stop (máx ~+4,9%). 4 h -0,51% con 1,04x, -1,16% del máximo de 48 h: si
 - 2026-11-05 04:32 UTC · venta BTC 183.33 USD a 80,476 — Rotación por regla de 24 h: entró 04/11 04:32, sin llegar a +8% ni al stop (máx ~+5,3%). 4 h -0,09% con 0,58x, -0,89% del máximo de 48 h: si
-- 2026-11-05 02:32 UTC · venta ETH 109.47 USD a 2,427.97 — Invalidación anotada 22:32 cumplida: 4 h pasó a rojo (-0,33% < -0,3%), volumen 4 h 0,57x, -0,89% del máximo de 48 h sin ruptura; 24 h +8,19%
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
