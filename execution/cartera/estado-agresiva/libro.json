@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 347.58011544659325,
+  "usdt": 518.8761204190381,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793997120000
+      "vigilado_hasta": 1794000660000
     },
     "ZECUSDT": {
       "nivel": "trading",
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793997120000
-    },
-    "XRPUSDT": {
-      "nivel": "trading",
-      "cantidad": 145.97945891783567,
-      "entrada": 1.1976,
-      "maximo": 1.1997,
-      "reglas": {
-        "stop": 2.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1793997120000
+      "vigilado_hasta": 1794000660000
     }
   },
-  "comisiones_usd": 38.946731999999976,
+  "comisiones_usd": 39.118198999999976,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3542,6 +3520,18 @@
       "usd": 175.0,
       "comision": 0.175,
       "motivo": "Rebote en soporte: XRP tocó el mínimo de 48 h 1,174 en la vela 15:00 y la 16:00 ya no hizo mínimo nuevo (piso 1,1829), cerró verde +0,78% 1 h con volumen 4 h 1,61x — es la primera vez en el día que el rebote viene con volumen. Invalida: cierre 1 h < 1,174 (mínimo nuevo de 48 h). Stop 2,5% (~1,169), justo debajo del mínimo."
+    },
+    {
+      "ms": 1794000729423,
+      "fecha": "2026-11-06 21:32 UTC",
+      "lado": "sell",
+      "par": "XRPUSDT",
+      "cantidad": 145.97945891783567,
+      "precio": 1.1746,
+      "usd": 171.4675,
+      "comision": 0.171467,
+      "motivo": "Tesis invalidada: la vela 1 h de las 20:00 cerró en 1,1734 < 1,174 (mínimo de 48 h) e hizo mínimo nuevo 1,1723. Salgo antes del stop 1,168 como estaba escrito: el rebote en soporte murió.",
+      "resultado_pct": -1.92
     }
   ]
 }
