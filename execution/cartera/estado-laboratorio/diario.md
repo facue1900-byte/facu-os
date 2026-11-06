@@ -399,3 +399,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-06 06:17 UTC — nota
 [v1] Sin entrada: filtro BTC cerrado (var_24h -6.32 < -2; var_4h -0.85). Carpeta 100% USDT, sin posiciones. Sin disparos.
 
+## 2026-11-06 08:17 UTC — nota
+[v1] Sin entrada: filtro BTC cerrado (var_24h -5.99 < -2; var_4h -0.13). Carpeta 100% USDT, sin posiciones. Sin disparos.
+
