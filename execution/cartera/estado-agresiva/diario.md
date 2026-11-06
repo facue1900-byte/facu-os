@@ -3466,3 +3466,16 @@ Tesis de rebote en soporte rota: la vela de 1 h de las 23:00 hizo mínimo nuevo 
 ## 2026-11-06 08:32 UTC — nota
 08:31 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: sin posiciones, nada que vigilar. Mercado: plano y apagado — 1 h plana (-0,96/+1,03%), 4 h mixta (-2,57/+2,24%), volumen 4 h bajo (0,26-1,49x, casi todo < 0,8x). BTC -0,14% en 4 h (0,76x), 1 h +0,06%, +0,6% del mínimo de 48 h: sin bloqueo. Lectura: BTC/ETH siguen sobre 75.208 / 2.206 sin mínimo nuevo, pero la condición de entrada (1 h verde con volumen >= 1x) no se cumple: BTC +0,06% con 0,76x (verde de una décima, sin volumen), ETH -0,05% con 1,01x. No entro. Descartes: ruptura nadie (ARB 1,49x < 1,5 y -3,83% del máximo, 1 h -0,42%; TRX -1,33% del máximo, baja volatilidad; BNB -4,48%, 0,44x); momentum nadie (todo 24 h rojo salvo ARB +0,18%); XRP +1,07% del mínimo, 1 h +0,36% pero 4 h -1,15% y 24 h -10%: sin confirmar; HYPE 1,31x pero 4 h -0,69%: sin señal; NEAR/PEPE 1 h +1% pero +3 a +8% del mínimo y volumen 0,4-0,6x: rebote de alts sin volumen, no es soporte; INJ 4 h -2,57%: se enfrió. Nada claro, 100% USDT. A mirar próxima hora: BTC/ETH si 1 h verde sin perder 75.208 / 2.206 con volumen >= 1x; ARB si rompe el máximo de 48 h con >= 1,5x. 0 posiciones, 100% USDT.
 
+## 2026-11-06 09:32 UTC — Compra ETHUSDT (trading)
+175.00 USD a 2,246.38. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: ETH lleva ~10 velas de 1 h (desde 23:00 del 05/11) sin perder el mínimo de 48 h 2.206; la vela 09:00 es verde (+0,9% 1 h, +0,95% 4 h) con volumen 4 h 0,98x (al borde del >= 1x que me había puesto) y BTC acompaña (+0,75% 1 h). Invalida: cierre 1 h < 2.206 o mínimo nuevo de 48 h. Stop ajustado a 2,5% (~2.190, debajo del mínimo).
+
+## 2026-11-06 09:32 UTC — Reglas ETHUSDT
+Antes {'stop': 5.0, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]} → ahora {'stop': 2.5, 'trail': 5.0, 'tp': [[8.0, 0.5], [15.0, 1.0]]}.
+
+Stop más cerca (5% → 2,5%, ~2.190): la tesis de rebote muere si pierde el mínimo de 48 h 2.206; no tiene sentido arriesgar 5%. Acercar el stop, nunca alejarlo.
+
+## 2026-11-06 09:32 UTC — nota
+09:31 UTC — Sin disparos, 1 entrada (ETH), sin salidas. Vigilante: sin posiciones, nada que vigilar. Mercado: rebote de 1 h verde casi total (-0,08/+3,01%), 4 h verde (-0,03/+4,9%), volumen 4 h todavía bajo (0,25-1,16x). BTC +0,73% en 4 h (0,76x), 1 h +0,75%, +1,38% del mínimo de 48 h: sin bloqueo. Entrada: ETH 175 USD a 2.246,38 (~20%) — rebote en soporte: ~10 velas sin perder 2.206, vela 09:00 verde +0,9% con 0,98x (al borde del >= 1x; lo anoto como entrada en el límite de mi propio filtro); stop ajustado a 2,5% (~2.190); invalida cierre 1 h < 2.206; rota 07/11 09:32. BTC no: misma señal pero 0,76x y sería correlación doble. Descartes: PEPE 24 h +3,21% (< 5%), 1 h +3,01%, +11% del mínimo: estirada, ni momentum ni soporte; ARB 1,16x (< 1,5) y -2,43% del máximo: no rompió; ZEC 1 h +2,94% pero 0,56x y -4,24% del máximo: no es ruptura; INJ 24 h -2,88%: nada; alts (SOL/XRP/HYPE/NEAR/UNI) rebote de 1 h con volumen 0,4-0,9x: mismo trade que ETH con menos liquidez. A mirar próxima hora: ETH sobre 2.206; BTC si 1 h verde con >= 1x; ARB si rompe el máximo de 48 h con >= 1,5x. 1 posición (~20%), resto en USDT.
+
