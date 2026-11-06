@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 522.5801154465933,
+  "usdt": 347.58011544659325,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793979060000
+      "vigilado_hasta": 1793982660000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.12987808954957766,
       "entrada": 1346.07,
-      "maximo": 1346.07,
+      "maximo": 1364.47,
       "reglas": {
         "stop": 3.5,
         "trail": 5.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1793979180000
+      "vigilado_hasta": 1793982660000
+    },
+    "XRPUSDT": {
+      "nivel": "trading",
+      "cantidad": 145.97945891783567,
+      "entrada": 1.1976,
+      "maximo": 1.1976,
+      "reglas": {
+        "stop": 2.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1793982780000
     }
   },
-  "comisiones_usd": 38.77173199999998,
+  "comisiones_usd": 38.946731999999976,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3508,6 +3530,18 @@
       "usd": 175.0,
       "comision": 0.175,
       "motivo": "Momentum de 24 h: ZEC +8,68% en 24 h, +4,21% en 4 h con volumen 4 h 2,26x (el más fuerte del radar), 1 h -1,04% (no estirada, < +4%). Velas 12:00 y 14:00 con volumen 22,7 y 38,3 M USD empujando de 1.291 a 1.360; mecha a 1.388 (máximo de 48 h) rechazada. Invalida: cierre 1 h < 1.300 (piso de las velas 13:00-14:00). Stop 3,5% (~1.300) en vez de 5% porque ahí muere la tesis."
+    },
+    {
+      "ms": 1793982735102,
+      "fecha": "2026-11-06 16:32 UTC",
+      "lado": "buy",
+      "par": "XRPUSDT",
+      "nivel": "trading",
+      "cantidad": 145.97945891783567,
+      "precio": 1.1976,
+      "usd": 175.0,
+      "comision": 0.175,
+      "motivo": "Rebote en soporte: XRP tocó el mínimo de 48 h 1,174 en la vela 15:00 y la 16:00 ya no hizo mínimo nuevo (piso 1,1829), cerró verde +0,78% 1 h con volumen 4 h 1,61x — es la primera vez en el día que el rebote viene con volumen. Invalida: cierre 1 h < 1,174 (mínimo nuevo de 48 h). Stop 2,5% (~1,169), justo debajo del mínimo."
     }
   ]
 }
