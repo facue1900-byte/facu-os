@@ -1,23 +1,23 @@
-# Carpeta cripto ficticia — 2026-11-07 02:06 UTC
+# Carpeta cripto ficticia — 2026-11-07 04:06 UTC
 
-**Total: 874.01 USD (-12.60%)** desde 2026-10-07 20:58 UTC · USDT libre 443.73 · comisiones 2.60 · 91 operaciones
+**Total: 872.92 USD (-12.71%)** desde 2026-10-07 20:58 UTC · USDT libre 468.28 · comisiones 2.62 · 92 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **874.01** |
+| **Esta carpeta** | **872.92** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 911.44 |
-| plan inicial sin tocar | 843.45 |
+| hodl btc | 909.64 |
+| plan inicial sin tocar | 840.71 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 273.14 | -8.86% | 63,673.5 |
-| ETH | conservador | 87.22 | -12.69% | 1,940.46 |
-| BNB | conservador | 45.10 | -9.71% | 582.173 |
-| XRP | medio | 24.83 | -17.16% | 1.16653 |
+| BTC | conservador | 272.60 | -9.04% | 63,673.5 |
+| ETH | conservador | 87.07 | -12.84% | 1,940.46 |
+| BNB | conservador | 44.97 | -9.96% | 582.173 |
 
 ## Últimas operaciones
 
+- 2026-11-07 02:51 UTC · venta XRP 24.58 USD a 1.16653 — Stop automático en 1.166532 (entrada 1.4226, máximo 1.43).
 - 2026-10-31 10:06 UTC · venta HYPE 36.07 USD a 86.93 — Rotación por tesis invalidada, no por stop: la compra del 29/10 16:05 era momentum cerca del máximo de 90 d y su propio motivo decía reconsi
 - 2026-10-30 00:18 UTC · venta LTC 20.48 USD a 54.243 — Stop automático en 54.243 (entrada 66.15, máximo 66.33).
 - 2026-10-29 20:42 UTC · venta TAO 20.76 USD a 241.6 — Stop automático en 241.6 (entrada 290.6, máximo 302).
@@ -27,6 +27,5 @@
 - 2026-10-24 14:16 UTC · venta SUI 24.58 USD a 0.92168 — Stop automático en 0.92168 (entrada 1.124, máximo 1.1468).
 - 2026-10-23 22:50 UTC · venta AAVE 32.77 USD a 142.91 — Stop automático en 142.9096 (entrada 174.28, máximo 176.15).
 - 2026-10-22 08:02 UTC · venta AVAX 32.77 USD a 9.20942 — Stop automático en 9.20942 (entrada 11.231, máximo 11.261).
-- 2026-10-22 06:07 UTC · venta WLD 35.23 USD a 0.5457 — Venta por tesis, no por stop: la invalidación declarada al comprar (00:05 del 21/10) era alejarse >10% del máximo de 90 d; hoy está a 12,1% 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

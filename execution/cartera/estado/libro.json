@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 443.728570504657,
+  "usdt": 468.279395104657,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794017040000
+      "vigilado_hasta": 1794024300000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794017040000
+      "vigilado_hasta": 1794024300000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,28 +66,10 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794017040000
-    },
-    "XRPUSDT": {
-      "nivel": "medio",
-      "cantidad": 21.067060312104594,
-      "entrada": 1.4226,
-      "maximo": 1.43,
-      "reglas": {
-        "stop": 18.0,
-        "trail": 20.0,
-        "tp": [
-          [
-            50.0,
-            0.33
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794017040000
+      "vigilado_hasta": 1794024300000
     }
   },
-  "comisiones_usd": 2.598750000000001,
+  "comisiones_usd": 2.623325000000001,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1180,6 +1162,18 @@
       "comision": 0.036068,
       "motivo": "Rotación por tesis invalidada, no por stop: la compra del 29/10 16:05 era momentum cerca del máximo de 90 d y su propio motivo decía reconsiderar si volvía a >10% del máximo con BTC 7d negativo. Hoy HYPE 87,01 está a 11% del máximo, 1d -3,3%, el volumen cayó de 208 M a 34 M/día y BTC lleva 21 ciclos con 7d negativo (-4,3%). Sin momentum no hay tesis; se sale ~4,5% arriba del stop (83,08) en vez de esperar que salte. La plata queda en USDT, no se reinvierte en este ciclo. Invalidaría esta venta: HYPE volviendo a <5% del máximo con volumen >= 10 M dos ciclos seguidos y BTC con 7d positivo (sería una reentrada nueva, con tesis nueva).",
       "resultado_pct": -9.74
+    },
+    {
+      "ms": 1794019860000,
+      "fecha": "2026-11-07 02:51 UTC",
+      "lado": "sell",
+      "par": "XRPUSDT",
+      "cantidad": 21.067060312104594,
+      "precio": 1.1665320000000001,
+      "usd": 24.5754,
+      "comision": 0.024575,
+      "motivo": "Stop automático en 1.166532 (entrada 1.4226, máximo 1.43).",
+      "resultado_pct": -18.0
     }
   ]
 }
