@@ -1,19 +1,19 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-07 08:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-07 09:32 UTC
 
-**Total: 863.66 USD (-13.63%)** desde 2026-10-07 23:06 UTC · USDT libre 688.73 · comisiones 39.29 · 291 operaciones
+**Total: 863.36 USD (-13.66%)** desde 2026-10-07 23:06 UTC · USDT libre 863.36 · comisiones 39.46 · 292 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **863.66** |
+| **Esta carpeta** | **863.36** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 914.68 |
+| hodl btc | 914.07 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 174.93 | +0.06% | 2,190.22 |
 
 ## Últimas operaciones
 
+- 2026-11-07 09:31 UTC · venta ETH 174.80 USD a 2,246.09 — Rotación por regla de 24 h: entró 06/11 09:32 por rebote en soporte 2.206 y en 24 h no llegó a +8% ni al stop (~0%, 4 h -0,1% con 0,14x). La
 - 2026-11-07 06:25 UTC · venta ZEC 170.02 USD a 1,309.1 — Stop automático en 1,309.1 (entrada 1,346.07, máximo 1,378).
 - 2026-11-06 21:32 UTC · venta XRP 171.47 USD a 1.1746 — Tesis invalidada: la vela 1 h de las 20:00 cerró en 1,1734 < 1,174 (mínimo de 48 h) e hizo mínimo nuevo 1,1723. Salgo antes del stop 1,168 c
 - 2026-11-06 16:32 UTC · compra XRP 175.00 USD a 1.1976 — Rebote en soporte: XRP tocó el mínimo de 48 h 1,174 en la vela 15:00 y la 16:00 ya no hizo mínimo nuevo (piso 1,1829), cerró verde +0,78% 1 
@@ -23,6 +23,5 @@
 - 2026-11-05 21:32 UTC · venta ETH 173.56 USD a 2,236.9 — Tesis de rebote en soporte rota: la vela de 1 h de las 21:00 hizo mínimo nuevo de 48 h en 2.219,15 (debajo del soporte 2.236,78) y el precio
 - 2026-11-05 19:32 UTC · compra ETH 175.00 USD a 2,253.25 — Rebote en soporte: ETH tocó el mínimo de 48 h (2.236,78) hace 3 h y las velas de 1 h siguientes no hicieron mínimo nuevo (2.240,79/2.248,41/
 - 2026-11-05 18:32 UTC · compra BTC 175.00 USD a 76,123 — Rebote en soporte: BTC tocó el mínimo de 48 h (75.568) hace 3 h y las últimas 3 velas de 1 h ya no hacen mínimo nuevo (75.642/75.818/75.701)
-- 2026-11-05 12:32 UTC · venta AAVE 98.53 USD a 131.2 — Invalidación anotada cumplida: 4 h -1,72% (< -0,3%) con 24 h +0,74% (< +5%), 1 h -1,04%, mínimo de 6 h 131,23. El momentum que justificó la 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 688.7295040413609,
-  "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.07782521211905376,
-      "entrada": 2246.38,
-      "maximo": 2254.26,
-      "reglas": {
-        "stop": 2.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794040260000
-    }
-  },
-  "comisiones_usd": 39.288221999999976,
+  "usdt": 863.3571322991579,
+  "posiciones": {},
+  "comisiones_usd": 39.463023999999976,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3522,6 +3499,18 @@
       "comision": 0.170023,
       "motivo": "Stop automático en 1,309.1 (entrada 1,346.07, máximo 1,378).",
       "resultado_pct": -2.75
+    },
+    {
+      "ms": 1794043914060,
+      "fecha": "2026-11-07 09:31 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.07782521211905376,
+      "precio": 2246.09,
+      "usd": 174.8024,
+      "comision": 0.174802,
+      "motivo": "Rotación por regla de 24 h: entró 06/11 09:32 por rebote en soporte 2.206 y en 24 h no llegó a +8% ni al stop (~0%, 4 h -0,1% con 0,14x). La tesis no murió pero no paga: libero el cupo.",
+      "resultado_pct": -0.01
     }
   ]
 }
