@@ -51,7 +51,7 @@ Regla de tres sobre resultados reales: con 10.000 reales las órdenes mueven má
 
 - **Mercado:** BTC algo arriba en 24 h (HODL BTC +0,62% medido en 3 niveles, +0,54% en Agresiva, +0,65% en Laboratorio). Régimen: BTC arriba de la media 200, bajando 30 d.
 - **3 niveles:** +0,28% en 24 h (HODL +0,62%). Una operación nueva (91 → 92); 468,28 en USDT y 3 posiciones.
-- **Agresiva:** -1,03% en 24 h mientras HODL subió +0,54%. Dos operaciones nuevas en el día (289 → 291); 688,73 en USDT y 1 posición. Comisiones 39,29 USD, casi un tercio de lo perdido.
+- **Agresiva:** -1,03% en 24 h mientras HODL subió +0,54%. Cinco operaciones nuevas en 24 h (286 → 291); 688,73 en USDT y 1 posición. Comisiones 39,29 USD, casi un tercio de lo perdido.
 - **Laboratorio:** sin operaciones, 100% en USDT (954,01). 0,00% en 24 h.
 - **DCA BTC:** sin cambios desde la cuota del lunes. Próxima el lunes 09/11.
 - **Torneo:** 0 de 33 le ganan a USDT; las líderes son las que no entraron. HODL BTC del torneo pasó de -5,31% a -5,24%.
