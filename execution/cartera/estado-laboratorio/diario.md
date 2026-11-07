@@ -447,3 +447,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-07 14:16 UTC — nota
 [v2] Sin entrada: filtro BTC abierto (var_24h 0.53, var_4h -0.07). Solo ONE tiene var_24h>=3 (26.82, var_4h 2.9, vol 1.71, var_1h -0.65) pero falla vs_max_48h -4.98 < -1.5. ZEC var_24h -6.03. Ningun par cumple todo. Carpeta 100% USDT, sin posiciones. Sin disparos.
 
+## 2026-11-07 16:16 UTC — nota
+[v2] Sin entrada: filtro BTC abierto (var_24h -0.3, var_4h -0.15). Solo ONE tiene var_24h>=3 (30.85, var_4h 7.57, var_1h 1.37, vol 1.92) pero falla vs_max_48h -1.89 < -1.5 por poco. ZEC var_24h -7.58. Ningun par cumple todo. Carpeta 100% USDT, sin posiciones. Sin disparos.
+
