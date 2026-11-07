@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 518.8761204190381,
+  "usdt": 688.7295040413609,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794029460000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.12987808954957766,
-      "entrada": 1346.07,
-      "maximo": 1378.0,
-      "reglas": {
-        "stop": 3.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794029460000
+      "vigilado_hasta": 1794033120000
     }
   },
-  "comisiones_usd": 39.118198999999976,
+  "comisiones_usd": 39.288221999999976,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3532,6 +3510,18 @@
       "comision": 0.171467,
       "motivo": "Tesis invalidada: la vela 1 h de las 20:00 cerró en 1,1734 < 1,174 (mínimo de 48 h) e hizo mínimo nuevo 1,1723. Salgo antes del stop 1,168 como estaba escrito: el rebote en soporte murió.",
       "resultado_pct": -1.92
+    },
+    {
+      "ms": 1794032700000,
+      "fecha": "2026-11-07 06:25 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.12987808954957766,
+      "precio": 1309.1,
+      "usd": 170.0234,
+      "comision": 0.170023,
+      "motivo": "Stop automático en 1,309.1 (entrada 1,346.07, máximo 1,378).",
+      "resultado_pct": -2.75
     }
   ]
 }
