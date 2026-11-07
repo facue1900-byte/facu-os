@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794081900000
+      "vigilado_hasta": 1794089040000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794081900000
+      "vigilado_hasta": 1794089040000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,7 +66,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794081900000
+      "vigilado_hasta": 1794089040000
     }
   },
   "comisiones_usd": 2.623325000000001,
