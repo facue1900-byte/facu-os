@@ -1,18 +1,20 @@
-# Carpeta cripto LABORATORIO (reglas del entrenador, objetivo +20%/mes) — 2026-11-08 18:16 UTC
+# Carpeta cripto LABORATORIO (reglas del entrenador, objetivo +20%/mes) — 2026-11-08 20:16 UTC
 
-**Total: 954.01 USD (-4.60%)** desde 2026-10-27 22:37 UTC · USDT libre 954.01 · comisiones 3.15 · 17 operaciones
+**Total: 953.44 USD (-4.66%)** desde 2026-10-27 22:37 UTC · USDT libre 763.21 · comisiones 3.34 · 18 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **954.01** |
+| **Esta carpeta** | **953.44** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 939.12 |
+| hodl btc | 938.61 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| PEPE | trading | 190.23 | -0.20% | 4.72e-06 |
 
 ## Últimas operaciones
 
+- 2026-11-08 20:16 UTC · compra PEPE 190.80 USD a 5.07e-06 — [v2] filtro BTC abierto (var_24h 0.24, var_4h 0.13); PEPE var_24h 4.75, var_4h 1.4, var_1h -0.2, vs_max_48h -1.17, vol4h 1.46; 0 posiciones,
 - 2026-11-05 16:17 UTC · venta BTC 187.64 USD a 76,389 — [v1] tendencia rota: BTC var_24h -5.21<0 y var_4h -4.17<-2 · además filtro BTC bloquea entradas nuevas
 - 2026-11-05 15:01 UTC · venta SUI 191.19 USD a 0.880072 — Stop automático en 0.880072 (entrada 0.912, máximo 0.9566).
 - 2026-11-05 15:27 UTC · venta ETH 184.64 USD a 2,268.64 — Stop automático en 2,268.642 (entrada 2,439.4, máximo 2,444.75).
@@ -22,6 +24,5 @@
 - 2026-11-04 10:17 UTC · compra SUI 198.32 USD a 0.912 — [v1] BTC ok (var_24h 1.8, var_4h 0.65); SUI var_24h 4.07>=3, var_4h 1.66>0, var_1h -0.08<=2.5, vs_max_48h -0.72>=-1.5, vol4h 1.73>=1.3 (mayo
 - 2026-11-04 08:16 UTC · compra UNI 198.31 USD a 7.48 — [v1] BTC ok (var_24h 2.27, var_4h 1.29); UNI var_24h 5.66>=3, var_4h 4.0>0, var_1h 0.15<=2.5, vs_max_48h -0.85>=-1.5, vol4h 1.81>=1.3 (mayor
 - 2026-10-29 23:43 UTC · venta HYPE 101.04 USD a 89.9208 — Stop automático en 89.9208 (entrada 88.66, máximo 97.74).
-- 2026-10-29 20:18 UTC · venta UNI 193.60 USD a 7.081 — [v1] tendencia rota: var_24h -2.26<0 y var_4h -3.96<-2 · invalida: n/a
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

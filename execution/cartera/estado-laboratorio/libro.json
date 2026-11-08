@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 80841.96
   },
-  "usdt": 954.0106496068256,
-  "posiciones": {},
-  "comisiones_usd": 3.149383,
+  "usdt": 763.2106496068257,
+  "posiciones": {
+    "PEPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 37595502.95857988,
+      "entrada": 5.07e-06,
+      "maximo": 5.07e-06,
+      "reglas": {
+        "stop": 7.0,
+        "trail": 8.0,
+        "tp": [
+          [
+            10.0,
+            0.5
+          ],
+          [
+            20.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794169020000
+    }
+  },
+  "comisiones_usd": 3.3401829999999997,
   "operaciones": [
     {
       "ms": 1793153807285,
@@ -211,6 +234,18 @@
       "comision": 0.187642,
       "motivo": "[v1] tendencia rota: BTC var_24h -5.21<0 y var_4h -4.17<-2 · además filtro BTC bloquea entradas nuevas",
       "resultado_pct": -5.28
+    },
+    {
+      "ms": 1794168989604,
+      "fecha": "2026-11-08 20:16 UTC",
+      "lado": "buy",
+      "par": "PEPEUSDT",
+      "nivel": "trading",
+      "cantidad": 37595502.95857988,
+      "precio": 5.07e-06,
+      "usd": 190.8,
+      "comision": 0.1908,
+      "motivo": "[v2] filtro BTC abierto (var_24h 0.24, var_4h 0.13); PEPE var_24h 4.75, var_4h 1.4, var_1h -0.2, vs_max_48h -1.17, vol4h 1.46; 0 posiciones, 0 entradas hoy · invalida: stop 7% / var_24h<0 y var_4h<-2"
     }
   ]
 }
