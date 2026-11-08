@@ -3670,3 +3670,16 @@ Rotación por regla de 24 h: entró 06/11 09:32 por rebote en soporte 2.206 y en
 ## 2026-11-08 17:32 UTC — nota
 17:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: sin posiciones abiertas, nada que vigilar. Mercado: roja tibia — 1 h roja casi total (-0,59/-0,03% salvo ONE +3,56% y PEPE +0,6%), 4 h roja tibia (-0,2/-2,23% salvo PEPE 0,0%), todos los grandes pegados al mínimo de 48 h (+0,23/+0,73%); radar con sólo 10 pares >= 20 M USD. BTC -0,33% en 4 h (0,64x), 1 h -0,13%, +0,23% del mínimo de 48 h: sin bloqueo (no llega a -3%). Sin entradas: ruptura nadie (BTC -0,75% del máximo, BNB -0,9%, ETH -1,28%; PEPE 2,39x pero -2,33% del máximo: volumen sin ruptura); momentum: nadie (PEPE 24 h +3,07% < 5%; resto negativo en 24 h; ONE 24 h -21%); rebote: NEAR +0,5% del mínimo con 2,65x pero 1 h -0,03% y 4 h -2,23%: volumen de venta, todavía no dejó de caer; SOL +0,33% con 1,3x y 1 h -0,04%, BNB +0,47% con 1,05x y 1 h -0,15%: tienen volumen pero siguen cayendo; BTC/ETH/XRP +0,23-0,29% del mínimo con 1 h roja. Nada claro, 100% USDT. A mirar próxima hora: rebote de NEAR/SOL/BNB/BTC si la 1 h se pone verde sin mínimo nuevo con volumen >= 1x (invalida: rompen el mínimo de 48 h); PEPE si rompe su máximo con >= 1,5x. 0 posiciones.
 
+## 2026-11-08 18:32 UTC — Compra NEARUSDT (trading)
+130.00 USD a 3.642. Stop 3.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: NEAR cayó al mínimo de 48 h (3,585 a las 17 h, volcada de 16 h con 9,4 M), la hora actual no hizo mínimo nuevo (low 3,600) y cierra verde +0,97% con 13,2 M de volumen (5,35x en 4 h): compra absorbiendo. BTC 4 h -0,13%, sin bloqueo. Stop 3% (~3,53) ajustado bajo el soporte. Invalida: perder 3,585 (mínimo de 48 h).
+
+## 2026-11-08 18:32 UTC — Compra SOLUSDT (trading)
+130.00 USD a 89.67. Stop 3.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: SOL tocó mínimo de 48 h (88,90 a las 16 h), dos horas sin mínimo nuevo (lows 88,96 y 89,12) y la hora actual verde +0,54% con volumen 4 h 1,4x (>= 1x que venía pidiendo). Grande y líquida (58 M/día). Stop 3% (~86,98) bajo el soporte. Invalida: perder 88,90 (mínimo de 48 h).
+
+## 2026-11-08 18:32 UTC — nota
+18:32 UTC — Sin disparos. 2 entradas (rebote en soporte, la condición que dejé anotada a las 17:32). NEAR 130 USD a 3,642: tocó mínimo de 48 h (3,585) tras la volcada de 16 h, la hora actual no hizo mínimo nuevo y cierra +0,97% con 13,2 M (5,35x 4 h); invalida: perder 3,585. SOL 130 USD a 89,67: mínimo 88,90 a las 16 h, dos horas sin mínimo nuevo, 1 h +0,54% con 1,4x; invalida: perder 88,90. Stops ajustados al 3% (bajo el soporte, no al 5%), trailing 5%, tomas 8%/15%. BTC 4 h -0,13% (0,66x), 1 h +0,25%: sin bloqueo. Descartados: ruptura nadie (BTC -0,4% del máximo con 0,66x; PEPE 2,22x pero -1,56% del máximo); momentum nadie (todos 24 h < 5%); BTC/ETH/XRP/BNB con 1 h verde tibia pero 0,66-0,86x, sin volumen. A mirar próxima hora: que NEAR/SOL no pierdan el mínimo; PEPE si rompe su máximo con >= 1,5x. 2 posiciones, 70% USDT.
+

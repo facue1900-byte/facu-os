@@ -4,9 +4,54 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 863.3571322991579,
-  "posiciones": {},
-  "comisiones_usd": 39.463023999999976,
+  "usdt": 603.3571322991579,
+  "posiciones": {
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 35.658978583196046,
+      "entrada": 3.642,
+      "maximo": 3.642,
+      "reglas": {
+        "stop": 3.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794162780000
+    },
+    "SOLUSDT": {
+      "nivel": "trading",
+      "cantidad": 1.4483104717296755,
+      "entrada": 89.67,
+      "maximo": 89.67,
+      "reglas": {
+        "stop": 3.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794162780000
+    }
+  },
+  "comisiones_usd": 39.72302399999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3511,6 +3556,30 @@
       "comision": 0.174802,
       "motivo": "Rotación por regla de 24 h: entró 06/11 09:32 por rebote en soporte 2.206 y en 24 h no llegó a +8% ni al stop (~0%, 4 h -0,1% con 0,14x). La tesis no murió pero no paga: libero el cupo.",
       "resultado_pct": -0.01
+    },
+    {
+      "ms": 1794162749004,
+      "fecha": "2026-11-08 18:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 35.658978583196046,
+      "precio": 3.642,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Rebote en soporte: NEAR cayó al mínimo de 48 h (3,585 a las 17 h, volcada de 16 h con 9,4 M), la hora actual no hizo mínimo nuevo (low 3,600) y cierra verde +0,97% con 13,2 M de volumen (5,35x en 4 h): compra absorbiendo. BTC 4 h -0,13%, sin bloqueo. Stop 3% (~3,53) ajustado bajo el soporte. Invalida: perder 3,585 (mínimo de 48 h)."
+    },
+    {
+      "ms": 1794162754869,
+      "fecha": "2026-11-08 18:32 UTC",
+      "lado": "buy",
+      "par": "SOLUSDT",
+      "nivel": "trading",
+      "cantidad": 1.4483104717296755,
+      "precio": 89.67,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Rebote en soporte: SOL tocó mínimo de 48 h (88,90 a las 16 h), dos horas sin mínimo nuevo (lows 88,96 y 89,12) y la hora actual verde +0,54% con volumen 4 h 1,4x (>= 1x que venía pidiendo). Grande y líquida (58 M/día). Stop 3% (~86,98) bajo el soporte. Invalida: perder 88,90 (mínimo de 48 h)."
     }
   ]
 }
