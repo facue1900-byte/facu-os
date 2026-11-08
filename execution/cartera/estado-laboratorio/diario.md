@@ -486,3 +486,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-08 16:17 UTC — nota
 [v2] Sin entrada: filtro BTC abierto (var_24h 0.39, var_4h 0.08). Solo PEPE tiene var_24h>=3 (3.7, var_4h 0.8, var_1h -0.59, vol 2.31) pero falla vs_max_48h -2.14 < -1.5. Resto var_24h<3 (ONE -13.48). Ningun par cumple todo. Carpeta 100% USDT, sin posiciones. Sin disparos.
 
+## 2026-11-08 18:16 UTC — nota
+[v2] Sin entrada: filtro BTC abierto (var_24h 0.15, var_4h -0.16). Solo PEPE tiene var_24h>=3 (3.07) pero var_4h -0.98<0, vs_max_48h -1.75<-1.5. Resto var_24h<3 (ONE -18.26). Ningun par cumple todo. Carpeta 100% USDT, sin posiciones. Sin disparos.
+
