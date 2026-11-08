@@ -4,15 +4,15 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 603.3571322991579,
+  "usdt": 685.0529844991579,
   "posiciones": {
-    "NEARUSDT": {
+    "BTCUSDT": {
       "nivel": "trading",
-      "cantidad": 35.658978583196046,
-      "entrada": 3.642,
-      "maximo": 3.671,
+      "cantidad": 0.0022812198904966097,
+      "entrada": 74447.01,
+      "maximo": 74447.01,
       "reglas": {
-        "stop": 3.0,
+        "stop": 2.0,
         "trail": 5.0,
         "tp": [
           [
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794173580000
-    },
-    "SOLUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.4483104717296755,
-      "entrada": 89.67,
-      "maximo": 89.77,
-      "reglas": {
-        "stop": 3.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794173580000
+      "vigilado_hasta": 1794177180000
     }
   },
-  "comisiones_usd": 39.72302399999998,
+  "comisiones_usd": 40.14497199999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3580,6 +3558,42 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Rebote en soporte: SOL tocó mínimo de 48 h (88,90 a las 16 h), dos horas sin mínimo nuevo (lows 88,96 y 89,12) y la hora actual verde +0,54% con volumen 4 h 1,4x (>= 1x que venía pidiendo). Grande y líquida (58 M/día). Stop 3% (~86,98) bajo el soporte. Invalida: perder 88,90 (mínimo de 48 h)."
+    },
+    {
+      "ms": 1794174840000,
+      "fecha": "2026-11-08 21:54 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 35.658978583196046,
+      "precio": 3.53274,
+      "usd": 125.9739,
+      "comision": 0.125974,
+      "motivo": "Stop automático en 3.53274 (entrada 3.642, máximo 3.671).",
+      "resultado_pct": -3.0
+    },
+    {
+      "ms": 1794174840000,
+      "fecha": "2026-11-08 21:54 UTC",
+      "lado": "sell",
+      "par": "SOLUSDT",
+      "cantidad": 1.4483104717296755,
+      "precio": 86.9799,
+      "usd": 125.9739,
+      "comision": 0.125974,
+      "motivo": "Stop automático en 86.9799 (entrada 89.67, máximo 89.77).",
+      "resultado_pct": -3.0
+    },
+    {
+      "ms": 1794177146353,
+      "fecha": "2026-11-08 22:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.0022812198904966097,
+      "precio": 74447.01,
+      "usd": 170.0,
+      "comision": 0.17,
+      "motivo": "Rebote en soporte: BTC barrió el mínimo de 48 h a las 21 h (mecha a 73.510, -3% con 180 M de volumen, flush de liquidación) y la hora actual no hizo mínimo nuevo (low 74.024) y va verde +0,4% con 69 M. 4 h -1,96%: sin bloqueo. Stop 2% (~72.950) debajo de la mecha. Invalida: perder 73.510."
     }
   ]
 }

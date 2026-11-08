@@ -3692,3 +3692,17 @@ Rebote en soporte: SOL tocó mínimo de 48 h (88,90 a las 16 h), dos horas sin m
 ## 2026-11-08 21:34 UTC — nota
 21:33 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: NEAR y SOL, 62 min revisados, nada saltó. Posiciones: NEAR 3,604 (-1,04%, stop 3,533; 1 h -0,63%, low de la hora 3,590 contra el mínimo de 48 h 3,585: el soporte aguanta por medio centavo, volumen de la hora flojo 0,9 M: tesis viva pero debilitándose); SOL 89,17 (-0,56%, stop 86,98; low de la hora 88,91 contra 88,90 del soporte que anoté: aguanta por un centavo; ojo, el mínimo real de 48 h es 88,73 del 07/11 21 h, que sale de la ventana esta hora). Ninguna lleva 24 h (entraron 18:32). No las saco: la invalidación es perder el soporte y no lo perdieron; el stop 3% está debajo. Mercado: plano/rojo tibio — 1 h -1,08/+0,08%, 4 h -1,68/+0,01% salvo ONE -7,26%. BTC 4 h -0,02% (0,53x), 1 h -0,01%: sin bloqueo. Sin entradas: ruptura nadie (BTC -0,67% del máximo con 0,53x, BNB -0,76% con 0,58x, PEPE -1,56% con 1,13x: no rompen ni llegan a 1,5x); momentum: PEPE 24 h +4,55% (< 5%, bajó desde 4,96%), 4 h 0,0%: no; resto 24 h negativo o plano; rebote: BTC +0,22%, ETH +0,17% del mínimo con 1 h plana y 0,53-0,75x: sin volumen ni giro. 70% USDT. A mirar próxima hora: NEAR cierre bajo 3,585 o SOL bajo 88,90 = tesis rota, salir aunque no toque el stop; PEPE si rompe su máximo de 48 h con >= 1,5x. 2 posiciones.
 
+## 2026-11-08 21:54 UTC — Stop NEARUSDT (vigilante)
+125.97 USD a 3.53274 (-3.00%). Stop automático en 3.53274 (entrada 3.642, máximo 3.671).
+
+## 2026-11-08 21:54 UTC — Stop SOLUSDT (vigilante)
+125.97 USD a 86.9799 (-3.00%). Stop automático en 86.9799 (entrada 89.67, máximo 89.77).
+
+## 2026-11-08 22:32 UTC — Compra BTCUSDT (trading)
+170.00 USD a 74,447.01. Stop 2.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: BTC barrió el mínimo de 48 h a las 21 h (mecha a 73.510, -3% con 180 M de volumen, flush de liquidación) y la hora actual no hizo mínimo nuevo (low 74.024) y va verde +0,4% con 69 M. 4 h -1,96%: sin bloqueo. Stop 2% (~72.950) debajo de la mecha. Invalida: perder 73.510.
+
+## 2026-11-08 22:32 UTC — nota
+22:32 UTC — 2 disparos: NEAR y SOL saltaron por stop a -3% a las 21:54 (flush general del mercado: BTC mecha -3% a 73.510 con 180 M en la hora, ETH 10x de volumen 4 h). Las dos tesis de rebote se rompieron: el soporte no aguantó. 1 entrada: BTC 170 USD a 74.447, rebote en soporte tras el barrido (hora actual sin mínimo nuevo, low 74.024, verde +0,4% con 69 M), stop 2% bajo la mecha, invalida perder 73.510. BTC 4 h -1,96%: sin bloqueo. Descartados: SOL/NEAR/XRP/DOGE/HYPE rebotan 1-3% del mínimo pero con 4 h -3/-5% y recién golpeadas: no repito la tesis que me acaba de costar 8 USD; BNB rebote similar a BTC pero no duplico la misma apuesta; ruptura y momentum nadie (todo rojo en 24 h salvo PEPE +2,7%). A mirar: BTC que no pierda 73.510; si el mercado estabiliza, rebote de ETH/SOL con 1 h verde sostenida. 1 posición, ~80% USDT.
+
