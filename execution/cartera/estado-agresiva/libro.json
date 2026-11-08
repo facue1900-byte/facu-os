@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 35.658978583196046,
       "entrada": 3.642,
-      "maximo": 3.669,
+      "maximo": 3.671,
       "reglas": {
         "stop": 3.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794166260000
+      "vigilado_hasta": 1794169860000
     },
     "SOLUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794166260000
+      "vigilado_hasta": 1794169860000
     }
   },
   "comisiones_usd": 39.72302399999998,
