@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794231180000
+      "vigilado_hasta": 1794234660000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794231180000
+      "vigilado_hasta": 1794234660000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 2.036005434782609,
       "entrada": 73.6,
-      "maximo": 74.09,
+      "maximo": 74.43,
       "reglas": {
         "stop": 2.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794231180000
+      "vigilado_hasta": 1794234660000
     },
     "ARBUSDT": {
       "nivel": "trading",
@@ -92,7 +92,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794231180000
+      "vigilado_hasta": 1794234660000
     }
   },
   "comisiones_usd": 40.893943999999976,
