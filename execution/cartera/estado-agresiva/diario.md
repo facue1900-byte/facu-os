@@ -3787,3 +3787,16 @@ Momentum de 24 h: AVAX (42 M/día) +8,21% en 24 h, 4 h +11,09% con 22x de volume
 ## 2026-11-09 15:32 UTC — nota
 15:32 UTC — Sin disparos. 1 entrada, 0 salidas. Vigilante: BTC, XRP, HYPE y ARB 60 min, nada saltó. Entrada: AVAX 150 USD a 8,926, momentum de 24 h (+8,21%, 4 h +11,09% con 22x, -0,6% del máximo de 48 h, 1 h +0,62%: consolidó sin estirarse), stop 5%. Posiciones: BTC 75.115 (+0,9%, stop 72.958; 1 h +0,32%, 4 h +1,04%, 1,53x, -1,38% del máximo de 48 h): soporte 73.510 lejos; cumple 24 h a las 22:32 → si no llegó a +8%, sale. XRP 1,1016 (+0,63%, stop 1,0728; 4 h +2,04%, +2,47% del mínimo): rebote andando. HYPE 76,53 (+3,98%, stop 72,86; 4 h +4,75% con 1,9x, -2,05% del máximo): rebote fuerte, el trailing ya subió el stop. ARB 0,1806 (-1,58%, stop 0,1786; 24 h +6,47%, 4 h +1,91% con 4,24x, -3,72% del máximo): devuelve pero 24 h > 5% y 4 h verde, tesis viva, cerca del stop. Mercado: 1 h verde casi total (-0,06/+0,63%), 4 h verde (+0,9/+11%), 24 h roja salvo AVAX/ARB/PEPE/ENA/SUI. BTC 4 h +1,04%: sin bloqueo. Descartados: PEPE -0,94% del máximo con 1,98x pero no rompe y 24 h +3,55% < 5%; SUI -0,8% del máximo con 1,69x, 24 h +0,86%: no rompe; ENA 1,5x pero -2,62% del máximo. ~9% USDT. A mirar próxima hora: AVAX que no vuelva bajo +5% en 24 h; ARB si pierde 0,1786 o 24 h bajo +5%; BTC bajo 73.510, XRP bajo 1,0817, HYPE bajo 72,49 = salir; PEPE/SUI si rompen máximo de 48 h con >= 1,5x (sin cash: requeriría rotar). 5 posiciones.
 
+## 2026-11-09 16:32 UTC — Venta ARBUSDT
+148.63 USD a 0.182 (-0.82% contra la compra).
+
+Tesis invalidada: la 4 h pasó a roja (-1,78%) y está -3,19% bajo el máximo de 48 h; era la condición de salida escrita al entrar. Sale en -0,9% antes de que salte el stop.
+
+## 2026-11-09 16:32 UTC — Compra PEPEUSDT (trading)
+150.00 USD a 5.29e-06. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: PEPE (87 M/día) +5,6% en 24 h, 4 h +2,92% con 2,74x de volumen, -2,22% del máximo de 48 h; 1 h -0,75% (no estirada). BTC 4 h +0,06%: sin bloqueo. Stop 5% por defecto. Invalida: 24 h vuelve bajo +5% con 4 h roja, o salta el stop.
+
+## 2026-11-09 16:32 UTC — nota
+16:32 UTC — Sin disparos. 1 entrada, 1 salida. Vigilante: ARB, BTC, HYPE, XRP 60 min y AVAX 58 min, nada saltó. Salida: ARB a 0,182 (-0,82%): la 4 h pasó a roja (-1,78%) a -3,19% del máximo de 48 h, condición de invalidación escrita al entrar. Entrada: PEPE 150 USD a 0,00000529, momentum de 24 h (+5,6%, 4 h +2,92% con 2,74x, -2,22% del máximo de 48 h, 1 h -0,75%), stop 5%. Posiciones: BTC 74.940 (+0,66%, stop 72.958; 4 h +0,06%): soporte 73.510 lejos; cumple 24 h a las 22:32 → si no llegó a +8%, sale. XRP 1,1029 (+0,75%, stop 1,0728; 1 h -1,02%, +2,51% del mínimo): tesis viva. HYPE 74,63 (+1,4%, stop 72,94; 1 h -2,17%, 4 h +1,14%): devolvió media suba, soporte 72,49 lejos. AVAX 8,813 (-1,27%, stop 8,563; 24 h +7,84%, 4 h +4,35% con 9,4x, 1 h -1,96%): devuelve, tesis viva. Mercado: 1 h roja total (-0,09/-2,33%), 4 h mixta tibia, 24 h roja salvo AVAX/ARB/PEPE/SUI/ENA. BTC 4 h +0,06%: sin bloqueo. Descartados: SUI/ENA/LINK con volumen 1,8-2,5x pero 24 h < +1,3% y -1,9/-3% del máximo: sin ruptura ni momentum; NEAR 1,59x, 24 h plano. ~9% USDT. A mirar próxima hora: PEPE que no pierda +5% en 24 h con 4 h roja; AVAX 24 h bajo +5%; BTC bajo 73.510, XRP bajo 1,0817, HYPE bajo 72,49 = salir. 5 posiciones.
+
