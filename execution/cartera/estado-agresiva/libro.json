@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 374.29611772103596,
+  "usdt": 224.29611772103596,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794256260000
+      "vigilado_hasta": 1794259860000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794256260000
+      "vigilado_hasta": 1794259860000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794256260000
+      "vigilado_hasta": 1794259860000
+    },
+    "UNIUSDT": {
+      "nivel": "trading",
+      "cantidad": 21.126462709713802,
+      "entrada": 7.093,
+      "maximo": 7.093,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794259980000
     }
   },
-  "comisiones_usd": 41.63480499999998,
+  "comisiones_usd": 41.78480499999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3758,6 +3780,18 @@
       "comision": 0.146734,
       "motivo": "Tesis invalidada: 24 h bajó a +2,37% (< +5%) y la 4 h pasó a roja (-0,95%), las dos condiciones de salida escritas al entrar. Sale antes del stop 5,07e-06.",
       "resultado_pct": -2.08
+    },
+    {
+      "ms": 1794259962380,
+      "fecha": "2026-11-09 21:32 UTC",
+      "lado": "buy",
+      "par": "UNIUSDT",
+      "nivel": "trading",
+      "cantidad": 21.126462709713802,
+      "precio": 7.093,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: UNI (43 M/día) +6,03% en 24 h, 4 h +1,53% (sigue subiendo), 1 h +0,45% (no estirada), -2,15% del máximo de 48 h; volumen 0,98x. BTC 4 h +0,26%: sin bloqueo. Stop 5% por defecto. Invalida: 24 h vuelve bajo +5% con 4 h roja, o salta el stop."
     }
   ]
 }
