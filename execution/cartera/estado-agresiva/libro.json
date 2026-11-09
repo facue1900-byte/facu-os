@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 533.8759851827517,
+  "usdt": 383.8759851827517,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794220260000
+      "vigilado_hasta": 1794223860000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794220260000
+      "vigilado_hasta": 1794223860000
+    },
+    "HYPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 2.036005434782609,
+      "entrada": 73.6,
+      "maximo": 73.6,
+      "reglas": {
+        "stop": 2.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794223980000
     }
   },
-  "comisiones_usd": 40.59394399999998,
+  "comisiones_usd": 40.74394399999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3652,6 +3674,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: XRP (150 M/día) cayó -6% en 24 h hasta el mínimo de 48 h (low 1,0817 a las 07 h) y la hora 08 ya no hace mínimo nuevo (low 1,0832) y va verde +0,84% con volumen al ritmo de 1x; 4 h -1,14%. BTC 4 h -0,81%: sin bloqueo. Stop 2% (~1,0715) debajo del mínimo. Invalida: perder 1,0817."
+    },
+    {
+      "ms": 1794223941356,
+      "fecha": "2026-11-09 11:32 UTC",
+      "lado": "buy",
+      "par": "HYPEUSDT",
+      "nivel": "trading",
+      "cantidad": 2.036005434782609,
+      "precio": 73.6,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: HYPE (36,7 M/día) cayó -5% en 24 h hasta el mínimo de 48 h (low 72,49 a las 07 h, doble piso 72,50 a las 08 h); la hora 11 no hace mínimo nuevo (low 72,79) y va verde +0,73% con volumen a ritmo ~1,7x de la hora previa; 4 h +1,16%. BTC 4 h +0,87%: sin bloqueo. Stop 2% (~72,1) debajo del piso. Invalida: perder 72,49."
     }
   ]
 }
