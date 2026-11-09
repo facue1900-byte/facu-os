@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 227.70882528247262,
+  "usdt": 374.29611772103596,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794245460000
+      "vigilado_hasta": 1794249060000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794245460000
+      "vigilado_hasta": 1794249060000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -70,32 +70,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794245460000
-    },
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 28327032.136105858,
-      "entrada": 5.29e-06,
-      "maximo": 5.34e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794245460000
+      "vigilado_hasta": 1794249060000
     }
   },
-  "comisiones_usd": 41.48807099999998,
+  "comisiones_usd": 41.63480499999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3768,6 +3746,18 @@
       "comision": 0.145502,
       "motivo": "Tesis invalidada: la 4 h pasó a roja (-1,5%) y está -3,68% bajo el máximo de 48 h; perder la 4 h verde era la condición de salida escrita al entrar. Sale en ~-2,8% antes del stop 8,563.",
       "resultado_pct": -2.9
+    },
+    {
+      "ms": 1794249121968,
+      "fecha": "2026-11-09 18:32 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 28327032.136105858,
+      "precio": 5.18e-06,
+      "usd": 146.734,
+      "comision": 0.146734,
+      "motivo": "Tesis invalidada: 24 h bajó a +2,37% (< +5%) y la 4 h pasó a roja (-0,95%), las dos condiciones de salida escritas al entrar. Sale antes del stop 5,07e-06.",
+      "resultado_pct": -2.08
     }
   ]
 }
