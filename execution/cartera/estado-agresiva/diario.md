@@ -3830,3 +3830,21 @@ Momentum de 24 h: UNI (43 M/día) +6,03% en 24 h, 4 h +1,53% (sigue subiendo), 1
 ## 2026-11-09 21:32 UTC — nota
 21:32 UTC — Sin disparos. 1 entrada, 0 salidas. Vigilante: BTC, HYPE, XRP 60 min, nada saltó. Entrada: UNI 150 USD a 7,093, momentum de 24 h (+6,03%, 4 h +1,53%, 1 h +0,45%, -2,15% del máximo de 48 h; volumen 0,98x), stop 5%. Posiciones: BTC 74.974 (+0,71%, stop 72.958; 1 h +0,14%, 4 h +0,26%, +1,99% del mínimo de 48 h): cumple 24 h a las 22:32 → si no llegó a +8%, sale. XRP 1,0957 (+0,09%, stop 1,0728; 4 h +0,16%, +1,77% del mínimo): floja, soporte no perdido. HYPE 75,13 (+2,08%, stop 72,94; 4 h +0,47%, +3,66% del mínimo): tesis viva. Mercado: 1 h y 4 h mixtas tibias, volumen bajo en casi todo (<1,2x). BTC 4 h +0,26%: sin bloqueo. Descartados: ENA +5,46% en 24 h pero 4 h +0,85% y 1 h -0,19%: momentum flojo; AVAX +10,08% en 24 h pero 4 h +0,07%: no sigue subiendo; ARB y PEPE 24 h > 5% con 4 h roja; ruptura nadie (el más cerca TRX -1,34% y LINK -1,36% del máximo, volumen < 1x); rebote: TRX +0,19% del mínimo sin recorrido. ~29% USDT. A mirar próxima hora: BTC sale por 24 h a las 22:32; UNI 24 h bajo +5% con 4 h roja = salir; XRP bajo 1,0817, HYPE bajo 72,49 = salir; ENA si la 4 h acelera sin estirarse. 4 posiciones.
 
+## 2026-11-09 22:32 UTC — Venta BTCUSDT
+171.37 USD a 75,121.78 (+0.91% contra la compra).
+
+Regla de 24 h: entró 2026-11-08 22:32 y lleva 24 h en +0,9%, sin llegar a +8% ni al stop. Sale y rota.
+
+## 2026-11-09 22:32 UTC — Venta UNIUSDT
+148.54 USD a 7.031 (-0.87% contra la compra).
+
+Tesis invalidada: 24 h bajó a +3,79% (< +5%) y la 4 h pasó a roja (-0,35%), las dos condiciones de salida escritas al entrar. Sale antes del stop 6,7488.
+
+## 2026-11-09 22:32 UTC — Compra AVAXUSDT (trading)
+150.00 USD a 8.635. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum de 24 h: AVAX (52 M/día) +9,03% en 24 h, 4 h volvió a verde +0,92% con 1,25x de volumen, 1 h -0,28% (no estirada), -4,25% del máximo de 48 h. BTC 4 h +0,55%: sin bloqueo. Stop 5% por defecto. Invalida: 4 h vuelve a roja o 24 h bajo +5%, o salta el stop.
+
+## 2026-11-09 22:32 UTC — nota
+22:32 UTC — Sin disparos. 1 entrada, 2 salidas. Vigilante: BTC, HYPE, XRP 60 min y UNI 58 min, nada saltó. Salidas: BTC (+0,91%) por la regla de 24 h sin llegar a +8%; UNI (-0,87%): 24 h bajó a +3,79% con 4 h roja (-0,35%), invalidación escrita al entrar. Entrada: AVAX 150 USD, momentum de 24 h (+9,03%, 4 h volvió a verde +0,92% con 1,25x, 1 h -0,28%, -4,25% del máximo de 48 h), stop 5%. Posiciones: XRP 1,0957 (+0,09%, stop 1,0728; 4 h +0,37%, +1,78% del mínimo 1,0817): floja, soporte no perdido; cumple 24 h el 10/11 08:36. HYPE 75,33 (+2,35%, stop 72,94; 4 h +0,59%, +3,95% del mínimo): tesis viva; cumple 24 h el 10/11 11:32. Mercado: todo tibio, volumen bajo (casi todo < 1x). BTC 4 h +0,55%: sin bloqueo. Descartados: ARB +6,09% en 24 h pero 4 h -1,97%; ruptura nadie (TRX -1,12% y BTC -1,43% del máximo con volumen < 1x); rebote: TRX +0,41% del mínimo sin recorrido. ~55% USDT. A mirar próxima hora: AVAX 4 h roja = salir; XRP bajo 1,0817, HYPE bajo 72,49 = salir. 3 posiciones.
+
