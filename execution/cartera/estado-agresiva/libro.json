@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 683.8759851827517,
+  "usdt": 533.8759851827517,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794209460000
+      "vigilado_hasta": 1794213300000
+    },
+    "XRPUSDT": {
+      "nivel": "trading",
+      "cantidad": 136.8868183063853,
+      "entrada": 1.0947,
+      "maximo": 1.0947,
+      "reglas": {
+        "stop": 2.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794213420000
     }
   },
-  "comisiones_usd": 40.44394399999998,
+  "comisiones_usd": 40.59394399999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3618,6 +3640,18 @@
       "comision": 0.148972,
       "motivo": "Tesis de momentum invalidada según lo anotado al entrar: 24 h volvió bajo +5% (+4,30%) con 1 h roja sostenida (segunda hora seguida: -0,58% y -0,59%). Salgo a -0,8% antes de que sea el stop.",
       "resultado_pct": -0.59
+    },
+    {
+      "ms": 1794213366314,
+      "fecha": "2026-11-09 08:36 UTC",
+      "lado": "buy",
+      "par": "XRPUSDT",
+      "nivel": "trading",
+      "cantidad": 136.8868183063853,
+      "precio": 1.0947,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: XRP (150 M/día) cayó -6% en 24 h hasta el mínimo de 48 h (low 1,0817 a las 07 h) y la hora 08 ya no hace mínimo nuevo (low 1,0832) y va verde +0,84% con volumen al ritmo de 1x; 4 h -1,14%. BTC 4 h -0,81%: sin bloqueo. Stop 2% (~1,0715) debajo del mínimo. Invalida: perder 1,0817."
     }
   ]
 }
