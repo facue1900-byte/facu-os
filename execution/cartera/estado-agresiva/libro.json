@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 383.8759851827517,
+  "usdt": 233.87598518275172,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794223860000
+      "vigilado_hasta": 1794227460000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794223860000
+      "vigilado_hasta": 1794227460000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 2.036005434782609,
       "entrada": 73.6,
-      "maximo": 73.6,
+      "maximo": 73.82,
       "reglas": {
         "stop": 2.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794223980000
+      "vigilado_hasta": 1794227460000
+    },
+    "ARBUSDT": {
+      "nivel": "trading",
+      "cantidad": 816.6212534059945,
+      "entrada": 0.1835,
+      "maximo": 0.1835,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794227580000
     }
   },
-  "comisiones_usd": 40.74394399999998,
+  "comisiones_usd": 40.893943999999976,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3686,6 +3708,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: HYPE (36,7 M/día) cayó -5% en 24 h hasta el mínimo de 48 h (low 72,49 a las 07 h, doble piso 72,50 a las 08 h); la hora 11 no hace mínimo nuevo (low 72,79) y va verde +0,73% con volumen a ritmo ~1,7x de la hora previa; 4 h +1,16%. BTC 4 h +0,87%: sin bloqueo. Stop 2% (~72,1) debajo del piso. Invalida: perder 72,49."
+    },
+    {
+      "ms": 1794227553969,
+      "fecha": "2026-11-09 12:32 UTC",
+      "lado": "buy",
+      "par": "ARBUSDT",
+      "nivel": "trading",
+      "cantidad": 816.6212534059945,
+      "precio": 0.1835,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h + ruptura con volumen: ARB (20,4 M/día) +8,39% en 24 h, 4 h +4,32% con 3,42x de volumen, a -0,05% del máximo de 48 h; 1 h +3,27% (< 4%: no estirada). BTC 4 h +0,4%: sin bloqueo. Stop 5% por defecto. Invalida: vuelve bajo el máximo de 48 h perdiendo la 4 h verde, o salta el stop."
     }
   ]
 }
