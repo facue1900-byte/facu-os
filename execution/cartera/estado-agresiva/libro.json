@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 233.87598518275172,
+  "usdt": 83.87598518275172,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794234660000
+      "vigilado_hasta": 1794238260000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794234660000
+      "vigilado_hasta": 1794238260000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 2.036005434782609,
       "entrada": 73.6,
-      "maximo": 74.43,
+      "maximo": 76.69,
       "reglas": {
         "stop": 2.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794234660000
+      "vigilado_hasta": 1794238260000
     },
     "ARBUSDT": {
       "nivel": "trading",
@@ -92,10 +92,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794234660000
+      "vigilado_hasta": 1794238260000
+    },
+    "AVAXUSDT": {
+      "nivel": "trading",
+      "cantidad": 16.78803495406677,
+      "entrada": 8.926,
+      "maximo": 8.926,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794238380000
     }
   },
-  "comisiones_usd": 40.893943999999976,
+  "comisiones_usd": 41.043943999999975,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3720,6 +3742,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h + ruptura con volumen: ARB (20,4 M/día) +8,39% en 24 h, 4 h +4,32% con 3,42x de volumen, a -0,05% del máximo de 48 h; 1 h +3,27% (< 4%: no estirada). BTC 4 h +0,4%: sin bloqueo. Stop 5% por defecto. Invalida: vuelve bajo el máximo de 48 h perdiendo la 4 h verde, o salta el stop."
+    },
+    {
+      "ms": 1794238354441,
+      "fecha": "2026-11-09 15:32 UTC",
+      "lado": "buy",
+      "par": "AVAXUSDT",
+      "nivel": "trading",
+      "cantidad": 16.78803495406677,
+      "precio": 8.926,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: AVAX (42 M/día) +8,21% en 24 h, 4 h +11,09% con 22x de volumen, a -0,6% del máximo de 48 h; 1 h +0,62% (< 4%: consolidó, no estirada) tras devolver y recuperar la vela de las 13 h. BTC 4 h +1,04%: sin bloqueo. Stop 5% por defecto. Invalida: 24 h vuelve bajo +5% o pierde la 4 h verde, o salta el stop."
     }
   ]
 }
