@@ -1,23 +1,23 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-09 16:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-09 17:32 UTC
 
-**Total: 853.50 USD (-14.65%)** desde 2026-10-07 23:06 UTC · USDT libre 82.35 · comisiones 41.34 · 305 operaciones
+**Total: 849.14 USD (-15.09%)** desde 2026-10-07 23:06 UTC · USDT libre 227.71 · comisiones 41.49 · 306 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **853.50** |
+| **Esta carpeta** | **849.14** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 900.61 |
+| hodl btc | 898.96 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 170.98 | +0.68% | 72,958.1 |
-| HYPE | trading | 151.93 | +1.39% | 72.941 |
-| XRP | trading | 150.99 | +0.76% | 1.07281 |
-| PEPE | trading | 149.28 | -0.38% | 5.03e-06 |
-| AVAX | trading | 147.97 | -1.25% | 8.5633 |
+| BTC | trading | 170.66 | +0.49% | 72,958.1 |
+| HYPE | trading | 153.03 | +2.12% | 72.941 |
+| XRP | trading | 149.59 | -0.17% | 1.07281 |
+| PEPE | trading | 148.15 | -1.13% | 5.07e-06 |
 
 ## Últimas operaciones
 
+- 2026-11-09 17:32 UTC · venta AVAX 145.50 USD a 8.667 — Tesis invalidada: la 4 h pasó a roja (-1,5%) y está -3,68% bajo el máximo de 48 h; perder la 4 h verde era la condición de salida escrita al
 - 2026-11-09 16:32 UTC · compra PEPE 150.00 USD a 5.29e-06 — Momentum de 24 h: PEPE (87 M/día) +5,6% en 24 h, 4 h +2,92% con 2,74x de volumen, -2,22% del máximo de 48 h; 1 h -0,75% (no estirada). BTC 4
 - 2026-11-09 16:32 UTC · venta ARB 148.63 USD a 0.182 — Tesis invalidada: la 4 h pasó a roja (-1,78%) y está -3,19% bajo el máximo de 48 h; era la condición de salida escrita al entrar. Sale en -0
 - 2026-11-09 15:32 UTC · compra AVAX 150.00 USD a 8.926 — Momentum de 24 h: AVAX (42 M/día) +8,21% en 24 h, 4 h +11,09% con 22x de volumen, a -0,6% del máximo de 48 h; 1 h +0,62% (< 4%: consolidó, n
@@ -27,6 +27,5 @@
 - 2026-11-09 03:31 UTC · venta PEPE 148.97 USD a 5.09e-06 — Tesis de momentum invalidada según lo anotado al entrar: 24 h volvió bajo +5% (+4,30%) con 1 h roja sostenida (segunda hora seguida: -0,58% 
 - 2026-11-09 02:32 UTC · compra PEPE 150.00 USD a 5.12e-06 — Momentum de 24 h: PEPE +6,02% en 24 h (pasó el 5% que venía esperando), 4 h +3,44% con 3,24x de volumen, a -1,54% del máximo de 48 h; 1 h -0
 - 2026-11-08 22:32 UTC · compra BTC 170.00 USD a 74,447 — Rebote en soporte: BTC barrió el mínimo de 48 h a las 21 h (mecha a 73.510, -3% con 180 M de volumen, flush de liquidación) y la hora actual
-- 2026-11-08 21:54 UTC · venta SOL 125.97 USD a 86.9799 — Stop automático en 86.9799 (entrada 89.67, máximo 89.77).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

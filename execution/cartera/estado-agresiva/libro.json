@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 82.35242823452282,
+  "usdt": 227.70882528247262,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794241860000
+      "vigilado_hasta": 1794245460000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794241860000
+      "vigilado_hasta": 1794245460000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -70,35 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794241860000
-    },
-    "AVAXUSDT": {
-      "nivel": "trading",
-      "cantidad": 16.78803495406677,
-      "entrada": 8.926,
-      "maximo": 9.014,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794241860000
+      "vigilado_hasta": 1794245460000
     },
     "PEPEUSDT": {
       "nivel": "trading",
       "cantidad": 28327032.136105858,
       "entrada": 5.29e-06,
-      "maximo": 5.29e-06,
+      "maximo": 5.34e-06,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -114,10 +92,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794241980000
+      "vigilado_hasta": 1794245460000
     }
   },
-  "comisiones_usd": 41.342568999999976,
+  "comisiones_usd": 41.48807099999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3778,6 +3756,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: PEPE (87 M/día) +5,6% en 24 h, 4 h +2,92% con 2,74x de volumen, -2,22% del máximo de 48 h; 1 h -0,75% (no estirada). BTC 4 h +0,06%: sin bloqueo. Stop 5% por defecto. Invalida: 24 h vuelve bajo +5% con 4 h roja, o salta el stop."
+    },
+    {
+      "ms": 1794245547316,
+      "fecha": "2026-11-09 17:32 UTC",
+      "lado": "sell",
+      "par": "AVAXUSDT",
+      "cantidad": 16.78803495406677,
+      "precio": 8.667,
+      "usd": 145.5019,
+      "comision": 0.145502,
+      "motivo": "Tesis invalidada: la 4 h pasó a roja (-1,5%) y está -3,68% bajo el máximo de 48 h; perder la 4 h verde era la condición de salida escrita al entrar. Sale en ~-2,8% antes del stop 8,563.",
+      "resultado_pct": -2.9
     }
   ]
 }
