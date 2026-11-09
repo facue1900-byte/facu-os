@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-09 01:31 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-09 02:33 UTC
 
-**Total: 855.52 USD (-14.45%)** desde 2026-10-07 23:06 UTC · USDT libre 685.05 · comisiones 40.14 · 297 operaciones
+**Total: 856.98 USD (-14.30%)** desde 2026-10-07 23:06 UTC · USDT libre 535.05 · comisiones 40.29 · 298 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **855.52** |
+| **Esta carpeta** | **856.98** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 897.93 |
+| hodl btc | 907.95 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 170.47 | +0.38% | 72,958.1 |
+| BTC | trading | 172.37 | +1.50% | 72,958.1 |
+| PEPE | trading | 149.56 | -0.20% | 4.86e-06 |
 
 ## Últimas operaciones
 
+- 2026-11-09 02:32 UTC · compra PEPE 150.00 USD a 5.12e-06 — Momentum de 24 h: PEPE +6,02% en 24 h (pasó el 5% que venía esperando), 4 h +3,44% con 3,24x de volumen, a -1,54% del máximo de 48 h; 1 h -0
 - 2026-11-08 22:32 UTC · compra BTC 170.00 USD a 74,447 — Rebote en soporte: BTC barrió el mínimo de 48 h a las 21 h (mecha a 73.510, -3% con 180 M de volumen, flush de liquidación) y la hora actual
 - 2026-11-08 21:54 UTC · venta SOL 125.97 USD a 86.9799 — Stop automático en 86.9799 (entrada 89.67, máximo 89.77).
 - 2026-11-08 21:54 UTC · venta NEAR 125.97 USD a 3.53274 — Stop automático en 3.53274 (entrada 3.642, máximo 3.671).
@@ -23,6 +25,5 @@
 - 2026-11-07 06:25 UTC · venta ZEC 170.02 USD a 1,309.1 — Stop automático en 1,309.1 (entrada 1,346.07, máximo 1,378).
 - 2026-11-06 21:32 UTC · venta XRP 171.47 USD a 1.1746 — Tesis invalidada: la vela 1 h de las 20:00 cerró en 1,1734 < 1,174 (mínimo de 48 h) e hizo mínimo nuevo 1,1723. Salgo antes del stop 1,168 c
 - 2026-11-06 16:32 UTC · compra XRP 175.00 USD a 1.1976 — Rebote en soporte: XRP tocó el mínimo de 48 h 1,174 en la vela 15:00 y la 16:00 ya no hizo mínimo nuevo (piso 1,1829), cerró verde +0,78% 1 
-- 2026-11-06 15:32 UTC · compra ZEC 175.00 USD a 1,346.07 — Momentum de 24 h: ZEC +8,68% en 24 h, +4,21% en 4 h con volumen 4 h 2,26x (el más fuerte del radar), 1 h -1,04% (no estirada, < +4%). Velas 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
