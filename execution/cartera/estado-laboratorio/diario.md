@@ -497,3 +497,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-08 22:16 UTC — nota
 [v2] Sin operar: filtro BTC cerrado (var_24h -1.62, var_4h -1.84 < -1.5), ademas ya hay 1 posicion (PEPE). PEPE se mantiene: lleva ~2 h (<48h), var_24h 2.07 (>=0) asi que no hay tendencia rota aunque var_4h -2.56; stop 4.72e-06 intacto. Sin disparos.
 
+## 2026-11-09 00:16 UTC — nota
+[v2] Sin operar: ya hay 1 posicion (PEPE), maximo 1. Filtro BTC abierto (var_24h -0.88, var_4h -0.8). PEPE se mantiene: ~4 h (<48h), var_24h 4.55 (>=0) asi que no hay tendencia rota; stop 4.72e-06 intacto. Ningun otro par cumple var_24h>=3. Sin disparos.
+
