@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 535.0529844991579,
+  "usdt": 683.8759851827517,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794191460000
-    },
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 29267578.125,
-      "entrada": 5.12e-06,
-      "maximo": 5.12e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794191580000
+      "vigilado_hasta": 1794195060000
     }
   },
-  "comisiones_usd": 40.29497199999998,
+  "comisiones_usd": 40.44394399999998,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3628,6 +3606,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: PEPE +6,02% en 24 h (pasó el 5% que venía esperando), 4 h +3,44% con 3,24x de volumen, a -1,54% del máximo de 48 h; 1 h -0,58%: pausa, no estirada. BTC 4 h +1,44%: sin bloqueo. Stop 5% por defecto. Invalida: 24 h vuelve bajo +5% con 1 h roja sostenida, o salta el stop."
+    },
+    {
+      "ms": 1794195109624,
+      "fecha": "2026-11-09 03:31 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 29267578.125,
+      "precio": 5.09e-06,
+      "usd": 148.972,
+      "comision": 0.148972,
+      "motivo": "Tesis de momentum invalidada según lo anotado al entrar: 24 h volvió bajo +5% (+4,30%) con 1 h roja sostenida (segunda hora seguida: -0,58% y -0,59%). Salgo a -0,8% antes de que sea el stop.",
+      "resultado_pct": -0.59
     }
   ]
 }
