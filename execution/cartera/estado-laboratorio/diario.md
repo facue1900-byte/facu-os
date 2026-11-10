@@ -533,3 +533,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-09 22:21 UTC — nota
 [v2] Sin operar: ya hay 1 posicion (PEPE), maximo 1. Filtro BTC abierto (var_24h 0.77, var_4h 0.46). PEPE se mantiene: ~26 h (<48h), var_24h 2.83 (>=0) y var_4h -1.36, sin tendencia rota; stop 4.97e-06 intacto. AVAX var_24h 8.83 pero vs_max_48h -4.43 y vol4h 1.22, no cumple. Sin disparos.
 
+## 2026-11-10 00:16 UTC — nota
+[v2] Sin operar: ya hay 1 posicion (PEPE), maximo 1. Filtro BTC abierto (var_24h 0.06, var_4h 0.55). PEPE se mantiene: ~28 h (<48h), var_24h 1.38 (>=0) asi que no hay tendencia rota; stop 4.97e-06 intacto. AVAX var_24h 8.47 pero vs_max_48h -3.49 y vol4h 0.96, no cumple. Sin disparos.
+
