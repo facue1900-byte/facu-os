@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 390.6634752442437,
+  "usdt": 240.66347524424373,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794292260000
+      "vigilado_hasta": 1794295860000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794292260000
+      "vigilado_hasta": 1794295860000
     },
     "PEPEUSDT": {
       "nivel": "trading",
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794292260000
+      "vigilado_hasta": 1794295860000
+    },
+    "UNIUSDT": {
+      "nivel": "trading",
+      "cantidad": 21.02862756104406,
+      "entrada": 7.126,
+      "maximo": 7.126,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794296040000
     }
   },
-  "comisiones_usd": 42.85178899999997,
+  "comisiones_usd": 43.00178899999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3854,6 +3876,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: PEPE (72 M/día) +5,15% en 24 h, 4 h +3,31% (sigue subiendo), 1 h +2,91% (no estirada, < +4%), -1,67% del máximo de 48 h. Volumen flojo (0,55x): tesis débil en convicción, por eso stop 5% por defecto sin agrandar. BTC 4 h -0,4%: sin bloqueo. Invalida: 24 h bajo +5% con 4 h roja, o salta el stop."
+    },
+    {
+      "ms": 1794295981704,
+      "fecha": "2026-11-10 07:33 UTC",
+      "lado": "buy",
+      "par": "UNIUSDT",
+      "nivel": "trading",
+      "cantidad": 21.02862756104406,
+      "precio": 7.126,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: UNI (34 M/día) +6,31% en 24 h, 4 h +3,11% (sigue subiendo), 1 h +0,69% (no estirada), -0,15% del máximo de 48 h, volumen 1,17x (el mejor del radar después de HYPE). BTC 4 h +0,41%: sin bloqueo. Stop 5% por defecto. Invalida: 24 h bajo +5% con 4 h roja, rechazo del máximo de 48 h con 1 h roja fuerte, o salta el stop."
     }
   ]
 }
