@@ -569,3 +569,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-10 18:16 UTC — nota
 [v2] Sin operar: filtro BTC cerrado (var_24h -2.01 < -2, var_4h -1.62). Carpeta vacia: el stop de PEPE salto a 5.1704e-06 (+1.98%) en la vigilancia. Ningun par con var_24h>=3 y var_4h>0 en el top 20 visible (PEPE var_4h -5.05). 1 disparo (stop PEPE) en esta pasada.
 
+## 2026-11-10 20:17 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC abierto (var_24h -1.8, var_4h 0.87). Ningun par cumple entrada: INIT var_24h 49.35, var_4h 4.77, vol4h 1.66 pero vs_max_48h -11.13 y var_1h -3.62; ONE var_24h 17.96 pero var_4h -1.86 y vs_max_48h -13.8; resto con var_24h<3. Sin disparos.
+
