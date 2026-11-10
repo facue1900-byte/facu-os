@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 243.88566632048662,
+  "usdt": 540.6634752442437,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794274260000
+      "vigilado_hasta": 1794277860000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -48,54 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794274260000
-    },
-    "AVAXUSDT": {
-      "nivel": "trading",
-      "cantidad": 17.353792704111175,
-      "entrada": 8.635,
-      "maximo": 8.745,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794274260000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.12873490146217417,
-      "entrada": 1164.02,
-      "maximo": 1179.05,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794274260000
+      "vigilado_hasta": 1794277860000
     }
   },
-  "comisiones_usd": 42.40471399999997,
+  "comisiones_usd": 42.70178899999997,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3840,6 +3796,30 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: ZEC (196 M/día) cayó al mínimo de 48 h y la última hora cerró verde (+0,16%) sin mínimo nuevo: pasó de +0,67% a +1,1% sobre el mínimo, la condición escrita a las 23:32. 4 h casi plana (-0,14%) tras -4/-5% previas; volumen 0,75x. BTC 4 h +0,34%: sin bloqueo. Stop 5% por defecto. Invalida: perder el mínimo de 48 h (~1,1% abajo del precio de entrada), o salta el stop."
+    },
+    {
+      "ms": 1794277927178,
+      "fecha": "2026-11-10 02:32 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.12873490146217417,
+      "precio": 1145.92,
+      "usd": 147.5199,
+      "comision": 0.14752,
+      "motivo": "Tesis invalidada: perdió el mínimo de 48 h que era la condición escrita al entrar (~1.151); hizo mínimo nuevo ~1.143 (vs_min 0,05%), 1 h -1,97%, 4 h -2,7%, 24 h -7,42%. Sale antes del stop 1.120,10.",
+      "resultado_pct": -1.55
+    },
+    {
+      "ms": 1794277927953,
+      "fecha": "2026-11-10 02:32 UTC",
+      "lado": "sell",
+      "par": "AVAXUSDT",
+      "cantidad": 17.353792704111175,
+      "precio": 8.618,
+      "usd": 149.555,
+      "comision": 0.149555,
+      "motivo": "Tesis invalidada: la 4 h pasó a roja (-0,40%), condición de salida escrita al entrar; 1 h -0,46%, 24 h bajó a +6,79%. Sale antes del stop 8,31.",
+      "resultado_pct": -0.2
     }
   ]
 }

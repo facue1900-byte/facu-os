@@ -3862,3 +3862,16 @@ Rebote en soporte: ZEC (196 M/día) cayó al mínimo de 48 h y la última hora c
 ## 2026-11-10 01:32 UTC — nota
 01:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: AVAX, HYPE, XRP 60 min y ZEC 58 min, nada saltó. Posiciones: AVAX 8,718 (+0,96%, stop 8,308; 24 h +8,56%, 4 h +0,83% con 1,1x, 1 h +0,63%, -3,18% del máximo de 48 h): 4 h verde y 24 h > 5%, tesis viva. XRP 1,1022 (+0,69%, stop 1,0728; 4 h +0,51%, +2,4% del mínimo 1,0817): soporte no perdido; cumple 24 h el 10/11 08:36. HYPE 74,73 (+1,54%, stop 72,94; 4 h -0,85%, +3,17% del mínimo 72,49): tesis viva; cumple 24 h el 10/11 11:32. ZEC 1.167,95 (+0,34%, stop 1.120,10; 1 h -0,25%, 4 h -0,59%, +1,29% del mínimo ~1.151): mínimo no perdido, tesis viva. Mercado: plano y sin volumen (todo ≤ 1,1x; 1 h entre -0,4% y +0,63%). BTC 4 h +0,02%: sin bloqueo. Sin entradas: ruptura nadie (TRX -1,15% del máximo con 0,95x, BTC -1,52% con 0,78x); momentum sólo AVAX (en cartera), el resto con 24 h < +2%; rebote: TRX +0,38% del mínimo con 1 h -0,19%, sigue cayendo; SOL +1,63% del mínimo sin señal de piso y volumen 0,51x. ~29% USDT. A mirar próxima hora: ZEC bajo ~1.151 = salir; AVAX 4 h roja o 24 h bajo +5% = salir; XRP bajo 1,0817, HYPE bajo 72,49 = salir. 4 posiciones.
 
+## 2026-11-10 02:32 UTC — Venta ZECUSDT
+147.52 USD a 1,145.92 (-1.55% contra la compra).
+
+Tesis invalidada: perdió el mínimo de 48 h que era la condición escrita al entrar (~1.151); hizo mínimo nuevo ~1.143 (vs_min 0,05%), 1 h -1,97%, 4 h -2,7%, 24 h -7,42%. Sale antes del stop 1.120,10.
+
+## 2026-11-10 02:32 UTC — Venta AVAXUSDT
+149.56 USD a 8.618 (-0.20% contra la compra).
+
+Tesis invalidada: la 4 h pasó a roja (-0,40%), condición de salida escrita al entrar; 1 h -0,46%, 24 h bajó a +6,79%. Sale antes del stop 8,31.
+
+## 2026-11-10 02:32 UTC — nota
+02:31 UTC — Sin disparos. 0 entradas, 2 salidas. Vigilante: AVAX, HYPE, XRP, ZEC 60 min, nada saltó. Salidas: ZEC a 1.145,92 (-1,55%): perdió el mínimo de 48 h (~1.151), hizo mínimo nuevo ~1.143 con 1 h -1,97% y 4 h -2,7% — invalidación escrita al entrar. AVAX a 8,618 (-0,2%): la 4 h pasó a roja (-0,4%), invalidación escrita al entrar. Corrección: el mínimo de 48 h de XRP es ~1,0766, no 1,0817 (mal calculado en notas previas; 1,1022/1,024 = 1,0764). Posiciones: XRP 1,0923 (-0,22%, stop 1,0728; 1 h -0,74%, 4 h -1,34%, +1,46% del mínimo ~1,0766): soporte no perdido; cumple 24 h el 10/11 08:36. HYPE 74,22 (+0,84%, stop 72,94; 4 h -1,83%, +2,37% del mínimo 72,49): tesis viva, floja; cumple 24 h el 10/11 11:32. Mercado: rojo general, sin volumen (todo < 1,3x salvo stable RWUSD). BTC 4 h -0,6%: sin bloqueo. Sin entradas: ruptura nadie (TRX -1,09% del máximo con 0,78x, BTC -1,78%); momentum: sólo AVAX +6,79% en 24 h pero 4 h roja; rebote: TRX +0,44% del mínimo plano sin recorrido, ZEC en mínimo nuevo cayendo, SOL +1,09% del mínimo con 1 h roja. ~82% USDT. A mirar próxima hora: XRP bajo 1,0766, HYPE bajo 72,49 = salir; ZEC si una hora cierra verde sin mínimo nuevo; AVAX si la 4 h vuelve a verde. 2 posiciones.
+
