@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 535.4965540175664,
+  "usdt": 385.4965540175664,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794346260000
+      "vigilado_hasta": 1794349860000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794346260000
+      "vigilado_hasta": 1794349860000
+    },
+    "GRAMUSDT": {
+      "nivel": "trading",
+      "cantidad": 130.75916230366494,
+      "entrada": 1.146,
+      "maximo": 1.146,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794349980000
     }
   },
-  "comisiones_usd": 43.89721799999996,
+  "comisiones_usd": 44.04721799999996,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3916,6 +3938,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: ETH tocó el mínimo de 48 h en 2006 (15:00) y desde ahí hace mínimos horarios más altos (16:00 2009,6, 17:00 2014,6, 18:00 2024,6), dos horas verdes seguidas con volumen vendedor aflojando (116 → 77 → 32 → 22 M parcial); 1 h +0,95%, +2,1% del mínimo, BTC 4 h -1,05% sin bloqueo. Era la condición escrita la hora pasada. Invalida: perder 2006 (mínimo de 48 h) o una hora con mínimo nuevo bajo 2014,6 con volumen vendedor; stop 5%."
+    },
+    {
+      "ms": 1794349934716,
+      "fecha": "2026-11-10 22:32 UTC",
+      "lado": "buy",
+      "par": "GRAMUSDT",
+      "nivel": "trading",
+      "cantidad": 130.75916230366494,
+      "precio": 1.146,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: GRAM +10,8% en 24 h, 4 h +3,05% con volumen 1,57x, 1 h -0,61% (no estirada), -1,29% del máximo de 48 h; velas horarias de 2-3% con mínimos más altos (1,089 a las 19:00, 1,099 a las 20:00, 1,114 a las 21:00), no es pump tipo INIT. Invalida: perder 1,099 (mínimo de las 20:00) o 24 h bajo +5% con 4 h roja; stop 5%."
     }
   ]
 }
