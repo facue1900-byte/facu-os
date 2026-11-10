@@ -3911,3 +3911,16 @@ Regla de 24 h: entró el 09/11 08:36 como rebote en soporte y a las 08:32 del 10
 ## 2026-11-10 09:32 UTC — nota
 09:32 UTC — Sin disparos, sin entradas, sin salidas. Vigilante: HYPE, PEPE, UNI 60 min, nada saltó. Posiciones: PEPE 5,27e-06 (-0,94%, stop 5,11e-06; 24 h +3,52%, 4 h 0,0%, 1 h -1,12%, -2,04% del máximo de 48 h): el momentum se frenó, pero la invalidación escrita pide 24 h < +5% Y 4 h roja; la 4 h está plana, no roja. Tesis floja: si la próxima hora la 4 h pasa a roja, sale. UNI 7,031 (-1,33%, stop 6,77; 24 h +3,86%, 4 h +0,23% verde, volumen 1,47x, -1,49% del máximo): 4 h sigue verde, tesis viva floja. HYPE 74,39 (+1,07%, stop 72,94; 1 h -0,2%, 4 h -0,85%, +2,55% del mínimo ~72,5): mínimo en pie; cumple 24 h el 10/11 11:32 y sale en la pasada de las 11:32 si no llegó a +8%. Mercado: rojo tibio en casi todo (1 h -0,2/-0,7%), volumen bajo (todo < 1,5x). Radar trae sólo 15 pares sobre 20 M/día. BTC 4 h -0,51%: sin bloqueo. Sin entradas: ruptura nadie (BNB -1,53% y PEPE -2,04% del máximo sin volumen; UNI 1,47x pero -1,49% del máximo y 1 h roja); momentum: AVAX +5,53% en 24 h pero 4 h -1,8%; rebote: SOL +0,6% del mínimo con 1 h -0,58%, ZEC +0,87% con 1 h -0,24%, ninguno muestra piso. ~47% USDT. A mirar la próxima hora: PEPE o UNI con 4 h roja = salir; HYPE bajo ~72,5 = salir; UNI rompiendo el máximo con ≥ 1,5x = dejar correr; SOL/ZEC si una hora cierra verde sin mínimo nuevo. 3 posiciones.
 
+## 2026-11-10 10:33 UTC — Venta PEPEUSDT
+149.29 USD a 5.3e-06 (-0.38% contra la compra).
+
+Tesis invalidada: se cumplen las dos condiciones escritas al entrar — 24 h bajó a +4,74% (< +5%) y la 4 h pasó a roja (-0,19%); 1 h +0,19%, volumen 0,83x, -1,85% del máximo de 48 h. Sale antes del stop 5,11e-06.
+
+## 2026-11-10 10:33 UTC — Venta UNIUSDT
+146.78 USD a 6.98 (-2.05% contra la compra).
+
+Tesis invalidada: 24 h bajó a +3,68% (< +5%) y la 4 h pasó a roja (-1,36%), las dos condiciones escritas al entrar; 1 h -0,26%, -2,19% del máximo de 48 h. Sale antes del stop 6,77.
+
+## 2026-11-10 10:33 UTC — nota
+10:32 UTC — Sin disparos. 0 entradas, 2 salidas. Vigilante: HYPE, PEPE, UNI 61 min, nada saltó. Salidas: PEPE a 5,30e-06 (-0,38%): 24 h +4,74% (< +5%) y 4 h -0,19% roja, las dos condiciones de invalidación escritas al entrar. UNI a 6,98 (-2,05%): 24 h +3,68% y 4 h -1,36% roja, misma invalidación. Posición: HYPE 74,15 (+0,75%, stop 72,94; 1 h -0,54%, 4 h -0,84%, volumen 0,71x, +2,15% del mínimo ~72,5): mínimo en pie; cumple 24 h el 10/11 11:32 y sale en la próxima pasada si no llegó a +8%. Mercado: rojo general (1 h -0,3/-1%, 4 h roja en todo), volumen bajo (todo < 1,4x salvo la stable RWUSD). BTC 4 h -0,55%: sin bloqueo. Sin entradas: ruptura nadie (BNB -1,74%, PEPE -1,85% del máximo sin volumen); momentum: nadie con +5% en 24 h (PEPE +4,74%, AVAX +4,13% con 4 h roja); rebote: SOL +0,11% y XRP +0,43% del mínimo pero 1 h -1%/-0,8%, siguen cayendo; ZEC +1% del mínimo plano con 0,84x. ~82% USDT. A mirar la próxima hora: HYPE sale por regla de 24 h o bajo ~72,5; SOL/XRP si una hora cierra verde sin mínimo nuevo; ruptura con ≥ 1,5x. 1 posición.
+

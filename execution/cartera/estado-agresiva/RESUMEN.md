@@ -1,21 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-10 09:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-10 10:33 UTC
 
-**Total: 837.36 USD (-16.26%)** desde 2026-10-07 23:06 UTC · USDT libre 389.72 · comisiones 43.15 · 317 operaciones
+**Total: 836.32 USD (-16.37%)** desde 2026-10-07 23:06 UTC · USDT libre 685.49 · comisiones 43.45 · 319 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **837.36** |
+| **Esta carpeta** | **836.32** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 894.32 |
+| hodl btc | 892.17 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| HYPE | trading | 151.30 | +0.96% | 72.941 |
-| PEPE | trading | 148.72 | -0.75% | 5.11e-06 |
-| UNI | trading | 147.62 | -1.49% | 6.7697 |
+| HYPE | trading | 150.83 | +0.65% | 72.941 |
 
 ## Últimas operaciones
 
+- 2026-11-10 10:33 UTC · venta UNI 146.78 USD a 6.98 — Tesis invalidada: 24 h bajó a +3,68% (< +5%) y la 4 h pasó a roja (-1,36%), las dos condiciones escritas al entrar; 1 h -0,26%, -2,19% del m
+- 2026-11-10 10:33 UTC · venta PEPE 149.29 USD a 5.3e-06 — Tesis invalidada: se cumplen las dos condiciones escritas al entrar — 24 h bajó a +4,74% (< +5%) y la 4 h pasó a roja (-0,19%); 1 h +0,19%, 
 - 2026-11-10 08:32 UTC · venta XRP 149.21 USD a 1.09 — Regla de 24 h: entró el 09/11 08:36 como rebote en soporte y a las 08:32 del 10/11 está en -0,4% sin haber llegado a +8% ni al stop (1 h -0,
 - 2026-11-10 07:33 UTC · compra UNI 150.00 USD a 7.126 — Momentum de 24 h: UNI (34 M/día) +6,31% en 24 h, 4 h +3,11% (sigue subiendo), 1 h +0,69% (no estirada), -0,15% del máximo de 48 h, volumen 1
 - 2026-11-10 04:32 UTC · compra PEPE 150.00 USD a 5.32e-06 — Momentum de 24 h: PEPE (72 M/día) +5,15% en 24 h, 4 h +3,31% (sigue subiendo), 1 h +2,91% (no estirada, < +4%), -1,67% del máximo de 48 h. V
@@ -24,7 +24,5 @@
 - 2026-11-10 00:32 UTC · compra ZEC 150.00 USD a 1,164.02 — Rebote en soporte: ZEC (196 M/día) cayó al mínimo de 48 h y la última hora cerró verde (+0,16%) sin mínimo nuevo: pasó de +0,67% a +1,1% sob
 - 2026-11-09 22:32 UTC · compra AVAX 150.00 USD a 8.635 — Momentum de 24 h: AVAX (52 M/día) +9,03% en 24 h, 4 h volvió a verde +0,92% con 1,25x de volumen, 1 h -0,28% (no estirada), -4,25% del máxim
 - 2026-11-09 22:32 UTC · venta UNI 148.54 USD a 7.031 — Tesis invalidada: 24 h bajó a +3,79% (< +5%) y la 4 h pasó a roja (-0,35%), las dos condiciones de salida escritas al entrar. Sale antes del
-- 2026-11-09 22:32 UTC · venta BTC 171.37 USD a 75,121.8 — Regla de 24 h: entró 2026-11-08 22:32 y lleva 24 h en +0,9%, sin llegar a +8% ni al stop. Sale y rota.
-- 2026-11-09 21:32 UTC · compra UNI 150.00 USD a 7.093 — Momentum de 24 h: UNI (43 M/día) +6,03% en 24 h, 4 h +1,53% (sigue subiendo), 1 h +0,45% (no estirada), -2,15% del máximo de 48 h; volumen 0
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

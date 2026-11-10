@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 389.7209005662497,
+  "usdt": 685.4913086031642,
   "posiciones": {
     "HYPEUSDT": {
       "nivel": "trading",
@@ -26,54 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794303060000
-    },
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 28167293.233082708,
-      "entrada": 5.32e-06,
-      "maximo": 5.38e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794303060000
-    },
-    "UNIUSDT": {
-      "nivel": "trading",
-      "cantidad": 21.02862756104406,
-      "entrada": 7.126,
-      "maximo": 7.126,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794303060000
+      "vigilado_hasta": 1794306720000
     }
   },
-  "comisiones_usd": 43.150995999999964,
+  "comisiones_usd": 43.447062999999964,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3878,6 +3834,30 @@
       "comision": 0.149207,
       "motivo": "Regla de 24 h: entró el 09/11 08:36 como rebote en soporte y a las 08:32 del 10/11 está en -0,4% sin haber llegado a +8% ni al stop (1 h -0,52%, 4 h -0,24%, +1,29% del mínimo de 48 h, volumen 0,66x). Salgo en esta pasada porque es la más cercana al vencimiento: la próxima sería con 55 min de atraso. Se rota la plata.",
       "resultado_pct": -0.43
+    },
+    {
+      "ms": 1794306799522,
+      "fecha": "2026-11-10 10:33 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 28167293.233082708,
+      "precio": 5.3e-06,
+      "usd": 149.2867,
+      "comision": 0.149287,
+      "motivo": "Tesis invalidada: se cumplen las dos condiciones escritas al entrar — 24 h bajó a +4,74% (< +5%) y la 4 h pasó a roja (-0,19%); 1 h +0,19%, volumen 0,83x, -1,85% del máximo de 48 h. Sale antes del stop 5,11e-06.",
+      "resultado_pct": -0.38
+    },
+    {
+      "ms": 1794306800346,
+      "fecha": "2026-11-10 10:33 UTC",
+      "lado": "sell",
+      "par": "UNIUSDT",
+      "cantidad": 21.02862756104406,
+      "precio": 6.98,
+      "usd": 146.7798,
+      "comision": 0.14678,
+      "motivo": "Tesis invalidada: 24 h bajó a +3,68% (< +5%) y la 4 h pasó a roja (-1,36%), las dos condiciones escritas al entrar; 1 h -0,26%, -2,19% del máximo de 48 h. Sale antes del stop 6,77.",
+      "resultado_pct": -2.05
     }
   ]
 }
