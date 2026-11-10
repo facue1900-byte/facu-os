@@ -557,3 +557,9 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-10 14:19 UTC — nota
 [v2] Sin operar: ya hay 1 posicion (PEPE), maximo 1. Filtro BTC abierto (var_24h -1.45, var_4h -0.56). PEPE se mantiene: ~42 h (<48h), var_24h 2.1 (>=0), var_4h 1.52, sin tendencia rota; stop 4.97e-06 intacto. Ningun otro par cumple (var_24h>=3 y var_4h>0): NEAR var_24h 0.91, UNI 1.01, ENA -1.54. Sin disparos.
 
+## 2026-11-10 14:54 UTC — Toma PEPEUSDT (vigilante)
+104.84 USD a 5.577e-06 (+10.00%). Toma de ganancia +10% en 5.577e-06: vende 50% de lo que quedaba.
+
+## 2026-11-10 16:18 UTC — nota
+[v2] Sin operar: filtro BTC cerrado (var_24h -2.12 < -2, var_4h -1.23) y ademas ya hay 1 posicion (PEPE), maximo 1. PEPE se mantiene: ~44 h (<48h), var_24h -0.19 (<0) pero var_4h -0.76 (no < -2), sin tendencia rota; toma +10% ya ejecutada 14:54 (vigilante), stop 5.17e-06 intacto. Ningun otro par cumple var_24h>=3 y var_4h>0 salvo INIT (var_24h 95.7, var_4h 36, pero vs_max_48h -13.31). 1 disparo (toma PEPE) en esta pasada.
+

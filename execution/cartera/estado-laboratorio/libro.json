@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 80841.96
   },
-  "usdt": 763.2106496068257,
+  "usdt": 867.9408745468256,
   "posiciones": {
     "PEPEUSDT": {
       "nivel": "trading",
-      "cantidad": 37595502.95857988,
+      "cantidad": 18797751.47928994,
       "entrada": 5.07e-06,
-      "maximo": 5.4e-06,
+      "maximo": 5.62e-06,
       "reglas": {
         "stop": 7.0,
         "trail": 8.0,
@@ -25,11 +25,13 @@
           ]
         ]
       },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794320280000
+      "tomas_hechas": [
+        10.0
+      ],
+      "vigilado_hasta": 1794327480000
     }
   },
-  "comisiones_usd": 3.3401829999999997,
+  "comisiones_usd": 3.4450179999999997,
   "operaciones": [
     {
       "ms": 1793153807285,
@@ -246,6 +248,18 @@
       "usd": 190.8,
       "comision": 0.1908,
       "motivo": "[v2] filtro BTC abierto (var_24h 0.24, var_4h 0.13); PEPE var_24h 4.75, var_4h 1.4, var_1h -0.2, vs_max_48h -1.17, vol4h 1.46; 0 posiciones, 0 entradas hoy · invalida: stop 7% / var_24h<0 y var_4h<-2"
+    },
+    {
+      "ms": 1794322440000,
+      "fecha": "2026-11-10 14:54 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 18797751.47928994,
+      "precio": 5.577e-06,
+      "usd": 104.8351,
+      "comision": 0.104835,
+      "motivo": "Toma de ganancia +10% en 5.577e-06: vende 50% de lo que quedaba.",
+      "resultado_pct": 10.0
     }
   ]
 }
