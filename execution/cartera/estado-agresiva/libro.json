@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 240.66347524424373,
+  "usdt": 389.7209005662497,
   "posiciones": {
-    "XRPUSDT": {
-      "nivel": "trading",
-      "cantidad": 136.8868183063853,
-      "entrada": 1.0947,
-      "maximo": 1.1168,
-      "reglas": {
-        "stop": 2.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794295860000
-    },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 2.036005434782609,
@@ -48,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794295860000
+      "vigilado_hasta": 1794299460000
     },
     "PEPEUSDT": {
       "nivel": "trading",
       "cantidad": 28167293.233082708,
       "entrada": 5.32e-06,
-      "maximo": 5.34e-06,
+      "maximo": 5.38e-06,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794295860000
+      "vigilado_hasta": 1794299460000
     },
     "UNIUSDT": {
       "nivel": "trading",
@@ -92,10 +70,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794296040000
+      "vigilado_hasta": 1794299460000
     }
   },
-  "comisiones_usd": 43.00178899999997,
+  "comisiones_usd": 43.150995999999964,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3888,6 +3866,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: UNI (34 M/día) +6,31% en 24 h, 4 h +3,11% (sigue subiendo), 1 h +0,69% (no estirada), -0,15% del máximo de 48 h, volumen 1,17x (el mejor del radar después de HYPE). BTC 4 h +0,41%: sin bloqueo. Stop 5% por defecto. Invalida: 24 h bajo +5% con 4 h roja, rechazo del máximo de 48 h con 1 h roja fuerte, o salta el stop."
+    },
+    {
+      "ms": 1794299535178,
+      "fecha": "2026-11-10 08:32 UTC",
+      "lado": "sell",
+      "par": "XRPUSDT",
+      "cantidad": 136.8868183063853,
+      "precio": 1.09,
+      "usd": 149.2066,
+      "comision": 0.149207,
+      "motivo": "Regla de 24 h: entró el 09/11 08:36 como rebote en soporte y a las 08:32 del 10/11 está en -0,4% sin haber llegado a +8% ni al stop (1 h -0,52%, 4 h -0,24%, +1,29% del mínimo de 48 h, volumen 0,66x). Salgo en esta pasada porque es la más cercana al vencimiento: la próxima sería con 55 min de atraso. Se rota la plata.",
+      "resultado_pct": -0.43
     }
   ]
 }
