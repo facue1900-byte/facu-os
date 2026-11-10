@@ -7,7 +7,7 @@ Plata ficticia: no hay keys, no mandás nada a nadie.
 ## 1. Traer la rama
 
 ```bash
-git fetch origin
+git fetch --unshallow origin 2>/dev/null || git fetch origin   # el clon de la nube es corto: sin historia entera, el merge da "unrelated histories" (DCA, 09/11)
 git checkout claude/cartera-torneo 2>/dev/null || git checkout -b claude/cartera-torneo
 git pull --ff-only origin claude/cartera-torneo 2>/dev/null || true
 git merge --no-edit origin/main
