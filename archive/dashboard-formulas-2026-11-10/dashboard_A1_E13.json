@@ -1,0 +1,93 @@
+[
+ [
+  2026,
+  "Ingresos operativos ARS (sin aportes)",
+  "Egresos operativos ARS (sin inversiones)",
+  "Resultado operativo",
+  "Acumulado operativo"
+ ],
+ [
+  46023,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A2, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A2, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B2 - C2",
+  "=SUM(D$2:D2)"
+ ],
+ [
+  46054,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A3, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A3, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B3 - C3",
+  "=SUM(D$2:D3)"
+ ],
+ [
+  46082,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A4, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A4, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B4 - C4",
+  "=SUM(D$2:D4)"
+ ],
+ [
+  46113,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A5, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A5, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B5 - C5",
+  "=SUM(D$2:D5)"
+ ],
+ [
+  46143,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A6, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A6, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B6 - C6",
+  "=SUM(D$2:D6)"
+ ],
+ [
+  46174,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A7, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A7, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B7 - C7",
+  "=SUM(D$2:D7)"
+ ],
+ [
+  46204,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A8, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A8, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B8 - C8",
+  "=SUM(D$2:D8)"
+ ],
+ [
+  46235,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A9, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A9, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B9 - C9",
+  "=SUM(D$2:D9)"
+ ],
+ [
+  46266,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A10, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A10, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B10 - C10",
+  "=SUM(D$2:D10)"
+ ],
+ [
+  46296,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A11, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A11, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B11 - C11",
+  "=SUM(D$2:D11)"
+ ],
+ [
+  46327,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A12, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A12, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B12 - C12",
+  "=SUM(D$2:D12)"
+ ],
+ [
+  46357,
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Ingreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A13, Movimientos!D:D, \"<>Aporte de Capital*\", Movimientos!D:D, \"<>Cambio de USD\")",
+  "=SUMIFS(Movimientos!F:F, Movimientos!B:B, \"Egreso\", Movimientos!G:G, \"ARS\", ARRAYFORMULA(TEXT(Movimientos!A:A, \"mmmm yyyy\")), A13, Movimientos!E:E, \"<>Inversiones\", Movimientos!E:E, \"<>Retiro de Ganancia*\", Movimientos!E:E, \"<>Pesos a USD\")",
+  "=B13 - C13",
+  "=SUM(D$2:D13)"
+ ]
+]

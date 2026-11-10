@@ -13,7 +13,7 @@ python3 execution/cartera/cartera.py <comando>
 ## 1. Traer el libro
 
 ```bash
-git fetch origin
+git fetch --unshallow origin 2>/dev/null || git fetch origin   # el clon de la nube es corto: sin historia entera, el merge da "unrelated histories" (DCA, 09/11)
 git checkout claude/cartera-dca
 git pull --ff-only origin claude/cartera-dca
 git merge --no-edit origin/main
