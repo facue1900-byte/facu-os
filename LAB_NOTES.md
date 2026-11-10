@@ -8,6 +8,20 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-10 · FAIL ✓ · Paseo: efectivo-diario murió "sin red" con la red andando
+
+**Qué pasó.** Mail de falla de `efectivo-diario`: "Sin red después de 15 minutos". La Mac estuvo
+cerrada toda la mañana (`pmset -g log`): sólo DarkWakes de mantenimiento de ~45 s a las 07:39, 08:07
+y 08:44. `correr.sh` vio red en el primero y largó la tarea; `efectivo_diario.sh` tenía **su propia**
+espera de red, que la perdió y consumió sus 30 intentos entre DarkWakes hasta morir a las 08:44.
+El mail salió en los 20 s de FullWake. Los datos estaban sanos: a mano, 665 = 665 y $0 a volcar.
+
+**Causa raíz.** Espera de red duplicada: el mismo error que `correr.sh` ya documentaba ("la red se
+decide UNA vez", 01/11), sobreviviendo adentro de un script. **Fix:** se sacó el loop de
+`efectivo_diario.sh`; la red la decide sólo `correr.sh`. No queda otro `host -W` en el repo.
+
+**Lección.** Una tarea que corre por `correr.sh` no chequea la red por su cuenta.
+
 ### 2026-11-04 · FAIL ✓ · Paseo: una rutina podía mandarle el reporte a Richi sola, y las rutinas "en la nube" no eran de la nube
 
 **Qué pasó.** Revisando los agentes que corren con la Mac apagada: `Conciliacion mensual`
