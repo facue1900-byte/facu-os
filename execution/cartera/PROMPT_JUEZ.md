@@ -7,7 +7,7 @@ Si ninguna carpeta gana, decilo así de claro: decir "ninguna gana" es un buen v
 ## 1. Traer todo
 
 ```bash
-git fetch origin
+git fetch --unshallow origin 2>/dev/null || git fetch origin   # el clon de la nube es corto: sin historia entera, el merge da "unrelated histories" (DCA, 09/11)
 git checkout claude/cartera-juez
 git pull --ff-only origin claude/cartera-juez
 git merge --no-edit origin/main

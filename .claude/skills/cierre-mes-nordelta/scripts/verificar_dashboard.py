@@ -210,8 +210,57 @@ def main():
             fallas += 1
         print(f"  {estado} {medio}: dashboard US${visto:,.2f} · movimientos US${calc:,.2f}")
 
+    fallas += cuadro_operativo(sv, hoja, anio, mes)
+
     print("\n" + ("TODO OK" if not fallas else f"{fallas} PROBLEMAS"))
     sys.exit(1 if fallas else 0)
+
+
+def cuadro_operativo(sv, hoja, anio, mes_corte):
+    """La pestaña «Dashboard» (resultado operativo por mes) dice lo mismo que el
+    reporte a inversores. Sus SUMIFS repiten a mano la lista de lo que NO es
+    operativo; el 10/11/2026 se le colaban el FCI ($47M de octubre, de ida y de
+    vuelta) y los «Ajuste de caja» de abril y junio. La regla vive en una sola
+    parte: NO_OPERATIVO de reporte_inversores.py."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from reporte_inversores import NO_OPERATIVO, INGRESO_NO_OPERATIVO
+
+    print("\n5 · PESTAÑA «DASHBOARD» = RESULTADO OPERATIVO DEL REPORTE")
+    ing = defaultdict(float)
+    egr = defaultdict(float)
+    contadas = 0
+    for r in hoja[1:]:
+        r = list(r) + [""] * 11
+        tipo = str(r[1]).strip()
+        f = a_iso(r[0])
+        if not tipo or f[:4] != str(anio) or (str(r[6]).strip() or "ARS").upper() != "ARS":
+            continue
+        m = int(f[5:7])
+        monto = float(r[5]) if isinstance(r[5], (int, float)) else 0.0
+        local, cat = str(r[3]).strip(), str(r[4]).strip()
+        contadas += 1
+        if tipo == "Ingreso":
+            if not local.startswith("Aporte de Capital") and local not in INGRESO_NO_OPERATIVO:
+                ing[m] += monto
+        elif cat not in NO_OPERATIVO:
+            egr[m] += monto
+    cuadro = sv.values().get(spreadsheetId=MP, range="Dashboard!A2:C13",
+                             valueRenderOption="UNFORMATTED_VALUE").execute().get("values", [])
+    if contadas == 0 or len(cuadro) < mes_corte:
+        print(f"  ✗ no hay qué comparar ({contadas} filas, {len(cuadro)} meses en el cuadro)")
+        return 1
+    fallas = 0
+    for m in range(1, mes_corte + 1):
+        fila = list(cuadro[m - 1]) + [0, 0, 0]
+        visto_i = float(fila[1] or 0)
+        visto_e = float(fila[2] or 0)
+        if abs(visto_i - ing[m]) > 0.01 or abs(visto_e - egr[m]) > 0.01:
+            fallas += 1
+            print(f"  ✗ {MESES[m - 1]}: cuadro ing ${visto_i:,.0f} / egr ${visto_e:,.0f}"
+                  f" · reporte ing ${ing[m]:,.0f} / egr ${egr[m]:,.0f}")
+    if not fallas:
+        print(f"  ✓ los {mes_corte} meses coinciden ({contadas} filas en pesos de {anio})")
+    return fallas
 
 
 if __name__ == "__main__":

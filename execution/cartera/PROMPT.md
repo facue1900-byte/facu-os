@@ -8,7 +8,7 @@ Herramienta única: `python3 execution/cartera/cartera.py <comando>` desde la ra
 ## 1. Traer el libro
 
 ```bash
-git fetch origin
+git fetch --unshallow origin 2>/dev/null || git fetch origin   # el clon de la nube es corto: sin historia entera, el merge da "unrelated histories" (DCA, 09/11)
 git checkout claude/cartera-cripto
 git pull --ff-only origin claude/cartera-cripto
 git merge --no-edit origin/main   # trae mejoras del código; el libro no se toca en main
