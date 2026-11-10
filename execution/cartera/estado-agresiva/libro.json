@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794288660000
+      "vigilado_hasta": 1794292260000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794288660000
+      "vigilado_hasta": 1794292260000
     },
     "PEPEUSDT": {
       "nivel": "trading",
       "cantidad": 28167293.233082708,
       "entrada": 5.32e-06,
-      "maximo": 5.32e-06,
+      "maximo": 5.34e-06,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794288660000
+      "vigilado_hasta": 1794292260000
     }
   },
   "comisiones_usd": 42.85178899999997,
