@@ -1,7 +1,35 @@
 # Paseo Nordelta — estado
 
-Última actualización: 2026-11-02 (bloque de noviembre: memoria `retomar-cierre-noviembre-paseo`). Lo que sigue después de
+Última actualización: 2026-11-10 (revisión del Master Plan); antes 2026-11-02 (bloque de noviembre: memoria `retomar-cierre-noviembre-paseo`). Lo que sigue después de
 «Historia al 27/07» quedó como registro: varios números de ahí ya cambiaron.
+
+## Revisión del Master Plan — 10/11/2026
+
+Corregido (backup en `archive/dashboard-formulas-2026-11-10/`):
+- Pestaña **Dashboard** (resultado operativo): ahora excluye el FCI ($47M de oct, de ida y
+  vuelta) y los «Ajuste de caja» (abr $409.000, jun $473.814). Acumulado ene–nov:
+  $49.998.836 → **$50.881.650**. Lo vigila el paso 5 de `verificar_dashboard.py`.
+- Aporte Richi $20M (id `2e5dba5e`): estaba con fecha 03/02, vuelve a **02/03** (base + hoja).
+- Tubomarket F95: $391.324,31 otra vez, **también en la base** → banco = extracto al 30/10
+  ($5.167.534,62) al centavo.
+- VEP de mayo y bienes personales: de «Gastos bancarios» a Impuestos / Ingresos Brutos
+  (mismo criterio que oct). Filas 227-229, 276, 277, 345.
+- INPUTS EXPENSAS: rangos y selector `$5:$13` → `$5:$15` (octubre no se podía elegir; da
+  $0 sin avisar). Mes elegido: octubre. **Diciembre necesita insertar una fila antes de la 16.**
+- Proyeccion B36:B37: rango hasta la fila 161 (antes 113).
+- 69 ids de la app completados en la columna K; quedan 3 sin par.
+
+Abierto, decide Facu:
+- Pago municipal 07/10 $16.669.692 en Inversiones incluye el ABL de $978.731 (operativo).
+- Deudas Noreventos/NDPL: la fila 193 ($1.191.377) en Municipal y las otras 3 en Inversiones.
+- Alquileres!E3:E19 lee el bloque vivo de Expensas Predio (AVN en $0); E7 lee agosto congelado.
+- Expensas Predio!P4 basura clavada a «mayo 2026»/3.
+- Proyeccion: 5 «inversión total» distintas (USD 200k a 875k), inicios de locales 5–11 meses
+  antes que el rent roll, panorama a 10 años tipeado a mano.
+- Dólar 1.525 / 1.520 sin fecha (Configuración!F2, Proyeccion!B4, Alquileres!I1 y M23).
+- m² distintos entre pestañas (Peak One 700/750, Fabric 358/354, Heladería 150/123...).
+- Caja sin saldo inicial 2026 ni la deuda de Facu (enero cierra en −$2,4M).
+- Aportes por Galicia/Santander (filas 427 y 429, $20,1M) cargados como Caja.
 
 ## Vigente al 10/10/2026 (auditoría completa)
 

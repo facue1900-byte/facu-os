@@ -8,6 +8,26 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-10 · FAIL ✓ · Paseo: el cuadro operativo contaba el FCI y dos correcciones viejas habían vuelto
+
+**Qué pasó.** La pestaña «Dashboard» del Master Plan (resultado operativo) mostraba octubre con
+$73,2M de ingresos y $64,1M de egresos: las 3 suscripciones al FCI ($47M) entraban de los dos lados.
+También contaba «Ajuste de caja» como gasto (−$882.814 en el acumulado), cosa que el reporte a
+inversores no hace. En la revisión completa aparecieron además el aporte de Richi de $20M con día y
+mes invertidos (03/02 en vez de 02/03) y Tubomarket otra vez en $391.325, una corrección del 27/07.
+
+**Causa raíz.** (1) La lista de lo que no es operativo vivía en dos lados: los SUMIFS de la hoja y
+`NO_OPERATIVO` de `reporte_inversores.py`. El FCI se agregó sólo al script el 26/10. (2) La hoja es
+un espejo de la base de la app: la corrección del 27/07 se hizo sólo en la hoja y un sync posterior
+la pisó. La fecha del aporte también estaba mal **en la base**. No hay `updated_at`, así que no se
+sabe quién la cambió entre el 21/10 y el 10/11.
+
+**Fix.** Fórmulas del Dashboard alineadas; `verificar_dashboard.py` paso 5 compara el cuadro contra
+`NO_OPERATIVO` (probado con el cuadro viejo: marca abr, jun y oct). Fecha y monto corregidos en la
+base y en la hoja. `CAMBIO` (Pesos a USD / Cambio de USD) sumado a `NO_OPERATIVO`.
+
+**Lección.** Un dato del Paseo se corrige en Supabase; la hoja sola no alcanza.
+
 ### 2026-11-10 · FAIL ✓ · Paseo: efectivo-diario murió "sin red" con la red andando
 
 **Qué pasó.** Mail de falla de `efectivo-diario`: "Sin red después de 15 minutos". La Mac estuvo
