@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794270660000
+      "vigilado_hasta": 1794274260000
     },
     "HYPEUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794270660000
+      "vigilado_hasta": 1794274260000
     },
     "AVAXUSDT": {
       "nivel": "trading",
       "cantidad": 17.353792704111175,
       "entrada": 8.635,
-      "maximo": 8.7,
+      "maximo": 8.745,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,13 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794270660000
+      "vigilado_hasta": 1794274260000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.12873490146217417,
       "entrada": 1164.02,
-      "maximo": 1164.02,
+      "maximo": 1179.05,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -92,7 +92,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794270780000
+      "vigilado_hasta": 1794274260000
     }
   },
   "comisiones_usd": 42.40471399999997,
