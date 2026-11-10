@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 685.4965540175664,
+  "usdt": 535.4965540175664,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
       "cantidad": 142.63278126784695,
       "entrada": 1.0506,
-      "maximo": 1.0506,
+      "maximo": 1.0713,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794331980000
+      "vigilado_hasta": 1794335820000
+    },
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.07316287222252059,
+      "entrada": 2048.17,
+      "maximo": 2048.17,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794335940000
     }
   },
-  "comisiones_usd": 43.74721799999996,
+  "comisiones_usd": 43.89721799999996,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3882,6 +3904,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: XRP tocó el mínimo de 48 h en 1,0311 (15:00) y desde ahí hace dos mínimos horarios más altos (16:00 1,0388, 17:00 1,0435) con volumen vendedor aflojando (18 → 13,5 → 4,9 M parcial); 1 h +0,45%, +1,75% del mínimo, BTC 4 h -0,87% sin bloqueo. Era la condición escrita la hora pasada (segunda hora verde sin mínimo nuevo). Invalida: perder 1,031 (mínimo de 48 h) o una hora con mínimo nuevo bajo 1,0388 con volumen vendedor; stop 5%."
+    },
+    {
+      "ms": 1794335911230,
+      "fecha": "2026-11-10 18:38 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.07316287222252059,
+      "precio": 2048.17,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: ETH tocó el mínimo de 48 h en 2006 (15:00) y desde ahí hace mínimos horarios más altos (16:00 2009,6, 17:00 2014,6, 18:00 2024,6), dos horas verdes seguidas con volumen vendedor aflojando (116 → 77 → 32 → 22 M parcial); 1 h +0,95%, +2,1% del mínimo, BTC 4 h -1,05% sin bloqueo. Era la condición escrita la hora pasada. Invalida: perder 2006 (mínimo de 48 h) o una hora con mínimo nuevo bajo 2014,6 con volumen vendedor; stop 5%."
     }
   ]
 }
