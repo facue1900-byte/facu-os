@@ -563,3 +563,9 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-10 16:18 UTC — nota
 [v2] Sin operar: filtro BTC cerrado (var_24h -2.12 < -2, var_4h -1.23) y ademas ya hay 1 posicion (PEPE), maximo 1. PEPE se mantiene: ~44 h (<48h), var_24h -0.19 (<0) pero var_4h -0.76 (no < -2), sin tendencia rota; toma +10% ya ejecutada 14:54 (vigilante), stop 5.17e-06 intacto. Ningun otro par cumple var_24h>=3 y var_4h>0 salvo INIT (var_24h 95.7, var_4h 36, pero vs_max_48h -13.31). 1 disparo (toma PEPE) en esta pasada.
 
+## 2026-11-10 16:25 UTC — Stop PEPEUSDT (vigilante)
+97.19 USD a 5.1704e-06 (+1.98%). Stop automático en 5.1704e-06 (entrada 5.07e-06, máximo 5.62e-06).
+
+## 2026-11-10 18:16 UTC — nota
+[v2] Sin operar: filtro BTC cerrado (var_24h -2.01 < -2, var_4h -1.62). Carpeta vacia: el stop de PEPE salto a 5.1704e-06 (+1.98%) en la vigilancia. Ningun par con var_24h>=3 y var_4h>0 en el top 20 visible (PEPE var_4h -5.05). 1 disparo (stop PEPE) en esta pasada.
+
