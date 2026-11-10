@@ -43,8 +43,9 @@ formatos les rinden, con fecha y números) y sumá cuentas nuevas cuando las enc
 funciona a ellos y nosotros no hicimos todavía es candidato a explorar.
 
 **Adaptar, no copiar.** Se toma la estructura, el hook y el ritmo de un formato. Nunca se baja
-ni se republica el video de otro, ni su audio, ni su texto literal: Instagram castiga el
-contenido no original, y es de otro. La música es siempre la nuestra (Sin City, `RD/temas.json`).
+ni se republica el video de otro ni su texto literal: Instagram castiga el contenido no original,
+y es de otro. **Audio (Facu, 02/11): no hace falta usar Sin City en todos; se puede usar el audio
+de la referencia.** Sin City (`RD/temas.json`) es una opción, no la regla.
 
 ## Paso 3 — Las ideas: 8 candidatas, salen las 5 mejores
 

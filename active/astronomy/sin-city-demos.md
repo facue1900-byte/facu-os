@@ -57,14 +57,14 @@ No se pudieron (lo hace Facu o falta un dato):
 - Enviados: Stush, Area Sur, Juicebox (captcha lo hizo Facu), Mixmania (edad/tel. de Facu; newsletter obligatorio),
   Dirtybird (2 MP3), Soulcandi (2 MP3). Toolroom vía LabelRadar: cuenta creada por Facu con studio@ y mail
   confirmado; ✅ figura "sent" 20/10 (preview quedó en 1:21: cambiarlo es PRO). La cuenta sigue mostrando 5 créditos.
-- MP3 hechos del master 27/03 (Super Virginia Cigarette): `Downloads/sin-city-promo/` (320) y `/256/` (para subir, tope 10 MB).
+- MP3 hechos del master 27/03 (Super Virginia Cigarette): `Desktop/Facu/SIN CITY/sin-city-promo/` (320) y `/256/` (para subir, tope 10 MB).
 - Datos que dio Facu: ambos tracks **tech house**, **con voces**, **IA parcial** (no "no": hay sellos que blacklistean).
 - Descartados por IA: Bar Melodia (blacklist) y Play Records. Flamingo: sin formulario.
 - LabelRadar: 5 créditos gratis = 1 envío (se usó en Toolroom). Armada, Get Physical, HOUZ, Soave, Sirup y
   Three Six Zero necesitan créditos pagos. Trackstack sigue pausado: mail a support@trackstack.app ENVIADO 20/10 (OK de Facu). Snatch también quedó sólo por Trackstack.
 
 ## Respuestas 20–21/10
-- 🔥 **Defora Records (Italia) — INTERESADO.** Latino Pellegrini, founder (deforarecords@gmail.com), 21/10 00:35: quiere sacar los 2 tracks, o mejor un EP de 3–4. Pregunta si tenemos los derechos de las voces y pide pre-masters WAV a −6 dB (ellos masterizan). 20/10 contestado (OK Facu): le mandamos "Always In The Game" (link privado) y "Space Miami" (MP3 320 adjunto, `~/Downloads/sin-city-promo/Sin City - Space Miami.mp3`). 🔴 Falta contestarle voces (derechos/IA) y pre-masters WAV −6 dB: Facu tiene que decir de dónde salen las voces y si tiene los pre-masters.
+- 🔥 **Defora Records (Italia) — INTERESADO.** Latino Pellegrini, founder (deforarecords@gmail.com), 21/10 00:35: quiere sacar los 2 tracks, o mejor un EP de 3–4. Pregunta si tenemos los derechos de las voces y pide pre-masters WAV a −6 dB (ellos masterizan). 20/10 contestado (OK Facu): le mandamos "Always In The Game" (link privado) y "Space Miami" (MP3 320 adjunto, `~/Desktop/Facu/SIN CITY/sin-city-promo/Sin City - Space Miami.mp3`). 🔴 Falta contestarle voces (derechos/IA) y pre-masters WAV −6 dB: Facu tiene que decir de dónde salen las voces y si tiene los pre-masters.
 - ❌ Hotoven (no encaja, que sigamos mandando) · ❌ WeAreiDyll (sólo afro/melodic).
 - Sound Avenue: DESCARTADO. Su form (soundavenue.short.gy/demo) dice que IA = blacklist permanente en todos sus sellos (incluye Bar Melodia).
 - Diynamic y Monaberry: sólo escuchan archivos descargables → 20/10 les mandamos los 2 MP3 320 adjuntos, uno por mail (el SoundCloud logueado en Chrome NO es el de Sin City, no se pudo habilitar la descarga). Solomun: si las voces son de librería (Splice, etc.), mandar instrumental.
@@ -96,9 +96,21 @@ Script `Desktop/Facu/SIN CITY/enviar_demos_3.py`, 5 mails desde studio@, cargado
 - ⚠️ Deep House Amsterdam NO llegó a nadie: autorespuesta de Lex, ya no está; premieres a wessel@deephouseamsterdam.com. Sin reenviar, espera OK de Facu.
 - Pidieron más: Comparsa (Always In The Game, en su hilo), Hotoven (Space Miami adjunto, en su hilo).
 - Research 02/11 (`~` 40 pistas): casi todo el tech house mediano recibe por Trackstack/LabelRadar; lo gratis y abierto se agotó. Las búsquedas web genéricas ya no rinden.
+- Sweat It Out (02/11, OK de Facu): formulario enviado con los 3 temas, confirmación en pantalla. El tilde de T&Cs no enlaza a ningún texto y la web no los publica: se aceptaron sin poder leerlos. Si piden firmar algo, leerlo antes.
 Frenados, esperan a Facu:
 - Baikonur: el form exige UNA playlist privada de SoundCloud con 2-4 temas; hay que crearla logueado como Sin City (Chrome está en otra cuenta).
-- Sweat It Out: el form obliga a aceptar T&Cs.
 - Trackstack: sigue pausada; respuesta a Rowen en borrador. Destraba Catch & Release (shortlist), Hot Creations, Bibi, Kittball.
 Sin canal confirmado: Jango, Glasgow Underground ("For Demos" vacío), Magna. Afuera: Leap4rog (último release 2022), Tech Me House (vende campañas).
 Pendiente 10/11: seguimiento de la tanda del 20/10, sumándoles "Always In The Game" a los que no lo tienen (incluye los 3 borradores viejos de Two Mountains, Lost, Slightly Sizzled: reescribir, ya recibieron otro mail).
+
+## 04/11/2026: SoundCloud revisado, logueado como Sin City (Insights, 6/10 al 4/11)
+98 plays, 6 descargas, 1 comentario, 0 likes, 0 reposts. Histórico: 378 plays, 7 descargas, 4 comentarios.
+- Descargas: Go Back 3, Bitch We're Not The Same 2, Always In The Game 1. Cinco el 20/10 y una el 27/10.
+- Quién: **Defora Records 3** (visible). Los otros dos nombres los tapa SoundCloud sin Artist Pro: Diynamic 2 lo dijo Facu; el tercero, 1 por resta. SoundCloud no dice qué tema bajó cada uno.
+- Reporte como foto a Vlado por WhatsApp 04/11 12:26 (OK de Facu): `Desktop/Facu/SIN CITY/sin-city-promo/reporte-soundcloud-04-11.png`.
+- Tracker sin corregir: Raw Division (rebotó) y Snatch! (sólo Trackstack) figuran "Enviado" en la tanda del 20/10.
+
+## Respuestas 30/10 al 05/11 (revisado en studio@ el 05/11)
+- ❌ Hotoven (02/11, Space Miami): no encaja, que sigamos mandando. ❌ Comparsa (05/11, Always In The Game): "increíble", no encaja con la curaduría, les gusta escuchar lo nuestro.
+- Trackstack: **Libero** dejó review el 05/11; el veredicto está adentro de Trackstack (pausada).
+- Sin mail nuevo de Defora (último 27/10) ni de Diynamic (bajó 2 en SoundCloud). Soporte de Trackstack no contestó nada nuevo.

@@ -104,6 +104,16 @@ LOCALES = {
         "layout": None, "iva": False, "cobra_por": "Efectivo",
         # expensas PACTADAS en $1.000.000, no las de la hoja (Facu 27/07/2026)
         "alquiler": 0, "partido": False, "expensas_pactadas": 1_000_000,
+        # Esquema de Marina (WhatsApp 22/09/2026, Facu lo confirmó el 02/11/2026).
+        # Ene y feb 2027 sólo expensas. De agosto a diciembre 2027 «llegar a 3»,
+        # sin escalones definidos: hay que pedirlos, por eso el script avisa.
+        "alquiler_por_mes": {
+            "2026-11": 1_000_000, "2026-12": 1_000_000,
+            "2027-01": 0, "2027-02": 0,
+            "2027-03": 1_500_000, "2027-04": 1_500_000,
+            "2027-05": 1_500_000, "2027-06": 1_500_000,
+            "2027-07": 2_000_000,
+        },
     },
     "La Jaula / torneo": {
         # Su cuenta corriente es la pestaña `Futbol`, que NO se escribe fila por
@@ -767,6 +777,14 @@ def proponer(p, anio, mes, expensas):
 
         # --- alquiler del mes corriente
         alq = cfg["alquiler"]
+        if "alquiler_por_mes" in cfg:
+            tabla = cfg["alquiler_por_mes"]
+            clave_mes = f"{anio}-{mes:02d}"
+            if clave_mes in tabla:
+                alq = tabla[clave_mes]
+            elif clave_mes > max(tabla):
+                avisos.append(f"{local}: el esquema pactado no define {clave_mes}. "
+                              f"Va en 0 — pedile el número a Facu.")
         if alq == "del mes anterior":
             if not cfg["pestania"]:
                 avisos.append(f"{local}: sin pestaña, no puedo leer el alquiler.")

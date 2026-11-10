@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Una sola vez: 04/11/2026 18:00, publica pulgar-v4 como reel de prueba (OK de Facu, 03/11).
+     Después del 04/11 se puede borrar: launchctl unload + rm del plist. -->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.pulgar-sin-city</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>pulgar-sin-city</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/active/astronomy/contenido/publicar_pulgar_una_vez.sh</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Month</key><integer>11</integer>
+        <key>Day</key><integer>6</integer>
+        <key>Hour</key><integer>18</integer>
+        <key>Minute</key><integer>0</integer>
+    </dict>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/pulgar-sin-city.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/pulgar-sin-city.log</string>
+</dict>
+</plist>

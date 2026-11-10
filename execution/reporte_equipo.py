@@ -24,11 +24,11 @@ import subprocess
 import sys
 import time
 from datetime import datetime, timedelta
-from email.message import EmailMessage
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 from execution.google_auth import gmail  # noqa: E402
+from execution.mail_format import render  # noqa: E402
 
 APP = pathlib.Path.home() / "Desktop/Productoras/Astronomy/Academia/astronomy-members"
 NODE_BIN = pathlib.Path.home() / ".local/node/bin"
@@ -159,7 +159,7 @@ def bloque_persona(p, habiles):
         for w in pend:
             monto = f" · {plata(w['plata'])} en juego" if w["plata"] else ""
             urg = " <span style='color:#C62828'>(urgente)</span>" if w["urgencia"] == "alta" else ""
-            ej = "".join(f"<div style='color:#666;font-size:13px'>– {html.escape(corto(e))}</div>" for e in w["ejemplos"])
+            ej = "".join(f"<div style='color:#666;font-size:13px'>– {html.escape(corto(e))}</div>" for e in w["ejemplos"]) if w["urgencia"] == "alta" else ""  # los nombres, sólo donde urge
             filas.append(f"{html.escape(w['titulo'])}{urg} · {w['casos']} caso(s){monto}{ej}")
         out.append(lista(filas))
     return "\n".join(out)
@@ -169,13 +169,7 @@ def armar(d):
     desde, hasta = d["desde"], d["hasta"]
     principales = [p for p in d["personas"] if p.get("principal")]
     profes = [p for p in d["personas"] if not p.get("principal")]
-    cuerpo = [
-        "<div style='font-family:-apple-system,Helvetica,Arial,sans-serif;font-size:14px;color:#111;max-width:720px'>",
-        f"<h1 style='font-size:20px;margin:0 0 4px'>Reporte del equipo · {dia(desde)} al {dia(hasta)}</h1>",
-        "<p style='margin:0;color:#555'>Lo hecho sale de lo que la web registra sola. Lo pendiente es lo que "
-        "hoy muestra el escritorio de cada uno. Lo que alguien hizo fuera de la web (un WhatsApp sin la cola, "
-        "una planilla) no aparece acá.</p>",
-    ]
+    cuerpo = []
     for p in principales:
         cuerpo.append(bloque_persona(p, d["dias_habiles"]))
     cuerpo.append("<h2 style='margin:24px 0 4px;font-size:18px'>Profes</h2>")
@@ -189,19 +183,23 @@ def armar(d):
     for k, v in otros.items():
         filas.append(f"{html.escape('Alquileres de cabina' if k == 'Alquiler de cabina' else k)}: {v}")
     cuerpo.append(lista(filas))
-    cuerpo.append("<p style='color:#888;font-size:12px'>Generado por facu-os/execution/reporte_equipo.py "
-                  "desde la base de astronomyofficial.com. Sólo lee: no cambia nada.</p></div>")
-    asunto = f"Astronomy · reporte del equipo · {dia(desde)} al {dia(hasta)}"
-    return asunto, "\n".join(cuerpo)
+    habiles = d["dias_habiles"]
+    kpis = []
+    for p in principales[:4]:
+        activos = len(habiles) - len(p["dias_habiles_sin_actividad"])
+        tono = "verde" if activos >= len(habiles) - 1 else "ambar" if activos >= 2 else "rojo"
+        kpis.append((f"{p['nombre']}: días con registros", f"{activos} de {len(habiles)}", tono))
+    return render(
+        area="astronomy", nivel="reporte", titulo=f"Reporte del equipo · {dia(desde)} al {dia(hasta)}",
+        resumen="Lo hecho sale de lo que la web registra sola. Lo pendiente es lo que hoy muestra el escritorio "
+                "de cada uno. Lo que alguien hizo fuera de la web (un WhatsApp sin la cola, una planilla) no aparece acá.",
+        kpis=kpis, html_extra="\n".join(cuerpo),
+        origen="generado desde la base de astronomyofficial.com, sólo lee",
+    )
 
 
-def mandar(asunto, cuerpo_html, para):
-    msg = EmailMessage()
-    msg["To"] = ", ".join(para)
-    msg["Subject"] = asunto
-    msg.set_content("Este reporte es HTML: abrilo en un cliente de mail que lo muestre.")
-    msg.add_alternative(cuerpo_html, subtype="html")
-    crudo = base64.urlsafe_b64encode(msg.as_bytes()).decode()
+def mandar(correo, para):
+    crudo = base64.urlsafe_b64encode(correo.mime(para).as_bytes()).decode()
     gmail().users().messages().send(userId="me", body={"raw": crudo}).execute()
 
 
@@ -213,20 +211,17 @@ def main():
 
     SALIDA.mkdir(parents=True, exist_ok=True)
     try:
-        asunto, cuerpo = armar(juntar())
-    except Exception as e:  # noqa: BLE001 — cualquier falla se avisa, no se traga
+        correo = armar(juntar())
+    except Exception as e:  # noqa: BLE001 — la falla la avisa correr.sh; acá sólo queda en el log
         print(f"FALLÓ: {e}", file=sys.stderr)
-        if a.send:
-            mandar("⚠ El reporte del equipo de Astronomy no se pudo armar",
-                   f"<pre>{html.escape(str(e))}</pre><p>Log: facu-os/data/logs/reporte-equipo.err</p>",
-                   ["facue1900@gmail.com"])
         sys.exit(1)
 
+    asunto = correo.asunto
     archivo = SALIDA / f"reporte-{datetime.now():%Y-%m-%d}.html"
-    archivo.write_text(cuerpo)
+    archivo.write_text(correo.html)
     print(f"{asunto}\nHTML: {archivo}")
     if a.send:
-        mandar(asunto, cuerpo, a.para)
+        mandar(correo, a.para)
         print(f"Mandado a: {', '.join(a.para)}")
     else:
         print("(sin --send: no se mandó nada)")

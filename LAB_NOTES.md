@@ -8,6 +8,37 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-10 · FAIL ✓ · Paseo: efectivo-diario murió "sin red" con la red andando
+
+**Qué pasó.** Mail de falla de `efectivo-diario`: "Sin red después de 15 minutos". La Mac estuvo
+cerrada toda la mañana (`pmset -g log`): sólo DarkWakes de mantenimiento de ~45 s a las 07:39, 08:07
+y 08:44. `correr.sh` vio red en el primero y largó la tarea; `efectivo_diario.sh` tenía **su propia**
+espera de red, que la perdió y consumió sus 30 intentos entre DarkWakes hasta morir a las 08:44.
+El mail salió en los 20 s de FullWake. Los datos estaban sanos: a mano, 665 = 665 y $0 a volcar.
+
+**Causa raíz.** Espera de red duplicada: el mismo error que `correr.sh` ya documentaba ("la red se
+decide UNA vez", 01/11), sobreviviendo adentro de un script. **Fix:** se sacó el loop de
+`efectivo_diario.sh`; la red la decide sólo `correr.sh`. No queda otro `host -W` en el repo.
+
+**Lección.** Una tarea que corre por `correr.sh` no chequea la red por su cuenta.
+
+### 2026-11-04 · FAIL ✓ · Paseo: una rutina podía mandarle el reporte a Richi sola, y las rutinas "en la nube" no eran de la nube
+
+**Qué pasó.** Revisando los agentes que corren con la Mac apagada: `Conciliacion mensual`
+(`trig_01PGsAkK6F7Ponc8V7HFaGYC`) tenía orden de mandarle el reporte a inversores a Richi sin OK si sus
+controles cerraban, con definiciones anteriores al arreglo de `reporte_inversores.py`. Nunca llegó a mandarlo:
+en su única corrida faltaba el extracto. La próxima era el 10/11.
+
+**Causa.** Es una tarea de Cowork atada a la Mac (`bound_device_uuid`): usa carpetas locales y el Chrome de
+Facu. Figura en la lista de rutinas igual que las de la nube, y `succeeded` no dice qué hizo.
+
+**Arreglo.** Rutina vieja apagada, sin borrar. La conciliación pasó a `cierre_mensual.sh` (día 16, ya con el
+extracto), que no manda nada. Si no cierra o falta el PDF, avisa.
+
+**Lo no obvio.** Una rutina creada por API NO se puede atar a la compu: `bound_device_uuid` se ignora en create y
+update, y corre sin carpetas ni Chrome (probado: `trig_01TNYyNLjfyNMjQf9R4i2Ake`, apagada). Para ver si una rutina
+trabajó, mirar `get_run_log`, no el estado.
+
 ### 2026-10-30 · FAIL ✓ · Pauta: el chequeo de los lunes daba FALLA siempre, y no miraba si se gastaba
 
 **Dónde:** `active/astronomy/pauta/reporte_embudo.py` (`chequeo`, nuevo `gasto_de_ayer`).
@@ -405,3 +436,71 @@ propósito), así que cada re-corrida duplicaba «Peak One / Alquiler» (CARGOS 
 Fix: `_con_reintento_429` en `Planillas` (un 429 no aplica nada, reintentar es seguro; probado con 429
 que se recupera, 429 agotado y 500) y el dedupe compara $0 contra $0. **El fix del dedupe no se corrió
 contra la planilla**: la re-corrida quedó frenada junto con el borrado de la fila 208.
+
+## 02/11/2026 — emisión de facturas desde el Chrome de Facu, sin `emitir.js`
+
+Los 6 comprobantes de noviembre salieron con la extensión, porque Facu no quiere una segunda ventana.
+El robot sigue siendo más seguro para tipear, pero exige el puerto 9333. Se perdió tiempo en dos cosas que
+los controles frenaron antes de emitir: el concepto quedó vacío en una factura y en `003 Viáticos Exento`
+en una nota de débito (el click cayó en otro renglón porque el viewport cambió de alto). **El dato a
+controlar es siempre el campo releído antes de emitir, nunca el click.** FC 21 tuvo un rechazo de WSAA que
+se resolvió con Solicitar CAE, sin reemitir: el número no se perdió. Detalle en la memoria de Bejerman.
+
+## 02/11/2026 — reels diarios: el agente confundió un comando negado con «Bash bloqueado»
+
+Primera corrida real con `dontAsk` (el fix del 29/10 se probó con comandos sueltos, nunca una corrida
+entera): el agente armó un solo comando con `RD=...; PY=...; $PY ...; $PY ...; ls ...`. Esa forma no
+matchea ningún `Bash(...)` de la lista y se negó, que es lo correcto. Con esa única negativa concluyó
+«Bash está bloqueado», cortó sin reintentar y salió con 0 reels. Detrás había otra falla: `mkdir -p`
+sobre la carpeta del día (ruta entre comillas y con espacios) también se negaba, aunque tenía regla.
+Fix: el encabezado del prompt fija la forma de llamar a Bash (un comando por llamada, sin variables,
+sin mkdir: `Write` crea la carpeta) y dice que una negativa es de ese comando; se sacaron las reglas
+de mkdir. Probado headless con los mismos permisos: indexar, leer_trials, Write y armar_reel, 0 negativas.
+**Lección:** un permiso de agente headless se prueba también con la forma en que el agente escribe de
+verdad los comandos y con una corrida entera, no sólo con el comando ideal.
+
+## 03/11/2026 — Duplicar un anuncio dejó sin DM a los que comentaron «Gold»
+
+**Síntoma:** comentarios «Gold» en los videos de pauta sin mensaje privado (Facu lo notó).
+**Causa raíz:** duplicar un anuncio crea un posteo con otro media ID, y el bot sólo respondía en `instagram_cuenta.media_ids`. `fuera_de_lista` no avisaba a nadie: se rompió en silencio 24 días.
+**Arreglo:** los 3 IDs a la lista; un comentario que es sólo la palabra se responde en cualquier posteo (`c076180`, probado rompiendo la línea); `reporte_embudo.py` avisa `fuera_de_lista`.
+**Lección:** un filtro que descarta a un cliente tiene que avisar. Y la respuesta privada de Instagram vence a los 7 días: pasado eso no hay rescate por API.
+
+**Corrección del mismo día:** el estado `respondido` no prueba la entrega. A @angelitodicheii la API le dio OK y el chat de Instagram dice que la cuenta no acepta solicitudes de mensaje. Lo reporté como entregado leyendo la API y la respuesta pública, sin mirar el chat: la prueba de un DM es el chat. Instagram tampoco avisa por API, así que el bot no lo puede detectar.
+
+
+## 04/11/2026 — El espejo de Mercado Pago quedó clavado en el 22/10 y se declaraba sano
+
+**Dónde:** `astronomy-members/lib/espejoMp.ts` (`sincronizarEspejo`, `pedirReporte`). Fix: `496c63f`.
+
+**Qué pasó:** Luqui mandó a AA - Cobranzas una captura de `/admin/mp` que terminaba en el 22/10. Hacía 13 días que la pantalla no traía salidas ni saldo real ($783.134,84 contra $2.187.273,46). Lo vio una persona mirando, no un chequeo.
+
+**Causa raíz:** se pedía siempre un reporte desde el 01/07, y MP pasó a rechazar los rangos de 90 días o más (400 `interval_too_long`). El rechazo sólo llegaba a un `console.error`. El cron seguía bajando el último archivo, le cuadraba el saldo y escribía `error: null`: la frescura se medía por la hora de la corrida, no por la del dato. El 400 está probado el 04/11; que arrancó el 22/10 es inferencia, porque ahí termina la lista de reportes.
+
+**Fix:** rango móvil de 30 días desde medianoche AR, con prueba de encaje antes de escribir, y rojo si el reporte tiene más de 24 h (6 h si MP rechaza el pedido). También se dejó de escribir un reporte que no cuadra.
+
+**Trampa nueva:** `date_created` de MP trae la hora UTC con un `-04:00` falso. Leído tal cual, «pedir cada 40 min» era cada casi 5 h y cualquier alerta de antigüedad salta 4 h tarde. La encontró el agente `numeros`.
+
+**Lección:** cuadrar contra un archivo viejo prueba que el archivo es coherente, no que está al día. Un chequeo de frescura tiene que medir la edad del dato, no la de la corrida.
+
+## 05/11/2026 — Dos publicaciones programadas murieron porque launchd no deja a `shasum` leer el Desktop
+
+**Dónde:** `active/astronomy/contenido/publicar_generico_una_vez.sh` y `publicar_pulgar_una_vez.sh`.
+
+**Qué pasó:** `pulgar-v4` (04/11 18:07) y el video genérico (05/11 12:00) no salieron. El log decía «cambió desde el OK» con el hash vacío, aunque el archivo era idéntico. En el pulgar, además, el mail de aviso falló por un corte de red y la memoria siguió diciendo «sale hoy 18:00» sin que nadie lo mirara.
+
+**Causa raíz:** `--ensayo` se probó desde la sesión, que tiene permiso de macOS sobre el Desktop. Bajo launchd, `shasum` da `Operation not permitted`. Probado con un job descartable: `[[ -s ]]` y la escritura de bash andan, `shasum` falla, el Python del venv lee y escribe (tiene su permiso en TCC). El script comparaba el hash vacío sin chequearlo y lo reportaba como «cambió».
+
+**Fix:** el genérico hashea con el Python del venv y distingue «no pude leer» de «cambió». El pulgar no se tocó: su fecha pasó y necesita un OK nuevo de todos modos.
+
+**Lección:** un ensayo desde la sesión no prueba lo que va a pasar bajo launchd. Lo que toca el Desktop en una tarea programada se ensaya con `launchctl submit`.
+
+## 06/11/2026 — El efectivo diario dijo «no coinciden» dos mañanas cuando era la red
+
+**Dónde:** `.claude/skills/cierre-mes-nordelta/scripts/efectivo_diario.sh`, paso 1.
+
+**Qué pasó:** el 05/11 y el 06/11 el job cortó con «la app y la planilla no coinciden». En los dos casos fue un timeout de red al bajar el Master Plan; el 06/11 la corrida duró 1 h 38 min. Corrido a mano a las 09:54: 655 = 655, nada que volcar. No se perdió ningún cobro.
+
+**Fix:** el mensaje ahora dice que el paso 1 se corta por diferencia O por no poder bajar los datos, y manda a mirar el error. Queda sin resolver por qué la red de la Mac falla a esa hora.
+
+**Lección:** el mismo patrón que el `shasum` del 05/11: un chequeo que no pudo leer no tiene que reportar un veredicto.

@@ -7,7 +7,7 @@ Plata ficticia: no hay keys, no mandás nada a nadie.
 ## 1. Traer la rama
 
 ```bash
-git fetch origin
+git fetch --unshallow origin 2>/dev/null || git fetch origin   # el clon de la nube es corto: sin historia entera, el merge da "unrelated histories" (DCA, 09/11)
 git checkout claude/cartera-torneo 2>/dev/null || git checkout -b claude/cartera-torneo
 git pull --ff-only origin claude/cartera-torneo 2>/dev/null || true
 git merge --no-edit origin/main
@@ -22,7 +22,15 @@ Si algo de git falla, no sigas: `TORNEO_FALLA git: <error>`.
 Buscá con WebSearch lo que mueve cripto **hoy**: Fed y tasas, datos de EE.UU. (inflación, empleo),
 flujos de los ETF de BTC y ETH, regulación (SEC, EE.UU., Europa), hackeos o quiebras de exchanges,
 liquidaciones grandes, noticias de BTC/ETH/SOL. Mínimo 3 búsquedas, fuentes con fecha de las
-últimas 48 h. No inventes: si no encontrás nada con fecha, el sesgo es `neutral`.
+últimas 48 h. **Usá siempre `mode: "extended"`** (la búsqueda común devuelve notas viejas: así se perdió
+5 días el hackeo de Binance del 29/10) y poné la fecha de hoy en cada consulta. Una búsqueda tiene que ser
+por el golpe en sí: "crypto exchange hack" + la fecha, y "why is bitcoin down today" + la fecha.
+
+Además, leé la línea anterior de `noticias.jsonl`: si el precio de BTC se movió fuerte desde entonces y no
+encontraste por qué, seguí buscando antes de escribir `neutral`.
+
+No inventes: si después de eso no encontrás nada con fecha, el sesgo es `neutral` y `"busqueda": "sin_dato"`.
+Eso no es lo mismo que "no pasó nada": es "no lo pude ver", y por eso queda marcado.
 
 Elegí UNO:
 - `riesgo_fuera` — hay un golpe concreto y fechado que todavía no terminó (hackeo/quiebra grande,
@@ -40,7 +48,8 @@ import json, datetime, os
 d = {"fecha": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M"),
      "sesgo": "neutral",            # riesgo_dentro | neutral | riesgo_fuera
      "motivo": "<una o dos frases con el hecho concreto>",
-     "fuentes": ["<url con fecha>", "<url>"]}
+     "fuentes": ["<url con fecha>", "<url>"],
+     "busqueda": "ok"}              # ok | sin_dato (no apareció nada de las últimas 48 h)
 open(os.environ["TORNEO_DIR"] + "/noticias.jsonl", "a").write(json.dumps(d, ensure_ascii=False) + "\n")
 EOF
 ```

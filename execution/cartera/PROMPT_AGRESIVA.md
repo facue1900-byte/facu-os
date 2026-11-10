@@ -15,7 +15,7 @@ Sin `CARTERA_DIR` estarías operando la OTRA carpeta: nunca lo hagas.
 ## 1. Traer el libro
 
 ```bash
-git fetch origin
+git fetch --unshallow origin 2>/dev/null || git fetch origin   # el clon de la nube es corto: sin historia entera, el merge da "unrelated histories" (DCA, 09/11)
 git checkout claude/cartera-agresiva
 git pull --ff-only origin claude/cartera-agresiva
 git merge --no-edit origin/main

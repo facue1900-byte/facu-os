@@ -18,7 +18,7 @@
 # se mantiene al día sola. La foto se vuelve a publicar cuando cambian los CARGOS
 # (principio de mes): `deuda_efectivo.py --cobros-en-planilla` + deploy.sh.
 #
-# Cualquier falla corta en ese paso y le manda un mail a Facu (a él solo).
+# Cualquier falla corta en ese paso; el aviso a Facu sale de correr.sh.
 
 set -uo pipefail
 PY=/Users/Facu/facu-os/.venv/bin/python
@@ -28,23 +28,9 @@ DESDE=$(date -v-60d +%Y-%m-%d)
 
 exec > >(tee "$LOG") 2>&1
 
+# El mail lo decide correr.sh (execution/avisar.py). Mandaba uno propio además: llegaban dos.
 avisar() {
   echo "!!! $1"
-  "$PY" - "$1" "$LOG" <<'EOF'
-import sys, os, base64
-from email.mime.text import MIMEText
-sys.path.insert(0, "/Users/Facu/facu-os")
-from dotenv import load_dotenv
-load_dotenv("/Users/Facu/facu-os/.env")
-from execution.google_auth import gmail
-para = os.environ["MAIL_FACU"]
-cuerpo = open(sys.argv[2]).read()[-6000:]
-m = MIMEText(f"{sys.argv[1]}\n\n--- log ---\n{cuerpo}")
-m["to"], m["subject"] = para, f"🔴 Paseo · efectivo diario frenado: {sys.argv[1][:60]}"
-gmail().users().messages().send(
-    userId="me", body={"raw": base64.urlsafe_b64encode(m.as_bytes()).decode()}).execute()
-print(f"    mail a {para}")
-EOF
   exit 1
 }
 
@@ -52,23 +38,15 @@ echo "=================================================================="
 echo "EFECTIVO DIARIO — $(date '+%d/%m/%Y %H:%M')"
 echo "=================================================================="
 
-# launchd lo dispara apenas la Mac despierta, muchas veces antes de que haya red.
-# Sin red fallan los dos pasos Y el mail de alarma, así que el día se perdía sin
-# que nadie se enterara (27/09, 29/09 y 01/10/2026). Se espera hasta 15 minutos.
-for i in $(seq 1 30); do
-  host -W 3 www.googleapis.com >/dev/null 2>&1 && break
-  [[ $i -eq 1 ]] && echo "Sin red todavía: espero hasta 15 minutos..."
-  sleep 30
-done
-if ! host -W 3 www.googleapis.com >/dev/null 2>&1; then
-  echo "!!! Sin red después de 15 minutos: no se volcó nada hoy. Mañana lo levanta"
-  echo "!!! solo (el volcado mira los últimos 60 días)."
-  exit 1
-fi
+# La espera de red la hace correr.sh, UNA vez. Este script tenía una segunda espera
+# propia: el 10/11/2026 la Mac cerrada despertó 45 s (DarkWake), correr.sh vio red, y
+# esta segunda espera la perdió y quemó sus 15 minutos entre DarkWakes hasta morir a
+# las 08:44, con un mail de falla y los datos sanos. No volver a agregarla acá.
+# Un día perdido se recupera solo: el volcado mira los últimos 60 días.
 
 echo; echo "--- 1/2 · ¿La app y la planilla dicen lo mismo? ---"
 "$PY" "$S/sincronizar_supabase.py" --aplicar --estricto \
-  || avisar "la app y la planilla no coinciden (paso 1)"
+  || avisar "paso 1 cortado: o la app y la planilla no coinciden, o no se pudo bajar una de las dos (mirar el error de arriba; el 05 y 06/11/2026 fue timeout de red, no diferencia)"
 
 echo; echo "--- 2/2 · Volcando cobros en efectivo a las pestañas ---"
 "$PY" "$S/volcar_cobros.py" --desde "$DESDE" --solo-efectivo --escribir \
