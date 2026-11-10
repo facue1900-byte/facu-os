@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794349860000
+      "vigilado_hasta": 1794353460000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794349860000
+      "vigilado_hasta": 1794353460000
     },
     "GRAMUSDT": {
       "nivel": "trading",
       "cantidad": 130.75916230366494,
       "entrada": 1.146,
-      "maximo": 1.146,
+      "maximo": 1.148,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794349980000
+      "vigilado_hasta": 1794353460000
     }
   },
   "comisiones_usd": 44.04721799999996,
