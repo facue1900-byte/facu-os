@@ -441,8 +441,11 @@ Queda a mano interpretar (esto sí lo hago yo, leyendo):
   anterior queda como contraste: si difieren, el script dice cuánto y por qué.
 - **`--basura` es el gemelo de `--avn` para P4** (Retiro de basura), que estaba clavado a
   `"mayo 2026"` literal y repartía $4.705.450,90 ÷ 3 = $1.568.483,63 todos los meses.
-  «TODSE» es **Transportes Olivos S.A.** Sin el flag, el script avisa y dice cuánto está
-  repartiendo de más.
+  «TODSE» es **Transportes Olivos S.A.** Desde el 10/11/2026 P4 lee la columna N de
+  `INPUTS EXPENSAS` del mes: ahí va la factura de Transportes Olivos **del mes anterior**
+  (factura mensual, ~$1,1M–$1,35M; llega por mail a paseonordelta@ a principio de mes).
+  Sin factura cargada P4 dice «FALTA FACTURA» y el script **corta**. El pago de mayo
+  ($4.705.450,90) saldó 4 facturas, ene–abr: nunca fue trimestral.
 - **Una etiqueta de mes se compara normalizada.** En las pestañas conviven `JUL'26`,
   `JUL' 26` y `jul'26`. Un chequeo que comparaba el texto crudo reportó "a Boss no se le
   cobró julio" sobre un alquiler que estaba cobrado: **un faltante de plata se confirma

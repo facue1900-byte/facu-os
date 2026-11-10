@@ -19,16 +19,26 @@ Corregido (backup en `archive/dashboard-formulas-2026-11-10/`):
 - Proyeccion B36:B37: rango hasta la fila 161 (antes 113).
 - 69 ids de la app completados en la columna K; quedan 3 sin par.
 
+Segunda tanda (10/11, decidido por Facu):
+- Pago municipal 07/10 partido: **$978.731 ABL → Municipal** (fila nueva, id `42a013a3`) y
+  **$15.690.961 → Inversiones (permiso de obra)**. Octubre operativo: +$9.096.899 → **+$8.118.168**.
+  Gastos Obra fila 117: la parte del Paseo baja a $690.961 (los $15M de Richi, fila 116, igual).
+- Basura: `Expensas Predio!P4` lee INPUTS EXPENSAS!N del mes (factura TOSA del mes anterior).
+  🔴 **Factura de agosto de Transportes Olivos ($1.343.834,77, FCA 0003-00023782) sin pago
+  en Movimientos.** La de octubre todavía no llegó (hace falta para las expensas de nov).
+- Dólar: blue 10/11/2026 promedio $1.545 en `Proyeccion!B4`; Configuración y Alquileres lo leen de ahí.
+- **Peak One = 750 m² definitivo** (`Expensas Predio!AC7`), rige desde noviembre.
+- Pestaña nueva **«Peor caso vs Real»**: inversión USD 875k + escenario Conservador. Al 31/10:
+  invertido USD 182.873 (20,9%); operación ago–oct anualizada USD 66.620 = 36% del NOI maduro
+  del peor caso; a ese ritmo, repago 13,1 años > 10 del contrato.
+
 Abierto, decide Facu:
-- Pago municipal 07/10 $16.669.692 en Inversiones incluye el ABL de $978.731 (operativo).
 - Deudas Noreventos/NDPL: la fila 193 ($1.191.377) en Municipal y las otras 3 en Inversiones.
 - Alquileres!E3:E19 lee el bloque vivo de Expensas Predio (AVN en $0); E7 lee agosto congelado.
-- Expensas Predio!P4 basura clavada a «mayo 2026»/3.
 - Proyeccion: 5 «inversión total» distintas (USD 200k a 875k), inicios de locales 5–11 meses
   antes que el rent roll, panorama a 10 años tipeado a mano.
-- Dólar 1.525 / 1.520 sin fecha (Configuración!F2, Proyeccion!B4, Alquileres!I1 y M23).
 - m² distintos entre pestañas (Peak One 700/750, Fabric 358/354, Heladería 150/123...).
-- Caja sin saldo inicial 2026 ni la deuda de Facu (enero cierra en −$2,4M).
+- Caja sin saldo inicial 2026 ni la deuda de Facu (enero cierra en −$2,4M). **No se carga:** el saldo inicial no está en ningún lado y la deuda sólo figura como «~$3.024.987» sin fuente (10/11). Falta el número exacto de Facu.
 - Aportes por Galicia/Santander (filas 427 y 429, $20,1M) cargados como Caja.
 
 ## Vigente al 10/10/2026 (auditoría completa)
