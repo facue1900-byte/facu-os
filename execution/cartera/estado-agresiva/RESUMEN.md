@@ -1,19 +1,19 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-11 00:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-11 01:32 UTC
 
-**Total: 833.87 USD (-16.61%)** desde 2026-10-07 23:06 UTC · USDT libre 235.50 · comisiones 44.20 · 324 operaciones
+**Total: 834.27 USD (-16.57%)** desde 2026-10-07 23:06 UTC · USDT libre 235.50 · comisiones 44.20 · 324 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **833.87** |
+| **Esta carpeta** | **834.27** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 885.66 |
+| hodl btc | 887.17 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| XRP | trading | 150.48 | +0.42% | 1.02011 |
-| ETH | trading | 150.31 | +0.30% | 1,961.77 |
-| PEPE | trading | 149.58 | -0.18% | 5.18e-06 |
-| GRAM | trading | 148.02 | -1.22% | 1.0944 |
+| XRP | trading | 150.66 | +0.54% | 1.02011 |
+| ETH | trading | 150.61 | +0.50% | 1,961.77 |
+| PEPE | trading | 150.40 | +0.37% | 5.22e-06 |
+| GRAM | trading | 147.10 | -1.83% | 1.0944 |
 
 ## Últimas operaciones
 
