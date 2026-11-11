@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 385.4965540175664,
+  "usdt": 235.49655401756638,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794353460000
+      "vigilado_hasta": 1794357060000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794353460000
+      "vigilado_hasta": 1794357060000
     },
     "GRAMUSDT": {
       "nivel": "trading",
       "cantidad": 130.75916230366494,
       "entrada": 1.146,
-      "maximo": 1.148,
+      "maximo": 1.152,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794353460000
+      "vigilado_hasta": 1794357060000
+    },
+    "PEPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 27495412.844036695,
+      "entrada": 5.45e-06,
+      "maximo": 5.45e-06,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794357180000
     }
   },
-  "comisiones_usd": 44.04721799999996,
+  "comisiones_usd": 44.19721799999996,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3950,6 +3972,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: GRAM +10,8% en 24 h, 4 h +3,05% con volumen 1,57x, 1 h -0,61% (no estirada), -1,29% del máximo de 48 h; velas horarias de 2-3% con mínimos más altos (1,089 a las 19:00, 1,099 a las 20:00, 1,114 a las 21:00), no es pump tipo INIT. Invalida: perder 1,099 (mínimo de las 20:00) o 24 h bajo +5% con 4 h roja; stop 5%."
+    },
+    {
+      "ms": 1794357165246,
+      "fecha": "2026-11-11 00:32 UTC",
+      "lado": "buy",
+      "par": "PEPEUSDT",
+      "nivel": "trading",
+      "cantidad": 27495412.844036695,
+      "precio": 5.45e-06,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: PEPE +5,25% en 24 h, 4 h +3,05%, 1 h +0,56% (no estirada), -3,74% del máximo de 48 h; venía +4,1% hace una hora y ahora cruza +5% con el 4 h acelerando. Volumen flojo (0,6x): es la debilidad de la tesis. Invalida: 24 h bajo +5% con 4 h roja, o perder el mínimo de la vela de 4 h; stop 5%."
     }
   ]
 }
