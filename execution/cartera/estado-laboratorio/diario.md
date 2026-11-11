@@ -598,3 +598,6 @@ Capital ficticio: 1,000.00 USDT.
 
 [v2] filtro BTC abierto (var_24h -0.48, var_4h 0.42); NEAR #6 por volumen, var_24h 3.52>=3, var_4h 4.85>0, var_1h -0.58<=2.5, vs_max_48h -1.16>=-1.5, vol4h 1.77>=1.3; carpeta vacia, 0 entradas hoy · invalida: stop 7% o var_24h<0 con var_4h<-2, o 48h sin +10%
 
+## 2026-11-11 14:20 UTC — nota
+[v2] Sin operar: ya hay 1 posicion (NEAR, ~2 h de 48h), maximo 1, no se abre nada nuevo. NEAR se mantiene: var_24h 0.8 (>=0), var_4h 3.38, sin tendencia rota; precio 3.753 sobre stop 3.507 (-0.48%). Filtro BTC abierto (var_24h -0.97, var_4h -0.51). Sin disparos.
+
