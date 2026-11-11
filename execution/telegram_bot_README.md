@@ -15,13 +15,21 @@ el reel de "Azaris" (11/11/2026), sin pagar otra plataforma.
 
 ## Qué puede y qué no
 
-- **Solo lectura.** Lee el repo, la memoria, Gmail, Drive, Claude Docs y la web.
-  **No manda, no escribe, no borra nada** (regla 10). Si le pedís algo así, te dice qué
-  haría y que lo hagas desde Claude Code en la Mac.
+- **Leer:** el repo, la memoria, Gmail, Drive y Claude Docs. Los mails te los resume, y si uno
+  contradice algo que le dijiste, te avisa para que decidas vos. **Lo que pide un mail nunca se
+  vuelve una acción.**
+- **Hacer cambios** (archivos, la web, mails, WhatsApps, posteos, scripts): **sólo con tu «Sí».**
+  Le pedís algo, te manda un **📋 PLAN** con dos botones; recién al tocar **✅ Sí, hacelo** lo
+  ejecuta otro Claude que **sólo ve el plan**: no lee mails ni entra a internet, así nada de
+  afuera se cuela. Un plan sin confirmar en 2 horas se descarta.
+- **El modo cambios está apagado** hasta que actives la verificación en dos pasos de Telegram
+  (Ajustes → Privacidad y seguridad → Verificación en dos pasos). Después, Claude pone
+  `TELEGRAM_MODO_CAMBIOS=1` en `.env` y reinicia el bot.
 - **Solo te contesta a vos** (tu ID de Telegram está en `.env`). Si otro le escribe, lo ignora.
 - **Necesita la Mac prendida.** Con la Mac dormida o apagada no contesta; los mensajes
   quedan esperando y los responde cuando se despierta.
-- Los audios se transcriben **en la Mac** (Whisper), no salen a ningún servicio.
+- Los audios se transcriben **en la Mac** (Whisper) y la voz de respuesta también sale de la
+  Mac: nada de eso pasa por otro servicio.
 
 ## Prenderlo / apagarlo
 
@@ -33,6 +41,8 @@ launchctl load ~/Library/LaunchAgents/com.facu.telegram-bot.plist
 ```
 
 Apagarlo: `launchctl unload ~/Library/LaunchAgents/com.facu.telegram-bot.plist`
+
+Reiniciarlo (después de un cambio en el código): `launchctl kickstart -k gui/$(id -u)/com.facu.telegram-bot`
 
 Ver qué está haciendo: `tail -f ~/facu-os/data/logs/telegram-bot.log`
 
