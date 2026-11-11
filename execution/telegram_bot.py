@@ -184,6 +184,7 @@ def guardar_estado(e):
     os.replace(tmp, ESTADO)
 
 
+RESPONDER_CON_VOZ = False  # Facu 11/11: en Telegram, respuestas sólo por escrito (la voz queda para las llamadas)
 VOZ = "Eddy (Spanish (Mexico))"  # masculina de la Mac (`say -v '?'`); no hay argentina instalada
 GRAVE = 0.86              # <1 baja el tono sin cambiar la velocidad: «Jarvis» grave
 LIMITE_VOZ = 1200          # más que esto en audio se hace eterno: se lee el principio y se avisa
@@ -358,10 +359,10 @@ def atender(msg, estado):
     mandar(chat_id, respuesta)
     log("RESPONDIDO:", len(respuesta), "caracteres")
     if plan:
-        proponer_plan(chat_id, plan, estado, bool(audio))
+        proponer_plan(chat_id, plan, estado, bool(audio) and RESPONDER_CON_VOZ)
     # Audio que entra -> también audio que sale (para charlar manejando). El texto ya llegó igual:
     # si la voz falla, se avisa pero no se pierde la respuesta.
-    if audio:
+    if audio and RESPONDER_CON_VOZ:
         try:
             tg("sendChatAction", chat_id=chat_id, action="record_voice")
             mandar_voz(chat_id, respuesta)

@@ -8,8 +8,8 @@ el reel de "Azaris" (11/11/2026), sin pagar otra plataforma.
 
 - **Escribile** como a una persona: "¿cómo vino la caja del Paseo en octubre?",
   "¿qué me quedó pendiente con Obsession?", "buscame el mail de Fabric".
-- **Mandale un audio**: te muestra lo que entendió («🎙 Entendí: …») y te contesta **por escrito y
-  con una nota de voz** (voz de la Mac, gratis y local). Si le escribís, contesta solo por escrito.
+- **Mandale un audio**: te muestra lo que entendió («🎙 Entendí: …») y te contesta **por escrito**.
+  (Las respuestas en audio existen pero están apagadas: `RESPONDER_CON_VOZ` en el código.)
 - **/nuevo** — arranca una conversación de cero. Si no, se acuerda de lo anterior.
 - Tarda lo que tarda Claude en pensar: de 10 segundos a un par de minutos según la pregunta.
 
@@ -22,9 +22,10 @@ el reel de "Azaris" (11/11/2026), sin pagar otra plataforma.
   Le pedís algo, te manda un **📋 PLAN** con dos botones; recién al tocar **✅ Sí, hacelo** lo
   ejecuta otro Claude que **sólo ve el plan**: no lee mails ni entra a internet, así nada de
   afuera se cuela. Un plan sin confirmar en 2 horas se descarta.
-- **El modo cambios está apagado** hasta que actives la verificación en dos pasos de Telegram
-  (Ajustes → Privacidad y seguridad → Verificación en dos pasos). Después, Claude pone
-  `TELEGRAM_MODO_CAMBIOS=1` en `.env` y reinicia el bot.
+- **El modo cambios se prende con `TELEGRAM_MODO_CAMBIOS=1` en `.env`** (prendido el 11/11, con la
+  verificación en dos pasos de Telegram activada). Sin esa línea, te muestra el plan pero no ejecuta.
+- **Fallas de las tareas automáticas** (radar, efectivo, reportes) también te llegan acá.
+- **Llamada de emergencia** (Twilio): programada pero sin número todavía; ver la memoria del bot.
 - **Solo te contesta a vos** (tu ID de Telegram está en `.env`). Si otro le escribe, lo ignora.
 - **Necesita la Mac prendida.** Con la Mac dormida o apagada no contesta; los mensajes
   quedan esperando y los responde cuando se despierta.
