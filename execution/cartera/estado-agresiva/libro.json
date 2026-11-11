@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 530.0734301922146,
+  "usdt": 380.0734301922146,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794382260000
+      "vigilado_hasta": 1794385860000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794382260000
+      "vigilado_hasta": 1794385860000
+    },
+    "UNIUSDT": {
+      "nivel": "trading",
+      "cantidad": 23.37024329382408,
+      "entrada": 6.412,
+      "maximo": 6.412,
+      "reglas": {
+        "stop": 2.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794385980000
     }
   },
-  "comisiones_usd": 44.49208899999995,
+  "comisiones_usd": 44.64208899999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3964,6 +3986,18 @@
       "comision": 0.147375,
       "motivo": "Invalidación de la tesis de momentum escrita al entrar: 24 h cayó a +4,07% (bajo +5%) con 4 h roja (-0,19%), 1 h -0,74%, volumen 0,76x. El momentum se apagó; salida antes del stop para rotar.",
       "resultado_pct": -1.65
+    },
+    {
+      "ms": 1794385957798,
+      "fecha": "2026-11-11 08:32 UTC",
+      "lado": "buy",
+      "par": "UNIUSDT",
+      "nivel": "trading",
+      "cantidad": 23.37024329382408,
+      "precio": 6.412,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: UNI (54,6 M/día) cae al mínimo de 48 h (+0,52%) con volumen 4 h 2,06x, y la vela de 08:00 (mínimo 6,389) no perforó el mínimo de 07:00 (6,376): deja de caer. Invalida: perder 6,376; stop ajustado a 2,5% (~6,26) para no regalar más que la tesis. Debilidad: 1 h todavía -0,97% y cierre cerca del mínimo de la vela."
     }
   ]
 }
