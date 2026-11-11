@@ -1,20 +1,22 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-11 10:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-11 11:33 UTC
 
-**Total: 831.50 USD (-16.85%)** desde 2026-10-07 23:06 UTC · USDT libre 528.51 · comisiones 44.79 · 328 operaciones
+**Total: 829.26 USD (-17.07%)** desde 2026-10-07 23:06 UTC · USDT libre 378.51 · comisiones 44.94 · 329 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **831.50** |
+| **Esta carpeta** | **829.26** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 890.28 |
+| hodl btc | 889.82 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| XRP | trading | 151.89 | +1.36% | 1.02011 |
-| ETH | trading | 151.10 | +0.83% | 1,969.74 |
+| XRP | trading | 150.93 | +0.72% | 1.02011 |
+| ETH | trading | 150.59 | +0.49% | 1,969.74 |
+| GRAM | trading | 149.22 | -0.42% | 1.13715 |
 
 ## Últimas operaciones
 
+- 2026-11-11 11:32 UTC · compra GRAM 150.00 USD a 1.197 — Momentum de 24 h: GRAM +10,73% en 24 h, 4 h +3,64% con volumen 2,37x, 1 h -0,58% (no estirada), -2,44% del máximo de 48 h; reentrada con señ
 - 2026-11-11 09:32 UTC · venta UNI 148.59 USD a 6.358 — Invalidación de la tesis de rebote escrita al entrar: perdió 6,376 (precio 6,362, nuevo mínimo de 48 h ~6,351, 4 h -4,65% con 2,15x de volum
 - 2026-11-11 08:32 UTC · compra UNI 150.00 USD a 6.412 — Rebote en soporte: UNI (54,6 M/día) cae al mínimo de 48 h (+0,52%) con volumen 4 h 2,06x, y la vela de 08:00 (mínimo 6,389) no perforó el mí
 - 2026-11-11 03:32 UTC · venta PEPE 147.38 USD a 5.36e-06 — Invalidación de la tesis de momentum escrita al entrar: 24 h cayó a +4,07% (bajo +5%) con 4 h roja (-0,19%), 1 h -0,74%, volumen 0,76x. El m
@@ -24,6 +26,5 @@
 - 2026-11-10 18:38 UTC · compra ETH 150.00 USD a 2,048.17 — Rebote en soporte: ETH tocó el mínimo de 48 h en 2006 (15:00) y desde ahí hace mínimos horarios más altos (16:00 2009,6, 17:00 2014,6, 18:00
 - 2026-11-10 17:32 UTC · compra XRP 150.00 USD a 1.0506 — Rebote en soporte: XRP tocó el mínimo de 48 h en 1,0311 (15:00) y desde ahí hace dos mínimos horarios más altos (16:00 1,0388, 17:00 1,0435)
 - 2026-11-10 11:32 UTC · venta HYPE 150.16 USD a 73.75 — Regla de 24 h: entró el 09/11 11:32 como rebote en soporte y a las 11:32 del 10/11 está en +0,2% sin haber llegado a +8% ni al stop 72,94 (1
-- 2026-11-10 10:33 UTC · venta UNI 146.78 USD a 6.98 — Tesis invalidada: 24 h bajó a +3,68% (< +5%) y la 4 h pasó a roja (-1,36%), las dos condiciones escritas al entrar; 1 h -0,26%, -2,19% del m
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

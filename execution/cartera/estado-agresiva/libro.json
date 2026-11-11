@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 528.5128490474859,
+  "usdt": 378.51284904748593,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794393060000
+      "vigilado_hasta": 1794396720000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794393060000
+      "vigilado_hasta": 1794396720000
+    },
+    "GRAMUSDT": {
+      "nivel": "trading",
+      "cantidad": 125.18796992481202,
+      "entrada": 1.197,
+      "maximo": 1.197,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794396780000
     }
   },
-  "comisiones_usd": 44.790676999999945,
+  "comisiones_usd": 44.940676999999944,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3988,6 +4010,18 @@
       "comision": 0.148588,
       "motivo": "Invalidación de la tesis de rebote escrita al entrar: perdió 6,376 (precio 6,362, nuevo mínimo de 48 h ~6,351, 4 h -4,65% con 2,15x de volumen vendedor). El soporte no aguantó; salida antes del stop de 6,25.",
       "resultado_pct": -0.84
+    },
+    {
+      "ms": 1794396779076,
+      "fecha": "2026-11-11 11:32 UTC",
+      "lado": "buy",
+      "par": "GRAMUSDT",
+      "nivel": "trading",
+      "cantidad": 125.18796992481202,
+      "precio": 1.197,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: GRAM +10,73% en 24 h, 4 h +3,64% con volumen 2,37x, 1 h -0,58% (no estirada), -2,44% del máximo de 48 h; reentrada con señal nueva y más volumen que la de ayer (1,57x), que se apagó. Invalida: 24 h bajo +5% con 4 h roja, o stop 5%."
     }
   ]
 }
