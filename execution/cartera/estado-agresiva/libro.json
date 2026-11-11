@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 235.49655401756638,
+  "usdt": 382.8453927610219,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794360660000
+      "vigilado_hasta": 1794364380000
     },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.07316287222252059,
       "entrada": 2048.17,
-      "maximo": 2065.02,
+      "maximo": 2069.53,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,35 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794360660000
-    },
-    "GRAMUSDT": {
-      "nivel": "trading",
-      "cantidad": 130.75916230366494,
-      "entrada": 1.146,
-      "maximo": 1.152,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794360660000
+      "vigilado_hasta": 1794364380000
     },
     "PEPEUSDT": {
       "nivel": "trading",
       "cantidad": 27495412.844036695,
       "entrada": 5.45e-06,
-      "maximo": 5.49e-06,
+      "maximo": 5.52e-06,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -92,10 +70,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794360660000
+      "vigilado_hasta": 1794364380000
     }
   },
-  "comisiones_usd": 44.19721799999996,
+  "comisiones_usd": 44.344713999999954,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3984,6 +3962,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: PEPE +5,25% en 24 h, 4 h +3,05%, 1 h +0,56% (no estirada), -3,74% del máximo de 48 h; venía +4,1% hace una hora y ahora cruza +5% con el 4 h acelerando. Volumen flojo (0,6x): es la debilidad de la tesis. Invalida: 24 h bajo +5% con 4 h roja, o perder el mínimo de la vela de 4 h; stop 5%."
+    },
+    {
+      "ms": 1794364480541,
+      "fecha": "2026-11-11 02:34 UTC",
+      "lado": "sell",
+      "par": "GRAMUSDT",
+      "cantidad": 130.75916230366494,
+      "precio": 1.128,
+      "usd": 147.4963,
+      "comision": 0.147496,
+      "motivo": "Invalidación de la tesis de momentum escrita al entrar: 24 h cayó a +3,48% (bajo +5%) con 4 h roja (-0,79%) y volumen 0,72x; el momentum se apagó. Salida a 1,129 (-1,5%) antes del stop. Libera lugar para rotar.",
+      "resultado_pct": -1.57
     }
   ]
 }

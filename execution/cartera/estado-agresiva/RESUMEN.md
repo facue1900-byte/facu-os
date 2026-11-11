@@ -1,22 +1,22 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-11 01:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-11 02:34 UTC
 
-**Total: 834.27 USD (-16.57%)** desde 2026-10-07 23:06 UTC · USDT libre 235.50 · comisiones 44.20 · 324 operaciones
+**Total: 832.87 USD (-16.71%)** desde 2026-10-07 23:06 UTC · USDT libre 382.85 · comisiones 44.34 · 325 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **834.27** |
+| **Esta carpeta** | **832.87** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 887.17 |
+| hodl btc | 882.11 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| XRP | trading | 150.66 | +0.54% | 1.02011 |
-| ETH | trading | 150.61 | +0.50% | 1,961.77 |
-| PEPE | trading | 150.40 | +0.37% | 5.22e-06 |
-| GRAM | trading | 147.10 | -1.83% | 1.0944 |
+| ETH | trading | 150.36 | +0.34% | 1,966.05 |
+| XRP | trading | 150.36 | +0.34% | 1.02011 |
+| PEPE | trading | 149.30 | -0.37% | 5.24e-06 |
 
 ## Últimas operaciones
 
+- 2026-11-11 02:34 UTC · venta GRAM 147.50 USD a 1.128 — Invalidación de la tesis de momentum escrita al entrar: 24 h cayó a +3,48% (bajo +5%) con 4 h roja (-0,79%) y volumen 0,72x; el momentum se 
 - 2026-11-11 00:32 UTC · compra PEPE 150.00 USD a 5.45e-06 — Momentum de 24 h: PEPE +5,25% en 24 h, 4 h +3,05%, 1 h +0,56% (no estirada), -3,74% del máximo de 48 h; venía +4,1% hace una hora y ahora cr
 - 2026-11-10 22:32 UTC · compra GRAM 150.00 USD a 1.146 — Momentum de 24 h: GRAM +10,8% en 24 h, 4 h +3,05% con volumen 1,57x, 1 h -0,61% (no estirada), -1,29% del máximo de 48 h; velas horarias de 
 - 2026-11-10 18:38 UTC · compra ETH 150.00 USD a 2,048.17 — Rebote en soporte: ETH tocó el mínimo de 48 h en 2006 (15:00) y desde ahí hace mínimos horarios más altos (16:00 2009,6, 17:00 2014,6, 18:00
@@ -26,6 +26,5 @@
 - 2026-11-10 10:33 UTC · venta PEPE 149.29 USD a 5.3e-06 — Tesis invalidada: se cumplen las dos condiciones escritas al entrar — 24 h bajó a +4,74% (< +5%) y la 4 h pasó a roja (-0,19%); 1 h +0,19%, 
 - 2026-11-10 08:32 UTC · venta XRP 149.21 USD a 1.09 — Regla de 24 h: entró el 09/11 08:36 como rebote en soporte y a las 08:32 del 10/11 está en -0,4% sin haber llegado a +8% ni al stop (1 h -0,
 - 2026-11-10 07:33 UTC · compra UNI 150.00 USD a 7.126 — Momentum de 24 h: UNI (34 M/día) +6,31% en 24 h, 4 h +3,11% (sigue subiendo), 1 h +0,69% (no estirada), -0,15% del máximo de 48 h, volumen 1
-- 2026-11-10 04:32 UTC · compra PEPE 150.00 USD a 5.32e-06 — Momentum de 24 h: PEPE (72 M/día) +5,15% en 24 h, 4 h +3,31% (sigue subiendo), 1 h +2,91% (no estirada, < +4%), -1,67% del máximo de 48 h. V
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
