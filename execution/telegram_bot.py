@@ -334,6 +334,11 @@ def atender(msg, estado):
         mandar(chat_id, "Listo, conversación nueva. Preguntame lo que quieras (texto o audio).")
         return
 
+    if comando == "/llamame":
+        mandar(chat_id, llamar("Esta es una llamada de prueba. Si me escuchás, la llamada de emergencia funciona.",
+                               estado, forzar=True))
+        return
+
     audio = msg.get("voice") or msg.get("audio")
     if audio:
         tg("sendChatAction", chat_id=chat_id, action="typing")
@@ -440,6 +445,37 @@ def atender_boton(cb, estado):
             log("ERROR voz:", repr(e))
 
 
+# --- Llamada de emergencia (Twilio) ---
+ENTRE_LLAMADAS = 1800   # como mucho una llamada cada 30 min: que no suene en loop
+
+
+def llamar(motivo, estado=None, forzar=False):
+    """Llama al celular de Facu y le lee el motivo. Devuelve un texto con lo que pasó.
+    Sin TWILIO_FROM (todavía no hay número comprado) no llama y lo dice."""
+    import base64
+    from xml.sax.saxutils import escape
+    faltan = [k for k in ("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_FROM", "TWILIO_TO") if not os.environ.get(k)]
+    if faltan:
+        return f"No puedo llamar: falta {', '.join(faltan)} en .env"
+    if estado is not None and not forzar and time.time() - estado.get("ultima_llamada", 0) < ENTRE_LLAMADAS:
+        return "No llamé: ya hubo una llamada hace menos de 30 minutos."
+    frase = escape(f"Hola Facu, te habla Jarvis. {motivo[:600]}")
+    twiml = (f'<Response><Say language="es-MX">{frase}</Say><Pause length="1"/>'
+             f'<Say language="es-MX">Repito. {frase}</Say><Say language="es-MX">Te dejé el detalle en Telegram.</Say></Response>')
+    sid = os.environ["TWILIO_ACCOUNT_SID"]
+    datos = urllib.parse.urlencode({"To": os.environ["TWILIO_TO"], "From": os.environ["TWILIO_FROM"], "Twiml": twiml}).encode()
+    auth = base64.b64encode(f"{sid}:{os.environ['TWILIO_AUTH_TOKEN']}".encode()).decode()
+    req = urllib.request.Request(f"https://api.twilio.com/2010-04-01/Accounts/{sid}/Calls.json", data=datos,
+                                 headers={"Authorization": f"Basic {auth}"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        llamada = json.load(r)
+    if estado is not None:
+        estado["ultima_llamada"] = time.time()
+        guardar_estado(estado)
+    log("LLAMADA:", llamada.get("sid"), llamada.get("status"))
+    return f"📞 Te estoy llamando (estado: {llamada.get('status')})."
+
+
 def quien_me_escribio():
     for u in tg("getUpdates", espera=30):
         m = u.get("message") or {}
@@ -450,6 +486,8 @@ def main():
     cargar_env()
     if "--quien-me-escribio" in sys.argv:
         return quien_me_escribio()
+    if "--llamar" in sys.argv:   # para que otros scripts puedan llamar: --llamar "motivo"
+        return print(llamar(sys.argv[sys.argv.index("--llamar") + 1], leer_estado()))
     if not os.environ.get("TELEGRAM_CHAT_ID"):
         sys.exit("Falta TELEGRAM_CHAT_ID en .env: sin eso le contestaría a cualquiera.")
     estado = leer_estado()
@@ -462,6 +500,12 @@ def main():
             fallas_seguidas = 0
         except Exception as e:   # red caída, Mac recién despierta, 502, 409 (otra instancia), token revocado
             fallas_seguidas += 1
+            if fallas_seguidas == 40:   # ~20 min sin Telegram: si hay internet, algo está roto (token, cuenta)
+                try:
+                    log(llamar("Hace veinte minutos que no me puedo conectar con Telegram. "
+                               "Si tenés internet en la Mac, revisá el bot.", estado))
+                except Exception as e3:
+                    log("Tampoco pude llamar:", repr(e3))
             log(f"Telegram no responde ({fallas_seguidas} seguidas), reintento en 30 s:", repr(e))
             time.sleep(30)
             continue
@@ -476,6 +520,11 @@ def main():
                     atender_boton(cb, estado)
                 except Exception as e:
                     log("ERROR plan:", repr(e))
+                    try:
+                        log(llamar("Falló un plan que aprobaste y no lo pude resolver. "
+                                   f"El error fue: {str(e)[:200]}", estado))
+                    except Exception as e3:
+                        log("Tampoco pude llamar:", repr(e3))
                     if str(cb.get("from", {}).get("id")) == os.environ.get("TELEGRAM_CHAT_ID"):
                         try:
                             mandar(cb["from"]["id"], f"⚠️ El plan falló: {str(e)[:500]}")
