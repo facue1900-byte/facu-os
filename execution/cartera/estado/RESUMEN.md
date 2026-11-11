@@ -1,23 +1,23 @@
-# Carpeta cripto ficticia — 2026-11-11 20:06 UTC
+# Carpeta cripto ficticia — 2026-11-11 22:06 UTC
 
-**Total: 855.68 USD (-14.43%)** desde 2026-10-07 20:58 UTC · USDT libre 428.28 · comisiones 2.66 · 93 operaciones
+**Total: 854.60 USD (-14.54%)** desde 2026-10-07 20:58 UTC · USDT libre 462.52 · comisiones 2.70 · 94 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **855.68** |
+| **Esta carpeta** | **854.60** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 891.20 |
-| plan inicial sin tocar | 809.58 |
+| hodl btc | 892.00 |
+| plan inicial sin tocar | 807.75 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 267.07 | -10.89% | 63,673.5 |
-| ETH | conservador | 80.62 | -19.30% | 1,940.46 |
-| BNB | conservador | 44.45 | -11.01% | 582.173 |
-| PEPE | riesgo | 35.26 | -11.76% | 4.67e-06 |
+| BTC | conservador | 267.31 | -10.81% | 63,673.5 |
+| ETH | conservador | 80.35 | -19.57% | 1,940.46 |
+| BNB | conservador | 44.42 | -11.07% | 582.173 |
 
 ## Últimas operaciones
 
+- 2026-11-11 21:37 UTC · venta PEPE 34.28 USD a 4.6665e-06 — Stop automático en 4.6665e-06 (entrada 5.44e-06, máximo 5.49e-06).
 - 2026-11-11 02:07 UTC · compra PEPE 40.00 USD a 5.44e-06 — Tesis de riesgo pactada el 00:05 (11/11): PEPE segundo ciclo seguido a <5% del máximo de 90 d (4,6% -> 4,0%), con volumen 98,6 M/día, 7d +9,
 - 2026-11-07 02:51 UTC · venta XRP 24.58 USD a 1.16653 — Stop automático en 1.166532 (entrada 1.4226, máximo 1.43).
 - 2026-10-31 10:06 UTC · venta HYPE 36.07 USD a 86.93 — Rotación por tesis invalidada, no por stop: la compra del 29/10 16:05 era momentum cerca del máximo de 90 d y su propio motivo decía reconsi
@@ -27,6 +27,5 @@
 - 2026-10-29 20:47 UTC · venta LINK 32.77 USD a 10.9609 — Stop automático en 10.96094 (entrada 13.367, máximo 13.506).
 - 2026-10-29 16:15 UTC · compra HYPE 40.00 USD a 96.31 — Tesis fijada a las 12:05 y 14:05: HYPE dos ciclos seguidos a <5% del máximo de 90 d (4,6% -> 0,0%), 7d +24,2%, 30d +11,7%, 101,7 M/día, y po
 - 2026-10-24 14:16 UTC · venta SUI 24.58 USD a 0.92168 — Stop automático en 0.92168 (entrada 1.124, máximo 1.1468).
-- 2026-10-23 22:50 UTC · venta AAVE 32.77 USD a 142.91 — Stop automático en 142.9096 (entrada 174.28, máximo 176.15).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
