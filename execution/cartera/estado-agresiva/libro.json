@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 382.8453927610219,
+  "usdt": 530.0734301922146,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794364380000
+      "vigilado_hasta": 1794367860000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794364380000
-    },
-    "PEPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 27495412.844036695,
-      "entrada": 5.45e-06,
-      "maximo": 5.52e-06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794364380000
+      "vigilado_hasta": 1794367860000
     }
   },
-  "comisiones_usd": 44.344713999999954,
+  "comisiones_usd": 44.49208899999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3974,6 +3952,18 @@
       "comision": 0.147496,
       "motivo": "Invalidación de la tesis de momentum escrita al entrar: 24 h cayó a +3,48% (bajo +5%) con 4 h roja (-0,79%) y volumen 0,72x; el momentum se apagó. Salida a 1,129 (-1,5%) antes del stop. Libera lugar para rotar.",
       "resultado_pct": -1.57
+    },
+    {
+      "ms": 1794367944469,
+      "fecha": "2026-11-11 03:32 UTC",
+      "lado": "sell",
+      "par": "PEPEUSDT",
+      "cantidad": 27495412.844036695,
+      "precio": 5.36e-06,
+      "usd": 147.3754,
+      "comision": 0.147375,
+      "motivo": "Invalidación de la tesis de momentum escrita al entrar: 24 h cayó a +4,07% (bajo +5%) con 4 h roja (-0,19%), 1 h -0,74%, volumen 0,76x. El momentum se apagó; salida antes del stop para rotar.",
+      "resultado_pct": -1.65
     }
   ]
 }
