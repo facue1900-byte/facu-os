@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 378.51284904748593,
+  "usdt": 527.8565701189145,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794407460000
+      "vigilado_hasta": 1794411060000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794407460000
-    },
-    "GRAMUSDT": {
-      "nivel": "trading",
-      "cantidad": 125.18796992481202,
-      "entrada": 1.197,
-      "maximo": 1.257,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794407460000
+      "vigilado_hasta": 1794411060000
     }
   },
-  "comisiones_usd": 44.940676999999944,
+  "comisiones_usd": 45.090169999999944,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4022,6 +4000,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: GRAM +10,73% en 24 h, 4 h +3,64% con volumen 2,37x, 1 h -0,58% (no estirada), -2,44% del máximo de 48 h; reentrada con señal nueva y más volumen que la de ayer (1,57x), que se apagó. Invalida: 24 h bajo +5% con 4 h roja, o stop 5%."
+    },
+    {
+      "ms": 1794409980000,
+      "fecha": "2026-11-11 15:13 UTC",
+      "lado": "sell",
+      "par": "GRAMUSDT",
+      "cantidad": 125.18796992481202,
+      "precio": 1.1941499999999998,
+      "usd": 149.4932,
+      "comision": 0.149493,
+      "motivo": "Stop automático en 1.19415 (entrada 1.197, máximo 1.257).",
+      "resultado_pct": -0.24
     }
   ]
 }
