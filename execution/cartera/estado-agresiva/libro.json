@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 527.8565701189145,
+  "usdt": 377.85657011891453,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
       "cantidad": 142.63278126784695,
       "entrada": 1.0506,
-      "maximo": 1.0738,
+      "maximo": 1.0795,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794411060000
+      "vigilado_hasta": 1794414660000
     },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.07316287222252059,
       "entrada": 2048.17,
-      "maximo": 2073.41,
+      "maximo": 2090.63,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794411060000
+      "vigilado_hasta": 1794414660000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 39.611419508326726,
+      "entrada": 3.783,
+      "maximo": 3.783,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794414780000
     }
   },
-  "comisiones_usd": 45.090169999999944,
+  "comisiones_usd": 45.24016999999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4012,6 +4034,18 @@
       "comision": 0.149493,
       "motivo": "Stop automático en 1.19415 (entrada 1.197, máximo 1.257).",
       "resultado_pct": -0.24
+    },
+    {
+      "ms": 1794414753168,
+      "fecha": "2026-11-11 16:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 39.611419508326726,
+      "precio": 3.783,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: NEAR +8,63% en 24 h, 4 h +1,15% (sigue subiendo) con 1,15x, 1 h +1,09% (no estirada), a -0,55% del máximo de 48 h; 89,6 M/día. Invalida: 24 h bajo +5% con 4 h roja, o stop 5%. Debilidad: volumen apenas sobre el promedio, no es ruptura confirmada."
     }
   ]
 }
