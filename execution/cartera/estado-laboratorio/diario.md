@@ -607,3 +607,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-11 18:16 UTC — nota
 [v2] Sin operar: ya hay 1 posicion (NEAR, ~6 h de 48h), maximo 1, no se abre nada nuevo (AVAX var_24h 4.36 y GRAM 8.81 cumplian var_24h pero vol4h 0.54/1.26 y vs_max_48h -1.59/-3.66 no). NEAR se mantiene: var_24h 3.92, var_4h 0.32, sin tendencia rota, stop 3.5098. Filtro BTC abierto (var_24h 1.33, var_4h 1.22). Sin disparos.
 
+## 2026-11-11 20:16 UTC — nota
+[v2] Sin operar: ya hay 1 posicion (NEAR, ~8 h de 48h), maximo 1, no se abre nada nuevo (GRAM var_24h 7.21, AVAX 3.79 y NEAR cumplian var_24h pero vol4h 0.77/0.33/0.41 <1.3 y vs_max_48h < -1.5). NEAR se mantiene: var_24h 4.95 (>=0), var_4h -1.43 (>-2), sin tendencia rota, precio 3.733 sobre stop 3.5098. Filtro BTC abierto (var_24h 1.1, var_4h 0.44). Sin disparos.
+
