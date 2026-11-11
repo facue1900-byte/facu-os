@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 683.0664791320075,
-  "posiciones": {
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 39.611419508326726,
-      "entrada": 3.783,
-      "maximo": 3.815,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794421920000
-    }
-  },
-  "comisiones_usd": 45.54568599999995,
+  "usdt": 829.4821690606357,
+  "posiciones": {},
+  "comisiones_usd": 45.69224799999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4026,6 +4003,18 @@
       "comision": 0.15297,
       "motivo": "Rotación por regla de 24 h: ETH entró el 10/11 18:38 (rebote) y a las 18:32 del 11/11 lleva ~+2,1% sin tocar +8% ni el stop (1998,6); la próxima pasada sería a ~25 h, así que roto ahora y no una hora tarde. 4 h +1,78% con 1,09x, a -2,43% del máximo de 48 h: sin ruptura. Libero el cupo.",
       "resultado_pct": 2.08
+    },
+    {
+      "ms": 1794425539509,
+      "fecha": "2026-11-11 19:32 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 39.611419508326726,
+      "precio": 3.7,
+      "usd": 146.5623,
+      "comision": 0.146562,
+      "motivo": "Invalidación de momentum cumplida: NEAR 24 h +3,44% (bajo +5%) con 4 h -1,25% roja y volumen 0,57x, 1 h -0,54%, a -3,01% del máximo de 48 h. Salgo antes del stop (3,624); la tesis ya no existe.",
+      "resultado_pct": -2.19
     }
   ]
 }
