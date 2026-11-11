@@ -4,35 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 377.85657011891453,
+  "usdt": 530.2497839253109,
   "posiciones": {
-    "XRPUSDT": {
-      "nivel": "trading",
-      "cantidad": 142.63278126784695,
-      "entrada": 1.0506,
-      "maximo": 1.0795,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794414660000
-    },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.07316287222252059,
       "entrada": 2048.17,
-      "maximo": 2090.63,
+      "maximo": 2103.78,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794414660000
+      "vigilado_hasta": 1794418680000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 39.611419508326726,
       "entrada": 3.783,
-      "maximo": 3.783,
+      "maximo": 3.815,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794414780000
+      "vigilado_hasta": 1794418680000
     }
   },
-  "comisiones_usd": 45.24016999999994,
+  "comisiones_usd": 45.39271599999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4046,6 +4024,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: NEAR +8,63% en 24 h, 4 h +1,15% (sigue subiendo) con 1,15x, 1 h +1,09% (no estirada), a -0,55% del máximo de 48 h; 89,6 M/día. Invalida: 24 h bajo +5% con 4 h roja, o stop 5%. Debilidad: volumen apenas sobre el promedio, no es ruptura confirmada."
+    },
+    {
+      "ms": 1794418735173,
+      "fecha": "2026-11-11 17:38 UTC",
+      "lado": "sell",
+      "par": "XRPUSDT",
+      "cantidad": 142.63278126784695,
+      "precio": 1.0695,
+      "usd": 152.5458,
+      "comision": 0.152546,
+      "motivo": "Rotación por regla de 24 h: XRP entró el 10/11 17:32 y a las 17:38 del 11/11 lleva +1,8% sin tocar +8% ni el stop (1,0268). 4 h +0,79% con 0,97x, sin impulso. Libero el cupo para una tesis con señal.",
+      "resultado_pct": 1.8
     }
   ]
 }
