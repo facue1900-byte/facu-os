@@ -493,6 +493,10 @@ def main():
     if not os.environ.get("TELEGRAM_CHAT_ID"):
         sys.exit("Falta TELEGRAM_CHAT_ID en .env: sin eso le contestaría a cualquiera.")
     estado = leer_estado()
+    # Con batería la Mac de Facu se duerme al minuto (pmset sleep 1) y el bot deja de contestar.
+    # caffeinate -i evita el reposo por inactividad mientras viva este proceso, también con
+    # batería (cerrar la tapa la duerme igual). Muere solo cuando muere el bot (-w).
+    subprocess.Popen(["/usr/bin/caffeinate", "-i", "-w", str(os.getpid())])
     log("Bot arrancado. Escuchando…")
     fallas_seguidas = 0
     while True:
