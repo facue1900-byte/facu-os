@@ -593,3 +593,8 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-11 10:17 UTC — nota
 [v2] Sin operar: carpeta vacia, filtro BTC abierto (var_24h -0.66, var_4h 0.16). Ningun par cumple entrada: unico con var_24h>=3 es AVAX (4.24, var_4h 2.29) pero vol4h 0.42 (<1.3) y vs_max_48h -4.05 (<-1.5); INIT var_24h 2.12, var_4h -14.8; resto var_24h<3. Sin disparos.
 
+## 2026-11-11 12:20 UTC — Compra NEARUSDT (trading)
+193.00 USD a 3.771. Stop 7.0% · trailing 8.0% · tomas [[10.0, 0.5], [20.0, 1.0]].
+
+[v2] filtro BTC abierto (var_24h -0.48, var_4h 0.42); NEAR #6 por volumen, var_24h 3.52>=3, var_4h 4.85>0, var_1h -0.58<=2.5, vs_max_48h -1.16>=-1.5, vol4h 1.77>=1.3; carpeta vacia, 0 entradas hoy · invalida: stop 7% o var_24h<0 con var_4h<-2, o 48h sin +10%
+
