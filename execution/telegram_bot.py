@@ -437,7 +437,14 @@ def atender_boton(cb, estado):
         return
     mandar(chat_id, "⚙️ Ejecutando el plan… te aviso cuando termine.")
     log("EJECUTANDO plan", pid)
-    resultado, _ = _correr_claude("PLAN APROBADO POR FACU:\n\n" + plan["texto"], None, ejecutar=True)
+    # Marca: si el bot se reinicia a mitad de camino, al volver avisa (11/11 se perdió un «Terminó» así).
+    estado["ejecutando"] = {"id": pid, "ts": time.time(), "resumen": plan["texto"][:300]}
+    guardar_estado(estado)
+    try:
+        resultado, _ = _correr_claude("PLAN APROBADO POR FACU:\n\n" + plan["texto"], None, ejecutar=True)
+    finally:
+        estado["ejecutando"] = None
+        guardar_estado(estado)
     mandar(chat_id, "✅ Terminó.\n\n" + resultado)
     log("PLAN ejecutado", pid, len(resultado), "caracteres")
     if plan.get("voz"):
@@ -498,6 +505,18 @@ def main():
     # batería (cerrar la tapa la duerme igual). Muere solo cuando muere el bot (-w).
     subprocess.Popen(["/usr/bin/caffeinate", "-i", "-w", str(os.getpid())])
     log("Bot arrancado. Escuchando…")
+    if estado.get("ejecutando"):
+        e = estado["ejecutando"]
+        try:
+            mandar(os.environ["TELEGRAM_CHAT_ID"],
+                   "⚠️ Me reinicié mientras ejecutaba un plan que aprobaste "
+                   f"(empezó {time.strftime('%d/%m %H:%M', time.localtime(e['ts']))}). Puede haber "
+                   "terminado igual o haber quedado a medias, y no tengo su resultado. Preguntame "
+                   "«¿qué pasó con el último plan?» y lo reviso.\n\nEl plan arrancaba así:\n" + e["resumen"])
+        except Exception as ex:
+            log("No pude avisar del plan interrumpido:", repr(ex))
+        estado["ejecutando"] = None
+        guardar_estado(estado)
     fallas_seguidas = 0
     while True:
         try:
