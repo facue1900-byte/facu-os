@@ -1,21 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-11 08:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-11 09:32 UTC
 
-**Total: 830.80 USD (-16.92%)** desde 2026-10-07 23:06 UTC · USDT libre 380.07 · comisiones 44.64 · 327 operaciones
+**Total: 829.60 USD (-17.04%)** desde 2026-10-07 23:06 UTC · USDT libre 528.51 · comisiones 44.79 · 328 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **830.80** |
+| **Esta carpeta** | **829.60** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 885.78 |
+| hodl btc | 885.57 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 150.54 | +0.46% | 1,969.74 |
-| XRP | trading | 150.49 | +0.43% | 1.02011 |
-| UNI | trading | 149.69 | -0.11% | 6.2517 |
+| XRP | trading | 150.73 | +0.59% | 1.02011 |
+| ETH | trading | 150.35 | +0.33% | 1,969.74 |
 
 ## Últimas operaciones
 
+- 2026-11-11 09:32 UTC · venta UNI 148.59 USD a 6.358 — Invalidación de la tesis de rebote escrita al entrar: perdió 6,376 (precio 6,362, nuevo mínimo de 48 h ~6,351, 4 h -4,65% con 2,15x de volum
 - 2026-11-11 08:32 UTC · compra UNI 150.00 USD a 6.412 — Rebote en soporte: UNI (54,6 M/día) cae al mínimo de 48 h (+0,52%) con volumen 4 h 2,06x, y la vela de 08:00 (mínimo 6,389) no perforó el mí
 - 2026-11-11 03:32 UTC · venta PEPE 147.38 USD a 5.36e-06 — Invalidación de la tesis de momentum escrita al entrar: 24 h cayó a +4,07% (bajo +5%) con 4 h roja (-0,19%), 1 h -0,74%, volumen 0,76x. El m
 - 2026-11-11 02:34 UTC · venta GRAM 147.50 USD a 1.128 — Invalidación de la tesis de momentum escrita al entrar: 24 h cayó a +3,48% (bajo +5%) con 4 h roja (-0,79%) y volumen 0,72x; el momentum se 
@@ -25,6 +25,5 @@
 - 2026-11-10 17:32 UTC · compra XRP 150.00 USD a 1.0506 — Rebote en soporte: XRP tocó el mínimo de 48 h en 1,0311 (15:00) y desde ahí hace dos mínimos horarios más altos (16:00 1,0388, 17:00 1,0435)
 - 2026-11-10 11:32 UTC · venta HYPE 150.16 USD a 73.75 — Regla de 24 h: entró el 09/11 11:32 como rebote en soporte y a las 11:32 del 10/11 está en +0,2% sin haber llegado a +8% ni al stop 72,94 (1
 - 2026-11-10 10:33 UTC · venta UNI 146.78 USD a 6.98 — Tesis invalidada: 24 h bajó a +3,68% (< +5%) y la 4 h pasó a roja (-1,36%), las dos condiciones escritas al entrar; 1 h -0,26%, -2,19% del m
-- 2026-11-10 10:33 UTC · venta PEPE 149.29 USD a 5.3e-06 — Tesis invalidada: se cumplen las dos condiciones escritas al entrar — 24 h bajó a +4,74% (< +5%) y la 4 h pasó a roja (-0,19%); 1 h +0,19%, 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

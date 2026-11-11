@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 380.0734301922146,
+  "usdt": 528.5128490474859,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794385860000
+      "vigilado_hasta": 1794389460000
     },
     "ETHUSDT": {
       "nivel": "trading",
@@ -48,32 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794385860000
-    },
-    "UNIUSDT": {
-      "nivel": "trading",
-      "cantidad": 23.37024329382408,
-      "entrada": 6.412,
-      "maximo": 6.412,
-      "reglas": {
-        "stop": 2.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794385980000
+      "vigilado_hasta": 1794389460000
     }
   },
-  "comisiones_usd": 44.64208899999995,
+  "comisiones_usd": 44.790676999999945,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -3998,6 +3976,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: UNI (54,6 M/día) cae al mínimo de 48 h (+0,52%) con volumen 4 h 2,06x, y la vela de 08:00 (mínimo 6,389) no perforó el mínimo de 07:00 (6,376): deja de caer. Invalida: perder 6,376; stop ajustado a 2,5% (~6,26) para no regalar más que la tesis. Debilidad: 1 h todavía -0,97% y cierre cerca del mínimo de la vela."
+    },
+    {
+      "ms": 1794389542714,
+      "fecha": "2026-11-11 09:32 UTC",
+      "lado": "sell",
+      "par": "UNIUSDT",
+      "cantidad": 23.37024329382408,
+      "precio": 6.358,
+      "usd": 148.588,
+      "comision": 0.148588,
+      "motivo": "Invalidación de la tesis de rebote escrita al entrar: perdió 6,376 (precio 6,362, nuevo mínimo de 48 h ~6,351, 4 h -4,65% con 2,15x de volumen vendedor). El soporte no aguantó; salida antes del stop de 6,25.",
+      "resultado_pct": -0.84
     }
   ]
 }
