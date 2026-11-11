@@ -8,6 +8,24 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-11 · FAIL ✓ · Bot de Telegram: «solo lectura» por instrucción, no por permiso
+
+**Qué pasó.** La primera versión de `execution/telegram_bot.py` corría `claude -p` con un
+`--allowedTools` de lectura y la instrucción «no escribas». La prueba «creá un archivo» pasó, pero
+porque el modelo obedeció, no porque no pudiera: el `~/.claude/settings.json` global auto-aprueba
+Edit/Write/WebFetch y tiene `defaultMode: auto`. Es la misma trampa del 29/10 (más abajo); la atajó
+el `code-reviewer`, no yo. Además, Gmail + WebFetch juntos eran un camino de fuga: un mail con
+instrucciones podía hacerle leer un secreto y mandarlo en una URL.
+
+**Fix.** `--tools Read,Glob,Grep` (las demás propias no existen), `--permission-mode dontAsk`,
+`--disallowedTools` con todo lo que escribe o manda en los conectores y con `Read(**/.env*)`, sin
+web, y Claude corre con un entorno mínimo (no hereda el `.env`). Probado headless pidiéndole que
+INTENTE cada cosa prohibida: Write, Bash, WebFetch, el borrador y la etiqueta de Gmail ni existen;
+el `.env` da «denied by your permission settings».
+
+**Lección.** La prueba de un permiso es pedirle al agente que lo intente «de verdad, sin negarte de
+antemano»; si se niega por instrucción, la prueba no probó nada.
+
 ### 2026-11-10 · FAIL ✓ · Paseo: el cuadro operativo contaba el FCI y dos correcciones viejas habían vuelto
 
 **Qué pasó.** La pestaña «Dashboard» del Master Plan (resultado operativo) mostraba octubre con
