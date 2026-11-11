@@ -1,7 +1,8 @@
 """Le avisa a Facu (a él solo) que una tarea programada falló, y decide si vale un mail.
 
 Lo usa `execution/launchd/correr.sh`. No es "salir al mundo" (regla 10): el único destinatario
-posible es MAIL_FACU del .env.
+posible es Facu (MAIL_FACU y su Telegram, TELEGRAM_CHAT_ID, del .env). Cuando va mail, va también
+un Telegram corto (11/11/2026): misma regla de cuándo avisar, sin sumar avisos.
 
 Facu, 02/11/2026: «no quiero que me lleguen muchos mails, solo en días clave o cuando pasa algo
 inesperado». En 30 días llegaron 47 automáticos, 18 de una misma tarea fallando. Por eso:
@@ -114,6 +115,27 @@ def armar(tarea, codigo, log):
     )
 
 
+def telegram(tarea, log):
+    """El mismo aviso, corto, al Telegram de Facu (bot Jarvis). Devuelve True si salió."""
+    import urllib.parse
+    import urllib.request
+    token, chat = os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
+    if not token or not chat:
+        return False
+    _, nivel, titulo, significa = TAREAS.get(tarea, ("sistema", "revisar", f"Tarea «{tarea}» con error", "Una tarea programada no terminó bien."))
+    clave = "\n".join("· " + l for l in lineas_clave(log, 3))
+    texto = (f"{'🔴' if nivel == 'urgente' else '🟠'} {titulo}\n\n{significa}"
+             + (f"\n\n{clave}" if clave else "")
+             + f"\n\nPreguntame acá «¿qué pasó con {tarea}?» y lo miro.")
+    datos = urllib.parse.urlencode({"chat_id": chat, "text": texto[:4000]}).encode()
+    try:
+        with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/sendMessage", data=datos, timeout=30) as r:
+            return bool(json.load(r).get("ok"))
+    except Exception as e:
+        print(f"!!! No pude avisar por Telegram: {e!r}")
+        return False
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--tarea", required=True)
@@ -134,6 +156,9 @@ def main():
     from execution.google_auth import gmail
 
     log = pathlib.Path(a.log).read_text(errors="replace")[-6000:] if a.log and pathlib.Path(a.log).is_file() else ""
+    # Telegram primero: si el mail falla (token de Google vencido), el aviso igual llega.
+    if telegram(a.tarea, log):
+        print("aviso mandado por Telegram")
     para = os.environ["MAIL_FACU"]
     m = armar(a.tarea, a.codigo, log).mime(para)
     gmail().users().messages().send(
