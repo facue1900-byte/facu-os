@@ -590,3 +590,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-11 08:17 UTC — nota
 [v2] Sin operar: carpeta vacia, filtro BTC abierto (var_24h -0.88, var_4h 0.45). Ningun par cumple entrada: var_24h>=3 solo INIT (11.74) pero var_4h -29.11 y vs_max_48h -38.63; resto con var_24h<3. Sin disparos.
 
+## 2026-11-11 10:17 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC abierto (var_24h -0.66, var_4h 0.16). Ningun par cumple entrada: unico con var_24h>=3 es AVAX (4.24, var_4h 2.29) pero vol4h 0.42 (<1.3) y vs_max_48h -4.05 (<-1.5); INIT var_24h 2.12, var_4h -14.8; resto var_24h<3. Sin disparos.
+
