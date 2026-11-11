@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 468.279395104657,
+  "usdt": 428.279395104657,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794355500000
+      "vigilado_hasta": 1794362700000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794355500000
+      "vigilado_hasta": 1794362700000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,10 +66,32 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794355500000
+      "vigilado_hasta": 1794362700000
+    },
+    "PEPEUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 7345588.2352941185,
+      "entrada": 5.44e-06,
+      "maximo": 5.44e-06,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794362880000
     }
   },
-  "comisiones_usd": 2.623325000000001,
+  "comisiones_usd": 2.663325000000001,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1174,6 +1196,18 @@
       "comision": 0.024575,
       "motivo": "Stop automático en 1.166532 (entrada 1.4226, máximo 1.43).",
       "resultado_pct": -18.0
+    },
+    {
+      "ms": 1794362824495,
+      "fecha": "2026-11-11 02:07 UTC",
+      "lado": "buy",
+      "par": "PEPEUSDT",
+      "nivel": "riesgo",
+      "cantidad": 7345588.2352941185,
+      "precio": 5.44e-06,
+      "usd": 40.0,
+      "comision": 0.04,
+      "motivo": "Tesis de riesgo pactada el 00:05 (11/11): PEPE segundo ciclo seguido a <5% del máximo de 90 d (4,6% -> 4,0%), con volumen 98,6 M/día, 7d +9,7%, 30d +39%: momentum sostenido, no una vela. ~4,7% de la carpeta (tope riesgo 5%). Reglas por defecto de riesgo: stop 15%, trailing 15%, vende 1/2 a +40% y 1/2 del resto a +100%. Lo invalida: que salte el stop/trailing, que el volumen caiga bajo 10 M o que se quede >14 días sin moverse."
     }
   ]
 }
