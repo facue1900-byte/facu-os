@@ -584,3 +584,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-11 04:17 UTC — nota
 [v2] Sin operar: carpeta vacia, filtro BTC abierto (var_24h -1.57, var_4h 0.1). Ningun par cumple entrada: INIT var_24h 49.92, var_4h 22.87 pero var_1h 8.36 (>2.5), vol4h 1.03 (<1.3) y vs_max_48h -4.96; ONE var_24h 21.8 pero var_4h -8.81 y vs_max_48h -19.42; PEPE var_24h 1.89, var_4h -0.37; resto var_24h<3. Sin disparos.
 
+## 2026-11-11 06:21 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC abierto (var_24h -1.09, var_4h 0.27). Ningun par cumple entrada: INIT var_24h 36.83, var_4h 16.97, vol4h 2.34 pero var_1h 6.54 (>2.5) y vs_max_48h -22.03; ONE var_24h 19.74 pero var_4h -7.3, vol4h 1.19 y vs_max_48h -15.72; resto var_24h<3. Sin disparos.
+
