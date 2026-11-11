@@ -40,7 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794362700000
+      "vigilado_hasta": 1794369840000
     },
     "ETHUSDT": {
       "nivel": "conservador",
@@ -53,7 +53,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794362700000
+      "vigilado_hasta": 1794369840000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,13 +66,13 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794362700000
+      "vigilado_hasta": 1794369840000
     },
     "PEPEUSDT": {
       "nivel": "riesgo",
       "cantidad": 7345588.2352941185,
       "entrada": 5.44e-06,
-      "maximo": 5.44e-06,
+      "maximo": 5.49e-06,
       "reglas": {
         "stop": 15.0,
         "trail": 15.0,
@@ -88,7 +88,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794362880000
+      "vigilado_hasta": 1794369840000
     }
   },
   "comisiones_usd": 2.663325000000001,
