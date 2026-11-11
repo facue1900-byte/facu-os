@@ -8,7 +8,8 @@ el reel de "Azaris" (11/11/2026), sin pagar otra plataforma.
 
 - **Escribile** como a una persona: "¿cómo vino la caja del Paseo en octubre?",
   "¿qué me quedó pendiente con Obsession?", "buscame el mail de Fabric".
-- **Mandale un audio**: te muestra lo que entendió («🎙 Entendí: …») y después contesta.
+- **Mandale un audio**: te muestra lo que entendió («🎙 Entendí: …») y te contesta **por escrito y
+  con una nota de voz** (voz de la Mac, gratis y local). Si le escribís, contesta solo por escrito.
 - **/nuevo** — arranca una conversación de cero. Si no, se acuerda de lo anterior.
 - Tarda lo que tarda Claude en pensar: de 10 segundos a un par de minutos según la pregunta.
 

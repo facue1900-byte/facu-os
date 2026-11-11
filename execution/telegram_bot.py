@@ -141,6 +141,47 @@ def guardar_estado(e):
     os.replace(tmp, ESTADO)
 
 
+VOZ = "Paulina"            # voz en español de la Mac (`say -v '?'`); no hay argentina instalada
+LIMITE_VOZ = 1200          # más que esto en audio se hace eterno: se lee el principio y se avisa
+
+
+def para_hablar(texto):
+    """Saca el markdown que la voz leería en voz alta («asterisco asterisco»)."""
+    import re
+    t = re.sub(r"```.*?```", " (te lo dejé por escrito) ", texto, flags=re.S)
+    t = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", t)          # [texto](link) -> texto
+    t = re.sub(r"https?://\S+", "el link que te dejé por escrito", t)
+    t = re.sub(r"[*_`#>|]", "", t)
+    t = re.sub(r"^\s*[-•]\s*", "", t, flags=re.M)
+    t = re.sub(r"\s+", " ", t).strip()
+    if len(t) > LIMITE_VOZ:
+        t = t[:LIMITE_VOZ].rsplit(". ", 1)[0] + ". El resto te lo dejé por escrito."
+    return t
+
+
+def mandar_voz(chat_id, texto):
+    """Respuesta en nota de voz: `say` de la Mac (gratis, local) -> ogg opus -> sendVoice."""
+    import imageio_ffmpeg
+    hablado = para_hablar(texto)
+    if not hablado:
+        return
+    with tempfile.TemporaryDirectory() as d:
+        aiff, ogg = pathlib.Path(d) / "r.aiff", pathlib.Path(d) / "r.ogg"
+        subprocess.run(["/usr/bin/say", "-v", VOZ, "-o", str(aiff), hablado], check=True, timeout=180)
+        subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), "-loglevel", "error", "-y", "-i", str(aiff),
+                        "-c:a", "libopus", "-b:a", "32k", str(ogg)], check=True, timeout=120)
+        datos = ogg.read_bytes()
+    limite = "----jarvis" + str(int(time.time() * 1000))
+    cuerpo = (f"--{limite}\r\nContent-Disposition: form-data; name=\"chat_id\"\r\n\r\n{chat_id}\r\n"
+              f"--{limite}\r\nContent-Disposition: form-data; name=\"voice\"; filename=\"r.ogg\"\r\n"
+              f"Content-Type: audio/ogg\r\n\r\n").encode() + datos + f"\r\n--{limite}--\r\n".encode()
+    url = f"https://api.telegram.org/bot{os.environ['TELEGRAM_BOT_TOKEN']}/sendVoice"
+    req = urllib.request.Request(url, data=cuerpo, headers={"Content-Type": f"multipart/form-data; boundary={limite}"})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        if not json.load(r).get("ok"):
+            raise RuntimeError("Telegram no aceptó la nota de voz")
+
+
 _whisper = None
 
 
@@ -249,6 +290,15 @@ def atender(msg, estado):
     respuesta = preguntar_a_claude(texto, estado, chat_id)
     mandar(chat_id, respuesta)
     log("RESPONDIDO:", len(respuesta), "caracteres")
+    # Audio que entra -> también audio que sale (para charlar manejando). El texto ya llegó igual:
+    # si la voz falla, se avisa pero no se pierde la respuesta.
+    if audio:
+        try:
+            tg("sendChatAction", chat_id=chat_id, action="record_voice")
+            mandar_voz(chat_id, respuesta)
+        except Exception as e:
+            log("ERROR voz:", repr(e))
+            mandar(chat_id, f"(No pude armar el audio de la respuesta: {str(e)[:200]})")
 
 
 def quien_me_escribio():
