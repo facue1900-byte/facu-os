@@ -203,7 +203,7 @@ def _elegir_voz():
     for pref in ("Premium", "Enhanced", "Mejorada", ""):
         for d in diegos:
             if pref in d:
-                return d, 0.93     # Diego ya es grave: se lo baja apenas, para que no suene a robot
+                return d, 1.0      # sin filtro: bajarle el tono lo hacía sonar más robótico (Facu, 11/11)
     return VOZ_RESPALDO, GRAVE_RESPALDO
 
 
@@ -325,7 +325,24 @@ def _correr_claude(texto, session_id, ejecutar=False, instrucciones=None):
     return salida.get("result") or "", salida.get("session_id")
 
 
+def contexto_numeros():
+    """Los números del día que arma el brief de Jarvis (data/jarvis/numeros.json). Van pegados al mensaje:
+    buscados, Claude no los encuentra (data/ está gitignoreada) — falla vista por el examen de Jarvis, 11/11."""
+    try:
+        num = json.loads((OS_DIR / "data" / "jarvis" / "numeros.json").read_text())
+        g = num["generado"]
+        hoy = time.strftime("%Y-%m-%d") == g[:10]
+        datos = {k: v for k, v in num["numeros"].items() if k != "Tareas programadas"}
+        return (f"[Números {'de hoy' if hoy else 'VIEJOS (no son de hoy: decilo)'} calculados por código a las "
+                f"{g[11:16]} del {g[8:10]}/{g[5:7]} (data/jarvis/numeros.json; usalos antes que logs o memoria): "
+                + json.dumps(datos, ensure_ascii=False, separators=(",", ":"))
+                + (f" · fuentes sin dato: {num['errores']}" if num.get("errores") else "") + "]\n\n")
+    except Exception:
+        return ""
+
+
 def preguntar_a_claude(texto, estado, chat_id):
+    texto = contexto_numeros() + texto
     try:
         respuesta, sid = _correr_claude(texto, estado.get("session_id"))
     except ClaudeFallo:

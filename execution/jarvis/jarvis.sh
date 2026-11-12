@@ -14,5 +14,5 @@ if ! /usr/bin/curl -s -o /dev/null --max-time 2 http://127.0.0.1:7777/; then
 fi
 # Ventana propia de Chrome, sin barras y con un perfil APARTE: el micrófono y el botón «Sí» no
 # comparten pestañas ni extensiones con la navegación de todos los días.
-open -na "Google Chrome" --args --app=http://127.0.0.1:7777 --window-size=1440,900 \
+open -na "Google Chrome" --args --app=http://127.0.0.1:7777 --start-fullscreen \
   --user-data-dir="$OS/data/jarvis/chrome-perfil" --no-first-run --no-default-browser-check

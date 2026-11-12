@@ -151,7 +151,7 @@
 
   /* ---------- despertar / aviso ---------- */
   #despertar { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; cursor: pointer;
-    background: radial-gradient(circle at 50% 45%, rgba(10, 40, 70, .35), rgba(1, 4, 9, .9) 60%); }
+    background: radial-gradient(circle at 50% 45%, rgba(10, 40, 70, .5), #010409 62%); }
   #despertar div { text-align: center; margin-top: 52vh; }
   #despertar b { display: block; font: 600 13px var(--mono); letter-spacing: .7em; color: var(--c); text-shadow: 0 0 20px rgba(95, 227, 255, .6); }
   #despertar span { display: block; margin-top: 14px; font: 11px var(--mono); letter-spacing: .25em; color: var(--dim); text-transform: uppercase; animation: latir 2.4s infinite; }
@@ -201,8 +201,8 @@
     <button id="mic" title="Mantené apretado para hablar (o la barra espaciadora)">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
     <div class="comando"><span class="prompt">›</span>
-      <input id="texto" placeholder="Pedile lo que sea a Jarvis…" autocomplete="off" spellcheck="false">
-      <span class="tecla">ESPACIO hablar</span><span class="tecla">ENTER enviar</span></div>
+      <input id="texto" placeholder="Dictale con Typeless o escribile…" autocomplete="off" spellcheck="false">
+      <span class="tecla">TYPELESS dictar</span><span class="tecla">ENTER enviar</span></div>
     <div class="grupo">
       <button id="btnTerminal" title="Abrir esta conversación en la Terminal">Terminal</button>
       <button id="btnAnti" title="Abrir Antigravity con esta conversación">Antigravity</button>
@@ -353,15 +353,27 @@ function pintarBrief(b, num) {
     if (!p.anuncios_activos) { const e = el("div", "etiquetas"); e.append(el("span", "etiq", "0 anuncios prendidos")); cp.append(e); }
   } else sinDato(cp, errores["Pauta Meta"] || "—");
   $("izq").append(cp);
-  // 03 Paseo
-  const s = n["Paseo Nordelta"], cs = card("03", "Paseo Nordelta", s ? `${s.deudores.length} deben · ${s.al_dia} al día` : "");
-  if (s) {
-    const hero = el("div", "hero amber"); cs.append(hero); contar(hero, s.exigible_total, pesos);
-    cs.append(el("div", "sub", "Deuda exigible · Ctas Ctes (carga manual)"));
-    const max = Math.max(...s.deudores.map(d => d.exigible), 1);
-    s.deudores.slice(0, 6).forEach(d => { const w = el("div", "deudor"), f = el("div", "fila"), nom = el("span", null, d.local);
+  // 03 Paseo — exigible (vencido) arriba; abajo lo que se está cobrando este mes, por local
+  const s = n["Paseo Nordelta"];
+  const cs = card("03", "Paseo Nordelta", s ? (s.exigible_total === null ? "fuente atrasada" : `${s.deudores.length} deben · ${s.al_dia} al día`) : "");
+  if (s && s.exigible_total === null) {
+    cs.append(el("div", "hero amber", "SIN DATO"));
+    cs.append(el("div", "sub", "Alguna pestaña de Ctas Ctes está atrasada: no muestro un total que puede ser falso."));
+    (s.sin_dato || []).forEach(x => cs.append(el("div", "sinDato", `${x.local} · ${x.motivo}`)));
+  } else if (s) {
+    const hero = el("div", "hero" + (s.exigible_total ? " amber" : "")); cs.append(hero); contar(hero, s.exigible_total, pesos);
+    cs.append(el("div", "sub", s.exigible_total ? "Deuda vencida · Ctas Ctes por local" : "Nadie debe nada vencido · Ctas Ctes por local"));
+    s.deudores.slice(0, 4).forEach(d => { const w = el("div", "deudor"), f = el("div", "fila"), nom = el("span", null, d.local);
       if (d.por_banco) nom.append(el("small", null, "BANCO"));
-      f.append(nom, el("b", null, pesos(d.exigible))); w.append(f, barra(d.exigible / max * 100, "amber")); cs.append(w); });
+      f.append(nom, el("b", null, pesos(d.exigible))); w.append(f, barra(100, "amber")); cs.append(w); });
+    if (s.en_curso_total) {
+      const t = el("div", "fila"); t.style.cssText = "margin:10px 0 2px;padding-top:10px;border-top:1px solid var(--hair)";
+      t.append(el("span", null, "COBRÁNDOSE ESTE MES"), el("b", null, pesos(s.en_curso_total))); cs.append(t);
+      const max = Math.max(...(s.en_curso || []).map(d => d.monto), 1);
+      (s.en_curso || []).slice(0, 6).forEach(d => { const w = el("div", "deudor"), f = el("div", "fila"), nom = el("span", null, d.local);
+        if (d.por_banco) nom.append(el("small", null, "BANCO"));
+        f.append(nom, el("b", null, pesos(d.monto))); w.append(f, barra(d.monto / max * 100)); cs.append(w); });
+    }
   } else sinDato(cs, errores["Paseo Nordelta"] || "—");
   $("der").insertBefore(cs, $("ops"));
   // bandeja
@@ -420,6 +432,7 @@ async function sondear() {
     pintarFeed(e.conversacion || []); pintarTareas(e.tareas || []);
     $("chipCambios").className = "chip " + (e.modo_cambios ? "on" : "off"); $("chipCambios").querySelector("b").textContent = e.modo_cambios ? "on" : "off";
     $("chipVoz").textContent = (e.voz || "").split(" ")[0];
+    if (modo === "pensando" && e.actividad) $("estadoTxt").textContent = e.actividad + "…";
     $("planModo").textContent = e.modo_cambios ? "MODO CAMBIOS ON" : "MODO CAMBIOS OFF · no se va a ejecutar";
     if (e.plan && e.plan.id !== planId) { planId = e.plan.id; $("planTexto").textContent = e.plan.texto; $("velo").classList.add("ver"); }
     for (const t of e.tareas || []) {
@@ -454,8 +467,10 @@ async function hablar(nombre) {
 }
 
 // ============ hablarle / escribirle ============
+let sondeoRapido = null;
 async function enviar(cuerpo, tipo) {
-  if (ocupado) return; ocupado = true; estado("pensando", tipo.startsWith("audio") ? "transcribiendo y trabajando…" : "trabajando…");
+  if (ocupado) return; ocupado = true; estado("pensando", tipo.startsWith("audio") ? "transcribiendo…" : "pensando…");
+  sondeoRapido = setInterval(sondear, 1000);   // mientras trabaja, se ve qué está haciendo
   try {
     const r = await fetch("/api/preguntar", { method: "POST", headers: { ...H, "Content-Type": tipo }, body: cuerpo });
     const d = await r.json(); if (d.error) throw new Error(d.error);
@@ -463,17 +478,38 @@ async function enviar(cuerpo, tipo) {
     if (d.plan) { planId = d.plan.id; $("planTexto").textContent = d.plan.texto; $("velo").classList.add("ver"); }
     estado("linea"); await hablar(d.audio);
   } catch (e) { $("feed").append(el("div", "msg jarvis", "⚠️ " + e.message)); estado("linea"); }
-  finally { ocupado = false; }
+  finally { ocupado = false; clearInterval(sondeoRapido); }
+}
+// ---- texto escrito o DICTADO CON TYPELESS ----
+// Typeless pega el texto ya limpio (sin «eh…», con las autocorrecciones aplicadas) en el campo que tiene
+// el foco. Si el texto entra pegado o sin teclas de por medio y el campo estaba vacío, es un dictado:
+// se manda solo cuando deja de cambiar. Si escribís a mano, no se manda solo.
+let ultimaTecla = 0, autoEnvio = null, dictando = false;
+function mandarTexto() {
+  clearTimeout(autoEnvio); dictando = false;
+  const t = $("texto").value.trim(); if (!t || ocupado) return;
+  $("texto").value = "";
+  $("feed").append(el("div", "msg facu", t)); $("feed").scrollTop = 1e9;
+  enviar(JSON.stringify({ texto: t }), "application/json");
 }
 $("texto").addEventListener("keydown", e => {
   e.stopPropagation();
-  if (e.key === "Enter" && $("texto").value.trim() && !ocupado) {
-    const t = $("texto").value.trim(); $("texto").value = ""; $("texto").blur();
-    $("feed").append(el("div", "msg facu", t)); $("feed").scrollTop = 1e9;
-    enviar(JSON.stringify({ texto: t }), "application/json");
-  }
+  if (e.key === " " && !$("texto").value && despierto) { e.preventDefault(); empezarAGrabar().catch(errorMic); return; }  // vacío: espacio = hablar
+  if (!e.metaKey && !e.ctrlKey) { ultimaTecla = performance.now(); if (!dictando) clearTimeout(autoEnvio); }
+  if (e.key === "Enter") mandarTexto();
 });
-$("texto").addEventListener("keyup", e => e.stopPropagation());
+$("texto").addEventListener("keyup", e => { e.stopPropagation(); if (e.key === " " && grabador) cortar(); });
+$("texto").addEventListener("beforeinput", e => {
+  const pegado = e.inputType === "insertFromPaste" || e.inputType === "insertReplacementText" || performance.now() - ultimaTecla > 300;
+  if (pegado && ($("texto").value.trim() === "" || dictando)) dictando = true;
+});
+$("texto").addEventListener("input", () => {
+  if (!dictando) return;
+  clearTimeout(autoEnvio); estado(modo === "pensando" ? "pensando" : "escuchando", "dictado recibido…");
+  autoEnvio = setTimeout(mandarTexto, 1300);
+});
+// El campo vuelve a tener el foco solo: así el atajo de Typeless siempre escribe acá.
+setInterval(() => { if (despierto && document.activeElement !== $("texto") && !$("velo").classList.contains("ver") && document.hasFocus()) $("texto").focus(); }, 1500);
 
 let grabador = null, pedazos = [], quiereGrabar = false, abriendo = false, micFuente = null;
 async function empezarAGrabar() {

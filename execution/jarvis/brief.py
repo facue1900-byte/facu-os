@@ -100,6 +100,8 @@ def paseo():
         "deudores": [{"local": n, "exigible": round(l["exigible"]), "por_banco": n in rd.PAGAN_POR_BANCO}
                      for n, l in deudores],
         "en_curso_total": None if sin_dato else round(sum(l["en_curso"] for _, l in deudores + al_dia)),
+        "en_curso": [{"local": n, "monto": round(l["en_curso"]), "por_banco": n in rd.PAGAN_POR_BANCO}
+                     for n, l in sorted(deudores + al_dia, key=lambda x: -x[1]["en_curso"]) if round(l["en_curso"])],
         "sin_dato": [{"local": n, "motivo": m} for n, m in sin_dato],
         "al_dia": len(al_dia),
         "con_regla": len(con_regla),

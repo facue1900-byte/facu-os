@@ -65,6 +65,10 @@ def srv(tmp_path, monkeypatch):
     def no_real(*a, **k):
         raise AssertionError(f"llamada real no mockeada: {a!r}")
     monkeypatch.setattr(servidor, "claude_completo", no_real)
+    # El cerebro vivo delega en claude_completo: así los tests de preguntas mockean un solo lugar.
+    monkeypatch.setattr(servidor, "CEREBRO", types.SimpleNamespace(
+        turno=lambda texto, sid, limite: servidor.claude_completo(texto, sid, servidor.INSTRUCCIONES, "Jarvis", limite),
+        apagar=lambda: None))
     monkeypatch.setattr(tb, "_correr_claude", no_real)
     monkeypatch.setattr(servidor.subprocess, "run", no_real)
     monkeypatch.setattr(servidor.subprocess, "Popen", no_real)
@@ -250,7 +254,8 @@ def test_preguntar_audio_usa_transcribir(srv, monkeypatch):
     monkeypatch.setattr(servidor, "claude_completo", fake_cerebro("ok", llamadas=ll))
     st, raw = req(srv, "POST", "/api/preguntar", b"\x00\x01webm", ctype="audio/webm")
     d = js(raw)
-    assert d["oido"] == "texto oído" and ll[0]["texto"] == "texto oído"
+    assert d["oido"] == "texto oído" and ll[0]["texto"].endswith("texto oído")
+    assert "DICTADO POR VOZ" in ll[0]["texto"], "un dictado va marcado para que Jarvis limpie muletillas y autocorrecciones"
 
 
 def test_preguntar_inyecta_numeros_del_dia(srv, monkeypatch):
@@ -1143,3 +1148,65 @@ def test_paseo_lee_pestanas_y_no_la_consolidada(monkeypatch):
     monkeypatch.setattr(rd, "leer_cuenta_corriente", lambda x: pytest.fail("leyó la consolidada"), raising=False)
     s = brief.paseo()
     assert s["exigible_total"] is None and s["sin_dato"][0]["local"] == "Fabric"
+
+
+# ---------------- cerebro vivo (stream-json) ----------------
+
+class _StdinFalso:
+    def __init__(self): self.escrito = []
+    def write(self, x): self.escrito.append(x)
+    def flush(self): pass
+
+
+class _VivoFalso:
+    def __init__(self, eventos, codigo=None):
+        self.pid, self.stdin, self.stderr = 515151, _StdinFalso(), iter([])
+        self.stdout = iter(json.dumps(e) + "\n" for e in eventos)
+        self._codigo = codigo
+    def poll(self): return self._codigo
+
+
+def _vivo(monkeypatch, eventos):
+    procs = []
+    def popen(cmd, **kw):
+        procs.append((cmd, _VivoFalso(eventos)))
+        return procs[-1][1]
+    monkeypatch.setattr(servidor.subprocess, "Popen", popen)
+    monkeypatch.setattr(servidor.os, "killpg", lambda *a: None)
+    return procs
+
+
+def test_cerebro_vivo_devuelve_resultado_y_actividad(monkeypatch):
+    vistos = []
+    procs = _vivo(monkeypatch, [
+        {"type": "system", "subtype": "init", "session_id": UUID1},
+        {"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash", "input": {"description": "Consultando la base"}}]}},
+        {"type": "result", "subtype": "success", "result": "Son tres, jefe.", "session_id": UUID1}])
+    monkeypatch.setattr(servidor, "_describir_herramienta", lambda n, i: vistos.append(n) or "x")
+    c = servidor.CerebroVivo()
+    r, sid = c.turno("¿cuántos?", None, 30)
+    assert (r, sid) == ("Son tres, jefe.", UUID1) and vistos == ["Bash"]
+    cmd = procs[0][0]
+    assert "--input-format" in cmd and "Bash(*--send*)" in cmd, "el cerebro vivo también lleva la llave de la regla 10"
+    assert json.loads(procs[0][1].stdin.escrito[0])["message"]["content"] == "¿cuántos?"
+
+
+def test_cerebro_vivo_resultado_vacio_es_error(monkeypatch):
+    _vivo(monkeypatch, [{"type": "result", "subtype": "success", "result": "  "}])
+    with pytest.raises(tb.ClaudeFallo):
+        servidor.CerebroVivo().turno("hola", None, 30)
+
+
+def test_cerebro_vivo_proceso_muerto_es_error(monkeypatch):
+    _vivo(monkeypatch, [{"type": "system", "subtype": "init"}])   # se cierra sin resultado
+    with pytest.raises(tb.ClaudeFallo):
+        servidor.CerebroVivo().turno("hola", None, 30)
+
+
+def test_dictado_reemplaza_lo_que_dijo_por_lo_que_entendio(srv, monkeypatch):
+    monkeypatch.setattr(servidor, "claude_completo",
+                        lambda *a, **kw: ("ENTENDÍ: cuántos alumnos activos hay\nSon diecinueve, jefe.", UUID1))
+    hablado, _, _ = servidor.preguntar("eh… cuántos alumnos, no, mentira, cuántos activos hay", dictado=True)
+    assert hablado == "Son diecinueve, jefe."
+    conv = json.loads(servidor.ESTADO.read_text())["conversacion"]
+    assert conv[-2] == {**conv[-2], "quien": "facu", "texto": "cuántos alumnos activos hay"}
