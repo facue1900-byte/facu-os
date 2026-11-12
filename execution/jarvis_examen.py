@@ -99,11 +99,15 @@ def preguntas():
 
 def jarvis_telegram(texto):
     import telegram_bot as tb
-    respuesta, _ = tb._correr_claude(NOTA + texto, None)   # conversación nueva, mismo modo lectura
+    # Igual que preguntar_a_claude() (sin su estado.json): los números del día van pegados adelante.
+    contexto = tb.contexto_numeros() if hasattr(tb, "contexto_numeros") else ""
+    respuesta, _ = tb._correr_claude(contexto + NOTA + texto, None)   # conversación nueva, mismo modo lectura
     return respuesta
 
 
 def jarvis_escritorio(texto):
+    # La charla real usa servidor.CEREBRO (stream-json, proceso vivo) con los mismos flags e instrucciones;
+    # acá va claude_completo para no tocar ese proceso ni pasar por preguntar() (que sintetiza voz).
     import servidor as sv
     respuesta, _ = sv.claude_completo(sv.contexto_del_dia() + NOTA + texto, None, sv.INSTRUCCIONES,
                                       "Jarvis examen", 10 * 60)
