@@ -12,6 +12,7 @@ El server de test corre en un puerto efímero, aparte del 7777.
 import datetime as dt
 import http.client
 import json
+import subprocess
 import sys
 import threading
 import time
@@ -304,7 +305,7 @@ def test_preguntar_con_plan(srv, monkeypatch):
 
 
 def test_preguntar_resume_falla_reintenta_sin_sesion(srv, monkeypatch):
-    (srv.tmp / "estado.json").write_text(json.dumps({"session_id": "vieja"}))
+    (srv.tmp / "estado.json").write_text(json.dumps({"session_id": "vieja", "sesion_dia": time.strftime("%Y-%m-%d")}))
     ll = []
 
     def f(texto, sid, instrucciones, nombre, limite, **kw):
@@ -1299,3 +1300,100 @@ def test_brief_paseo_pendiente_a_hoy_por_local(monkeypatch):
     assert (bigg["local"], bigg["debe"], bigg["vencido"], bigg["efectivo"], bigg["banco"]) == \
         ("Bigg", 4_600_000, 400_000, 1_200_000, 3_400_000)
     assert (boss["local"], boss["debe"]) == ("Boss", 0)
+
+
+# --- «Hey Jarvis» (12/11/2026) ------------------------------------------------------------------
+
+def test_oido_apagado_por_defecto_no_escucha(srv):
+    st, raw = req(srv, "POST", "/api/oido", b"\x00\x00" * 4000, ctype="application/octet-stream")
+    assert st == 409
+    st, raw = req(srv, "GET", "/api/estado")
+    assert js(raw)["escucha"] is False
+
+
+def test_oido_prendido_silencio_no_dispara_y_pedazo_impar_400(srv):
+    assert js(req(srv, "POST", "/api/escucha", {"on": True})[1])["escucha"] is True
+    assert js(req(srv, "GET", "/api/estado")[1])["escucha"] is True
+    st, raw = req(srv, "POST", "/api/oido?nuevo=1", b"\x00\x00" * 8000, ctype="application/octet-stream")
+    assert st == 200 and js(raw)["detectado"] is False
+    st, _ = req(srv, "POST", "/api/oido", b"\x00" * 3, ctype="application/octet-stream")
+    assert st == 400
+    req(srv, "POST", "/api/escucha", {"on": False})
+    st, _ = req(srv, "POST", "/api/oido", b"\x00\x00" * 4000, ctype="application/octet-stream")
+    assert st == 409
+
+
+def test_oido_detecta_hey_jarvis_en_pedazos(tmp_path):
+    # Voz sintética en inglés (la que mejor anda); se manda en pedazos de ¼ s como el panel.
+    import imageio_ffmpeg
+    aiff = tmp_path / "hj.aiff"
+    subprocess.run(["say", "-v", "Samantha", "-o", str(aiff), "Hey Jarvis"], check=True)
+    pcm = subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), "-v", "quiet", "-i", str(aiff), "-ac", "1", "-ar", "16000",
+                          "-f", "s16le", "-"], capture_output=True, check=True).stdout
+    audio = b"\x00\x00" * 16000 + pcm + b"\x00\x00" * 16000
+    servidor.reiniciar_oido()
+    detectado = False
+    for i in range(0, len(audio), 8000):
+        d, _ = servidor.escuchar_pedazo(audio[i:i + 8000])
+        detectado = detectado or d
+    assert detectado
+    servidor.reiniciar_oido()
+
+
+# --- Jarvis rápido y conversado (12/11/2026) ----------------------------------------------------
+
+def test_cerebro_vivo_dice_avances_y_no_repite_la_respuesta(monkeypatch):
+    anotados = []
+    monkeypatch.setattr(servidor, "anotar", lambda q, t, **kw: anotados.append((t, kw)))
+    monkeypatch.setattr(servidor, "sintetizar_seguro", lambda t: "a" * 32 + ".mp3")
+    monkeypatch.setattr(servidor, "threading", types.SimpleNamespace(
+        Thread=lambda target, daemon=True, **k: types.SimpleNamespace(start=target), Event=threading.Event, Lock=threading.Lock))
+    procs = _vivo(monkeypatch, [
+        {"type": "system", "subtype": "init", "session_id": UUID1},
+        {"type": "assistant", "message": {"content": [{"type": "text", "text": "ENTENDÍ: deuda de Bigg\nMe fijo en la pestaña de Bigg…"}]}},
+        {"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash", "input": {}}]}},
+        {"type": "assistant", "message": {"content": [{"type": "text", "text": "Debe cuatrocientos setenta mil, jefe."}]}},
+        {"type": "result", "subtype": "success", "result": "Debe cuatrocientos setenta mil, jefe.", "session_id": UUID1}])
+    r, _ = servidor.CerebroVivo().turno("¿Bigg?", None, 30)
+    assert r == "Debe cuatrocientos setenta mil, jefe."
+    assert anotados == [("Me fijo en la pestaña de Bigg…", {"avance": True})], "sólo el texto previo a una herramienta es avance"
+    assert [i["texto"] for i in servidor.AVANCES["items"]] == ["Me fijo en la pestaña de Bigg…"]
+    assert servidor.AVANCES["items"][0]["audio"]
+    cmd = procs[0][0]
+    assert cmd[cmd.index("--model") + 1] == servidor.MODELO_CHARLA and "--effort" in cmd
+
+
+def test_dia_nuevo_arranca_conversacion_con_la_charla_reciente(srv, monkeypatch):
+    (srv.tmp / "estado.json").write_text(json.dumps({"session_id": "de-ayer", "sesion_dia": "2000-01-01",
+        "conversacion": [{"quien": "facu", "texto": "¿cuánto debe Bigg?", "ts": 1},
+                         {"quien": "jarvis", "texto": "Me fijo…", "ts": 2, "avance": True},
+                         {"quien": "jarvis", "texto": "Cuatrocientos setenta mil.", "ts": 3}]}))
+    vistos = []
+    monkeypatch.setattr(servidor, "claude_completo", lambda texto, sid, *a, **k: vistos.append((texto, sid)) or ("De nada, jefe.", UUID1))
+    st, raw = req(srv, "POST", "/api/preguntar", {"texto": "gracias"})
+    texto, sid = vistos[0]
+    assert sid is None, "la conversación de ayer no se retoma"
+    assert "CHARLA RECIENTE" in texto and "¿cuánto debe Bigg?" in texto and "Cuatrocientos setenta mil." in texto
+    assert "Me fijo…" not in texto, "los avances no van a la memoria"
+    assert estado(srv)["sesion_dia"] == time.strftime("%Y-%m-%d")
+
+
+def test_sesion_del_dia_se_retoma_sin_charla_reciente(srv, monkeypatch):
+    (srv.tmp / "estado.json").write_text(json.dumps({"session_id": UUID1, "sesion_dia": time.strftime("%Y-%m-%d"),
+                                                     "conversacion": [{"quien": "facu", "texto": "hola", "ts": 1}]}))
+    vistos = []
+    monkeypatch.setattr(servidor, "claude_completo", lambda texto, sid, *a, **k: vistos.append((texto, sid)) or ("ok", UUID1))
+    req(srv, "POST", "/api/preguntar", {"texto": "¿y Bigg?"})
+    assert vistos[0][1] == UUID1 and "CHARLA RECIENTE" not in vistos[0][0]
+
+
+def test_mandarme_solo_va_al_mail_de_facu(monkeypatch):
+    sys.path.insert(0, "/Users/Facu/facu-os/execution/jarvis")
+    import mandarme
+    m = mandarme.armar({"area": "paseo", "titulo": "Lo que vimos", "resumen": "x",
+                        "para": "otro@ejemplo.com", "to": "otro@ejemplo.com"})
+    assert m.asunto.startswith("PASEO")
+    with pytest.raises(SystemExit):
+        mandarme.armar({"titulo": "vacío"})
+    src = open("/Users/Facu/facu-os/execution/jarvis/mandarme.py").read()
+    assert 'para = os.environ["MAIL_FACU"]' in src and "argv" not in src.split("para = ")[0].split("def main")[1]

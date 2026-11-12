@@ -615,3 +615,15 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
 **v2, misma noche: Jarvis como intermediario completo.** Facu: «que todo lo que le digo te comande a vos». El cerebro pasó de solo lectura a Claude Code completo (`--permission-mode auto`), con tareas en segundo plano (otra sesión, abrible en Terminal o Antigravity). Dos trampas:
 - **Retomar la sesión vieja arrastra lo que creía.** Con el prompt nuevo seguía diciendo «estoy en solo lectura»: el historial le ganó al prompt nuevo. Cuando cambian los poderes de un agente, se arranca sesión nueva.
 - **La regla 10 iba solo por instrucción.** La revisión lo marcó. Ahora es con llave: `--disallowedTools "Bash(*--send*)"` + envío de Gmail. Probado en vivo: `echo hola --send` bloqueado, `echo hola` corre; un mail pedido por voz vuelve como PLAN. Las pruebas rompen la llave a propósito y fallan.
+
+## 12/11/2026 — «Hey Jarvis»: medición y una trampa de prueba
+
+- **Medición antes de prenderlo** (openWakeWord `hey_jarvis`, umbral 0,5): 0 disparos en 78 min de música
+  (playlist del Paseo + producciones de Facu) y 25 min de la voz de Jarvis. Música encima de la palabra
+  dicha en inglés: sigue en 1,00. Dicha con acento castellano (voces Diego/Mónica): 0,4–0,5 → si a Facu no
+  lo agarra, bajar `JARVIS_UMBRAL_DESPERTAR`, no reentrenar.
+- **Trampa:** los Chrome headless de prueba (`--remote-debugging-port`) quedaron vivos tras `ch.kill()`,
+  seguían sondeando con token válido y, sin micrófono, apagaban la escucha para todos (el estado es
+  compartido). Parecía un bug de carrera del servidor. Al terminar una prueba: `pkill -f remote-debugging-port`.
+- Chrome headless con `--use-file-for-fake-audio-capture` entrega silencio: para probar de punta a punta
+  se reemplaza `getUserMedia` por un `MediaStreamDestination` que reproduce el wav.
