@@ -389,6 +389,7 @@ function pintarBrief(b, num) {
   const gen = b.generado ? new Date(b.generado) : null;
   $("generado").textContent = gen ? "BRIEF " + gen.toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" }) + (gen.toDateString() === new Date().toDateString() ? "" : " · " + gen.toLocaleDateString("es-AR")) : "";
 }
+let versionNumeros = null;
 async function cargarYPintar() {
   const [b, num] = await Promise.all([
     fetch("/api/brief", { headers: H }).then(r => r.json()),
@@ -435,6 +436,8 @@ async function sondear() {
   try {
     const r = await fetch("/api/estado", { headers: H }); if (!r.ok) return; const e = await r.json();
     pintarFeed(e.conversacion || []); pintarTareas(e.tareas || []);
+    if (e.version_numeros && versionNumeros && e.version_numeros !== versionNumeros) cargarYPintar().catch(() => {});
+    if (e.version_numeros) versionNumeros = e.version_numeros;
     $("chipCambios").className = "chip " + (e.modo_cambios ? "on" : "off"); $("chipCambios").querySelector("b").textContent = e.modo_cambios ? "on" : "off";
     $("chipVoz").textContent = (e.voz || "").split(" ")[0];
     if (modo === "pensando" && e.actividad) $("estadoTxt").textContent = e.actividad + "…";
