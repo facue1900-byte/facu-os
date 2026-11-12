@@ -65,6 +65,10 @@ def srv(tmp_path, monkeypatch):
     def no_real(*a, **k):
         raise AssertionError(f"llamada real no mockeada: {a!r}")
     monkeypatch.setattr(servidor, "claude_completo", no_real)
+    # El cerebro vivo delega en claude_completo: así los tests de preguntas mockean un solo lugar.
+    monkeypatch.setattr(servidor, "CEREBRO", types.SimpleNamespace(
+        turno=lambda texto, sid, limite: servidor.claude_completo(texto, sid, servidor.INSTRUCCIONES, "Jarvis", limite),
+        apagar=lambda: None))
     monkeypatch.setattr(tb, "_correr_claude", no_real)
     monkeypatch.setattr(servidor.subprocess, "run", no_real)
     monkeypatch.setattr(servidor.subprocess, "Popen", no_real)
@@ -250,7 +254,8 @@ def test_preguntar_audio_usa_transcribir(srv, monkeypatch):
     monkeypatch.setattr(servidor, "claude_completo", fake_cerebro("ok", llamadas=ll))
     st, raw = req(srv, "POST", "/api/preguntar", b"\x00\x01webm", ctype="audio/webm")
     d = js(raw)
-    assert d["oido"] == "texto oído" and ll[0]["texto"] == "texto oído"
+    assert d["oido"] == "texto oído" and ll[0]["texto"].endswith("texto oído")
+    assert "DICTADO POR VOZ" in ll[0]["texto"], "un dictado va marcado para que Jarvis limpie muletillas y autocorrecciones"
 
 
 def test_preguntar_inyecta_numeros_del_dia(srv, monkeypatch):
@@ -891,7 +896,8 @@ def ok_pauta():
 
 def ok_paseo():
     return {"exigible_total": 900000, "deudores": [{"local": "Local 7", "exigible": 900000, "por_banco": False}],
-            "al_dia": 5, "con_regla": 1, "filas_leidas": 7}
+            "en_curso_total": 1500000, "sin_dato": [], "al_dia": 5, "con_regla": 1,
+            "movimientos_leidos": 7, "fuente": "Ctas Ctes · pestañas por local"}
 
 
 def ok_mails():
@@ -1120,3 +1126,87 @@ def test_para_decir_toma_la_ultima(srv, monkeypatch):
     t = json.loads(servidor.TAREAS.read_text())[0]
     assert t["para_decir"] == "Jefe, listo."
     assert "Detalle." in t["resultado"]
+
+
+def test_paneles_paseo_fuente_atrasada_no_muestra_el_numero():
+    # 11/11/2026: la consolidada clavada en jul-26 mostraba deuda vieja como de hoy
+    s = ok_paseo() | {"exigible_total": None,
+                      "sin_dato": [{"local": "Fabric", "motivo": "fuente atrasada: último período cargado 2026-07"}]}
+    items = brief.paneles({"Paseo Nordelta": s})[0]["items"]
+    total = [i for i in items if i["etiqueta"] == "Deuda exigible"][0]
+    assert total["valor"] == "sin dato" and total["tono"] == "mal"
+    assert "Fabric" in total["nota"] and "2026-07" in total["nota"]
+
+
+def test_paseo_lee_pestanas_y_no_la_consolidada(monkeypatch):
+    sys.path.insert(0, "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts")
+    import radar_deudores as rd
+    import google_auth
+    monkeypatch.setattr(google_auth, "bajar_xlsx", lambda *a, **k: None)
+    mov = [{"local": "Fabric", "tipo": "cargo", "periodo": (2026, 6), "mes_cobro": (2026, 6), "monto": 5.0}]
+    monkeypatch.setattr(rd, "leer_xlsx", lambda x: (mov, {}))
+    monkeypatch.setattr(rd, "leer_cuenta_corriente", lambda x: pytest.fail("leyó la consolidada"), raising=False)
+    s = brief.paseo()
+    assert s["exigible_total"] is None and s["sin_dato"][0]["local"] == "Fabric"
+
+
+# ---------------- cerebro vivo (stream-json) ----------------
+
+class _StdinFalso:
+    def __init__(self): self.escrito = []
+    def write(self, x): self.escrito.append(x)
+    def flush(self): pass
+
+
+class _VivoFalso:
+    def __init__(self, eventos, codigo=None):
+        self.pid, self.stdin, self.stderr = 515151, _StdinFalso(), iter([])
+        self.stdout = iter(json.dumps(e) + "\n" for e in eventos)
+        self._codigo = codigo
+    def poll(self): return self._codigo
+
+
+def _vivo(monkeypatch, eventos):
+    procs = []
+    def popen(cmd, **kw):
+        procs.append((cmd, _VivoFalso(eventos)))
+        return procs[-1][1]
+    monkeypatch.setattr(servidor.subprocess, "Popen", popen)
+    monkeypatch.setattr(servidor.os, "killpg", lambda *a: None)
+    return procs
+
+
+def test_cerebro_vivo_devuelve_resultado_y_actividad(monkeypatch):
+    vistos = []
+    procs = _vivo(monkeypatch, [
+        {"type": "system", "subtype": "init", "session_id": UUID1},
+        {"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash", "input": {"description": "Consultando la base"}}]}},
+        {"type": "result", "subtype": "success", "result": "Son tres, jefe.", "session_id": UUID1}])
+    monkeypatch.setattr(servidor, "_describir_herramienta", lambda n, i: vistos.append(n) or "x")
+    c = servidor.CerebroVivo()
+    r, sid = c.turno("¿cuántos?", None, 30)
+    assert (r, sid) == ("Son tres, jefe.", UUID1) and vistos == ["Bash"]
+    cmd = procs[0][0]
+    assert "--input-format" in cmd and "Bash(*--send*)" in cmd, "el cerebro vivo también lleva la llave de la regla 10"
+    assert json.loads(procs[0][1].stdin.escrito[0])["message"]["content"] == "¿cuántos?"
+
+
+def test_cerebro_vivo_resultado_vacio_es_error(monkeypatch):
+    _vivo(monkeypatch, [{"type": "result", "subtype": "success", "result": "  "}])
+    with pytest.raises(tb.ClaudeFallo):
+        servidor.CerebroVivo().turno("hola", None, 30)
+
+
+def test_cerebro_vivo_proceso_muerto_es_error(monkeypatch):
+    _vivo(monkeypatch, [{"type": "system", "subtype": "init"}])   # se cierra sin resultado
+    with pytest.raises(tb.ClaudeFallo):
+        servidor.CerebroVivo().turno("hola", None, 30)
+
+
+def test_dictado_reemplaza_lo_que_dijo_por_lo_que_entendio(srv, monkeypatch):
+    monkeypatch.setattr(servidor, "claude_completo",
+                        lambda *a, **kw: ("ENTENDÍ: cuántos alumnos activos hay\nSon diecinueve, jefe.", UUID1))
+    hablado, _, _ = servidor.preguntar("eh… cuántos alumnos, no, mentira, cuántos activos hay", dictado=True)
+    assert hablado == "Son diecinueve, jefe."
+    conv = json.loads(servidor.ESTADO.read_text())["conversacion"]
+    assert conv[-2] == {**conv[-2], "quien": "facu", "texto": "cuántos alumnos activos hay"}

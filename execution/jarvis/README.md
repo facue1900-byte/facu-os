@@ -36,7 +36,7 @@ todo listo en `data/jarvis/`:
 |---|---|---|
 | Astronomy Academy | `astronomy_numeros.mjs` → `lib/ingresos.ts` y `lib/payments.ts` de la app | Son las mismas funciones que usa el admin. Activos = la cuenta del dashboard. |
 | Pauta · Meta Ads | `active/astronomy/pauta/leer_meta.py` | En USD y sin convertir. Techo US$500/mes (`os/03-EMPRESA.md`). |
-| Paseo Nordelta | `radar_deudores.clasificar()` sobre Ctas Ctes, que se baja fresca cada vez | Ctas Ctes se carga **a mano**: si está atrasada, la deuda también. |
+| Paseo Nordelta | `radar_deudores` sobre las **pestañas por local** de Ctas Ctes (no la consolidada «CUENTA CORRIENTE», clavada en jul-26), que se baja fresca cada vez | Si el último período de un local tiene más de 1 mes de atraso o su cadena de saldo no cierra, el panel dice «sin dato» en vez del total. |
 | Bandeja y sistema | Gmail (`messagesUnread` de INBOX) + `recolectar.chequeo_tareas()` | Cuentas facu, paseo y studio. |
 
 Los números los calcula el código; Claude solo los cuenta. Una fuente que falla aparece en

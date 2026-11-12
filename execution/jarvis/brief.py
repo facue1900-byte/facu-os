@@ -79,25 +79,34 @@ def pauta():
 
 
 def paseo():
+    """Deuda del Paseo desde las PESTAÑAS POR LOCAL de Ctas Ctes (radar_deudores). La consolidada
+    «CUENTA CORRIENTE» quedó clavada en jul-26 y el panel mostraba esa deuda vieja (11/11/2026).
+    Si la fuente de un local está atrasada, el total NO se muestra: se dice que falta el dato."""
     sys.path.insert(0, str(OS_DIR / ".claude" / "skills" / "cierre-mes-nordelta" / "scripts"))
     import radar_deudores as rd
     from google_auth import bajar_xlsx
     with tempfile.TemporaryDirectory() as d:
         xlsx = pathlib.Path(d) / "ctas_ctes.xlsx"
         bajar_xlsx(CTAS_CTES_ID, xlsx)          # siempre fresco: la copia local envejece
-        filas = rd.leer_cuenta_corriente(xlsx)
-    if not filas:
-        raise RuntimeError("CUENTA CORRIENTE vino sin filas")
+        movs, chequeos = rd.leer_xlsx(xlsx)
+    if not movs:
+        raise RuntimeError("las pestañas de Ctas Ctes vinieron sin movimientos")
     hoy = dt.date.today()
-    deudores, al_dia, con_regla = rd.clasificar(filas, (hoy.year, hoy.month))
+    deudores, al_dia, con_regla, sin_dato = rd.clasificar(movs, (hoy.year, hoy.month), chequeos)
     deudores.sort(key=lambda x: -x[1]["exigible"])
     return {
-        "exigible_total": round(sum(l["exigible"] for _, l in deudores)),
+        # None = no hay número confiable: alguna fuente está atrasada o no cierra (regla 2)
+        "exigible_total": None if sin_dato else round(sum(l["exigible"] for _, l in deudores)),
         "deudores": [{"local": n, "exigible": round(l["exigible"]), "por_banco": n in rd.PAGAN_POR_BANCO}
                      for n, l in deudores],
+        "en_curso_total": None if sin_dato else round(sum(l["en_curso"] for _, l in deudores + al_dia)),
+        "en_curso": [{"local": n, "monto": round(l["en_curso"]), "por_banco": n in rd.PAGAN_POR_BANCO}
+                     for n, l in sorted(deudores + al_dia, key=lambda x: -x[1]["en_curso"]) if round(l["en_curso"])],
+        "sin_dato": [{"local": n, "motivo": m} for n, m in sin_dato],
         "al_dia": len(al_dia),
         "con_regla": len(con_regla),
-        "filas_leidas": len(filas),
+        "movimientos_leidos": len(movs),
+        "fuente": "Ctas Ctes · pestañas por local",
     }
 
 
@@ -158,12 +167,20 @@ def paneles(n):
         ]})
     s = n.get("Paseo Nordelta")
     if s:
-        items = [{"etiqueta": "Deuda exigible", "valor": pesos(s["exigible_total"]),
-                  "tono": "alerta" if s["exigible_total"] else "bien",
-                  "nota": f"Ctas Ctes (carga manual) · {len(s['deudores'])} deben, {s['al_dia']} al día"}]
+        if s["exigible_total"] is None:
+            items = [{"etiqueta": "Deuda exigible", "valor": "sin dato", "tono": "mal",
+                      "nota": "fuente atrasada o que no cierra: " + "; ".join(
+                          f"{x['local']} ({x['motivo']})" for x in s["sin_dato"][:3])}]
+        else:
+            items = [{"etiqueta": "Deuda exigible", "valor": pesos(s["exigible_total"]),
+                      "tono": "alerta" if s["exigible_total"] else "bien",
+                      "nota": f"{s['fuente']} · {len(s['deudores'])} deben, {s['al_dia']} al día"}]
         items += [{"etiqueta": d["local"], "valor": pesos(d["exigible"]),
                    "nota": "paga por banco: puede estar en tránsito" if d["por_banco"] else None}
                   for d in s["deudores"][:4]]
+        if s.get("en_curso_total") is not None:
+            items.append({"etiqueta": "Cobrándose este mes", "valor": pesos(s["en_curso_total"]),
+                          "nota": "bloque del mes (alquiler + expensas del anterior): todavía no vencido"})
         out.append({"titulo": "Paseo Nordelta", "lado": "der", "items": items})
     m = n.get("Mails")
     t = n.get("Tareas programadas")
