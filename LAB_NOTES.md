@@ -640,3 +640,16 @@ Arreglo: `--fallback-model opus`, rellenos de voz por tiempo, y el código lee e
 que el modelo usa sin avisar. Las tareas salen en stream y publican su paso. Los reportes enteros de las
 últimas 3 tareas van al contexto, y los números se refrescan cada 20 min.
 **Lección:** antes de culpar al modelo por lento, mirá los timestamps de `api-request` del transcript.
+
+## 12/11/2026 — Voz en vivo: dónde se iba el tiempo y dos trampas del E2E
+
+Antes, la primera palabra tardaba 7 a 15 s: 1,3 s de silencio + whisper (3,1 s con beam 5) + respuesta
+entera + síntesis entera (~1,4 s fijos de Microsoft por audio). Ahora: corte a 0,9 s, whisper con
+`beam_size=1` (2,1 s y el mismo texto; `base` pierde palabras y 8 hilos es 3× más lento que 4), cada
+oración se dice apenas se escribe, y el mp3 se sirve mientras se genera (primer pedazo a ~0,9 s).
+Medido en Chrome headless: la primera palabra sale a los 3,5–5 s. Lo que queda es casi todo el tiempo
+que la API tarda en arrancar a escribir (de 2 a 9 s, varía).
+**Trampas:** (1) `Page.addScriptToEvaluateOnNewDocument` sin `Page.enable` no inyecta nada, así que el
+probe de `Audio` daba «0 audios» y parecía que la voz en vivo no andaba. (2) Cortarlo con `vozGen++`
+no alcanza: las oraciones que llegan DESPUÉS del corte se encolan con el gen nuevo. Hay que ignorar el
+turno entero (`avIgnorar = avTurno`).
