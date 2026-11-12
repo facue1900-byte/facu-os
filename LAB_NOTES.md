@@ -8,6 +8,34 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-11 · FAIL ✓ · El brief de Jarvis mostraba la deuda del Paseo de JULIO
+
+**Síntoma:** el panel del Paseo decía Fabric $2.033.664 exigible; la pestaña Fabric ya
+tenía cargos hasta NOV'26 y pagos por banco al 26/10.
+
+**Causa raíz:** `radar_deudores.py` (y el brief, que lo usa) leía la pestaña consolidada
+**CUENTA CORRIENTE** de Ctas Ctes. No es una tabla que crece: es una grilla de **filas
+fijas** período × local (64 filas: 8 locales × dic-25…jul-26) con `SUMIFS` contra CARGOS
+y Cobros. Nadie la extendió desde julio y nada lo hacía — `cargos_del_mes.py` agrega a
+CARGOS y a cada pestaña, nunca a la consolidada. CARGOS ya llegaba a nov-26. Encima
+cruzaba Cobros por nombre («Fabric», «Volta + Open») y por mes de PAGO, no por bloque:
+aun extendida daba otro número que la pestaña que ve el locatario. Nunca falló un
+chequeo porque el único era «¿vino con filas?» — y 64 filas viejas son filas.
+
+**Fix:** el radar lee las **pestañas por local** (layout único en
+`reglas_locales.PESTANAS`, compartido con `deuda_efectivo.py`) y CARGOS − Cobros para
+los que no tienen pestaña. Regla de cobro explícita: bloque del mes M = alquiler de M +
+expensas de M−1 (`mes_de_cobro`, verificada leyendo las 5 pestañas; un concepto
+desconocido corta en vez de adivinarse). Dos alarmas nuevas: último período con más de
+1 mes de atraso → «sin dato» (el brief no muestra el total), y la cadena de SALDO de la
+pestaña tiene que dar cargos − pagos (±$1). Al 11/11 las cinco cierran al centavo.
+`exportar_ctas_ctes.py` (mismo origen, sin consumidor en la app) quedó dado de baja.
+Tests: `execution/tests/test_radar_deudores.py`.
+
+**Lección:** una tabla «que se calcula sola» con filas escritas a mano no se calcula
+sola: envejece. Para saber si una fuente está al día se mira su **último período**, no
+si tiene filas.
+
 ### 2026-11-11 · FAIL ✓ · Bot de Telegram: «solo lectura» por instrucción, no por permiso
 
 **Qué pasó.** La primera versión de `execution/telegram_bot.py` corría `claude -p` con un
@@ -542,3 +570,25 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
 **Fix:** el mensaje ahora dice que el paso 1 se corta por diferencia O por no poder bajar los datos, y manda a mirar el error. Queda sin resolver por qué la red de la Mac falla a esa hora.
 
 **Lección:** el mismo patrón que el `shasum` del 05/11: un chequeo que no pudo leer no tiene que reportar un veredicto.
+
+## 11/11/2026 — Jarvis de escritorio: «no tengo el dato» con el dato en disco, y un pkill que no mataba nada
+
+**Dónde:** `execution/jarvis/servidor.py`.
+
+**Qué pasó (1):** se le preguntó por voz cuántos alumnos activos había. Contestó que no tenía el número, y estaba en `data/jarvis/numeros.json` (19). La instrucción decía «usalo», pero Claude busca con Glob y `data/` está gitignoreada.
+
+**Fix:** los números del día van pegados adentro de cada pregunta, con hora y fecha, y marcados VIEJOS si no son de hoy.
+
+**Qué pasó (2):** el servidor se reiniciaba con `pkill -f "jarvis/servidor.py"`, pero se había arrancado como `python servidor.py`, desde su carpeta. El pkill no matchea nada, el arranque nuevo muere por puerto ocupado y las pruebas «en vivo» le pegan al código viejo. Se detectó porque no aparecían los headers nuevos.
+
+**Fix:** se arranca siempre con path absoluto (`jarvis.sh`), y para matar se busca por puerto (`lsof -tiTCP:7777`).
+
+**Lección:** después de reiniciar un servidor, se verifica que el proceso que escucha es el nuevo: PID y comando, o algo que sólo tiene el código nuevo. Y un dato que el modelo «tiene que ir a buscar» no cuenta como dato: si importa, va en el prompt.
+
+**Revisión (code-reviewer + qa, 60 tests en `execution/tests/test_jarvis.py`):** encontró un doble «Sí» concurrente que podía ejecutar un plan dos veces (pasaba en 1 de cada ~10 corridas) y un plan ya ejecutado que podía revivir. Se arregló con un lock sobre todo leer-modificar-guardar de `estado.json`. Después del fix, 10 corridas seguidas en verde.
+
+**Y una más, la misma noche:** el plist del brief le pasaba a `correr.sh` el comando en dos partes (python | brief.py). `correr.sh` toma solo la primera, así que corría Python sin script: «éxito» en 0 segundos, código 0, sin brief. Se vio porque la hora del brief no cambió. **Fix de raíz:** `correr.sh` ahora corta con código 64, notificación y registro si el comando viene en más de una parte. Se probó con el plist viejo: saltó. Las otras 13 tareas estaban bien.
+
+**v2, misma noche: Jarvis como intermediario completo.** Facu: «que todo lo que le digo te comande a vos». El cerebro pasó de solo lectura a Claude Code completo (`--permission-mode auto`), con tareas en segundo plano (otra sesión, abrible en Terminal o Antigravity). Dos trampas:
+- **Retomar la sesión vieja arrastra lo que creía.** Con el prompt nuevo seguía diciendo «estoy en solo lectura»: el historial le ganó al prompt nuevo. Cuando cambian los poderes de un agente, se arranca sesión nueva.
+- **La regla 10 iba solo por instrucción.** La revisión lo marcó. Ahora es con llave: `--disallowedTools "Bash(*--send*)"` + envío de Gmail. Probado en vivo: `echo hola --send` bloqueado, `echo hola` corre; un mail pedido por voz vuelve como PLAN. Las pruebas rompen la llave a propósito y fallan.
