@@ -613,3 +613,11 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-11 22:16 UTC — nota
 [v2] Sin operar: ya hay 1 posicion (NEAR, ~10 h de 48h), maximo 1, no se abre nada nuevo (NEAR var_24h 3.83 y AVAX 3.08 cumplian var_24h pero vol4h 0.43/0.25 <1.3 y vs_max_48h < -1.5; GRAM 3.87 var_4h -3.75). NEAR se mantiene: var_24h 3.83 (>=0), var_4h -0.81 (>-2), sin tendencia rota, precio 3.686 sobre stop 3.5098. Filtro BTC abierto (var_24h 1.08, var_4h -0.01). Sin disparos.
 
+## 2026-11-12 00:16 UTC — Venta NEARUSDT
+183.65 USD a 3.592 (-4.75% contra la compra).
+
+[v2] tendencia rota: NEAR var_24h -1.4<0 y var_4h -3.5<-2 · salida discrecional permitida por reglas
+
+## 2026-11-12 00:16 UTC — nota
+[v2] Sin nuevas entradas: carpeta recien vaciada por tendencia rota de NEAR, filtro BTC abierto (var_24h 0.49, var_4h -1.05). Unico par con var_24h>=3 es GRAM (4.26) pero var_4h -0.68<=0, vol4h 0.97 y vs_max_48h -6.52. Sin disparos en vigilar.
+
