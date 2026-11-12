@@ -737,6 +737,9 @@ class Manejador(BaseHTTPRequestHandler):
                 "modo_cambios": os.environ.get("TELEGRAM_MODO_CAMBIOS") == "1",
                 "voz": "Tomás",
                 "actividad": ACTIVIDAD["texto"],
+                # Cambia cuando alguien regenera los números (brief, «Actualizar», una tarea): el panel repinta solo.
+                "version_numeros": "|".join(str(f.stat().st_mtime) if f.exists() else "-"
+                                            for f in (BRIEF, DATA / "numeros.json")),
             })
         m = re.fullmatch(r"/api/audio/([0-9a-f]{32}\.(ogg|mp3))", ruta)
         if m and (AUDIO / m.group(1)).exists():

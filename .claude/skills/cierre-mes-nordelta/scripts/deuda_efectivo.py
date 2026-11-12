@@ -41,7 +41,8 @@ import sys
 
 sys.path.insert(0, "/Users/Facu/facu-os")
 from execution.google_auth import sheets  # noqa: E402
-from reglas_locales import SIN_PESTANA, JAULA_AGOSTO, ORIGEN_APP, PESTANAS  # noqa: E402
+from reglas_locales import (SIN_PESTANA, JAULA_AGOSTO, ORIGEN_APP, PESTANAS,  # noqa: E402
+                            medio_del_cargo, medio_del_pago)
 
 CTAS = "10BDmKvv2wY2M4lVYYab3NiNT04WLh5JjO-EhWI4tnNs"
 SALIDA_DEFAULT = ("/Users/Facu/Desktop/Paseo Nordelta/Paseo Nordelta - CLAUDE/"
@@ -59,24 +60,8 @@ NO_PAGA_EFECTIVO = "No paga en efectivo"
 # precio semestral de la hoja Futbol es TODO lo que se le cobra.
 
 
-def medio_del_cargo(cobra, concepto):
-    """Un cargo no lleva medio escrito (la columna B es de los INGRESOS). Se
-    deduce de la regla del local: Bigg es el único partido, y su parte en efectivo
-    es exactamente la «Diferencia Alquiler (sin iva)»."""
-    if cobra == "mixto":
-        return "efectivo" if "sin iva" in concepto.lower() else "banco"
-    return cobra
-
-
-def medio_del_pago(fila, cd):
-    """Está escrito en la fila: en la B en Boss/Volta/Peak One y en las filas
-    nuevas de Fabric, en la C (el detalle) en Bigg."""
-    txt = f"{fila[1]} {fila[cd]}".lower()
-    if "efectivo" in txt or "mp facu" in txt:
-        return "efectivo"
-    if "banco" in txt:
-        return "banco"
-    return None
+# `medio_del_cargo` / `medio_del_pago` viven en reglas_locales.py: el radar de
+# deudores (y el brief de Jarvis) separa banco y efectivo con la misma regla.
 
 
 def num(x):

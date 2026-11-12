@@ -8,6 +8,29 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-12 · FAIL ✓ · Paseo: el brief decía «nadie debe nada vencido» y Bigg debía la ND 11
+
+**Síntoma:** el panel de Jarvis (12/11 07:50) mostraba exigible $0 y a Bigg entero como
+«BANCO» ($5.527.601). Recalculado a mano desde la pestaña: Bigg debe **$471.465,66 vencidos
+por banco** (ND 11, recupero de sep, vto 11/10 — ya identificada el 05/11) y del bloque de
+noviembre $1.229.303,58 en efectivo + $3.826.831,42 por banco.
+
+**Causa raíz:** `radar_deudores.clasificar` neteaba todos los pagos contra todos los cargos
+sin mirar el medio. Los $800.000 que Bigg pagó **en mano** el 06/11 (contra la Diferencia
+Alquiler de nov) «cancelaban» la ND 11 de banco, y lo vencido daba negativo → $0. El brief
+además marcaba el medio con un booleano por local (`n in PAGAN_POR_BANCO`), así que Bigg
+salía 100% banco. La tarjeta de Mati (`deuda_efectivo.py`) ya separaba medios; el radar no.
+
+**Fix:** `medio_del_cargo` / `medio_del_pago` se mudaron a `reglas_locales.py` (una sola
+regla para Mati y para el radar). El radar etiqueta cada movimiento con su medio y, en el
+local partido, camina en orden: el efectivo cancela efectivo y sólo el excedente se derrama
+a banco (como los cartuchos de Facu). Cada local trae `medios` y el brief publica
+`efectivo` / `banco` por renglón. Verificado: efectivo de Bigg = el de la tarjeta de Mati al
+centavo, y efectivo + banco = saldo de la pestaña. Tests en `test_jarvis.py`.
+
+**Lección:** en un local que paga por dos medios, «al día» se calcula **por medio**. Un
+neto único deja que un pago en mano tape una deuda de banco y el cero parece verdad.
+
 ### 2026-11-11 · FAIL ✓ · El brief de Jarvis mostraba la deuda del Paseo de JULIO
 
 **Síntoma:** el panel del Paseo decía Fabric $2.033.664 exigible; la pestaña Fabric ya

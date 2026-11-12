@@ -78,6 +78,26 @@ def pauta():
     }
 
 
+def _medios(loc, campo):
+    """Cuánto de `campo` (exigible / en_curso) es efectivo y cuánto banco. Antes era un
+    booleano por local («Bigg = banco») y Bigg salía entero como banco, cuando su
+    Diferencia Alquiler se cobra en mano (12/11/2026). `por_banco` = todo por banco."""
+    m = loc.get("medios")
+    if not m:                       # sin pestaña: el medio no está escrito
+        return {"efectivo": None, "banco": None, "por_banco": False}
+    ef, bco = round(m["efectivo"][campo]), round(m["banco"][campo])
+    return {"efectivo": ef, "banco": bco, "por_banco": bco > 0 and ef == 0}
+
+
+def _medios_total(loc):
+    """Efectivo / banco de lo pendiente total (vencido + mes)."""
+    e, m = _medios(loc, "exigible"), _medios(loc, "en_curso")
+    if e["efectivo"] is None:
+        return e
+    ef, bco = e["efectivo"] + m["efectivo"], e["banco"] + m["banco"]
+    return {"efectivo": ef, "banco": bco, "por_banco": bco > 0 and ef == 0}
+
+
 def paseo():
     """Deuda del Paseo desde las PESTAÑAS POR LOCAL de Ctas Ctes (radar_deudores). La consolidada
     «CUENTA CORRIENTE» quedó clavada en jul-26 y el panel mostraba esa deuda vieja (11/11/2026).
@@ -97,12 +117,19 @@ def paseo():
     return {
         # None = no hay número confiable: alguna fuente está atrasada o no cierra (regla 2)
         "exigible_total": None if sin_dato else round(sum(l["exigible"] for _, l in deudores)),
-        "deudores": [{"local": n, "exigible": round(l["exigible"]), "por_banco": n in rd.PAGAN_POR_BANCO}
+        "deudores": [{"local": n, "exigible": round(l["exigible"]), **_medios(l, "exigible")}
                      for n, l in deudores],
         "en_curso_total": None if sin_dato else round(sum(l["en_curso"] for _, l in deudores + al_dia)),
-        "en_curso": [{"local": n, "monto": round(l["en_curso"]), "por_banco": n in rd.PAGAN_POR_BANCO}
+        "en_curso": [{"local": n, "monto": round(l["en_curso"]), **_medios(l, "en_curso")}
                      for n, l in sorted(deudores + al_dia, key=lambda x: -x[1]["en_curso"]) if round(l["en_curso"])],
         "sin_dato": [{"local": n, "motivo": m} for n, m in sin_dato],
+        # Lo que Facu mira (12/11/2026): cuánto le falta pagar a cada local A HOY, vencido o no.
+        # Pagó todo → 0. El vencido/del mes sigue arriba para quien lo necesite.
+        "pendiente_total": None if sin_dato else round(sum(l["exigible"] + l["en_curso"] for _, l in deudores + al_dia)),
+        "por_local": sorted(({"local": n, "debe": round(l["exigible"] + l["en_curso"]),
+                              "vencido": round(l["exigible"]), **_medios_total(l)}
+                             for n, l in deudores + al_dia), key=lambda x: -x["debe"]),
+        "con_regla_nombres": [n for n, _ in con_regla],
         "al_dia": len(al_dia),
         "con_regla": len(con_regla),
         "movimientos_leidos": len(movs),
@@ -140,6 +167,12 @@ FUENTES = [("Astronomy Academy", astronomy), ("Pauta Meta", pauta), ("Paseo Nord
 
 # --- paneles: los arma el código, no el modelo ------------------------------------------------
 
+def _nota_medio(d):
+    if d.get("efectivo") and d.get("banco"):
+        return f"efectivo {pesos(d['efectivo'])} · banco {pesos(d['banco'])} (puede estar en tránsito)"
+    return "paga por banco: puede estar en tránsito" if d.get("por_banco") else None
+
+
 def paneles(n):
     out = []
     a = n.get("Astronomy Academy")
@@ -176,7 +209,7 @@ def paneles(n):
                       "tono": "alerta" if s["exigible_total"] else "bien",
                       "nota": f"{s['fuente']} · {len(s['deudores'])} deben, {s['al_dia']} al día"}]
         items += [{"etiqueta": d["local"], "valor": pesos(d["exigible"]),
-                   "nota": "paga por banco: puede estar en tránsito" if d["por_banco"] else None}
+                   "nota": _nota_medio(d)}
                   for d in s["deudores"][:4]]
         if s.get("en_curso_total") is not None:
             items.append({"etiqueta": "Cobrándose este mes", "valor": pesos(s["en_curso_total"]),
