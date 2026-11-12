@@ -353,6 +353,11 @@ function pintarBrief(b, num) {
     if (!p.anuncios_activos) { const e = el("div", "etiquetas"); e.append(el("span", "etiq", "0 anuncios prendidos")); cp.append(e); }
   } else sinDato(cp, errores["Pauta Meta"] || "—");
   $("izq").append(cp);
+  // Bigg va partido: decir cuánto es en mano y cuánto por banco (12/11/2026)
+  const medio = (nom, d) => {
+    if (d.efectivo && d.banco) nom.append(el("small", null, `EFECTIVO ${pesos(d.efectivo)} · BANCO ${pesos(d.banco)}`));
+    else if (d.por_banco) nom.append(el("small", null, "BANCO"));
+  };
   // 03 Paseo — exigible (vencido) arriba; abajo lo que se está cobrando este mes, por local
   const s = n["Paseo Nordelta"];
   const cs = card("03", "Paseo Nordelta", s ? (s.exigible_total === null ? "fuente atrasada" : `${s.deudores.length} deben · ${s.al_dia} al día`) : "");
@@ -364,14 +369,14 @@ function pintarBrief(b, num) {
     const hero = el("div", "hero" + (s.exigible_total ? " amber" : "")); cs.append(hero); contar(hero, s.exigible_total, pesos);
     cs.append(el("div", "sub", s.exigible_total ? "Deuda vencida · Ctas Ctes por local" : "Nadie debe nada vencido · Ctas Ctes por local"));
     s.deudores.slice(0, 4).forEach(d => { const w = el("div", "deudor"), f = el("div", "fila"), nom = el("span", null, d.local);
-      if (d.por_banco) nom.append(el("small", null, "BANCO"));
+      medio(nom, d);
       f.append(nom, el("b", null, pesos(d.exigible))); w.append(f, barra(100, "amber")); cs.append(w); });
     if (s.en_curso_total) {
       const t = el("div", "fila"); t.style.cssText = "margin:10px 0 2px;padding-top:10px;border-top:1px solid var(--hair)";
       t.append(el("span", null, "COBRÁNDOSE ESTE MES"), el("b", null, pesos(s.en_curso_total))); cs.append(t);
       const max = Math.max(...(s.en_curso || []).map(d => d.monto), 1);
       (s.en_curso || []).slice(0, 6).forEach(d => { const w = el("div", "deudor"), f = el("div", "fila"), nom = el("span", null, d.local);
-        if (d.por_banco) nom.append(el("small", null, "BANCO"));
+        medio(nom, d);
         f.append(nom, el("b", null, pesos(d.monto))); w.append(f, barra(d.monto / max * 100)); cs.append(w); });
     }
   } else sinDato(cs, errores["Paseo Nordelta"] || "—");

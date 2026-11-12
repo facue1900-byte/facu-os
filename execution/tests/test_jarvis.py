@@ -9,6 +9,7 @@ brief están reemplazados. DATA/ESTADO/BRIEF/AUDIO/TAREAS apuntan a tmp_path (no
 Los hilos de tareas NO corren solos: quedan en `srv.hilos` y el test decide cuándo (`srv.correr_hilos()`).
 El server de test corre en un puerto efímero, aparte del 7777.
 """
+import datetime as dt
 import http.client
 import json
 import sys
@@ -1210,3 +1211,67 @@ def test_dictado_reemplaza_lo_que_dijo_por_lo_que_entendio(srv, monkeypatch):
     assert hablado == "Son diecinueve, jefe."
     conv = json.loads(servidor.ESTADO.read_text())["conversacion"]
     assert conv[-2] == {**conv[-2], "quien": "facu", "texto": "cuántos alumnos activos hay"}
+
+
+# ---------------- Paseo: efectivo y banco no se cancelan entre sí (12/11/2026) ----------------
+
+def _bigg_mov(tipo, monto, medio, mes_cobro=None):
+    x = {"local": "Bigg", "tipo": tipo, "monto": monto, "medio": medio}
+    if tipo == "cargo":
+        x |= {"periodo": mes_cobro, "mes_cobro": mes_cobro}
+    else:
+        x["fecha"] = dt.date(2026, 11, 6)
+    return x
+
+
+def test_radar_pago_en_efectivo_no_tapa_deuda_de_banco():
+    # Bigg 12/11: ND 11 (recupero sep, banco) $471.465 impaga; el 06/11 pagó $800.000 EN MANO
+    # contra la diferencia de nov. El radar los netea y decía exigible $0.
+    sys.path.insert(0, "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts")
+    import radar_deudores as rd
+    movs = [_bigg_mov("cargo", 471_465.66, "banco", (2026, 10)),
+            _bigg_mov("cargo", 2_029_303.44, "efectivo", (2026, 11)),
+            _bigg_mov("cargo", 3_826_831.42, "banco", (2026, 11)),
+            _bigg_mov("pago", 800_000, "efectivo")]
+    deudores, *_ = rd.clasificar(movs, (2026, 11))
+    assert [n for n, _ in deudores] == ["Bigg"]
+    b = deudores[0][1]
+    assert round(b["exigible"], 2) == 471_465.66
+    assert round(b["medios"]["banco"]["exigible"], 2) == 471_465.66
+    assert round(b["medios"]["efectivo"]["en_curso"], 2) == 1_229_303.44
+    # invariante: efectivo + banco = saldo de la pestaña
+    assert round(b["exigible"] + b["en_curso"], 2) == round(b["saldo"], 2)
+
+
+def test_radar_excedente_en_efectivo_se_derrama_a_banco():
+    # Bigg mar-26: pagó en mano la diferencia Y expensas de banco. El sobrante sí cancela banco.
+    sys.path.insert(0, "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts")
+    import radar_deudores as rd
+    movs = [_bigg_mov("cargo", 1_000_000, "efectivo", (2026, 10)),
+            _bigg_mov("cargo", 500_000, "banco", (2026, 10)),
+            _bigg_mov("pago", 1_500_000, "efectivo")]
+    _, al_dia, *_ = rd.clasificar(movs, (2026, 11))
+    assert al_dia and al_dia[0][1]["exigible"] == 0
+
+
+def test_brief_paseo_separa_efectivo_y_banco(monkeypatch):
+    sys.path.insert(0, "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts")
+    import radar_deudores as rd
+    import google_auth
+    hoy = dt.date.today()
+    cur = (hoy.year, hoy.month)
+    prev = (cur[0] - 1, 12) if cur[1] == 1 else (cur[0], cur[1] - 1)
+    movs = [_bigg_mov("cargo", 400_000, "banco", prev),
+            _bigg_mov("cargo", 2_000_000, "efectivo", cur),
+            _bigg_mov("cargo", 3_000_000, "banco", cur),
+            _bigg_mov("pago", 800_000, "efectivo")]
+    monkeypatch.setattr(google_auth, "bajar_xlsx", lambda *a, **k: None)
+    monkeypatch.setattr(rd, "leer_xlsx", lambda x: (movs, {}))
+    s = brief.paseo()
+    assert s["exigible_total"] == 400_000
+    assert s["deudores"][0] == {"local": "Bigg", "exigible": 400_000, "efectivo": 0,
+                                      "banco": 400_000, "por_banco": True}
+    ec = s["en_curso"][0]
+    assert (ec["efectivo"], ec["banco"], ec["por_banco"]) == (1_200_000, 3_000_000, False)
+    nota = [i for i in brief.paneles({"Paseo Nordelta": s})[0]["items"] if i["etiqueta"] == "Bigg"][0]["nota"]
+    assert "tránsito" in nota
