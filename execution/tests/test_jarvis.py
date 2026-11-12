@@ -47,6 +47,13 @@ class HiloFalso:
         self.target(*self.args, **self.kwargs)
 
 
+@pytest.fixture(autouse=True)
+def sin_voz_real(monkeypatch):
+    """Los rellenos y avances sintetizan en hilos: ningún test le habla a Microsoft de verdad."""
+    monkeypatch.setattr(servidor, "sintetizar", lambda t: "e" * 32 + ".mp3")
+    monkeypatch.setattr(servidor, "_AUDIO_FIJO", {})
+
+
 @pytest.fixture
 def srv(tmp_path, monkeypatch):
     monkeypatch.setattr(servidor, "DATA", tmp_path)
@@ -1347,7 +1354,8 @@ def test_cerebro_vivo_dice_avances_y_no_repite_la_respuesta(monkeypatch):
     monkeypatch.setattr(servidor, "anotar", lambda q, t, **kw: anotados.append((t, kw)))
     monkeypatch.setattr(servidor, "sintetizar_seguro", lambda t: "a" * 32 + ".mp3")
     monkeypatch.setattr(servidor, "threading", types.SimpleNamespace(
-        Thread=lambda target, daemon=True, **k: types.SimpleNamespace(start=target), Event=threading.Event, Lock=threading.Lock))
+        Thread=lambda target, daemon=True, name=None, **k: types.SimpleNamespace(
+            start=(lambda: None) if name == "relleno" else target), Event=threading.Event, Lock=threading.Lock))
     procs = _vivo(monkeypatch, [
         {"type": "system", "subtype": "init", "session_id": UUID1},
         {"type": "assistant", "message": {"content": [{"type": "text", "text": "ENTENDÍ: deuda de Bigg\nMe fijo en la pestaña de Bigg…"}]}},
@@ -1397,3 +1405,89 @@ def test_mandarme_solo_va_al_mail_de_facu(monkeypatch):
         mandarme.armar({"titulo": "vacío"})
     src = open("/Users/Facu/facu-os/execution/jarvis/mandarme.py").read()
     assert 'para = os.environ["MAIL_FACU"]' in src and "argv" not in src.split("para = ")[0].split("def main")[1]
+
+
+# --- «el trabajando no me dice nada» (12/11/2026) ------------------------------------------------
+
+class _VivoLento(_VivoFalso):
+    """Como _VivoFalso pero cada evento tarda: deja ver los rellenos."""
+    def __init__(self, eventos, demoras):
+        super().__init__(eventos)
+        def gen():
+            for e, d in zip(eventos, demoras):
+                time.sleep(d)
+                yield json.dumps(e) + "\n"
+        self.stdout = gen()
+
+
+def test_relleno_cuando_tarda_y_herramienta_sin_aviso(monkeypatch):
+    monkeypatch.setattr(servidor, "SEG_PRIMER_RELLENO", 0.5)
+    monkeypatch.setattr(servidor, "SEG_ENTRE_RELLENOS", 100)
+    monkeypatch.setattr(servidor, "SEG_MIN_ENTRE_AVANCES", 1)
+    monkeypatch.setattr(servidor, "anotar", lambda *a, **k: pytest.fail("un relleno no va a la conversación"))
+    monkeypatch.setattr(servidor.os, "killpg", lambda *a: None)
+    eventos = [{"type": "system", "subtype": "init", "session_id": UUID1},
+               {"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash",
+                                                              "input": {"description": "leyendo la casilla del Paseo"}}]}},
+               {"type": "result", "subtype": "success", "result": "Son dieciocho, jefe.", "session_id": UUID1}]
+    monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: _VivoLento(eventos, [0, 2.5, 0]))
+    r, _ = servidor.CerebroVivo().turno("¿mails?", None, 30)
+    textos = [i["texto"] for i in servidor.AVANCES["items"]]
+    assert r == "Son dieciocho, jefe."
+    assert textos[0] in servidor.RELLENO_PRIMERO, textos
+    assert "Leyendo la casilla del Paseo." in textos, "la herramienta sin aviso la cuenta el código"
+
+
+def test_respuesta_rapida_no_lleva_relleno(monkeypatch):
+    monkeypatch.setattr(servidor.os, "killpg", lambda *a: None)
+    eventos = [{"type": "system", "subtype": "init", "session_id": UUID1},
+               {"type": "result", "subtype": "success", "result": "De nada, jefe.", "session_id": UUID1}]
+    monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: _VivoLento(eventos, [0, 0.3]))
+    servidor.CerebroVivo().turno("ok gracias", None, 30)
+    time.sleep(0.2)
+    assert servidor.AVANCES["items"] == []
+
+
+def test_cerebro_lleva_modelo_de_respaldo(monkeypatch):
+    procs = _vivo(monkeypatch, [{"type": "result", "subtype": "success", "result": "ok", "session_id": UUID1}])
+    servidor.CerebroVivo().turno("hola", None, 30)
+    cmd = procs[0][0]
+    assert cmd[cmd.index("--fallback-model") + 1] == servidor.MODELO_RESPALDO != servidor.MODELO_CHARLA
+
+
+def test_tarea_en_stream_avisa_cada_paso(monkeypatch):
+    eventos = [{"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Read",
+                                                              "input": {"file_path": "/x/facturas.xlsx"}}]}},
+               {"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "mcp__claude_ai_Gmail__search_threads", "input": {}}]}},
+               {"type": "result", "subtype": "success", "result": "PARA DECIR: listo", "session_id": UUID1}]
+    vistos = []
+
+    class P(_VivoFalso):
+        returncode = 0
+        def wait(self): return 0
+    monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: vistos.append(cmd) or P(eventos))
+    pasos = []
+    r, sid = servidor.claude_completo("x", None, "i", "Jarvis", 30, al_paso=pasos.append)
+    assert (r, sid) == ("PARA DECIR: listo", UUID1)
+    assert pasos == ["leyendo facturas.xlsx", "leyendo mails"]
+    assert "stream-json" in vistos[0] and "Bash(*--send*)" in vistos[0]
+
+
+def test_tarea_en_stream_sin_resultado_es_error(monkeypatch):
+    class P(_VivoFalso):
+        returncode = 1
+        def wait(self): return 1
+    monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: P([]))
+    with pytest.raises(tb.ClaudeFallo):
+        servidor.claude_completo("x", None, "i", "Jarvis", 30, al_paso=lambda p: None)
+
+
+def test_contexto_trae_reporte_entero_y_paso_en_curso(srv):
+    ahora = time.time()
+    servidor.guardar_json(servidor.TAREAS, [
+        {"id": "aaa111", "titulo": "Facturas", "estado": "lista", "inicio": ahora - 400, "fin": ahora - 60,
+         "resultado": "AVN $28.954.654,88 vencido", "para_decir": "Debés 51 millones"},
+        {"id": "bbb222", "titulo": "Deudas", "estado": "corriendo", "inicio": ahora - 130, "paso": "leyendo mails", "pasos": 4}])
+    c = servidor.contexto_del_dia()
+    assert "REPORTE: AVN $28.954.654,88 vencido" in c
+    assert "hace 2 min, 4 pasos, ahora: leyendo mails" in c
