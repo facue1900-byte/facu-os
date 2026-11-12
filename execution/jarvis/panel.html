@@ -624,9 +624,13 @@ function abrirOido() {   // una sola apertura a la vez: el arranque y el interru
   return oidoAbriendo || (oidoAbriendo = _abrirOido().finally(() => { oidoAbriendo = null; }));
 }
 async function _abrirOido() {
-  const s = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+  // Sin cancelación de eco ni supresión de ruido: en la Mac activan el procesamiento de voz del sistema y,
+  // si otra app lo está usando, Chrome entrega SILENCIO (12/11/2026: volumen 0 durante minutos). Jarvis
+  // igual deja de escuchar mientras habla, así que el eco no hace falta.
+  const s = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: true } });
   if (!oidoOn) { s.getTracks().forEach(t => t.stop()); return; }
-  oidoStream = s;
+  oidoStream = s; oidoMudo = 0;
+  s.getAudioTracks().forEach(t => { t.onended = () => reabrirOido("se desconectó el micrófono"); });
   oidoFuente = ctxAudio.createMediaStreamSource(oidoStream);
   oidoNodo = ctxAudio.createScriptProcessor(4096, 1, 1);
   const paso = ctxAudio.sampleRate / 16000;
@@ -634,6 +638,10 @@ async function _abrirOido() {
     const libre = oidoLibre(); $("chipOido").classList.toggle("pausa", !libre);
     if (!libre) { oidoBuf = []; oidoLargo = 0; oidoNuevo = true; return; }
     const x = ev.inputBuffer.getChannelData(0), n = Math.floor(x.length / paso), out = new Int16Array(n);
+    // Micrófono mudo (todo cero exacto ~3 s): se reabre solo; si sigue mudo, se avisa en el botón.
+    let pico = 0; for (let i = 0; i < x.length; i += 8) pico = Math.max(pico, Math.abs(x[i]));
+    if (pico === 0) { oidoMudo += x.length / ctxAudio.sampleRate; if (oidoMudo > 3) { reabrirOido("el micrófono llegaba mudo"); return; } }
+    else { oidoMudo = 0; if (oidoReintentos) { oidoReintentos = 0; $("chipOido").querySelector("b").textContent = "on"; } }
     for (let i = 0; i < n; i++) { let a = 0, k = 0; for (let j = Math.floor(i * paso); j < Math.floor((i + 1) * paso); j++) { a += x[j]; k++; }
       out[i] = Math.max(-32768, Math.min(32767, (a / k) * 32767)); }
     oidoBuf.push(out); oidoLargo += n;
@@ -652,6 +660,16 @@ async function mandarOido() {
     if (d.detectado && oidoLibre()) { pitido(); empezarAGrabar(true).catch(errorMic); }
   } catch (e) { /* servidor reiniciando: el próximo pedazo reintenta */ }
   finally { oidoMandando = false; }
+}
+let oidoMudo = 0, oidoReintentos = 0;
+function reabrirOido(motivo) {
+  if (!oidoOn) return;
+  cerrarOido(); oidoReintentos++;
+  if (oidoReintentos >= 3) {
+    $("chipOido").querySelector("b").textContent = "mic mudo";
+    if (oidoReintentos === 3) avisar("HEY JARVIS", "El micrófono le llega mudo a Jarvis (" + motivo + "). Puede que otra app lo esté usando: cerrala o recargá la pantalla (Cmd+R).");
+  }
+  setTimeout(() => { if (oidoOn && !oidoStream) abrirOido().catch(e => { ponerOido(false); errorMic(e); }); }, Math.min(30000, 1000 * oidoReintentos));
 }
 function cerrarOido() {
   if (oidoNodo) { oidoNodo.onaudioprocess = null; oidoNodo.disconnect(); oidoNodo = null; }
