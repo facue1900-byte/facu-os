@@ -340,9 +340,30 @@ def contexto_numeros():
     except Exception:
         return ""
 
+def contexto_tareas():
+    """Las tareas de fondo que lanzó el Jarvis de escritorio (data/jarvis/tareas.json). Van pegadas para que,
+    desde el teléfono, Facu pueda preguntar «¿terminó lo del Paseo?» (pedido 12/11). Sólo se leen: el bot
+    no lanza ni toca tareas."""
+    try:
+        tareas = json.loads((OS_DIR / "data" / "jarvis" / "tareas.json").read_text())[-8:]
+    except Exception:
+        return ""
+    if not tareas:
+        return ""
+    hora = lambda ts: time.strftime("%H:%M %d/%m", time.localtime(ts)) if ts else "?"
+    filas = []
+    for t in tareas:
+        f = f"«{t.get('titulo')}» {t.get('estado')} (arrancó {hora(t.get('inicio'))}"
+        f += f", terminó {hora(t.get('fin'))})" if t.get("fin") else ")"
+        if t.get("estado") == "lista" and t.get("para_decir"):
+            f += " → " + t["para_decir"][:400]
+        filas.append(f)
+    return ("[Tareas de fondo del Jarvis de escritorio (data/jarvis/tareas.json; el reporte completo está en el "
+            "campo «resultado» de cada una; vos no las lanzás ni las tocás): " + " | ".join(filas) + "]\n\n")
+
 
 def preguntar_a_claude(texto, estado, chat_id):
-    texto = contexto_numeros() + texto
+    texto = contexto_numeros() + contexto_tareas() + texto
     try:
         respuesta, sid = _correr_claude(texto, estado.get("session_id"))
     except ClaudeFallo:
