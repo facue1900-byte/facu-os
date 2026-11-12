@@ -621,3 +621,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-12 00:16 UTC — nota
 [v2] Sin nuevas entradas: carpeta recien vaciada por tendencia rota de NEAR, filtro BTC abierto (var_24h 0.49, var_4h -1.05). Unico par con var_24h>=3 es GRAM (4.26) pero var_4h -0.68<=0, vol4h 0.97 y vs_max_48h -6.52. Sin disparos en vigilar.
 
+## 2026-11-12 02:16 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC abierto (var_24h 0.27, var_4h -0.14). Ningun par cumple entrada: unico con var_24h>=3 es GRAM (5.16, var_4h 1.95) pero vol4h 0.25 (<1.3) y vs_max_48h -4.38 (<-1.5); resto var_24h<3. Sin disparos.
+
