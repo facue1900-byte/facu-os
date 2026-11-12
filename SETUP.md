@@ -44,6 +44,9 @@ esperando algo que **solo podés hacer vos** (un login, una key, un permiso).
 - [x] **GitHub** — `facue1900-byte/facu-os`, privado, pusheado.
 - [x] **Vercel, Supabase y Netlify** — CLIs instalados y tokens verificados contra las
       cuentas reales.
+- [x] **Jarvis de escritorio** (11/11/2026) — `execution/jarvis/` (ver su README): pantalla en
+      127.0.0.1:7777 con brief hablado, voz (Whisper local) y planes con botón. App
+      `~/Applications/Jarvis.app`. 🔴 El brief de las 07:50 (`com.facu.jarvis-brief`) lo carga Facu.
 
 ## Inventario de infraestructura
 

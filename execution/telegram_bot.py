@@ -263,7 +263,8 @@ class ClaudeFallo(Exception):
     pass
 
 
-def _correr_claude(texto, session_id, ejecutar=False):
+def _correr_claude(texto, session_id, ejecutar=False, instrucciones=None):
+    """`instrucciones` reemplaza el system prompt de lectura (el Jarvis de escritorio usa el suyo)."""
     if ejecutar:
         cmd = [CLAUDE, "-p", texto, "--output-format", "json",
                "--tools", PROPIAS_EJECUTOR, "--permission-mode", "dontAsk",
@@ -277,7 +278,7 @@ def _correr_claude(texto, session_id, ejecutar=False):
         cmd = [CLAUDE, "-p", texto, "--output-format", "json",
                "--tools", PROPIAS, "--permission-mode", "dontAsk",
                "--allowedTools", *APROBADAS, "--disallowedTools", *PROHIBIDAS,
-               "--append-system-prompt", INSTRUCCIONES]
+               "--append-system-prompt", instrucciones or INSTRUCCIONES]
         limite = TIEMPO_MAX_CLAUDE
         path = "/Users/Facu/.local/node/bin:/usr/bin:/bin"
     if session_id:

@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jarvis</title>
+<style>
+  :root {
+    --bg: #03070d; --bg2: #071422; --line: rgba(80, 200, 255, .18); --cyan: #4fd8ff; --cyan2: #9be9ff;
+    --txt: #d6f3ff; --dim: #6f93a8; --warn: #ffb547; --bad: #ff5d6c; --ok: #5cf2b0;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace; --sans: -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--txt); font-family: var(--sans); overflow: hidden; }
+  body::before { content: ""; position: fixed; inset: 0; pointer-events: none;
+    background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px; opacity: .25; mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%); }
+  .app { position: relative; display: grid; height: 100%; grid-template-columns: minmax(260px, 1fr) minmax(360px, 1.3fr) minmax(260px, 1fr);
+    grid-template-rows: auto 1fr auto; gap: 18px; padding: 22px 28px; }
+  header { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .18em; color: var(--dim); text-transform: uppercase; }
+  header .marca { color: var(--cyan); font-weight: 600; letter-spacing: .4em; }
+  #reloj { font-size: 13px; color: var(--cyan2); }
+  #estado::before { content: "●"; margin-right: 8px; color: var(--estado, var(--dim)); }
+  .col { display: flex; flex-direction: column; gap: 14px; overflow-y: auto; min-height: 0; padding-right: 4px; }
+  .panel { border: 1px solid var(--line); background: linear-gradient(180deg, rgba(14, 40, 64, .55), rgba(5, 14, 24, .55));
+    border-radius: 4px; padding: 14px 16px; position: relative; }
+  .panel::before, .panel::after { content: ""; position: absolute; width: 10px; height: 10px; border: 1px solid var(--cyan); }
+  .panel::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+  .panel::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+  .panel h2 { margin: 0 0 10px; font: 600 11px var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--cyan); }
+  .item { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 7px 0; border-top: 1px dashed rgba(80, 200, 255, .12); }
+  .item:first-of-type { border-top: 0; }
+  .item .et { font-size: 13px; color: var(--dim); }
+  .item .val { font: 600 15px var(--mono); color: var(--txt); text-align: right; font-variant-numeric: tabular-nums; }
+  .item.alerta .val { color: var(--warn); } .item.mal .val { color: var(--bad); } .item.bien .val { color: var(--ok); }
+  .item .nota { grid-column: 1 / -1; font-size: 11px; color: var(--dim); opacity: .8; }
+  .centro { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; gap: 14px; }
+  #orbe { width: min(46vh, 100%); aspect-ratio: 1; cursor: pointer; }
+  #dijo { min-height: 1.4em; font-size: 13px; color: var(--dim); text-align: center; font-style: italic; }
+  #habla { width: 100%; max-height: 26vh; overflow-y: auto; font-size: 17px; line-height: 1.5; text-align: center; color: var(--txt); }
+  #plan { display: none; width: 100%; border: 1px solid var(--warn); background: rgba(60, 40, 0, .35); border-radius: 4px; padding: 12px 14px; }
+  #plan h2 { color: var(--warn); }
+  #plan pre { white-space: pre-wrap; font: 12px/1.45 var(--mono); color: var(--txt); max-height: 22vh; overflow-y: auto; margin: 0 0 10px; }
+  .botones { display: flex; gap: 10px; justify-content: flex-end; }
+  button { font: 600 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: 9px 16px; border-radius: 3px;
+    border: 1px solid var(--cyan); background: transparent; color: var(--cyan); cursor: pointer; }
+  button:hover { background: rgba(79, 216, 255, .12); }
+  button.si { border-color: var(--ok); color: var(--ok); } button.no { border-color: var(--bad); color: var(--bad); }
+  button:disabled { opacity: .4; cursor: wait; }
+  footer { grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; }
+  #texto { flex: 1; background: rgba(5, 18, 30, .8); border: 1px solid var(--line); color: var(--txt); border-radius: 3px;
+    padding: 11px 14px; font: 14px var(--sans); outline: none; }
+  #texto:focus { border-color: var(--cyan); }
+  .ayuda { font: 11px var(--mono); color: var(--dim); letter-spacing: .08em; white-space: nowrap; }
+  #despertar { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+    background: radial-gradient(circle at center, rgba(10, 40, 70, .6), rgba(2, 6, 11, .96)); z-index: 10; cursor: pointer; }
+  #despertar .t { font: 600 14px var(--mono); letter-spacing: .5em; color: var(--cyan); text-transform: uppercase; }
+  #despertar .s { font: 12px var(--mono); color: var(--dim); letter-spacing: .15em; }
+  .errores { color: var(--bad); font-size: 12px; }
+  @media (max-width: 900px) {
+    html, body { overflow: auto; height: auto; }
+    .app { display: flex; flex-direction: column; height: auto; padding: 16px; }
+    header { flex-wrap: wrap; gap: 6px; }
+    .col { overflow: visible; }
+    header { order: -2; } .centro { order: -1; } #orbe { width: min(70vw, 320px); } #habla { max-height: none; }
+    footer { flex-wrap: wrap; } #texto { flex-basis: 100%; }
+  }
+</style>
+</head>
+<body>
+<div id="despertar"><svg width="90" height="90" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="#4fd8ff" stroke-width="2"/><circle cx="50" cy="50" r="44" fill="none" stroke="#4fd8ff" stroke-width="1" stroke-dasharray="4 6"/><circle cx="50" cy="50" r="8" fill="#4fd8ff"/></svg>
+  <div class="t">Despertar a Jarvis</div><div class="s">tocá la pantalla o apretá cualquier tecla</div></div>
+<div class="app">
+  <header><span class="marca">J.A.R.V.I.S.</span><span id="estado">dormido</span><span id="reloj"></span></header>
+  <section class="col" id="izq"></section>
+  <section class="centro">
+    <canvas id="orbe" width="800" height="800" title="Mantené apretado para hablar"></canvas>
+    <div id="dijo"></div>
+    <div id="habla"></div>
+    <div id="plan" class="panel"><h2>Plan para aprobar</h2><pre id="planTexto"></pre>
+      <div class="botones"><button class="no" id="planNo">No</button><button class="si" id="planSi">Sí, hacelo</button></div></div>
+  </section>
+  <section class="col" id="der"></section>
+  <footer>
+    <input id="texto" placeholder="Escribile a Jarvis… (o mantené ESPACIO para hablarle)" autocomplete="off">
+    <button id="actualizar" title="Recalcula los números y el brief (tarda 1–3 min)">Actualizar</button>
+    <button id="nuevo" title="Arranca una conversación de cero">Nueva charla</button>
+    <span class="ayuda" id="generado"></span>
+  </footer>
+</div>
+<script>
+const TOKEN = "{{TOKEN}}";
+const H = { "X-Jarvis-Token": TOKEN };
+const $ = id => document.getElementById(id);
+let brief = null, planId = null, ocupado = false;
+
+// ---------- reloj y estado ----------
+function reloj() {
+  const d = new Date();
+  $("reloj").textContent = d.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "short" }) + " · " +
+    d.toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" });
+}
+setInterval(reloj, 10000); reloj();
+const COLORES = { escuchando: "var(--bad)", pensando: "var(--warn)", hablando: "var(--cyan)", "en línea": "var(--ok)" };
+function estado(t) { $("estado").textContent = t; $("estado").style.setProperty("--estado", COLORES[t] || "var(--dim)"); modo = t; }
+
+// ---------- orbe ----------
+const cv = $("orbe"), cx = cv.getContext("2d");
+let modo = "dormido", nivel = 0, ctxAudio = null, analizador = null;
+function dibujar(t) {
+  const W = cv.width, c = W / 2;
+  cx.clearRect(0, 0, W, W);
+  let amp = 0;
+  if (analizador) { const b = new Uint8Array(analizador.fftSize); analizador.getByteTimeDomainData(b);
+    for (const v of b) amp = Math.max(amp, Math.abs(v - 128) / 128); }
+  nivel += ((modo === "pensando" ? .25 + .15 * Math.sin(t / 180) : amp) - nivel) * .2;
+  const col = modo === "escuchando" ? "255,93,108" : modo === "pensando" ? "255,181,71" : "79,216,255";
+  const g = cx.createRadialGradient(c, c, 0, c, c, W * .32);
+  g.addColorStop(0, `rgba(${col},${.55 + nivel * .4})`); g.addColorStop(.35, `rgba(${col},${.12 + nivel * .2})`); g.addColorStop(1, "rgba(0,0,0,0)");
+  cx.fillStyle = g; cx.beginPath(); cx.arc(c, c, W * .32, 0, 7); cx.fill();
+  const anillos = [[.17, 1, 3, 0], [.23, -1.6, 1.5, 60], [.30, .7, 2, 24], [.37, -.4, 1, 120], [.44, .25, 6, 8]];
+  anillos.forEach(([r, vel, ancho, seg], i) => {
+    const R = W * r * (1 + nivel * .08 * (i + 1) / 3), rot = t / 1000 * vel;
+    cx.strokeStyle = `rgba(${col},${.35 + .5 * (i % 2 ? nivel : .6)})`; cx.lineWidth = ancho;
+    if (seg) { for (let k = 0; k < seg; k++) { const a = rot + k * 2 * Math.PI / seg; cx.beginPath(); cx.arc(c, c, R, a, a + Math.PI / seg * .9); cx.stroke(); } }
+    else { cx.beginPath(); cx.arc(c, c, R, rot, rot + Math.PI * 1.5); cx.stroke(); }
+  });
+  cx.fillStyle = `rgba(${col},.95)`; cx.beginPath(); cx.arc(c, c, W * (.045 + nivel * .03), 0, 7); cx.fill();
+  requestAnimationFrame(dibujar);
+}
+requestAnimationFrame(dibujar);
+
+// ---------- audio ----------
+let reproduciendo = null;
+async function hablar(nombre, texto) {
+  if (texto != null) escribir(texto);
+  if (!nombre) { estado("en línea"); return; }
+  if (reproduciendo) reproduciendo.pause();
+  const r = await fetch("/api/audio/" + nombre, { headers: H });
+  if (!r.ok) { estado("en línea"); return; }          // audio viejo ya borrado: queda el texto
+  const url = URL.createObjectURL(await r.blob());
+  const a = new Audio(url); reproduciendo = a;
+  const fuente = ctxAudio.createMediaElementSource(a);
+  analizador = ctxAudio.createAnalyser(); analizador.fftSize = 512;
+  fuente.connect(analizador); analizador.connect(ctxAudio.destination);
+  estado("hablando");
+  a.onended = () => { analizador = null; estado("en línea"); URL.revokeObjectURL(url); };
+  try { await a.play(); } catch (e) { analizador = null; estado("en línea"); }
+}
+function escribir(t) { $("habla").textContent = t; $("habla").scrollTop = 0; }
+
+// ---------- paneles ----------
+function panel(p) {
+  const div = document.createElement("div"); div.className = "panel";
+  const h = document.createElement("h2"); h.textContent = p.titulo; div.appendChild(h);
+  for (const it of p.items || []) {
+    const r = document.createElement("div"); r.className = "item" + (it.tono ? " " + it.tono : "");
+    const et = document.createElement("span"); et.className = "et"; et.textContent = it.etiqueta;
+    const v = document.createElement("span"); v.className = "val"; v.textContent = it.valor;
+    r.append(et, v);
+    if (it.nota) { const n = document.createElement("span"); n.className = "nota"; n.textContent = it.nota; r.appendChild(n); }
+    div.appendChild(r);
+  }
+  return div;
+}
+function pintar(b) {
+  brief = b; $("izq").innerHTML = ""; $("der").innerHTML = "";
+  if (b.error) { escribir(b.error); return; }
+  (b.paneles || []).forEach((p, i) => $(p.lado === "der" || (p.lado == null && i % 2) ? "der" : "izq").appendChild(panel(p)));
+  if (b.errores && b.errores.length) {
+    const d = panel({ titulo: "Sin dato", items: b.errores.map(e => ({ etiqueta: e.fuente, valor: "✕", tono: "mal", nota: e.error })) });
+    $("der").appendChild(d);
+  }
+  const g = b.generado ? new Date(b.generado) : null;
+  $("generado").textContent = g ? "brief de las " + g.toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" }) +
+    (g.toDateString() === new Date().toDateString() ? "" : " del " + g.toLocaleDateString("es-AR")) : "";
+}
+async function cargarBrief() {
+  const r = await fetch("/api/brief", { headers: H }); const b = await r.json(); pintar(b); return b;
+}
+
+// ---------- hablarle ----------
+async function enviar(cuerpo, tipo) {
+  if (ocupado) return; ocupado = true; estado("pensando"); $("plan").style.display = "none";
+  try {
+    const r = await fetch("/api/preguntar", { method: "POST", headers: { ...H, "Content-Type": tipo }, body: cuerpo });
+    const d = await r.json();
+    if (d.error) throw new Error(d.error);
+    if (d.oido != null) $("dijo").textContent = "«" + d.oido + "»";
+    if (d.plan) { planId = d.plan.id; $("planTexto").textContent = d.plan.texto; $("plan").style.display = "block"; }
+    await hablar(d.audio, d.respuesta);
+  } catch (e) { escribir("⚠️ " + e.message); estado("en línea"); }
+  finally { ocupado = false; }
+}
+$("texto").addEventListener("keydown", e => {
+  e.stopPropagation();
+  if (e.key === "Enter" && $("texto").value.trim() && !ocupado) {
+    const t = $("texto").value.trim(); $("texto").value = ""; $("dijo").textContent = "«" + t + "»";
+    enviar(JSON.stringify({ texto: t }), "application/json");
+  }
+});
+$("texto").addEventListener("keyup", e => e.stopPropagation());
+
+let grabador = null, pedazos = [], quiereGrabar = false, abriendo = false;
+async function empezarAGrabar() {
+  if (grabador || abriendo || ocupado) return;
+  quiereGrabar = true; abriendo = true;
+  if (reproduciendo) reproduciendo.pause();
+  let s;
+  try { s = await navigator.mediaDevices.getUserMedia({ audio: true }); } finally { abriendo = false; }
+  // Si soltó la tecla mientras se abría el micrófono (o el cartel de permiso), no se graba nada.
+  if (!quiereGrabar) { s.getTracks().forEach(t => t.stop()); return; }
+  pedazos = []; grabador = new MediaRecorder(s);
+  grabador.ondataavailable = e => pedazos.push(e.data);
+  grabador.onstop = () => { s.getTracks().forEach(t => t.stop()); const b = new Blob(pedazos, { type: grabador.mimeType }); grabador = null;
+    if (b.size > 2000) enviar(b, b.type || "audio/webm"); else estado("en línea"); };
+  grabador.start(); estado("escuchando"); $("dijo").textContent = "";
+}
+function cortarGrabacion() { quiereGrabar = false; if (grabador && grabador.state === "recording") grabador.stop(); }
+document.addEventListener("keydown", e => { if (e.code === "Space" && !e.repeat && !$("despertar").isConnected) { e.preventDefault(); empezarAGrabar().catch(err => escribir("⚠️ micrófono: " + err.message)); } });
+document.addEventListener("keyup", e => { if (e.code === "Space") { e.preventDefault(); cortarGrabacion(); } });
+cv.addEventListener("pointerdown", () => empezarAGrabar().catch(err => escribir("⚠️ micrófono: " + err.message)));
+cv.addEventListener("pointerup", cortarGrabacion); cv.addEventListener("pointerleave", cortarGrabacion);
+
+// ---------- plan ----------
+async function responderPlan(si) {
+  if (!planId) return; $("planSi").disabled = $("planNo").disabled = true; estado("pensando");
+  try {
+    const r = await fetch("/api/plan", { method: "POST", headers: { ...H, "Content-Type": "application/json" }, body: JSON.stringify({ id: planId, si }) });
+    const d = await r.json(); if (d.error) throw new Error(d.error);
+    $("plan").style.display = "none"; planId = null; await hablar(d.audio, d.respuesta);
+  } catch (e) { escribir("⚠️ " + e.message); estado("en línea"); }
+  finally { $("planSi").disabled = $("planNo").disabled = false; }
+}
+$("planSi").onclick = () => responderPlan(true); $("planNo").onclick = () => responderPlan(false);
+
+$("nuevo").onclick = async () => { await fetch("/api/nuevo", { method: "POST", headers: H }); $("dijo").textContent = ""; escribir("Arrancamos de cero, jefe."); };
+$("actualizar").onclick = async () => {
+  $("actualizar").disabled = true; estado("pensando"); escribir("Recalculando los números del día…");
+  try { const r = await fetch("/api/actualizar", { method: "POST", headers: H }); const b = await r.json();
+    if (b.error && !b.paneles) throw new Error(b.error); pintar(b); await hablar(b.audio, b.texto); }
+  catch (e) { escribir("⚠️ " + e.message); estado("en línea"); }
+  finally { $("actualizar").disabled = false; }
+};
+
+// ---------- despertar ----------
+async function despertar() {
+  $("despertar").remove(); ctxAudio = new AudioContext(); estado("en línea");
+  const b = await cargarBrief();
+  if (b.error) return;
+  const viejo = !b.generado || (Date.now() - new Date(b.generado)) > 14 * 3600 * 1000;
+  await hablar(b.audio, b.texto + (viejo ? "\n\n(Ojo: este brief es viejo. Tocá «Actualizar».)" : ""));
+}
+$("despertar").addEventListener("click", despertar, { once: true });
+document.addEventListener("keydown", function k(e) { if ($("despertar").isConnected) { e.preventDefault(); document.removeEventListener("keydown", k); despertar(); } });
+</script>
+</body>
+</html>
