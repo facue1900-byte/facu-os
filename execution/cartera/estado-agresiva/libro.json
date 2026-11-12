@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 699.4821690606357,
-  "posiciones": {
-    "UNIUSDT": {
-      "nivel": "trading",
-      "cantidad": 20.84925349173222,
-      "entrada": 6.229,
-      "maximo": 6.272,
-      "reglas": {
-        "stop": 2.6,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794472320000
-    }
-  },
-  "comisiones_usd": 45.82224799999995,
+  "usdt": 827.9934232105795,
+  "posiciones": {},
+  "comisiones_usd": 45.95088799999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4050,6 +4027,18 @@
       "usd": 130.0,
       "comision": 0.13,
       "motivo": "Rebote en soporte: UNI tocó el mínimo de 48 h (~6,101, vela 02:00) y la hora siguiente no hizo mínimo nuevo: pasó de +1,49% a +2,13% del mínimo, 4 h plana (-0,03%) con volumen 1,5x (antes 2,2-2,4x vendiendo, ahora absorbe). Stop ajustado 2,6% (~6,07, justo bajo el mínimo de 48 h) en vez de 5%: si perfora 6,10 la tesis murió. Debilidad: 24 h -7%, 48 h -9,8%, tendencia bajista; posición chica (130 USD). Cumple 24 h el 13/11 03:32."
+    },
+    {
+      "ms": 1794475903108,
+      "fecha": "2026-11-12 09:31 UTC",
+      "lado": "sell",
+      "par": "UNIUSDT",
+      "cantidad": 20.84925349173222,
+      "precio": 6.17,
+      "usd": 128.6399,
+      "comision": 0.12864,
+      "motivo": "Invalidación de rebote cumplida: el mínimo de 48 h bajó a ~6,097 (precio 6,164 a +1,1% del mínimo), por debajo del 6,101 de la vela 02:00 que era el soporte; la tesis decía 'invalida si perfora 6,10'. Sin volumen (0,58x), 24 h -3,6%. Salgo antes del stop 6,067.",
+      "resultado_pct": -0.95
     }
   ]
 }
