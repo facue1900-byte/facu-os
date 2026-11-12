@@ -186,8 +186,28 @@ def guardar_estado(e):
 
 
 RESPONDER_CON_VOZ = False  # Facu 11/11: en Telegram, respuestas sólo por escrito (la voz queda para las llamadas)
-VOZ = "Eddy (Spanish (Mexico))"  # masculina de la Mac (`say -v '?'`); no hay argentina instalada
-GRAVE = 0.86              # <1 baja el tono sin cambiar la velocidad: «Jarvis» grave
+VOZ_RESPALDO = "Eddy (Spanish (Mexico))"  # masculina que viene con la Mac
+GRAVE_RESPALDO = 0.86     # <1 baja el tono sin cambiar la velocidad: «Jarvis» grave
+
+
+def _elegir_voz():
+    """Diego (español de Argentina, gratis de Apple) si está instalado, la mejor calidad primero.
+    Se baja en Ajustes → Accesibilidad → Contenido leído → Voz del sistema → Gestionar voces →
+    Español (Argentina) → Diego (Mejorada). Si no está, la de respaldo: nunca se queda mudo."""
+    import re
+    try:
+        lista = subprocess.run(["/usr/bin/say", "-v", "?"], capture_output=True, text=True, timeout=20).stdout
+    except Exception:
+        return VOZ_RESPALDO, GRAVE_RESPALDO
+    diegos = [m.group(1).strip() for m in re.finditer(r"^(Diego.*?)\s+es_AR", lista, re.M)]
+    for pref in ("Premium", "Enhanced", "Mejorada", ""):
+        for d in diegos:
+            if pref in d:
+                return d, 0.93     # Diego ya es grave: se lo baja apenas, para que no suene a robot
+    return VOZ_RESPALDO, GRAVE_RESPALDO
+
+
+VOZ, GRAVE = _elegir_voz()
 LIMITE_VOZ = 1200          # más que esto en audio se hace eterno: se lee el principio y se avisa
 
 
