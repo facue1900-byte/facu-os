@@ -36,7 +36,7 @@ import openpyxl
 
 from reglas_locales import (REGLAS, PAGAN_POR_BANCO, PAGAN_ADELANTADO,  # noqa: E402
                             PESTANAS, CARGOS_SIN_PESTANA, CARGOS_CON_PESTANA,
-                            mes_de_cobro)
+                            mes_de_cobro, medio_del_cargo, medio_del_pago)
 
 MESES = {"ENE": 1, "FEB": 2, "MAR": 3, "ABR": 4, "MAY": 5, "JUN": 6,
          "JUL": 7, "AGO": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DIC": 12}
@@ -69,7 +69,7 @@ def meses_de_diferencia(a, b):
 
 def leer_pestana(nombre, filas, layout):
     """Movimientos de una pestaña de local. `filas` = filas desde la 1 (lista de listas)."""
-    _, cd, cin, ceg, csal, signo = layout
+    cobra, cd, cin, ceg, csal, signo = layout
     movs, saldo_final, ultimo = [], None, None
     for i, r in enumerate(filas, 1):
         if i < 6:
@@ -88,10 +88,16 @@ def leer_pestana(nombre, filas, layout):
                 raise ValueError(f"{nombre} fila {i}: cargo de ${eg:,.2f} sin período "
                                  f"legible en A ({r[0]!r})")
             movs.append({"local": nombre, "tipo": "cargo", "periodo": per,
-                         "mes_cobro": mes_de_cobro(det, per), "monto": eg})
+                         "mes_cobro": mes_de_cobro(det, per), "monto": eg,
+                         "medio": medio_del_cargo(cobra, det)})
         if ing:
             f = r[0] if isinstance(r[0], (datetime.datetime, datetime.date)) else None
-            movs.append({"local": nombre, "tipo": "pago", "fecha": f, "monto": ing})
+            # Mismo criterio que la tarjeta de Mati (deuda_efectivo.py): en un local
+            # partido, un pago sin medio escrito («mercado pago», «a favor…») va al
+            # efectivo; en los demás, el medio es el del local.
+            medio = (medio_del_pago(r, cd) or "efectivo") if cobra == "mixto" else cobra
+            movs.append({"local": nombre, "tipo": "pago", "fecha": f, "monto": ing,
+                         "medio": medio})
         if eg or ing:
             saldo_final = _num(r[csal]) * signo
     return movs, saldo_final, ultimo
@@ -155,14 +161,54 @@ def leer_xlsx(xlsx):
     return leer_fuente(hojas)
 
 
+def _por_medio(movs_local, corriente):
+    """Exigible y en curso de UN local, separados por medio (efectivo / banco).
+
+    Un pago en efectivo no cancela una deuda de banco (Bigg, 12/11/2026: los $800.000
+    en mano del 06/11 «tapaban» la ND 11 de $471.465 —recupero de sep, banco— y el
+    brief decía exigible $0). Se camina en orden, como la tarjeta de Mati: el efectivo
+    cancela efectivo, y sólo lo que SOBRA de un pago en efectivo se derrama a banco
+    (Bigg, mar-26: pagó en mano la diferencia y además expensas de banco)."""
+    m = {k: {"viejo": 0.0, "corriente": 0.0, "pagos": 0.0} for k in ("efectivo", "banco")}
+    pend_ef = 0.0
+    for x in movs_local:
+        medio = x.get("medio") or "banco"
+        if x["tipo"] == "cargo":
+            if x["mes_cobro"] < corriente:
+                m[medio]["viejo"] += x["monto"]
+            elif x["mes_cobro"] == corriente:
+                m[medio]["corriente"] += x["monto"]
+            if medio == "efectivo":
+                pend_ef += x["monto"]
+        elif medio == "efectivo":
+            aplicado = min(x["monto"], max(0.0, pend_ef))
+            pend_ef -= aplicado
+            m["efectivo"]["pagos"] += aplicado
+            m["banco"]["pagos"] += x["monto"] - aplicado      # el excedente, a banco
+        else:
+            m["banco"]["pagos"] += x["monto"]
+    out = {}
+    for k, v in m.items():
+        neto = v["viejo"] - v["pagos"]
+        out[k] = {"exigible": neto if neto > TOLERANCIA else 0.0,
+                  "en_curso": max(0.0, v["corriente"] + min(0.0, neto))}
+    return out
+
+
 def clasificar(movs, corriente, chequeos=None):
     """(deudores, al_dia, con_regla, sin_dato). Las tres primeras: listas de (local, saldos).
     `sin_dato`: [(local, motivo)] — locales cuya fuente está atrasada o no cierra; NO se
-    informan como deuda ni como al día. La usa también el brief de Jarvis."""
+    informan como deuda ni como al día. La usa también el brief de Jarvis.
+
+    Cada local trae `medios` = {"efectivo": {exigible, en_curso}, "banco": {...}}. En un
+    local partido (Bigg) el exigible es la SUMA por medio: lo que pagó en mano no
+    cancela lo que debe por banco."""
     locales = collections.defaultdict(lambda: {"viejo": 0.0, "corriente_cargo": 0.0,
                                                "futuro": 0.0, "pagos": 0.0,
                                                "corriente_pagos": 0.0, "ultimo_periodo": None})
+    por_local = collections.defaultdict(list)
     for x in movs:
+        por_local[x["local"]].append(x)
         loc = locales[x["local"]]
         if x["tipo"] == "cargo":
             if x["mes_cobro"] < corriente:
@@ -186,6 +232,18 @@ def clasificar(movs, corriente, chequeos=None):
         loc["exigible"] = neto if neto > TOLERANCIA else 0.0
         loc["residuo"] = neto if abs(neto) <= TOLERANCIA else 0.0
         loc["en_curso"] = max(0.0, loc["corriente_cargo"] + min(0.0, neto))
+        medios = {x.get("medio") for x in por_local[nombre]}
+        if len(medios) == 1 and None not in medios:          # todo por un solo medio
+            unico = medios.pop()
+            loc["medios"] = {k: {"exigible": loc["exigible"] if k == unico else 0.0,
+                                 "en_curso": loc["en_curso"] if k == unico else 0.0}
+                             for k in ("efectivo", "banco")}
+        elif None in medios:                                 # sin pestaña: no se sabe
+            loc["medios"] = None
+        else:                                                # partido: por medio
+            loc["medios"] = _por_medio(por_local[nombre], corriente)
+            loc["exigible"] = sum(v["exigible"] for v in loc["medios"].values())
+            loc["en_curso"] = sum(v["en_curso"] for v in loc["medios"].values())
         # A favor de verdad = pagó más que TODO lo cargado (también lo que viene).
         total = neto + loc["corriente_cargo"] + loc["futuro"]
         loc["saldo"] = total
