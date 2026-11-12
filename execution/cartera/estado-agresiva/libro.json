@@ -4,9 +4,54 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 827.9934232105795,
-  "posiciones": {},
-  "comisiones_usd": 45.95088799999995,
+  "usdt": 477.9934232105795,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.002775980075187657,
+      "entrada": 71974.58,
+      "maximo": 71974.58,
+      "reglas": {
+        "stop": 1.6,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794504780000
+    },
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.07437942690366163,
+      "entrada": 2014.67,
+      "maximo": 2014.67,
+      "reglas": {
+        "stop": 2.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794504780000
+    }
+  },
+  "comisiones_usd": 46.30088799999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4039,6 +4084,30 @@
       "comision": 0.12864,
       "motivo": "Invalidación de rebote cumplida: el mínimo de 48 h bajó a ~6,097 (precio 6,164 a +1,1% del mínimo), por debajo del 6,101 de la vela 02:00 que era el soporte; la tesis decía 'invalida si perfora 6,10'. Sin volumen (0,58x), 24 h -3,6%. Salgo antes del stop 6,067.",
       "resultado_pct": -0.95
+    },
+    {
+      "ms": 1794504768271,
+      "fecha": "2026-11-12 17:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.002775980075187657,
+      "precio": 71974.58,
+      "usd": 200.0,
+      "comision": 0.2,
+      "motivo": "Rebote en soporte: BTC tocó el mínimo de 48 h (71.255, vela 15:00) y las dos horas siguientes hicieron mínimos más altos (71.501 a las 16:00, 71.656 a las 17:00); 1 h +0,32%, 4 h -0,72% (antes -2,1%), la venta afloja; +1,02% del mínimo. Stop 1,6% (~70.800) en vez de 5%: si perfora 71.255 la tesis murió. Invalida: precio bajo 71.255. Cumple 24 h el 13/11 17:32."
+    },
+    {
+      "ms": 1794504777504,
+      "fecha": "2026-11-12 17:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.07437942690366163,
+      "precio": 2014.67,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: ETH tocó el mínimo de 48 h (1.983,8, vela 14:00) y las tres horas siguientes hicieron mínimos más altos (1.992,6 / 1.999,2 / 2.004,2); 4 h +0,03% plana tras venta, 1 h +0,27%, +1,47% del mínimo. Stop 2% (~1.972) bajo el mínimo. Invalida: precio bajo 1.983. Correlacionada con BTC: posición chica. Cumple 24 h el 13/11 17:32."
     }
   ]
 }
