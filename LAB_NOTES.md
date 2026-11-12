@@ -627,3 +627,16 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
   compartido). Parecía un bug de carrera del servidor. Al terminar una prueba: `pkill -f remote-debugging-port`.
 - Chrome headless con `--use-file-for-fake-audio-capture` entrega silencio: para probar de punta a punta
   se reemplaza `getUserMedia` por un `MediaStreamDestination` que reproduce el wav.
+
+## 12/11/2026 — Jarvis «trabajando» callado 2 minutos: no era que pensaba
+
+Facu: «el trabajando sigue siendo muy largo y no me dice nada». Medido en el transcript de la sesión
+(`~/.claude/projects/-Users-Facu-facu-os/<sid>.jsonl`, líneas `api-request`): la pregunta de las 17:07
+(«repetime qué tengo que pagar») tardó 118 s **sin ninguna herramienta ni thinking**. Hubo dos
+`api-request`: la primera colgó 75 s y el CLI reintentó, y la segunda tardó 43 s en dar 298 tokens.
+Fue la API, no el modelo pensando. Además, esa respuesta ya existía: una tarea la había calculado a
+las 13:57, pero al contexto de la charla sólo llegaba su «PARA DECIR» de 2 líneas.
+Arreglo: `--fallback-model opus`, rellenos de voz por tiempo, y el código lee en voz alta la herramienta
+que el modelo usa sin avisar. Las tareas salen en stream y publican su paso. Los reportes enteros de las
+últimas 3 tareas van al contexto, y los números se refrescan cada 20 min.
+**Lección:** antes de culpar al modelo por lento, mirá los timestamps de `api-request` del transcript.

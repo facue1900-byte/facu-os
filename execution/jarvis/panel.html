@@ -100,6 +100,7 @@
   .tarea .tit i { width: 7px; height: 7px; border-radius: 50%; flex: none; background: var(--col); box-shadow: 0 0 9px var(--col); }
   .tarea.corriendo .tit i { animation: latir 1s infinite; }
   .tarea .meta { font: 10px var(--mono); color: var(--dim); margin: 3px 0 7px 16px; }
+  .tarea .meta.paso { color: var(--amber); margin-top: -4px; }
   .tarea .acc { display: flex; gap: 6px; margin-left: 16px; flex-wrap: wrap; }
   .vacio { font: 11px var(--mono); color: var(--faint); padding: 2px 0 6px; line-height: 1.5; }
   .bandeja { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--hair); }
@@ -429,7 +430,7 @@ const COL_TAREA = { corriendo: "var(--amber)", lista: "var(--green)", "falló": 
 function dur(a, b) { const s = Math.round(((b || Date.now() / 1000) - a)); return s < 60 ? s + " s" : Math.floor(s / 60) + " min"; }
 let firmaTareas = "";
 function pintarTareas(tareas) {
-  const firma = JSON.stringify(tareas.map(t => [t.id, t.estado, t.session_id, Math.floor(Date.now() / 60000)]));
+  const firma = JSON.stringify(tareas.map(t => [t.id, t.estado, t.session_id, t.pasos, Math.floor(Date.now() / 60000)]));
   if (firma === firmaTareas) return; firmaTareas = firma;     // repintar sólo si cambió: no se pierden clicks
   const box = $("tareas"); box.innerHTML = "";
   const corr = tareas.filter(t => t.estado === "corriendo").length;
@@ -438,6 +439,7 @@ function pintarTareas(tareas) {
   tareas.slice(-6).reverse().forEach(t => {
     const w = el("div", "tarea " + t.estado), ti = el("div", "tit"), dot = el("i"); dot.style.setProperty("--col", COL_TAREA[t.estado] || "var(--dim)");
     ti.append(dot, el("span", null, t.titulo)); w.append(ti, el("div", "meta", `${t.estado.toUpperCase()} · ${dur(t.inicio, t.fin)} · #${t.id}`));
+    if (t.estado === "corriendo" && t.paso) w.append(el("div", "meta paso", `Paso ${t.pasos || 1}: ${t.paso}`));
     const acc = el("div", "acc");
     if (t.estado !== "corriendo") { const v = el("button", "mini", "Ver reporte"); v.onclick = () => verTarea(t); acc.append(v); }
     if (t.session_id) { const a = el("button", "mini", "Terminal"); a.onclick = () => abrir("terminal", t.id);
@@ -489,7 +491,7 @@ function oirAvances(av) {
   if (!av.turno || av.turno === avIgnorar) return;          // el turno de la pregunta anterior no se lee
   if (av.turno !== avTurno) { avTurno = av.turno; avOidos = new Set(); }
   for (const it of av.items) if (it.audio && !avOidos.has(it.n)) {
-    avOidos.add(it.n); colaVoz = colaVoz.then(() => sonar(it.audio)).catch(() => {}); }
+    avOidos.add(it.n); colaVoz = colaVoz.then(() => { if (it.texto && modo === "pensando") $("estadoTxt").textContent = it.texto; return sonar(it.audio); }).catch(() => {}); }
 }
 async function sonar(nombre) {      // reproduce sin cambiar el estado (sigue «pensando»)
   if (!nombre || !ctxAudio) return;
@@ -624,9 +626,13 @@ function abrirOido() {   // una sola apertura a la vez: el arranque y el interru
   return oidoAbriendo || (oidoAbriendo = _abrirOido().finally(() => { oidoAbriendo = null; }));
 }
 async function _abrirOido() {
-  const s = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+  // Sin cancelación de eco ni supresión de ruido: en la Mac activan el procesamiento de voz del sistema y,
+  // si otra app lo está usando, Chrome entrega SILENCIO (12/11/2026: volumen 0 durante minutos). Jarvis
+  // igual deja de escuchar mientras habla, así que el eco no hace falta.
+  const s = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: true } });
   if (!oidoOn) { s.getTracks().forEach(t => t.stop()); return; }
-  oidoStream = s;
+  oidoStream = s; oidoMudo = 0;
+  s.getAudioTracks().forEach(t => { t.onended = () => reabrirOido("se desconectó el micrófono"); });
   oidoFuente = ctxAudio.createMediaStreamSource(oidoStream);
   oidoNodo = ctxAudio.createScriptProcessor(4096, 1, 1);
   const paso = ctxAudio.sampleRate / 16000;
@@ -634,6 +640,10 @@ async function _abrirOido() {
     const libre = oidoLibre(); $("chipOido").classList.toggle("pausa", !libre);
     if (!libre) { oidoBuf = []; oidoLargo = 0; oidoNuevo = true; return; }
     const x = ev.inputBuffer.getChannelData(0), n = Math.floor(x.length / paso), out = new Int16Array(n);
+    // Micrófono mudo (todo cero exacto ~3 s): se reabre solo; si sigue mudo, se avisa en el botón.
+    let pico = 0; for (let i = 0; i < x.length; i += 8) pico = Math.max(pico, Math.abs(x[i]));
+    if (pico === 0) { oidoMudo += x.length / ctxAudio.sampleRate; if (oidoMudo > 3) { reabrirOido("el micrófono llegaba mudo"); return; } }
+    else { oidoMudo = 0; if (oidoReintentos) { oidoReintentos = 0; $("chipOido").querySelector("b").textContent = "on"; } }
     for (let i = 0; i < n; i++) { let a = 0, k = 0; for (let j = Math.floor(i * paso); j < Math.floor((i + 1) * paso); j++) { a += x[j]; k++; }
       out[i] = Math.max(-32768, Math.min(32767, (a / k) * 32767)); }
     oidoBuf.push(out); oidoLargo += n;
@@ -652,6 +662,16 @@ async function mandarOido() {
     if (d.detectado && oidoLibre()) { pitido(); empezarAGrabar(true).catch(errorMic); }
   } catch (e) { /* servidor reiniciando: el próximo pedazo reintenta */ }
   finally { oidoMandando = false; }
+}
+let oidoMudo = 0, oidoReintentos = 0;
+function reabrirOido(motivo) {
+  if (!oidoOn) return;
+  cerrarOido(); oidoReintentos++;
+  if (oidoReintentos >= 3) {
+    $("chipOido").querySelector("b").textContent = "mic mudo";
+    if (oidoReintentos === 3) avisar("HEY JARVIS", "El micrófono le llega mudo a Jarvis (" + motivo + "). Puede que otra app lo esté usando: cerrala o recargá la pantalla (Cmd+R).");
+  }
+  setTimeout(() => { if (oidoOn && !oidoStream) abrirOido().catch(e => { ponerOido(false); errorMic(e); }); }, Math.min(30000, 1000 * oidoReintentos));
 }
 function cerrarOido() {
   if (oidoNodo) { oidoNodo.onaudioprocess = null; oidoNodo.disconnect(); oidoNodo = null; }

@@ -31,6 +31,12 @@ mismo que si lo escribieras en la terminal.
   que sólo puede mandar a `MAIL_FACU`. A terceros sigue pasando por PLAN y el botón.
 - **Tareas largas:** si algo lleva más de unos minutos, Jarvis lo **lanza en otra sesión de Claude Code**
   y sigue charlando. Aparece en **Operaciones**. Cuando termina, te avisa y te lee el reporte.
+  Mientras corre, la tarjeta muestra **en qué paso va** («Paso 7: leyendo mails»), y si le preguntás
+  «¿cómo va eso?» lo contesta al toque. Cuando termina, el reporte entero queda en su contexto:
+  «repetime lo que encontraste» sale en segundos, sin volver a buscarlo.
+- **Nunca se queda callado:** si a los 5 s no contestó, dice «Un segundo, jefe». Si usa una
+  herramienta sin avisar, el panel lee qué está haciendo. Si pasan 18 s más sin novedad, avisa que
+  sigue. Si la API del modelo rápido está saturada, contesta Opus (`--fallback-model`).
 - **Abrir una sesión:** cada tarea tiene botones **Terminal** y **Antigravity** para entrar a esa sesión
   y seguir hablando ahí con Claude. Los botones de abajo abren la conversación de Jarvis.
   En Antigravity te deja el comando `claude --resume …` copiado para pegarlo en su terminal.
@@ -52,6 +58,10 @@ todo listo en `data/jarvis/`:
 | Pauta · Meta Ads | `active/astronomy/pauta/leer_meta.py` | En USD y sin convertir. Techo US$500/mes (`os/03-EMPRESA.md`). |
 | Paseo Nordelta | `radar_deudores` sobre las **pestañas por local** de Ctas Ctes (no la consolidada «CUENTA CORRIENTE», clavada en jul-26), que se baja fresca cada vez | Si el último período de un local tiene más de 1 mes de atraso o su cadena de saldo no cierra, el panel dice «sin dato» en vez del total. |
 | Bandeja y sistema | Gmail (`messagesUnread` de INBOX) + `recolectar.chequeo_tareas()` | Cuentas facu, paseo y studio. |
+
+Además, **mientras el servidor está prendido, los números se recalculan cada 20 min**
+(`brief.py --solo-numeros`, ~15 s, no toca el brief hablado): lo que Jarvis sabe «de memoria» es
+de hace menos de media hora.
 
 Los números los calcula el código; Claude solo los cuenta. Una fuente que falla aparece en
 **"Sin dato"**, nunca en cero. El texto hablado puede sumar pendientes del doc **Radar Facu**.
