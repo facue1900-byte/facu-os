@@ -219,6 +219,8 @@ def para_hablar(texto):
     t = re.sub(r"https?://\S+", "el link que te dejé por escrito", t)
     t = re.sub(r"[*_`#>|]", "", t)
     t = re.sub(r"^\s*[-•]\s*", "", t, flags=re.M)
+    # La voz en español lee «Jarvis» con jota (Facu, 12/11): se escribe como suena en inglés.
+    t = re.sub(r"\bJarvis\b", "Yarvis", t, flags=re.I)
     t = re.sub(r"\s+", " ", t).strip()
     if len(t) > LIMITE_VOZ:
         t = t[:LIMITE_VOZ].rsplit(". ", 1)[0] + ". El resto te lo dejé por escrito."
