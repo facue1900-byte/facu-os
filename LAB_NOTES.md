@@ -558,3 +558,5 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
 **Lección:** después de reiniciar un servidor, se verifica que el proceso que escucha es el nuevo: PID y comando, o algo que sólo tiene el código nuevo. Y un dato que el modelo «tiene que ir a buscar» no cuenta como dato: si importa, va en el prompt.
 
 **Revisión (code-reviewer + qa, 60 tests en `execution/tests/test_jarvis.py`):** encontró un doble «Sí» concurrente que podía ejecutar un plan dos veces (pasaba en 1 de cada ~10 corridas) y un plan ya ejecutado que podía revivir. Se arregló con un lock sobre todo leer-modificar-guardar de `estado.json`. Después del fix, 10 corridas seguidas en verde.
+
+**Y una más, la misma noche:** el plist del brief le pasaba a `correr.sh` el comando en dos partes (python | brief.py). `correr.sh` toma solo la primera, así que corría Python sin script: «éxito» en 0 segundos, código 0, sin brief. Se vio porque la hora del brief no cambió. **Fix de raíz:** `correr.sh` ahora corta con código 64, notificación y registro si el comando viene en más de una parte. Se probó con el plist viejo: saltó. Las otras 13 tareas estaban bien.

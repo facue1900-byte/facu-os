@@ -46,7 +46,7 @@ esperando algo que **solo podés hacer vos** (un login, una key, un permiso).
       cuentas reales.
 - [x] **Jarvis de escritorio** (11/11/2026) — `execution/jarvis/` (ver su README): pantalla en
       127.0.0.1:7777 con brief hablado, voz (Whisper local) y planes con botón. App
-      `~/Applications/Jarvis.app`. 🔴 El brief de las 07:50 (`com.facu.jarvis-brief`) lo carga Facu.
+      `~/Applications/Jarvis.app`. ✅ Brief de las 07:50 (`com.facu.jarvis-brief`) cargado y probado por launchd el 11/11.
 
 ## Inventario de infraestructura
 

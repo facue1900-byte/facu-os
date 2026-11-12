@@ -22,8 +22,7 @@
         <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
         <string>jarvis-brief</string>
         <string>--</string>
-        <string>/Users/Facu/facu-os/.venv/bin/python</string>
-        <string>/Users/Facu/facu-os/execution/jarvis/brief.py</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/jarvis/brief.py</string>
     </array>
     <key>WorkingDirectory</key>
     <string>/Users/Facu/facu-os</string>
