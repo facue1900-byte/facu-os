@@ -36,9 +36,57 @@ REGLAS = {
 # el mes está abierto (Facu, 27/07/2026).
 PAGAN_POR_BANCO = {"Fabric", "Bigg"}
 
-# Bigg paga POR ADELANTADO (el cargo del mes se paga durante el mismo mes, no el
-# siguiente). Su cargo "por vencer" en realidad ya está corriendo (Facu, 28/07).
-PAGAN_ADELANTADO = {"Bigg"}
+# Pagan el ALQUILER del mes durante el mismo mes (Bigg: Facu 28/07; Fabric: en
+# parciales, Facu 11/11/2026). Su cargo "por vencer" en realidad ya está corriendo.
+PAGAN_ADELANTADO = {"Bigg", "Fabric"}
+
+# ---------------------------------------------------------------------------
+# Las pestañas de cuenta corriente: la FUENTE de la deuda (radar, brief de Jarvis
+# y tarjeta de Mati). La consolidada «CUENTA CORRIENTE» era una grilla de filas
+# fijas período × local que nadie extendió después de jul-26: el 11/11/2026 el
+# brief mostraba la deuda de julio. No se vuelve a leer.
+#
+# pestaña → (cómo cobra, col detalle, col ingreso, col egreso, col saldo,
+#            signo del saldo: +1 si positivo = debe)   — índices 0-based
+# El signo se verificó leyendo la cadena el 11/11/2026: Fabric resta los cargos
+# (negativo = debe); Bigg, Boss, Volta y Peak One los suman.
+# ---------------------------------------------------------------------------
+PESTANAS = {
+    "Fabric":          ("banco",    2, 4, 5, 6, -1),
+    "Bigg":            ("mixto",    2, 4, 5, 6, +1),
+    "Boss":            ("efectivo", 2, 4, 5, 6, +1),
+    "Volta + Open 25": ("efectivo", 2, 3, 4, 5, +1),
+    "Peak One":        ("efectivo", 2, 3, 4, 5, +1),
+}
+
+# Cómo se llama en CARGOS / Cobros cada local que NO tiene pestaña. Su deuda sale
+# de CARGOS menos Cobros (Caja + Banco), que es lo que hacía la consolidada.
+CARGOS_SIN_PESTANA = {
+    "Salón (Alto)": ["salon multiespacios"],
+    "Escuelita": ["beto escuelita", "meta escuelita", "escuelita"],
+    "La Jaula / torneo": ["la jaula"],
+}
+# Los locales con pestaña aparecen en CARGOS con otro nombre: no se cuentan dos veces.
+CARGOS_CON_PESTANA = {"Fabric", "Bigg", "Boss", "Volta + Open", "Volta + Open 25", "Peak One"}
+
+
+def mes_de_cobro(concepto, periodo):
+    """En qué mes se cobra un cargo de una pestaña.
+
+    Cada bloque de cobro del mes M es: **alquiler de M + expensas de M−1**
+    (verificado en las cinco pestañas el 11/11/2026: Fabric, Bigg, Boss, Volta y
+    Peak One pagan así). O sea: el alquiler se cobra en su propio período; el
+    recupero, los servicios comunes, su IVA y las bonificaciones de expensas, al
+    mes siguiente. Un concepto que no es ninguna de las dos cosas NO se adivina.
+    """
+    c = concepto.lower()
+    y, m = periodo
+    if "alq" in c:
+        return periodo
+    if any(k in c for k in ("recupero", "servicios", "gs comunes", "rec gs", "expensa")):
+        return (y + 1, 1) if m == 12 else (y, m + 1)
+    raise ValueError(f"concepto sin regla de cobro: {concepto!r} — agregarlo a "
+                     f"reglas_locales.mes_de_cobro, no adivinarlo")
 
 # ---------------------------------------------------------------------------
 # Los que no tienen pestaña propia: sus cargos no se generan solos, así que cada
