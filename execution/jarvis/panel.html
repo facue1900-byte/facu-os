@@ -93,7 +93,7 @@
 const TOKEN = "{{TOKEN}}";
 const H = { "X-Jarvis-Token": TOKEN };
 const $ = id => document.getElementById(id);
-let brief = null, planId = null, ocupado = false;
+let brief = null, planId = null, ocupado = false, despierto = false;
 
 // ---------- reloj y estado ----------
 function reloj() {
@@ -197,6 +197,7 @@ $("texto").addEventListener("keydown", e => {
   e.stopPropagation();
   if (e.key === "Enter" && $("texto").value.trim() && !ocupado) {
     const t = $("texto").value.trim(); $("texto").value = ""; $("dijo").textContent = "«" + t + "»";
+    $("texto").blur();   // así la barra espaciadora vuelve a ser «hablar» y no un espacio en el texto
     enviar(JSON.stringify({ texto: t }), "application/json");
   }
 });
@@ -207,20 +208,28 @@ async function empezarAGrabar() {
   if (grabador || abriendo || ocupado) return;
   quiereGrabar = true; abriendo = true;
   if (reproduciendo) reproduciendo.pause();
+  estado("escuchando"); $("dijo").textContent = "abriendo el micrófono…";
   let s;
   try { s = await navigator.mediaDevices.getUserMedia({ audio: true }); } finally { abriendo = false; }
   // Si soltó la tecla mientras se abría el micrófono (o el cartel de permiso), no se graba nada.
-  if (!quiereGrabar) { s.getTracks().forEach(t => t.stop()); return; }
+  if (!quiereGrabar) { s.getTracks().forEach(t => t.stop()); estado("en línea");
+    $("dijo").textContent = "Soltaste antes de que abriera el micrófono: mantené apretado y hablá cuando diga «te escucho»."; return; }
   pedazos = []; grabador = new MediaRecorder(s);
   grabador.ondataavailable = e => pedazos.push(e.data);
   grabador.onstop = () => { s.getTracks().forEach(t => t.stop()); const b = new Blob(pedazos, { type: grabador.mimeType }); grabador = null;
     if (b.size > 2000) enviar(b, b.type || "audio/webm"); else estado("en línea"); };
-  grabador.start(); estado("escuchando"); $("dijo").textContent = "";
+  grabador.start(); estado("escuchando"); $("dijo").textContent = "te escucho…";
+}
+function errorMicrofono(err) {
+  estado("en línea"); $("dijo").textContent = "";
+  escribir(err && err.name === "NotAllowedError"
+    ? "⚠️ No tengo permiso para el micrófono. Tocá el candado de arriba a la izquierda → Micrófono → Permitir. Si sigue, Ajustes del Sistema → Privacidad → Micrófono → prendé Google Chrome."
+    : "⚠️ micrófono: " + (err && err.message));
 }
 function cortarGrabacion() { quiereGrabar = false; if (grabador && grabador.state === "recording") grabador.stop(); }
-document.addEventListener("keydown", e => { if (e.code === "Space" && !e.repeat && !$("despertar").isConnected) { e.preventDefault(); empezarAGrabar().catch(err => escribir("⚠️ micrófono: " + err.message)); } });
+document.addEventListener("keydown", e => { if (e.code === "Space" && !e.repeat && despierto) { e.preventDefault(); empezarAGrabar().catch(errorMicrofono); } });
 document.addEventListener("keyup", e => { if (e.code === "Space") { e.preventDefault(); cortarGrabacion(); } });
-cv.addEventListener("pointerdown", () => empezarAGrabar().catch(err => escribir("⚠️ micrófono: " + err.message)));
+cv.addEventListener("pointerdown", () => empezarAGrabar().catch(errorMicrofono));
 cv.addEventListener("pointerup", cortarGrabacion); cv.addEventListener("pointerleave", cortarGrabacion);
 
 // ---------- plan ----------
@@ -246,6 +255,10 @@ $("actualizar").onclick = async () => {
 
 // ---------- despertar ----------
 async function despertar() {
+  if (despierto) return;
+  // Bandera y no `$("despertar").isConnected`: después del remove() el elemento es null y esa
+  // pregunta tiraba error en cada tecla, así la barra espaciadora nunca grababa (11/11/2026).
+  despierto = true;
   $("despertar").remove(); ctxAudio = new AudioContext(); estado("en línea");
   const b = await cargarBrief();
   if (b.error) return;
@@ -253,7 +266,7 @@ async function despertar() {
   await hablar(b.audio, b.texto + (viejo ? "\n\n(Ojo: este brief es viejo. Tocá «Actualizar».)" : ""));
 }
 $("despertar").addEventListener("click", despertar, { once: true });
-document.addEventListener("keydown", function k(e) { if ($("despertar").isConnected) { e.preventDefault(); document.removeEventListener("keydown", k); despertar(); } });
+document.addEventListener("keydown", function k(e) { if (!despierto) { e.preventDefault(); document.removeEventListener("keydown", k); despertar(); } });
 </script>
 </body>
 </html>
