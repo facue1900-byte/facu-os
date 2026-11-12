@@ -120,6 +120,8 @@
   .msg.facu::before { content: "VOS"; display: block; font: 9.5px var(--mono); letter-spacing: .3em; color: var(--faint); margin-bottom: 3px; }
   .msg.jarvis { border-left: 2px solid var(--c); padding-left: 14px; color: var(--txt); }
   .msg.jarvis::before { content: "JARVIS"; display: block; font: 9.5px var(--mono); letter-spacing: .3em; color: var(--c); margin-bottom: 3px; }
+  .msg.jarvis.avance { color: var(--dim); font-size: 13.5px; margin-bottom: 8px; }
+  .msg.jarvis.avance::before { content: "JARVIS · BUSCANDO"; }
   .msg.jarvis.ultimo { text-shadow: 0 0 20px rgba(95, 227, 255, .12); }
 
   /* ---------- barra de comando ---------- */
@@ -420,7 +422,7 @@ function pintarFeed(conv) {
   hayConv = conv.length > 0;
   const firma = conv.map(m => m.ts).join(","); if (firma === firmaConv || !hayConv) return; firmaConv = firma;
   const f = $("feed"); f.innerHTML = "";
-  conv.slice(-14).forEach((m, i, arr) => f.append(el("div", "msg " + m.quien + (i === arr.length - 1 && m.quien === "jarvis" ? " ultimo" : ""), m.texto)));
+  conv.slice(-14).forEach((m, i, arr) => f.append(el("div", "msg " + m.quien + (m.avance ? " avance" : "") + (i === arr.length - 1 && m.quien === "jarvis" ? " ultimo" : ""), m.texto)));
   f.scrollTop = f.scrollHeight;
 }
 const COL_TAREA = { corriendo: "var(--amber)", lista: "var(--green)", "falló": "var(--red)", interrumpida: "var(--red)" };
@@ -458,6 +460,7 @@ async function sondear() {
     if (e.version_numeros) versionNumeros = e.version_numeros;
     $("chipCambios").className = "chip " + (e.modo_cambios ? "on" : "off"); $("chipCambios").querySelector("b").textContent = e.modo_cambios ? "on" : "off";
     $("chipVoz").textContent = (e.voz || "").split(" ")[0];
+    if (e.avances) oirAvances(e.avances);
     if (typeof e.escucha === "boolean" && e.escucha !== oidoOn && Date.now() - oidoTocado > 5000) ponerOido(e.escucha, false);
     if (modo === "pensando" && e.actividad) $("estadoTxt").textContent = e.actividad + "…";
     $("planModo").textContent = e.modo_cambios ? "MODO CAMBIOS ON" : "MODO CAMBIOS OFF · no se va a ejecutar";
@@ -478,6 +481,25 @@ let reproduciendo = null, fila = [];
 // Avisos de tareas: en fila, se leen cuando Jarvis está libre (no cortan una respuesta ni a vos hablando).
 function encolar(nombre) { fila.push(nombre); }
 setInterval(() => { if (fila.length && modo === "linea" && !ocupado && !grabador) hablar(fila.shift()); }, 800);
+// Avances: lo que Jarvis va diciendo mientras busca. Suenan en fila, sin cortar uno al otro; la
+// respuesta final espera a que termine el último (colaVoz).
+let avUltimo = null, avIgnorar = null, avTurno = null, avOidos = new Set(), colaVoz = Promise.resolve();
+function oirAvances(av) {
+  if (modo !== "pensando") { avUltimo = av.turno; return; }
+  if (!av.turno || av.turno === avIgnorar) return;          // el turno de la pregunta anterior no se lee
+  if (av.turno !== avTurno) { avTurno = av.turno; avOidos = new Set(); }
+  for (const it of av.items) if (it.audio && !avOidos.has(it.n)) {
+    avOidos.add(it.n); colaVoz = colaVoz.then(() => sonar(it.audio)).catch(() => {}); }
+}
+async function sonar(nombre) {      // reproduce sin cambiar el estado (sigue «pensando»)
+  if (!nombre || !ctxAudio) return;
+  const r = await fetch("/api/audio/" + nombre, { headers: H }); if (!r.ok) return;
+  const url = URL.createObjectURL(await r.blob()), a = new Audio(url); reproduciendo = a;
+  const src = ctxAudio.createMediaElementSource(a); analizador = ctxAudio.createAnalyser(); analizador.fftSize = 1024;
+  src.connect(analizador); analizador.connect(ctxAudio.destination);
+  await new Promise(fin => { a.onended = a.onpause = fin; a.play().catch(fin); });
+  src.disconnect(); analizador.disconnect(); analizador = null; URL.revokeObjectURL(url);
+}
 async function hablar(nombre) {
   if (!nombre || !ctxAudio) return;
   if (reproduciendo) reproduciendo.pause();
@@ -497,12 +519,15 @@ async function hablar(nombre) {
 let sondeoRapido = null;
 async function enviar(cuerpo, tipo) {
   if (ocupado) return; ocupado = true; estado("pensando", tipo.startsWith("audio") ? "transcribiendo…" : "pensando…");
-  sondeoRapido = setInterval(sondear, 1000);   // mientras trabaja, se ve qué está haciendo
+  avIgnorar = avUltimo; colaVoz = Promise.resolve();
+  sondeoRapido = setInterval(sondear, 1000);   // mientras trabaja, se ve qué está haciendo y se oyen los avances
   try {
     const r = await fetch("/api/preguntar", { method: "POST", headers: { ...H, "Content-Type": tipo }, body: cuerpo });
     const d = await r.json(); if (d.error) throw new Error(d.error);
     firmaConv = ""; await sondear();
     if (d.plan) { planId = d.plan.id; $("planTexto").textContent = d.plan.texto; $("velo").classList.add("ver"); }
+    clearInterval(sondeoRapido); await sondear();   // por si quedó un avance sin leer
+    await colaVoz;
     estado("linea"); await hablar(d.audio);
   } catch (e) { $("feed").append(el("div", "msg jarvis", "⚠️ " + e.message)); estado("linea"); }
   finally { ocupado = false; clearInterval(sondeoRapido); }
