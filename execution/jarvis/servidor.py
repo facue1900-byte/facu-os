@@ -404,7 +404,7 @@ CEREBRO = CerebroVivo()
 # («ei harvis») queda en 0,4–0,5: si no lo agarra, bajar JARVIS_UMBRAL_DESPERTAR.
 UMBRAL_DESPERTAR = float(os.environ.get("JARVIS_UMBRAL_DESPERTAR") or 0.5)
 OIDO_LOCK = threading.Lock()
-_oido = {"modelo": None, "resto": b""}
+_oido = {"modelo": None, "resto": b"", "desde": 0.0, "pedazos": 0, "pico": 0.0, "volumen": 0}
 TRAMA = 1280 * 2          # 80 ms a 16 kHz, int16
 
 
@@ -429,6 +429,17 @@ def escuchar_pedazo(datos):
                 buf = b""
                 break
         _oido["resto"] = buf
+        # Resumen cada 15 s en el log: si Facu dice «no me agarra», acá se ve si llega audio
+        # (volumen) y cuánto le dio el detector (pico) contra el umbral.
+        _oido["pedazos"] += 1
+        _oido["pico"] = max(_oido["pico"], pico)
+        if datos:
+            _oido["volumen"] = max(_oido["volumen"], int(np.abs(np.frombuffer(datos[:len(datos) // 2 * 2], dtype=np.int16).astype(np.int32)).max()))
+        if time.time() - _oido["desde"] > 15:
+            if _oido["desde"]:
+                log(f"Oído 15 s: {_oido['pedazos']} pedazos, volumen máx {_oido['volumen']}/32767, "
+                    f"pico máx {_oido['pico']:.2f} (umbral {UMBRAL_DESPERTAR})")
+            _oido.update(desde=time.time(), pedazos=0, pico=0.0, volumen=0)
         return detectado, pico
 
 
