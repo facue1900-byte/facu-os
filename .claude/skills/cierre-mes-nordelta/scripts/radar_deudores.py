@@ -41,20 +41,8 @@ def leer_cuenta_corriente(xlsx):
     return filas
 
 
-def main():
-    if len(sys.argv) != 3:
-        sys.exit(__doc__)
-    xlsx, mes = sys.argv[1], sys.argv[2]
-    try:
-        anio, num = (int(x) for x in mes.split("-"))
-        corriente = (anio, num)
-    except ValueError:
-        sys.exit(f"El mes va como AAAA-MM, no {mes!r}.")
-
-    filas = leer_cuenta_corriente(xlsx)
-    if not filas:
-        sys.exit("CUENTA CORRIENTE no tiene filas — eso es un error, no un dato.")
-
+def clasificar(filas, corriente):
+    """(deudores, al_dia, con_regla): listas de (local, saldos). La usa también el brief de Jarvis."""
     locales = collections.defaultdict(lambda: {"exigible": 0.0, "corriente_cargo": 0.0,
                                                "corriente_pagos": 0.0, "futuro": 0.0})
     for f in filas:
@@ -69,9 +57,6 @@ def main():
         else:
             loc["futuro"] += f["cargado"] - f["pagado"]
 
-    print(f"RADAR DE DEUDORES — corte {mes} "
-          f"(exigible = cargos hasta el mes pasado − todos los pagos)\n")
-
     deudores, al_dia, con_regla = [], [], []
     for nombre in sorted(locales):
         loc = locales[nombre]
@@ -81,6 +66,27 @@ def main():
             deudores.append((nombre, loc))
         else:
             al_dia.append((nombre, loc))
+    return deudores, al_dia, con_regla
+
+
+def main():
+    if len(sys.argv) != 3:
+        sys.exit(__doc__)
+    xlsx, mes = sys.argv[1], sys.argv[2]
+    try:
+        anio, num = (int(x) for x in mes.split("-"))
+        corriente = (anio, num)
+    except ValueError:
+        sys.exit(f"El mes va como AAAA-MM, no {mes!r}.")
+
+    filas = leer_cuenta_corriente(xlsx)
+    if not filas:
+        sys.exit("CUENTA CORRIENTE no tiene filas — eso es un error, no un dato.")
+
+    deudores, al_dia, con_regla = clasificar(filas, corriente)
+
+    print(f"RADAR DE DEUDORES — corte {mes} "
+          f"(exigible = cargos hasta el mes pasado − todos los pagos)\n")
 
     if deudores:
         print("DEBEN (exigible hoy)")

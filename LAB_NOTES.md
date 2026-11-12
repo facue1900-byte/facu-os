@@ -542,3 +542,25 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
 **Fix:** el mensaje ahora dice que el paso 1 se corta por diferencia O por no poder bajar los datos, y manda a mirar el error. Queda sin resolver por qué la red de la Mac falla a esa hora.
 
 **Lección:** el mismo patrón que el `shasum` del 05/11: un chequeo que no pudo leer no tiene que reportar un veredicto.
+
+## 11/11/2026 — Jarvis de escritorio: «no tengo el dato» con el dato en disco, y un pkill que no mataba nada
+
+**Dónde:** `execution/jarvis/servidor.py`.
+
+**Qué pasó (1):** se le preguntó por voz cuántos alumnos activos había. Contestó que no tenía el número, y estaba en `data/jarvis/numeros.json` (19). La instrucción decía «usalo», pero Claude busca con Glob y `data/` está gitignoreada.
+
+**Fix:** los números del día van pegados adentro de cada pregunta, con hora y fecha, y marcados VIEJOS si no son de hoy.
+
+**Qué pasó (2):** el servidor se reiniciaba con `pkill -f "jarvis/servidor.py"`, pero se había arrancado como `python servidor.py`, desde su carpeta. El pkill no matchea nada, el arranque nuevo muere por puerto ocupado y las pruebas «en vivo» le pegan al código viejo. Se detectó porque no aparecían los headers nuevos.
+
+**Fix:** se arranca siempre con path absoluto (`jarvis.sh`), y para matar se busca por puerto (`lsof -tiTCP:7777`).
+
+**Lección:** después de reiniciar un servidor, se verifica que el proceso que escucha es el nuevo: PID y comando, o algo que sólo tiene el código nuevo. Y un dato que el modelo «tiene que ir a buscar» no cuenta como dato: si importa, va en el prompt.
+
+**Revisión (code-reviewer + qa, 60 tests en `execution/tests/test_jarvis.py`):** encontró un doble «Sí» concurrente que podía ejecutar un plan dos veces (pasaba en 1 de cada ~10 corridas) y un plan ya ejecutado que podía revivir. Se arregló con un lock sobre todo leer-modificar-guardar de `estado.json`. Después del fix, 10 corridas seguidas en verde.
+
+**Y una más, la misma noche:** el plist del brief le pasaba a `correr.sh` el comando en dos partes (python | brief.py). `correr.sh` toma solo la primera, así que corría Python sin script: «éxito» en 0 segundos, código 0, sin brief. Se vio porque la hora del brief no cambió. **Fix de raíz:** `correr.sh` ahora corta con código 64, notificación y registro si el comando viene en más de una parte. Se probó con el plist viejo: saltó. Las otras 13 tareas estaban bien.
+
+**v2, misma noche: Jarvis como intermediario completo.** Facu: «que todo lo que le digo te comande a vos». El cerebro pasó de solo lectura a Claude Code completo (`--permission-mode auto`), con tareas en segundo plano (otra sesión, abrible en Terminal o Antigravity). Dos trampas:
+- **Retomar la sesión vieja arrastra lo que creía.** Con el prompt nuevo seguía diciendo «estoy en solo lectura»: el historial le ganó al prompt nuevo. Cuando cambian los poderes de un agente, se arranca sesión nueva.
+- **La regla 10 iba solo por instrucción.** La revisión lo marcó. Ahora es con llave: `--disallowedTools "Bash(*--send*)"` + envío de Gmail. Probado en vivo: `echo hola --send` bloqueado, `echo hola` corre; un mail pedido por voz vuelve como PLAN. Las pruebas rompen la llave a propósito y fallan.
