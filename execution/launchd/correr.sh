@@ -38,6 +38,14 @@ if [[ -z $NOMBRE || -z $CMD ]]; then
   echo "Uso: correr.sh <nombre> -- <comando>" >&2
   exit 64
 fi
+# El comando va como UN solo string. Pasado en partes, CMD queda en el primer pedazo (ej.: el
+# python sin el script), corre «bien» en 0 s y la tarea no hizo nada (jarvis-brief, 11/11/2026).
+if [[ $# -gt 1 ]]; then
+  echo "!!! correr.sh: el comando vino en $# partes; va como UN solo string en el plist." >&2
+  printf '{"tarea":"%s","inicio":"%s","fin":"%s","codigo":64}\n' "$NOMBRE" "$(date '+%Y-%m-%dT%H:%M:%S%z')" "$(date '+%Y-%m-%dT%H:%M:%S%z')" >> "$REG"
+  osascript -e "display notification \"Plist mal armado: el comando vino en partes\" with title \"Tarea: $NOMBRE\" sound name \"Basso\"" 2>/dev/null
+  exit 64
+fi
 
 INICIO=$(date '+%Y-%m-%dT%H:%M:%S%z')
 SAL=$(mktemp); ERR=$(mktemp)

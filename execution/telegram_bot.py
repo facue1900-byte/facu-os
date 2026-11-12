@@ -186,8 +186,28 @@ def guardar_estado(e):
 
 
 RESPONDER_CON_VOZ = False  # Facu 11/11: en Telegram, respuestas sólo por escrito (la voz queda para las llamadas)
-VOZ = "Eddy (Spanish (Mexico))"  # masculina de la Mac (`say -v '?'`); no hay argentina instalada
-GRAVE = 0.86              # <1 baja el tono sin cambiar la velocidad: «Jarvis» grave
+VOZ_RESPALDO = "Eddy (Spanish (Mexico))"  # masculina que viene con la Mac
+GRAVE_RESPALDO = 0.86     # <1 baja el tono sin cambiar la velocidad: «Jarvis» grave
+
+
+def _elegir_voz():
+    """Diego (español de Argentina, gratis de Apple) si está instalado, la mejor calidad primero.
+    Se baja en Ajustes → Accesibilidad → Contenido leído → Voz del sistema → Gestionar voces →
+    Español (Argentina) → Diego (Mejorada). Si no está, la de respaldo: nunca se queda mudo."""
+    import re
+    try:
+        lista = subprocess.run(["/usr/bin/say", "-v", "?"], capture_output=True, text=True, timeout=20).stdout
+    except Exception:
+        return VOZ_RESPALDO, GRAVE_RESPALDO
+    diegos = [m.group(1).strip() for m in re.finditer(r"^(Diego.*?)\s+es_AR", lista, re.M)]
+    for pref in ("Premium", "Enhanced", "Mejorada", ""):
+        for d in diegos:
+            if pref in d:
+                return d, 1.0      # sin filtro: bajarle el tono lo hacía sonar más robótico (Facu, 11/11)
+    return VOZ_RESPALDO, GRAVE_RESPALDO
+
+
+VOZ, GRAVE = _elegir_voz()
 LIMITE_VOZ = 1200          # más que esto en audio se hace eterno: se lee el principio y se avisa
 
 
@@ -263,7 +283,8 @@ class ClaudeFallo(Exception):
     pass
 
 
-def _correr_claude(texto, session_id, ejecutar=False):
+def _correr_claude(texto, session_id, ejecutar=False, instrucciones=None):
+    """`instrucciones` reemplaza el system prompt de lectura (el Jarvis de escritorio usa el suyo)."""
     if ejecutar:
         cmd = [CLAUDE, "-p", texto, "--output-format", "json",
                "--tools", PROPIAS_EJECUTOR, "--permission-mode", "dontAsk",
@@ -277,7 +298,7 @@ def _correr_claude(texto, session_id, ejecutar=False):
         cmd = [CLAUDE, "-p", texto, "--output-format", "json",
                "--tools", PROPIAS, "--permission-mode", "dontAsk",
                "--allowedTools", *APROBADAS, "--disallowedTools", *PROHIBIDAS,
-               "--append-system-prompt", INSTRUCCIONES]
+               "--append-system-prompt", instrucciones or INSTRUCCIONES]
         limite = TIEMPO_MAX_CLAUDE
         path = "/Users/Facu/.local/node/bin:/usr/bin:/bin"
     if session_id:
@@ -304,7 +325,24 @@ def _correr_claude(texto, session_id, ejecutar=False):
     return salida.get("result") or "", salida.get("session_id")
 
 
+def contexto_numeros():
+    """Los números del día que arma el brief de Jarvis (data/jarvis/numeros.json). Van pegados al mensaje:
+    buscados, Claude no los encuentra (data/ está gitignoreada) — falla vista por el examen de Jarvis, 11/11."""
+    try:
+        num = json.loads((OS_DIR / "data" / "jarvis" / "numeros.json").read_text())
+        g = num["generado"]
+        hoy = time.strftime("%Y-%m-%d") == g[:10]
+        datos = {k: v for k, v in num["numeros"].items() if k != "Tareas programadas"}
+        return (f"[Números {'de hoy' if hoy else 'VIEJOS (no son de hoy: decilo)'} calculados por código a las "
+                f"{g[11:16]} del {g[8:10]}/{g[5:7]} (data/jarvis/numeros.json; usalos antes que logs o memoria): "
+                + json.dumps(datos, ensure_ascii=False, separators=(",", ":"))
+                + (f" · fuentes sin dato: {num['errores']}" if num.get("errores") else "") + "]\n\n")
+    except Exception:
+        return ""
+
+
 def preguntar_a_claude(texto, estado, chat_id):
+    texto = contexto_numeros() + texto
     try:
         respuesta, sid = _correr_claude(texto, estado.get("session_id"))
     except ClaudeFallo:
