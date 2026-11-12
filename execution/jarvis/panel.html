@@ -48,6 +48,12 @@
   .chip { font: 10px var(--mono); letter-spacing: .14em; color: var(--dim); text-transform: uppercase; padding: 5px 9px; border: 1px solid var(--hair); border-radius: 3px; white-space: nowrap; }
   .chip b { color: var(--c2); font-weight: 500; }
   .chip.on b { color: var(--green); } .chip.off b { color: var(--amber); }
+  .chip.boton { background: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .chip.boton:hover { border-color: var(--c2); }
+  .chip .punto { width: 6px; height: 6px; border-radius: 50%; background: var(--hair); display: none; }
+  .chip.on .punto { display: inline-block; background: var(--green); animation: latido 1.6s ease-in-out infinite; }
+  .chip.on.pausa .punto { background: var(--dim); animation: none; }
+  @keyframes latido { 50% { opacity: .25; } }
   .reloj { text-align: right; line-height: 1.1; }
   .reloj b { display: block; font: 500 22px var(--mono); letter-spacing: .06em; color: var(--txt); }
   .reloj span { font: 10px var(--mono); color: var(--dim); letter-spacing: .2em; text-transform: uppercase; }
@@ -179,6 +185,7 @@
     <div class="pildora" id="pildora"><i></i><span id="estadoPil">en espera</span><span id="cronometro"></span></div>
     <div class="derecha">
       <span class="chip" id="chipCambios">cambios <b>—</b></span>
+      <button class="chip boton" id="chipOido" title="Prender/apagar la palabra «Hey Jarvis»">hey jarvis <b>off</b><i class="punto"></i></button>
       <span class="chip">voz <b id="chipVoz">—</b></span>
       <div class="reloj"><b id="hora">--:--</b><span id="fecha"></span></div>
     </div>
@@ -451,6 +458,7 @@ async function sondear() {
     if (e.version_numeros) versionNumeros = e.version_numeros;
     $("chipCambios").className = "chip " + (e.modo_cambios ? "on" : "off"); $("chipCambios").querySelector("b").textContent = e.modo_cambios ? "on" : "off";
     $("chipVoz").textContent = (e.voz || "").split(" ")[0];
+    if (typeof e.escucha === "boolean" && e.escucha !== oidoOn && Date.now() - oidoTocado > 5000) ponerOido(e.escucha, false);
     if (modo === "pensando" && e.actividad) $("estadoTxt").textContent = e.actividad + "…";
     $("planModo").textContent = e.modo_cambios ? "MODO CAMBIOS ON" : "MODO CAMBIOS OFF · no se va a ejecutar";
     if (e.plan && e.plan.id !== planId) { planId = e.plan.id; $("planTexto").textContent = e.plan.texto; $("velo").classList.add("ver"); }
@@ -531,7 +539,7 @@ $("texto").addEventListener("input", () => {
 setInterval(() => { if (despierto && document.activeElement !== $("texto") && !$("velo").classList.contains("ver") && document.hasFocus()) $("texto").focus(); }, 1500);
 
 let grabador = null, pedazos = [], quiereGrabar = false, abriendo = false, micFuente = null;
-async function empezarAGrabar() {
+async function empezarAGrabar(manosLibres = false) {
   if (ocupado && despierto) { estado("pensando", "todavía estoy con lo anterior: esperá que termine"); return; }
   if (grabador || abriendo || ocupado || !despierto) return;
   quiereGrabar = true; abriendo = true;
@@ -544,8 +552,10 @@ async function empezarAGrabar() {
   grabador.ondataavailable = e => pedazos.push(e.data);
   grabador.onstop = () => { s.getTracks().forEach(t => t.stop()); if (micFuente) micFuente.disconnect(); analizador = null;
     const b = new Blob(pedazos, { type: grabador.mimeType }); grabador = null;
-    if (b.size > 2000) enviar(b, b.type || "audio/webm"); else estado("linea", "muy corto: mantené apretado mientras hablás"); };
-  grabador.start(); estado("escuchando", "te escucho…");
+    if (b.size > 2000 && huboVoz) enviar(b, b.type || "audio/webm"); else estado("linea", manosLibres ? "no te escuché nada" : "muy corto: mantené apretado mientras hablás"); };
+  huboVoz = !manosLibres;
+  grabador.start(); estado("escuchando", manosLibres ? "te escucho… (corto cuando te callás)" : "te escucho…");
+  if (manosLibres) cortarAlCallarse();
 }
 function cortar() { quiereGrabar = false; if (grabador && grabador.state === "recording") grabador.stop(); }
 function errorMic(err) {
@@ -557,6 +567,79 @@ function errorMic(err) {
 document.addEventListener("keydown", e => { if (e.code === "Space" && !e.repeat && despierto) { e.preventDefault(); empezarAGrabar().catch(errorMic); } });
 document.addEventListener("keyup", e => { if (e.code === "Space" && despierto) { e.preventDefault(); cortar(); } });
 for (const n of [cv, $("mic")]) { n.addEventListener("pointerdown", () => empezarAGrabar().catch(errorMic)); n.addEventListener("pointerup", cortar); n.addEventListener("pointerleave", cortar); }
+
+// ============ «Hey Jarvis» ============
+// El micrófono queda abierto SOLO con el interruptor prendido. El audio va al servidor de la Mac
+// (127.0.0.1) en pedazos de ¼ s y ahí openWakeWord busca la palabra: nada sale de la compu.
+// No se manda mientras Jarvis habla, piensa o graba: así no se despierta con su propia voz.
+let huboVoz = false;
+function cortarAlCallarse() {
+  // Corta 1,3 s después de que dejaste de hablar; si en 6 s no dijiste nada, corta igual. Tope 25 s.
+  const t0 = performance.now(), datos = new Uint8Array(512); let ultimaVoz = 0;
+  const mirar = setInterval(() => {
+    if (!grabador) return clearInterval(mirar);
+    const ahora = performance.now();
+    if (analizador) { analizador.getByteTimeDomainData(datos); let e = 0; for (const v of datos) e += (v - 128) ** 2;
+      if (Math.sqrt(e / datos.length) > 6) { ultimaVoz = ahora; huboVoz = true; } }
+    if ((ultimaVoz && ahora - ultimaVoz > 1300) || (!ultimaVoz && ahora - t0 > 6000) || ahora - t0 > 25000) { clearInterval(mirar); cortar(); }
+  }, 100);
+}
+let oidoTocado = 0, oidoOn = false, oidoStream = null, oidoNodo = null, oidoFuente = null, oidoBuf = [], oidoLargo = 0, oidoMandando = false, oidoNuevo = true;
+function oidoLibre() { return despierto && modo === "linea" && !ocupado && !grabador && !abriendo && !(reproduciendo && !reproduciendo.paused) && !$("velo").classList.contains("ver"); }
+function ponerOido(on, guardar = true) {
+  oidoOn = on;
+  $("chipOido").className = "chip boton " + (on ? "on" : "off"); $("chipOido").querySelector("b").textContent = on ? "on" : "off";
+  if (guardar) oidoTocado = Date.now();
+  if (guardar) fetch("/api/escucha", { method: "POST", headers: { ...H, "Content-Type": "application/json" }, body: JSON.stringify({ on }) }).catch(() => {});
+  if (on && despierto) abrirOido().catch(e => { ponerOido(false); errorMic(e); }); else cerrarOido();
+}
+let oidoAbriendo = null;
+function abrirOido() {   // una sola apertura a la vez: el arranque y el interruptor pueden pedirla juntos
+  if (oidoStream || !ctxAudio) return Promise.resolve();
+  return oidoAbriendo || (oidoAbriendo = _abrirOido().finally(() => { oidoAbriendo = null; }));
+}
+async function _abrirOido() {
+  const s = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+  if (!oidoOn) { s.getTracks().forEach(t => t.stop()); return; }
+  oidoStream = s;
+  oidoFuente = ctxAudio.createMediaStreamSource(oidoStream);
+  oidoNodo = ctxAudio.createScriptProcessor(4096, 1, 1);
+  const paso = ctxAudio.sampleRate / 16000;
+  oidoNodo.onaudioprocess = ev => {
+    const libre = oidoLibre(); $("chipOido").classList.toggle("pausa", !libre);
+    if (!libre) { oidoBuf = []; oidoLargo = 0; oidoNuevo = true; return; }
+    const x = ev.inputBuffer.getChannelData(0), n = Math.floor(x.length / paso), out = new Int16Array(n);
+    for (let i = 0; i < n; i++) { let a = 0, k = 0; for (let j = Math.floor(i * paso); j < Math.floor((i + 1) * paso); j++) { a += x[j]; k++; }
+      out[i] = Math.max(-32768, Math.min(32767, (a / k) * 32767)); }
+    oidoBuf.push(out); oidoLargo += n;
+    if (oidoLargo >= 4000 && !oidoMandando) mandarOido();
+  };
+  oidoFuente.connect(oidoNodo); oidoNodo.connect(ctxAudio.destination);   // sin conectarlo, Chrome no lo corre (sale en silencio)
+}
+async function mandarOido() {
+  const pcm = new Int16Array(oidoLargo); let o = 0; for (const b of oidoBuf) { pcm.set(b, o); o += b.length; }
+  oidoBuf = []; oidoLargo = 0; oidoMandando = true;
+  const nuevo = oidoNuevo; oidoNuevo = false;
+  try {
+    const r = await fetch("/api/oido" + (nuevo ? "?nuevo=1" : ""), { method: "POST", headers: { ...H, "Content-Type": "application/octet-stream" }, body: pcm.buffer });
+    const d = await r.json();
+    if (d.error) { avisar("HEY JARVIS", d.error); ponerOido(false, false); return; }
+    if (d.detectado && oidoLibre()) { pitido(); empezarAGrabar(true).catch(errorMic); }
+  } catch (e) { /* servidor reiniciando: el próximo pedazo reintenta */ }
+  finally { oidoMandando = false; }
+}
+function cerrarOido() {
+  if (oidoNodo) { oidoNodo.onaudioprocess = null; oidoNodo.disconnect(); oidoNodo = null; }
+  if (oidoFuente) { oidoFuente.disconnect(); oidoFuente = null; }
+  if (oidoStream) { oidoStream.getTracks().forEach(t => t.stop()); oidoStream = null; }   // se apaga la luz naranja del micrófono
+  oidoBuf = []; oidoLargo = 0; oidoNuevo = true;
+}
+function pitido() {
+  const o = ctxAudio.createOscillator(), g = ctxAudio.createGain(); o.frequency.value = 880;
+  g.gain.setValueAtTime(0.12, ctxAudio.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctxAudio.currentTime + 0.18);
+  o.connect(g); g.connect(ctxAudio.destination); o.start(); o.stop(ctxAudio.currentTime + 0.2);
+}
+$("chipOido").onclick = () => ponerOido(!oidoOn);
 
 // ============ plan ============
 async function responderPlan(si) {
@@ -595,6 +678,7 @@ async function despertar() {
   let b = {};
   try { b = await cargarYPintar(); } catch (e) { avisar("SIN CONEXIÓN", "No pude traer el brief: el servidor puede estar reiniciando. Reintento solo."); }
   await sondear();
+  if (oidoOn) abrirOido().catch(e => { ponerOido(false); errorMic(e); });
   if (b && b.texto) { $("feed").append(el("div", "msg jarvis ultimo", b.texto)); $("feed").scrollTop = 1e9; }
   const viejo = !b.generado || (Date.now() - new Date(b.generado)) > 14 * 3600 * 1000;
   if (viejo) avisar("BRIEF VIEJO", "Este resumen no es de hoy: tocá «Actualizar».");

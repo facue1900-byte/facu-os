@@ -395,6 +395,51 @@ class CerebroVivo:
 CEREBRO = CerebroVivo()
 
 
+# --- «Hey Jarvis» (palabra de activación) ------------------------------------------------------
+# Pedido de Facu 12/11/2026. El panel le pasa el audio del micrófono (PCM 16 kHz, int16) en pedazos
+# chicos y openWakeWord busca la palabra ACÁ, en la Mac: nada sale afuera. Se prende y apaga desde
+# el panel («HEY JARVIS on/off») y arranca APAGADO: es tener el micrófono escuchando siempre.
+# Medido 12/11 a umbral 0,5: 0 disparos en 78 min de música del estudio/Paseo y 25 min de la voz de
+# Jarvis; «Hey Jarvis» pronunciado en inglés da 1,00 aun con música encima. Dicho a la española
+# («ei harvis») queda en 0,4–0,5: si no lo agarra, bajar JARVIS_UMBRAL_DESPERTAR.
+UMBRAL_DESPERTAR = float(os.environ.get("JARVIS_UMBRAL_DESPERTAR") or 0.5)
+OIDO_LOCK = threading.Lock()
+_oido = {"modelo": None, "resto": b""}
+TRAMA = 1280 * 2          # 80 ms a 16 kHz, int16
+
+
+def escuchar_pedazo(datos):
+    """Pasa un pedazo de PCM por el detector. Devuelve (detectado, pico)."""
+    with OIDO_LOCK:
+        if _oido["modelo"] is None:
+            import numpy as np
+            from openwakeword.model import Model
+            _oido["np"] = np
+            _oido["modelo"] = Model(wakeword_models=["hey_jarvis"], inference_framework="onnx")
+        np, m = _oido["np"], _oido["modelo"]
+        buf = _oido["resto"] + datos
+        pico, detectado = 0.0, False
+        while len(buf) >= TRAMA:
+            p = float(m.predict(np.frombuffer(buf[:TRAMA], dtype=np.int16))["hey_jarvis"])
+            buf = buf[TRAMA:]
+            pico = max(pico, p)
+            if p >= UMBRAL_DESPERTAR:
+                detectado = True
+                m.reset()          # si no, las tramas siguientes vuelven a disparar
+                buf = b""
+                break
+        _oido["resto"] = buf
+        return detectado, pico
+
+
+def reiniciar_oido():
+    """Cuando el panel deja de mandar (Jarvis habla, graba o piensa): no mezclar audio viejo con nuevo."""
+    with OIDO_LOCK:
+        _oido["resto"] = b""
+        if _oido["modelo"] is not None:
+            _oido["modelo"].reset()
+
+
 TAREA_RE = re.compile(r"<<<TAREA[ \t]*([^\n]*)\n(.*?)TAREA>>>", re.S)
 ABRIR_RE = re.compile(r"<<<ABRIR[ \t]+(terminal|antigravity)[ \t]+([\w-]+)[ \t]*>>>", re.I)
 
@@ -669,7 +714,7 @@ class Manejador(BaseHTTPRequestHandler):
     server_version = "Jarvis"
 
     def log_message(self, fmt, *args):
-        if "/api/estado" not in (args[0] if args else ""):   # el sondeo cada pocos segundos no ensucia el log
+        if not any(r in (args[0] if args else "") for r in ("/api/estado", "/api/oido")):   # el sondeo cada pocos segundos no ensucia el log
             log("http", fmt % args)
 
     def _json(self, codigo, datos):
@@ -737,6 +782,7 @@ class Manejador(BaseHTTPRequestHandler):
                 "modo_cambios": os.environ.get("TELEGRAM_MODO_CAMBIOS") == "1",
                 "voz": "Tomás",
                 "actividad": ACTIVIDAD["texto"],
+                "escucha": bool(estado.get("escucha")),
                 # Cambia cuando alguien regenera los números (brief, «Actualizar», una tarea): el panel repinta solo.
                 "version_numeros": "|".join(str(f.stat().st_mtime) if f.exists() else "-"
                                             for f in (BRIEF, DATA / "numeros.json")),
@@ -771,6 +817,27 @@ class Manejador(BaseHTTPRequestHandler):
                 return self._json(200, {"oido": oido, "respuesta": respuesta, "audio": sintetizar_seguro(respuesta),
                                         "plan": plan and {"id": plan["id"], "texto": plan["texto"]},
                                         "tareas": [t["id"] for t in lanzadas if t]})
+            if ruta == "/api/oido":
+                datos = self._cuerpo()
+                if self.path.endswith("?nuevo=1"):
+                    reiniciar_oido()
+                if len(datos) % 2 or len(datos) > 16000 * 2 * 5:     # int16, a lo sumo 5 s por pedazo
+                    return self._json(400, {"error": "pedazo inválido"})
+                if not (leer_json(ESTADO, {}).get("escucha")):
+                    return self._json(409, {"error": "la palabra de activación está apagada"})
+                detectado, pico = escuchar_pedazo(datos)
+                if detectado:
+                    log("Hey Jarvis detectado, pico", round(pico, 2))
+                return self._json(200, {"detectado": detectado, "pico": round(pico, 3)})
+            if ruta == "/api/escucha":
+                prender = json.loads(self._cuerpo()).get("on") is True
+                with ESTADO_LOCK:
+                    estado = leer_json(ESTADO, {})
+                    estado["escucha"] = prender
+                    guardar_json(ESTADO, estado)
+                reiniciar_oido()
+                log("Palabra de activación", "prendida" if prender else "apagada")
+                return self._json(200, {"escucha": prender})
             if ruta == "/api/plan":
                 pedido = json.loads(self._cuerpo())
                 if pedido.get("si") is not True:

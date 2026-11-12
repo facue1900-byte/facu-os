@@ -9,9 +9,14 @@ mismo que si lo escribieras en la terminal.
 ## Cómo se usa
 
 - **Abrirlo:** **Jarvis** en `~/Applications` (arrastralo al Dock). Si el servidor no está prendido, lo levanta.
-- **Despertarlo:** tocá la pantalla o una tecla. Te lee el resumen del día con la voz de **Diego** (Argentina).
+- **Despertarlo:** tocá la pantalla o una tecla. Te lee el resumen del día con la voz de **Tomás** (Argentina).
 - **Hablarle:** mantené apretada la **barra espaciadora** (o el botón del micrófono o el núcleo).
   Hablá cuando diga «te escucho» y soltá. Whisper transcribe en la Mac.
+- **«Hey Jarvis»:** prendé el botón **HEY JARVIS** de arriba (arranca apagado). Con el punto verde
+  latiendo, decí «Hey Jarvis» (en inglés: «jéi yárvis»), esperá el pitido y hablá; corta solo cuando
+  te callás. El punto gris = pausado (Jarvis está hablando, pensando o grabando). La palabra la busca
+  openWakeWord **en la Mac**: el audio no sale de la compu. Mientras está prendido, macOS muestra la
+  luz naranja del micrófono. Umbral: `JARVIS_UMBRAL_DESPERTAR` en el `.env` (0,5 por defecto).
 - **Escribirle:** en la barra de abajo, más Enter.
 - **Pedirle cosas:** pregunta un dato y lo busca (base, planillas, mails, código); pedile que
   corrija algo y lo corrige, lo verifica y commitea.
@@ -67,6 +72,5 @@ Apagar el servidor: `lsof -tiTCP:7777 -sTCP:LISTEN | xargs kill`. Log: `data/log
   se puede pedir como plan.
 - **Publicar en todas las redes con un comando.** Mismo motivo; además, el agente de reels está pausado.
 - **Voz británica / ElevenLabs.** No querés más suscripciones.
-- **Palabra de activación ("Hey Jarvis").** Necesita el micrófono escuchando todo el tiempo.
-  Hoy se usa la barra espaciadora.
-- **Voz:** Diego (español de Argentina, gratis de Apple). Se elige solo en `telegram_bot._elegir_voz()`.
+- **Voz:** Tomás (es-AR de Microsoft, gratis, el texto de la respuesta va a Microsoft: OK de Facu 11/11).
+  Si no responde, Diego de Apple (`telegram_bot._elegir_voz()`).

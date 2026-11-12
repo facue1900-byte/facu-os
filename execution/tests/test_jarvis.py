@@ -12,6 +12,7 @@ El server de test corre en un puerto efímero, aparte del 7777.
 import datetime as dt
 import http.client
 import json
+import subprocess
 import sys
 import threading
 import time
@@ -1299,3 +1300,41 @@ def test_brief_paseo_pendiente_a_hoy_por_local(monkeypatch):
     assert (bigg["local"], bigg["debe"], bigg["vencido"], bigg["efectivo"], bigg["banco"]) == \
         ("Bigg", 4_600_000, 400_000, 1_200_000, 3_400_000)
     assert (boss["local"], boss["debe"]) == ("Boss", 0)
+
+
+# --- «Hey Jarvis» (12/11/2026) ------------------------------------------------------------------
+
+def test_oido_apagado_por_defecto_no_escucha(srv):
+    st, raw = req(srv, "POST", "/api/oido", b"\x00\x00" * 4000, ctype="application/octet-stream")
+    assert st == 409
+    st, raw = req(srv, "GET", "/api/estado")
+    assert js(raw)["escucha"] is False
+
+
+def test_oido_prendido_silencio_no_dispara_y_pedazo_impar_400(srv):
+    assert js(req(srv, "POST", "/api/escucha", {"on": True})[1])["escucha"] is True
+    assert js(req(srv, "GET", "/api/estado")[1])["escucha"] is True
+    st, raw = req(srv, "POST", "/api/oido?nuevo=1", b"\x00\x00" * 8000, ctype="application/octet-stream")
+    assert st == 200 and js(raw)["detectado"] is False
+    st, _ = req(srv, "POST", "/api/oido", b"\x00" * 3, ctype="application/octet-stream")
+    assert st == 400
+    req(srv, "POST", "/api/escucha", {"on": False})
+    st, _ = req(srv, "POST", "/api/oido", b"\x00\x00" * 4000, ctype="application/octet-stream")
+    assert st == 409
+
+
+def test_oido_detecta_hey_jarvis_en_pedazos(tmp_path):
+    # Voz sintética en inglés (la que mejor anda); se manda en pedazos de ¼ s como el panel.
+    import imageio_ffmpeg
+    aiff = tmp_path / "hj.aiff"
+    subprocess.run(["say", "-v", "Samantha", "-o", str(aiff), "Hey Jarvis"], check=True)
+    pcm = subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), "-v", "quiet", "-i", str(aiff), "-ac", "1", "-ar", "16000",
+                          "-f", "s16le", "-"], capture_output=True, check=True).stdout
+    audio = b"\x00\x00" * 16000 + pcm + b"\x00\x00" * 16000
+    servidor.reiniciar_oido()
+    detectado = False
+    for i in range(0, len(audio), 8000):
+        d, _ = servidor.escuchar_pedazo(audio[i:i + 8000])
+        detectado = detectado or d
+    assert detectado
+    servidor.reiniciar_oido()
