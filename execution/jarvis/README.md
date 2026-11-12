@@ -20,6 +20,15 @@ mismo que si lo escribieras en la terminal.
 - **Escribirle:** en la barra de abajo, más Enter.
 - **Pedirle cosas:** pregunta un dato y lo busca (base, planillas, mails, código); pedile que
   corrija algo y lo corrige, lo verifica y commitea.
+- **Charla con idas y vueltas (12/11/2026):** la conversación usa el modelo rápido (Sonnet, poco razonamiento,
+  `JARVIS_MODELO_CHARLA` / `JARVIS_ESFUERZO_CHARLA`). Contesta con lo que ya sabe en segundos; si tiene que
+  buscar, hace como mucho dos consultas y **te va diciendo lo que mira** («me fijo en…»). Lo que lleva más,
+  lo manda como tarea de fondo con el modelo grande. Medido: 4–10 s una pregunta común, 14 s una búsqueda
+  en vivo (antes 40 s a 2 min).
+- **Memoria de la charla:** cada día arranca una conversación nueva (y también si la del día pasa ~700 KB),
+  pero Jarvis recibe lo último que hablaron, así que «lo de recién» sigue funcionando.
+- **«Mandame esto a mi mail»:** Jarvis arma el resumen y lo manda en el momento con `mandarme.py`,
+  que sólo puede mandar a `MAIL_FACU`. A terceros sigue pasando por PLAN y el botón.
 - **Tareas largas:** si algo lleva más de unos minutos, Jarvis lo **lanza en otra sesión de Claude Code**
   y sigue charlando. Aparece en **Operaciones**. Cuando termina, te avisa y te lee el reporte.
 - **Abrir una sesión:** cada tarea tiene botones **Terminal** y **Antigravity** para entrar a esa sesión
