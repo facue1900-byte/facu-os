@@ -52,6 +52,7 @@ def sin_voz_real(monkeypatch):
     """Los rellenos y avances sintetizan en hilos: ningún test le habla a Microsoft de verdad."""
     monkeypatch.setattr(servidor, "sintetizar", lambda t: "e" * 32 + ".mp3")
     monkeypatch.setattr(servidor, "_AUDIO_FIJO", {})
+    monkeypatch.setattr(servidor, "sintetizar_en_vivo", lambda t: "d" * 32 + ".mp3")
 
 
 @pytest.fixture
@@ -1428,14 +1429,14 @@ def test_relleno_cuando_tarda_y_herramienta_sin_aviso(monkeypatch):
     monkeypatch.setattr(servidor.os, "killpg", lambda *a: None)
     eventos = [{"type": "system", "subtype": "init", "session_id": UUID1},
                {"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash",
-                                                              "input": {"description": "leyendo la casilla del Paseo"}}]}},
+                                                              "input": {"description": "Count unread", "command": "python -c 'gmail()'"}}]}},
                {"type": "result", "subtype": "success", "result": "Son dieciocho, jefe.", "session_id": UUID1}]
     monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: _VivoLento(eventos, [0, 2.5, 0]))
     r, _ = servidor.CerebroVivo().turno("¿mails?", None, 30)
     textos = [i["texto"] for i in servidor.AVANCES["items"]]
     assert r == "Son dieciocho, jefe."
     assert textos[0] in servidor.RELLENO_PRIMERO, textos
-    assert "Leyendo la casilla del Paseo." in textos, "la herramienta sin aviso la cuenta el código"
+    assert "Me fijo en el mail, jefe." in textos, "la herramienta sin aviso la cuenta el código, en español"
 
 
 def test_respuesta_rapida_no_lleva_relleno(monkeypatch):
@@ -1491,3 +1492,85 @@ def test_contexto_trae_reporte_entero_y_paso_en_curso(srv):
     c = servidor.contexto_del_dia()
     assert "REPORTE: AVN $28.954.654,88 vencido" in c
     assert "hace 2 min, 4 pasos, ahora: leyendo mails" in c
+
+
+# --- habla mientras escribe y se lo puede cortar (12/11/2026, «como ChatGPT») ---------------------
+
+def _locutor(trozos):
+    dichas = []
+    loc = servidor.Locutor(dichas.append)
+    loc.nuevo_bloque()
+    for t in trozos:
+        loc.agregar(t)
+    loc.flush()
+    return dichas
+
+
+def test_locutor_dice_por_oracion_y_saltea_entendi():
+    assert _locutor(["ENTEN", "DÍ: quiere la deuda\nJefe, hoy le deben veintidós millones. Lo vencido ",
+                     "son cuatrocientos mil pesos. ¿Quiere el detalle?"]) == [
+        "Jefe, hoy le deben veintidós millones.", "Lo vencido son cuatrocientos mil pesos.", "¿Quiere el detalle?"]
+
+
+def test_locutor_no_dice_bloques_aunque_lleguen_partidos():
+    assert _locutor(["Dale, jefe, lo mando a hacer. <<", "<TAREA Algo\npedido largo\nTA", "REA>>> Le aviso."]) == [
+        "Dale, jefe, lo mando a hacer.", "Le aviso."]
+    assert _locutor(["ENTENDÍ: sólo esto"]) == []
+    assert _locutor(["De nada, jefe."]) == ["De nada, jefe."]
+    assert _locutor(["$22.594.386 en total, jefe."]) == ["$22.594.386 en total, jefe."], "un punto de miles no corta"
+
+
+def _delta(t):
+    return {"type": "stream_event", "event": {"type": "content_block_delta", "delta": {"type": "text_delta", "text": t}}}
+
+
+def test_cerebro_dice_en_vivo_y_no_repite(monkeypatch):
+    anotados = []
+    monkeypatch.setattr(servidor, "anotar", lambda q, t, **kw: anotados.append((t, kw)))
+    monkeypatch.setattr(servidor.os, "killpg", lambda *a: None)
+    inicio = {"type": "stream_event", "event": {"type": "content_block_start", "content_block": {"type": "text"}}}
+    fin = {"type": "stream_event", "event": {"type": "content_block_stop"}}
+    eventos = [{"type": "system", "subtype": "init", "session_id": UUID1},
+               inicio, _delta("Me fijo en la pestaña de Bigg, jefe."), fin,
+               {"type": "assistant", "message": {"content": [{"type": "text", "text": "Me fijo en la pestaña de Bigg, jefe."}]}},
+               {"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash", "input": {}}]}},
+               inicio, _delta("Debe cuatrocientos setenta mil pesos. "), _delta("Todo vencido."), fin,
+               {"type": "assistant", "message": {"content": [{"type": "text", "text": "Debe cuatrocientos setenta mil pesos. Todo vencido."}]}},
+               {"type": "result", "subtype": "success", "result": "Debe cuatrocientos setenta mil pesos. Todo vencido.", "session_id": UUID1}]
+    procs = []
+    monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: procs.append(cmd) or _VivoFalso(eventos))
+    c = servidor.CerebroVivo()
+    r, _ = c.turno("¿Bigg?", None, 30)
+    assert r.startswith("Debe") and c.en_vivo is True
+    assert [i["texto"] for i in servidor.AVANCES["items"]] == [
+        "Me fijo en la pestaña de Bigg, jefe.", "Debe cuatrocientos setenta mil pesos.", "Todo vencido."]
+    assert anotados == [("Me fijo en la pestaña de Bigg, jefe.", {"avance": True})], "el avance va al feed una sola vez"
+    assert "--include-partial-messages" in procs[0]
+
+
+def test_preguntar_en_vivo_solo_sintetiza_lo_que_agrego_el_codigo(srv, monkeypatch):
+    sintetizados = []
+    monkeypatch.setattr(servidor, "sintetizar_seguro", lambda t: sintetizados.append(t) or "b" * 32 + ".mp3")
+    monkeypatch.setattr(servidor, "claude_completo", fake_cerebro("Son tres, jefe."))
+    monkeypatch.setattr(servidor.CEREBRO, "en_vivo", True, raising=False)
+    st, raw = req(srv, "POST", "/api/preguntar", {"texto": "¿cuántos?"})
+    d = js(raw)
+    assert st == 200 and d["en_vivo"] is True and d["audio"] is None and sintetizados == []
+    assert d["respuesta"] == "Son tres, jefe."
+    monkeypatch.setattr(servidor.CEREBRO, "en_vivo", False, raising=False)
+    d = js(req(srv, "POST", "/api/preguntar", {"texto": "¿y ahora?"})[1])
+    assert d["audio"] and sintetizados == ["Son tres, jefe."], "sin vivo, se sintetiza entera como antes"
+
+
+def test_audio_en_stream_con_token_en_la_url(srv, tmp_path, monkeypatch):
+    nombre = "c" * 32 + ".mp3"
+    (tmp_path / "audio" / nombre).write_bytes(b"ID3" + b"x" * 500)
+    listo = threading.Event()
+    monkeypatch.setitem(servidor.AUDIO_EN_CURSO, nombre, listo)
+    threading.Timer(0.3, lambda: ((tmp_path / "audio" / nombre).open("ab").write(b"y" * 300), listo.set())).start()
+    st, raw = req(srv, "GET", f"/api/audio/{nombre}?t={servidor.TOKEN}", token=False)
+    assert st == 200 and raw == b"ID3" + b"x" * 500 + b"y" * 300, "lo que se escribió después también llega"
+    st, _ = req(srv, "GET", f"/api/audio/{nombre}?t=malo", token=False)
+    assert st == 403
+    st, _ = req(srv, "GET", f"/api/estado?t={servidor.TOKEN}", token=False)
+    assert st == 403, "el token en la URL vale sólo para el audio"

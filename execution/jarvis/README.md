@@ -34,6 +34,11 @@ mismo que si lo escribieras en la terminal.
   Mientras corre, la tarjeta muestra **en qué paso va** («Paso 7: leyendo mails»), y si le preguntás
   «¿cómo va eso?» lo contesta al toque. Cuando termina, el reporte entero queda en su contexto:
   «repetime lo que encontraste» sale en segundos, sin volver a buscarlo.
+- **Habla mientras escribe y se lo puede cortar** (12/11, «como ChatGPT»): cada oración se dice apenas
+  Claude la termina de escribir (`--include-partial-messages` + `Locutor`), y el audio suena mientras
+  Microsoft lo genera. La primera palabra sale a los ~3–5 s; antes eran 7–15. Para cortarlo: **espacio,
+  click o «Hey Jarvis»** mientras habla, y se calla al toque (lo que faltaba del turno ya no se dice).
+  Corta la grabación 0,9 s después de que te callás.
 - **Nunca se queda callado:** si a los 5 s no contestó, dice «Un segundo, jefe». Si usa una
   herramienta sin avisar, el panel lee qué está haciendo. Si pasan 18 s más sin novedad, avisa que
   sigue. Si la API del modelo rápido está saturada, contesta Opus (`--fallback-model`).
