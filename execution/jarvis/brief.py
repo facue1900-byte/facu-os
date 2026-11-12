@@ -89,6 +89,15 @@ def _medios(loc, campo):
     return {"efectivo": ef, "banco": bco, "por_banco": bco > 0 and ef == 0}
 
 
+def _medios_total(loc):
+    """Efectivo / banco de lo pendiente total (vencido + mes)."""
+    e, m = _medios(loc, "exigible"), _medios(loc, "en_curso")
+    if e["efectivo"] is None:
+        return e
+    ef, bco = e["efectivo"] + m["efectivo"], e["banco"] + m["banco"]
+    return {"efectivo": ef, "banco": bco, "por_banco": bco > 0 and ef == 0}
+
+
 def paseo():
     """Deuda del Paseo desde las PESTAÑAS POR LOCAL de Ctas Ctes (radar_deudores). La consolidada
     «CUENTA CORRIENTE» quedó clavada en jul-26 y el panel mostraba esa deuda vieja (11/11/2026).
@@ -114,6 +123,13 @@ def paseo():
         "en_curso": [{"local": n, "monto": round(l["en_curso"]), **_medios(l, "en_curso")}
                      for n, l in sorted(deudores + al_dia, key=lambda x: -x[1]["en_curso"]) if round(l["en_curso"])],
         "sin_dato": [{"local": n, "motivo": m} for n, m in sin_dato],
+        # Lo que Facu mira (12/11/2026): cuánto le falta pagar a cada local A HOY, vencido o no.
+        # Pagó todo → 0. El vencido/del mes sigue arriba para quien lo necesite.
+        "pendiente_total": None if sin_dato else round(sum(l["exigible"] + l["en_curso"] for _, l in deudores + al_dia)),
+        "por_local": sorted(({"local": n, "debe": round(l["exigible"] + l["en_curso"]),
+                              "vencido": round(l["exigible"]), **_medios_total(l)}
+                             for n, l in deudores + al_dia), key=lambda x: -x["debe"]),
+        "con_regla_nombres": [n for n, _ in con_regla],
         "al_dia": len(al_dia),
         "con_regla": len(con_regla),
         "movimientos_leidos": len(movs),

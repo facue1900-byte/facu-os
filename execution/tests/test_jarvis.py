@@ -1275,3 +1275,27 @@ def test_brief_paseo_separa_efectivo_y_banco(monkeypatch):
     assert (ec["efectivo"], ec["banco"], ec["por_banco"]) == (1_200_000, 3_000_000, False)
     nota = [i for i in brief.paneles({"Paseo Nordelta": s})[0]["items"] if i["etiqueta"] == "Bigg"][0]["nota"]
     assert "tránsito" in nota
+
+
+def test_brief_paseo_pendiente_a_hoy_por_local(monkeypatch):
+    # 12/11/2026, Facu: «no importa si es vencido o no: lo que tiene que pagar cada uno; si pagó todo, 0»
+    sys.path.insert(0, "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts")
+    import radar_deudores as rd
+    import google_auth
+    hoy = dt.date.today()
+    cur = (hoy.year, hoy.month)
+    prev = (cur[0] - 1, 12) if cur[1] == 1 else (cur[0], cur[1] - 1)
+    movs = [_bigg_mov("cargo", 400_000, "banco", prev),
+            _bigg_mov("cargo", 2_000_000, "efectivo", cur),
+            _bigg_mov("cargo", 3_000_000, "banco", cur),
+            _bigg_mov("pago", 800_000, "efectivo")]
+    pagado = [dict(m, local="Boss") for m in (_bigg_mov("cargo", 1_000_000, "efectivo", cur),
+                                               _bigg_mov("pago", 1_000_000, "efectivo"))]
+    monkeypatch.setattr(google_auth, "bajar_xlsx", lambda *a, **k: None)
+    monkeypatch.setattr(rd, "leer_xlsx", lambda x: (movs + pagado, {}))
+    s = brief.paseo()
+    assert s["pendiente_total"] == 4_600_000 == s["exigible_total"] + s["en_curso_total"]
+    bigg, boss = s["por_local"]
+    assert (bigg["local"], bigg["debe"], bigg["vencido"], bigg["efectivo"], bigg["banco"]) == \
+        ("Bigg", 4_600_000, 400_000, 1_200_000, 3_400_000)
+    assert (boss["local"], boss["debe"]) == ("Boss", 0)

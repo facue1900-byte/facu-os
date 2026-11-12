@@ -360,12 +360,23 @@ function pintarBrief(b, num) {
   };
   // 03 Paseo — exigible (vencido) arriba; abajo lo que se está cobrando este mes, por local
   const s = n["Paseo Nordelta"];
-  const cs = card("03", "Paseo Nordelta", s ? (s.exigible_total === null ? "fuente atrasada" : `${s.deudores.length} deben · ${s.al_dia} al día`) : "");
+  const cs = card("03", "Paseo Nordelta", s ? (s.exigible_total === null ? "fuente atrasada" : (s.por_local ? `${s.por_local.filter(d => d.debe).length} deben · ${s.por_local.filter(d => !d.debe).length} al día` : `${s.deudores.length} deben · ${s.al_dia} al día`)) : "");
   if (s && s.exigible_total === null) {
     cs.append(el("div", "hero amber", "SIN DATO"));
     cs.append(el("div", "sub", "Alguna pestaña de Ctas Ctes está atrasada: no muestro un total que puede ser falso."));
     (s.sin_dato || []).forEach(x => cs.append(el("div", "sinDato", `${x.local} · ${x.motivo}`)));
-  } else if (s) {
+  } else if (s && s.por_local) {
+    // 12/11/2026, Facu: lo que le falta pagar a cada uno A HOY (vencido + mes). Pagó todo → $0.
+    const hero = el("div", "hero" + (s.pendiente_total ? " amber" : "")); cs.append(hero); contar(hero, s.pendiente_total, pesos);
+    cs.append(el("div", "sub", s.pendiente_total ? "Lo que falta cobrar a hoy · Ctas Ctes por local" : "Todos pagaron todo · Ctas Ctes por local"));
+    const max = Math.max(...s.por_local.map(d => d.debe), 1);
+    s.por_local.forEach(d => { const w = el("div", "deudor"), f = el("div", "fila"), nom = el("span", null, d.local);
+      if (d.debe) medio(nom, d);
+      if (d.vencido) nom.append(el("small", null, `VENCIDO ${pesos(d.vencido)}`));
+      const v = el("b", null, d.debe ? pesos(d.debe) : "$0 ✓"); if (!d.debe) v.style.color = "var(--green)";
+      f.append(nom, v); w.append(f, barra(d.debe / max * 100, d.vencido ? "amber" : undefined)); cs.append(w); });
+    if ((s.con_regla_nombres || []).length) cs.append(el("div", "sub", `Aparte, con regla propia: ${s.con_regla_nombres.join(" · ")}`));
+  } else if (s) {   // números viejos, sin por_local
     const hero = el("div", "hero" + (s.exigible_total ? " amber" : "")); cs.append(hero); contar(hero, s.exigible_total, pesos);
     cs.append(el("div", "sub", s.exigible_total ? "Deuda vencida · Ctas Ctes por local" : "Nadie debe nada vencido · Ctas Ctes por local"));
     s.deudores.slice(0, 4).forEach(d => { const w = el("div", "deudor"), f = el("div", "fila"), nom = el("span", null, d.local);
