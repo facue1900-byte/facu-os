@@ -70,6 +70,27 @@ CARGOS_SIN_PESTANA = {
 CARGOS_CON_PESTANA = {"Fabric", "Bigg", "Boss", "Volta + Open", "Volta + Open 25", "Peak One"}
 
 
+
+def medio_del_cargo(cobra, concepto):
+    """Un cargo no lleva medio escrito (la columna B es de los INGRESOS). Se
+    deduce de la regla del local: Bigg es el único partido, y su parte en efectivo
+    es exactamente la «Diferencia Alquiler (sin iva)». Lo usan la tarjeta de Mati
+    (`deuda_efectivo.py`) y el radar / brief de Jarvis (`radar_deudores.py`)."""
+    if cobra == "mixto":
+        return "efectivo" if "sin iva" in concepto.lower() else "banco"
+    return cobra
+
+
+def medio_del_pago(fila, cd):
+    """Está escrito en la fila: en la B en Boss/Volta/Peak One y en las filas
+    nuevas de Fabric, en la C (el detalle) en Bigg. None = no dice."""
+    txt = f"{fila[1]} {fila[cd]}".lower()
+    if "efectivo" in txt or "mp facu" in txt:
+        return "efectivo"
+    if "banco" in txt:
+        return "banco"
+    return None
+
 def mes_de_cobro(concepto, periodo):
     """En qué mes se cobra un cargo de una pestaña.
 

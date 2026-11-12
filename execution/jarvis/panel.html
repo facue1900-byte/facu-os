@@ -48,6 +48,12 @@
   .chip { font: 10px var(--mono); letter-spacing: .14em; color: var(--dim); text-transform: uppercase; padding: 5px 9px; border: 1px solid var(--hair); border-radius: 3px; white-space: nowrap; }
   .chip b { color: var(--c2); font-weight: 500; }
   .chip.on b { color: var(--green); } .chip.off b { color: var(--amber); }
+  .chip.boton { background: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .chip.boton:hover { border-color: var(--c2); }
+  .chip .punto { width: 6px; height: 6px; border-radius: 50%; background: var(--hair); display: none; }
+  .chip.on .punto { display: inline-block; background: var(--green); animation: latido 1.6s ease-in-out infinite; }
+  .chip.on.pausa .punto { background: var(--dim); animation: none; }
+  @keyframes latido { 50% { opacity: .25; } }
   .reloj { text-align: right; line-height: 1.1; }
   .reloj b { display: block; font: 500 22px var(--mono); letter-spacing: .06em; color: var(--txt); }
   .reloj span { font: 10px var(--mono); color: var(--dim); letter-spacing: .2em; text-transform: uppercase; }
@@ -114,6 +120,8 @@
   .msg.facu::before { content: "VOS"; display: block; font: 9.5px var(--mono); letter-spacing: .3em; color: var(--faint); margin-bottom: 3px; }
   .msg.jarvis { border-left: 2px solid var(--c); padding-left: 14px; color: var(--txt); }
   .msg.jarvis::before { content: "JARVIS"; display: block; font: 9.5px var(--mono); letter-spacing: .3em; color: var(--c); margin-bottom: 3px; }
+  .msg.jarvis.avance { color: var(--dim); font-size: 13.5px; margin-bottom: 8px; }
+  .msg.jarvis.avance::before { content: "JARVIS · BUSCANDO"; }
   .msg.jarvis.ultimo { text-shadow: 0 0 20px rgba(95, 227, 255, .12); }
 
   /* ---------- barra de comando ---------- */
@@ -179,6 +187,7 @@
     <div class="pildora" id="pildora"><i></i><span id="estadoPil">en espera</span><span id="cronometro"></span></div>
     <div class="derecha">
       <span class="chip" id="chipCambios">cambios <b>—</b></span>
+      <button class="chip boton" id="chipOido" title="Prender/apagar la palabra «Hey Jarvis»">hey jarvis <b>off</b><i class="punto"></i></button>
       <span class="chip">voz <b id="chipVoz">—</b></span>
       <div class="reloj"><b id="hora">--:--</b><span id="fecha"></span></div>
     </div>
@@ -353,25 +362,41 @@ function pintarBrief(b, num) {
     if (!p.anuncios_activos) { const e = el("div", "etiquetas"); e.append(el("span", "etiq", "0 anuncios prendidos")); cp.append(e); }
   } else sinDato(cp, errores["Pauta Meta"] || "—");
   $("izq").append(cp);
+  // Bigg va partido: decir cuánto es en mano y cuánto por banco (12/11/2026)
+  const medio = (nom, d) => {
+    if (d.efectivo && d.banco) nom.append(el("small", null, `EFECTIVO ${pesos(d.efectivo)} · BANCO ${pesos(d.banco)}`));
+    else if (d.por_banco) nom.append(el("small", null, "BANCO"));
+  };
   // 03 Paseo — exigible (vencido) arriba; abajo lo que se está cobrando este mes, por local
   const s = n["Paseo Nordelta"];
-  const cs = card("03", "Paseo Nordelta", s ? (s.exigible_total === null ? "fuente atrasada" : `${s.deudores.length} deben · ${s.al_dia} al día`) : "");
+  const cs = card("03", "Paseo Nordelta", s ? (s.exigible_total === null ? "fuente atrasada" : (s.por_local ? `${s.por_local.filter(d => d.debe).length} deben · ${s.por_local.filter(d => !d.debe).length} al día` : `${s.deudores.length} deben · ${s.al_dia} al día`)) : "");
   if (s && s.exigible_total === null) {
     cs.append(el("div", "hero amber", "SIN DATO"));
     cs.append(el("div", "sub", "Alguna pestaña de Ctas Ctes está atrasada: no muestro un total que puede ser falso."));
     (s.sin_dato || []).forEach(x => cs.append(el("div", "sinDato", `${x.local} · ${x.motivo}`)));
-  } else if (s) {
+  } else if (s && s.por_local) {
+    // 12/11/2026, Facu: lo que le falta pagar a cada uno A HOY (vencido + mes). Pagó todo → $0.
+    const hero = el("div", "hero" + (s.pendiente_total ? " amber" : "")); cs.append(hero); contar(hero, s.pendiente_total, pesos);
+    cs.append(el("div", "sub", s.pendiente_total ? "Lo que falta cobrar a hoy · Ctas Ctes por local" : "Todos pagaron todo · Ctas Ctes por local"));
+    const max = Math.max(...s.por_local.map(d => d.debe), 1);
+    s.por_local.forEach(d => { const w = el("div", "deudor"), f = el("div", "fila"), nom = el("span", null, d.local);
+      if (d.debe) medio(nom, d);
+      if (d.vencido) nom.append(el("small", null, `VENCIDO ${pesos(d.vencido)}`));
+      const v = el("b", null, d.debe ? pesos(d.debe) : "$0 ✓"); if (!d.debe) v.style.color = "var(--green)";
+      f.append(nom, v); w.append(f, barra(d.debe / max * 100, d.vencido ? "amber" : undefined)); cs.append(w); });
+    if ((s.con_regla_nombres || []).length) cs.append(el("div", "sub", `Aparte, con regla propia: ${s.con_regla_nombres.join(" · ")}`));
+  } else if (s) {   // números viejos, sin por_local
     const hero = el("div", "hero" + (s.exigible_total ? " amber" : "")); cs.append(hero); contar(hero, s.exigible_total, pesos);
     cs.append(el("div", "sub", s.exigible_total ? "Deuda vencida · Ctas Ctes por local" : "Nadie debe nada vencido · Ctas Ctes por local"));
     s.deudores.slice(0, 4).forEach(d => { const w = el("div", "deudor"), f = el("div", "fila"), nom = el("span", null, d.local);
-      if (d.por_banco) nom.append(el("small", null, "BANCO"));
+      medio(nom, d);
       f.append(nom, el("b", null, pesos(d.exigible))); w.append(f, barra(100, "amber")); cs.append(w); });
     if (s.en_curso_total) {
       const t = el("div", "fila"); t.style.cssText = "margin:10px 0 2px;padding-top:10px;border-top:1px solid var(--hair)";
       t.append(el("span", null, "COBRÁNDOSE ESTE MES"), el("b", null, pesos(s.en_curso_total))); cs.append(t);
       const max = Math.max(...(s.en_curso || []).map(d => d.monto), 1);
       (s.en_curso || []).slice(0, 6).forEach(d => { const w = el("div", "deudor"), f = el("div", "fila"), nom = el("span", null, d.local);
-        if (d.por_banco) nom.append(el("small", null, "BANCO"));
+        medio(nom, d);
         f.append(nom, el("b", null, pesos(d.monto))); w.append(f, barra(d.monto / max * 100)); cs.append(w); });
     }
   } else sinDato(cs, errores["Paseo Nordelta"] || "—");
@@ -384,6 +409,7 @@ function pintarBrief(b, num) {
   const gen = b.generado ? new Date(b.generado) : null;
   $("generado").textContent = gen ? "BRIEF " + gen.toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" }) + (gen.toDateString() === new Date().toDateString() ? "" : " · " + gen.toLocaleDateString("es-AR")) : "";
 }
+let versionNumeros = null;
 async function cargarYPintar() {
   const [b, num] = await Promise.all([
     fetch("/api/brief", { headers: H }).then(r => r.json()),
@@ -396,7 +422,7 @@ function pintarFeed(conv) {
   hayConv = conv.length > 0;
   const firma = conv.map(m => m.ts).join(","); if (firma === firmaConv || !hayConv) return; firmaConv = firma;
   const f = $("feed"); f.innerHTML = "";
-  conv.slice(-14).forEach((m, i, arr) => f.append(el("div", "msg " + m.quien + (i === arr.length - 1 && m.quien === "jarvis" ? " ultimo" : ""), m.texto)));
+  conv.slice(-14).forEach((m, i, arr) => f.append(el("div", "msg " + m.quien + (m.avance ? " avance" : "") + (i === arr.length - 1 && m.quien === "jarvis" ? " ultimo" : ""), m.texto)));
   f.scrollTop = f.scrollHeight;
 }
 const COL_TAREA = { corriendo: "var(--amber)", lista: "var(--green)", "falló": "var(--red)", interrumpida: "var(--red)" };
@@ -430,8 +456,12 @@ async function sondear() {
   try {
     const r = await fetch("/api/estado", { headers: H }); if (!r.ok) return; const e = await r.json();
     pintarFeed(e.conversacion || []); pintarTareas(e.tareas || []);
+    if (e.version_numeros && versionNumeros && e.version_numeros !== versionNumeros) cargarYPintar().catch(() => {});
+    if (e.version_numeros) versionNumeros = e.version_numeros;
     $("chipCambios").className = "chip " + (e.modo_cambios ? "on" : "off"); $("chipCambios").querySelector("b").textContent = e.modo_cambios ? "on" : "off";
     $("chipVoz").textContent = (e.voz || "").split(" ")[0];
+    if (e.avances) oirAvances(e.avances);
+    if (typeof e.escucha === "boolean" && e.escucha !== oidoOn && Date.now() - oidoTocado > 5000) ponerOido(e.escucha, false);
     if (modo === "pensando" && e.actividad) $("estadoTxt").textContent = e.actividad + "…";
     $("planModo").textContent = e.modo_cambios ? "MODO CAMBIOS ON" : "MODO CAMBIOS OFF · no se va a ejecutar";
     if (e.plan && e.plan.id !== planId) { planId = e.plan.id; $("planTexto").textContent = e.plan.texto; $("velo").classList.add("ver"); }
@@ -451,6 +481,25 @@ let reproduciendo = null, fila = [];
 // Avisos de tareas: en fila, se leen cuando Jarvis está libre (no cortan una respuesta ni a vos hablando).
 function encolar(nombre) { fila.push(nombre); }
 setInterval(() => { if (fila.length && modo === "linea" && !ocupado && !grabador) hablar(fila.shift()); }, 800);
+// Avances: lo que Jarvis va diciendo mientras busca. Suenan en fila, sin cortar uno al otro; la
+// respuesta final espera a que termine el último (colaVoz).
+let avUltimo = null, avIgnorar = null, avTurno = null, avOidos = new Set(), colaVoz = Promise.resolve();
+function oirAvances(av) {
+  if (modo !== "pensando") { avUltimo = av.turno; return; }
+  if (!av.turno || av.turno === avIgnorar) return;          // el turno de la pregunta anterior no se lee
+  if (av.turno !== avTurno) { avTurno = av.turno; avOidos = new Set(); }
+  for (const it of av.items) if (it.audio && !avOidos.has(it.n)) {
+    avOidos.add(it.n); colaVoz = colaVoz.then(() => sonar(it.audio)).catch(() => {}); }
+}
+async function sonar(nombre) {      // reproduce sin cambiar el estado (sigue «pensando»)
+  if (!nombre || !ctxAudio) return;
+  const r = await fetch("/api/audio/" + nombre, { headers: H }); if (!r.ok) return;
+  const url = URL.createObjectURL(await r.blob()), a = new Audio(url); reproduciendo = a;
+  const src = ctxAudio.createMediaElementSource(a); analizador = ctxAudio.createAnalyser(); analizador.fftSize = 1024;
+  src.connect(analizador); analizador.connect(ctxAudio.destination);
+  await new Promise(fin => { a.onended = a.onpause = fin; a.play().catch(fin); });
+  src.disconnect(); analizador.disconnect(); analizador = null; URL.revokeObjectURL(url);
+}
 async function hablar(nombre) {
   if (!nombre || !ctxAudio) return;
   if (reproduciendo) reproduciendo.pause();
@@ -470,12 +519,15 @@ async function hablar(nombre) {
 let sondeoRapido = null;
 async function enviar(cuerpo, tipo) {
   if (ocupado) return; ocupado = true; estado("pensando", tipo.startsWith("audio") ? "transcribiendo…" : "pensando…");
-  sondeoRapido = setInterval(sondear, 1000);   // mientras trabaja, se ve qué está haciendo
+  avIgnorar = avUltimo; colaVoz = Promise.resolve();
+  sondeoRapido = setInterval(sondear, 1000);   // mientras trabaja, se ve qué está haciendo y se oyen los avances
   try {
     const r = await fetch("/api/preguntar", { method: "POST", headers: { ...H, "Content-Type": tipo }, body: cuerpo });
     const d = await r.json(); if (d.error) throw new Error(d.error);
     firmaConv = ""; await sondear();
     if (d.plan) { planId = d.plan.id; $("planTexto").textContent = d.plan.texto; $("velo").classList.add("ver"); }
+    clearInterval(sondeoRapido); await sondear();   // por si quedó un avance sin leer
+    await colaVoz;
     estado("linea"); await hablar(d.audio);
   } catch (e) { $("feed").append(el("div", "msg jarvis", "⚠️ " + e.message)); estado("linea"); }
   finally { ocupado = false; clearInterval(sondeoRapido); }
@@ -512,7 +564,7 @@ $("texto").addEventListener("input", () => {
 setInterval(() => { if (despierto && document.activeElement !== $("texto") && !$("velo").classList.contains("ver") && document.hasFocus()) $("texto").focus(); }, 1500);
 
 let grabador = null, pedazos = [], quiereGrabar = false, abriendo = false, micFuente = null;
-async function empezarAGrabar() {
+async function empezarAGrabar(manosLibres = false) {
   if (ocupado && despierto) { estado("pensando", "todavía estoy con lo anterior: esperá que termine"); return; }
   if (grabador || abriendo || ocupado || !despierto) return;
   quiereGrabar = true; abriendo = true;
@@ -525,8 +577,10 @@ async function empezarAGrabar() {
   grabador.ondataavailable = e => pedazos.push(e.data);
   grabador.onstop = () => { s.getTracks().forEach(t => t.stop()); if (micFuente) micFuente.disconnect(); analizador = null;
     const b = new Blob(pedazos, { type: grabador.mimeType }); grabador = null;
-    if (b.size > 2000) enviar(b, b.type || "audio/webm"); else estado("linea", "muy corto: mantené apretado mientras hablás"); };
-  grabador.start(); estado("escuchando", "te escucho…");
+    if (b.size > 2000 && huboVoz) enviar(b, b.type || "audio/webm"); else estado("linea", manosLibres ? "no te escuché nada" : "muy corto: mantené apretado mientras hablás"); };
+  huboVoz = !manosLibres;
+  grabador.start(); estado("escuchando", manosLibres ? "te escucho… (corto cuando te callás)" : "te escucho…");
+  if (manosLibres) cortarAlCallarse();
 }
 function cortar() { quiereGrabar = false; if (grabador && grabador.state === "recording") grabador.stop(); }
 function errorMic(err) {
@@ -538,6 +592,79 @@ function errorMic(err) {
 document.addEventListener("keydown", e => { if (e.code === "Space" && !e.repeat && despierto) { e.preventDefault(); empezarAGrabar().catch(errorMic); } });
 document.addEventListener("keyup", e => { if (e.code === "Space" && despierto) { e.preventDefault(); cortar(); } });
 for (const n of [cv, $("mic")]) { n.addEventListener("pointerdown", () => empezarAGrabar().catch(errorMic)); n.addEventListener("pointerup", cortar); n.addEventListener("pointerleave", cortar); }
+
+// ============ «Hey Jarvis» ============
+// El micrófono queda abierto SOLO con el interruptor prendido. El audio va al servidor de la Mac
+// (127.0.0.1) en pedazos de ¼ s y ahí openWakeWord busca la palabra: nada sale de la compu.
+// No se manda mientras Jarvis habla, piensa o graba: así no se despierta con su propia voz.
+let huboVoz = false;
+function cortarAlCallarse() {
+  // Corta 1,3 s después de que dejaste de hablar; si en 6 s no dijiste nada, corta igual. Tope 25 s.
+  const t0 = performance.now(), datos = new Uint8Array(512); let ultimaVoz = 0;
+  const mirar = setInterval(() => {
+    if (!grabador) return clearInterval(mirar);
+    const ahora = performance.now();
+    if (analizador) { analizador.getByteTimeDomainData(datos); let e = 0; for (const v of datos) e += (v - 128) ** 2;
+      if (Math.sqrt(e / datos.length) > 6) { ultimaVoz = ahora; huboVoz = true; } }
+    if ((ultimaVoz && ahora - ultimaVoz > 1300) || (!ultimaVoz && ahora - t0 > 6000) || ahora - t0 > 25000) { clearInterval(mirar); cortar(); }
+  }, 100);
+}
+let oidoTocado = 0, oidoOn = false, oidoStream = null, oidoNodo = null, oidoFuente = null, oidoBuf = [], oidoLargo = 0, oidoMandando = false, oidoNuevo = true;
+function oidoLibre() { return despierto && modo === "linea" && !ocupado && !grabador && !abriendo && !(reproduciendo && !reproduciendo.paused) && !$("velo").classList.contains("ver"); }
+function ponerOido(on, guardar = true) {
+  oidoOn = on;
+  $("chipOido").className = "chip boton " + (on ? "on" : "off"); $("chipOido").querySelector("b").textContent = on ? "on" : "off";
+  if (guardar) oidoTocado = Date.now();
+  if (guardar) fetch("/api/escucha", { method: "POST", headers: { ...H, "Content-Type": "application/json" }, body: JSON.stringify({ on }) }).catch(() => {});
+  if (on && despierto) abrirOido().catch(e => { ponerOido(false); errorMic(e); }); else cerrarOido();
+}
+let oidoAbriendo = null;
+function abrirOido() {   // una sola apertura a la vez: el arranque y el interruptor pueden pedirla juntos
+  if (oidoStream || !ctxAudio) return Promise.resolve();
+  return oidoAbriendo || (oidoAbriendo = _abrirOido().finally(() => { oidoAbriendo = null; }));
+}
+async function _abrirOido() {
+  const s = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+  if (!oidoOn) { s.getTracks().forEach(t => t.stop()); return; }
+  oidoStream = s;
+  oidoFuente = ctxAudio.createMediaStreamSource(oidoStream);
+  oidoNodo = ctxAudio.createScriptProcessor(4096, 1, 1);
+  const paso = ctxAudio.sampleRate / 16000;
+  oidoNodo.onaudioprocess = ev => {
+    const libre = oidoLibre(); $("chipOido").classList.toggle("pausa", !libre);
+    if (!libre) { oidoBuf = []; oidoLargo = 0; oidoNuevo = true; return; }
+    const x = ev.inputBuffer.getChannelData(0), n = Math.floor(x.length / paso), out = new Int16Array(n);
+    for (let i = 0; i < n; i++) { let a = 0, k = 0; for (let j = Math.floor(i * paso); j < Math.floor((i + 1) * paso); j++) { a += x[j]; k++; }
+      out[i] = Math.max(-32768, Math.min(32767, (a / k) * 32767)); }
+    oidoBuf.push(out); oidoLargo += n;
+    if (oidoLargo >= 4000 && !oidoMandando) mandarOido();
+  };
+  oidoFuente.connect(oidoNodo); oidoNodo.connect(ctxAudio.destination);   // sin conectarlo, Chrome no lo corre (sale en silencio)
+}
+async function mandarOido() {
+  const pcm = new Int16Array(oidoLargo); let o = 0; for (const b of oidoBuf) { pcm.set(b, o); o += b.length; }
+  oidoBuf = []; oidoLargo = 0; oidoMandando = true;
+  const nuevo = oidoNuevo; oidoNuevo = false;
+  try {
+    const r = await fetch("/api/oido" + (nuevo ? "?nuevo=1" : ""), { method: "POST", headers: { ...H, "Content-Type": "application/octet-stream" }, body: pcm.buffer });
+    const d = await r.json();
+    if (d.error) { avisar("HEY JARVIS", d.error); ponerOido(false, false); return; }
+    if (d.detectado && oidoLibre()) { pitido(); empezarAGrabar(true).catch(errorMic); }
+  } catch (e) { /* servidor reiniciando: el próximo pedazo reintenta */ }
+  finally { oidoMandando = false; }
+}
+function cerrarOido() {
+  if (oidoNodo) { oidoNodo.onaudioprocess = null; oidoNodo.disconnect(); oidoNodo = null; }
+  if (oidoFuente) { oidoFuente.disconnect(); oidoFuente = null; }
+  if (oidoStream) { oidoStream.getTracks().forEach(t => t.stop()); oidoStream = null; }   // se apaga la luz naranja del micrófono
+  oidoBuf = []; oidoLargo = 0; oidoNuevo = true;
+}
+function pitido() {
+  const o = ctxAudio.createOscillator(), g = ctxAudio.createGain(); o.frequency.value = 880;
+  g.gain.setValueAtTime(0.12, ctxAudio.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctxAudio.currentTime + 0.18);
+  o.connect(g); g.connect(ctxAudio.destination); o.start(); o.stop(ctxAudio.currentTime + 0.2);
+}
+$("chipOido").onclick = () => ponerOido(!oidoOn);
 
 // ============ plan ============
 async function responderPlan(si) {
@@ -576,6 +703,7 @@ async function despertar() {
   let b = {};
   try { b = await cargarYPintar(); } catch (e) { avisar("SIN CONEXIÓN", "No pude traer el brief: el servidor puede estar reiniciando. Reintento solo."); }
   await sondear();
+  if (oidoOn) abrirOido().catch(e => { ponerOido(false); errorMic(e); });
   if (b && b.texto) { $("feed").append(el("div", "msg jarvis ultimo", b.texto)); $("feed").scrollTop = 1e9; }
   const viejo = !b.generado || (Date.now() - new Date(b.generado)) > 14 * 3600 * 1000;
   if (viejo) avisar("BRIEF VIEJO", "Este resumen no es de hoy: tocá «Actualizar».");
