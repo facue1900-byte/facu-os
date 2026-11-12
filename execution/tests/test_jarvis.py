@@ -1574,3 +1574,35 @@ def test_audio_en_stream_con_token_en_la_url(srv, tmp_path, monkeypatch):
     assert st == 403
     st, _ = req(srv, "GET", f"/api/estado?t={servidor.TOKEN}", token=False)
     assert st == 403, "el token en la URL vale sólo para el audio"
+
+
+# --- fixes de la revisión del 12/11 -------------------------------------------------------------
+
+def test_locutor_bloque_sin_cerrar_no_se_traga_el_bloque_siguiente():
+    dichas = []
+    loc = servidor.Locutor(dichas.append)
+    loc.nuevo_bloque(); loc.agregar("Va, jefe, lo preparo. <<<PLAN sin cierre"); loc.flush()
+    loc.nuevo_bloque(); loc.agregar("Listo, ya quedó preparado."); loc.flush()
+    assert dichas == ["Va, jefe, lo preparo.", "Listo, ya quedó preparado."]
+
+
+def test_oracion_sin_voz_queda_lista_y_no_traba(monkeypatch):
+    monkeypatch.setattr(servidor, "sintetizar_en_vivo", lambda t: (_ for _ in ()).throw(RuntimeError("sin red")))
+    monkeypatch.setattr(servidor, "threading", types.SimpleNamespace(
+        Thread=lambda target, daemon=True, **k: types.SimpleNamespace(start=target), Lock=threading.Lock))
+    servidor.AVANCES.update(turno="t", items=[])
+    servidor._publicar_avance("Una oración que falla.", al_feed=False, en_vivo=True)
+    it = servidor.AVANCES["items"][0]
+    assert it["audio"] is None and it["listo"] is True
+
+
+def test_turno_con_excepcion_rara_apaga_el_proceso(monkeypatch):
+    apagados = []
+    eventos = [{"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash", "input": {}}]}}]
+    _vivo(monkeypatch, eventos)
+    monkeypatch.setattr(servidor, "_describir_herramienta", lambda n, i: 1 / 0)
+    c = servidor.CerebroVivo()
+    monkeypatch.setattr(c, "apagar", lambda: apagados.append(1))
+    with pytest.raises(ZeroDivisionError):
+        c.turno("hola", None, 30)
+    assert apagados, "un turno roto a la mitad no puede dejar el proceso con eventos sin leer"

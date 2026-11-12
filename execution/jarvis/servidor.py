@@ -486,6 +486,7 @@ def _publicar_avance(texto, al_feed=True, en_vivo=False):
         return
     with AVANCES_LOCK:
         item = {"n": len(AVANCES["items"]), "texto": texto, "audio": _AUDIO_FIJO.get(texto)}
+        item["listo"] = bool(item["audio"])
         AVANCES["items"].append(item)
         AVANCES["ultimo_ts"] = time.time()
     if al_feed:
@@ -494,7 +495,12 @@ def _publicar_avance(texto, al_feed=True, en_vivo=False):
         return
 
     def voz():
-        item["audio"] = sintetizar_en_vivo(texto) if en_vivo else sintetizar_seguro(texto)
+        try:
+            item["audio"] = sintetizar_en_vivo(texto) if en_vivo else sintetizar_seguro(texto)
+        except Exception as e:      # una oración sin voz no puede trabar las que siguen
+            log("ERROR voz de avance:", repr(e))
+        finally:
+            item["listo"] = True
     threading.Thread(target=voz, daemon=True).start()
 
 
@@ -533,6 +539,7 @@ class Locutor:
     def nuevo_bloque(self):
         self.flush()
         self.inicio_bloque = True
+        self.en_bloque = False        # un <<< sin cerrar no se traga el resto del turno
 
     def herramienta(self):
         self.flush()
@@ -722,6 +729,11 @@ class CerebroVivo:
         except (BrokenPipeError, OSError) as ex:
             self.apagar()
             raise tb.ClaudeFallo(f"se cortó la conexión con Claude: {ex}")
+        except BaseException:
+            # Cualquier otra cosa a mitad de turno: el proceso queda con eventos sin leer y el próximo
+            # turno contestaría con el resultado viejo. Se apaga y arranca limpio.
+            self.apagar()
+            raise
         finally:
             terminado.set()
             ACTIVIDAD.update(texto="", ts=time.time())
@@ -1195,7 +1207,7 @@ class Manejador(BaseHTTPRequestHandler):
                 "actividad": ACTIVIDAD["texto"],
                 "escucha": bool(estado.get("escucha")),
                 "avances": {"turno": AVANCES["turno"],
-                            "items": [{"n": i["n"], "audio": i["audio"], "texto": i["texto"]} for i in AVANCES["items"]]},
+                            "items": [{"n": i["n"], "audio": i["audio"], "texto": i["texto"], "listo": i.get("listo", True)} for i in AVANCES["items"]]},
                 # Cambia cuando alguien regenera los números (brief, «Actualizar», una tarea): el panel repinta solo.
                 "version_numeros": "|".join(str(f.stat().st_mtime) if f.exists() else "-"
                                             for f in (BRIEF, DATA / "numeros.json")),
@@ -1222,12 +1234,13 @@ class Manejador(BaseHTTPRequestHandler):
         enviado, t0 = 0, time.time()
         with open(ruta, "rb") as f:
             while time.time() - t0 < 30:
+                fin = listo.is_set()          # ANTES de leer: si terminó, este read trae lo último
                 trozo = f.read()
                 if trozo:
                     self.wfile.write(trozo)
                     self.wfile.flush()
                     enviado += len(trozo)
-                elif listo.is_set():
+                elif fin:
                     break
                 else:
                     time.sleep(0.03)
@@ -1350,14 +1363,19 @@ def refrescar_numeros_siempre():
         try:
             gen = (leer_json(DATA / "numeros.json", {}) or {}).get("generado") or ""
             edad = time.time() - time.mktime(time.strptime(gen[:19], "%Y-%m-%dT%H:%M:%S")) if gen else 1e9
-            if edad >= CADA_NUMEROS - 30:
-                r = subprocess.run([sys.executable, str(pathlib.Path(__file__).with_name("brief.py")), "--solo-numeros"],
-                                   cwd=tb.OS_DIR, capture_output=True, text=True, timeout=300)
-                if r.returncode:
-                    log("ERROR refrescando números:", (r.stderr or r.stdout)[-300:])
-                espera = CADA_NUMEROS
-            else:
+            if edad < CADA_NUMEROS - 30:
                 espera = CADA_NUMEROS - edad
+            elif not BRIEF_LOCK.acquire(blocking=False):      # hay un «Actualizar» corriendo: no lo piso
+                espera = 120
+            else:
+                try:
+                    r = subprocess.run([sys.executable, str(pathlib.Path(__file__).with_name("brief.py")),
+                                        "--solo-numeros"], cwd=tb.OS_DIR, capture_output=True, text=True, timeout=300)
+                    if r.returncode:
+                        log("ERROR refrescando números:", (r.stderr or r.stdout)[-300:])
+                finally:
+                    BRIEF_LOCK.release()
+                espera = CADA_NUMEROS
         except Exception as e:
             log("ERROR refrescando números:", repr(e))
             espera = CADA_NUMEROS

@@ -488,20 +488,22 @@ setInterval(() => { if (fila.length && modo === "linea" && !ocupado && !grabador
 let avUltimo = null, avIgnorar = null, avTurno = null, avOidos = new Set(), colaVoz = Promise.resolve();
 // Desde el 12/11 la respuesta también llega así: el servidor la dice oración por oración MIENTRAS Claude
 // la escribe. Se reproducen en orden (n), y si le hablás encima (espacio, click o «Hey Jarvis») se calla.
-let enTurno = false, vozGen = 0, avSig = 0, avPend = null;
+let enTurno = false, vozGen = 0, avSig = 0, avPend = null, turnoId = 0, silenciado = false;
 function callar() {         // lo que falta de este turno ya no se dice, aunque siga llegando
-  vozGen++; if (enTurno && avTurno) avIgnorar = avTurno;
+  vozGen++; if (enTurno) { silenciado = true; if (avTurno) avIgnorar = avTurno; }
   if (reproduciendo && !reproduciendo.paused) reproduciendo.pause(); }
 function oirAvances(av) {
   if (!enTurno) { avUltimo = av.turno; return; }
   avPend = av;
   if (!av.turno || av.turno === avIgnorar) return;          // el turno de la pregunta anterior no se lee
   if (av.turno !== avTurno) { avTurno = av.turno; avOidos = new Set(); avSig = 0; }
+  if (silenciado) { avIgnorar = av.turno; return; }          // lo cortaste antes de la primera oración
   const g = vozGen;
   while (true) {            // en orden: la oración 3 no suena antes que la 2 aunque su audio llegue primero
     const it = av.items.find(x => x.n === avSig);
-    if (!it || !it.audio) break;
+    if (!it || (!it.audio && !it.listo)) break;
     avSig++; avOidos.add(it.n);
+    if (!it.audio) continue;  // esa oración no tuvo voz: se saltea, no traba las siguientes
     colaVoz = colaVoz.then(() => { if (g !== vozGen) return; if (it.texto) $("estadoTxt").textContent = it.texto; return sonar(it.audio); }).catch(() => {});
   }
 }
@@ -538,9 +540,13 @@ async function hablar(nombre) {
 // ============ hablarle / escribirle ============
 let sondeoRapido = null;
 async function enviar(cuerpo, tipo) {
-  if (ocupado) return; ocupado = true; estado("pensando", tipo.startsWith("audio") ? "transcribiendo…" : "pensando…");
-  avIgnorar = avUltimo; colaVoz = Promise.resolve(); enTurno = true; avPend = null; const g = vozGen;
+  if (ocupado) return;
+  callar();                  // si seguía diciendo la respuesta anterior, se calla: nunca dos turnos sonando
+  ocupado = true; estado("pensando", tipo.startsWith("audio") ? "transcribiendo…" : "pensando…");
+  const mi = ++turnoId;
+  avIgnorar = avTurno || avUltimo; colaVoz = Promise.resolve(); enTurno = true; silenciado = false; avPend = null; const g = vozGen;
   // Cada 350 ms mientras trabaja: cada oración que dice se oye apenas tiene audio (antes 1 s de espera promedio 0,5).
+  clearInterval(sondeoRapido);
   sondeoRapido = setInterval(() => { if (!sondear.enCurso) { sondear.enCurso = true; sondear().finally(() => { sondear.enCurso = false; }); } }, 350);
   try {
     const r = await fetch("/api/preguntar", { method: "POST", headers: { ...H, "Content-Type": tipo }, body: cuerpo });
@@ -552,11 +558,11 @@ async function enviar(cuerpo, tipo) {
     for (let i = 0; i < (d.en_vivo ? 40 : 1); i++) { await sondear(); if (vozCompleta()) break; await new Promise(r => setTimeout(r, 250)); }
     ocupado = false;           // desde acá se lo puede cortar hablándole encima
     await colaVoz;
-    if (g !== vozGen) { if (modo === "pensando" || modo === "hablando") estado("linea"); return; }  // lo cortaste: no sigue hablando
+    if (g !== vozGen || mi !== turnoId) { if (mi === turnoId && (modo === "pensando" || modo === "hablando")) estado("linea"); return; }  // lo cortaste: no sigue hablando
     if (modo !== "escuchando") estado("linea");
     await hablar(d.audio);
-  } catch (e) { $("feed").append(el("div", "msg jarvis", "⚠️ " + e.message)); estado("linea"); }
-  finally { ocupado = false; enTurno = false; clearInterval(sondeoRapido); }
+  } catch (e) { $("feed").append(el("div", "msg jarvis", "⚠️ " + e.message)); if (mi === turnoId) estado("linea"); }
+  finally { if (mi === turnoId) { ocupado = false; enTurno = false; clearInterval(sondeoRapido); } }
 }
 // ---- texto escrito o DICTADO CON TYPELESS ----
 // Typeless pega el texto ya limpio (sin «eh…», con las autocorrecciones aplicadas) en el campo que tiene
@@ -638,7 +644,7 @@ function cortarAlCallarse() {
 let oidoTocado = 0, oidoOn = false, oidoStream = null, oidoNodo = null, oidoFuente = null, oidoBuf = [], oidoLargo = 0, oidoMandando = false, oidoNuevo = true;
 function oidoLibre() { return despierto && modo === "linea" && !ocupado && !grabador && !abriendo && !(reproduciendo && !reproduciendo.paused) && !$("velo").classList.contains("ver"); }
 // «Hey Jarvis» también mientras habla (para cortarlo). Medido 12/11: su propia voz no lo dispara (0 en 25 min).
-function oidoEscucha() { return despierto && (modo === "linea" || (modo === "hablando" && !ocupado)) && !grabador && !abriendo && !$("velo").classList.contains("ver"); }
+function oidoEscucha() { return despierto && (modo === "linea" || modo === "hablando") && !grabador && !abriendo && !$("velo").classList.contains("ver"); }
 function ponerOido(on, guardar = true) {
   oidoOn = on;
   $("chipOido").className = "chip boton " + (on ? "on" : "off"); $("chipOido").querySelector("b").textContent = on ? "on" : "off";
