@@ -627,3 +627,29 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
   compartido). Parecía un bug de carrera del servidor. Al terminar una prueba: `pkill -f remote-debugging-port`.
 - Chrome headless con `--use-file-for-fake-audio-capture` entrega silencio: para probar de punta a punta
   se reemplaza `getUserMedia` por un `MediaStreamDestination` que reproduce el wav.
+
+## 12/11/2026 — Jarvis «trabajando» callado 2 minutos: no era que pensaba
+
+Facu: «el trabajando sigue siendo muy largo y no me dice nada». Medido en el transcript de la sesión
+(`~/.claude/projects/-Users-Facu-facu-os/<sid>.jsonl`, líneas `api-request`): la pregunta de las 17:07
+(«repetime qué tengo que pagar») tardó 118 s **sin ninguna herramienta ni thinking**. Hubo dos
+`api-request`: la primera colgó 75 s y el CLI reintentó, y la segunda tardó 43 s en dar 298 tokens.
+Fue la API, no el modelo pensando. Además, esa respuesta ya existía: una tarea la había calculado a
+las 13:57, pero al contexto de la charla sólo llegaba su «PARA DECIR» de 2 líneas.
+Arreglo: `--fallback-model opus`, rellenos de voz por tiempo, y el código lee en voz alta la herramienta
+que el modelo usa sin avisar. Las tareas salen en stream y publican su paso. Los reportes enteros de las
+últimas 3 tareas van al contexto, y los números se refrescan cada 20 min.
+**Lección:** antes de culpar al modelo por lento, mirá los timestamps de `api-request` del transcript.
+
+## 12/11/2026 — Voz en vivo: dónde se iba el tiempo y dos trampas del E2E
+
+Antes, la primera palabra tardaba 7 a 15 s: 1,3 s de silencio + whisper (3,1 s con beam 5) + respuesta
+entera + síntesis entera (~1,4 s fijos de Microsoft por audio). Ahora: corte a 0,9 s, whisper con
+`beam_size=1` (2,1 s y el mismo texto; `base` pierde palabras y 8 hilos es 3× más lento que 4), cada
+oración se dice apenas se escribe, y el mp3 se sirve mientras se genera (primer pedazo a ~0,9 s).
+Medido en Chrome headless: la primera palabra sale a los 3,5–5 s. Lo que queda es casi todo el tiempo
+que la API tarda en arrancar a escribir (de 2 a 9 s, varía).
+**Trampas:** (1) `Page.addScriptToEvaluateOnNewDocument` sin `Page.enable` no inyecta nada, así que el
+probe de `Audio` daba «0 audios» y parecía que la voz en vivo no andaba. (2) Cortarlo con `vozGen++`
+no alcanza: las oraciones que llegan DESPUÉS del corte se encolan con el gen nuevo. Hay que ignorar el
+turno entero (`avIgnorar = avTurno`).

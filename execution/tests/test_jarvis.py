@@ -47,6 +47,14 @@ class HiloFalso:
         self.target(*self.args, **self.kwargs)
 
 
+@pytest.fixture(autouse=True)
+def sin_voz_real(monkeypatch):
+    """Los rellenos y avances sintetizan en hilos: ningún test le habla a Microsoft de verdad."""
+    monkeypatch.setattr(servidor, "sintetizar", lambda t: "e" * 32 + ".mp3")
+    monkeypatch.setattr(servidor, "_AUDIO_FIJO", {})
+    monkeypatch.setattr(servidor, "sintetizar_en_vivo", lambda t: "d" * 32 + ".mp3")
+
+
 @pytest.fixture
 def srv(tmp_path, monkeypatch):
     monkeypatch.setattr(servidor, "DATA", tmp_path)
@@ -1347,7 +1355,8 @@ def test_cerebro_vivo_dice_avances_y_no_repite_la_respuesta(monkeypatch):
     monkeypatch.setattr(servidor, "anotar", lambda q, t, **kw: anotados.append((t, kw)))
     monkeypatch.setattr(servidor, "sintetizar_seguro", lambda t: "a" * 32 + ".mp3")
     monkeypatch.setattr(servidor, "threading", types.SimpleNamespace(
-        Thread=lambda target, daemon=True, **k: types.SimpleNamespace(start=target), Event=threading.Event, Lock=threading.Lock))
+        Thread=lambda target, daemon=True, name=None, **k: types.SimpleNamespace(
+            start=(lambda: None) if name == "relleno" else target), Event=threading.Event, Lock=threading.Lock))
     procs = _vivo(monkeypatch, [
         {"type": "system", "subtype": "init", "session_id": UUID1},
         {"type": "assistant", "message": {"content": [{"type": "text", "text": "ENTENDÍ: deuda de Bigg\nMe fijo en la pestaña de Bigg…"}]}},
@@ -1397,3 +1406,203 @@ def test_mandarme_solo_va_al_mail_de_facu(monkeypatch):
         mandarme.armar({"titulo": "vacío"})
     src = open("/Users/Facu/facu-os/execution/jarvis/mandarme.py").read()
     assert 'para = os.environ["MAIL_FACU"]' in src and "argv" not in src.split("para = ")[0].split("def main")[1]
+
+
+# --- «el trabajando no me dice nada» (12/11/2026) ------------------------------------------------
+
+class _VivoLento(_VivoFalso):
+    """Como _VivoFalso pero cada evento tarda: deja ver los rellenos."""
+    def __init__(self, eventos, demoras):
+        super().__init__(eventos)
+        def gen():
+            for e, d in zip(eventos, demoras):
+                time.sleep(d)
+                yield json.dumps(e) + "\n"
+        self.stdout = gen()
+
+
+def test_relleno_cuando_tarda_y_herramienta_sin_aviso(monkeypatch):
+    monkeypatch.setattr(servidor, "SEG_PRIMER_RELLENO", 0.5)
+    monkeypatch.setattr(servidor, "SEG_ENTRE_RELLENOS", 100)
+    monkeypatch.setattr(servidor, "SEG_MIN_ENTRE_AVANCES", 1)
+    monkeypatch.setattr(servidor, "anotar", lambda *a, **k: pytest.fail("un relleno no va a la conversación"))
+    monkeypatch.setattr(servidor.os, "killpg", lambda *a: None)
+    eventos = [{"type": "system", "subtype": "init", "session_id": UUID1},
+               {"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash",
+                                                              "input": {"description": "Count unread", "command": "python -c 'gmail()'"}}]}},
+               {"type": "result", "subtype": "success", "result": "Son dieciocho, jefe.", "session_id": UUID1}]
+    monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: _VivoLento(eventos, [0, 2.5, 0]))
+    r, _ = servidor.CerebroVivo().turno("¿mails?", None, 30)
+    textos = [i["texto"] for i in servidor.AVANCES["items"]]
+    assert r == "Son dieciocho, jefe."
+    assert textos[0] in servidor.RELLENO_PRIMERO, textos
+    assert "Me fijo en el mail, jefe." in textos, "la herramienta sin aviso la cuenta el código, en español"
+
+
+def test_respuesta_rapida_no_lleva_relleno(monkeypatch):
+    monkeypatch.setattr(servidor.os, "killpg", lambda *a: None)
+    eventos = [{"type": "system", "subtype": "init", "session_id": UUID1},
+               {"type": "result", "subtype": "success", "result": "De nada, jefe.", "session_id": UUID1}]
+    monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: _VivoLento(eventos, [0, 0.3]))
+    servidor.CerebroVivo().turno("ok gracias", None, 30)
+    time.sleep(0.2)
+    assert servidor.AVANCES["items"] == []
+
+
+def test_cerebro_lleva_modelo_de_respaldo(monkeypatch):
+    procs = _vivo(monkeypatch, [{"type": "result", "subtype": "success", "result": "ok", "session_id": UUID1}])
+    servidor.CerebroVivo().turno("hola", None, 30)
+    cmd = procs[0][0]
+    assert cmd[cmd.index("--fallback-model") + 1] == servidor.MODELO_RESPALDO != servidor.MODELO_CHARLA
+
+
+def test_tarea_en_stream_avisa_cada_paso(monkeypatch):
+    eventos = [{"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Read",
+                                                              "input": {"file_path": "/x/facturas.xlsx"}}]}},
+               {"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "mcp__claude_ai_Gmail__search_threads", "input": {}}]}},
+               {"type": "result", "subtype": "success", "result": "PARA DECIR: listo", "session_id": UUID1}]
+    vistos = []
+
+    class P(_VivoFalso):
+        returncode = 0
+        def wait(self): return 0
+    monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: vistos.append(cmd) or P(eventos))
+    pasos = []
+    r, sid = servidor.claude_completo("x", None, "i", "Jarvis", 30, al_paso=pasos.append)
+    assert (r, sid) == ("PARA DECIR: listo", UUID1)
+    assert pasos == ["leyendo facturas.xlsx", "leyendo mails"]
+    assert "stream-json" in vistos[0] and "Bash(*--send*)" in vistos[0]
+
+
+def test_tarea_en_stream_sin_resultado_es_error(monkeypatch):
+    class P(_VivoFalso):
+        returncode = 1
+        def wait(self): return 1
+    monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: P([]))
+    with pytest.raises(tb.ClaudeFallo):
+        servidor.claude_completo("x", None, "i", "Jarvis", 30, al_paso=lambda p: None)
+
+
+def test_contexto_trae_reporte_entero_y_paso_en_curso(srv):
+    ahora = time.time()
+    servidor.guardar_json(servidor.TAREAS, [
+        {"id": "aaa111", "titulo": "Facturas", "estado": "lista", "inicio": ahora - 400, "fin": ahora - 60,
+         "resultado": "AVN $28.954.654,88 vencido", "para_decir": "Debés 51 millones"},
+        {"id": "bbb222", "titulo": "Deudas", "estado": "corriendo", "inicio": ahora - 130, "paso": "leyendo mails", "pasos": 4}])
+    c = servidor.contexto_del_dia()
+    assert "REPORTE: AVN $28.954.654,88 vencido" in c
+    assert "hace 2 min, 4 pasos, ahora: leyendo mails" in c
+
+
+# --- habla mientras escribe y se lo puede cortar (12/11/2026, «como ChatGPT») ---------------------
+
+def _locutor(trozos):
+    dichas = []
+    loc = servidor.Locutor(dichas.append)
+    loc.nuevo_bloque()
+    for t in trozos:
+        loc.agregar(t)
+    loc.flush()
+    return dichas
+
+
+def test_locutor_dice_por_oracion_y_saltea_entendi():
+    assert _locutor(["ENTEN", "DÍ: quiere la deuda\nJefe, hoy le deben veintidós millones. Lo vencido ",
+                     "son cuatrocientos mil pesos. ¿Quiere el detalle?"]) == [
+        "Jefe, hoy le deben veintidós millones.", "Lo vencido son cuatrocientos mil pesos.", "¿Quiere el detalle?"]
+
+
+def test_locutor_no_dice_bloques_aunque_lleguen_partidos():
+    assert _locutor(["Dale, jefe, lo mando a hacer. <<", "<TAREA Algo\npedido largo\nTA", "REA>>> Le aviso."]) == [
+        "Dale, jefe, lo mando a hacer.", "Le aviso."]
+    assert _locutor(["ENTENDÍ: sólo esto"]) == []
+    assert _locutor(["De nada, jefe."]) == ["De nada, jefe."]
+    assert _locutor(["$22.594.386 en total, jefe."]) == ["$22.594.386 en total, jefe."], "un punto de miles no corta"
+
+
+def _delta(t):
+    return {"type": "stream_event", "event": {"type": "content_block_delta", "delta": {"type": "text_delta", "text": t}}}
+
+
+def test_cerebro_dice_en_vivo_y_no_repite(monkeypatch):
+    anotados = []
+    monkeypatch.setattr(servidor, "anotar", lambda q, t, **kw: anotados.append((t, kw)))
+    monkeypatch.setattr(servidor.os, "killpg", lambda *a: None)
+    inicio = {"type": "stream_event", "event": {"type": "content_block_start", "content_block": {"type": "text"}}}
+    fin = {"type": "stream_event", "event": {"type": "content_block_stop"}}
+    eventos = [{"type": "system", "subtype": "init", "session_id": UUID1},
+               inicio, _delta("Me fijo en la pestaña de Bigg, jefe."), fin,
+               {"type": "assistant", "message": {"content": [{"type": "text", "text": "Me fijo en la pestaña de Bigg, jefe."}]}},
+               {"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash", "input": {}}]}},
+               inicio, _delta("Debe cuatrocientos setenta mil pesos. "), _delta("Todo vencido."), fin,
+               {"type": "assistant", "message": {"content": [{"type": "text", "text": "Debe cuatrocientos setenta mil pesos. Todo vencido."}]}},
+               {"type": "result", "subtype": "success", "result": "Debe cuatrocientos setenta mil pesos. Todo vencido.", "session_id": UUID1}]
+    procs = []
+    monkeypatch.setattr(servidor.subprocess, "Popen", lambda cmd, **kw: procs.append(cmd) or _VivoFalso(eventos))
+    c = servidor.CerebroVivo()
+    r, _ = c.turno("¿Bigg?", None, 30)
+    assert r.startswith("Debe") and c.en_vivo is True
+    assert [i["texto"] for i in servidor.AVANCES["items"]] == [
+        "Me fijo en la pestaña de Bigg, jefe.", "Debe cuatrocientos setenta mil pesos.", "Todo vencido."]
+    assert anotados == [("Me fijo en la pestaña de Bigg, jefe.", {"avance": True})], "el avance va al feed una sola vez"
+    assert "--include-partial-messages" in procs[0]
+
+
+def test_preguntar_en_vivo_solo_sintetiza_lo_que_agrego_el_codigo(srv, monkeypatch):
+    sintetizados = []
+    monkeypatch.setattr(servidor, "sintetizar_seguro", lambda t: sintetizados.append(t) or "b" * 32 + ".mp3")
+    monkeypatch.setattr(servidor, "claude_completo", fake_cerebro("Son tres, jefe."))
+    monkeypatch.setattr(servidor.CEREBRO, "en_vivo", True, raising=False)
+    st, raw = req(srv, "POST", "/api/preguntar", {"texto": "¿cuántos?"})
+    d = js(raw)
+    assert st == 200 and d["en_vivo"] is True and d["audio"] is None and sintetizados == []
+    assert d["respuesta"] == "Son tres, jefe."
+    monkeypatch.setattr(servidor.CEREBRO, "en_vivo", False, raising=False)
+    d = js(req(srv, "POST", "/api/preguntar", {"texto": "¿y ahora?"})[1])
+    assert d["audio"] and sintetizados == ["Son tres, jefe."], "sin vivo, se sintetiza entera como antes"
+
+
+def test_audio_en_stream_con_token_en_la_url(srv, tmp_path, monkeypatch):
+    nombre = "c" * 32 + ".mp3"
+    (tmp_path / "audio" / nombre).write_bytes(b"ID3" + b"x" * 500)
+    listo = threading.Event()
+    monkeypatch.setitem(servidor.AUDIO_EN_CURSO, nombre, listo)
+    threading.Timer(0.3, lambda: ((tmp_path / "audio" / nombre).open("ab").write(b"y" * 300), listo.set())).start()
+    st, raw = req(srv, "GET", f"/api/audio/{nombre}?t={servidor.TOKEN}", token=False)
+    assert st == 200 and raw == b"ID3" + b"x" * 500 + b"y" * 300, "lo que se escribió después también llega"
+    st, _ = req(srv, "GET", f"/api/audio/{nombre}?t=malo", token=False)
+    assert st == 403
+    st, _ = req(srv, "GET", f"/api/estado?t={servidor.TOKEN}", token=False)
+    assert st == 403, "el token en la URL vale sólo para el audio"
+
+
+# --- fixes de la revisión del 12/11 -------------------------------------------------------------
+
+def test_locutor_bloque_sin_cerrar_no_se_traga_el_bloque_siguiente():
+    dichas = []
+    loc = servidor.Locutor(dichas.append)
+    loc.nuevo_bloque(); loc.agregar("Va, jefe, lo preparo. <<<PLAN sin cierre"); loc.flush()
+    loc.nuevo_bloque(); loc.agregar("Listo, ya quedó preparado."); loc.flush()
+    assert dichas == ["Va, jefe, lo preparo.", "Listo, ya quedó preparado."]
+
+
+def test_oracion_sin_voz_queda_lista_y_no_traba(monkeypatch):
+    monkeypatch.setattr(servidor, "sintetizar_en_vivo", lambda t: (_ for _ in ()).throw(RuntimeError("sin red")))
+    monkeypatch.setattr(servidor, "threading", types.SimpleNamespace(
+        Thread=lambda target, daemon=True, **k: types.SimpleNamespace(start=target), Lock=threading.Lock))
+    servidor.AVANCES.update(turno="t", items=[])
+    servidor._publicar_avance("Una oración que falla.", al_feed=False, en_vivo=True)
+    it = servidor.AVANCES["items"][0]
+    assert it["audio"] is None and it["listo"] is True
+
+
+def test_turno_con_excepcion_rara_apaga_el_proceso(monkeypatch):
+    apagados = []
+    eventos = [{"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Bash", "input": {}}]}}]
+    _vivo(monkeypatch, eventos)
+    monkeypatch.setattr(servidor, "_describir_herramienta", lambda n, i: 1 / 0)
+    c = servidor.CerebroVivo()
+    monkeypatch.setattr(c, "apagar", lambda: apagados.append(1))
+    with pytest.raises(ZeroDivisionError):
+        c.turno("hola", None, 30)
+    assert apagados, "un turno roto a la mitad no puede dejar el proceso con eventos sin leer"
