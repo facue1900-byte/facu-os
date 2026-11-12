@@ -8,6 +8,34 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-11 · FAIL ✓ · El brief de Jarvis mostraba la deuda del Paseo de JULIO
+
+**Síntoma:** el panel del Paseo decía Fabric $2.033.664 exigible; la pestaña Fabric ya
+tenía cargos hasta NOV'26 y pagos por banco al 26/10.
+
+**Causa raíz:** `radar_deudores.py` (y el brief, que lo usa) leía la pestaña consolidada
+**CUENTA CORRIENTE** de Ctas Ctes. No es una tabla que crece: es una grilla de **filas
+fijas** período × local (64 filas: 8 locales × dic-25…jul-26) con `SUMIFS` contra CARGOS
+y Cobros. Nadie la extendió desde julio y nada lo hacía — `cargos_del_mes.py` agrega a
+CARGOS y a cada pestaña, nunca a la consolidada. CARGOS ya llegaba a nov-26. Encima
+cruzaba Cobros por nombre («Fabric», «Volta + Open») y por mes de PAGO, no por bloque:
+aun extendida daba otro número que la pestaña que ve el locatario. Nunca falló un
+chequeo porque el único era «¿vino con filas?» — y 64 filas viejas son filas.
+
+**Fix:** el radar lee las **pestañas por local** (layout único en
+`reglas_locales.PESTANAS`, compartido con `deuda_efectivo.py`) y CARGOS − Cobros para
+los que no tienen pestaña. Regla de cobro explícita: bloque del mes M = alquiler de M +
+expensas de M−1 (`mes_de_cobro`, verificada leyendo las 5 pestañas; un concepto
+desconocido corta en vez de adivinarse). Dos alarmas nuevas: último período con más de
+1 mes de atraso → «sin dato» (el brief no muestra el total), y la cadena de SALDO de la
+pestaña tiene que dar cargos − pagos (±$1). Al 11/11 las cinco cierran al centavo.
+`exportar_ctas_ctes.py` (mismo origen, sin consumidor en la app) quedó dado de baja.
+Tests: `execution/tests/test_radar_deudores.py`.
+
+**Lección:** una tabla «que se calcula sola» con filas escritas a mano no se calcula
+sola: envejece. Para saber si una fuente está al día se mira su **último período**, no
+si tiene filas.
+
 ### 2026-11-11 · FAIL ✓ · Bot de Telegram: «solo lectura» por instrucción, no por permiso
 
 **Qué pasó.** La primera versión de `execution/telegram_bot.py` corría `claude -p` con un

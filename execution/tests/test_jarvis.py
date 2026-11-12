@@ -891,7 +891,8 @@ def ok_pauta():
 
 def ok_paseo():
     return {"exigible_total": 900000, "deudores": [{"local": "Local 7", "exigible": 900000, "por_banco": False}],
-            "al_dia": 5, "con_regla": 1, "filas_leidas": 7}
+            "en_curso_total": 1500000, "sin_dato": [], "al_dia": 5, "con_regla": 1,
+            "movimientos_leidos": 7, "fuente": "Ctas Ctes · pestañas por local"}
 
 
 def ok_mails():
@@ -1120,3 +1121,25 @@ def test_para_decir_toma_la_ultima(srv, monkeypatch):
     t = json.loads(servidor.TAREAS.read_text())[0]
     assert t["para_decir"] == "Jefe, listo."
     assert "Detalle." in t["resultado"]
+
+
+def test_paneles_paseo_fuente_atrasada_no_muestra_el_numero():
+    # 11/11/2026: la consolidada clavada en jul-26 mostraba deuda vieja como de hoy
+    s = ok_paseo() | {"exigible_total": None,
+                      "sin_dato": [{"local": "Fabric", "motivo": "fuente atrasada: último período cargado 2026-07"}]}
+    items = brief.paneles({"Paseo Nordelta": s})[0]["items"]
+    total = [i for i in items if i["etiqueta"] == "Deuda exigible"][0]
+    assert total["valor"] == "sin dato" and total["tono"] == "mal"
+    assert "Fabric" in total["nota"] and "2026-07" in total["nota"]
+
+
+def test_paseo_lee_pestanas_y_no_la_consolidada(monkeypatch):
+    sys.path.insert(0, "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts")
+    import radar_deudores as rd
+    import google_auth
+    monkeypatch.setattr(google_auth, "bajar_xlsx", lambda *a, **k: None)
+    mov = [{"local": "Fabric", "tipo": "cargo", "periodo": (2026, 6), "mes_cobro": (2026, 6), "monto": 5.0}]
+    monkeypatch.setattr(rd, "leer_xlsx", lambda x: (mov, {}))
+    monkeypatch.setattr(rd, "leer_cuenta_corriente", lambda x: pytest.fail("leyó la consolidada"), raising=False)
+    s = brief.paseo()
+    assert s["exigible_total"] is None and s["sin_dato"][0]["local"] == "Fabric"
