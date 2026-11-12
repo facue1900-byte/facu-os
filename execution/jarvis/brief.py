@@ -2,7 +2,7 @@
 """Brief del día de Jarvis: junta los números en CÓDIGO, le pide a Claude que los cuente en voz
 alta, lo graba con la voz de la Mac y deja todo en data/jarvis/ para que la pantalla lo muestre.
 
-    /Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/jarvis/brief.py [--sin-voz] [--sin-claude]
+    /Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/jarvis/brief.py [--sin-voz] [--sin-claude] [--solo-numeros]
 
 Reglas:
 - Cada número sale de la función que ya lo calcula (app de Astronomy, leer_meta, radar_deudores):
@@ -272,6 +272,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sin-voz", action="store_true")
     ap.add_argument("--sin-claude", action="store_true", help="sólo números (para probar rápido)")
+    ap.add_argument("--solo-numeros", action="store_true",
+                    help="refresca numeros.json y nada más (lo corre el servidor cada 20 min; no toca el brief)")
     args = ap.parse_args()
 
     import telegram_bot as tb
@@ -293,6 +295,9 @@ def main():
     ahora = dt.datetime.now().astimezone()
     DATA.mkdir(parents=True, exist_ok=True)
     escribir_atomico(DATA / "numeros.json", {"generado": ahora.isoformat(), "numeros": numeros, "errores": errores})
+    if args.solo_numeros:
+        print(f"Números refrescados: {len(numeros)} fuentes, {len(errores)} sin dato")
+        return 0
     if args.sin_claude:
         texto = "Brief sólo con números (corrida de prueba sin Claude)."
     else:
