@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 675.5522954082082,
-  "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.07437942690366163,
-      "entrada": 2014.67,
-      "maximo": 2027.16,
-      "reglas": {
-        "stop": 2.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794537060000
-    }
-  },
-  "comisiones_usd": 46.498644999999954,
+  "usdt": 822.2584424082082,
+  "posiciones": {},
+  "comisiones_usd": 46.645497999999954,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4098,6 +4075,18 @@
       "comision": 0.197757,
       "motivo": "Tesis de rebote invalidada: BTC perforó el soporte 71.255 (precio ~71.136, mínimo de 48 h nuevo ~70.987, 1 h -0,37%, sin volumen comprador 0,49x). Era la invalidación escrita en la entrada; salgo antes del stop 70.823.",
       "resultado_pct": -1.02
+    },
+    {
+      "ms": 1794539880000,
+      "fecha": "2026-11-13 03:18 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.07437942690366163,
+      "precio": 1974.3766,
+      "usd": 146.853,
+      "comision": 0.146853,
+      "motivo": "Stop automático en 1,974.3766 (entrada 2,014.67, máximo 2,027.16).",
+      "resultado_pct": -2.0
     }
   ]
 }
