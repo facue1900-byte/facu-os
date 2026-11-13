@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Lo que hizo Facu en Astronomy → un mail por día a Vlado, a las 20:00.
+  Mail a Facu y Vlado a las 20:00 con los cambios del día por persona (si hubo).
   Script: execution/socios_aviso.py (13/11/2026, pedido de Facu: «si Vlado pide algo, que me
   lo avises, y viceversa»). Si no hay nada nuevo, no manda nada.
 

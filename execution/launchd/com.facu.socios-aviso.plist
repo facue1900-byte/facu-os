@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Lo que hace Vlado en Astronomy → Telegram a Facu. Cada 30 minutos.
+  Publica la web: completa el dólar y publica lo que subió Vlado (Vercel Hobby sólo deploya commits de Facu). Cada 30 minutos.
   Script: execution/socios_aviso.py (13/11/2026, pedido de Facu: «si Vlado pide algo, que me
   lo avises, y viceversa»). Si no hay nada nuevo, no manda nada.
 
