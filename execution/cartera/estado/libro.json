@@ -27,7 +27,7 @@
       }
     }
   },
-  "usdt": 462.523304417157,
+  "usdt": 537.7569217522152,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "conservador",
@@ -40,20 +40,7 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794535500000
-    },
-    "ETHUSDT": {
-      "nivel": "conservador",
-      "cantidad": 0.03880983182406209,
-      "entrada": 2574.09,
-      "maximo": 2587.28,
-      "reglas": {
-        "stop": 25.0,
-        "trail": 25.0,
-        "tp": []
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794535500000
+      "vigilado_hasta": 1794542640000
     },
     "BNBUSDT": {
       "nivel": "conservador",
@@ -66,10 +53,10 @@
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794535500000
+      "vigilado_hasta": 1794542640000
     }
   },
-  "comisiones_usd": 2.697603000000001,
+  "comisiones_usd": 2.7729120000000007,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1198,6 +1185,18 @@
       "comision": 0.034278,
       "motivo": "Stop automático en 4.6665e-06 (entrada 5.44e-06, máximo 5.49e-06).",
       "resultado_pct": -14.22
+    },
+    {
+      "ms": 1794541860000,
+      "fecha": "2026-11-13 03:51 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.03880983182406209,
+      "precio": 1940.46,
+      "usd": 75.3089,
+      "comision": 0.075309,
+      "motivo": "Stop automático en 1,940.46 (entrada 2,574.09, máximo 2,587.28).",
+      "resultado_pct": -24.62
     }
   ]
 }

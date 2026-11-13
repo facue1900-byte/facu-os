@@ -1,22 +1,22 @@
-# Carpeta cripto ficticia — 2026-11-13 02:06 UTC
+# Carpeta cripto ficticia — 2026-11-13 04:06 UTC
 
-**Total: 837.14 USD (-16.29%)** desde 2026-10-07 20:58 UTC · USDT libre 462.52 · comisiones 2.70 · 94 operaciones
+**Total: 826.21 USD (-17.38%)** desde 2026-10-07 20:58 UTC · USDT libre 537.76 · comisiones 2.77 · 95 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **837.14** |
+| **Esta carpeta** | **826.21** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 848.79 |
-| plan inicial sin tocar | 777.65 |
+| hodl btc | 825.17 |
+| plan inicial sin tocar | 756.18 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 254.36 | -15.13% | 63,673.5 |
-| ETH | conservador | 77.94 | -21.98% | 1,940.46 |
-| BNB | conservador | 42.32 | -15.28% | 582.173 |
+| BTC | conservador | 247.28 | -17.49% | 63,673.5 |
+| BNB | conservador | 41.17 | -17.58% | 582.173 |
 
 ## Últimas operaciones
 
+- 2026-11-13 03:51 UTC · venta ETH 75.31 USD a 1,940.46 — Stop automático en 1,940.46 (entrada 2,574.09, máximo 2,587.28).
 - 2026-11-11 21:37 UTC · venta PEPE 34.28 USD a 4.6665e-06 — Stop automático en 4.6665e-06 (entrada 5.44e-06, máximo 5.49e-06).
 - 2026-11-11 02:07 UTC · compra PEPE 40.00 USD a 5.44e-06 — Tesis de riesgo pactada el 00:05 (11/11): PEPE segundo ciclo seguido a <5% del máximo de 90 d (4,6% -> 4,0%), con volumen 98,6 M/día, 7d +9,
 - 2026-11-07 02:51 UTC · venta XRP 24.58 USD a 1.16653 — Stop automático en 1.166532 (entrada 1.4226, máximo 1.43).
@@ -26,6 +26,5 @@
 - 2026-10-29 20:47 UTC · venta SOL 57.34 USD a 95.2922 — Stop automático en 95.2922 (entrada 116.21, máximo 116.81).
 - 2026-10-29 20:47 UTC · venta LINK 32.77 USD a 10.9609 — Stop automático en 10.96094 (entrada 13.367, máximo 13.506).
 - 2026-10-29 16:15 UTC · compra HYPE 40.00 USD a 96.31 — Tesis fijada a las 12:05 y 14:05: HYPE dos ciclos seguidos a <5% del máximo de 90 d (4,6% -> 0,0%), 7d +24,2%, 30d +11,7%, 101,7 M/día, y po
-- 2026-10-24 14:16 UTC · venta SUI 24.58 USD a 0.92168 — Stop automático en 0.92168 (entrada 1.124, máximo 1.1468).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
