@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 247.25844240820823,
+  "usdt": 392.8701852442098,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794577800000
+      "vigilado_hasta": 1794584340000
     },
     "SOLUSDT": {
       "nivel": "trading",
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794577800000
+      "vigilado_hasta": 1794584340000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -70,32 +70,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794577800000
-    },
-    "HYPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 2.016009686533028,
-      "entrada": 74.33,
-      "maximo": 75.35,
-      "reglas": {
-        "stop": 3.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794577800000
+      "vigilado_hasta": 1794584340000
     }
   },
-  "comisiones_usd": 47.22049799999995,
+  "comisiones_usd": 47.36625599999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4224,6 +4202,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum de 24 h: HYPE 24 h +5,34%, 4 h +3,08%, 1 h +0,45% (no estirada), escalera limpia de mínimos más altos 05:00-12:00 (70,07 → 73,85), a -0,35% del máximo de 48 h con el mercado en rojo: fuerza relativa. Volumen 0,87x (no es ruptura con volumen). BTC 4 h +0,98%: sin bloqueo. Stop 3,5% (~71,7) bajo el mínimo de la vela 09:00 71,92. Invalida: precio bajo 71,92, o rechazo del máximo de 48 h con vela de 1 h roja que pierda 72,9."
+    },
+    {
+      "ms": 1794584411047,
+      "fecha": "2026-11-13 15:40 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 2.016009686533028,
+      "precio": 72.3,
+      "usd": 145.7575,
+      "comision": 0.145758,
+      "motivo": "Invalidación escrita a las 12:32 cumplida: rechazo del máximo de 48 h (hoy -4,1% del máximo) con vela de 1 h roja (-2,23%) que perdió 72,9 (precio 72,38). 4 h -2,21% con 1,71x: el momentum se dio vuelta con volumen. Salgo antes del stop 71,73 en vez de esperarlo.",
+      "resultado_pct": -2.73
     }
   ]
 }
