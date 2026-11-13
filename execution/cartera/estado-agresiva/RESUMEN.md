@@ -1,21 +1,23 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-13 11:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-13 12:33 UTC
 
-**Total: 822.15 USD (-17.78%)** desde 2026-10-07 23:06 UTC · USDT libre 397.26 · comisiones 47.07 · 343 operaciones
+**Total: 824.23 USD (-17.58%)** desde 2026-10-07 23:06 UTC · USDT libre 247.26 · comisiones 47.22 · 344 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **822.15** |
+| **Esta carpeta** | **824.23** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 831.72 |
+| hodl btc | 833.92 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| SOL | trading | 149.98 | +0.09% | 77.7788 |
-| XRP | trading | 149.32 | -0.35% | 0.994746 |
-| BTC | trading | 125.59 | +0.58% | 67,376.2 |
+| SOL | trading | 150.86 | +0.67% | 77.7788 |
+| XRP | trading | 150.38 | +0.35% | 0.994746 |
+| HYPE | trading | 149.81 | -0.03% | 71.7284 |
+| BTC | trading | 125.92 | +0.84% | 67,376.2 |
 
 ## Últimas operaciones
 
+- 2026-11-13 12:32 UTC · compra HYPE 150.00 USD a 74.33 — Momentum de 24 h: HYPE 24 h +5,34%, 4 h +3,08%, 1 h +0,45% (no estirada), escalera limpia de mínimos más altos 05:00-12:00 (70,07 → 73,85), 
 - 2026-11-13 07:38 UTC · compra BTC 125.00 USD a 68,821.4 — Rebote en soporte, criterio escrito a las 06:32 cumplido: la vela 06:00 cerró sin perforar el mínimo de 48 h 67.568 (mínimo 67.904, cierre 6
 - 2026-11-13 07:38 UTC · compra SOL 150.00 USD a 80.35 — Rebote en soporte: SOL tocó el mínimo de 48 h 77,92 (vela 03:00) y cuatro velas hicieron mínimos más altos (04:00 78,04 / 05:00 78,03 / 06:0
 - 2026-11-13 06:32 UTC · compra XRP 150.00 USD a 1.0213 — Rebote en soporte: XRP tocó el mínimo de 48 h 0,9975 (vela 03:00) y dos velas completas hicieron mínimos más altos (04:00 1,0012 / 05:00 1,0
@@ -25,6 +27,5 @@
 - 2026-11-12 17:32 UTC · compra BTC 200.00 USD a 71,974.6 — Rebote en soporte: BTC tocó el mínimo de 48 h (71.255, vela 15:00) y las dos horas siguientes hicieron mínimos más altos (71.501 a las 16:00
 - 2026-11-12 09:31 UTC · venta UNI 128.64 USD a 6.17 — Invalidación de rebote cumplida: el mínimo de 48 h bajó a ~6,097 (precio 6,164 a +1,1% del mínimo), por debajo del 6,101 de la vela 02:00 qu
 - 2026-11-12 03:32 UTC · compra UNI 130.00 USD a 6.229 — Rebote en soporte: UNI tocó el mínimo de 48 h (~6,101, vela 02:00) y la hora siguiente no hizo mínimo nuevo: pasó de +1,49% a +2,13% del mín
-- 2026-11-11 19:32 UTC · venta NEAR 146.56 USD a 3.7 — Invalidación de momentum cumplida: NEAR 24 h +3,44% (bajo +5%) con 4 h -1,25% roja y volumen 0,57x, 1 h -0,54%, a -3,01% del máximo de 48 h.
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

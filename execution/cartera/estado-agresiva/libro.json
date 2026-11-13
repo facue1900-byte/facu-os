@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 397.2584424082082,
+  "usdt": 247.25844240820823,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794569460000
+      "vigilado_hasta": 1794573060000
     },
     "SOLUSDT": {
       "nivel": "trading",
       "cantidad": 1.8649657747355322,
       "entrada": 80.35,
-      "maximo": 80.82,
+      "maximo": 80.89,
       "reglas": {
         "stop": 3.2,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794569460000
+      "vigilado_hasta": 1794573060000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -70,10 +70,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794569460000
+      "vigilado_hasta": 1794573060000
+    },
+    "HYPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 2.016009686533028,
+      "entrada": 74.33,
+      "maximo": 74.33,
+      "reglas": {
+        "stop": 3.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794573180000
     }
   },
-  "comisiones_usd": 47.07049799999995,
+  "comisiones_usd": 47.22049799999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4190,6 +4212,18 @@
       "usd": 125.0,
       "comision": 0.125,
       "motivo": "Rebote en soporte, criterio escrito a las 06:32 cumplido: la vela 06:00 cerró sin perforar el mínimo de 48 h 67.568 (mínimo 67.904, cierre 69.074) y la 07:00 va con mínimo más alto (68.796). 4 h -0,17% (el bloqueo de -3,33% quedó atrás), volumen 2,07x. Stop 2,1% (~67.400) bajo 67.568. Invalida: precio bajo 67.568. Mismo trade correlacionado que XRP/SOL: posición más chica."
+    },
+    {
+      "ms": 1794573170745,
+      "fecha": "2026-11-13 12:32 UTC",
+      "lado": "buy",
+      "par": "HYPEUSDT",
+      "nivel": "trading",
+      "cantidad": 2.016009686533028,
+      "precio": 74.33,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum de 24 h: HYPE 24 h +5,34%, 4 h +3,08%, 1 h +0,45% (no estirada), escalera limpia de mínimos más altos 05:00-12:00 (70,07 → 73,85), a -0,35% del máximo de 48 h con el mercado en rojo: fuerza relativa. Volumen 0,87x (no es ruptura con volumen). BTC 4 h +0,98%: sin bloqueo. Stop 3,5% (~71,7) bajo el mínimo de la vela 09:00 71,92. Invalida: precio bajo 71,92, o rechazo del máximo de 48 h con vela de 1 h roja que pierda 72,9."
     }
   ]
 }
