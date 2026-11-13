@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 392.8701852442098,
+  "usdt": 538.6783176542907,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,29 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794605460000
-    },
-    "SOLUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.8649657747355322,
-      "entrada": 80.35,
-      "maximo": 82.38,
-      "reglas": {
-        "stop": 3.2,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794605460000
+      "vigilado_hasta": 1794609060000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794605460000
+      "vigilado_hasta": 1794609060000
     }
   },
-  "comisiones_usd": 47.36625599999995,
+  "comisiones_usd": 47.51220999999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4214,6 +4192,18 @@
       "comision": 0.145758,
       "motivo": "Invalidación escrita a las 12:32 cumplida: rechazo del máximo de 48 h (hoy -4,1% del máximo) con vela de 1 h roja (-2,23%) que perdió 72,9 (precio 72,38). 4 h -2,21% con 1,71x: el momentum se dio vuelta con volumen. Salgo antes del stop 71,73 en vez de esperarlo.",
       "resultado_pct": -2.73
+    },
+    {
+      "ms": 1794607500000,
+      "fecha": "2026-11-13 22:05 UTC",
+      "lado": "sell",
+      "par": "SOLUSDT",
+      "cantidad": 1.8649657747355322,
+      "precio": 78.261,
+      "usd": 145.9541,
+      "comision": 0.145954,
+      "motivo": "Stop automático en 78.261 (entrada 80.35, máximo 82.38).",
+      "resultado_pct": -2.6
     }
   ]
 }
