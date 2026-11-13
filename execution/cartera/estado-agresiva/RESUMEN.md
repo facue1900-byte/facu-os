@@ -1,20 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-12 23:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-13 00:32 UTC
 
-**Total: 826.10 USD (-17.39%)** desde 2026-10-07 23:06 UTC · USDT libre 477.99 · comisiones 46.30 · 338 operaciones
+**Total: 825.28 USD (-17.47%)** desde 2026-10-07 23:06 UTC · USDT libre 675.55 · comisiones 46.50 · 339 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **826.10** |
+| **Esta carpeta** | **825.28** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 857.50 |
+| hodl btc | 855.96 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 198.10 | -0.85% | 70,823 |
-| ETH | trading | 150.00 | +0.10% | 1,974.38 |
+| ETH | trading | 149.72 | -0.08% | 1,974.38 |
 
 ## Últimas operaciones
 
+- 2026-11-13 00:32 UTC · venta BTC 197.76 USD a 71,238.5 — Tesis de rebote invalidada: BTC perforó el soporte 71.255 (precio ~71.136, mínimo de 48 h nuevo ~70.987, 1 h -0,37%, sin volumen comprador 0
 - 2026-11-12 17:32 UTC · compra ETH 150.00 USD a 2,014.67 — Rebote en soporte: ETH tocó el mínimo de 48 h (1.983,8, vela 14:00) y las tres horas siguientes hicieron mínimos más altos (1.992,6 / 1.999,
 - 2026-11-12 17:32 UTC · compra BTC 200.00 USD a 71,974.6 — Rebote en soporte: BTC tocó el mínimo de 48 h (71.255, vela 15:00) y las dos horas siguientes hicieron mínimos más altos (71.501 a las 16:00
 - 2026-11-12 09:31 UTC · venta UNI 128.64 USD a 6.17 — Invalidación de rebote cumplida: el mínimo de 48 h bajó a ~6,097 (precio 6,164 a +1,1% del mínimo), por debajo del 6,101 de la vela 02:00 qu
@@ -24,6 +24,5 @@
 - 2026-11-11 17:38 UTC · venta XRP 152.55 USD a 1.0695 — Rotación por regla de 24 h: XRP entró el 10/11 17:32 y a las 17:38 del 11/11 lleva +1,8% sin tocar +8% ni el stop (1,0268). 4 h +0,79% con 0
 - 2026-11-11 16:32 UTC · compra NEAR 150.00 USD a 3.783 — Momentum de 24 h: NEAR +8,63% en 24 h, 4 h +1,15% (sigue subiendo) con 1,15x, 1 h +1,09% (no estirada), a -0,55% del máximo de 48 h; 89,6 M/
 - 2026-11-11 15:13 UTC · venta GRAM 149.49 USD a 1.19415 — Stop automático en 1.19415 (entrada 1.197, máximo 1.257).
-- 2026-11-11 11:32 UTC · compra GRAM 150.00 USD a 1.197 — Momentum de 24 h: GRAM +10,73% en 24 h, 4 h +3,64% con volumen 2,37x, 1 h -0,58% (no estirada), -2,44% del máximo de 48 h; reentrada con señ
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
