@@ -653,3 +653,8 @@ que la API tarda en arrancar a escribir (de 2 a 9 s, varía).
 probe de `Audio` daba «0 audios» y parecía que la voz en vivo no andaba. (2) Cortarlo con `vozGen++`
 no alcanza: las oraciones que llegan DESPUÉS del corte se encolan con el gen nuevo. Hay que ignorar el
 turno entero (`avIgnorar = avTurno`).
+
+## 13/11/2026 — wa_tanda: sesión vencida + whatsapp-web.js 1.34.7 ya no manda
+- La sesión vinculada de `execution/wa_tanda` estaba vencida (pedía QR). `--setup` espera 10 min: si Facu no escanea en ese rato, se corta solo y la sesión sigue vencida, sin otro aviso que el log.
+- Ya vinculada, la 1.34.7 fallaba contra el WhatsApp Web actual: `getChats()` tiraba `ERROR r` y `sendMessage` tiraba "Data passed to getter must include an id property". **Arreglo: subir a 1.34.8**, con eso mandó bien (imagen, ack 2, confirmada en `ChatStorage.sqlite`).
+- Lección: si wa_tanda tira errores crípticos de minificado (`r`, `getter ... id`), primero `npm view whatsapp-web.js version` y actualizar. El número de un contacto sale de la base local de WhatsApp Desktop (`ZWACHATSESSION.ZCONTACTJID`), sin `getChats()`.
