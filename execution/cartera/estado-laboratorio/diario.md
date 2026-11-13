@@ -666,3 +666,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-13 06:17 UTC — nota
 [v2] Sin operar: carpeta vacia, filtro BTC BLOQUEADO (var_24h -6.94 < -2; var_4h -2.6 < -1.5). No se abre nada nuevo. Ningun par tiene var_24h>=3 (maximo PEPE 2.7). Sin disparos.
 
+## 2026-11-13 08:17 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC BLOQUEADO (var_24h -6.66 < -2; var_4h 0.17 ok). No se abre nada nuevo. Ningun par tiene var_24h>=3 (maximo 1.79). Sin disparos.
+
