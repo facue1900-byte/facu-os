@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 146.7247625575247,
       "entrada": 1.0213,
-      "maximo": 1.0338,
+      "maximo": 1.0437,
       "reglas": {
         "stop": 2.6,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794573060000
+      "vigilado_hasta": 1794577800000
     },
     "SOLUSDT": {
       "nivel": "trading",
       "cantidad": 1.8649657747355322,
       "entrada": 80.35,
-      "maximo": 80.89,
+      "maximo": 82.38,
       "reglas": {
         "stop": 3.2,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794573060000
+      "vigilado_hasta": 1794577800000
     },
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0018144784262692597,
       "entrada": 68821.43,
-      "maximo": 69571.37,
+      "maximo": 70214.31,
       "reglas": {
         "stop": 2.1,
         "trail": 5.0,
@@ -70,13 +70,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794573060000
+      "vigilado_hasta": 1794577800000
     },
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 2.016009686533028,
       "entrada": 74.33,
-      "maximo": 74.33,
+      "maximo": 75.35,
       "reglas": {
         "stop": 3.5,
         "trail": 5.0,
@@ -92,7 +92,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794573180000
+      "vigilado_hasta": 1794577800000
     }
   },
   "comisiones_usd": 47.22049799999995,
