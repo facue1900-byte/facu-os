@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 672.2584424082082,
+  "usdt": 397.2584424082082,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
       "cantidad": 146.7247625575247,
       "entrada": 1.0213,
-      "maximo": 1.0213,
+      "maximo": 1.033,
       "reglas": {
         "stop": 2.6,
         "trail": 5.0,
@@ -26,10 +26,54 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794551580000
+      "vigilado_hasta": 1794555420000
+    },
+    "SOLUSDT": {
+      "nivel": "trading",
+      "cantidad": 1.8649657747355322,
+      "entrada": 80.35,
+      "maximo": 80.35,
+      "reglas": {
+        "stop": 3.2,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794555540000
+    },
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.0018144784262692597,
+      "entrada": 68821.43,
+      "maximo": 68821.43,
+      "reglas": {
+        "stop": 2.1,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794555540000
     }
   },
-  "comisiones_usd": 46.79549799999995,
+  "comisiones_usd": 47.07049799999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4122,6 +4166,30 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: XRP tocó el mínimo de 48 h 0,9975 (vela 03:00) y dos velas completas hicieron mínimos más altos (04:00 1,0012 / 05:00 1,0020), la 06:00 va en 1,0089; 4 h +0,22% (la única grande con 4 h verde), 1 h +1,08%, volumen 2,85x, +2,5% del mínimo. BTC 4 h -1,91%: sin bloqueo. Stop 2,6% (~0,995) bajo el mínimo. Invalida: precio bajo 0,9975. Correlacionada con BTC, que todavía no confirmó piso: posición chica."
+    },
+    {
+      "ms": 1794555509767,
+      "fecha": "2026-11-13 07:38 UTC",
+      "lado": "buy",
+      "par": "SOLUSDT",
+      "nivel": "trading",
+      "cantidad": 1.8649657747355322,
+      "precio": 80.35,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: SOL tocó el mínimo de 48 h 77,92 (vela 03:00) y cuatro velas hicieron mínimos más altos (04:00 78,04 / 05:00 78,03 / 06:00 78,20 / 07:00 80,14 parcial), sin perforar cuando BTC/ETH hicieron mínimo nuevo a las 05:00: fuerza relativa. 4 h +2,49% con 1,77x, +3,2% del mínimo. BTC 4 h -0,17%: sin bloqueo. Stop 3,2% (~77,8) bajo el mínimo. Invalida: precio bajo 77,92."
+    },
+    {
+      "ms": 1794555519892,
+      "fecha": "2026-11-13 07:38 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.0018144784262692597,
+      "precio": 68821.43,
+      "usd": 125.0,
+      "comision": 0.125,
+      "motivo": "Rebote en soporte, criterio escrito a las 06:32 cumplido: la vela 06:00 cerró sin perforar el mínimo de 48 h 67.568 (mínimo 67.904, cierre 69.074) y la 07:00 va con mínimo más alto (68.796). 4 h -0,17% (el bloqueo de -3,33% quedó atrás), volumen 2,07x. Stop 2,1% (~67.400) bajo 67.568. Invalida: precio bajo 67.568. Mismo trade correlacionado que XRP/SOL: posición más chica."
     }
   ]
 }
