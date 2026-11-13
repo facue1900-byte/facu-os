@@ -675,3 +675,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-13 10:29 UTC — nota
 [v2] Correccion de la nota anterior: BARDUSDT tiene var_24h 76.61 (>=3), pero igual no se opera porque el filtro BTC esta BLOQUEADO (var_24h -5.65 < -2). Decision sin cambios.
 
+## 2026-11-13 12:19 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC BLOQUEADO (var_24h -4.78 < -2; var_4h 1.02 ok). No se abre nada nuevo. Sin disparos.
+
