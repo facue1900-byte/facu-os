@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 538.6783176542907,
+  "usdt": 418.6783176542907,
   "posiciones": {
     "XRPUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794616260000
+      "vigilado_hasta": 1794619860000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794616260000
+      "vigilado_hasta": 1794619860000
+    },
+    "INJUSDT": {
+      "nivel": "trading",
+      "cantidad": 14.82379126993941,
+      "entrada": 8.087,
+      "maximo": 8.087,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794619980000
     }
   },
-  "comisiones_usd": 47.51220999999995,
+  "comisiones_usd": 47.63220999999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4204,6 +4226,18 @@
       "comision": 0.145954,
       "motivo": "Stop automático en 78.261 (entrada 80.35, máximo 82.38).",
       "resultado_pct": -2.6
+    },
+    {
+      "ms": 1794619947584,
+      "fecha": "2026-11-14 01:32 UTC",
+      "lado": "buy",
+      "par": "INJUSDT",
+      "nivel": "trading",
+      "cantidad": 14.82379126993941,
+      "precio": 8.087,
+      "usd": 120.0,
+      "comision": 0.12,
+      "motivo": "Momentum de 24 h: INJ 24 h +7,65%, 4 h +0,48% (se dio vuelta de -1,14% hace una hora), 1 h +0,37% (no estirada), volumen 1,25x, -3,45% del máximo de 48 h con el mercado en rojo: fuerza relativa, no correlacionada con BTC/XRP. No es ruptura (volumen < 1,5x). BTC 4 h -0,12%: sin bloqueo. Tamaño moderado (120) porque el 4 h apenas cumple. Stop 5% por defecto. Invalida: 4 h vuelve a negativo con vela de 1 h roja, o rechazo del máximo de 48 h; el stop lo cubre."
     }
   ]
 }
