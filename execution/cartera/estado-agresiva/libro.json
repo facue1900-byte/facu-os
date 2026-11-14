@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 654.3183096497556,
+  "usdt": 534.3183096497556,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.07921865087756397,
       "entrada": 1891.6,
-      "maximo": 1891.6,
+      "maximo": 1906.5,
       "reglas": {
         "stop": 2.0,
         "trail": 5.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794630780000
+      "vigilado_hasta": 1794634260000
+    },
+    "XRPUSDT": {
+      "nivel": "trading",
+      "cantidad": 120.2045522911862,
+      "entrada": 0.9973,
+      "maximo": 0.9973,
+      "reglas": {
+        "stop": 2.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794634380000
     }
   },
-  "comisiones_usd": 48.16823599999995,
+  "comisiones_usd": 48.28823599999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4242,6 +4264,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: ETH (grande, 661 M/día) testea el mínimo de 48 h tres veces (1878,00 a las 02:00, 1879,16 la vela completa de 03:00, 1878,75 la de 04:00 en curso) sin perforarlo, 1 h +0,46%, +0,81% del mínimo; BTC/SOL/BNB todavía hacen mínimo nuevo esta hora, ETH no: fuerza relativa. BTC 4 h -2,19%: sin bloqueo. Tamaño moderado (150) porque el mercado sigue vendedor. Stop ajustado a 2% (~1855), debajo del triple piso: invalida si pierde 1878 con vela de 1 h cerrada abajo; el stop lo cubre."
+    },
+    {
+      "ms": 1794634379736,
+      "fecha": "2026-11-14 05:32 UTC",
+      "lado": "buy",
+      "par": "XRPUSDT",
+      "nivel": "trading",
+      "cantidad": 120.2045522911862,
+      "precio": 0.9973,
+      "usd": 120.0,
+      "comision": 0.12,
+      "motivo": "Rebote en soporte: XRP (127 M/día) hizo el mínimo de 48 h en 0,9843 (vela 02:00) y desde ahí mínimos más altos en velas completas (03:00 0,9889, 04:00 0,9866) y la 05:00 en curso 0,9925; 1 h +0,08%, 4 h -0,81% (la más fuerte de las grandes), volumen 1,44x, +1,27% del mínimo. Era la condición escrita a las 04:32. BTC 4 h -1,7%: sin bloqueo. Correlacionada con ETH: tamaño moderado (120). Stop 2% (~0,977) debajo del piso. Invalida: vela de 1 h cerrada bajo 0,9843; el stop lo cubre."
     }
   ]
 }
