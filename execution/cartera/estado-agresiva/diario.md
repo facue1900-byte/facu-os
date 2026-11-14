@@ -4360,3 +4360,16 @@ Momentum de 24 h: INJ 24 h +9,07%, 4 h +1,68% (sigue subiendo, ahora sí positiv
 ## 2026-11-14 07:31 UTC — nota
 07:31 UTC — Sin disparos, 0 entradas, 0 salidas. Vigilante: ETH 59 min, INJ 57 min, XRP 59 min, nada saltó. Posiciones: ETH 1898,04 (+0,34%, stop 1853,77; 4 h +0,76%, +1,11% del mínimo de 48 h) sobre 1878, viva; cumple 24 h el 15/11 04:32. XRP 0,9862 (-1,11%, stop 0,9774; 1 h -0,75%, 4 h -0,38%, +0,48% del mínimo) todavía sobre 0,9843, viva pero floja: la más cerca de invalidarse; cumple 24 h el 15/11 05:32. INJ 8,046 (-1,08%, stop 7,73; 4 h +1,45% sigue positivo, 24 h +8,3%), tesis viva; cumple 24 h el 15/11 06:33. Mercado: rebote chico en 4 h (BTC +0,7%, ETH +0,76%, SOL +0,59%, HYPE +3,4%), 1 h roja chica en todo (-0,2/-1%), 48 h BTC -8,74%; volumen bajo (0,5-0,8x salvo HYPE 1,42x y SHELL 1,46x). BTC 4 h +0,7%: sin bloqueo. Sin entradas: ruptura nadie (todos a -4/-11% del máximo de 48 h); momentum: solo INJ (ya en cartera); HYPE 4 h +3,4% pero 24 h -2,31%, no cumple; SHELL microcap inflada (-34,6% del máximo); rebote: BTC/SOL/BNB a +0,7/+1,2% del mínimo, mismo trade correlacionado que ETH/XRP. ~52% USDT (414). A mirar: XRP vela cerrada bajo 0,9843, ETH bajo 1878, INJ 4 h negativo con 1 h roja = salir; BTC 4 h ≤ -3% = bloqueo. 3 posiciones.
 
+## 2026-11-14 08:37 UTC — Venta XRPUSDT
+118.19 USD a 0.9832 (-1.41% contra la compra).
+
+Invalidación escrita a las 05:32 cumplida: la vela de 1 h de las 07:00 cerró en 0,9827, debajo del piso de 0,9843 (mínimo de 48 h nuevo en 0,9800). El rebote en soporte se rompió; salgo antes del stop 0,9774.
+
+## 2026-11-14 08:37 UTC — Venta INJUSDT
+117.05 USD a 7.942 (-2.36% contra la compra).
+
+Invalidación escrita a las 06:33 cumplida: el 4 h volvió a negativo (-1,21%) con la vela de 1 h roja (-0,51%); el 24 h bajó de +9% a +5,5%. El momentum se apagó; salgo antes del stop 7,73.
+
+## 2026-11-14 08:38 UTC — nota
+08:37 UTC — Sin disparos. 0 entradas, 2 salidas. Vigilante: ETH/INJ/XRP 65 min, nada saltó. Salidas: XRP (-1,41%) porque la vela de las 07:00 cerró en 0,9827, debajo de 0,9843 (invalidación escrita), e INJ (-2,36%) porque el 4 h volvió a negativo (-1,21%) con la vela de 1 h roja (-0,51%) (invalidación escrita). ETH 1898 (+0,35%, stop 1853,77; las velas 07:00 y 08:00 hicieron mínimo en 1889,5 y 1897,4, ambas sobre 1878), tesis viva; cumple 24 h el 15/11 04:32. Mercado: plano y sin volumen, 1 h -0,6/+0,2%, 4 h plana a roja (BTC 0,0%, UNI -1,75%, ENA -1,54%), 24 h roja (BTC -2,37%, SOL -5,59%), 48 h BTC -8,84%; volumen 0,4-1,0x. BTC 4 h 0,0%: sin bloqueo. Sin entradas: ruptura nadie (TRX -1,32% del máximo, 0,83x; todo el resto a -5/-12%); momentum nadie (INJ se apagó; SHELL microcap inflada, -32% del máximo de 48 h); rebote: XRP/BNB/SUI/UNI a +0,15/+0,4% del mínimo, todavía haciéndolo, sin vela de mínimo más alto, y BTC/SOL serían el mismo trade correlacionado que ETH. ~81% USDT. A mirar: ETH con vela cerrada bajo 1878 = salir; rebote en BTC/SOL/BNB solo con vela completa sin mínimo nuevo; BTC 4 h ≤ -3% = bloqueo. 1 posición.
+
