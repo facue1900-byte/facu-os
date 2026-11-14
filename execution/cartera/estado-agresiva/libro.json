@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 646.0246149148694,
-  "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.08131250373055364,
-      "entrada": 1842.89,
-      "maximo": 1844.58,
-      "reglas": {
-        "stop": 2.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794688320000
-    }
-  },
-  "comisiones_usd": 48.94032399999994,
+  "usdt": 791.9822611648694,
+  "posiciones": {},
+  "comisiones_usd": 49.08642799999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4314,6 +4291,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: ETH tocó el mínimo de 48 h en 1811,29 (16:00); la vela de 1 h de las 17:00 cerró sin mínimo nuevo (1812,67, cierre 1843,28) y la de las 18:00 va con mínimo más alto (1828,82); volumen 4 h 1,87x; BTC 4 h +0,1% sin bloqueo. Elijo ETH sobre BNB (correlacionados, uno solo) por liquidez. Stop 2,5% (~1797) debajo del mínimo de 48 h. Invalida: vela de 1 h cerrada bajo 1811,29."
+    },
+    {
+      "ms": 1794689640000,
+      "fecha": "2026-11-14 20:54 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.08131250373055364,
+      "precio": 1796.8177500000002,
+      "usd": 146.1038,
+      "comision": 0.146104,
+      "motivo": "Stop automático en 1,796.8178 (entrada 1,842.89, máximo 1,844.58).",
+      "resultado_pct": -2.5
     }
   ]
 }
