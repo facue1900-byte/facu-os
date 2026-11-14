@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 649.3184679148694,
-  "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.07921865087756397,
-      "entrada": 1891.6,
-      "maximo": 1919.76,
-      "reglas": {
-        "stop": 2.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794663060000
-    }
-  },
-  "comisiones_usd": 48.64347099999994,
+  "usdt": 796.0246149148694,
+  "posiciones": {},
+  "comisiones_usd": 48.79032399999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4290,6 +4267,18 @@
       "comision": 0.11705,
       "motivo": "Invalidación escrita a las 06:33 cumplida: el 4 h volvió a negativo (-1,21%) con la vela de 1 h roja (-0,51%); el 24 h bajó de +9% a +5,5%. El momentum se apagó; salgo antes del stop 7,73.",
       "resultado_pct": -2.36
+    },
+    {
+      "ms": 1794666240000,
+      "fecha": "2026-11-14 14:24 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.07921865087756397,
+      "precio": 1853.7679999999998,
+      "usd": 146.853,
+      "comision": 0.146853,
+      "motivo": "Stop automático en 1,853.768 (entrada 1,891.6, máximo 1,919.76).",
+      "resultado_pct": -2.0
     }
   ]
 }
