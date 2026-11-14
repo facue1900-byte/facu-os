@@ -1,21 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-14 01:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-14 02:32 UTC
 
-**Total: 810.10 USD (-18.99%)** desde 2026-10-07 23:06 UTC · USDT libre 418.68 · comisiones 47.63 · 347 operaciones
+**Total: 804.32 USD (-19.57%)** desde 2026-10-07 23:06 UTC · USDT libre 804.32 · comisiones 48.02 · 350 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **810.10** |
+| **Esta carpeta** | **804.32** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 820.70 |
+| hodl btc | 808.51 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| XRP | trading | 147.84 | -1.34% | 0.994746 |
-| BTC | trading | 123.93 | -0.76% | 67,376.2 |
-| INJ | trading | 119.66 | -0.19% | 7.68265 |
 
 ## Últimas operaciones
 
+- 2026-11-14 02:32 UTC · venta INJ 117.82 USD a 7.948 — Invalidación escrita a las 01:32 cumplida: 4 h volvió a negativo (-0,82%) con vela de 1 h roja (-1,76%), en una venta general que perfora mí
+- 2026-11-14 02:20 UTC · venta XRP 145.95 USD a 0.994746 — Stop automático en 0.9947462 (entrada 1.0213, máximo 1.0437).
+- 2026-11-14 02:28 UTC · venta BTC 122.25 USD a 67,376.2 — Stop automático en 67,376.18 (entrada 68,821.43, máximo 70,214.31).
 - 2026-11-14 01:32 UTC · compra INJ 120.00 USD a 8.087 — Momentum de 24 h: INJ 24 h +7,65%, 4 h +0,48% (se dio vuelta de -1,14% hace una hora), 1 h +0,37% (no estirada), volumen 1,25x, -3,45% del m
 - 2026-11-13 22:05 UTC · venta SOL 145.95 USD a 78.261 — Stop automático en 78.261 (entrada 80.35, máximo 82.38).
 - 2026-11-13 15:40 UTC · venta HYPE 145.76 USD a 72.3 — Invalidación escrita a las 12:32 cumplida: rechazo del máximo de 48 h (hoy -4,1% del máximo) con vela de 1 h roja (-2,23%) que perdió 72,9 (
@@ -23,8 +23,5 @@
 - 2026-11-13 07:38 UTC · compra BTC 125.00 USD a 68,821.4 — Rebote en soporte, criterio escrito a las 06:32 cumplido: la vela 06:00 cerró sin perforar el mínimo de 48 h 67.568 (mínimo 67.904, cierre 6
 - 2026-11-13 07:38 UTC · compra SOL 150.00 USD a 80.35 — Rebote en soporte: SOL tocó el mínimo de 48 h 77,92 (vela 03:00) y cuatro velas hicieron mínimos más altos (04:00 78,04 / 05:00 78,03 / 06:0
 - 2026-11-13 06:32 UTC · compra XRP 150.00 USD a 1.0213 — Rebote en soporte: XRP tocó el mínimo de 48 h 0,9975 (vela 03:00) y dos velas completas hicieron mínimos más altos (04:00 1,0012 / 05:00 1,0
-- 2026-11-13 03:18 UTC · venta ETH 146.85 USD a 1,974.38 — Stop automático en 1,974.3766 (entrada 2,014.67, máximo 2,027.16).
-- 2026-11-13 00:32 UTC · venta BTC 197.76 USD a 71,238.5 — Tesis de rebote invalidada: BTC perforó el soporte 71.255 (precio ~71.136, mínimo de 48 h nuevo ~70.987, 1 h -0,37%, sin volumen comprador 0
-- 2026-11-12 17:32 UTC · compra ETH 150.00 USD a 2,014.67 — Rebote en soporte: ETH tocó el mínimo de 48 h (1.983,8, vela 14:00) y las tres horas siguientes hicieron mínimos más altos (1.992,6 / 1.999,
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

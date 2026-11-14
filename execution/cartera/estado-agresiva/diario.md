@@ -4316,3 +4316,17 @@ Momentum de 24 h: INJ 24 h +7,65%, 4 h +0,48% (se dio vuelta de -1,14% hace una 
 ## 2026-11-14 01:32 UTC — nota
 01:32 UTC — Sin disparos. 1 entrada, 0 salidas. Vigilante: BTC/XRP 60 min, nada saltó. Posiciones: BTC 68.318 (-0,73%, stop 67.376; 1 h -0,05%, 4 h -0,12% con 0,51x, +1,1% del mínimo de 48 h) sobre 67.568, viva; XRP 1,0073 (-1,37%, stop 0,9947; 4 h -0,7%, +1% del mínimo) sobre 0,9975, viva pero floja. Cumplen 24 h hoy (XRP 06:32, BTC 07:38): si no llegan a +8%, salen y se rota. Entrada: INJ 120 USD a 8,087 (momentum de 24 h: 24 h +7,65%, 4 h +0,48% dado vuelta, 1 h +0,37%, 1,25x, -3,45% del máximo de 48 h; stop 5% ~7,68). Cumple 24 h el 15/11 01:32. Mercado: 1 h plana a roja chica en todo, 4 h plana a roja (SOL -1,7%, SHELL -13,2%), 24 h roja en las grandes (BTC -3,71%, 48 h -7,33%); volumen bajo (0,3-1,25x salvo SHELL 2,6x). BTC 4 h -0,12%: sin bloqueo. Descartados: ruptura nadie con ≥ 1,5x (TRX -1,79% del máximo, 0,37x; TAO -1,5%, 0,7x); SHELL/BARD microcaps infladas (4 h -13,2/-4,4%); rebote: SOL a +0,13% del mínimo y ADA +0,72%, siguen sin vela de mínimo más alto confirmada y son el mismo trade que BTC/XRP. ~54% USDT (418). A mirar: BTC bajo 67.568, XRP bajo 0,9975, INJ 4 h negativo con 1 h roja = salir; BTC 4 h ≤ -3% = bloqueo. 3 posiciones.
 
+## 2026-11-14 02:28 UTC — Stop BTCUSDT (vigilante)
+122.25 USD a 67,376.18 (-2.10%). Stop automático en 67,376.18 (entrada 68,821.43, máximo 70,214.31).
+
+## 2026-11-14 02:20 UTC — Stop XRPUSDT (vigilante)
+145.95 USD a 0.9947462 (-2.60%). Stop automático en 0.9947462 (entrada 1.0213, máximo 1.0437).
+
+## 2026-11-14 02:32 UTC — Venta INJUSDT
+117.82 USD a 7.948 (-1.72% contra la compra).
+
+Invalidación escrita a las 01:32 cumplida: 4 h volvió a negativo (-0,82%) con vela de 1 h roja (-1,76%), en una venta general que perfora mínimos de 48 h. Salgo antes del stop 7,709 en vez de esperarlo.
+
+## 2026-11-14 02:32 UTC — nota
+02:32 UTC — 2 disparos, 0 entradas, 1 salida. Vigilante: XRP saltó por stop a 0,9947 (02:20, -2,6%) y BTC a 67.376 (02:28, -2,1%): el piso de 48 h cedió, como estaba previsto. Salida: INJ a 7,948 (-1,72%), se cumplió su invalidación escrita (4 h -0,82% con 1 h roja -1,76%). Mercado: venta general en la última hora (1 h -1,3/-4% en todo), 4 h roja (BTC -1,57%, SOL -3,14%), casi todas las grandes a +0,3/+0,7% del mínimo de 48 h, o sea haciendo mínimos ahora mismo. BTC 4 h -1,57%: sin bloqueo, pero no hay setup. Sin entradas: ruptura nadie (TRX -1,9% del máximo, 0,54x); momentum nadie (INJ se dio vuelta; SHELL 4 h -16% y BARD 1 h -4%, microcaps descartadas); rebote: ninguno dejó de hacer mínimos, no hay vela de mínimo más alto. 100% USDT. A mirar la próxima hora: rebote solo en grande líquida con vela completa de mínimo más alto sobre el mínimo de 48 h; BTC 4 h ≤ -3% = bloqueo. 0 posiciones.
+
