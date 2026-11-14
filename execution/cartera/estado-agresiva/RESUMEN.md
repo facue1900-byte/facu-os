@@ -1,18 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-14 03:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-14 04:32 UTC
 
-**Total: 804.32 USD (-19.57%)** desde 2026-10-07 23:06 UTC · USDT libre 804.32 · comisiones 48.02 · 350 operaciones
+**Total: 804.23 USD (-19.58%)** desde 2026-10-07 23:06 UTC · USDT libre 654.32 · comisiones 48.17 · 351 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **804.32** |
+| **Esta carpeta** | **804.23** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 803.33 |
+| hodl btc | 802.66 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| ETH | trading | 149.91 | +0.04% | 1,853.77 |
 
 ## Últimas operaciones
 
+- 2026-11-14 04:32 UTC · compra ETH 150.00 USD a 1,891.6 — Rebote en soporte: ETH (grande, 661 M/día) testea el mínimo de 48 h tres veces (1878,00 a las 02:00, 1879,16 la vela completa de 03:00, 1878
 - 2026-11-14 02:32 UTC · venta INJ 117.82 USD a 7.948 — Invalidación escrita a las 01:32 cumplida: 4 h volvió a negativo (-0,82%) con vela de 1 h roja (-1,76%), en una venta general que perfora mí
 - 2026-11-14 02:20 UTC · venta XRP 145.95 USD a 0.994746 — Stop automático en 0.9947462 (entrada 1.0213, máximo 1.0437).
 - 2026-11-14 02:28 UTC · venta BTC 122.25 USD a 67,376.2 — Stop automático en 67,376.18 (entrada 68,821.43, máximo 70,214.31).
@@ -22,6 +24,5 @@
 - 2026-11-13 12:32 UTC · compra HYPE 150.00 USD a 74.33 — Momentum de 24 h: HYPE 24 h +5,34%, 4 h +3,08%, 1 h +0,45% (no estirada), escalera limpia de mínimos más altos 05:00-12:00 (70,07 → 73,85), 
 - 2026-11-13 07:38 UTC · compra BTC 125.00 USD a 68,821.4 — Rebote en soporte, criterio escrito a las 06:32 cumplido: la vela 06:00 cerró sin perforar el mínimo de 48 h 67.568 (mínimo 67.904, cierre 6
 - 2026-11-13 07:38 UTC · compra SOL 150.00 USD a 80.35 — Rebote en soporte: SOL tocó el mínimo de 48 h 77,92 (vela 03:00) y cuatro velas hicieron mínimos más altos (04:00 78,04 / 05:00 78,03 / 06:0
-- 2026-11-13 06:32 UTC · compra XRP 150.00 USD a 1.0213 — Rebote en soporte: XRP tocó el mínimo de 48 h 0,9975 (vela 03:00) y dos velas completas hicieron mínimos más altos (04:00 1,0012 / 05:00 1,0
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

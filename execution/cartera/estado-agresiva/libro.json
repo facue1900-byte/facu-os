@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 804.3183096497556,
-  "posiciones": {},
-  "comisiones_usd": 48.01823599999995,
+  "usdt": 654.3183096497556,
+  "posiciones": {
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.07921865087756397,
+      "entrada": 1891.6,
+      "maximo": 1891.6,
+      "reglas": {
+        "stop": 2.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794630780000
+    }
+  },
+  "comisiones_usd": 48.16823599999995,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4207,6 +4230,18 @@
       "comision": 0.117819,
       "motivo": "Invalidación escrita a las 01:32 cumplida: 4 h volvió a negativo (-0,82%) con vela de 1 h roja (-1,76%), en una venta general que perfora mínimos de 48 h. Salgo antes del stop 7,709 en vez de esperarlo.",
       "resultado_pct": -1.72
+    },
+    {
+      "ms": 1794630762851,
+      "fecha": "2026-11-14 04:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.07921865087756397,
+      "precio": 1891.6,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: ETH (grande, 661 M/día) testea el mínimo de 48 h tres veces (1878,00 a las 02:00, 1879,16 la vela completa de 03:00, 1878,75 la de 04:00 en curso) sin perforarlo, 1 h +0,46%, +0,81% del mínimo; BTC/SOL/BNB todavía hacen mínimo nuevo esta hora, ETH no: fuerza relativa. BTC 4 h -2,19%: sin bloqueo. Tamaño moderado (150) porque el mercado sigue vendedor. Stop ajustado a 2% (~1855), debajo del triple piso: invalida si pierde 1878 con vela de 1 h cerrada abajo; el stop lo cubre."
     }
   ]
 }
