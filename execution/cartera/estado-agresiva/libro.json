@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794637920000
+      "vigilado_hasta": 1794641460000
     },
     "XRPUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794637920000
+      "vigilado_hasta": 1794641460000
     },
     "INJUSDT": {
       "nivel": "trading",
       "cantidad": 14.738136218342758,
       "entrada": 8.134,
-      "maximo": 8.134,
+      "maximo": 8.137,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794638040000
+      "vigilado_hasta": 1794641460000
     }
   },
   "comisiones_usd": 48.408235999999945,
