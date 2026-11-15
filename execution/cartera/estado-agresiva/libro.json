@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 791.9822611648694,
-  "posiciones": {},
-  "comisiones_usd": 49.08642799999994,
+  "usdt": 641.9822611648694,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.0023114373808707385,
+      "entrada": 64829.79,
+      "maximo": 64829.79,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794713640000
+    }
+  },
+  "comisiones_usd": 49.23642799999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4303,6 +4326,18 @@
       "comision": 0.146104,
       "motivo": "Stop automático en 1,796.8178 (entrada 1,842.89, máximo 1,844.58).",
       "resultado_pct": -2.5
+    },
+    {
+      "ms": 1794713639732,
+      "fecha": "2026-11-15 03:33 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.0023114373808707385,
+      "precio": 64829.79,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: BTC hizo mínimo de 48 h en 62006 (vela 01:00, 279,5 M de volumen, capitulación); la vela de 1 h de las 02:00 cerró completa en 64900 con mínimo más alto (62485,54) y volumen comprador 223,9 M (≥ 1x); la de las 03:00 (33 min) no hace mínimo nuevo (64800) ni devuelve la mitad del rebote (~63560). BTC 4 h +1,06% sin bloqueo; volumen 4 h 2,01x. Uno solo del bloque correlacionado (ETH/SOL serían el mismo trade). Stop 5% (~61,6 k) debajo de 62006. Invalida: vela de 1 h cerrada bajo 62006."
     }
   ]
 }
