@@ -756,3 +756,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-15 16:16 UTC — nota
 [v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -1.14, var_4h -1.39) pero ningun par del top 20 cumple entrada: volumen_4h_vs_promedio < 1.3 en todos (mejor visto ~0.76) y var_4h > 0 no se da (ZEC/UNI var_24h>=3 pero var_4h negativo / volumen bajo). Sin disparos.
 
+## 2026-11-15 18:16 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -1.36, var_4h -0.14) pero ningun par del top 20 llega a volumen_4h_vs_promedio>=1.3 (max 1.03); ZEC var_24h 4.74 pero vol 0.40 y vs_max_48h -7.27. Sin disparos.
+
