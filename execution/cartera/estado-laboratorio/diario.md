@@ -753,3 +753,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-15 14:17 UTC — nota
 [v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -0.97, var_4h -0.5) pero ningun par del top 20 cumple var_24h>=3 ni volumen_4h>=1.3 (mejor: RWUSDUSDT stable, var_24h 0.01). Sin disparos.
 
+## 2026-11-15 16:16 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -1.14, var_4h -1.39) pero ningun par del top 20 cumple entrada: volumen_4h_vs_promedio < 1.3 en todos (mejor visto ~0.76) y var_4h > 0 no se da (ZEC/UNI var_24h>=3 pero var_4h negativo / volumen bajo). Sin disparos.
+
