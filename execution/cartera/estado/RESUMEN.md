@@ -1,20 +1,20 @@
-# Carpeta cripto ficticia — 2026-11-14 22:07 UTC
+# Carpeta cripto ficticia — 2026-11-15 00:07 UTC
 
-**Total: 805.61 USD (-19.44%)** desde 2026-10-07 20:58 UTC · USDT libre 575.44 · comisiones 2.81 · 96 operaciones
+**Total: 803.90 USD (-19.61%)** desde 2026-10-07 20:58 UTC · USDT libre 803.90 · comisiones 3.04 · 97 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **805.61** |
+| **Esta carpeta** | **803.90** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 768.07 |
-| plan inicial sin tocar | 692.13 |
+| hodl btc | 765.57 |
+| plan inicial sin tocar | 694.94 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | conservador | 230.17 | -23.20% | 63,673.5 |
 
 ## Últimas operaciones
 
+- 2026-11-14 22:08 UTC · venta BTC 228.69 USD a 63,673.5 — Stop automático en 63,673.5 (entrada 83,446.01, máximo 84,898).
 - 2026-11-14 20:54 UTC · venta BNB 37.72 USD a 582.173 — Stop automático en 582.1725 (entrada 770.95, máximo 776.23).
 - 2026-11-13 03:51 UTC · venta ETH 75.31 USD a 1,940.46 — Stop automático en 1,940.46 (entrada 2,574.09, máximo 2,587.28).
 - 2026-11-11 21:37 UTC · venta PEPE 34.28 USD a 4.6665e-06 — Stop automático en 4.6665e-06 (entrada 5.44e-06, máximo 5.49e-06).
@@ -24,6 +24,5 @@
 - 2026-10-30 00:18 UTC · venta LTC 20.48 USD a 54.243 — Stop automático en 54.243 (entrada 66.15, máximo 66.33).
 - 2026-10-29 20:42 UTC · venta TAO 20.76 USD a 241.6 — Stop automático en 241.6 (entrada 290.6, máximo 302).
 - 2026-10-29 20:47 UTC · venta SOL 57.34 USD a 95.2922 — Stop automático en 95.2922 (entrada 116.21, máximo 116.81).
-- 2026-10-29 20:47 UTC · venta LINK 32.77 USD a 10.9609 — Stop automático en 10.96094 (entrada 13.367, máximo 13.506).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
