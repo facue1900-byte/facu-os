@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 641.9822611648694,
+  "usdt": 511.98226116486944,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794767520000
+      "vigilado_hasta": 1794771060000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.1440678906206667,
+      "entrada": 901.45,
+      "maximo": 901.45,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794771180000
     }
   },
-  "comisiones_usd": 49.23642799999994,
+  "comisiones_usd": 49.36642799999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4338,6 +4360,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: BTC hizo mínimo de 48 h en 62006 (vela 01:00, 279,5 M de volumen, capitulación); la vela de 1 h de las 02:00 cerró completa en 64900 con mínimo más alto (62485,54) y volumen comprador 223,9 M (≥ 1x); la de las 03:00 (33 min) no hace mínimo nuevo (64800) ni devuelve la mitad del rebote (~63560). BTC 4 h +1,06% sin bloqueo; volumen 4 h 2,01x. Uno solo del bloque correlacionado (ETH/SOL serían el mismo trade). Stop 5% (~61,6 k) debajo de 62006. Invalida: vela de 1 h cerrada bajo 62006."
+    },
+    {
+      "ms": 1794771125451,
+      "fecha": "2026-11-15 19:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.1440678906206667,
+      "precio": 901.45,
+      "usd": 130.0,
+      "comision": 0.13,
+      "motivo": "Momentum de 24 h: ZEC +5,53% en 24 h, sigue subiendo en 4 h (+0,57%) y no está estirada (1 h +0,55%); par líquido (200 M/día), +12,3% del mínimo de 48 h y -6,8% del máximo. Volumen 4 h flojo (0,42x): tamaño chico. Stop 5%, trailing 5%, tomas +8%/+15%. Invalida: 4 h vuelve a rojo con 24 h bajo +5%, o el stop."
     }
   ]
 }
