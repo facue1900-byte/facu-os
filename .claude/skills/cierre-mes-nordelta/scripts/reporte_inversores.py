@@ -66,6 +66,14 @@ NOTAS_DEL_MES = {
                 "hoy siguen en la caja y que van a salir cuando se destrabe, as\u00ed "
                 "que el resultado de esos dos meses no es comparable con el de los "
                 "anteriores."),
+    # Facu 16/11/2026. AVN: banco 12/11, op 276606331 (FC 06-10/2026 menos el ajuste
+    # municipal). Marketing: $1.000.000 adeudado, dicho por Facu, sin factura vista.
+    "2026-10": ("Octubre no tiene dos gastos que sí corresponden al período. Las "
+                "expensas de AVN de junio a octubre se pagaron el 12/11 por "
+                "$6.090.876,04 (ya neto de un crédito de $8.574.005,14 a favor del "
+                "Paseo), y marketing de octubre ($1.000.000) está pendiente de pago. "
+                "Los dos salen en noviembre: el resultado de octubre queda por encima "
+                "de lo normal y el de noviembre va a venir más bajo."),
 }
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 SALIDA = Path("/Users/Facu/facu-os/data/reportes-inversores")
@@ -217,7 +225,9 @@ def comprobacion(d, obra_pn):
     gan = sum(m[i]["res"] for i in m) - sum(m[i]["reparto"] + m[i]["descuadre"] for i in m)
     aportes = sum(d["capital"].values())
     obra = d["obra"]
-    caja = d["saldos"].get(("Caja", "ARS"), 0) + d["saldos"].get(("Banco", "ARS"), 0)
+    # El FCI es plata del Paseo estacionada (oct-2026: $47 M). Sin él, la comprobación
+    # daba "no cierra" por exactamente lo suscripto (16/11/2026).
+    caja = sum(d["saldos"].get((m, "ARS"), 0) for m in ("Caja", "Banco", "FCI"))
     del_negocio = gan - obra_pn
     de_socios = aportes - (obra - obra_pn)
     return dict(gan=gan, obra_pn=obra_pn, del_negocio=del_negocio, aportes=aportes,
@@ -427,6 +437,7 @@ def html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None, comp=None):
 
     caja = d["saldos"].get(("Caja", "ARS"), 0)
     banco = d["saldos"].get(("Banco", "ARS"), 0)
+    fci = d["saldos"].get(("FCI", "ARS"), 0)
     usd = d["saldos"].get(("Caja", "USD"), 0) + d["saldos"].get(("Banco", "USD"), 0)
 
     no_op = sum(m[i]["reparto"] + m[i]["descuadre"] for i in m)
@@ -475,7 +486,7 @@ def html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None, comp=None):
   <tr><td>menos la obra pagada con esos aportes</td><td class="n">&minus;${plata(comp['obra_socios'])}</td></tr>
   <tr><td><b>= les queda sin gastar</b></td><td class="n"><b>${plata(comp['de_socios'])}</b></td></tr>
   <tr class="tot"><td>Suma de las dos</td><td class="n">${plata(comp['suma'])}</td></tr>
-  <tr><td>Efectivo + banco que hay de verdad</td><td class="n">${plata(comp['caja'])}</td></tr>
+  <tr><td>Efectivo + banco + FCI que hay de verdad</td><td class="n">${plata(comp['caja'])}</td></tr>
 </table>
 <div class="nota">{'Las dos cuentas dan exactamente la plata que hay: cada peso que entr\u00f3 est\u00e1 o gastado o en la caja.' if comp['cierra'] else '<b>NO CIERRA</b> por $' + plata(abs(comp['suma'] - comp['caja'])) + ': hay obra atribuida a alguien que no la pag\u00f3, o plata que entr\u00f3 y no est\u00e1 anotada.'}
   {('<br><b>El renglón del negocio da en negativo</b> porque a esta fecha reinvirtió en obra ' + plata(abs(comp['del_negocio'])) + ' m\u00e1s de lo que hab\u00eda generado: esa diferencia la adelantaron los socios y el negocio la cubre con la ganancia de los meses siguientes.') if comp['del_negocio'] < 0 else ''}</div>"""
@@ -510,8 +521,9 @@ def html(d, anio, mes_corte, cap_ars, cap_usd, nota_mes=None, comp=None):
   <div class="tile"><div class="k">EFECTIVO (CAJA)</div><div class="v">${plata(caja)}</div></div>
   <div class="tile"><div class="k">DÓLARES</div><div class="v">US$ {plata(usd)}</div></div>
   <div class="tile"><div class="k">BANCO</div><div class="v">${plata(banco)}</div></div>
+  {f'<div class="tile"><div class="k">FCI MACRO</div><div class="v">${plata(fci)}</div></div>' if fci else ''}
 </div>
-<div class="nota">Total disponible ${plata(caja+banco)} en pesos, al {d['cierre'].strftime('%d/%m/%Y')}.</div>
+<div class="nota">Total disponible ${plata(caja+banco+fci)} en pesos, al {d['cierre'].strftime('%d/%m/%Y')}.</div>
 
 {bloque_capital}
 {bloque_comp}

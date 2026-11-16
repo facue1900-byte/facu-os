@@ -3,6 +3,27 @@
 Última actualización: 2026-11-10 (revisión del Master Plan); antes 2026-11-02 (bloque de noviembre: memoria `retomar-cierre-noviembre-paseo`). Lo que sigue después de
 «Historia al 27/07» quedó como registro: varios números de ahí ya cambiaron.
 
+## Cierre del 16/11/2026
+
+- ✅ **Banco Macro OCTUBRE conciliado: CIERRA** (NETO −$16.792.458,00 al centavo). El cierre
+  automático decía «falta el extracto», pero `Octubre 2026 - Resumen General.pdf` estaba desde
+  el 05/11: el script buscaba sólo `Octubre 2026.pdf`. Ahora acepta los dos nombres. El pase de
+  $797.246,96 a la CC Bancaria (dos IMP. AFIP) se cruza solo.
+- ✅ **Reporte a inversores de octubre ENVIADO** (16/11, a re1900@ + facue1900@, OK de Facu). La
+  comprobación de capital daba «no cierra por $47.000.000»: era el FCI, que no se sumaba.
+  Ahora cierra ($56.631.069 = caja + banco + FCI) y el PDF muestra el FCI. Lleva una nota:
+  AVN jun–oct ($6.090.876,04, pagado 12/11) y marketing oct ($1.000.000, adeudado) caen en nov.
+- 🔴 **Marketing oct $1.000.000 adeudado a las chicas de marketing** (Facu 16/11). ✅ Cargado en
+  «Pagos Pendientes» (Saldo Actual B19).
+- **Savini FV 3502 ($122.348.917,68) NO se paga: Savini va a hacer una nota de crédito** (Facu).
+- **Echeq Savini $40.679.679,70 del 25/11: Facu rescata el TOTAL del FCI el 24/11.**
+- Banco al 16/11 13:47: **nada nuevo desde el 12/11** (saldo $1.710.049,49). Fabric ($12,3 M)
+  y Bigg siguen sin pagar noviembre (Facu los está apurando, 16/11). Giaccio FC 222 y R&S A-4197 sin pagar.
+- Olivos agosto ($1.343.834,77): no está en Movimientos ni en el extracto → **no se pagó**.
+- Tasa cuota 11 ($1.027.633, vence 16/11): recordatorio a Mati por WhatsApp 16/11 13:57.
+- **Pizzería: contrato con Morton Pizza en cierre, nada confirmado (Facu 16/11).** Radar: pizzería, Market y la tira (ahora 8 locales)
+  van en USD (oferta 03/11 ÷ blue $1.555). 🔴 Falta monto y fecha firmados con Morton.
+
 ## Revisión del Master Plan — 10/11/2026
 
 Corregido (backup en `archive/dashboard-formulas-2026-11-10/`):
@@ -126,6 +147,17 @@ Resultado operativo de octubre al 26/10: **+$13.452.754** (ing $25,45 M, egr $12
 `comprobar_capital.py` CIERRA en $60.986.923 (caja + banco + FCI).
 Ctas Ctes: Fabric pagó $12.179.103,05 (queda −$2,66); Bigg pagó $3.202.137,95 y debe
 $1.030.768,81 = efectivo $559.303,14 + ND recupero $471.465,67.
+
+🔴 **Pagos pendientes al 12/11 (mails 05–12/11 + Movimientos; SIN banco de noviembre, así que
+lo pagado por Macro desde el 31/10 no se ve):** vencido si no se pagó por banco — AVN 0467 saldo
+web 31/10 $28.954.654,88 (incluye 4 FC ARBA $14.289.773,70 en discusión; crédito AVN
+$8.574.005,14 sin aplicar) · Edenor 14 fact. vto 31/10 $7.295.004,30 (caja pagó $762.400 el
+03/11, sin saber qué cuenta) · Fondo y Áridos cuota 4 vto 09/11 $15.690.961 · F931 10/2026 VEP
+1703618342 vto 11/11 $577.892,45. Por vencer — tasa cuota 11 vto 16/11 $1.027.633 · sindicatos
+oct $79.486,85 (OSECAC 28.000 + FAECYS 7.355,26 + CEC 44.131,59) · R&S A-4197 vto 26/11
+$547.663,12 · Olivos FCA 3-24129 oct-26 $1.487.944,67 (30 días desde 30/10) · Visa 5782 cuota
+1/3 $297.485,46 (resumen sin fecha). Obra: Savini FV 3494 echeq 25/11 $40.679.679,70 · FV 3502
+$122.348.917,68 con IVA (neto = USD 65.025,60 a $1.555 BNA 26/10), sin pago visto.
 
 🔴 **Pagos pendientes al 26/10 (ya con el banco de octubre):** AVN (unidad 0467) sin pagar
 desde el 18/06. **Estado de deuda de AVN al 26/10** (Lucas Hoffman, xlsx en
