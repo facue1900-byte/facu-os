@@ -17,9 +17,13 @@ mes="${1:-$(date -v-1m +%Y-%m)}"
 meses=(Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre)
 nombre="${meses[$((10#${mes#*-} - 1))]}"
 pdf="$BASE/${mes%-*}/$nombre ${mes%-*}.pdf"
+# Desde oct-2026 el resumen se guarda como "<Mes> <Año> - Resumen General.pdf".
+# Antes se buscaba sólo el nombre corto y daba "falta" con el PDF ahí (16/11/2026).
+alt="$BASE/${mes%-*}/$nombre ${mes%-*} - Resumen General.pdf"
+[[ ! -f "$pdf" && -f "$alt" ]] && pdf="$alt"
 
 if [[ ! -f "$pdf" ]]; then
-  echo "!!! FALTA EL EXTRACTO DE CIERRE: $pdf"
+  echo "!!! FALTA EL EXTRACTO DE CIERRE: $pdf (ni «$nombre ${mes%-*} - Resumen General.pdf»)"
   echo "!!! $mes queda SIN conciliar hasta que esté ese PDF."
   exit 1
 fi
