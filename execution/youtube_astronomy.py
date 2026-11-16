@@ -337,19 +337,11 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     izq = np.clip(1 - xx / (W * 0.55), 0, 1) ** 1.5
     oscuro = np.clip(vin * (1 - 0.82 * abajo) * (1 - 0.45 * izq * abajo), 0, 1)
     rgb = rgb * oscuro[..., None]
-    # glow marino desde abajo-derecha, detrás del número
-    gl = np.clip(1 - np.sqrt(((xx - W * 0.82) / (W * 0.45)) ** 2 + ((yy - H * 0.78) / (H * 0.6)) ** 2), 0, 1) ** 2
-    rgb += np.array(VIOLETA, np.float32) * gl[..., None] * 0.35
     img = Image.fromarray(np.clip(rgb, 0, 255).astype(np.uint8), "RGB").convert("RGBA")
 
     d = ImageDraw.Draw(img)
     pad = 56
-    # número cromado gigante, abajo a la derecha
-    num = f"{numero:02d}"
-    m = _mask_de_texto(num, 330, font_index=9, tracking=-0.02)
-    nx, ny = W - pad - m.width / 2 + 6, H - pad - m.height / 2 + 4
-    _pegar_centrado(img, glow(m, VIOLETA, 26, 0.75, pad=80), nx, ny)
-    _pegar_centrado(img, relieve(m, estilo, 9), nx, ny)
+    num = f"{numero:02d}"  # minimalista: va chico, en la línea de THE BUNKER (Facu: el número gigante era feo)
     # isotipo chico arriba a la izquierda
     iso = _mask_de_png(ISOTIPO, 92)
     _pegar_centrado(img, relieve(iso, estilo, 3), pad + iso.width / 2, pad + iso.height / 2)
@@ -365,6 +357,10 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     f_tag = ImageFont.truetype(HELV, 30, index=10)
     y_tag = y_base - f_art.size * 0.78 - 26
     d.text((pad, y_tag), "THE BUNKER", font=f_tag, fill=(255, 255, 255, 235), anchor="ls")
+    x_l = pad + f_tag.getlength("THE BUNKER") + 22
+    d.line([(x_l, y_tag - 11), (x_l + 64, y_tag - 11)], fill=(200, 185, 255, 220), width=2)
+    f_num = ImageFont.truetype(HELV, 30, index=7)  # Light
+    d.text((x_l + 86, y_tag), num, font=f_num, fill=(215, 200, 255, 255), anchor="ls")
     borde_degrade(img, inset=18, grosor=3, glow_r=9)
     for x, y in [(30, 30), (W - 30, 30), (30, H - 30), (W - 30, H - 30)]:
         cruz(d, x, y, 9, color=(255, 255, 255, 120), ancho=1)
