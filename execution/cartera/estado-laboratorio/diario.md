@@ -789,3 +789,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-16 14:22 UTC — nota
 [v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -0.55, var_4h -0.26) pero ningun par del top 20 cumple entrada: volumen_4h_vs_promedio <1.3 en todos salvo HYPE/RARE/RWUSD (HYPE var_24h<0, RARE vs_max -10.4, RWUSD stable) y vs_max_48h < -1.5. Sin disparos.
 
+## 2026-11-16 16:18 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -0.19, var_4h 0.64) pero ningun par del top 20 cumple entrada: ASTER var_24h 6.15 y var_4h 4.11 pero vol 0.6 y vs_max_48h -20.8; UNI vol 1.37 pero var_24h -0.35; NEAR vol 1.73 pero var_24h -0.13 y vs_max -3.7; RARE var_4h -9.4. Sin disparos.
+
