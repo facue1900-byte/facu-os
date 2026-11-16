@@ -48,7 +48,7 @@ REPOS = {
 REMOTO_WEB = "git@github.com:facue1900-byte/astronomy-members.git"
 FACU = re.compile(r"facue1900|^facu$", re.I)
 VLADO = re.compile(r"vlad", re.I)
-MAIL_VLADO = "vladinic@astronomyofficial.com"
+MAIL_VLADO = "vladimir.nadinic@gmail.com"
 # Commits que hace la máquina, no una persona: no van en el mail.
 AUTOMATICOS = re.compile(r"^(Log:|Inbox:|Auto FX:|Auto publish:)")
 # Si después de actualizar la serie del dólar el último día tiene más de esto, algo anda mal.
