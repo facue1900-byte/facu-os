@@ -32,7 +32,7 @@ from execution.mail_format import render  # noqa: E402
 
 APP = pathlib.Path.home() / "Desktop/Productoras/Astronomy/Academia/astronomy-members"
 NODE_BIN = pathlib.Path.home() / ".local/node/bin"
-PARA = ["facue1900@gmail.com", "festevez@astronomyofficial.com", "vladinic@astronomyofficial.com"]
+PARA = ["facue1900@gmail.com", "vladimir.nadinic@gmail.com", "mateopastranadj@gmail.com"]
 SALIDA = RAIZ / "data" / "reportes-equipo"
 
 # Lo que registra la web, dicho en castellano. Una acción que no está acá sale con su
