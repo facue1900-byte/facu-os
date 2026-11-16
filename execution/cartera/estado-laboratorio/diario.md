@@ -777,3 +777,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-16 06:16 UTC — nota
 [v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -0.14, var_4h -1.25) pero ningun par del top 20 cumple entrada: volumen_4h_vs_promedio <1.3 en todos (max 0.73) y vs_max_48h < -1.5 en todos salvo RWUSD (stable). Sin disparos.
 
+## 2026-11-16 08:20 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -0.89, var_4h -0.28) pero ningun par del top 20 cumple entrada: volumen_4h_vs_promedio <1.3 en todos (max 0.81) y vs_max_48h < -1.5 salvo RWUSD (stable); ASTER var_24h 3.33 pero vol 0.40 y vs_max -23.3. Sin disparos.
+
