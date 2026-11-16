@@ -14,6 +14,10 @@ Dos modos (los dispara launchd, ver execution/launchd/com.facu.socios-*.plist):
          «Auto publish: …». Vercel está en Hobby, que es de una sola persona: sólo deploya si el
          commit de arriba es de Facu (probado 13/11/2026, también por `vercel deploy`).
          Si lo de Vlado no compila, Vercel deja la web como estaba y el mail lo dice.
+      3. MATEO PASTRANA PIDE OK (Facu, 16/11/2026): si en `main` hay commits sin publicar de
+         alguien que no es Facu ni Vlado, no se publica NADA y le llega a Facu un Telegram (una
+         vez por commit). Cada PR abierto de Mateo también le llega por Telegram; Facu lo
+         aprueba diciéndole a su Claude «aprobá el PR N» (merge commit → lo publica Vercel).
       Trabaja en un clon propio (data/web-publicar), nunca en la carpeta donde edita Facu.
 
   · `--resumen --send` (20:00, plist socios-resumen-vlado) → un MAIL a Facu y a Vlado con
@@ -32,6 +36,7 @@ import pathlib
 import re
 import subprocess
 import sys
+import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta
 
@@ -48,6 +53,13 @@ REPOS = {
 REMOTO_WEB = "git@github.com:facue1900-byte/astronomy-members.git"
 FACU = re.compile(r"facue1900|^facu$", re.I)
 VLADO = re.compile(r"vlad", re.I)
+MATEO = re.compile(r"pastrana", re.I)  # Mateo Pastrana; "mateo" solo también es Guini
+# Los que publican sin pedir permiso (Facu, 13/11/2026). Cualquier otro —Mateo Pastrana desde
+# el 16/11/2026— trabaja en una rama, abre un PR y lo publica Facu: «que me pida autorización».
+PUBLICAN_SOLOS = ("Facu", "Vlado")
+GITHUB_SOLOS = ("facue1900-byte", "vladinic-macos")
+REPO_WEB = "facue1900-byte/astronomy-members"
+GH = pathlib.Path.home() / ".local/gh/bin/gh"
 MAIL_VLADO = "vladimir.nadinic@gmail.com"
 # Commits que hace la máquina, no una persona: no van en el mail.
 AUTOMATICOS = re.compile(r"^(Log:|Inbox:|Auto FX:|Auto publish:)")
@@ -65,6 +77,8 @@ def git(repo, *args, check=False):
 def quien(nombre, mail):
     if VLADO.search(mail) or VLADO.search(nombre):
         return "Vlado"
+    if MATEO.search(mail) or MATEO.search(nombre):
+        return "Mateo"
     if FACU.search(mail) or FACU.search(nombre):
         return "Facu"
     return nombre
@@ -97,11 +111,31 @@ def publicar(send):
         commits.append(f"dólar hasta {ultimo}")
     fx_vieja = date.today() - date.fromisoformat(ultimo) > FX_VIEJA
 
-    # 2. Lo de Vlado
-    arriba = git(CLON, "log", "-1", "--format=%an%x1f%ae%x1f%s", "origin/main").strip().split("\x1f")
-    de_otro = quien(arriba[0], arriba[1]) != "Facu"
+    # 2. Lo que subieron otros a main y todavía no salió: los commits de arriba hasta el primero
+    #    de Facu (Vercel sólo publica si el de arriba es de Facu, y publica TODO lo de abajo).
+    sin_publicar = []
+    for l in git(CLON, "log", "--first-parent", "-50", "--format=%H%x1f%an%x1f%ae%x1f%s", "origin/main").splitlines():
+        h, an, ae, asunto = l.split("\x1f")
+        if quien(an, ae) == "Facu":
+            break
+        sin_publicar.append((h, quien(an, ae), asunto))
+    frenados = [c for c in sin_publicar if c[1] not in PUBLICAN_SOLOS]
+    if frenados:
+        # Alguien que pide OK subió directo a main. No se publica NADA —ni el dólar—, porque
+        # cualquier commit de Facu arriba sacaría lo suyo a la web sin aprobar.
+        print(f"FRENADO: {len(frenados)} commit(s) sin aprobar en main: " + "; ".join(f"{q}: {a[:50]}" for _, q, a in frenados))
+        if send:
+            avisar_una_vez("frenados", [h for h, _, _ in frenados],
+                f"🛑 {frenados[0][1]} subió cambios DIRECTO a la web sin pedirte OK, y quedaron frenados: "
+                f"no se publican.\n\n" + "\n".join(f"· {a[:90]}" for _, _, a in frenados) +
+                "\n\nOJO: el próximo cambio tuyo en la web los publicaría. Decime «aprobá lo de "
+                f"{frenados[0][1]}» o «volvé atrás lo de {frenados[0][1]}».")
+        commits = []
+    de_otro = bool(sin_publicar) and not frenados
     if de_otro and not commits:
-        msg = f"Auto publish: {quien(arriba[0], arriba[1])}'s changes ({arriba[2][:60]})"
+        arriba = sin_publicar[0][1:]
+        arriba = (arriba[0], "", arriba[1])
+        msg = f"Auto publish: {arriba[0]}'s changes ({arriba[2][:60]})"
         if send:
             git(CLON, "commit", "-q", "--allow-empty", "-m", msg, check=True)
         commits.append(msg)
@@ -118,8 +152,57 @@ def publicar(send):
             print(f"push rechazado, se reintenta en la próxima corrida: {p.stderr.strip()[:200]}")
         else:
             print("publicado:", "; ".join(commits))
+    if send:
+        avisar_prs()
     if fx_vieja:
         raise SystemExit(f"⚠️ la serie del dólar llega sólo al {ultimo}: bluelytics no trae días nuevos.")
+
+
+def telegram(texto):
+    from dotenv import load_dotenv
+    load_dotenv(RAIZ / ".env")
+    token, chat = os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
+    if not token or not chat:
+        raise SystemExit("!!! Falta TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID en .env: el aviso no salió")
+    datos = urllib.parse.urlencode({"chat_id": chat, "text": texto[:4000]}).encode()
+    with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/sendMessage", data=datos, timeout=30) as r:
+        if not json.load(r).get("ok"):
+            raise SystemExit("!!! Telegram rechazó el aviso")
+
+
+def avisar_una_vez(clave, ids, texto):
+    """Telegram a Facu, una sola vez por cada id (commit o PR) nuevo. Se anota sólo si salió."""
+    estado = json.loads(ESTADO.read_text()) if ESTADO.exists() else {}
+    vistos = set(estado.get(clave, []))
+    nuevos = [str(i) for i in ids if str(i) not in vistos]
+    if not nuevos:
+        return
+    telegram(texto)
+    estado = json.loads(ESTADO.read_text()) if ESTADO.exists() else {}
+    estado[clave] = sorted(set(estado.get(clave, [])) | set(nuevos))[-200:]
+    ESTADO.write_text(json.dumps(estado, indent=1))
+    print(f"telegram a Facu ({clave}): {', '.join(nuevos)}")
+
+
+def avisar_prs():
+    """Cada PR abierto de alguien que pide OK (Mateo) le llega a Facu por Telegram. Los mails
+    de GitHub no sirven: limpiar_mail.py los archiva sin leer."""
+    from dotenv import load_dotenv
+    load_dotenv(RAIZ / ".env")
+    r = subprocess.run([str(GH), "pr", "list", "-R", REPO_WEB, "--state", "open",
+                        "--json", "number,title,author,url,headRefOid"],
+                       capture_output=True, text=True, timeout=60, env=os.environ)
+    if r.returncode:
+        raise SystemExit(f"!!! no pude leer los PR de la web: {r.stderr.strip()[:200]}")
+    for pr in json.loads(r.stdout):
+        login = pr["author"]["login"]
+        if login in GITHUB_SOLOS:
+            continue
+        nombre = "Mateo" if "pastrana" in login.lower() else login
+        avisar_una_vez("prs", [f"{pr['number']}@{pr['headRefOid'][:12]}"],
+            f"🔔 {nombre} te pide OK para cambiar la web\n\n#{pr['number']} · {pr['title']}\n{pr['url']}\n\n"
+            f"Para publicarlo decime «aprobá el PR {pr['number']}» (acá o en Claude): lo reviso y lo subo. "
+            "Hasta entonces la web no cambia.")
 
 
 # ─────────────────────────────── resumen ────────────────────────────────
@@ -218,7 +301,7 @@ def resumen(send):
         return
 
     secciones, total, quienes = [], 0, []
-    for de in ("Vlado", "Facu"):
+    for de in ("Vlado", "Mateo", "Facu"):
         pedidos, cambios, bitacora = de_persona(de, por_repo)
         if not (pedidos or cambios or bitacora):
             continue
