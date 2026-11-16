@@ -658,3 +658,9 @@ turno entero (`avIgnorar = avTurno`).
 - La sesión vinculada de `execution/wa_tanda` estaba vencida (pedía QR). `--setup` espera 10 min: si Facu no escanea en ese rato, se corta solo y la sesión sigue vencida, sin otro aviso que el log.
 - Ya vinculada, la 1.34.7 fallaba contra el WhatsApp Web actual: `getChats()` tiraba `ERROR r` y `sendMessage` tiraba "Data passed to getter must include an id property". **Arreglo: subir a 1.34.8**, con eso mandó bien (imagen, ack 2, confirmada en `ChatStorage.sqlite`).
 - Lección: si wa_tanda tira errores crípticos de minificado (`r`, `getter ... id`), primero `npm view whatsapp-web.js version` y actualizar. El número de un contacto sale de la base local de WhatsApp Desktop (`ZWACHATSESSION.ZCONTACTJID`), sin `getChats()`.
+
+## 16/11/2026 — Cierre del 16: dos alarmas falsas que frenaban el reporte a inversores
+- **«Falta el extracto de octubre»** con el PDF ahí desde el 05/11: `conciliar_mes_anterior.sh` buscaba sólo `<Mes> <Año>.pdf` y desde octubre el resumen se guarda como `<Mes> <Año> - Resumen General.pdf`. Ahora acepta los dos. Con el PDF, octubre CIERRA.
+- La conciliación marcaba ⚠ el pase de $797.246,96 a la CC Bancaria propia (`TRF MO CCDO MISMO`), que se gastó en dos IMP. AFIP cargados en Movimientos. `conciliar.py` cruza un pase `MISMO` contra egresos sobrantes que lo sumen EXACTO (hasta 4); sin suma exacta sigue ⚠.
+- **«La comprobación no cierra por $47.000.000»**: `comprobacion()` sumaba Caja + Banco y dejaba afuera el medio `FCI`, adonde se suscribieron $47 M en octubre. Peor: el PDF le iba a decir a Richi «total disponible» sin esos $47 M. Ahora suma el FCI y lo muestra.
+- Lección: cuando aparece un medio nuevo en Movimientos (FCI), revisar todo lo que suma saldos por medio con una lista fija. Y un control que nunca había visto un FCI no estaba probado contra él.

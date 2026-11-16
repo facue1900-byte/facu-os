@@ -14,6 +14,11 @@ Dos modos (los dispara launchd, ver execution/launchd/com.facu.socios-*.plist):
          «Auto publish: …». Vercel está en Hobby, que es de una sola persona: sólo deploya si el
          commit de arriba es de Facu (probado 13/11/2026, también por `vercel deploy`).
          Si lo de Vlado no compila, Vercel deja la web como estaba y el mail lo dice.
+      3. MATEO PASTRANA PIDE OK (Facu, 16/11/2026): si en `main` hay commits sin publicar de
+         alguien que no es Facu ni Vlado, se SACAN de main con un revert de Facu y vuelven como
+         PR (rama <persona>/directo-<sha>), con un Telegram a Facu. Frenarlos no alcanzaba: el
+         primer commit de Facu encima los publicaba (code-reviewer, 16/11). Cada PR abierto de Mateo también le llega por Telegram; Facu lo
+         aprueba diciéndole a su Claude «aprobá el PR N» (merge commit → lo publica Vercel).
       Trabaja en un clon propio (data/web-publicar), nunca en la carpeta donde edita Facu.
 
   · `--resumen --send` (20:00, plist socios-resumen-vlado) → un MAIL a Facu y a Vlado con
@@ -32,6 +37,7 @@ import pathlib
 import re
 import subprocess
 import sys
+import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta
 
@@ -48,6 +54,13 @@ REPOS = {
 REMOTO_WEB = "git@github.com:facue1900-byte/astronomy-members.git"
 FACU = re.compile(r"facue1900|^facu$", re.I)
 VLADO = re.compile(r"vlad", re.I)
+MATEO = re.compile(r"pastrana", re.I)  # Mateo Pastrana; "mateo" solo también es Guini
+# Los que publican sin pedir permiso (Facu, 13/11/2026). Cualquier otro —Mateo Pastrana desde
+# el 16/11/2026— trabaja en una rama, abre un PR y lo publica Facu: «que me pida autorización».
+PUBLICAN_SOLOS = ("Facu", "Vlado")
+GITHUB_SOLOS = ("facue1900-byte", "vladinic-macos")
+REPO_WEB = "facue1900-byte/astronomy-members"
+GH = pathlib.Path.home() / ".local/gh/bin/gh"
 MAIL_VLADO = "vladimir.nadinic@gmail.com"
 # Commits que hace la máquina, no una persona: no van en el mail.
 AUTOMATICOS = re.compile(r"^(Log:|Inbox:|Auto FX:|Auto publish:)")
@@ -65,6 +78,8 @@ def git(repo, *args, check=False):
 def quien(nombre, mail):
     if VLADO.search(mail) or VLADO.search(nombre):
         return "Vlado"
+    if MATEO.search(mail) or MATEO.search(nombre):
+        return "Mateo"
     if FACU.search(mail) or FACU.search(nombre):
         return "Facu"
     return nombre
@@ -85,8 +100,28 @@ def publicar(send):
     git(CLON, "checkout", "-q", "-B", "main", "origin/main", check=True)
     git(CLON, "reset", "-q", "--hard", "origin/main", check=True)
 
+    # 1. Lo que subieron otros a main y todavía no salió: los commits de arriba hasta el primero
+    #    de Facu (Vercel sólo publica si el de arriba es de Facu, y publica TODO lo de abajo).
+    #    Va ANTES del dólar: si algo falla acá, no se publica nada.
+    sin_publicar = []
+    for l in git(CLON, "log", "--first-parent", "-1000", "--format=%H%x1f%an%x1f%ae%x1f%s", "origin/main").splitlines():
+        h, an, ae, asunto = l.split("\x1f", 3)
+        if quien(an, ae) == "Facu":
+            break
+        sin_publicar.append((h, quien(an, ae), asunto))
+    else:
+        if sin_publicar:
+            raise SystemExit("!!! 1000 commits en main sin ninguno de Facu: no sé qué está publicado, no toco nada.")
+    frenados = [c for c in sin_publicar if c[1] not in PUBLICAN_SOLOS]
+    if frenados:
+        # Alguien que pide OK subió directo a main. Quedarse frenado no alcanza: el primer commit
+        # de Facu que suba encima (cualquiera, incluso aprobar otro PR) lo publicaría sin OK. Así
+        # que se SACA de main con un revert y se deja como PR, que es el camino normal.
+        apartar_directos(frenados, send)
+        return
+
     commits = []
-    # 1. Dólar
+    # 2. Dólar
     r = subprocess.run([str(NODE), "scripts/actualizar-blue.mjs", *(["--write"] if send else [])],
                        cwd=CLON, capture_output=True, text=True, timeout=120)
     print(r.stdout.strip().splitlines()[-1] if r.stdout.strip() else r.stderr.strip()[:300])
@@ -97,11 +132,10 @@ def publicar(send):
         commits.append(f"dólar hasta {ultimo}")
     fx_vieja = date.today() - date.fromisoformat(ultimo) > FX_VIEJA
 
-    # 2. Lo de Vlado
-    arriba = git(CLON, "log", "-1", "--format=%an%x1f%ae%x1f%s", "origin/main").strip().split("\x1f")
-    de_otro = quien(arriba[0], arriba[1]) != "Facu"
-    if de_otro and not commits:
-        msg = f"Auto publish: {quien(arriba[0], arriba[1])}'s changes ({arriba[2][:60]})"
+    # 3. Lo de Vlado: se publica solo con un commit vacío de Facu arriba.
+    if sin_publicar and not commits:
+        de, asunto = sin_publicar[0][1], sin_publicar[0][2]
+        msg = f"Auto publish: {de}'s changes ({asunto[:60]})"
         if send:
             git(CLON, "commit", "-q", "--allow-empty", "-m", msg, check=True)
         commits.append(msg)
@@ -118,8 +152,126 @@ def publicar(send):
             print(f"push rechazado, se reintenta en la próxima corrida: {p.stderr.strip()[:200]}")
         else:
             print("publicado:", "; ".join(commits))
+    if send:
+        avisar_prs()
     if fx_vieja:
         raise SystemExit(f"⚠️ la serie del dólar llega sólo al {ultimo}: bluelytics no trae días nuevos.")
+
+
+def apartar_directos(frenados, send):
+    """Saca de main lo que alguien que pide OK subió directo, y lo deja como PR para Facu.
+
+    `frenados` viene en orden de first-parent (el más nuevo primero), que es el orden en que
+    hay que revertir. Los reverts son de Facu: al subirlos, Vercel publica main SIN lo suyo.
+    Después, en una rama, se revierten los reverts (vuelve exactamente lo que subió) y se abre
+    el PR. Si algo sale mal antes del push, no se toca main y la próxima corrida reintenta.
+    """
+    de = frenados[0][1]
+    lista = "\n".join(f"· {a[:90]}" for _, _, a in frenados)
+    print(f"DIRECTO SIN OK: {len(frenados)} commit(s) de {de}: " + "; ".join(a[:50] for _, _, a in frenados))
+    if not send:
+        print("(sin --send) los revertiría en main y abriría un PR con lo mismo.")
+        return
+    for h, _, _ in frenados:
+        es_merge = len(git(CLON, "rev-list", "--parents", "-n", "1", h).split()) > 2
+        r = subprocess.run(["git", "-C", str(CLON), "revert", "--no-edit", *(["-m", "1"] if es_merge else []), h],
+                           capture_output=True, text=True, timeout=120)
+        if r.returncode:
+            git(CLON, "revert", "--abort")
+            telegram(f"🚨 {de} subió cambios DIRECTO a la web sin pedirte OK y NO pude sacarlos solo "
+                     f"(el revert choca).\n\n{lista}\n\nNo subas nada a la web hasta que lo vea tu Claude: "
+                     "cualquier cambio tuyo los publicaría.")
+            raise SystemExit(f"!!! revert de {h[:8]} falló: {r.stderr.strip()[:200]}")
+    reverts = git(CLON, "rev-list", "origin/main..HEAD").split()  # el más nuevo primero
+    p = subprocess.run(["git", "-C", str(CLON), "push", "-q", "origin", "HEAD:main"],
+                       capture_output=True, text=True, timeout=120)
+    if p.returncode:
+        print(f"push de los reverts rechazado, se reintenta en la próxima corrida: {p.stderr.strip()[:200]}")
+        return
+    rama = f"{de.lower().replace(' ', '-')}/directo-{frenados[-1][0][:7]}"
+    git(CLON, "checkout", "-q", "-B", rama, check=True)
+    for rv in reverts:
+        git(CLON, "revert", "--no-edit", rv, check=True)
+    git(CLON, "push", "-q", "-f", "origin", f"{rama}:{rama}", check=True)
+    git(CLON, "checkout", "-q", "main", check=True)
+    from dotenv import load_dotenv
+    load_dotenv(RAIZ / ".env")
+    cuerpo = (f"{de} subió esto directo a `main`, sin PR. `socios_aviso.py` lo sacó de main con un revert "
+              f"(nunca quedó publicado sin OK) y lo trae de vuelta acá, igual, para que Facu lo apruebe.\n\n{lista}")
+    r = subprocess.run([str(GH), "pr", "create", "-R", REPO_WEB, "--base", "main", "--head", rama,
+                        "--title", f"{de}: {frenados[-1][2][:70]}", "--body", cuerpo],
+                       capture_output=True, text=True, timeout=60, env=os.environ)
+    url = r.stdout.strip().splitlines()[-1] if r.returncode == 0 and r.stdout.strip() else None
+    numero = url.rsplit("/", 1)[-1] if url else None
+    telegram(f"🛑 {de} subió cambios DIRECTO a la web sin pedirte OK. Los saqué de la web y los dejé "
+             f"como pedido de aprobación.\n\n{lista}\n\n" +
+             (f"{url}\nPara publicarlo decime «aprobá el PR {numero}»." if url else
+              f"No pude abrir el PR ({r.stderr.strip()[:120]}); quedó en la rama {rama}."))
+    if numero:
+        estado = leer_estado()  # que avisar_prs no lo vuelva a mandar
+        estado["prs_directos"] = sorted(set(estado.get("prs_directos", [])) | {numero})[-200:]
+        escribir_estado(estado)
+    print(f"revertido en main y movido a {rama}" + (f" · PR {url}" if url else " · SIN PR"))
+
+
+def leer_estado():
+    try:
+        return json.loads(ESTADO.read_text()) if ESTADO.exists() else {}
+    except json.JSONDecodeError as e:
+        raise SystemExit(f"!!! {ESTADO} está roto ({e}): lo arreglo a mano antes de seguir.")
+
+
+def escribir_estado(estado):
+    """Escritura atómica: un corte a mitad nunca deja el JSON roto."""
+    tmp = ESTADO.with_suffix(".tmp")
+    tmp.write_text(json.dumps(estado, indent=1))
+    os.replace(tmp, ESTADO)
+
+
+def telegram(texto):
+    from dotenv import load_dotenv
+    load_dotenv(RAIZ / ".env")
+    token, chat = os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
+    if not token or not chat:
+        raise SystemExit("!!! Falta TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID en .env: el aviso no salió")
+    datos = urllib.parse.urlencode({"chat_id": chat, "text": texto[:4000]}).encode()
+    with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/sendMessage", data=datos, timeout=30) as r:
+        if not json.load(r).get("ok"):
+            raise SystemExit("!!! Telegram rechazó el aviso")
+
+
+def avisar_una_vez(clave, ids, texto):
+    """Telegram a Facu, una sola vez por cada id (commit o PR) nuevo. Se anota sólo si salió."""
+    vistos = set(leer_estado().get(clave, []))
+    nuevos = [str(i) for i in ids if str(i) not in vistos]
+    if not nuevos:
+        return
+    telegram(texto)
+    estado = leer_estado()
+    estado[clave] = sorted(set(estado.get(clave, [])) | set(nuevos))[-200:]
+    escribir_estado(estado)
+    print(f"telegram a Facu ({clave}): {', '.join(nuevos)}")
+
+
+def avisar_prs():
+    """Cada PR abierto de alguien que pide OK (Mateo) le llega a Facu por Telegram. Los mails
+    de GitHub no sirven: limpiar_mail.py los archiva sin leer."""
+    from dotenv import load_dotenv
+    load_dotenv(RAIZ / ".env")
+    r = subprocess.run([str(GH), "pr", "list", "-R", REPO_WEB, "--state", "open",
+                        "--json", "number,title,author,url,headRefOid"],
+                       capture_output=True, text=True, timeout=60, env=os.environ)
+    if r.returncode:
+        raise SystemExit(f"!!! no pude leer los PR de la web: {r.stderr.strip()[:200]}")
+    for pr in json.loads(r.stdout):
+        login = (pr.get("author") or {}).get("login") or "?"
+        if login in GITHUB_SOLOS:
+            continue
+        nombre = "Mateo" if "pastrana" in login.lower() else login
+        avisar_una_vez("prs", [f"{pr['number']}@{pr['headRefOid'][:12]}"],
+            f"🔔 {nombre} te pide OK para cambiar la web\n\n#{pr['number']} · {pr['title']}\n{pr['url']}\n\n"
+            f"Para publicarlo decime «aprobá el PR {pr['number']}» (acá o en Claude): lo reviso y lo subo. "
+            "Hasta entonces la web no cambia.")
 
 
 # ─────────────────────────────── resumen ────────────────────────────────
@@ -207,9 +359,10 @@ def resumen(send):
         por_repo[clave] = (repo, commits or [], lineas)
 
     def guardar():
+        estado = leer_estado()  # relee: publicar() pudo anotar avisos mientras tanto
         estado["resumen"] = nuevas
         estado.pop("a_facu", None), estado.pop("a_vlado", None)  # formato del 13/11 a la mañana
-        ESTADO.write_text(json.dumps(estado, indent=1))
+        escribir_estado(estado)
 
     if primera:
         print("primera corrida: marco el punto de partida, no mando la historia.")
@@ -218,7 +371,7 @@ def resumen(send):
         return
 
     secciones, total, quienes = [], 0, []
-    for de in ("Vlado", "Facu"):
+    for de in ("Vlado", "Mateo", "Facu"):
         pedidos, cambios, bitacora = de_persona(de, por_repo)
         if not (pedidos or cambios or bitacora):
             continue

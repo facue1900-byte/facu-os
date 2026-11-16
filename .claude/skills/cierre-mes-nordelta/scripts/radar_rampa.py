@@ -19,6 +19,20 @@ import collections
 
 import openpyxl
 
+# Precios de oferta del 03/11/2026 (ppt «Presentacion locatarios»), pasados a USD con el
+# blue promedio de ese día (compra 1.545 / venta 1.565, api.argentinadatos.com). En el
+# radar se vuelven a pesos con el blue vigente del Master Plan (Proyeccion!B4).
+BLUE_OFERTA = 1_555
+
+
+class Usd(float):
+    """Monto en USD: el radar lo convierte a ARS con el blue del Master Plan."""
+
+
+def usd_de(ars):
+    return Usd(ars / BLUE_OFERTA)
+
+
 # Compromisos de alta de ALQUILER: local -> (mes de arranque, alquiler mensual ARS)
 # "Local" es el nombre canónico tal como lo escribe el Formulario en Movimientos.
 # Fechas confirmadas por Facu el 27/07/2026.
@@ -31,7 +45,10 @@ RAMPA = [
     ("Peak One",            "2027-03",  4_000_000),
     # $2M es el número que dio Facu el 27/07 para el local nuevo de 47,9 m²
     # (la pestaña Alquileres dice $1,9M, pero para un local de 83,6 m² que no es este).
-    ("Pizzeria",            "2027-01",  2_000_000),
+    # En cierre con Morton Pizza, NADA firmado todavía (Facu 16/11/2026). Monto = oferta del 03/11 ($2,5M) en USD:
+    # Facu quiere los precios nuevos en dólares para que no se licúen. Falta el número
+    # firmado con Morton y si la fecha de alta sigue siendo ene-27.
+    ("Pizzeria",            "2027-01",  usd_de(2_500_000)),
     # El local nuevo de 88,3 m² ($4M) se llena en enero en los dos escenarios —
     # con Fabric si entra la parrilla, con otro inquilino si no. NO va acá porque
     # el radar sigue compromisos, y en el escenario sin parrilla todavía no hay
@@ -43,16 +60,10 @@ RAMPA = [
     # Heladería nueva (123,7 m²): $5M + ~$1M de expensas. Hoy la heladería vieja
     # paga ~$1,9M todo concepto porque se demuele, así que el neto es menor.
     ("Heladeria",           "2027-01",  5_000_000),
-    ("Market",              "2027-07",  4_000_000),
-    # Los Comercios 1-6 arrancan después del Market. Sin fecha firme todavía:
-    # se cargan con la fecha del Market + 6 meses como placeholder explícito.
-    ("Comercio 1",          "2028-01",  2_000_000),
-    ("Comercio 2",          "2028-01",  2_000_000),
-    ("Comercio 3",          "2028-01",  2_000_000),
-    ("Comercio 4",          "2028-01",  2_000_000),
-    ("Comercio 5",          "2028-01",  2_000_000),
-    ("Comercio 6",          "2028-01",  2_000_000),
-]
+    ("Market",              "2027-07",  usd_de(4_000_000)),
+    # La tira: 8 locales a $2M de la oferta del 03/11 (antes eran 6). Sin fecha firme:
+    # fecha del Market + 6 meses como placeholder explícito.
+] + [(f"Comercio {i}", "2028-01", usd_de(2_000_000)) for i in range(1, 9)]
 
 # Locales que hoy pagan solo expensas: el cobro existe pero NO es alquiler.
 # Monto de expensas segun la pestaña Alquileres, para poder descontarlo.
@@ -114,9 +125,15 @@ def main():
         sys.exit("Pasá el mes de corte como AAAA-MM (no adivino la fecha).")
 
     cobros = cobros_por_local(path)
+    blue = openpyxl.load_workbook(path, data_only=True)["Proyeccion"]["B4"].value
+    if not isinstance(blue, (int, float)) or blue <= 0:
+        sys.exit(f"Proyeccion!B4 no trae un dólar válido ({blue!r}): no convierto los USD a ojo.")
+    rampa = [(l, d, m * blue if isinstance(m, Usd) else m, isinstance(m, Usd)) for l, d, m in RAMPA]
+    en_usd = {l for l, _, _, u in rampa if u}
+    print(f"Dólar para los montos en USD: blue ${blue:,.0f} (Proyeccion!B4 del Master Plan).")
 
     vencidos, proximos, ok = [], [], []
-    for local, desde, monto in RAMPA:
+    for local, desde, monto, _ in rampa:
         if desde > hoy:
             proximos.append((local, desde, monto))
             continue
@@ -155,7 +172,8 @@ def main():
     acum = 0
     for local, desde, monto in sorted(proximos, key=lambda x: x[1]):
         acum += monto
-        print(f"  {desde}  {local:<14} +${monto:>11,.0f}   run-rate ${acum:,.0f}")
+        marca = " (USD)" if local in en_usd else ""
+        print(f"  {desde}  {local:<14} +${monto:>11,.0f}{marca}   run-rate ${acum:,.0f}")
 
 
 def mes_diff(a, b):
