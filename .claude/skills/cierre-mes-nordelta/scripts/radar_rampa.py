@@ -45,7 +45,7 @@ RAMPA = [
     ("Peak One",            "2027-03",  4_000_000),
     # $2M es el número que dio Facu el 27/07 para el local nuevo de 47,9 m²
     # (la pestaña Alquileres dice $1,9M, pero para un local de 83,6 m² que no es este).
-    # Cerrada con Morton Pizza (Facu 16/11/2026). Monto = oferta del 03/11 ($2,5M) en USD:
+    # En cierre con Morton Pizza, NADA firmado todavía (Facu 16/11/2026). Monto = oferta del 03/11 ($2,5M) en USD:
     # Facu quiere los precios nuevos en dólares para que no se licúen. Falta el número
     # firmado con Morton y si la fecha de alta sigue siendo ene-27.
     ("Pizzeria",            "2027-01",  usd_de(2_500_000)),

@@ -13,15 +13,15 @@
   comprobación de capital daba «no cierra por $47.000.000»: era el FCI, que no se sumaba.
   Ahora cierra ($56.631.069 = caja + banco + FCI) y el PDF muestra el FCI. Lleva una nota:
   AVN jun–oct ($6.090.876,04, pagado 12/11) y marketing oct ($1.000.000, adeudado) caen en nov.
-- 🔴 **Marketing oct $1.000.000 adeudado a las chicas de marketing** (Facu 16/11). No quedó
-  en «Pagos Pendientes» (Saldo Actual B19): el clasificador frenó la escritura al sheet.
+- 🔴 **Marketing oct $1.000.000 adeudado a las chicas de marketing** (Facu 16/11). ✅ Cargado en
+  «Pagos Pendientes» (Saldo Actual B19).
 - **Savini FV 3502 ($122.348.917,68) NO se paga: Savini va a hacer una nota de crédito** (Facu).
 - **Echeq Savini $40.679.679,70 del 25/11: Facu rescata el TOTAL del FCI el 24/11.**
 - Banco al 16/11 13:47: **nada nuevo desde el 12/11** (saldo $1.710.049,49). Fabric ($12,3 M)
-  y Bigg siguen sin pagar noviembre. Giaccio FC 222 y R&S A-4197 sin pagar.
+  y Bigg siguen sin pagar noviembre (Facu los está apurando, 16/11). Giaccio FC 222 y R&S A-4197 sin pagar.
 - Olivos agosto ($1.343.834,77): no está en Movimientos ni en el extracto → **no se pagó**.
 - Tasa cuota 11 ($1.027.633, vence 16/11): recordatorio a Mati por WhatsApp 16/11 13:57.
-- **Pizzería cerrada con Morton Pizza.** Radar: pizzería, Market y la tira (ahora 8 locales)
+- **Pizzería: contrato con Morton Pizza en cierre, nada confirmado (Facu 16/11).** Radar: pizzería, Market y la tira (ahora 8 locales)
   van en USD (oferta 03/11 ÷ blue $1.555). 🔴 Falta monto y fecha firmados con Morton.
 
 ## Revisión del Master Plan — 10/11/2026
