@@ -168,3 +168,16 @@ Patrones (≥3 casos): (1) agresiva pierde con muchas vueltas cortas (9% gan en 
 Historia: sin cambios (HISTORIA.md del 28/10); nada le gana a todo en vivo y en historia, no se copia nada.
 Por qué no cambio: v2 tiene 9 días pero **2 vueltas cerradas (< 5)**; la regla pide las dos cosas, no se toca. Con BTC cayendo, el filtro de mercado no deja entrar, y en este mercado eso es lo que mejor funciona (las quietas lideran el torneo).
 +20%/mes: no está al alcance. El lab va −4,45% en 18,5 días; ninguna de las 33 estrategias del torneo le gana a USDT en vivo, y la historia no muestra una ventaja medida que lo sostenga sin caídas de −12% a −25%. Se dice tal cual.
+
+## 2026-11-16 — v2 igual
+Diagnóstico (operaciones cerradas, en Python sobre `libro.json`, neto de comisiones):
+- Laboratorio: 10 vueltas desde el inicio, 20% ganadoras, +10,80 / −8,51, neto −46,47, 4 por stop, 18,9 h medias, comisiones 3,92. Últimos 7 d: 2 vueltas (las dos de v2), 50% gan, neto +1,11. Total 955,51 (−4,45%), todo en USDT; sin operaciones desde el 12/11 00:16.
+- Por versión: v1 8 vueltas, 12% gan, neto −47,59; **v2 2 vueltas**, 50% gan, neto +1,11 (PEPE +10,83, NEAR −9,72). Ventana v2 (desde 06/11): 954,01 → 955,51 (+0,2%), peor caída −1,15%.
+- Últimas 24 h: el filtro BTC bloqueó 1 ciclo (15/11 12:16, `var_24h` −2,38) y dejó libres los otros 11, pero ningún par del top 20 cumplió entrada; lo que faltó en los 11 fue `volumen_4h_vs_promedio` ≥ 1,3 (máximo visto ~1,03, salvo ASTER con vol alto pero `var_4h` negativo y lejos del máximo de 48 h). Es la regla haciendo su trabajo en un mercado sin empuje, no una falla: no se baja el umbral sin vueltas que lo justifiquen. HODL BTC 797,56: el lab le gana por ~15,8 pp.
+- Agresiva: 177 vueltas, 24% gan, +3,55 / −2,84, neto −234,80, 71 por stop, 8,7 h medias, comisiones 49,64. 7 d: 32 vueltas, **9% gan**, +1,98 / −2,57, neto −68,48, comisiones 9,37. 790,11 en USDT (−21,0%).
+- 3 niveles: 47 vueltas, 15% gan, +4,49 / −5,73, neto −197,72, 25 por stop, 168 h medias. 7 d: 4 vueltas, 0% gan, las 4 por stop, −114,87. 803,90 en USDT (−19,6%), sin operaciones desde el 14/11.
+- DCA −1,51% (RESUMEN del 10/11, sin datos nuevos). Torneo en vivo (16/11 08 h): 0 de 33 le ganan a USDT; arriba las que no operan (P0, L2, L5 en 0,0%), L4 −0,1%, L7 −0,2%, L6 −0,3%; L1 (v1 en 4 h) −5,7%, L1N −4,3%.
+Patrones (≥3 casos): (1) agresiva pierde con muchas vueltas cortas (9% gan en 7 d, comisiones ~5% de la carpeta); (2) 3 niveles pierde aguantando posiciones con stops anchos — 4 de 4 stops en 7 d; (3) "tendencia rota" corta pérdidas chicas en el lab (−1% a −5%); (4) entradas con otra posición abierta, 5 de 5 perdedoras — atacado por v2, sin casos nuevos. Sin patrones nuevos en el lab. Rebote post-stop: sin stops nuevos del lab que medir.
+Historia: sin cambios (HISTORIA.md del 28/10); nada le gana a todo en vivo y en historia, no se copia nada.
+Por qué no cambio: v2 tiene 10 días pero **2 vueltas cerradas (< 5)**; la regla pide las dos cosas, no se toca.
++20%/mes: no está al alcance. El lab va −4,45% en 19,5 días; ninguna de las 33 estrategias del torneo le gana a USDT en vivo, y la historia no muestra una ventaja medida que lo sostenga sin caídas de −12% a −25%. Se dice tal cual.
