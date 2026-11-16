@@ -27,19 +27,26 @@ RENDER = PASEO / "Documentación/Obra /Renders/25-12-22_2 - Foto.jpg"
 
 
 def mascara_pn(alto: int) -> Image.Image:
-    """El 'pn' (sin la ®) como máscara, recortado al contorno."""
-    im = Image.open(LOGO_PN)
-    im.thumbnail((2400, 2400))
-    g = np.asarray(im.convert("L"), np.float32)
-    m = Image.fromarray(np.clip((g - 90) * 3, 0, 255).astype(np.uint8))
-    m = m.crop(m.getbbox())
-    # la ® es una mancha chica arriba a la derecha: se borra para que el relieve no la deforme
-    a = np.asarray(m).copy()
-    h, w = a.shape
-    a[: int(h * 0.16), int(w * 0.88):] = 0
-    m = Image.fromarray(a)
-    m = m.crop(m.getbbox())
-    return m.resize((round(m.width * alto / m.height), alto), Image.LANCZOS)
+    """El 'pn' (sin la ®) como máscara limpia.
+
+    Se parte del PNG de 9853 px reducido a 4000 (bordes suaves) y la ® se saca por componentes
+    conexas, no con un recorte: el recorte rectangular le comía la esquina a la 'n' (16/11)."""
+    from scipy.ndimage import label
+    im = Image.open(LOGO_PN).convert("L")
+    im = im.resize((4000, 4000), Image.LANCZOS)
+    g = np.asarray(im, np.float32)
+    m = np.clip((g - 60) / 140, 0, 1)  # antialias suave, sin escalones
+    lab, n = label(m > 0.5)
+    tam = np.bincount(lab.ravel()); tam[0] = 0
+    grande = tam.max()
+    chicos = [i for i in range(1, n + 1) if tam[i] < grande * 0.2]
+    for i in chicos:  # la ® (círculo y letra) son manchas chicas
+        zona = lab == i
+        from scipy.ndimage import binary_dilation
+        m[binary_dilation(zona, iterations=6)] = 0
+    mi = Image.fromarray((m * 255).astype(np.uint8))
+    mi = mi.crop(mi.getbbox())
+    return mi.resize((round(mi.width * alto / mi.height), alto), Image.LANCZOS)
 
 
 def blanco_relieve(mask: Image.Image, bisel: float, ss: int = 3) -> Image.Image:
@@ -91,8 +98,11 @@ def banner(out: Path, render: Path = RENDER):
     # oscurece el centro (donde va el logo) y los bordes, deja respirar el render
     centro = np.exp(-(((xx - W / 2) / (W * 0.33)) ** 2 + ((yy - H / 2) / (H * 0.2)) ** 2))
     vin = np.clip(1 - (((xx - W / 2) / (W * 0.62)) ** 2 + ((yy - H / 2) / (H * 0.7)) ** 2), 0, 1)
-    franja = np.exp(-((yy - H / 2) / (H * 0.085)) ** 2)  # banda oscura detrás del texto
-    k = (0.6 + 0.4 * vin) * (1 - 0.35 * centro) * (1 - 0.5 * franja)
+    # foto viva: nitidez + un poco de contraste; sólo se oscurece detrás del logo (sin franja gris:
+    # el 16/11 la franja dejó el render turbio)
+    k = (0.78 + 0.22 * vin) * (1 - 0.42 * centro)
+    c = np.asarray(Image.fromarray(c.astype(np.uint8)).filter(ImageFilter.UnsharpMask(2, 90, 2)), np.float32)
+    c = np.clip((c / 255 - 0.5) * 1.08 + 0.5, 0, 1) * 255
     c = c * k[..., None]
     img = Image.fromarray(np.clip(c, 0, 255).astype(np.uint8), "RGB").convert("RGBA")
     d = ImageDraw.Draw(img)
