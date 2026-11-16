@@ -79,3 +79,4 @@
 2026-11-15 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-19.61% agresiva=-20.88% laboratorio=-4.45% dca=-1.51% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · BTC afloja otra vez, nadie opera: nadie gana, sin mail
 2026-11-16 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-19.61% agresiva=-20.71% laboratorio=-4.45% dca=-1.51% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · BTC rebota, Agresiva compra ZEC: nadie gana, sin mail
 2026-11-16 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-19.61% agresiva=-20.99% laboratorio=-4.45% dca=-1.51% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · Agresiva vende todo, casi todas en USDT: nadie gana
+2026-11-16 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-19.61% agresiva=-20.99% laboratorio=-4.45% dca=-1.51% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · BTC sigue cayendo, nadie opera: nadie gana, sin mail
