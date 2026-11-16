@@ -278,26 +278,29 @@ def banner(out: Path, estilo: str = "vidrio"):
     sx0, sy0 = (W - 1546) / 2, (H - 423) / 2
     sx1, sy1 = sx0 + 1546, sy0 + 423
     iso = _mask_de_png(ISOTIPO, 330)
-    logo = _mask_de_png(LOGOTIPO, 70)
-    logo = logo.resize((int(logo.width * 1.0), logo.height), Image.LANCZOS)
-    gap = 120
+    logo = _mask_de_png(LOGOTIPO, 78)
+    gap = 150
     total = iso.width + gap + logo.width
     x_iso = W / 2 - total / 2 + iso.width / 2
     x_logo = x_iso + iso.width / 2 + gap + logo.width / 2
-    hud(img, x_iso, H / 2, 138, color=(190, 190, 230, 40))
+    hud(img, x_iso, H / 2, 132, color=(190, 190, 230, 40))
     _pegar_centrado(img, glow(iso, VIOLETA, 40, 0.8, pad=120), x_iso, H / 2)
     if estilo == "neon":
         _pegar_centrado(img, neon(iso, ancho=2.4, pad=110), x_iso, H / 2)
     else:
         _pegar_centrado(img, relieve(iso, estilo, 8), x_iso, H / 2)
     _pegar_centrado(img, plata(logo), x_logo, H / 2)
-    # micro-rótulos dentro de la zona segura, como el IG de Academy
-    # en desktop YouTube muestra 2560x423 justo: los rótulos van bien adentro (el 16/11 se cortaban abajo)
-    rotulo(d, (sx0 + 10, sy0 + 48), ["ASTRONOMY", "ACADEMY · EVENTS · MUSIC"], 22)
-    rotulo(d, (sx1 - 10, sy0 + 48), ["WHERE MUSIC", "CONNECTS US"], 22, anchor="ra")
-    rotulo(d, (sx0 + 10, sy1 - 108), ["NORDELTA, BA", "34°24'S 58°39'W"], 22)
-    rotulo(d, (sx1 - 10, sy1 - 108), ["[ THE BUNKER ]", "ASTRONOMYOFFICIAL.COM"], 22, anchor="ra")
-    for x, y in [(sx0 - 20, sy0 + 22), (sx1 + 20, sy0 + 22), (sx0 - 20, sy1 - 22), (sx1 + 20, sy1 - 22)]:
+    # Rótulos de punta a punta (pedido de Facu 16/11: "MUSIC" chocaba con el anillo).
+    # En desktop YouTube muestra el ancho entero (2560) y sólo 423 de alto; en celular sólo los 1546
+    # del centro. Los rótulos van FUERA de esos 1546: en compu quedan en las puntas, en celular no
+    # aparecen (enteros, nunca cortados a la mitad) y queda sólo el logo.
+    mx = 150
+    assert mx + 340 < sx0 and W - mx - 340 > sx1, "los rótulos tienen que quedar fuera de la zona del celular"
+    rotulo(d, (mx, sy0 + 48), ["ASTRONOMY", "ACADEMY · EVENTS · MUSIC"], 22)
+    rotulo(d, (W - mx, sy0 + 48), ["WHERE MUSIC", "CONNECTS US"], 22, anchor="ra")
+    rotulo(d, (mx, sy1 - 108), ["NORDELTA, BA", "34°24'S 58°39'W"], 22)
+    rotulo(d, (W - mx, sy1 - 108), ["[ THE BUNKER ]", "ASTRONOMYOFFICIAL.COM"], 22, anchor="ra")
+    for x, y in [(mx - 40, sy0 + 22), (W - mx + 40, sy0 + 22), (mx - 40, sy1 - 22), (W - mx + 40, sy1 - 22)]:
         cruz(d, x, y, 14)
     img.convert("RGB").save(out)
 
