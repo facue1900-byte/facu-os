@@ -1,19 +1,19 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-16 02:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-16 03:32 UTC
 
-**Total: 790.67 USD (-20.93%)** desde 2026-10-07 23:06 UTC · USDT libre 639.97 · comisiones 49.49 · 361 operaciones
+**Total: 790.11 USD (-20.99%)** desde 2026-10-07 23:06 UTC · USDT libre 790.11 · comisiones 49.64 · 362 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **790.67** |
+| **Esta carpeta** | **790.11** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 783.41 |
+| hodl btc | 781.46 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 150.70 | +0.57% | 62,825.4 |
 
 ## Últimas operaciones
 
+- 2026-11-16 03:32 UTC · venta BTC 150.29 USD a 65,019.4 — Regla de 24 h: comprada 15/11 03:33, a las 03:32 del 16/11 sigue en +0,35% (65054), lejos de +8% (~70017) y del stop (62825). Rebote sin fue
 - 2026-11-16 01:32 UTC · venta ZEC 128.12 USD a 889.29 — Invalidación de la tesis de momentum cumplida: 4 h a rojo (-1,49%) con 24 h bajo +5% (+4,76%); 1 h -0,98%, volumen 4 h 0,47x. Se sale antes 
 - 2026-11-15 19:32 UTC · compra ZEC 130.00 USD a 901.45 — Momentum de 24 h: ZEC +5,53% en 24 h, sigue subiendo en 4 h (+0,57%) y no está estirada (1 h +0,55%); par líquido (200 M/día), +12,3% del mí
 - 2026-11-15 03:33 UTC · compra BTC 150.00 USD a 64,829.8 — Rebote en soporte: BTC hizo mínimo de 48 h en 62006 (vela 01:00, 279,5 M de volumen, capitulación); la vela de 1 h de las 02:00 cerró comple
@@ -23,6 +23,5 @@
 - 2026-11-14 08:37 UTC · venta INJ 117.05 USD a 7.942 — Invalidación escrita a las 06:33 cumplida: el 4 h volvió a negativo (-1,21%) con la vela de 1 h roja (-0,51%); el 24 h bajó de +9% a +5,5%. 
 - 2026-11-14 08:37 UTC · venta XRP 118.19 USD a 0.9832 — Invalidación escrita a las 05:32 cumplida: la vela de 1 h de las 07:00 cerró en 0,9827, debajo del piso de 0,9843 (mínimo de 48 h nuevo en 0
 - 2026-11-14 06:33 UTC · compra INJ 120.00 USD a 8.134 — Momentum de 24 h: INJ 24 h +9,07%, 4 h +1,68% (sigue subiendo, ahora sí positivo y creciente), 1 h -0,25% (no estirada), 1,06x, -2,9% del má
-- 2026-11-14 05:32 UTC · compra XRP 120.00 USD a 0.9973 — Rebote en soporte: XRP (127 M/día) hizo el mínimo de 48 h en 0,9843 (vela 02:00) y desde ahí mínimos más altos en velas completas (03:00 0,9
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

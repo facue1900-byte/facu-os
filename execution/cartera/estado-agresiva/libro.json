@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 639.972277480472,
-  "posiciones": {
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.0023114373808707385,
-      "entrada": 64829.79,
-      "maximo": 66132.01,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794796260000
-    }
-  },
-  "comisiones_usd": 49.49454599999994,
+  "usdt": 790.1103301243954,
+  "posiciones": {},
+  "comisiones_usd": 49.644833999999946,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4362,6 +4339,18 @@
       "comision": 0.128118,
       "motivo": "Invalidación de la tesis de momentum cumplida: 4 h a rojo (-1,49%) con 24 h bajo +5% (+4,76%); 1 h -0,98%, volumen 4 h 0,47x. Se sale antes del stop (873,03) como estaba escrito.",
       "resultado_pct": -1.35
+    },
+    {
+      "ms": 1794799953785,
+      "fecha": "2026-11-16 03:32 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.0023114373808707385,
+      "precio": 65019.43,
+      "usd": 150.2883,
+      "comision": 0.150288,
+      "motivo": "Regla de 24 h: comprada 15/11 03:33, a las 03:32 del 16/11 sigue en +0,35% (65054), lejos de +8% (~70017) y del stop (62825). Rebote sin fuerza (volumen 4 h 0,67x, 4 h -0,48%). Se saca y se libera para rotar.",
+      "resultado_pct": 0.29
     }
   ]
 }
