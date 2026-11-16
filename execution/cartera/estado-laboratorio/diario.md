@@ -783,3 +783,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-16 10:16 UTC — nota
 [v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -1.73, var_4h -0.38) pero ningun par del top 20 cumple entrada: var_24h<3 en todos (ASTER 2.59), volumen_4h_vs_promedio <1.3 en todos (max 0.84, RWUSD stable) y vs_max_48h < -1.5 salvo RWUSD. Sin disparos.
 
+## 2026-11-16 12:20 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC BLOQUEADO (var_24h -2.19 < -2; var_4h -0.61 ok). No se abre nada nuevo. RAREUSDT (var_24h 81.8, vol 2.83) tampoco cumpliria: vs_max_48h -6.7 < -1.5. Sin disparos.
+
