@@ -292,11 +292,12 @@ def banner(out: Path, estilo: str = "vidrio"):
         _pegar_centrado(img, relieve(iso, estilo, 8), x_iso, H / 2)
     _pegar_centrado(img, plata(logo), x_logo, H / 2)
     # micro-rótulos dentro de la zona segura, como el IG de Academy
-    rotulo(d, (sx0 + 10, sy0 + 10), ["ASTRONOMY", "ACADEMY · EVENTS · MUSIC"], 22)
-    rotulo(d, (sx1 - 10, sy0 + 10), ["WHERE MUSIC", "CONNECTS US"], 22, anchor="ra")
-    rotulo(d, (sx0 + 10, sy1 - 52), ["NORDELTA, BA", "34°24'S 58°39'W"], 22)
-    rotulo(d, (sx1 - 10, sy1 - 52), ["[ THE BUNKER ]", "ASTRONOMYOFFICIAL.COM"], 22, anchor="ra")
-    for x, y in [(sx0 - 30, sy0 - 30), (sx1 + 30, sy0 - 30), (sx0 - 30, sy1 + 30), (sx1 + 30, sy1 + 30)]:
+    # en desktop YouTube muestra 2560x423 justo: los rótulos van bien adentro (el 16/11 se cortaban abajo)
+    rotulo(d, (sx0 + 10, sy0 + 48), ["ASTRONOMY", "ACADEMY · EVENTS · MUSIC"], 22)
+    rotulo(d, (sx1 - 10, sy0 + 48), ["WHERE MUSIC", "CONNECTS US"], 22, anchor="ra")
+    rotulo(d, (sx0 + 10, sy1 - 108), ["NORDELTA, BA", "34°24'S 58°39'W"], 22)
+    rotulo(d, (sx1 - 10, sy1 - 108), ["[ THE BUNKER ]", "ASTRONOMYOFFICIAL.COM"], 22, anchor="ra")
+    for x, y in [(sx0 - 20, sy0 + 22), (sx1 + 20, sy0 + 22), (sx0 - 20, sy1 - 22), (sx1 + 20, sy1 - 22)]:
         cruz(d, x, y, 14)
     img.convert("RGB").save(out)
 
@@ -345,8 +346,8 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     # isotipo chico arriba a la izquierda
     iso = _mask_de_png(ISOTIPO, 92)
     _pegar_centrado(img, relieve(iso, estilo, 3), pad + iso.width / 2, pad + iso.height / 2)
-    rotulo(d, (pad + iso.width + 18, pad + 22), ["ASTRONOMY", "ACADEMY"], 17, color=(255, 255, 255, 200))
-    rotulo(d, (W - pad, pad + 4), ["LIVE SET", "NORDELTA, BA"], 17, anchor="ra", color=(255, 255, 255, 180))
+    rotulo(d, (pad + iso.width + 18, pad + 22), ["ASTRONOMY"], 17, color=(255, 255, 255, 200))
+    rotulo(d, (W - pad, pad + 4), ["LIVE SET", "ASTRONOMY ACADEMY"], 17, anchor="ra", color=(255, 255, 255, 180))
     # tipografía: rótulo + artista, alineado a la izquierda y anclado abajo
     f_art = ImageFont.truetype(HELV, 104, index=1)
     nombre = artista.upper()
