@@ -129,46 +129,74 @@ def banner(out: Path, render: Path = RENDER):
     img.convert("RGB").save(out, quality=94)
 
 
-def sesion(foto: Path, cancion: str, artista: str, out: Path, rotulo_sup: str = "EN VIVO EN PASEO NORDELTA"):
-    """Portada de un video grabado en el Paseo: foto a color, texto a la derecha (el artista va a la izq)."""
-    W, H = 1280, 720
+DIDOT = "/System/Library/Fonts/Supplemental/Didot.ttc"          # 0 Regular, 1 Italic, 2 Bold
+AVENIR = "/System/Library/Fonts/Avenir Next.ttc"                 # 2 Demi Bold, 5 Medium, 8 Heavy
+AVENIR_C = "/System/Library/Fonts/Avenir Next Condensed.ttc"     # 8 Heavy
+
+
+def _espaciado(d, xy, texto, font, tracking, fill, anchor_derecha=True):
+    ancho = sum(font.getlength(ch) for ch in texto) + tracking * (len(texto) - 1)
+    x = xy[0] - ancho if anchor_derecha else xy[0]
+    for ch in texto:
+        d.text((x, xy[1]), ch, font=font, fill=fill, anchor="ls")
+        x += font.getlength(ch) + tracking
+    return ancho
+
+
+def sesion(foto: Path, cancion: str, artista: str, out: Path, rotulo_sup: str = "EN VIVO  ·  PASEO NORDELTA",
+           tipografia: str = "didot"):
+    """Portada HD (1920x1080) de un video grabado en el Paseo. Foto a color, artista a la izquierda,
+    texto a la derecha. tipografia: 'didot' (itálica editorial) o 'condensada' (Avenir Condensed Heavy).
+    El 16/11 Facu descartó la Helvetica Bold por fea: no volver a ella para títulos."""
+    W, H = 1920, 1080
     ph = ImageOps.fit(Image.open(foto).convert("RGB"), (W, H), Image.LANCZOS)
-    c = np.asarray(ph.filter(ImageFilter.UnsharpMask(1.5, 60, 2)), np.float32) / 255
+    c = np.asarray(ph.filter(ImageFilter.UnsharpMask(1.6, 55, 2)), np.float32) / 255
     c = np.clip((c - 0.5) * 1.08 + 0.5, 0, 1)
     lum = c.mean(axis=2, keepdims=True)
-    c = np.clip(lum + (c - lum) * 1.15, 0, 1)  # un poco más de color
+    c = np.clip(lum + (c - lum) * 1.15, 0, 1)
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
-    der = np.clip((xx / W - 0.42) / 0.58, 0, 1) ** 1.4      # oscurece la mitad derecha, donde va el texto
-    abajo = np.clip((yy / H - 0.55) / 0.45, 0, 1) ** 1.5
+    der = np.clip((xx / W - 0.42) / 0.58, 0, 1) ** 1.4
+    abajo = np.clip((yy / H - 0.5) / 0.5, 0, 1) ** 1.5
     vin = np.clip(1 - (((xx - W / 2) / (W * 0.8)) ** 2 + ((yy - H / 2) / (H * 0.85)) ** 2), 0.35, 1)
-    k = vin * (1 - 0.5 * der) * (1 - 0.35 * abajo)
+    k = vin * (1 - 0.5 * der) * (1 - 0.4 * abajo)
     img = Image.fromarray((np.clip(c * k[..., None], 0, 1) * 255).astype(np.uint8)).convert("RGBA")
     d = ImageDraw.Draw(img)
-    pad = 60
+    pad = 90
     xr = W - pad
+    blanco = (255, 255, 255, 255)
     # arriba a la derecha: pn + rótulo
-    m = mascara_pn(46)
-    img.alpha_composite(blanco_relieve(m, 2), (int(xr - m.width), pad - 6))
-    ya.rotulo(d, (xr - m.width - 16, pad + 8), [rotulo_sup], 17, anchor="ra", color=(255, 255, 255, 215))
-    # título de la canción enorme, abajo a la derecha
-    f_t = ImageFont.truetype(ya.HELV, 150, index=1)
-    t = cancion.upper()
-    while f_t.getlength(t) > W * 0.52 and f_t.size > 70:
-        f_t = ImageFont.truetype(ya.HELV, f_t.size - 6, index=1)
-    y_base = H - pad - 4
-    d.text((xr + 3, y_base + 4), t, font=f_t, fill=(0, 0, 0, 120), anchor="rs")
-    d.text((xr, y_base), t, font=f_t, fill=(255, 255, 255, 255), anchor="rs")
-    f_a = ImageFont.truetype(ya.HELV, 36, index=10)
-    a = artista.upper()
-    tr = 6
-    ancho = sum(f_a.getlength(ch) for ch in a) + tr * (len(a) - 1)
-    x = xr - ancho
-    y_a = y_base - f_t.size * 0.76 - 22
-    for ch in a:
-        d.text((x, y_a), ch, font=f_a, fill=(255, 255, 255, 240), anchor="ls")
-        x += f_a.getlength(ch) + tr
-    d.line([(xr - ancho, y_a + 14), (xr, y_a + 14)], fill=(255, 255, 255, 120), width=1)
-    img.convert("RGB").save(out, quality=94)
+    m = mascara_pn(64)
+    img.alpha_composite(blanco_relieve(m, 2.5), (int(xr - m.width), pad - 8))
+    _espaciado(d, (xr - m.width - 26, pad + 40), rotulo_sup, ImageFont.truetype(AVENIR, 24, index=5), 5,
+               (255, 255, 255, 225))
+    y_base = H - pad
+    if tipografia == "didot":
+        f_t = ImageFont.truetype(DIDOT, 250, index=1)
+        t = cancion  # minúscula/mayúscula como título de disco
+        while f_t.getlength(t) > W * 0.55 and f_t.size > 100:
+            f_t = ImageFont.truetype(DIDOT, f_t.size - 8, index=1)
+        sombra_t = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        ImageDraw.Draw(sombra_t).text((xr, y_base), t, font=f_t, fill=(0, 0, 0, 170), anchor="rs")
+        img.alpha_composite(sombra_t.filter(ImageFilter.GaussianBlur(14)))
+        d.text((xr, y_base), t, font=f_t, fill=blanco, anchor="rs")
+        alto_t = f_t.getbbox(t, anchor="rs")[1]
+        y_a = y_base + alto_t - 34
+        f_a = ImageFont.truetype(AVENIR, 34, index=2)
+    else:
+        f_t = ImageFont.truetype(AVENIR_C, 260, index=8)
+        t = cancion.upper()
+        while f_t.getlength(t) > W * 0.55 and f_t.size > 100:
+            f_t = ImageFont.truetype(AVENIR_C, f_t.size - 8, index=8)
+        sombra_t = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        ImageDraw.Draw(sombra_t).text((xr, y_base), t, font=f_t, fill=(0, 0, 0, 170), anchor="rs")
+        img.alpha_composite(sombra_t.filter(ImageFilter.GaussianBlur(14)))
+        d.text((xr, y_base), t, font=f_t, fill=blanco, anchor="rs")
+        alto_t = f_t.getbbox(t, anchor="rs")[1]
+        y_a = y_base + alto_t - 30
+        f_a = ImageFont.truetype(AVENIR, 34, index=2)
+    ancho = _espaciado(d, (xr, y_a), artista.upper(), f_a, 12, (255, 255, 255, 245))
+    d.line([(xr - ancho, y_a + 18), (xr, y_a + 18)], fill=(255, 255, 255, 110), width=2)
+    img.convert("RGB").save(out, quality=92)
 
 
 def main():
@@ -180,13 +208,14 @@ def main():
     c = sub.add_parser("sesion"); c.add_argument("--foto", type=Path, required=True)
     c.add_argument("--cancion", required=True); c.add_argument("--artista", required=True)
     c.add_argument("--out", type=Path, required=True)
+    c.add_argument("--tipografia", default="didot", choices=["didot", "condensada"])
     args = p.parse_args()
     if args.cmd == "perfil":
         perfil(args.out)
     elif args.cmd == "banner":
         banner(args.out, args.render)
     else:
-        sesion(args.foto, args.cancion, args.artista, args.out)
+        sesion(args.foto, args.cancion, args.artista, args.out, tipografia=args.tipografia)
     print(args.out)
 
 
