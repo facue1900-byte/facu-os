@@ -80,7 +80,11 @@ DESCUADRE = {"Ajuste de caja"}
 # Suscribir o rescatar el FCI mueve plata del Banco al fondo y vuelta: no es
 # ingreso ni gasto (Facu, 26/10/2026). Va como egreso Banco + ingreso Medio «FCI».
 FCI = {"Fondo Común de Inversión"}
-NO_OPERATIVO = OBRA | REPARTO | DESCUADRE | FCI
+# Comprar o vender dolares cambia de moneda la misma plata: no es gasto ni ingreso.
+CAMBIO = {"Pesos a USD", "Cambio de USD"}
+NO_OPERATIVO = OBRA | REPARTO | DESCUADRE | FCI | CAMBIO
+# Locales de ingreso que no son cobro de la operacion (ademas de "Aporte de Capital *").
+INGRESO_NO_OPERATIVO = FCI | CAMBIO
 
 
 def plata(n, dec=0):
@@ -275,7 +279,7 @@ def calcular(filas, anio, mes_corte):
         i = fecha.month
         if i not in m:
             continue
-        if f["tipo"] == "Ingreso" and f["local"] in FCI:
+        if f["tipo"] == "Ingreso" and f["local"] in INGRESO_NO_OPERATIVO:
             continue
         if f["tipo"] == "Ingreso":
             if not es_aporte(f["local"]):
@@ -283,7 +287,7 @@ def calcular(filas, anio, mes_corte):
             else:
                 m[i]["aporte"] += f["monto"]
         else:
-            if f["cat"] in FCI:
+            if f["cat"] in FCI | CAMBIO:
                 continue
             if f["cat"] in OBRA:
                 m[i]["obra"] += f["monto"]

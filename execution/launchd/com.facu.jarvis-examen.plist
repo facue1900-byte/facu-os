@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Examen de los dos Jarvis. Todas las noches 3:00; sólo rinde si cambió Jarvis o pasaron 7 días.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.jarvis-examen.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.jarvis-examen.plist
+    launchctl list | grep facu
+
+  Probar sin esperar a la noche:
+    launchctl start com.facu.jarvis-examen
+    tail -20 ~/facu-os/data/logs/jarvis-examen.log
+
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.jarvis-examen</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>jarvis-examen</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/jarvis_examen.py --send</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>3</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- Si la Mac estaba apagada a la hora programada, corre al prender. -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/jarvis-examen.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/jarvis-examen.log</string>
+</dict>
+</plist>

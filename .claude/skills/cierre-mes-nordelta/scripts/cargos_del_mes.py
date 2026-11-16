@@ -502,13 +502,18 @@ def congelar_expensas(p, anio, mes, agua=None, abl=None, avn=None,
             print(f"  Retiro de basura: {plata(basura_leida)}  "
                   f"⚠ A MANO (--basura), NO salió de Movimientos")
         else:
-            p4 = p.leer(MASTER, "Expensas Predio!P4", render="FORMULA")
-            if p4 and p4[0] and "mayo 2026" in str(p4[0][0]):
-                print("  ⚠ Retiro de basura sigue clavado a \"mayo 2026\" en P4 "
-                      "(las otras 9 columnas usan A3).")
-                print(f"    Este mes también reparte mayo÷3 = "
-                      f"{plata(basura_leida)}. Pasá --basura con la factura de "
-                      f"Transportes Olivos del mes, o arreglá la fórmula.")
+            # Desde el 10/11/2026 P4 lee la columna N («Retiro de basura») del
+            # renglón del mes en INPUTS EXPENSAS: la factura de Transportes
+            # Olivos del MES ANTERIOR (llega a principio de mes). Sin factura
+            # cargada P4 dice «FALTA FACTURA», que num() leería como $0 y se
+            # repartiría una expensa más barata sin que nadie se entere.
+            if basura_leida <= 0:
+                raise SystemExit(
+                    f"CORTO: Retiro de basura de {periodo_texto} da "
+                    f"{datos[1][15] if len(datos[1]) > 15 else 'vacío'!r}.\n"
+                    f"  Cargá la factura de Transportes Olivos del mes anterior en "
+                    f"INPUTS EXPENSAS (columna N) o pasá --basura.")
+            print(f"  Retiro de basura: {plata(basura_leida)} (INPUTS EXPENSAS)")
         for celda, valor in extra.items():
             col, nombre = EXTRA_CELDAS[celda]
             leida = num(datos[1][col]) if len(datos[1]) > col else 0.0

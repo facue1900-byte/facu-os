@@ -127,31 +127,26 @@ pero **hoy NO está cargado** en `~/Library/LaunchAgents` — ver `SETUP.md`.
 ```bash
 /Users/Facu/facu-os/.venv/bin/python \
   "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/radar_deudores.py" \
-  /Users/Facu/facu-os/data/ctas_ctes.xlsx 2026-07
+  /Users/Facu/facu-os/data/ctas_ctes.xlsx 2026-11
 ```
 
-Convención clave: **todos pagan el mes siguiente** — exigible = hasta el mes pasado;
-lo del mes corriente está en la calle pero no vencido. Los locales con regla propia
-(Escuelita %, Salón solo expensas, La Jaula desde ago-26) viven en `REGLAS` dentro
-del script. Los mensajes de cobro los arma el `redactor` y los manda Facu: **nunca
-salen solos**.
+Lee las **pestañas por local** (Fabric, Bigg, Boss, Volta, Peak One; layout en
+`reglas_locales.PESTANAS`) y, para Salón/Escuelita/La Jaula, CARGOS − Cobros. **No lee
+la consolidada «CUENTA CORRIENTE»**: es una grilla de filas fijas período × local que
+se armó hasta jul-26 y nadie extendió — el 11/11/2026 el brief de Jarvis mostraba la
+deuda de julio. Convención (verificada en las cinco pestañas): el bloque que se cobra
+en el mes M es **alquiler de M + expensas de M−1** (`reglas_locales.mes_de_cobro`).
+Exigible = bloques de meses anteriores − todos los pagos; el bloque del mes está en
+curso, no vencido. Si un local tiene su último período con más de 1 mes de atraso, o
+la cadena de SALDO de su pestaña no cierra contra cargos − pagos, **no se informa**: va
+a «sin dato» (y el brief muestra «sin dato» en vez del total). Los locales con regla
+propia viven en `REGLAS`. Los mensajes de cobro los arma el `redactor` y los manda
+Facu: **nunca salen solos**.
 
-**2-bis-bis. Publicar el radar en la app del Paseo** (después de correr el radar):
-
-```bash
-/Users/Facu/facu-os/.venv/bin/python \
-  "/Users/Facu/facu-os/.claude/skills/cierre-mes-nordelta/scripts/exportar_ctas_ctes.py" \
-  /Users/Facu/facu-os/data/ctas_ctes.xlsx 2026-07 \
-  "/Users/Facu/Desktop/Paseo Nordelta/Paseo Nordelta - CLAUDE/App Paseo Nordelta/src/data/ctas-ctes.json"
-```
-
-Alimenta la pestaña **Deuda** (`/ctas-ctes`) de la app. Usa las mismas convenciones
-que `radar_deudores.py`: si una regla cambia, **cambia en los dos scripts**. La plata
-que ya se cobró pero todavía no entró al sheet va en `PENDIENTES_DE_CARGA` — se
-muestra como aviso, nunca se suma al saldo, y se saca cuando el dato entra por su
-canal normal. Para ver la página sin login: `npm run dev` y abrir
-`/preview-ctas.html?w=390&open=1` (`w` simula el ancho del celular, `open` expande
-el mes a mes).
+**2-bis-bis. ~~Publicar el radar en la app del Paseo~~ — MUERTO (11/11/2026).**
+`exportar_ctas_ctes.py` leía la consolidada clavada en jul-26 y la app ya no tiene
+`src/data/ctas-ctes.json` ni nada que lo lea. El script se niega a correr. La deuda en
+efectivo de la app sale de `deuda_efectivo.py` (pestañas por local).
 
 **2-quater. Verificar/completar los cargos del mes** (antes del radar):
 
@@ -441,8 +436,11 @@ Queda a mano interpretar (esto sí lo hago yo, leyendo):
   anterior queda como contraste: si difieren, el script dice cuánto y por qué.
 - **`--basura` es el gemelo de `--avn` para P4** (Retiro de basura), que estaba clavado a
   `"mayo 2026"` literal y repartía $4.705.450,90 ÷ 3 = $1.568.483,63 todos los meses.
-  «TODSE» es **Transportes Olivos S.A.** Sin el flag, el script avisa y dice cuánto está
-  repartiendo de más.
+  «TODSE» es **Transportes Olivos S.A.** Desde el 10/11/2026 P4 lee la columna N de
+  `INPUTS EXPENSAS` del mes: ahí va la factura de Transportes Olivos **del mes anterior**
+  (factura mensual, ~$1,1M–$1,35M; llega por mail a paseonordelta@ a principio de mes).
+  Sin factura cargada P4 dice «FALTA FACTURA» y el script **corta**. El pago de mayo
+  ($4.705.450,90) saldó 4 facturas, ene–abr: nunca fue trimestral.
 - **Una etiqueta de mes se compara normalizada.** En las pestañas conviven `JUL'26`,
   `JUL' 26` y `jul'26`. Un chequeo que comparaba el texto crudo reportó "a Boss no se le
   cobró julio" sobre un alquiler que estaba cobrado: **un faltante de plata se confirma

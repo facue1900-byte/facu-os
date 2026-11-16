@@ -31,8 +31,19 @@ mkdir -p "$OS/data/logs"
 NOMBRE=$1; shift
 [[ $1 == -- ]] && shift
 CMD=$1
+# Marca de "corrida programada": si la tarea abre un `claude -p`, el hook de astronomy-os
+# no le reclama la bandeja (la tiene que ver una persona, no un agente a las 3 AM).
+export ASTRONOMY_OS_TAREA=1
 if [[ -z $NOMBRE || -z $CMD ]]; then
   echo "Uso: correr.sh <nombre> -- <comando>" >&2
+  exit 64
+fi
+# El comando va como UN solo string. Pasado en partes, CMD queda en el primer pedazo (ej.: el
+# python sin el script), corre «bien» en 0 s y la tarea no hizo nada (jarvis-brief, 11/11/2026).
+if [[ $# -gt 1 ]]; then
+  echo "!!! correr.sh: el comando vino en $# partes; va como UN solo string en el plist." >&2
+  printf '{"tarea":"%s","inicio":"%s","fin":"%s","codigo":64}\n' "$NOMBRE" "$(date '+%Y-%m-%dT%H:%M:%S%z')" "$(date '+%Y-%m-%dT%H:%M:%S%z')" >> "$REG"
+  osascript -e "display notification \"Plist mal armado: el comando vino en partes\" with title \"Tarea: $NOMBRE\" sound name \"Basso\"" 2>/dev/null
   exit 64
 fi
 
@@ -77,5 +88,17 @@ if [[ $CODIGO -ne 0 ]]; then
     || echo "!!! Tampoco pude mandar el mail de aviso. Queda el registro para el radar."
   rm -f "$SAL.cola"
 fi
+# 4. Si es una tarea de Astronomy (va después del aviso de falla: git puede tardar y
+#    el aviso no espera), el reporte va a la bandeja compartida con Vlado: lo ve
+#    el primero de los dos que abra Claude. Qué tarea va y cuándo lo decide
+#    active/astronomy/bandeja/TAREAS. Nunca cambia el código de salida de la tarea.
+BANDEJA=$OS/active/astronomy/herramientas/a_la_bandeja.sh
+if [[ -x $BANDEJA ]]; then
+  cat "$SAL" "$ERR" > "$SAL.bandeja"
+  "$BANDEJA" "$NOMBRE" "$CODIGO" "$SAL.bandeja" \
+    || echo "!!! No pude dejar el reporte en la bandeja de Astronomy."
+  rm -f "$SAL.bandeja"
+fi
+
 rm -f "$SAL" "$ERR"
 exit $CODIGO

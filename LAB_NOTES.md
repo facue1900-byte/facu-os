@@ -8,6 +8,95 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-12 · FAIL ✓ · Paseo: el brief decía «nadie debe nada vencido» y Bigg debía la ND 11
+
+**Síntoma:** el panel de Jarvis (12/11 07:50) mostraba exigible $0 y a Bigg entero como
+«BANCO» ($5.527.601). Recalculado a mano desde la pestaña: Bigg debe **$471.465,66 vencidos
+por banco** (ND 11, recupero de sep, vto 11/10 — ya identificada el 05/11) y del bloque de
+noviembre $1.229.303,58 en efectivo + $3.826.831,42 por banco.
+
+**Causa raíz:** `radar_deudores.clasificar` neteaba todos los pagos contra todos los cargos
+sin mirar el medio. Los $800.000 que Bigg pagó **en mano** el 06/11 (contra la Diferencia
+Alquiler de nov) «cancelaban» la ND 11 de banco, y lo vencido daba negativo → $0. El brief
+además marcaba el medio con un booleano por local (`n in PAGAN_POR_BANCO`), así que Bigg
+salía 100% banco. La tarjeta de Mati (`deuda_efectivo.py`) ya separaba medios; el radar no.
+
+**Fix:** `medio_del_cargo` / `medio_del_pago` se mudaron a `reglas_locales.py` (una sola
+regla para Mati y para el radar). El radar etiqueta cada movimiento con su medio y, en el
+local partido, camina en orden: el efectivo cancela efectivo y sólo el excedente se derrama
+a banco (como los cartuchos de Facu). Cada local trae `medios` y el brief publica
+`efectivo` / `banco` por renglón. Verificado: efectivo de Bigg = el de la tarjeta de Mati al
+centavo, y efectivo + banco = saldo de la pestaña. Tests en `test_jarvis.py`.
+
+**Lección:** en un local que paga por dos medios, «al día» se calcula **por medio**. Un
+neto único deja que un pago en mano tape una deuda de banco y el cero parece verdad.
+
+### 2026-11-11 · FAIL ✓ · El brief de Jarvis mostraba la deuda del Paseo de JULIO
+
+**Síntoma:** el panel del Paseo decía Fabric $2.033.664 exigible; la pestaña Fabric ya
+tenía cargos hasta NOV'26 y pagos por banco al 26/10.
+
+**Causa raíz:** `radar_deudores.py` (y el brief, que lo usa) leía la pestaña consolidada
+**CUENTA CORRIENTE** de Ctas Ctes. No es una tabla que crece: es una grilla de **filas
+fijas** período × local (64 filas: 8 locales × dic-25…jul-26) con `SUMIFS` contra CARGOS
+y Cobros. Nadie la extendió desde julio y nada lo hacía — `cargos_del_mes.py` agrega a
+CARGOS y a cada pestaña, nunca a la consolidada. CARGOS ya llegaba a nov-26. Encima
+cruzaba Cobros por nombre («Fabric», «Volta + Open») y por mes de PAGO, no por bloque:
+aun extendida daba otro número que la pestaña que ve el locatario. Nunca falló un
+chequeo porque el único era «¿vino con filas?» — y 64 filas viejas son filas.
+
+**Fix:** el radar lee las **pestañas por local** (layout único en
+`reglas_locales.PESTANAS`, compartido con `deuda_efectivo.py`) y CARGOS − Cobros para
+los que no tienen pestaña. Regla de cobro explícita: bloque del mes M = alquiler de M +
+expensas de M−1 (`mes_de_cobro`, verificada leyendo las 5 pestañas; un concepto
+desconocido corta en vez de adivinarse). Dos alarmas nuevas: último período con más de
+1 mes de atraso → «sin dato» (el brief no muestra el total), y la cadena de SALDO de la
+pestaña tiene que dar cargos − pagos (±$1). Al 11/11 las cinco cierran al centavo.
+`exportar_ctas_ctes.py` (mismo origen, sin consumidor en la app) quedó dado de baja.
+Tests: `execution/tests/test_radar_deudores.py`.
+
+**Lección:** una tabla «que se calcula sola» con filas escritas a mano no se calcula
+sola: envejece. Para saber si una fuente está al día se mira su **último período**, no
+si tiene filas.
+
+### 2026-11-11 · FAIL ✓ · Bot de Telegram: «solo lectura» por instrucción, no por permiso
+
+**Qué pasó.** La primera versión de `execution/telegram_bot.py` corría `claude -p` con un
+`--allowedTools` de lectura y la instrucción «no escribas». La prueba «creá un archivo» pasó, pero
+porque el modelo obedeció, no porque no pudiera: el `~/.claude/settings.json` global auto-aprueba
+Edit/Write/WebFetch y tiene `defaultMode: auto`. Es la misma trampa del 29/10 (más abajo); la atajó
+el `code-reviewer`, no yo. Además, Gmail + WebFetch juntos eran un camino de fuga: un mail con
+instrucciones podía hacerle leer un secreto y mandarlo en una URL.
+
+**Fix.** `--tools Read,Glob,Grep` (las demás propias no existen), `--permission-mode dontAsk`,
+`--disallowedTools` con todo lo que escribe o manda en los conectores y con `Read(**/.env*)`, sin
+web, y Claude corre con un entorno mínimo (no hereda el `.env`). Probado headless pidiéndole que
+INTENTE cada cosa prohibida: Write, Bash, WebFetch, el borrador y la etiqueta de Gmail ni existen;
+el `.env` da «denied by your permission settings».
+
+**Lección.** La prueba de un permiso es pedirle al agente que lo intente «de verdad, sin negarte de
+antemano»; si se niega por instrucción, la prueba no probó nada.
+
+### 2026-11-10 · FAIL ✓ · Paseo: el cuadro operativo contaba el FCI y dos correcciones viejas habían vuelto
+
+**Qué pasó.** La pestaña «Dashboard» del Master Plan (resultado operativo) mostraba octubre con
+$73,2M de ingresos y $64,1M de egresos: las 3 suscripciones al FCI ($47M) entraban de los dos lados.
+También contaba «Ajuste de caja» como gasto (−$882.814 en el acumulado), cosa que el reporte a
+inversores no hace. En la revisión completa aparecieron además el aporte de Richi de $20M con día y
+mes invertidos (03/02 en vez de 02/03) y Tubomarket otra vez en $391.325, una corrección del 27/07.
+
+**Causa raíz.** (1) La lista de lo que no es operativo vivía en dos lados: los SUMIFS de la hoja y
+`NO_OPERATIVO` de `reporte_inversores.py`. El FCI se agregó sólo al script el 26/10. (2) La hoja es
+un espejo de la base de la app: la corrección del 27/07 se hizo sólo en la hoja y un sync posterior
+la pisó. La fecha del aporte también estaba mal **en la base**. No hay `updated_at`, así que no se
+sabe quién la cambió entre el 21/10 y el 10/11.
+
+**Fix.** Fórmulas del Dashboard alineadas; `verificar_dashboard.py` paso 5 compara el cuadro contra
+`NO_OPERATIVO` (probado con el cuadro viejo: marca abr, jun y oct). Fecha y monto corregidos en la
+base y en la hoja. `CAMBIO` (Pesos a USD / Cambio de USD) sumado a `NO_OPERATIVO`.
+
+**Lección.** Un dato del Paseo se corrige en Supabase; la hoja sola no alcanza.
+
 ### 2026-11-10 · FAIL ✓ · Paseo: efectivo-diario murió "sin red" con la red andando
 
 **Qué pasó.** Mail de falla de `efectivo-diario`: "Sin red después de 15 minutos". La Mac estuvo
@@ -504,3 +593,68 @@ verdad los comandos y con una corrida entera, no sólo con el comando ideal.
 **Fix:** el mensaje ahora dice que el paso 1 se corta por diferencia O por no poder bajar los datos, y manda a mirar el error. Queda sin resolver por qué la red de la Mac falla a esa hora.
 
 **Lección:** el mismo patrón que el `shasum` del 05/11: un chequeo que no pudo leer no tiene que reportar un veredicto.
+
+## 11/11/2026 — Jarvis de escritorio: «no tengo el dato» con el dato en disco, y un pkill que no mataba nada
+
+**Dónde:** `execution/jarvis/servidor.py`.
+
+**Qué pasó (1):** se le preguntó por voz cuántos alumnos activos había. Contestó que no tenía el número, y estaba en `data/jarvis/numeros.json` (19). La instrucción decía «usalo», pero Claude busca con Glob y `data/` está gitignoreada.
+
+**Fix:** los números del día van pegados adentro de cada pregunta, con hora y fecha, y marcados VIEJOS si no son de hoy.
+
+**Qué pasó (2):** el servidor se reiniciaba con `pkill -f "jarvis/servidor.py"`, pero se había arrancado como `python servidor.py`, desde su carpeta. El pkill no matchea nada, el arranque nuevo muere por puerto ocupado y las pruebas «en vivo» le pegan al código viejo. Se detectó porque no aparecían los headers nuevos.
+
+**Fix:** se arranca siempre con path absoluto (`jarvis.sh`), y para matar se busca por puerto (`lsof -tiTCP:7777`).
+
+**Lección:** después de reiniciar un servidor, se verifica que el proceso que escucha es el nuevo: PID y comando, o algo que sólo tiene el código nuevo. Y un dato que el modelo «tiene que ir a buscar» no cuenta como dato: si importa, va en el prompt.
+
+**Revisión (code-reviewer + qa, 60 tests en `execution/tests/test_jarvis.py`):** encontró un doble «Sí» concurrente que podía ejecutar un plan dos veces (pasaba en 1 de cada ~10 corridas) y un plan ya ejecutado que podía revivir. Se arregló con un lock sobre todo leer-modificar-guardar de `estado.json`. Después del fix, 10 corridas seguidas en verde.
+
+**Y una más, la misma noche:** el plist del brief le pasaba a `correr.sh` el comando en dos partes (python | brief.py). `correr.sh` toma solo la primera, así que corría Python sin script: «éxito» en 0 segundos, código 0, sin brief. Se vio porque la hora del brief no cambió. **Fix de raíz:** `correr.sh` ahora corta con código 64, notificación y registro si el comando viene en más de una parte. Se probó con el plist viejo: saltó. Las otras 13 tareas estaban bien.
+
+**v2, misma noche: Jarvis como intermediario completo.** Facu: «que todo lo que le digo te comande a vos». El cerebro pasó de solo lectura a Claude Code completo (`--permission-mode auto`), con tareas en segundo plano (otra sesión, abrible en Terminal o Antigravity). Dos trampas:
+- **Retomar la sesión vieja arrastra lo que creía.** Con el prompt nuevo seguía diciendo «estoy en solo lectura»: el historial le ganó al prompt nuevo. Cuando cambian los poderes de un agente, se arranca sesión nueva.
+- **La regla 10 iba solo por instrucción.** La revisión lo marcó. Ahora es con llave: `--disallowedTools "Bash(*--send*)"` + envío de Gmail. Probado en vivo: `echo hola --send` bloqueado, `echo hola` corre; un mail pedido por voz vuelve como PLAN. Las pruebas rompen la llave a propósito y fallan.
+
+## 12/11/2026 — «Hey Jarvis»: medición y una trampa de prueba
+
+- **Medición antes de prenderlo** (openWakeWord `hey_jarvis`, umbral 0,5): 0 disparos en 78 min de música
+  (playlist del Paseo + producciones de Facu) y 25 min de la voz de Jarvis. Música encima de la palabra
+  dicha en inglés: sigue en 1,00. Dicha con acento castellano (voces Diego/Mónica): 0,4–0,5 → si a Facu no
+  lo agarra, bajar `JARVIS_UMBRAL_DESPERTAR`, no reentrenar.
+- **Trampa:** los Chrome headless de prueba (`--remote-debugging-port`) quedaron vivos tras `ch.kill()`,
+  seguían sondeando con token válido y, sin micrófono, apagaban la escucha para todos (el estado es
+  compartido). Parecía un bug de carrera del servidor. Al terminar una prueba: `pkill -f remote-debugging-port`.
+- Chrome headless con `--use-file-for-fake-audio-capture` entrega silencio: para probar de punta a punta
+  se reemplaza `getUserMedia` por un `MediaStreamDestination` que reproduce el wav.
+
+## 12/11/2026 — Jarvis «trabajando» callado 2 minutos: no era que pensaba
+
+Facu: «el trabajando sigue siendo muy largo y no me dice nada». Medido en el transcript de la sesión
+(`~/.claude/projects/-Users-Facu-facu-os/<sid>.jsonl`, líneas `api-request`): la pregunta de las 17:07
+(«repetime qué tengo que pagar») tardó 118 s **sin ninguna herramienta ni thinking**. Hubo dos
+`api-request`: la primera colgó 75 s y el CLI reintentó, y la segunda tardó 43 s en dar 298 tokens.
+Fue la API, no el modelo pensando. Además, esa respuesta ya existía: una tarea la había calculado a
+las 13:57, pero al contexto de la charla sólo llegaba su «PARA DECIR» de 2 líneas.
+Arreglo: `--fallback-model opus`, rellenos de voz por tiempo, y el código lee en voz alta la herramienta
+que el modelo usa sin avisar. Las tareas salen en stream y publican su paso. Los reportes enteros de las
+últimas 3 tareas van al contexto, y los números se refrescan cada 20 min.
+**Lección:** antes de culpar al modelo por lento, mirá los timestamps de `api-request` del transcript.
+
+## 12/11/2026 — Voz en vivo: dónde se iba el tiempo y dos trampas del E2E
+
+Antes, la primera palabra tardaba 7 a 15 s: 1,3 s de silencio + whisper (3,1 s con beam 5) + respuesta
+entera + síntesis entera (~1,4 s fijos de Microsoft por audio). Ahora: corte a 0,9 s, whisper con
+`beam_size=1` (2,1 s y el mismo texto; `base` pierde palabras y 8 hilos es 3× más lento que 4), cada
+oración se dice apenas se escribe, y el mp3 se sirve mientras se genera (primer pedazo a ~0,9 s).
+Medido en Chrome headless: la primera palabra sale a los 3,5–5 s. Lo que queda es casi todo el tiempo
+que la API tarda en arrancar a escribir (de 2 a 9 s, varía).
+**Trampas:** (1) `Page.addScriptToEvaluateOnNewDocument` sin `Page.enable` no inyecta nada, así que el
+probe de `Audio` daba «0 audios» y parecía que la voz en vivo no andaba. (2) Cortarlo con `vozGen++`
+no alcanza: las oraciones que llegan DESPUÉS del corte se encolan con el gen nuevo. Hay que ignorar el
+turno entero (`avIgnorar = avTurno`).
+
+## 13/11/2026 — wa_tanda: sesión vencida + whatsapp-web.js 1.34.7 ya no manda
+- La sesión vinculada de `execution/wa_tanda` estaba vencida (pedía QR). `--setup` espera 10 min: si Facu no escanea en ese rato, se corta solo y la sesión sigue vencida, sin otro aviso que el log.
+- Ya vinculada, la 1.34.7 fallaba contra el WhatsApp Web actual: `getChats()` tiraba `ERROR r` y `sendMessage` tiraba "Data passed to getter must include an id property". **Arreglo: subir a 1.34.8**, con eso mandó bien (imagen, ack 2, confirmada en `ChatStorage.sqlite`).
+- Lección: si wa_tanda tira errores crípticos de minificado (`r`, `getter ... id`), primero `npm view whatsapp-web.js version` y actualizar. El número de un contacto sale de la base local de WhatsApp Desktop (`ZWACHATSESSION.ZCONTACTJID`), sin `getChats()`.

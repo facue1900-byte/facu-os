@@ -1,0 +1,77 @@
+{
+  "file_name_prefix": "release-235132629",
+  "unite_reserve": false,
+  "include_withdrawal_at_end": false,
+  "report_language": "es",
+  "scheduled": false,
+  "execute_after_withdrawal": false,
+  "columns": [
+    {
+      "alias": "",
+      "key": "DATE"
+    },
+    {
+      "alias": "",
+      "key": "TRANSACTION_APPROVAL_DATE"
+    },
+    {
+      "alias": "",
+      "key": "SOURCE_ID"
+    },
+    {
+      "alias": "",
+      "key": "DESCRIPTION"
+    },
+    {
+      "alias": "",
+      "key": "NET_CREDIT_AMOUNT"
+    },
+    {
+      "alias": "",
+      "key": "NET_DEBIT_AMOUNT"
+    },
+    {
+      "alias": "",
+      "key": "GROSS_AMOUNT"
+    },
+    {
+      "alias": "",
+      "key": "MP_FEE_AMOUNT"
+    },
+    {
+      "alias": "",
+      "key": "TAXES_AMOUNT"
+    },
+    {
+      "alias": "",
+      "key": "PAYMENT_METHOD"
+    },
+    {
+      "alias": "",
+      "key": "BUSINESS_UNIT"
+    },
+    {
+      "alias": "",
+      "key": "SUB_UNIT"
+    },
+    {
+      "alias": "",
+      "key": "BALANCE_AMOUNT"
+    },
+    {
+      "alias": "",
+      "key": "RECORD_TYPE"
+    }
+  ],
+  "visible_zero_releases": false,
+  "separator": ";",
+  "frequency": {
+    "hour": 0,
+    "type": "daily",
+    "value": "",
+    "format": "CSV"
+  },
+  "display_timezone": "GMT-03",
+  "compensate_detail": false,
+  "check_available_balance": false
+}

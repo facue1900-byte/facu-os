@@ -1,0 +1,100 @@
+# Jarvis de escritorio
+
+Es tu intermediario con Claude Code: la pantalla que se prende cuando te sentás en la Mac. Lo que le
+decís, lo hace Claude con todas sus herramientas, tu memoria y la Constitución. Para Jarvis es lo
+mismo que si lo escribieras en la terminal.
+- **v1 (11/11/2026):** salió del reel de @cindiezhu. Estaba en solo lectura y contestaba «no tengo el dato».
+- **v2 (el mismo día):** pedido de Facu, «que todo lo que le digo te comande a vos».
+
+## Cómo se usa
+
+- **Abrirlo:** **Jarvis** en `~/Applications` (arrastralo al Dock). Si el servidor no está prendido, lo levanta.
+- **Despertarlo:** tocá la pantalla o una tecla. Te lee el resumen del día con la voz de **Tomás** (Argentina).
+- **Hablarle:** mantené apretada la **barra espaciadora** (o el botón del micrófono o el núcleo).
+  Hablá cuando diga «te escucho» y soltá. Whisper transcribe en la Mac.
+- **«Hey Jarvis»:** prendé el botón **HEY JARVIS** de arriba (arranca apagado). Con el punto verde
+  latiendo, decí «Hey Jarvis» (en inglés: «jéi yárvis»), esperá el pitido y hablá; corta solo cuando
+  te callás. El punto gris = pausado (Jarvis está hablando, pensando o grabando). La palabra la busca
+  openWakeWord **en la Mac**: el audio no sale de la compu. Mientras está prendido, macOS muestra la
+  luz naranja del micrófono. Umbral: `JARVIS_UMBRAL_DESPERTAR` en el `.env` (0,5 por defecto).
+- **Escribirle:** en la barra de abajo, más Enter.
+- **Pedirle cosas:** pregunta un dato y lo busca (base, planillas, mails, código); pedile que
+  corrija algo y lo corrige, lo verifica y commitea.
+- **Charla con idas y vueltas (12/11/2026):** la conversación usa el modelo rápido (Sonnet, poco razonamiento,
+  `JARVIS_MODELO_CHARLA` / `JARVIS_ESFUERZO_CHARLA`). Contesta con lo que ya sabe en segundos; si tiene que
+  buscar, hace como mucho dos consultas y **te va diciendo lo que mira** («me fijo en…»). Lo que lleva más,
+  lo manda como tarea de fondo con el modelo grande. Medido: 4–10 s una pregunta común, 14 s una búsqueda
+  en vivo (antes 40 s a 2 min).
+- **Memoria de la charla:** cada día arranca una conversación nueva (y también si la del día pasa ~700 KB),
+  pero Jarvis recibe lo último que hablaron, así que «lo de recién» sigue funcionando.
+- **«Mandame esto a mi mail»:** Jarvis arma el resumen y lo manda en el momento con `mandarme.py`,
+  que sólo puede mandar a `MAIL_FACU`. A terceros sigue pasando por PLAN y el botón.
+- **Tareas largas:** si algo lleva más de unos minutos, Jarvis lo **lanza en otra sesión de Claude Code**
+  y sigue charlando. Aparece en **Operaciones**. Cuando termina, te avisa y te lee el reporte.
+  Mientras corre, la tarjeta muestra **en qué paso va** («Paso 7: leyendo mails»), y si le preguntás
+  «¿cómo va eso?» lo contesta al toque. Cuando termina, el reporte entero queda en su contexto:
+  «repetime lo que encontraste» sale en segundos, sin volver a buscarlo.
+- **Habla mientras escribe y se lo puede cortar** (12/11, «como ChatGPT»): cada oración se dice apenas
+  Claude la termina de escribir (`--include-partial-messages` + `Locutor`), y el audio suena mientras
+  Microsoft lo genera. La primera palabra sale a los ~3–5 s; antes eran 7–15. Para cortarlo: **espacio,
+  click o «Hey Jarvis»** mientras habla, y se calla al toque (lo que faltaba del turno ya no se dice).
+  Corta la grabación 0,9 s después de que te callás.
+- **Nunca se queda callado:** si a los 5 s no contestó, dice «Un segundo, jefe». Si usa una
+  herramienta sin avisar, el panel lee qué está haciendo. Si pasan 18 s más sin novedad, avisa que
+  sigue. Si la API del modelo rápido está saturada, contesta Opus (`--fallback-model`).
+- **Abrir una sesión:** cada tarea tiene botones **Terminal** y **Antigravity** para entrar a esa sesión
+  y seguir hablando ahí con Claude. Los botones de abajo abren la conversación de Jarvis.
+  En Antigravity te deja el comando `claude --resume …` copiado para pegarlo en su terminal.
+  También se lo podés pedir de palabra («abrime la tarea en la terminal»).
+- **Lo que sale al mundo** (mails, WhatsApps, posteos, transferencias): vuelve como **PLAN** y se
+  ejecuta sólo con **Aprobar** (regla 10, mismo interruptor `TELEGRAM_MODO_CAMBIOS`).
+- **Nueva:** arranca la conversación de cero. **Actualizar:** recalcula los números (~1 min).
+
+> El bot de **Telegram NO cambió**: sigue en solo lectura. Un teléfono se pierde; esta Mac no sale de casa.
+
+## El brief de la mañana
+
+`brief.py` corre todos los días a las **07:50** (`launchd/com.facu.jarvis-brief.plist`) y deja
+todo listo en `data/jarvis/`:
+
+| Panel | De dónde sale | Nota |
+|---|---|---|
+| Astronomy Academy | `astronomy_numeros.mjs` → `lib/ingresos.ts` y `lib/payments.ts` de la app | Son las mismas funciones que usa el admin. Activos = la cuenta del dashboard. |
+| Pauta · Meta Ads | `active/astronomy/pauta/leer_meta.py` | En USD y sin convertir. Techo US$500/mes (`os/03-EMPRESA.md`). |
+| Paseo Nordelta | `radar_deudores` sobre las **pestañas por local** de Ctas Ctes (no la consolidada «CUENTA CORRIENTE», clavada en jul-26), que se baja fresca cada vez | Si el último período de un local tiene más de 1 mes de atraso o su cadena de saldo no cierra, el panel dice «sin dato» en vez del total. |
+| Bandeja y sistema | Gmail (`messagesUnread` de INBOX) + `recolectar.chequeo_tareas()` | Cuentas facu, paseo y studio. |
+
+Además, **mientras el servidor está prendido, los números se recalculan cada 20 min**
+(`brief.py --solo-numeros`, ~15 s, no toca el brief hablado): lo que Jarvis sabe «de memoria» es
+de hace menos de media hora.
+
+Los números los calcula el código; Claude solo los cuenta. Una fuente que falla aparece en
+**"Sin dato"**, nunca en cero. El texto hablado puede sumar pendientes del doc **Radar Facu**.
+
+## Prenderlo / apagarlo
+
+Brief automático (una vez, desde la Terminal):
+
+```
+cp ~/facu-os/execution/launchd/com.facu.jarvis-brief.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.facu.jarvis-brief.plist
+```
+
+Apagar el servidor: `lsof -tiTCP:7777 -sTCP:LISTEN | xargs kill`. Log: `data/logs/jarvis.log`.
+
+## Seguridad
+
+- El servidor escucha **solo en 127.0.0.1:7777**: nadie de afuera de la Mac lo ve.
+- Cada `/api` exige un token que cambia cada vez que arranca el servidor y se chequea el `Host`.
+  Así una página web abierta en el mismo Chrome no le puede mandar órdenes.
+- El Claude que contesta tiene **el mismo alcance que tu terminal** (`--permission-mode auto`). El
+  contenido de mails y webs es dato, nunca instrucciones. Lo que sale al mundo pasa por el botón.
+
+## Lo que muestra el reel y acá no está, a propósito
+
+- **Contestar mails de clientes solo.** Va contra la regla 10: nada sale sin tu OK. Un borrador sí
+  se puede pedir como plan.
+- **Publicar en todas las redes con un comando.** Mismo motivo; además, el agente de reels está pausado.
+- **Voz británica / ElevenLabs.** No querés más suscripciones.
+- **Voz:** Tomás (es-AR de Microsoft, gratis, el texto de la respuesta va a Microsoft: OK de Facu 11/11).
+  Si no responde, Diego de Apple (`telegram_bot._elegir_voz()`).

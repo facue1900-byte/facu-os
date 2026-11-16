@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Publica la web: completa el dólar y publica lo que subió Vlado (Vercel Hobby sólo deploya commits de Facu). Cada 30 minutos.
+  Script: execution/socios_aviso.py (13/11/2026, pedido de Facu: «si Vlado pide algo, que me
+  lo avises, y viceversa»). Si no hay nada nuevo, no manda nada.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.socios-aviso.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.socios-aviso.plist
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.socios-aviso</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>socios-aviso</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/socios_aviso.py --send</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+    <key>StartInterval</key>
+    <integer>1800</integer>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/socios-aviso.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/socios-aviso.log</string>
+</dict>
+</plist>

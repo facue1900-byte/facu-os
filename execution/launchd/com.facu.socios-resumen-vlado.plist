@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Mail a Facu y Vlado a las 20:00 con los cambios del día por persona (si hubo).
+  Script: execution/socios_aviso.py (13/11/2026, pedido de Facu: «si Vlado pide algo, que me
+  lo avises, y viceversa»). Si no hay nada nuevo, no manda nada.
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.socios-resumen-vlado.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.socios-resumen-vlado.plist
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.socios-resumen-vlado</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>socios-resumen-vlado</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/socios_aviso.py --resumen-vlado --send</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>20</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/socios-resumen-vlado.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/socios-resumen-vlado.log</string>
+</dict>
+</plist>

@@ -48,6 +48,10 @@ def leer_cuenta_corriente(xlsx):
 
 
 def main():
+    # 11/11/2026: la pestaña CUENTA CORRIENTE quedó clavada en jul-26 (filas fijas que nadie
+    # extendió) y la app del Paseo ya no lee ctas-ctes.json. Publicar esto sería mostrar deuda vieja.
+    sys.exit("exportar_ctas_ctes.py está dado de baja: lee la consolidada CUENTA CORRIENTE, "
+             "congelada en jul-26. La deuda sale de radar_deudores.py (pestañas por local).")
     if len(sys.argv) != 4:
         sys.exit(__doc__)
     xlsx, mes, salida = sys.argv[1], sys.argv[2], sys.argv[3]

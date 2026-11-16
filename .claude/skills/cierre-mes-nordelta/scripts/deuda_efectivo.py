@@ -41,21 +41,15 @@ import sys
 
 sys.path.insert(0, "/Users/Facu/facu-os")
 from execution.google_auth import sheets  # noqa: E402
-from reglas_locales import SIN_PESTANA, JAULA_AGOSTO, ORIGEN_APP  # noqa: E402
+from reglas_locales import (SIN_PESTANA, JAULA_AGOSTO, ORIGEN_APP, PESTANAS,  # noqa: E402
+                            medio_del_cargo, medio_del_pago)
 
 CTAS = "10BDmKvv2wY2M4lVYYab3NiNT04WLh5JjO-EhWI4tnNs"
 SALIDA_DEFAULT = ("/Users/Facu/Desktop/Paseo Nordelta/Paseo Nordelta - CLAUDE/"
                   "App Paseo Nordelta/src/data/deuda-efectivo.json")
 
-# pestaña → (cómo cobra, col detalle, col ingreso, col egreso, col saldo,
-#            signo del saldo: +1 si positivo = debe)
-PESTANAS = {
-    "Fabric":          ("banco",    2, 4, 5, 6, -1),
-    "Bigg":            ("mixto",    2, 4, 5, 6, -1),
-    "Boss":            ("efectivo", 2, 4, 5, 6, +1),
-    "Volta + Open 25": ("efectivo", 2, 3, 4, 5, +1),
-    "Peak One":        ("efectivo", 2, 3, 4, 5, +1),
-}
+# El layout de cada pestaña (`PESTANAS`) vive en reglas_locales.py: lo usa también
+# radar_deudores.py, y las letras de columna no pueden divergir entre los dos.
 # Cómo se llama el local para Mati (el de la pestaña es interno)
 ROTULO = {"Volta + Open 25": "Volta + Open 25"}
 
@@ -66,24 +60,8 @@ NO_PAGA_EFECTIVO = "No paga en efectivo"
 # precio semestral de la hoja Futbol es TODO lo que se le cobra.
 
 
-def medio_del_cargo(cobra, concepto):
-    """Un cargo no lleva medio escrito (la columna B es de los INGRESOS). Se
-    deduce de la regla del local: Bigg es el único partido, y su parte en efectivo
-    es exactamente la «Diferencia Alquiler (sin iva)»."""
-    if cobra == "mixto":
-        return "efectivo" if "sin iva" in concepto.lower() else "banco"
-    return cobra
-
-
-def medio_del_pago(fila, cd):
-    """Está escrito en la fila: en la B en Boss/Volta/Peak One y en las filas
-    nuevas de Fabric, en la C (el detalle) en Bigg."""
-    txt = f"{fila[1]} {fila[cd]}".lower()
-    if "efectivo" in txt or "mp facu" in txt:
-        return "efectivo"
-    if "banco" in txt:
-        return "banco"
-    return None
+# `medio_del_cargo` / `medio_del_pago` viven en reglas_locales.py: el radar de
+# deudores (y el brief de Jarvis) separa banco y efectivo con la misma regla.
 
 
 def num(x):

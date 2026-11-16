@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Jarvis — brief del día, todos los días a las 07:50 (después del radar de las 07:30, que lee).
+
+  Junta los números (Academy, Meta, Paseo, mails, tareas), Claude los cuenta y la voz de la Mac
+  los graba. Queda en data/jarvis/brief.json: cuando Facu abre Jarvis, ya está listo.
+  Solo lee: no manda nada a nadie. Si falla, correr.sh avisa como con las demás tareas.
+
+  Instalar (desde la Terminal; Claude no puede instalar agentes que persisten):
+    cp ~/facu-os/execution/launchd/com.facu.jarvis-brief.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.jarvis-brief.plist
+  Probar ya:
+    launchctl start com.facu.jarvis-brief ; tail ~/facu-os/data/logs/jarvis-brief.log
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.jarvis-brief</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>jarvis-brief</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/jarvis/brief.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>7</integer>
+        <key>Minute</key>
+        <integer>50</integer>
+    </dict>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/jarvis-brief.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/jarvis-brief.log</string>
+</dict>
+</plist>

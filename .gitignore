@@ -32,3 +32,7 @@ execution/wa_tanda/.wwebjs_cache/
 execution/wa_tanda/.wwebjs_auth/
 execution/cartera/estado-torneo/
 execution/cartera/torneo-cache/
+
+# Astronomy es su propio repo desde 11/11/2026 (astronomy-os, compartido con Vlado).
+# Vive acá adentro para que los scripts y plists que lo abren por path no se rompan.
+active/astronomy/

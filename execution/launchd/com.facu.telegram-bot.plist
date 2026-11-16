@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Jarvis por Telegram (@jarvis_thefacu_bot) — siempre prendido mientras la Mac esté prendida.
+
+  Facu le escribe o le manda audios desde el teléfono; contesta Claude Code en facu-os, en
+  SOLO LECTURA (ver execution/telegram_bot.py). Si se cae, launchd lo levanta (KeepAlive).
+  Con la Mac dormida o apagada NO contesta: los mensajes quedan en Telegram y los atiende
+  al despertar.
+
+  Instalar (lo hace Facu, no Claude):
+    cp ~/facu-os/execution/launchd/com.facu.telegram-bot.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.telegram-bot.plist
+  Apagar:
+    launchctl unload ~/Library/LaunchAgents/com.facu.telegram-bot.plist
+  Log:
+    tail -f ~/facu-os/data/logs/telegram-bot.log
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.telegram-bot</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/Facu/facu-os/.venv/bin/python</string>
+        <string>/Users/Facu/facu-os/execution/telegram_bot.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/Facu/.local/node/bin:/Users/Facu/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>30</integer>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/telegram-bot.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/telegram-bot.log</string>
+</dict>
+</plist>
