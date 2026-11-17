@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-17 04:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-17 05:33 UTC
 
-**Total: 789.92 USD (-21.01%)** desde 2026-10-07 23:06 UTC · USDT libre 640.11 · comisiones 49.79 · 363 operaciones
+**Total: 790.97 USD (-20.90%)** desde 2026-10-07 23:06 UTC · USDT libre 490.11 · comisiones 49.94 · 364 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **789.92** |
+| **Esta carpeta** | **790.97** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 780.51 |
+| hodl btc | 781.09 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| HYPE | trading | 149.81 | -0.03% | 66.519 |
+| HYPE | trading | 150.92 | +0.71% | 67.1935 |
+| ZEC | trading | 149.94 | +0.06% | 880.926 |
 
 ## Últimas operaciones
 
+- 2026-11-17 05:32 UTC · compra ZEC 150.00 USD a 927.29 — Momentum 24 h: ZEC +5,5% 24 h, 4 h +2,28% sigue subiendo, 1 h +0,13% (no estirada), a -0,6% del máximo de 48 h, 146 M/día, volumen 4 h 1,07x
 - 2026-11-17 04:32 UTC · compra HYPE 150.00 USD a 70.02 — Momentum 24 h: HYPE +5,47% 24 h, 4 h +1,38% sigue subiendo, 1 h -0,43% (no estirada), a -1,42% del máximo de 48 h, 64,8 M/día. Volumen 4 h f
 - 2026-11-16 03:32 UTC · venta BTC 150.29 USD a 65,019.4 — Regla de 24 h: comprada 15/11 03:33, a las 03:32 del 16/11 sigue en +0,35% (65054), lejos de +8% (~70017) y del stop (62825). Rebote sin fue
 - 2026-11-16 01:32 UTC · venta ZEC 128.12 USD a 889.29 — Invalidación de la tesis de momentum cumplida: 4 h a rojo (-1,49%) con 24 h bajo +5% (+4,76%); 1 h -0,98%, volumen 4 h 0,47x. Se sale antes 
@@ -23,6 +25,5 @@
 - 2026-11-14 18:32 UTC · compra ETH 150.00 USD a 1,842.89 — Rebote en soporte: ETH tocó el mínimo de 48 h en 1811,29 (16:00); la vela de 1 h de las 17:00 cerró sin mínimo nuevo (1812,67, cierre 1843,2
 - 2026-11-14 14:24 UTC · venta ETH 146.85 USD a 1,853.77 — Stop automático en 1,853.768 (entrada 1,891.6, máximo 1,919.76).
 - 2026-11-14 08:37 UTC · venta INJ 117.05 USD a 7.942 — Invalidación escrita a las 06:33 cumplida: el 4 h volvió a negativo (-1,21%) con la vela de 1 h roja (-0,51%); el 24 h bajó de +9% a +5,5%. 
-- 2026-11-14 08:37 UTC · venta XRP 118.19 USD a 0.9832 — Invalidación escrita a las 05:32 cumplida: la vela de 1 h de las 07:00 cerró en 0,9827, debajo del piso de 0,9843 (mínimo de 48 h nuevo en 0
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

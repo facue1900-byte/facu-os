@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 640.1103301243954,
+  "usdt": 490.11033012439543,
   "posiciones": {
     "HYPEUSDT": {
       "nivel": "trading",
       "cantidad": 2.140102827763496,
       "entrada": 70.02,
-      "maximo": 70.02,
+      "maximo": 70.73,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794889980000
+      "vigilado_hasta": 1794893460000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.1615999309816778,
+      "entrada": 927.29,
+      "maximo": 927.29,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794893580000
     }
   },
-  "comisiones_usd": 49.794833999999945,
+  "comisiones_usd": 49.94483399999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4386,6 +4408,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: HYPE +5,47% 24 h, 4 h +1,38% sigue subiendo, 1 h -0,43% (no estirada), a -1,42% del máximo de 48 h, 64,8 M/día. Volumen 4 h flojo (0,57x): por eso tamaño chico (~19%). Invalida: stop 5% o perder el +5% en 24 h con 4 h roja; si rompe el máximo de 48 h con volumen ≥1,5x, confirma."
+    },
+    {
+      "ms": 1794893567718,
+      "fecha": "2026-11-17 05:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.1615999309816778,
+      "precio": 927.29,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h: ZEC +5,5% 24 h, 4 h +2,28% sigue subiendo, 1 h +0,13% (no estirada), a -0,6% del máximo de 48 h, 146 M/día, volumen 4 h 1,07x. Tamaño ~19% como HYPE. Invalida: stop 5% o perder el +5% en 24 h con 4 h roja; si rompe el máximo de 48 h con volumen >=1,5x, confirma."
     }
   ]
 }
