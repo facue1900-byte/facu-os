@@ -4691,3 +4691,16 @@ Invalidación de la tesis de momentum: 24 h cayó a +4,37% (< +5%) y 4 h se puso
 ## 2026-11-17 15:33 UTC — nota
 15:32 UTC — Sin disparos, 0 entradas, 2 salidas. Vigilante: BTC, NEAR, UNI y ZEC 60 min revisados, sin disparos. BTC 4 h -0,21%: sin bloqueo. Mercado: 1 h roja pareja (-0,15/-2,4%), 4 h roja (-0,2/-6,35%; ASTER -6,35% con 4,1x, NEAR -2,49%, PEPE -2,06%), 24 h mixto (BTC +0,61%, ETH -0,95%; ZEC +7,68%, UNI +4,37%, SOL +3,55%, HYPE +3,53%); volumen 4 h 0,75-1,79x (ASTER 4,13x en caída). 14 pares pasan 20 M/día. Salidas: NEAR todo a 3,207 (-2,67%) y UNI todo a 5,343 (-0,65%): se cumplió la invalidación (24 h < +5% y 4 h roja). Se quedan: BTC en tesis de rebote (64908, +1,5% del mínimo de 48 h, arriba de ~63860; stop ~63243); ZEC 24 h +7,68% (> +5%) aunque 4 h -1,02%: la tesis sigue, stop ~911,95. Sin entradas: ruptura nadie (nadie pasó el máximo de 48 h; XRP -1,17% con 1,13x, BNB -1,19% con 1,56x, SOL -1,4% con 1,62x pero 1 h roja); momentum nadie nuevo (ZEC adentro; SOL/HYPE +3,5% no llegan a +5%); rebote nadie (ETH +0,95% del mínimo con 1 h -0,69% y BNB +1,29% con 1 h -0,15%: siguen cayendo). Lección: momentum con 24 h apenas sobre +5% (NEAR +5,23%, UNI +6,04%) se desinflaron en 2-3 h; exigir margen (>= +6%) o volumen >= 1,5x. A mirar: ZEC fuera si 24 h < +5% con 4 h roja; BTC fuera si cierra abajo de ~63860; ETH/BNB rebote si tocan el mínimo de 48 h y frenan; SOL/BNB ruptura con >= 1,5x; sacar BTC/ZEC ~11:30 del 18/11 si no llegaron a +8%. 2 posiciones.
 
+## 2026-11-17 16:32 UTC — Venta BTCUSDT
+148.34 USD a 63,881.66 (-1.01% contra la compra).
+
+Invalidación del rebote en soporte: BTC perdió el piso de ~63860 (precio 63846; el mínimo de 48 h bajó a ~63330, o sea hizo mínimo nuevo abajo del soporte), 4 h -1,87% con volumen 1,59x vendedor. Salgo antes del stop (~63243), como quedó anotado.
+
+## 2026-11-17 16:32 UTC — Venta ZECUSDT
+148.73 USD a 936.67 (-0.75% contra la compra).
+
+Invalidación de la tesis de momentum: 24 h cayó a +4,67% (< +5%) y 4 h sigue roja (-1,33%) con volumen 2,17x vendedor, a -2,54% del máximo de 48 h. Salgo antes del stop (~911,95).
+
+## 2026-11-17 16:32 UTC — nota
+16:31 UTC — Sin disparos, 0 entradas, 2 salidas. Vigilante: BTC y ZEC 59 min revisados, sin disparos. Cartera 778,94 (-22,11% desde el 07/10, HODL BTC 767,18), 100% USDT. BTC 4 h -1,87%: sin bloqueo (umbral -3%). Mercado: 1 h plana/roja leve (-0,44/+0,8%), 4 h roja pareja en todo (-1,1/-9,2%; ASTER -9,21%, NEAR -3,17%, ENA -2,62%, ETH -2,39%), 24 h roja/mixta (BTC -1,66%, ETH -2,68%; ZEC +4,67%, UNI +3,3%); volumen 4 h 1,2-2,7x en caída (vendedor). Salidas: BTC todo a 63881,66 (-1,01%): perdió el piso de ~63860 e hizo mínimo nuevo de 48 h (~63330), tesis de rebote invalidada. ZEC todo a 936,67 (-0,75%): 24 h < +5% con 4 h roja, invalidación de momentum. Sin entradas: ruptura nadie (todos -1,9/-24% del máximo de 48 h); momentum nadie (nadie con +5% en 24 h); rebote nadie confirmado (BTC +0,81%, BNB +0,98%, ETH +1,62% del mínimo pero 4 h roja con volumen vendedor, sin frenar). A mirar: BTC/BNB/ETH rebote si tocan el mínimo de 48 h y la hora siguiente no hace mínimo nuevo con volumen comprador; BTC 4 h <= -3% = sin entradas nuevas. 0 posiciones.
+

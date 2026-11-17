@@ -4,54 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 482.16803631356424,
-  "posiciones": {
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.0023220314373769736,
-      "entrada": 64534.01,
-      "maximo": 65447.0,
-      "reglas": {
-        "stop": 2.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794929520000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.1587865044716653,
-      "entrada": 943.72,
-      "maximo": 959.95,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794929520000
-    }
-  },
-  "comisiones_usd": 51.137484999999934,
+  "usdt": 778.9367484709308,
+  "posiciones": {},
+  "comisiones_usd": 51.434550999999935,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4516,6 +4471,30 @@
       "comision": 0.148875,
       "motivo": "Invalidación de la tesis de momentum: 24 h cayó a +4,37% (< +5%) y 4 h se puso roja (-0,41%), 1 h -0,82%, a -1,98% del máximo de 48 h. Salgo en ~-0,5% antes del stop (~5,176).",
       "resultado_pct": -0.65
+    },
+    {
+      "ms": 1794933124245,
+      "fecha": "2026-11-17 16:32 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.0023220314373769736,
+      "precio": 63881.66,
+      "usd": 148.3352,
+      "comision": 0.148335,
+      "motivo": "Invalidación del rebote en soporte: BTC perdió el piso de ~63860 (precio 63846; el mínimo de 48 h bajó a ~63330, o sea hizo mínimo nuevo abajo del soporte), 4 h -1,87% con volumen 1,59x vendedor. Salgo antes del stop (~63243), como quedó anotado.",
+      "resultado_pct": -1.01
+    },
+    {
+      "ms": 1794933125127,
+      "fecha": "2026-11-17 16:32 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.1587865044716653,
+      "precio": 936.67,
+      "usd": 148.7306,
+      "comision": 0.148731,
+      "motivo": "Invalidación de la tesis de momentum: 24 h cayó a +4,67% (< +5%) y 4 h sigue roja (-1,33%) con volumen 2,17x vendedor, a -2,54% del máximo de 48 h. Salgo antes del stop (~911,95).",
+      "resultado_pct": -0.75
     }
   ]
 }
