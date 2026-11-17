@@ -804,3 +804,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-17 00:16 UTC — nota
 [v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -0.41, var_4h -0.64) pero ningun par cumple entrada: volumen_4h_vs_promedio <1.3 en todos (max HYPE 0.93, con var_24h 3.22 y vs_max -2.66); ASTER var_24h 14 pero vol 0.32 y vs_max -19.2. Sin disparos.
 
+## 2026-11-17 02:16 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro BTC libre (var_24h -0.87, var_4h -1.07) pero ningun par del top 20 cumple entrada: volumen_4h_vs_promedio <1.3 en todos (max ENA 0.69); HYPE var_24h 3.2 pero var_4h -1.65 y vol 0.65; ASTER var_24h 6.75 pero vol 0.31 y vs_max -18.7. Sin disparos.
+
