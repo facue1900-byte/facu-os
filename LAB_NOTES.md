@@ -20,6 +20,9 @@ enteró hasta el `--estricto` del día siguiente. El chequeo funcionó: frenó b
 No es la primera vez: el 14/10 Mati avisó por WhatsApp «estoy poniendo lo que le pagué a
 Daniel y no me lo toma». Dos veces con pagos a Daniel: mirar si es la categoría o el texto.
 El 17/11 16:11 se le preguntó a Mati por WhatsApp si el pago es real, antes de pasarlo.
+Mati confirmó (16:15). Facu lo pasó con el Apps Script (fila 717, mismo id), app y planilla
+quedaron 692/692 y `efectivo-diario` corrió entero: Bigg, Boss y Peak One volcados ($3.313.460).
+Sigue FAIL: la app sigue sin enterarse cuando el POST falla.
 
 **Fix:** `sincronizar_supabase.py` ahora lista cada movimiento que sobra (fecha, monto, obs,
 cuándo se cargó, id) con `!!!`, así llega al mail Y al Telegram. **Pendiente:** reenviar el
