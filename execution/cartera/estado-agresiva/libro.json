@@ -4,9 +4,54 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 787.7400458909043,
-  "posiciones": {},
-  "comisiones_usd": 50.24276199999994,
+  "usdt": 487.7400458909043,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.0023220314373769736,
+      "entrada": 64534.01,
+      "maximo": 64534.01,
+      "reglas": {
+        "stop": 2.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794915180000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.1587865044716653,
+      "entrada": 943.72,
+      "maximo": 943.72,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794915240000
+    }
+  },
+  "comisiones_usd": 50.54276199999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4399,6 +4444,30 @@
       "comision": 0.148848,
       "motivo": "Invalidación de la tesis de momentum: 24 h cayó a +3,73% (< +5%) y 4 h se puso roja (-0,58%), volumen 0,9x, a -1,31% del máximo de 48 h. Salgo en ~-0,6% antes del stop (~882,66), como quedó anotado la hora pasada.",
       "resultado_pct": -0.67
+    },
+    {
+      "ms": 1794915174886,
+      "fecha": "2026-11-17 11:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.0023220314373769736,
+      "precio": 64534.01,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: BTC a +1,1% del mínimo de 48 h (~63860); la vela de 11 h no hizo mínimo nuevo (64102 > 64080 de las 10 h) y cierra verde +0,76% con volumen 4 h 1,68x (comprador). Stop ajustado a 2% (~63270, abajo del mínimo de 48 h) porque la tesis muere si pierde el piso. Invalida: cierre horario abajo de ~63860."
+    },
+    {
+      "ms": 1794915183590,
+      "fecha": "2026-11-17 11:33 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.1587865044716653,
+      "precio": 943.72,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h: ZEC +6,22% 24 h, 4 h +1,92% sigue subiendo, 1 h +2,78% (no estirada, < +4%), a -0,53% del máximo de 48 h, 150 M/día, volumen 4 h 1,19x (pasa el filtro >= 1x de la lección de las 08:33). Reentrada tras la salida de las 08:33: la tesis volvió a cumplirse. Invalida: stop 5% o 24 h bajo +5% con 4 h roja; ruptura del máximo de 48 h con volumen >= 1,5x confirma."
     }
   ]
 }
