@@ -4722,3 +4722,16 @@ Invalidación de la tesis de momentum: 24 h cayó a +4,67% (< +5%) y 4 h sigue r
 ## 2026-11-17 22:32 UTC — nota
 22:32 UTC — Sin disparos, 0 entradas, 0 salidas. Vigilante: sin posiciones. Cartera 778,94 (-22,11% desde el 07/10, HODL BTC 777,14), 100% USDT. BTC 4 h +1,4%: sin bloqueo. Mercado: 1 h verde leve pareja (+0,07/+1,07%; BREV +2,27% aparte), 4 h verde (-0,04/+5,06%; NEAR +5,06%, ASTER +4,51% con 0,27x, ZEC +2,76%), 24 h mixta (BTC -1%, ETH -0,94%; NEAR +4,83%, ZEC +3,35%, SOL +2,96%); volumen 4 h 0,27-1,39x, sin interés (BREV 2,74x aparte). 15 pares pasan 20 M/día. Sin entradas: ruptura nadie (todos abajo del máximo de 48 h; TRX -0,29% con 0,93x plano, NEAR -0,36% con 1,39x — cerca pero no llega a 1,5x —, SOL -0,67% y XRP -0,8% con 0,63-0,66x); momentum: NEAR +4,83% en 24 h no llega a +5% (y la lección de la tarde pide >= +6% o volumen >= 1,5x); BREV +100% en 24 h, -16,5% del máximo, +104% sobre el mínimo y 22 M/día: pump estirado, descartado otra vez. Rebote nadie (BTC +2,1% y BNB +2,05% del mínimo de 48 h, ya rebotaron sin volumen). A mirar: NEAR ruptura si pasa el máximo de 48 h (a -0,36%) con volumen >= 1,5x, o momentum si pasa +6% en 24 h con 4 h verde; SOL/XRP/TRX ruptura con >= 1,5x; BTC 4 h <= -3% = sin entradas nuevas. 0 posiciones.
 
+## 2026-11-17 23:32 UTC — Compra NEARUSDT (trading)
+150.00 USD a 3.377. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h con margen y volumen: +6,96% en 24 h (>= +6%, cumple la lección de la tarde), 4 h +5,79%, 1 h +1,72% (no estirada), volumen 4 h 1,64x, a -0,38% del máximo de 48 h (casi ruptura). Invalida: 24 h < +5% con 4 h roja, o stop 5%.
+
+## 2026-11-17 23:32 UTC — Compra ZECUSDT (trading)
+150.00 USD a 961.27. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: +6,49% en 24 h (>= +6%), 4 h +4,53% sigue subiendo, 1 h +1,71% (no estirada), a -1,08% del máximo de 48 h; volumen 0,89x es el punto flojo. Invalida: 24 h < +5% con 4 h roja, o stop 5%.
+
+## 2026-11-17 23:32 UTC — nota
+23:32 UTC — Sin disparos, 2 entradas, 0 salidas. Vigilante: sin posiciones. BTC 4 h +1,94%: sin bloqueo. Mercado: 1 h verde pareja (+0,06/+1,72%), 4 h verde (+0,16/+5,79%; NEAR +5,79%, ZEC +4,53%, ASTER +4,06% con 0,33x, SOL +3,23%), 24 h verde/mixta (BTC +0,17%, ETH +0,23%; NEAR +6,96%, ZEC +6,49%, SOL +5,03%); volumen 4 h 0,33-1,64x (BREV 2,35x aparte). Entradas: NEAR 150 USD a 3,377 (momentum +6,96% 24 h con 1,64x, a -0,38% del máximo de 48 h; stop ~3,208) y ZEC 150 USD a 961,27 (momentum +6,49% 24 h, 4 h +4,53%; volumen 0,89x flojo; stop ~913,2). Ambas cumplen la lección de la tarde (>= +6%). Descartes: SOL +5,03% en 24 h con 0,89x no llega a +6% ni a 1,5x; ruptura nadie con >= 1,5x (XRP -0,5%, BNB -0,49% con 1,22x, TRX -0,23% plano); BREV pump +97,5%, descartado; rebote nadie (todos ya arriba del mínimo). A mirar: NEAR/ZEC fuera si 24 h < +5% con 4 h roja; SOL momentum si pasa +6% o volumen >= 1,5x; XRP/BNB ruptura con >= 1,5x; sacar NEAR/ZEC ~23:30 del 18/11 si no llegaron a +8%. 2 posiciones.
+

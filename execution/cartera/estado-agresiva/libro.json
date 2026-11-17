@@ -4,9 +4,54 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 778.9367484709308,
-  "posiciones": {},
-  "comisiones_usd": 51.434550999999935,
+  "usdt": 478.93674847093075,
+  "posiciones": {
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 44.37370447142434,
+      "entrada": 3.377,
+      "maximo": 3.377,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794958380000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.15588752379664403,
+      "entrada": 961.27,
+      "maximo": 961.27,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794958380000
+    }
+  },
+  "comisiones_usd": 51.73455099999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4495,6 +4540,30 @@
       "comision": 0.148731,
       "motivo": "Invalidación de la tesis de momentum: 24 h cayó a +4,67% (< +5%) y 4 h sigue roja (-1,33%) con volumen 2,17x vendedor, a -2,54% del máximo de 48 h. Salgo antes del stop (~911,95).",
       "resultado_pct": -0.75
+    },
+    {
+      "ms": 1794958355194,
+      "fecha": "2026-11-17 23:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 44.37370447142434,
+      "precio": 3.377,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h con margen y volumen: +6,96% en 24 h (>= +6%, cumple la lección de la tarde), 4 h +5,79%, 1 h +1,72% (no estirada), volumen 4 h 1,64x, a -0,38% del máximo de 48 h (casi ruptura). Invalida: 24 h < +5% con 4 h roja, o stop 5%."
+    },
+    {
+      "ms": 1794958364320,
+      "fecha": "2026-11-17 23:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.15588752379664403,
+      "precio": 961.27,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h: +6,49% en 24 h (>= +6%), 4 h +4,53% sigue subiendo, 1 h +1,71% (no estirada), a -1,08% del máximo de 48 h; volumen 0,89x es el punto flojo. Invalida: 24 h < +5% con 4 h roja, o stop 5%."
     }
   ]
 }
