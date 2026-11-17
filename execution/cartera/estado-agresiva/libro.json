@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 187.7400458909043,
+  "usdt": 482.16803631356424,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0023220314373769736,
       "entrada": 64534.01,
-      "maximo": 65184.01,
+      "maximo": 65447.0,
       "reglas": {
         "stop": 2.0,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794925920000
+      "vigilado_hasta": 1794929520000
     },
     "ZECUSDT": {
       "nivel": "trading",
@@ -48,54 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794925920000
-    },
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 45.47799696509863,
-      "entrada": 3.295,
-      "maximo": 3.297,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794925920000
-    },
-    "UNIUSDT": {
-      "nivel": "trading",
-      "cantidad": 27.863518036444773,
-      "entrada": 5.378,
-      "maximo": 5.443,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794925920000
+      "vigilado_hasta": 1794929520000
     }
   },
-  "comisiones_usd": 50.84276199999994,
+  "comisiones_usd": 51.137484999999934,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4536,6 +4492,30 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: UNI +6,04% 24 h, 4 h +2,21% sigue subiendo, 1 h -0,52% (no estirada), a -1,45% del máximo de 48 h, volumen 4 h 1,44x (pasa el filtro >= 1x), 33 M/día. La hora pasada la descarté por volumen ~1x; ahora subió a 1,44x y la tesis se sostuvo dos horas. Reglas default. Invalida: stop 5% o 24 h bajo +5% con 4 h roja; ruptura del máximo de 48 h con >= 1,5x confirma."
+    },
+    {
+      "ms": 1794929566229,
+      "fecha": "2026-11-17 15:32 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 45.47799696509863,
+      "precio": 3.207,
+      "usd": 145.8479,
+      "comision": 0.145848,
+      "motivo": "Invalidación de la tesis de momentum: 24 h cayó a +1,81% (< +5%) y 4 h se puso roja (-2,49%) con volumen 1,5x vendedor, a -3,26% del máximo de 48 h. Salgo antes del stop (~3,132), como quedó anotado la hora pasada.",
+      "resultado_pct": -2.67
+    },
+    {
+      "ms": 1794929567074,
+      "fecha": "2026-11-17 15:32 UTC",
+      "lado": "sell",
+      "par": "UNIUSDT",
+      "cantidad": 27.863518036444773,
+      "precio": 5.343,
+      "usd": 148.8748,
+      "comision": 0.148875,
+      "motivo": "Invalidación de la tesis de momentum: 24 h cayó a +4,37% (< +5%) y 4 h se puso roja (-0,41%), 1 h -0,82%, a -1,98% del máximo de 48 h. Salgo en ~-0,5% antes del stop (~5,176).",
+      "resultado_pct": -0.65
     }
   ]
 }
