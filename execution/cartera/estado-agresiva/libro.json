@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 490.11033012439543,
+  "usdt": 639.0408135434186,
   "posiciones": {
-    "HYPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 2.140102827763496,
-      "entrada": 70.02,
-      "maximo": 70.73,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794897060000
-    },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.1615999309816778,
@@ -48,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794897060000
+      "vigilado_hasta": 1794900660000
     }
   },
-  "comisiones_usd": 49.94483399999994,
+  "comisiones_usd": 50.09391399999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4420,6 +4398,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: ZEC +5,5% 24 h, 4 h +2,28% sigue subiendo, 1 h +0,13% (no estirada), a -0,6% del máximo de 48 h, 146 M/día, volumen 4 h 1,07x. Tamaño ~19% como HYPE. Invalida: stop 5% o perder el +5% en 24 h con 4 h roja; si rompe el máximo de 48 h con volumen >=1,5x, confirma."
+    },
+    {
+      "ms": 1794900745894,
+      "fecha": "2026-11-17 07:32 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 2.140102827763496,
+      "precio": 69.66,
+      "usd": 149.0796,
+      "comision": 0.14908,
+      "motivo": "Invalidación de la tesis de momentum: 24 h cayó a +4,33% (< +5%) y 4 h se puso roja (-0,94%), con volumen 0,71x y a -1,93% del máximo de 48 h. Salgo en ~-0,4% antes de que toque el stop.",
+      "resultado_pct": -0.51
     }
   ]
 }
