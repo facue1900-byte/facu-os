@@ -832,3 +832,6 @@ Capital ficticio: 1,000.00 USDT.
 
 [v2] tendencia rota: NEAR var_24h -0.41<0 y var_4h -2.93<-2 · invalida: n/a (salida por regla)
 
+## 2026-11-17 18:16 UTC — nota
+[v2] Sin operar: carpeta vacia, filtro de mercado BTC cerrado (var_24h -2.07 < -2 y var_4h -2.02 < -1.5) -> no se abre nada nuevo. Ademas ningun par cumple var_24h>=3 (max ZEC 2.64, var_4h -2.67). Sin disparos.
+
