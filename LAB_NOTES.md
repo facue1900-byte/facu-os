@@ -8,6 +8,27 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-17 · FAIL · Paseo: efectivo-diario frenado 4 días por un egreso que no llegó a la planilla
+
+**Síntoma:** `efectivo-diario` corta en el paso 1 desde el 14/11 («1 movimiento en Supabase
+y NO en el Master Plan»). El aviso no decía cuál, así que hubo que buscarlo a mano.
+
+**Causa raíz:** el 12/11 15:19 Mati cargó «Pague Daniel mantenimiento $500.000» (Egreso,
+Caja, Mejoras, id `1db59163…`). El POST de la app al Apps Script se perdió: los otros 7
+movimientos de ese día sí llegaron. La app no mira la respuesta del POST, así que nadie se
+enteró hasta el `--estricto` del día siguiente. El chequeo funcionó: frenó bien.
+No es la primera vez: el 14/10 Mati avisó por WhatsApp «estoy poniendo lo que le pagué a
+Daniel y no me lo toma». Dos veces con pagos a Daniel: mirar si es la categoría o el texto.
+El 17/11 16:11 se le preguntó a Mati por WhatsApp si el pago es real, antes de pasarlo.
+Mati confirmó (16:15). Facu lo pasó con el Apps Script (fila 717, mismo id), app y planilla
+quedaron 692/692 y `efectivo-diario` corrió entero: Bigg, Boss y Peak One volcados ($3.313.460).
+Sigue FAIL: la app sigue sin enterarse cuando el POST falla.
+
+**Fix:** `sincronizar_supabase.py` ahora lista cada movimiento que sobra (fecha, monto, obs,
+cuándo se cargó, id) con `!!!`, así llega al mail Y al Telegram. **Pendiente:** reenviar el
+registro al Apps Script (OK de Facu) y que la app reintente o avise cuando el POST falla —
+mientras no, esto se repite.
+
 ### 2026-11-12 · FAIL ✓ · Paseo: el brief decía «nadie debe nada vencido» y Bigg debía la ND 11
 
 **Síntoma:** el panel de Jarvis (12/11 07:50) mostraba exigible $0 y a Bigg entero como
