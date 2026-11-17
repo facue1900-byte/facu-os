@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 790.1103301243954,
-  "posiciones": {},
-  "comisiones_usd": 49.644833999999946,
+  "usdt": 640.1103301243954,
+  "posiciones": {
+    "HYPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 2.140102827763496,
+      "entrada": 70.02,
+      "maximo": 70.02,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794889980000
+    }
+  },
+  "comisiones_usd": 49.794833999999945,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4351,6 +4374,18 @@
       "comision": 0.150288,
       "motivo": "Regla de 24 h: comprada 15/11 03:33, a las 03:32 del 16/11 sigue en +0,35% (65054), lejos de +8% (~70017) y del stop (62825). Rebote sin fuerza (volumen 4 h 0,67x, 4 h -0,48%). Se saca y se libera para rotar.",
       "resultado_pct": 0.29
+    },
+    {
+      "ms": 1794889937765,
+      "fecha": "2026-11-17 04:32 UTC",
+      "lado": "buy",
+      "par": "HYPEUSDT",
+      "nivel": "trading",
+      "cantidad": 2.140102827763496,
+      "precio": 70.02,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h: HYPE +5,47% 24 h, 4 h +1,38% sigue subiendo, 1 h -0,43% (no estirada), a -1,42% del máximo de 48 h, 64,8 M/día. Volumen 4 h flojo (0,57x): por eso tamaño chico (~19%). Invalida: stop 5% o perder el +5% en 24 h con 4 h roja; si rompe el máximo de 48 h con volumen ≥1,5x, confirma."
     }
   ]
 }
