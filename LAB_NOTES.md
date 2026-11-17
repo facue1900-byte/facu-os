@@ -17,6 +17,9 @@ y NO en el Master Plan»). El aviso no decía cuál, así que hubo que buscarlo 
 Caja, Mejoras, id `1db59163…`). El POST de la app al Apps Script se perdió: los otros 7
 movimientos de ese día sí llegaron. La app no mira la respuesta del POST, así que nadie se
 enteró hasta el `--estricto` del día siguiente. El chequeo funcionó: frenó bien.
+No es la primera vez: el 14/10 Mati avisó por WhatsApp «estoy poniendo lo que le pagué a
+Daniel y no me lo toma». Dos veces con pagos a Daniel: mirar si es la categoría o el texto.
+El 17/11 16:11 se le preguntó a Mati por WhatsApp si el pago es real, antes de pasarlo.
 
 **Fix:** `sincronizar_supabase.py` ahora lista cada movimiento que sobra (fecha, monto, obs,
 cuándo se cargó, id) con `!!!`, así llega al mail Y al Telegram. **Pendiente:** reenviar el
