@@ -61,7 +61,8 @@ def clave(f, tipo, medio, monto):
 
 
 def faltantes():
-    sb = sql("select fecha, tipo, medio, monto from movimientos where moneda='ARS'")
+    sb = sql("select id, fecha, tipo, medio, monto, obs, created_at from movimientos "
+             "where moneda='ARS'")
     if not isinstance(sb, list) or not sb:
         sys.exit("Supabase devolvio 0 movimientos. No sigo: o hay un problema de "
                  "permisos o la tabla esta vacia, y en los dos casos importar a "
@@ -95,7 +96,15 @@ def faltantes():
         falta.append(dict(fecha=str(f), tipo=r[1], medio=r[2], local_id=local_id,
                           categoria=categoria, monto=float(r[5]), moneda="ARS",
                           obs=str(r[7] or ""), origen="sheet", a_revisar=False))
-    sobran = sum(v for v in S.values() if v > 0)
+    # Los que sobran, con nombre y apellido: el aviso decía «sobra 1» sin decir
+    # cuál, y el 12/11/2026 un pago a Daniel de $500.000 que nunca llegó a la
+    # planilla frenó el volcado 4 días hasta que alguien lo buscó a mano.
+    sobran = []
+    for x in sorted(sb, key=lambda x: str(x["created_at"]), reverse=True):
+        k = clave(x["fecha"], x["tipo"], x["medio"], x["monto"])
+        if S[k] > 0:
+            S[k] -= 1
+            sobran.append(x)
     return falta, total_mp, len(sb), sobran
 
 
@@ -109,14 +118,18 @@ def main():
     print(f"Supabase   : {n_sb}")
     print(f"Faltan     : {len(falta)}  (${sum(x['monto'] for x in falta):,.0f})")
     if sobran:
-        print(f"\n!! {sobran} movimientos estan en Supabase y NO en el Master Plan.")
+        print(f"\n!! {len(sobran)} movimientos estan en Supabase y NO en el Master Plan.")
         print("   Este script NO los toca: revisalos a mano antes de confiar en la app.")
+        for x in sobran:
+            print(f"!!! sobra: {str(x['fecha'])[:10]} {x['tipo']:<8}{x['medio']:<6}"
+                  f"${float(x['monto']):>13,.2f}  {str(x['obs'] or '')[:60]}"
+                  f"  (cargado {str(x['created_at'])[:16]} UTC, id {x['id']})")
         if "--estricto" in sys.argv:
             # Un cobro que Mati cargó en la app y no llegó a la planilla (el POST
             # al Apps Script no se mira) no se vuelca a ninguna pestaña. Si
             # encima se adelanta `cobrosDesde`, la app deja de descontarlo y le
             # pide a Mati una plata que ya cobró. Con --estricto eso frena todo.
-            sys.exit(f"ESTRICTO: {sobran} movimiento/s de la app no estan en la planilla.")
+            sys.exit(f"ESTRICTO: {len(sobran)} movimiento/s de la app no estan en la planilla.")
     if not falta:
         print("\nNada que importar: las dos fuentes dicen lo mismo.")
         return
