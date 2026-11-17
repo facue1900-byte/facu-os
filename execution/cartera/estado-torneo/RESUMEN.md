@@ -1,4 +1,4 @@
-# Torneo cripto en vivo — 2026-11-17 12:00 UTC
+# Torneo cripto en vivo — 2026-11-17 16:00 UTC
 
 Todas arrancaron con **1,000 USD** el 2026-10-29 00:00 UTC, mismas velas de 4 h y mismo costo (0,1% + 0,05% por lado). Mercado hoy: **BTC abajo de la media 200, bajando 30 d**. Plata ficticia.
 
@@ -11,15 +11,15 @@ Todas arrancaron con **1,000 USD** el 2026-10-29 00:00 UTC, mismas velas de 4 h 
 | 5 | L7 ruptura de 20 d con filtro BTC, 14 monedas | laboratorio | 997.60 | -0.2% | -1.0% | 2 |
 | 6 | L6 ruptura de 55 d (tortugas), sale en 20 d, 14 monedas | laboratorio | 997.18 | -0.3% | -1.0% | 2 |
 | 7 | P6 BTC sólo arriba de su media de 100 d | prudente | 972.94 | -2.7% | -6.6% | 2 |
-| 8 | D4 DCA BTC 77 por semana (todo en 13 semanas) | dca | 968.41 | -3.2% | -4.3% | 3 |
-| 9 | A6 top 3 por 30 d, semanal, filtro + sólo si suben | agresiva | 967.60 | -3.2% | -4.7% | 2 |
+| 8 | A6 top 3 por 30 d, semanal, filtro + sólo si suben | agresiva | 967.60 | -3.2% | -4.7% | 2 |
+| 9 | D4 DCA BTC 77 por semana (todo en 13 semanas) | dca | 965.71 | -3.4% | -4.3% | 3 |
 | 10 | A1 reglas de la Agresiva actual (4 h) | agresiva | 958.96 | -4.1% | -4.2% | 10 |
-| 11 | D1 DCA BTC 100 por semana | dca | 958.93 | -4.1% | -5.6% | 3 |
-| 12 | L1N reglas del Laboratorio v1 (4 h) + freno de noticias | laboratorio | 957.23 | -4.3% | -4.4% | 6 |
-| 13 | D2 DCA 50/50 BTC-ETH 100 por semana | dca | 955.35 | -4.5% | -6.3% | 6 |
-| 14 | P8 compra BTC tras caer 15% (vende +10%) | prudente | 953.41 | -4.7% | -6.7% | 1 |
-| 15 | A8 medianas top 2 por 14 d, semanal, filtro, stop 15% | agresiva | 951.40 | -4.9% | -7.1% | 2 |
-| 16 | D3 DCA inteligente BTC (x2 abajo de la media 200) | dca | 949.61 | -5.0% | -6.9% | 3 |
+| 11 | L1N reglas del Laboratorio v1 (4 h) + freno de noticias | laboratorio | 957.23 | -4.3% | -4.4% | 6 |
+| 12 | D1 DCA BTC 100 por semana | dca | 955.43 | -4.5% | -5.6% | 3 |
+| 13 | A8 medianas top 2 por 14 d, semanal, filtro, stop 15% | agresiva | 951.40 | -4.9% | -7.1% | 2 |
+| 14 | D2 DCA 50/50 BTC-ETH 100 por semana | dca | 951.05 | -4.9% | -6.3% | 6 |
+| 15 | P8 compra BTC tras caer 15% (vende +10%) | prudente | 947.26 | -5.3% | -6.7% | 1 |
+| 16 | D3 DCA inteligente BTC (x2 abajo de la media 200) | dca | 944.88 | -5.5% | -6.9% | 3 |
 | 17 | L1 reglas del Laboratorio v1 (4 h) | laboratorio | 943.38 | -5.7% | -5.8% | 8 |
 | 18 | A2 Agresiva con filtro BTC y stops anchos | agresiva | 940.50 | -6.0% | -6.1% | 6 |
 | 19 | P7 canasta grande con media de 200 d por moneda | prudente | 931.58 | -6.8% | -11.1% | 6 |
@@ -27,15 +27,15 @@ Todas arrancaron con **1,000 USD** el 2026-10-29 00:00 UTC, mismas velas de 4 h 
 | 21 | A5 top 3 por 30 d, semanal, sólo con BTC alcista | agresiva | 916.52 | -8.3% | -9.1% | 6 |
 | 22 | P5 BTC sólo arriba de su media de 200 d | prudente | 914.37 | -8.6% | -11.6% | 2 |
 | 23 | A5N top 3 por 30 d, semanal, sólo con BTC alcista + freno de noticias | agresiva | 888.36 | -11.2% | -12.3% | 12 |
-| 24 | P4 60% BTC / 40% USDT rebalanceo mensual | prudente | 886.87 | -11.3% | -14.6% | 1 |
-| 25 | L9 compra pánico sólo en tendencia alcista, 14 monedas | laboratorio | 875.08 | -12.5% | -19.1% | 15 |
-| 26 | L8 compra pánico (RSI<30), vende RSI>55, grandes | laboratorio | 853.37 | -14.7% | -21.8% | 9 |
-| 27 | A4 top 3 por 30 d, rota cada semana | agresiva | 851.38 | -14.9% | -17.8% | 3 |
-| 28 | L3 cruce de medias 50/200 en BTC | laboratorio | 830.87 | -16.9% | -23.0% | 1 |
-| 29 | A7 top 5 por 90 d, mensual, con filtro | agresiva | 830.18 | -17.0% | -27.1% | 5 |
-| 30 | P1 HODL BTC | prudente | 811.64 | -18.8% | -24.2% | 1 |
-| 31 | P3 canasta BTC/ETH/BNB rebalanceo mensual | prudente | 802.57 | -19.7% | -25.1% | 3 |
-| 32 | P2 HODL 50/50 BTC-ETH | prudente | 799.36 | -20.1% | -26.3% | 2 |
-| 33 | A3 la que más subió en 7 d, rota cada día | agresiva | 625.59 | -37.4% | -39.9% | 25 |
+| 24 | P4 60% BTC / 40% USDT rebalanceo mensual | prudente | 880.27 | -12.0% | -14.6% | 1 |
+| 25 | L9 compra pánico sólo en tendencia alcista, 14 monedas | laboratorio | 868.62 | -13.1% | -19.1% | 15 |
+| 26 | A4 top 3 por 30 d, rota cada semana | agresiva | 846.20 | -15.4% | -17.8% | 3 |
+| 27 | L8 compra pánico (RSI<30), vende RSI>55, grandes | laboratorio | 840.64 | -15.9% | -21.8% | 9 |
+| 28 | L3 cruce de medias 50/200 en BTC | laboratorio | 819.61 | -18.0% | -23.0% | 1 |
+| 29 | A7 top 5 por 90 d, mensual, con filtro | agresiva | 813.64 | -18.6% | -27.1% | 5 |
+| 30 | P1 HODL BTC | prudente | 800.66 | -19.9% | -24.2% | 1 |
+| 31 | P3 canasta BTC/ETH/BNB rebalanceo mensual | prudente | 790.53 | -20.9% | -25.1% | 3 |
+| 32 | P2 HODL 50/50 BTC-ETH | prudente | 785.92 | -21.4% | -26.3% | 2 |
+| 33 | A3 la que más subió en 7 d, rota cada día | agresiva | 617.31 | -38.3% | -39.9% | 25 |
 
-Le ganan a USDT y a HODL BTC (P1, -18.8%): 0 de 33. Lecturas de noticias sin dato fresco: 0 de 20 (ese día el freno de noticias no midió nada). Qué funcionó antes en cada tipo de mercado: `HISTORIA.md`.
+Le ganan a USDT y a HODL BTC (P1, -19.9%): 0 de 33. Lecturas de noticias sin dato fresco: 0 de 20 (ese día el freno de noticias no midió nada). Qué funcionó antes en cada tipo de mercado: `HISTORIA.md`.
