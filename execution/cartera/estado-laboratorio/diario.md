@@ -827,3 +827,8 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-17 14:19 UTC — nota
 [v2] Sin operar: ya hay 1 posicion abierta (NEARUSDT, -1.15%, stop 3.0625) -> regla max 1 posicion, no se abre nada nuevo. UNIUSDT cumplia entrada (var_24h 5.32, var_4h 4.41, var_1h 0.39, vs_max -0.2, vol 1.65, BTC libre var_24h -0.21 var_4h 1.43) pero bloqueada por tope. NEAR: var_24h 1.75>0, sin tendencia rota; <48h. Sin disparos.
 
+## 2026-11-17 16:16 UTC — Venta NEARUSDT
+184.42 USD a 3.181 (-3.40% contra la compra).
+
+[v2] tendencia rota: NEAR var_24h -0.41<0 y var_4h -2.93<-2 · invalida: n/a (salida por regla)
+

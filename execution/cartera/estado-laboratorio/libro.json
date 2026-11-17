@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 80841.96
   },
-  "usdt": 764.4068527578996,
-  "posiciones": {
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 57.97415730337078,
-      "entrada": 3.293,
-      "maximo": 3.313,
-      "reglas": {
-        "stop": 7.0,
-        "trail": 8.0,
-        "tp": [
-          [
-            10.0,
-            0.5
-          ],
-          [
-            20.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794925080000
-    }
-  },
-  "comisiones_usd": 4.109965,
+  "usdt": 948.63823134554,
+  "posiciones": {},
+  "comisiones_usd": 4.294381,
   "operaciones": [
     {
       "ms": 1793153807285,
@@ -306,6 +283,18 @@
       "usd": 191.1,
       "comision": 0.1911,
       "motivo": "[v2] BTC libre (var_24h 1.14, var_4h 0.87); NEAR var_24h 5.11>=3, var_4h 1.76>0, var_1h 0.18<=2.5, vs_max_48h -0.09>=-1.5, vol4h 1.43>=1.3; carpeta vacia, 0 entradas hoy · invalida: stop 7%, var_24h<0 y var_4h<-2, o 48h sin +10%"
+    },
+    {
+      "ms": 1794932214496,
+      "fecha": "2026-11-17 16:16 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 57.97415730337078,
+      "precio": 3.181,
+      "usd": 184.4158,
+      "comision": 0.184416,
+      "motivo": "[v2] tendencia rota: NEAR var_24h -0.41<0 y var_4h -2.93<-2 · invalida: n/a (salida por regla)",
+      "resultado_pct": -3.4
     }
   ]
 }
