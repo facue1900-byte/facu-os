@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 487.7400458909043,
+  "usdt": 337.7400458909043,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0023220314373769736,
       "entrada": 64534.01,
-      "maximo": 64534.01,
+      "maximo": 65062.82,
       "reglas": {
         "stop": 2.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794915180000
+      "vigilado_hasta": 1794918660000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.1587865044716653,
       "entrada": 943.72,
-      "maximo": 943.72,
+      "maximo": 959.95,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1794915240000
+      "vigilado_hasta": 1794918660000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 45.47799696509863,
+      "entrada": 3.295,
+      "maximo": 3.295,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1794918780000
     }
   },
-  "comisiones_usd": 50.54276199999994,
+  "comisiones_usd": 50.69276199999994,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4468,6 +4490,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: ZEC +6,22% 24 h, 4 h +1,92% sigue subiendo, 1 h +2,78% (no estirada, < +4%), a -0,53% del máximo de 48 h, 150 M/día, volumen 4 h 1,19x (pasa el filtro >= 1x de la lección de las 08:33). Reentrada tras la salida de las 08:33: la tesis volvió a cumplirse. Invalida: stop 5% o 24 h bajo +5% con 4 h roja; ruptura del máximo de 48 h con volumen >= 1,5x confirma."
+    },
+    {
+      "ms": 1794918749620,
+      "fecha": "2026-11-17 12:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 45.47799696509863,
+      "precio": 3.295,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h: NEAR +5,23% 24 h, 4 h +1,89% sigue subiendo, 1 h +0,3% (no estirada), a -0,48% del máximo de 48 h, volumen 4 h 1,54x (pasa el filtro >= 1x; casi ruptura con volumen), 76 M/día. Reglas default. Invalida: stop 5% o 24 h bajo +5% con 4 h roja; ruptura del máximo de 48 h confirma."
     }
   ]
 }
