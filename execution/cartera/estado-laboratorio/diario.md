@@ -824,3 +824,6 @@ Capital ficticio: 1,000.00 USDT.
 
 [v2] BTC libre (var_24h 1.14, var_4h 0.87); NEAR var_24h 5.11>=3, var_4h 1.76>0, var_1h 0.18<=2.5, vs_max_48h -0.09>=-1.5, vol4h 1.43>=1.3; carpeta vacia, 0 entradas hoy · invalida: stop 7%, var_24h<0 y var_4h<-2, o 48h sin +10%
 
+## 2026-11-17 14:19 UTC — nota
+[v2] Sin operar: ya hay 1 posicion abierta (NEARUSDT, -1.15%, stop 3.0625) -> regla max 1 posicion, no se abre nada nuevo. UNIUSDT cumplia entrada (var_24h 5.32, var_4h 4.41, var_1h 0.39, vs_max -0.2, vol 1.65, BTC libre var_24h -0.21 var_4h 1.43) pero bloqueada por tope. NEAR: var_24h 1.75>0, sin tendencia rota; <48h. Sin disparos.
+
