@@ -1,21 +1,23 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-17 12:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-17 13:32 UTC
 
-**Total: 789.01 USD (-21.10%)** desde 2026-10-07 23:06 UTC · USDT libre 337.74 · comisiones 50.69 · 369 operaciones
+**Total: 786.32 USD (-21.37%)** desde 2026-10-07 23:06 UTC · USDT libre 187.74 · comisiones 50.84 · 370 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **789.01** |
+| **Esta carpeta** | **786.32** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 779.74 |
+| hodl btc | 780.28 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ZEC | trading | 150.78 | +0.62% | 911.952 |
-| BTC | trading | 150.68 | +0.55% | 63,243.3 |
-| NEAR | trading | 149.80 | -0.03% | 3.13025 |
+| BTC | trading | 150.78 | +0.62% | 63,243.3 |
+| ZEC | trading | 150.59 | +0.49% | 911.952 |
+| UNI | trading | 149.77 | -0.06% | 5.1091 |
+| NEAR | trading | 147.44 | -1.61% | 3.13215 |
 
 ## Últimas operaciones
 
+- 2026-11-17 13:31 UTC · compra UNI 150.00 USD a 5.378 — Momentum 24 h: UNI +6,04% 24 h, 4 h +2,21% sigue subiendo, 1 h -0,52% (no estirada), a -1,45% del máximo de 48 h, volumen 4 h 1,44x (pasa el
 - 2026-11-17 12:32 UTC · compra NEAR 150.00 USD a 3.295 — Momentum 24 h: NEAR +5,23% 24 h, 4 h +1,89% sigue subiendo, 1 h +0,3% (no estirada), a -0,48% del máximo de 48 h, volumen 4 h 1,54x (pasa el
 - 2026-11-17 11:33 UTC · compra ZEC 150.00 USD a 943.72 — Momentum 24 h: ZEC +6,22% 24 h, 4 h +1,92% sigue subiendo, 1 h +2,78% (no estirada, < +4%), a -0,53% del máximo de 48 h, 150 M/día, volumen 
 - 2026-11-17 11:32 UTC · compra BTC 150.00 USD a 64,534 — Rebote en soporte: BTC a +1,1% del mínimo de 48 h (~63860); la vela de 11 h no hizo mínimo nuevo (64102 > 64080 de las 10 h) y cierra verde 
@@ -25,6 +27,5 @@
 - 2026-11-17 04:32 UTC · compra HYPE 150.00 USD a 70.02 — Momentum 24 h: HYPE +5,47% 24 h, 4 h +1,38% sigue subiendo, 1 h -0,43% (no estirada), a -1,42% del máximo de 48 h, 64,8 M/día. Volumen 4 h f
 - 2026-11-16 03:32 UTC · venta BTC 150.29 USD a 65,019.4 — Regla de 24 h: comprada 15/11 03:33, a las 03:32 del 16/11 sigue en +0,35% (65054), lejos de +8% (~70017) y del stop (62825). Rebote sin fue
 - 2026-11-16 01:32 UTC · venta ZEC 128.12 USD a 889.29 — Invalidación de la tesis de momentum cumplida: 4 h a rojo (-1,49%) con 24 h bajo +5% (+4,76%); 1 h -0,98%, volumen 4 h 0,47x. Se sale antes 
-- 2026-11-15 19:32 UTC · compra ZEC 130.00 USD a 901.45 — Momentum de 24 h: ZEC +5,53% en 24 h, sigue subiendo en 4 h (+0,57%) y no está estirada (1 h +0,55%); par líquido (200 M/día), +12,3% del mí
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
