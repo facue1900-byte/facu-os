@@ -17,6 +17,12 @@ y NO en el Master Plan»). El aviso no decía cuál, así que hubo que buscarlo 
 Caja, Mejoras, id `1db59163…`). El POST de la app al Apps Script se perdió: los otros 7
 movimientos de ese día sí llegaron. La app no mira la respuesta del POST, así que nadie se
 enteró hasta el `--estricto` del día siguiente. El chequeo funcionó: frenó bien.
+No es la primera vez: el 14/10 Mati avisó por WhatsApp «estoy poniendo lo que le pagué a
+Daniel y no me lo toma». Dos veces con pagos a Daniel: mirar si es la categoría o el texto.
+El 17/11 16:11 se le preguntó a Mati por WhatsApp si el pago es real, antes de pasarlo.
+Mati confirmó (16:15). Facu lo pasó con el Apps Script (fila 717, mismo id), app y planilla
+quedaron 692/692 y `efectivo-diario` corrió entero: Bigg, Boss y Peak One volcados ($3.313.460).
+Sigue FAIL: la app sigue sin enterarse cuando el POST falla.
 
 **Fix:** `sincronizar_supabase.py` ahora lista cada movimiento que sobra (fecha, monto, obs,
 cuándo se cargó, id) con `!!!`, así llega al mail Y al Telegram. **Pendiente:** reenviar el
@@ -679,3 +685,9 @@ turno entero (`avIgnorar = avTurno`).
 - La conciliación marcaba ⚠ el pase de $797.246,96 a la CC Bancaria propia (`TRF MO CCDO MISMO`), que se gastó en dos IMP. AFIP cargados en Movimientos. `conciliar.py` cruza un pase `MISMO` contra egresos sobrantes que lo sumen EXACTO (hasta 4); sin suma exacta sigue ⚠.
 - **«La comprobación no cierra por $47.000.000»**: `comprobacion()` sumaba Caja + Banco y dejaba afuera el medio `FCI`, adonde se suscribieron $47 M en octubre. Peor: el PDF le iba a decir a Richi «total disponible» sin esos $47 M. Ahora suma el FCI y lo muestra.
 - Lección: cuando aparece un medio nuevo en Movimientos (FCI), revisar todo lo que suma saldos por medio con una lista fija. Y un control que nunca había visto un FCI no estaba probado contra él.
+
+## 2026-11-17 · El mail de las 20 hs repetía cada cambio 3-4 veces y en inglés
+- **Síntoma:** el mail del 17/11 «Cambios de hoy · Facu» traía 0 cambios nuevos: eran los commits del 16/11 repetidos, en inglés.
+- **Causa:** `active/astronomy/herramientas/al_cerrar.sh` anota en `BITACORA.md` todos los commits desde que abrió la sesión. Con varias sesiones de Claude abiertas a la vez, cada una que cierra los vuelve a anotar. El mail los copiaba en «lo que anotó».
+- **Fix:** el hook no anota un commit que ya está, ni los «Auto …»; el mail ignora esas copias de commits (ya salen en «cambios»), deduplica y traduce con Gemini (si falla, sale en inglés y lo dice). Bitácora limpia: 68 → 29 líneas.
+- **Pendiente:** el estado de Vercel da 403 desde el 16/11 («No pude leer si la web quedó publicada»): el token de la CLI no tiene acceso al proyecto.
