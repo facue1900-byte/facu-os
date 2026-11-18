@@ -685,3 +685,9 @@ turno entero (`avIgnorar = avTurno`).
 - La conciliación marcaba ⚠ el pase de $797.246,96 a la CC Bancaria propia (`TRF MO CCDO MISMO`), que se gastó en dos IMP. AFIP cargados en Movimientos. `conciliar.py` cruza un pase `MISMO` contra egresos sobrantes que lo sumen EXACTO (hasta 4); sin suma exacta sigue ⚠.
 - **«La comprobación no cierra por $47.000.000»**: `comprobacion()` sumaba Caja + Banco y dejaba afuera el medio `FCI`, adonde se suscribieron $47 M en octubre. Peor: el PDF le iba a decir a Richi «total disponible» sin esos $47 M. Ahora suma el FCI y lo muestra.
 - Lección: cuando aparece un medio nuevo en Movimientos (FCI), revisar todo lo que suma saldos por medio con una lista fija. Y un control que nunca había visto un FCI no estaba probado contra él.
+
+## 2026-11-17 · El mail de las 20 hs repetía cada cambio 3-4 veces y en inglés
+- **Síntoma:** el mail del 17/11 «Cambios de hoy · Facu» traía 0 cambios nuevos: eran los commits del 16/11 repetidos, en inglés.
+- **Causa:** `active/astronomy/herramientas/al_cerrar.sh` anota en `BITACORA.md` todos los commits desde que abrió la sesión. Con varias sesiones de Claude abiertas a la vez, cada una que cierra los vuelve a anotar. El mail los copiaba en «lo que anotó».
+- **Fix:** el hook no anota un commit que ya está, ni los «Auto …»; el mail ignora esas copias de commits (ya salen en «cambios»), deduplica y traduce con Gemini (si falla, sale en inglés y lo dice). Bitácora limpia: 68 → 29 líneas.
+- **Pendiente:** el estado de Vercel da 403 desde el 16/11 («No pude leer si la web quedó publicada»): el token de la CLI no tiene acceso al proyecto.
