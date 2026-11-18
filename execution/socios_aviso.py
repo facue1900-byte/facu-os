@@ -326,8 +326,50 @@ def de_persona(de, por_repo):
             donde = "web" if clave == "web" else "astronomy-os"
             rama = "" if c["rama"] == "main" else f" · rama {c['rama']}, sin publicar"
             cambios.append(f"{c['fecha']} · {donde}{rama} · {c['asunto']}")
-        bitacora += [re.sub(r"^- \S+ \S+ · [^·]+ · ", "", l) for l in lineas if f"· {de} ·" in l]
-    return pedidos, cambios, bitacora
+        for l in lineas:
+            if f"· {de} ·" not in l:
+                continue
+            t = re.sub(r"^- \S+ \S+ · [^·]+ · ", "", l)
+            # Las líneas «web: …» / «astronomy-os: …» las escribe al_cerrar.sh copiando cada
+            # commit: ya salen en «cambios». Acá sólo va lo anotado a mano, y una vez.
+            if re.match(r"(web|astronomy-os): ", t) or t in bitacora:
+                continue
+            bitacora.append(t)
+    return pedidos, list(dict.fromkeys(cambios)), bitacora
+
+
+def traducir(lineas, intentos=3):
+    """Gemini a veces da 503 por demanda: se reintenta antes de rendirse."""
+    import time
+    for i in range(intentos):
+        out, ok = _traducir(lineas)
+        if ok or i == intentos - 1:
+            return out, ok
+        time.sleep(20)
+
+
+def _traducir(lineas):
+    """Los commits están en inglés (regla del repo); el mail es para leer, va en castellano.
+    Una sola llamada a Gemini para todas. Si falla, quedan en inglés y el mail lo dice."""
+    if not lineas:
+        return lineas, True
+    try:
+        from execution.gemini import preguntar
+        numeradas = "\n".join(f"{i + 1}. {l}" for i, l in enumerate(lineas))
+        import concurrent.futures as cf
+        pool = cf.ThreadPoolExecutor(1)  # con techo: un Gemini colgado no puede trabar el mail
+        r = pool.submit(preguntar, "Traducí al español rioplatense cada línea, corta y clara, como para un socio "
+                      "que no es programador («member» = alumno, «PR» = pedido de aprobación). Dejá igual fechas, nombres propios, rutas y lo que va "
+                      "antes del segundo «·». Devolvé SÓLO la lista numerada, misma cantidad de líneas.",
+                      numeradas).result(timeout=90)
+        pool.shutdown(wait=False)
+        out = [re.sub(r"^\s*\d+\.\s*", "", l).strip() for l in r.strip().splitlines() if re.match(r"^\s*\d+\.", l)]
+        if len(out) != len(lineas):
+            raise ValueError(f"volvieron {len(out)} líneas de {len(lineas)}")
+        return out, True
+    except (Exception, SystemExit) as e:
+        print(f"!!! no pude traducir los cambios, van en inglés: {e!r}")
+        return lineas, False
 
 
 def estado_web():
@@ -370,19 +412,22 @@ def resumen(send):
             guardar()
         return
 
-    secciones, total, quienes = [], 0, []
+    secciones, total, quienes, sin_traducir = [], 0, [], False
     for de in ("Vlado", "Mateo", "Facu"):
         pedidos, cambios, bitacora = de_persona(de, por_repo)
         if not (pedidos or cambios or bitacora):
             continue
         quienes.append(de)
         total += len(cambios)
+        total_de = len(cambios)
         if pedidos:
             secciones.append((f"📌 {de} dejó un pedido", pedidos))
         if bitacora:
             secciones.append((f"{de} · lo que anotó", bitacora))
         if cambios:
-            secciones.append((f"{de} · cambios ({len(cambios)})", cambios[:40]))
+            cambios, ok = traducir(cambios[:40])
+            sin_traducir |= not ok
+            secciones.append((f"{de} · cambios ({total_de})", cambios))
     if not secciones:
         print("nada nuevo hoy: no sale mail.")
         if send:
@@ -396,6 +441,8 @@ def resumen(send):
                     "ERROR": "OJO: el último deploy de la web FALLÓ; la web sigue con la versión anterior.",
                     "BUILDING": "La web se está publicando ahora.",
                     None: "No pude leer si la web quedó publicada."}.get(web, f"Estado de la web: {web}.")
+    if sin_traducir:
+        resumen_txt += " (Los cambios van en inglés: falló la traducción.)"
     from execution.mail_format import render
     m = render("astronomy", nivel, f"Cambios de hoy · {' y '.join(quienes)}", resumen=resumen_txt,
                secciones=secciones, origen="facu-os/execution/socios_aviso.py")
