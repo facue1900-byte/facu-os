@@ -316,3 +316,19 @@ tabla Categoría · Stock actual · **Nueva categoría** (select) · Cant. a mod
 al toque, sin resumen previo: queda `CONFIRMADA` con su número y el botón rojo **Anular** justo donde
 estaba Guardar, así que no hay que hacer doble click. Ejemplo: novedad 004996842, 280 novillitos →
 novillos en La Camila.
+
+## Dos trampas nuevas (18/11/2026)
+
+- **Los `value` de los `<select>` de la página 1 cambian de sesión en sesión.** En una
+  sesión «Invernada (2)» era `value=23` y en la siguiente el 23 era «Reproducción (9)».
+  Elegir **siempre por texto** (`form_input` con «Invernada (2)») y verificar el texto
+  seleccionado antes de seguir.
+- **Bajar la boleta en PDF sin que lo haga Facu** (probado dos veces): `Administración →
+  Consultar Pagos` → Código SIGAD → ojo (la URL da el `id` del pago,
+  `#!/pagos/ver-boleta/<id>`) → desde la consola, `POST
+  /sigsa/seam/resource/rest/pagos/imprimir-boleta` con **`Content-Type: application/json`**
+  y `{"id":"<id>","cid":"<cid>"}` (urlencoded da *«Requerimiento JSON inválido»*) → `GET
+  /sigsa/reportePdf` devuelve el PDF (~190 KB, empieza en `%PDF-`). Montarlo en un
+  `<a download>` y hacerle **click real** (con el mouse, no con `.click()`): ahí sí
+  llega a `~/Downloads`. A WhatsApp Web entra pisando `HTMLInputElement.prototype.click`
+  para los file inputs + «+ → Document» + `file_upload`.
