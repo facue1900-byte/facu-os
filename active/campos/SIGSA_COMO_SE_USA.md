@@ -307,3 +307,12 @@ y leerlo por captura — el visor del modal de SIGSA no scrollea.
 Los tres del 03/09 quedaron **CERRADOS el 05/09**, completos y con arribo 05/09:
 032517913-9 código **316324** (36) · 032517462-5 código **899142** (69) ·
 032514716-4 código **340655** (155).
+
+## Cambio de categoría (novedad de stock) — 18/11/2026
+
+`Existencias → Novedades → Nueva Novedad` (los submenús se abren con hover). Unidad productiva
+con **Buscar** → Nombre estab. → ✓. Motivo **«Cambio de categoria»** (con `form_input`): aparece la
+tabla Categoría · Stock actual · **Nueva categoría** (select) · Cant. a modificar. **Guardar** confirma
+al toque, sin resumen previo: queda `CONFIRMADA` con su número y el botón rojo **Anular** justo donde
+estaba Guardar, así que no hay que hacer doble click. Ejemplo: novedad 004996842, 280 novillitos →
+novillos en La Camila.
