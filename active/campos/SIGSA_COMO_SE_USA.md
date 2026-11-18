@@ -332,3 +332,12 @@ novillos en La Camila.
   `<a download>` y hacerle **click real** (con el mouse, no con `.click()`): ahí sí
   llega a `~/Downloads`. A WhatsApp Web entra pisando `HTMLInputElement.prototype.click`
   para los file inputs + «+ → Document» + `file_upload`.
+
+### `movimientos/imprimir`: el `nrodte` va SIN dígito verificador (18/11/2026)
+
+`{nrodte:"033023500"}`, no `"033023500-4"`. Con el guion o pegado, el servidor contesta
+*«Ocurrió un error intentando imprimir el DTe»* o *«Movimiento inexistente»*, y eso
+**no** quiere decir impago. El mismo *«Ocurrió un error»* sale con la sesión vencida,
+que pasa en ~1 h. En ese caso se vuelve a entrar por ARCA. Con la boleta paga y la
+sesión viva, contesta `ok:true`. Después, `GET /sigsa/reportePdf` dos veces seguidas
+devuelve los dos PDF; se montan en un `<a download>` cada uno y se les hace click real.
