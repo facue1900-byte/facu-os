@@ -307,3 +307,37 @@ y leerlo por captura — el visor del modal de SIGSA no scrollea.
 Los tres del 03/09 quedaron **CERRADOS el 05/09**, completos y con arribo 05/09:
 032517913-9 código **316324** (36) · 032517462-5 código **899142** (69) ·
 032514716-4 código **340655** (155).
+
+## Cambio de categoría (novedad de stock) — 18/11/2026
+
+`Existencias → Novedades → Nueva Novedad` (los submenús se abren con hover). Unidad productiva
+con **Buscar** → Nombre estab. → ✓. Motivo **«Cambio de categoria»** (con `form_input`): aparece la
+tabla Categoría · Stock actual · **Nueva categoría** (select) · Cant. a modificar. **Guardar** confirma
+al toque, sin resumen previo: queda `CONFIRMADA` con su número y el botón rojo **Anular** justo donde
+estaba Guardar, así que no hay que hacer doble click. Ejemplo: novedad 004996842, 280 novillitos →
+novillos en La Camila.
+
+## Dos trampas nuevas (18/11/2026)
+
+- **Los `value` de los `<select>` de la página 1 cambian de sesión en sesión.** En una
+  sesión «Invernada (2)» era `value=23` y en la siguiente el 23 era «Reproducción (9)».
+  Elegir **siempre por texto** (`form_input` con «Invernada (2)») y verificar el texto
+  seleccionado antes de seguir.
+- **Bajar la boleta en PDF sin que lo haga Facu** (probado dos veces): `Administración →
+  Consultar Pagos` → Código SIGAD → ojo (la URL da el `id` del pago,
+  `#!/pagos/ver-boleta/<id>`) → desde la consola, `POST
+  /sigsa/seam/resource/rest/pagos/imprimir-boleta` con **`Content-Type: application/json`**
+  y `{"id":"<id>","cid":"<cid>"}` (urlencoded da *«Requerimiento JSON inválido»*) → `GET
+  /sigsa/reportePdf` devuelve el PDF (~190 KB, empieza en `%PDF-`). Montarlo en un
+  `<a download>` y hacerle **click real** (con el mouse, no con `.click()`): ahí sí
+  llega a `~/Downloads`. A WhatsApp Web entra pisando `HTMLInputElement.prototype.click`
+  para los file inputs + «+ → Document» + `file_upload`.
+
+### `movimientos/imprimir`: el `nrodte` va SIN dígito verificador (18/11/2026)
+
+`{nrodte:"033023500"}`, no `"033023500-4"`. Con el guion o pegado, el servidor contesta
+*«Ocurrió un error intentando imprimir el DTe»* o *«Movimiento inexistente»*, y eso
+**no** quiere decir impago. El mismo *«Ocurrió un error»* sale con la sesión vencida,
+que pasa en ~1 h. En ese caso se vuelve a entrar por ARCA. Con la boleta paga y la
+sesión viva, contesta `ok:true`. Después, `GET /sigsa/reportePdf` dos veces seguidas
+devuelve los dos PDF; se montan en un `<a download>` cada uno y se les hace click real.
