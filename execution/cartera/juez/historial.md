@@ -87,3 +87,4 @@
 2026-11-17 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-19.61% agresiva=-22.11% laboratorio=-5.14% dca=-5.11% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · BTC vuelve a caer, todos a USDT: nadie gana, sin mail
 2026-11-18 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-19.61% agresiva=-21.90% laboratorio=-4.74% dca=-5.11% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · Agresiva y Laboratorio vuelven a NEAR: nadie gana, sin mail
 2026-11-18 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-19.61% agresiva=-22.25% laboratorio=-4.48% dca=-5.11% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · Agresiva sale de NEAR y ZEC: nadie gana, sin mail
+2026-11-18 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-19.61% agresiva=-22.25% laboratorio=-4.87% dca=-5.11% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · NEAR del Laboratorio cede, nadie opera: nadie gana, sin mail
