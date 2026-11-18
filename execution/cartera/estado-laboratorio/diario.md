@@ -846,3 +846,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-18 00:16 UTC — nota
 [v2] Sin operar: ya hay 1 posicion abierta (NEARUSDT, +2.24%, var_24h 8.03, var_4h 3.78) -> tope de 1 posicion, no se abre nada nuevo. ZECUSDT cumplia casi todo (var_24h 7.01, var_4h 4.2, vs_max -0.97) pero vol 0.92<1.3 y bloqueada por tope. NEAR sin tendencia rota, <48h. Sin disparos.
 
+## 2026-11-18 02:16 UTC — nota
+[v2] Sin operar: ya hay 1 posicion abierta (NEARUSDT, +1.42%, var_24h 5.15, var_4h 0.72, stop 3.14) -> tope de 1 posicion. Ningun par cumpliria entrada igual (vol4h<1.3 en todos salvo BREV, que tiene var_24h 97.7 y vs_max -19.1). BTC libre (var_24h -0.3, var_4h -0.65). NEAR sin tendencia rota, <48h. Sin disparos.
+
