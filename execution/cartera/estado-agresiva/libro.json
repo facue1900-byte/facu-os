@@ -4,54 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 478.93674847093075,
-  "posiciones": {
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 44.37370447142434,
-      "entrada": 3.377,
-      "maximo": 3.413,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794969060000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.15588752379664403,
-      "entrada": 961.27,
-      "maximo": 971.32,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1794969060000
-    }
-  },
-  "comisiones_usd": 51.73455099999993,
+  "usdt": 777.5151847905959,
+  "posiciones": {},
+  "comisiones_usd": 52.03342899999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4564,6 +4519,30 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: +6,49% en 24 h (>= +6%), 4 h +4,53% sigue subiendo, 1 h +1,71% (no estirada), a -1,08% del máximo de 48 h; volumen 0,89x es el punto flojo. Invalida: 24 h < +5% con 4 h roja, o stop 5%."
+    },
+    {
+      "ms": 1794972747393,
+      "fecha": "2026-11-18 03:32 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 44.37370447142434,
+      "precio": 3.384,
+      "usd": 150.1606,
+      "comision": 0.150161,
+      "motivo": "Invalidación de momentum: 24 h cayó a +3,26% (< +5%) con 4 h roja (-0,27%) y volumen 0,83x, a -0,76% del máximo de 48 h. Salgo antes del stop (~3,242), como quedó anotado.",
+      "resultado_pct": 0.21
+    },
+    {
+      "ms": 1794972748235,
+      "fecha": "2026-11-18 03:32 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.15588752379664403,
+      "precio": 954.0,
+      "usd": 148.7167,
+      "comision": 0.148717,
+      "motivo": "Invalidación de momentum: 24 h cayó a +3,43% (< +5%) con 4 h roja (-1,45%) y volumen 0,58x, a -1,99% del máximo de 48 h. Salgo antes del stop (~922,75), como quedó anotado.",
+      "resultado_pct": -0.76
     }
   ]
 }

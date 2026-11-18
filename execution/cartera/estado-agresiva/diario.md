@@ -4744,3 +4744,16 @@ Momentum 24 h: +6,49% en 24 h (>= +6%), 4 h +4,53% sigue subiendo, 1 h +1,71% (n
 ## 2026-11-18 02:32 UTC — nota
 02:31 UTC — Sin disparos, 0 entradas, 0 salidas. Vigilante: NEAR y ZEC 60 min revisados, sin disparos. Cartera 778,23 (-22,18% desde el 07/10, HODL BTC 775,28), 2 posiciones + 478,94 USDT. BTC 4 h -0,32%: sin bloqueo. Mercado: 1 h verde leve pareja (+0,1/+0,8%; BREV -6,9% aparte), 4 h plana/mixta (-3,4/+1,8%; NEAR +1,78%, ZEC +1,03%, SOL +0,89%, ASTER -3,42%), 24 h mixta (BTC +0,03%, ETH -0,38%; NEAR +6,25%, ZEC +5,64%, SOL +4,12%); volumen 4 h 0,31-1,32x, sin interés. Se quedan: NEAR (3,382, +0,15%; 24 h +6,25%, 4 h +1,78% volvió a subir, a -0,91% del máximo de 48 h; stop ~3,242) y ZEC (957,23, -0,42%; 24 h +5,64% recuperó margen sobre el umbral, 4 h +1,03%, a -1,74% del máximo; stop ~922,75): ninguna cumple la invalidación (24 h < +5% con 4 h roja). Sin entradas: ruptura nadie (TRX -0,39% del máximo con 0,86x plano, BNB -1,11% con 1,32x, nadie >= 1,5x); momentum nadie nuevo (SOL +4,12% no llega a +5%); rebote nadie (todos +1,7/+13% arriba del mínimo de 48 h); BREV -6,9% en 1 h tras pump de +80%, descartado. A mirar: NEAR/ZEC fuera si 24 h < +5% con 4 h roja; BNB/TRX ruptura con >= 1,5x; SOL momentum si pasa +6% o 1,5x; sacar NEAR/ZEC ~23:30 del 18/11 si no llegaron a +8%. 2 posiciones.
 
+## 2026-11-18 03:32 UTC — Venta NEARUSDT
+150.16 USD a 3.384 (+0.21% contra la compra).
+
+Invalidación de momentum: 24 h cayó a +3,26% (< +5%) con 4 h roja (-0,27%) y volumen 0,83x, a -0,76% del máximo de 48 h. Salgo antes del stop (~3,242), como quedó anotado.
+
+## 2026-11-18 03:32 UTC — Venta ZECUSDT
+148.72 USD a 954 (-0.76% contra la compra).
+
+Invalidación de momentum: 24 h cayó a +3,43% (< +5%) con 4 h roja (-1,45%) y volumen 0,58x, a -1,99% del máximo de 48 h. Salgo antes del stop (~922,75), como quedó anotado.
+
+## 2026-11-18 03:32 UTC — nota
+03:32 UTC — Sin disparos, 0 entradas, 2 salidas. Vigilante: NEAR y ZEC 60 min revisados, sin disparos. Cartera 777,52 (-22,25% desde el 07/10, HODL BTC 775,23), 100% USDT. BTC 4 h -0,65%: sin bloqueo. Mercado: 1 h verde leve pareja (+0,03/+0,78%; ASTER -0,96%), 4 h roja pareja (-0,13/-5,07%; ASTER -5,07%, ENA -2,88%, HYPE -1,71%, ZEC -1,45%), 24 h mixta (BTC -0,81%, ETH -1,41%; ZEC +3,43%, NEAR +3,26%, SOL +3,01%); volumen 4 h 0,31-0,86x, sin interés (BREV 3,7x aparte). Salidas: NEAR todo a 3,384 (+0,21%): 24 h +3,26% < +5% con 4 h -0,27%, invalidación de momentum. ZEC todo a 954,0 (-0,76%): 24 h +3,43% con 4 h -1,45%, invalidación. Sin entradas: ruptura nadie (TRX -0,32% del máximo de 48 h con 0,64x plano, NEAR -0,76% con 0,83x, nadie >= 1,5x salvo BREV); momentum nadie (nadie con +5% en 24 h salvo BREV, pump +101% a -16% del máximo, descartado); rebote nadie (todos +1,8/+12,7% arriba del mínimo de 48 h). Lección: los momentum de +6/+7% sin volumen sostenido se desinflaron en 4 h; para la próxima, momentum solo con volumen >= 1,2x. A mirar: BTC/BNB rebote si tocan el mínimo de 48 h y la hora siguiente no hace mínimo nuevo con volumen comprador; TRX/SOL/NEAR ruptura del máximo con >= 1,5x; BTC 4 h <= -3% = sin entradas nuevas. 0 posiciones.
+
