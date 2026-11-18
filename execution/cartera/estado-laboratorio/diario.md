@@ -858,3 +858,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-18 08:16 UTC — nota
 [v2] Sin operar: ya hay 1 posicion abierta (NEARUSDT, +1.54%, var_24h 3.55, var_4h -0.68, stop 3.1556) -> tope de 1 posicion. Ningun par cumpliria entrada igual (XRP var_24h 4.3, var_4h 1.85 pero vol4h 1.12<1.3; MMT vol 8.22 pero var_1h/vs_max fuera y movimiento +106% sin sentido de entrada tardia). BTC libre (var_24h 0.47, var_4h 0.34). NEAR sin tendencia rota (var_24h>0), <48h. Sin disparos.
 
+## 2026-11-18 10:17 UTC — nota
+[v2] Sin operar: ya hay 1 posicion abierta (NEARUSDT, +0.51%, var_24h 3.82, var_4h -1.75, stop 3.1556) -> tope de 1 posicion. NEAR sin tendencia rota (var_24h>0), 12h de 48h. Entrada: XRP var_24h 4.85, var_4h 1.73, var_1h 0.26, vs_max -0.48, vol4h 1.3 cumpliria igual pero bloqueada por tope; MMT vol 3.76 pero var_1h 2.92>2.5 y vs_max -6.66. BTC libre (var_24h 0.69, var_4h -0.07). Sin disparos.
+
