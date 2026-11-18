@@ -4796,3 +4796,16 @@ Invalidación de momentum: 24 h cayó a +3,43% (< +5%) con 4 h roja (-1,45%) y v
 ## 2026-11-18 16:32 UTC — nota
 16:32 UTC — Sin disparos, 0 entradas, 0 salidas. Vigilante: sin posiciones. Cartera 777,52 (-22,25% desde el 07/10, HODL BTC 750,61), 100% USDT. BTC 4 h -2,5%: sin bloqueo formal (umbral -3%) pero cerca; tomo la hora como bajista. Mercado: 1 h roja pareja (-1,03/+0,41%), 4 h roja pareja (-0,23/-6,67%; NEAR -3,93%, HYPE -3,99%, BTC -2,5%, ETH -2,41%), 24 h roja/mixta (BTC -1,98%, ETH -1,49%; NEAR +1,52%, XRP +1,39%, ENA -4,05%); volumen 4 h 1,0-1,9x: vuelve el volumen pero vendedor. 14 pares pasan 20 M/día. Sin entradas: rebote nadie (BTC +0,27%, BNB +0,34%, ETH +0,48% del mínimo de 48 h con 1 h -0,75/-1%: siguen haciendo mínimos, sin giro; ENA +1,3% con 1,83x vendedor y 26 M/día); ruptura nadie (TRX -0,52% del máximo con 1,16x, no rompe ni llega a 1,5x); momentum nadie (nadie +5% en 24 h salvo MMT, pump +135% sobre el mínimo, descartado). A mirar: BTC/ETH/BNB rebote si la próxima hora no hace mínimo nuevo de 48 h con volumen >= 1,2x comprador; BTC 4 h <= -3% = sin entradas nuevas. 0 posiciones.
 
+## 2026-11-18 17:32 UTC — Compra ETHUSDT (trading)
+190.00 USD a 1,781.84. Stop 3.5% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: ETH tocó el mínimo de 48 h (1.732,83) en la vela de las 16 UTC y la de las 17 no hizo mínimo nuevo (piso 1.747,8), 1 h +1,66% con 2,0x de volumen y 64% comprador. Invalida: pierde 1.732,83 (stop 3,5% ~1.716, apenas abajo del mínimo). Stop ajustado más cerca que el default, no más lejos.
+
+## 2026-11-18 17:32 UTC — Compra BTCUSDT (trading)
+150.00 USD a 63,507.3. Stop 3.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Rebote en soporte: BTC tocó el mínimo de 48 h (62.279) a las 16 UTC, la vela de las 17 no hizo mínimo nuevo (piso 62.600), 1 h +0,98% con 1,72x y 70% comprador. BTC 4 h -0,89%: sin bloqueo. Invalida: pierde 62.279 (stop 3% ~61.440, abajo del mínimo).
+
+## 2026-11-18 17:32 UTC — nota
+17:31 UTC — Sin disparos, 2 entradas, 0 salidas. Vigilante: sin posiciones previas. BTC 4 h -0,89%: sin bloqueo. Mercado: 1 h verde pareja (+0,9/+2,3%; MMT -9,2% aparte), 4 h roja leve, volumen 4 h 1,1-2,5x con la vela de las 17 mayormente compradora. Se dio el rebote que venía anotado: BTC/ETH/BNB tocaron el mínimo de 48 h en la vela de las 16 y la de las 17 no hizo mínimo nuevo. Entradas: ETH 190 USD a 1.781,84 (2,0x, stop 3,5%), BTC 150 USD a 63.507 (1,72x, stop 3%); ambas invalidan si pierden el mínimo de 48 h (1.732,83 / 62.279). BNB descartada (1,9 M en la hora, poco volumen propio, y ya tengo dos correlacionadas). Ruptura nadie (TRX -0,61% del máximo con 1,13x); momentum nadie (MMT pump, -9% en 1 h, descartada). Riesgo: las dos posiciones son la misma apuesta al rebote del mercado; si BTC 4 h <= -3%, nada nuevo. A mirar: +8% parcial, o salir a las 24 h si no llegan. 2 posiciones, ~44% invertido.
+

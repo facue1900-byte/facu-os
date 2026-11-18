@@ -4,9 +4,54 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 777.5151847905959,
-  "posiciones": {},
-  "comisiones_usd": 52.03342899999993,
+  "usdt": 437.51518479059587,
+  "posiciones": {
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.10652471602388543,
+      "entrada": 1781.84,
+      "maximo": 1781.84,
+      "reglas": {
+        "stop": 3.5,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795023180000
+    },
+    "BTCUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.0023595712618864288,
+      "entrada": 63507.3,
+      "maximo": 63507.3,
+      "reglas": {
+        "stop": 3.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795023180000
+    }
+  },
+  "comisiones_usd": 52.37342899999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4543,6 +4588,30 @@
       "comision": 0.148717,
       "motivo": "Invalidación de momentum: 24 h cayó a +3,43% (< +5%) con 4 h roja (-1,45%) y volumen 0,58x, a -1,99% del máximo de 48 h. Salgo antes del stop (~922,75), como quedó anotado.",
       "resultado_pct": -0.76
+    },
+    {
+      "ms": 1795023159441,
+      "fecha": "2026-11-18 17:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.10652471602388543,
+      "precio": 1781.84,
+      "usd": 190.0,
+      "comision": 0.19,
+      "motivo": "Rebote en soporte: ETH tocó el mínimo de 48 h (1.732,83) en la vela de las 16 UTC y la de las 17 no hizo mínimo nuevo (piso 1.747,8), 1 h +1,66% con 2,0x de volumen y 64% comprador. Invalida: pierde 1.732,83 (stop 3,5% ~1.716, apenas abajo del mínimo). Stop ajustado más cerca que el default, no más lejos."
+    },
+    {
+      "ms": 1795023172161,
+      "fecha": "2026-11-18 17:32 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "trading",
+      "cantidad": 0.0023595712618864288,
+      "precio": 63507.3,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Rebote en soporte: BTC tocó el mínimo de 48 h (62.279) a las 16 UTC, la vela de las 17 no hizo mínimo nuevo (piso 62.600), 1 h +0,98% con 1,72x y 70% comprador. BTC 4 h -0,89%: sin bloqueo. Invalida: pierde 62.279 (stop 3% ~61.440, abajo del mínimo)."
     }
   ]
 }
