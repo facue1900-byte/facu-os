@@ -698,3 +698,11 @@ turno entero (`avIgnorar = avTurno`).
 - **Fix:** Facu revinculó con código de emparejamiento (`/instance/connect/astronomy_01?number=5491124005565`), se reenviaron los 4 recordatorios con el texto aprobado (entregados) y quedó el vigía `execution/vigia_bot_whatsapp.py` (Telegram cada 10 min, desde la Mac).
 - **Del mismo día:** el modelo dice «se lo paso al equipo» y NO llama a la tool de derivar (2 de 3 veces). Más prompt no lo arregla: v10 deriva por código si la respuesta promete el pase y no hubo derivación. Y en n8n un nodo corre por CADA fila del anterior: el aviso al grupo salió repetido 60 veces (v8b, `executeOnce`).
 - **Pendiente:** `AstroRecordator1` corta todo si falla un envío (un teléfono roto bloquea a los demás).
+
+## 2026-11-18 (noche) · Bot: la clase de prueba la da el bot, banco de pruebas y fases 3 y 4
+- **Síntoma (banco de pruebas, antes de publicar):** en 1 de 4 charlas el modelo escribió un link de clase de prueba de memoria (`astronomyofficial.com/claseprueba`, no existe) sin llamar a la tool. Y prometía «alguien del equipo te va a escribir» sin derivar.
+- **Causa:** es lo mismo de la tarde: el modelo no llama la tool de forma confiable, y más prompt no alcanza.
+- **Fix:** red por código después de `limpiar_output`. `validar_links` borra todo link de astronomyofficial.com que no esté en la lista blanca; si la respuesta habla del link de la prueba sin uno real, `pedir_link_prueba` lo pide a la web y lo agrega. La red de derivar también agarra «alguien del equipo te va a escribir».
+- **El code review de la web encontró la carrera** de chequear y después insertar (dos mensajes seguidos = dos links, y el cupo se pasaba). Ahora decide una función de la base con lock (`clase_gratis_bot.sql`).
+- **Trampa de n8n:** `docker cp` de un archivo con mode 600 de root → `n8n import:credentials` da EACCES y **el archivo con la clave queda en /tmp del contenedor**. Hay que hacer `chown node` antes y borrarlo con `docker exec -u root`.
+- **Trampa del banco:** el chequeo de tools leía `intermediateSteps` del agente, que en n8n v3.1 no llega; daba «no usó la tool» con la tool usada. Ahora lee las tools de `chat_history` (sesión `banco:<jid>`). Un chequeo que dice «no» por no poder ver es tan malo como uno que dice «sí».
