@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.10652471602388543,
       "entrada": 1781.84,
-      "maximo": 1813.59,
+      "maximo": 1817.57,
       "reglas": {
         "stop": 3.5,
         "trail": 5.0,
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795095060000
+      "vigilado_hasta": 1795098660000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795095060000
+      "vigilado_hasta": 1795098660000
     },
     "PEPEUSDT": {
       "nivel": "trading",
       "cantidad": 37556390.977443606,
       "entrada": 3.99e-06,
-      "maximo": 3.99e-06,
+      "maximo": 4.01e-06,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795095180000
+      "vigilado_hasta": 1795098660000
     }
   },
   "comisiones_usd": 52.52342899999992,
