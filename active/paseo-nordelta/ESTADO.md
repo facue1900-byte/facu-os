@@ -3,6 +3,16 @@
 Última actualización: 2026-11-10 (revisión del Master Plan); antes 2026-11-02 (bloque de noviembre: memoria `retomar-cierre-noviembre-paseo`). Lo que sigue después de
 «Historia al 27/07» quedó como registro: varios números de ahí ya cambiaron.
 
+## Para el cierre de noviembre (anotado 19/11/2026)
+
+- **ARBA IIBB 08/2026: $227.741,90, pagado el 19/11 desde el Banco Macro de MAHNI**, monto
+  exacto del VEP (dato de Facu). Era mora temprana: ARBA reclamaba $227.099,20 el 16/11 y el
+  VEP salió $642,70 más por intereses. **No se cargó a mano en Movimientos**: entra con el
+  extracto de Macro de noviembre. Al conciliar, clasificarlo como impuesto, no como gasto de
+  obra. PDFs en `~/Desktop/Paseo Nordelta/Documentación/Impuestos/`.
+- **Gastos Obra, fila 117 (permiso de obra 07/10): corregida el 18/11** de $690.961 a
+  $15.690.961. La fórmula restaba D116, que es el aporte de $15.000.000 de Richi.
+
 ## Cierre del 16/11/2026
 
 - ✅ **Banco Macro OCTUBRE conciliado: CIERRA** (NETO −$16.792.458,00 al centavo). El cierre
