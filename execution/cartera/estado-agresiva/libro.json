@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 437.51518479059587,
+  "usdt": 287.51518479059587,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795091460000
+      "vigilado_hasta": 1795095060000
     },
     "BTCUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795091460000
+      "vigilado_hasta": 1795095060000
+    },
+    "PEPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 37556390.977443606,
+      "entrada": 3.99e-06,
+      "maximo": 3.99e-06,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795095180000
     }
   },
-  "comisiones_usd": 52.37342899999992,
+  "comisiones_usd": 52.52342899999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4612,6 +4634,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: BTC tocó el mínimo de 48 h (62.279) a las 16 UTC, la vela de las 17 no hizo mínimo nuevo (piso 62.600), 1 h +0,98% con 1,72x y 70% comprador. BTC 4 h -0,89%: sin bloqueo. Invalida: pierde 62.279 (stop 3% ~61.440, abajo del mínimo)."
+    },
+    {
+      "ms": 1795095139648,
+      "fecha": "2026-11-19 13:32 UTC",
+      "lado": "buy",
+      "par": "PEPEUSDT",
+      "nivel": "trading",
+      "cantidad": 37556390.977443606,
+      "precio": 3.99e-06,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h: PEPE +6,13% en 24 h, +5,01% en 4 h, 1 h -1,0% (no estirada), volumen 4 h 4,17x; BTC 4 h -0,1% sin bloqueo. Invalida: cierre de 1 h abajo de 0,00000388 (mínimo de la vela del impulso de las 12 UTC) o stop 5%."
     }
   ]
 }
