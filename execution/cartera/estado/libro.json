@@ -27,9 +27,32 @@
       }
     }
   },
-  "usdt": 803.8957499502694,
-  "posiciones": {},
-  "comisiones_usd": 3.039317000000001,
+  "usdt": 763.8957499502694,
+  "posiciones": {
+    "MEGAUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 675.7990867579908,
+      "entrada": 0.05913,
+      "maximo": 0.05913,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795090080000
+    }
+  },
+  "comisiones_usd": 3.079317000000001,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1194,6 +1217,18 @@
       "comision": 0.228686,
       "motivo": "Stop automático en 63,673.5 (entrada 83,446.01, máximo 84,898).",
       "resultado_pct": -23.69
+    },
+    {
+      "ms": 1795090023840,
+      "fecha": "2026-11-19 12:07 UTC",
+      "lado": "buy",
+      "par": "MEGAUSDT",
+      "nivel": "riesgo",
+      "cantidad": 675.7990867579908,
+      "precio": 0.05913,
+      "usd": 40.0,
+      "comision": 0.04,
+      "motivo": "Tesis: momentum de riesgo. MEGA cumple la condición fijada en ciclos previos: pasó los 5 M de volumen (5,4 M), a 1,1% del máximo de 90 d, 7d +26,8%, 30d +36,2%, 1d +5,4% con vol anual 88% (no es vela vertical). Mercado general bajista, por eso sólo 5% y sólo esta. Invalida: perder el stop de 15%, que el volumen vuelva a caer bajo 5 M de forma sostenida con el precio alejándose del máximo, o 14 días sin moverse."
     }
   ]
 }
