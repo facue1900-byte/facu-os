@@ -376,7 +376,13 @@ def _traducir(lineas):
 def estado_web():
     """Cómo quedó producción, del último deploy de Vercel. None si no se pudo leer."""
     try:
-        tok = json.load(open(pathlib.Path.home() / "Library/Application Support/com.vercel.cli/auth.json"))["token"]
+        # El token del CLI dura horas y sólo lo renueva el propio CLI al usarse: leído directo
+        # del archivo daba 403 las noches que nadie había corrido `vercel` (14, 16 y 17/11).
+        auth = pathlib.Path.home() / "Library/Application Support/com.vercel.cli/auth.json"
+        if json.load(open(auth)).get("expiresAt", 0) < datetime.now().timestamp() + 300:
+            subprocess.run([str(NODE.parent / "vercel"), "whoami"], capture_output=True, timeout=60,
+                           env={**os.environ, "PATH": f"{NODE.parent}:{os.environ.get('PATH', '')}"})
+        tok = json.load(open(auth))["token"]
         prj = json.load(open(REPOS["web"] / ".vercel/project.json"))
         url = (f"https://api.vercel.com/v6/deployments?teamId={prj['orgId']}&projectId={prj['projectId']}"
                "&target=production&limit=1")
