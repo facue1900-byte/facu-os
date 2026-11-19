@@ -1,21 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-19 14:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-19 15:32 UTC
 
-**Total: 778.81 USD (-22.12%)** desde 2026-10-07 23:06 UTC · USDT libre 287.52 · comisiones 52.52 · 381 operaciones
+**Total: 770.41 USD (-22.96%)** desde 2026-10-07 23:06 UTC · USDT libre 430.84 · comisiones 52.67 · 382 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **778.81** |
+| **Esta carpeta** | **770.41** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 768.41 |
+| hodl btc | 760.20 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| ETH | trading | 192.80 | +1.58% | 1,726.69 |
-| BTC | trading | 150.89 | +0.69% | 61,602.1 |
-| PEPE | trading | 147.60 | -1.50% | 3.81e-06 |
+| ETH | trading | 190.30 | +0.26% | 1,726.69 |
+| BTC | trading | 149.28 | -0.38% | 61,602.1 |
 
 ## Últimas operaciones
 
+- 2026-11-19 15:32 UTC · venta PEPE 143.47 USD a 3.82e-06 — Tesis de momentum invalidada: perdió 0,00000388 (mínimo de la vela del impulso), cotiza 0,00000381 pegado al stop; 24 h cayó a +3,23% y 4 h 
 - 2026-11-19 13:32 UTC · compra PEPE 150.00 USD a 3.99e-06 — Momentum 24 h: PEPE +6,13% en 24 h, +5,01% en 4 h, 1 h -1,0% (no estirada), volumen 4 h 4,17x; BTC 4 h -0,1% sin bloqueo. Invalida: cierre d
 - 2026-11-18 17:32 UTC · compra BTC 150.00 USD a 63,507.3 — Rebote en soporte: BTC tocó el mínimo de 48 h (62.279) a las 16 UTC, la vela de las 17 no hizo mínimo nuevo (piso 62.600), 1 h +0,98% con 1,
 - 2026-11-18 17:32 UTC · compra ETH 190.00 USD a 1,781.84 — Rebote en soporte: ETH tocó el mínimo de 48 h (1.732,83) en la vela de las 16 UTC y la de las 17 no hizo mínimo nuevo (piso 1.747,8), 1 h +1
@@ -25,6 +25,5 @@
 - 2026-11-17 23:32 UTC · compra NEAR 150.00 USD a 3.377 — Momentum 24 h con margen y volumen: +6,96% en 24 h (>= +6%, cumple la lección de la tarde), 4 h +5,79%, 1 h +1,72% (no estirada), volumen 4 
 - 2026-11-17 16:32 UTC · venta ZEC 148.73 USD a 936.67 — Invalidación de la tesis de momentum: 24 h cayó a +4,67% (< +5%) y 4 h sigue roja (-1,33%) con volumen 2,17x vendedor, a -2,54% del máximo d
 - 2026-11-17 16:32 UTC · venta BTC 148.34 USD a 63,881.7 — Invalidación del rebote en soporte: BTC perdió el piso de ~63860 (precio 63846; el mínimo de 48 h bajó a ~63330, o sea hizo mínimo nuevo aba
-- 2026-11-17 15:32 UTC · venta UNI 148.87 USD a 5.343 — Invalidación de la tesis de momentum: 24 h cayó a +4,37% (< +5%) y 4 h se puso roja (-0,41%), 1 h -0,82%, a -1,98% del máximo de 48 h. Salgo
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
