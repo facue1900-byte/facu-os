@@ -888,3 +888,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-19 04:17 UTC — nota
 [v2] Sin operar: 1 posicion abierta (NEARUSDT, +3.18%, var_24h 0.95>=0, var_4h 2.34, stop 3.1556) -> tope de 1 posicion; tendencia rota no se cumple, ~30h de 48h. BTC libre (var_24h -1.74, var_4h 0.18). Ningun par cumpliria entrada (var_24h<3 salvo MMT: var_1h 6.07>2.5, vs_max -20.4). Sin disparos.
 
+## 2026-11-19 06:17 UTC — nota
+[v2] Sin operar: 1 posicion abierta (NEARUSDT, +3.03%, var_24h 0.77>=0, var_4h 2.19, stop 3.158) -> tope de 1 posicion; tendencia rota no se cumple, ~32h de 48h. BTC libre (var_24h -1.73, var_4h 1.43). Ningun par cumpliria entrada (var_24h<3 en todos; MMT var_4h -10.86). Sin disparos.
+
