@@ -912,3 +912,9 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-19 20:16 UTC — nota
 [v2] Sin operar: 1 posicion abierta (NEARUSDT, -1.39%, var_24h -0.34<0 pero var_4h -0.21 no <-2 -> tendencia rota no se cumple, stop 3.19884) -> tope de 1 posicion; ~46h de 48h (abierta 17/11 22:16 UTC), la salida por tiempo cae en el ciclo de las 22:16. BTC libre (var_24h -0.56, var_4h -0.79). Ningun par cumpliria entrada (MMT var_24h 13.93 pero var_4h -0.42<0 y vs_max -10.92; resto var_24h<3). Sin disparos.
 
+## 2026-11-19 21:32 UTC — Stop NEARUSDT (vigilante)
+183.62 USD a 3.19884 (-3.12%). Stop automático en 3.19884 (entrada 3.302, máximo 3.477).
+
+## 2026-11-19 22:16 UTC — nota
+[v2] Sin operar: stop de NEARUSDT salto 21:32 UTC (-3.12%), carpeta en USDT. Ningun par cumple entrada (MMT var_24h 17.09 pero var_4h -11.23<0, vs_max -13.94; resto var_24h<3). BTC var_4h -1.73 < -1.5 -> filtro de mercado cerrado igual. 1 disparo.
+
