@@ -14,8 +14,8 @@ Dos modos (los dispara launchd, ver execution/launchd/com.facu.socios-*.plist):
          «Auto publish: …». Vercel está en Hobby, que es de una sola persona: sólo deploya si el
          commit de arriba es de Facu (probado 13/11/2026, también por `vercel deploy`).
          Si lo de Vlado no compila, Vercel deja la web como estaba y el mail lo dice.
-      3. MATEO PASTRANA PIDE OK (Facu, 16/11/2026): si en `main` hay commits sin publicar de
-         alguien que no es Facu ni Vlado, se SACAN de main con un revert de Facu y vuelven como
+      3. LOS DEMÁS PIDEN OK (Facu, 16/11/2026; Mateo publica solo desde el 18/11): si en `main`
+         hay commits sin publicar de alguien que no está en PUBLICAN_SOLOS, se SACAN de main con un revert de Facu y vuelven como
          PR (rama <persona>/directo-<sha>), con un Telegram a Facu. Frenarlos no alcanzaba: el
          primer commit de Facu encima los publicaba (code-reviewer, 16/11). Cada PR abierto de Mateo también le llega por Telegram; Facu lo
          aprueba diciéndole a su Claude «aprobá el PR N» (merge commit → lo publica Vercel).
@@ -55,10 +55,11 @@ REMOTO_WEB = "git@github.com:facue1900-byte/astronomy-members.git"
 FACU = re.compile(r"facue1900|^facu$", re.I)
 VLADO = re.compile(r"vlad", re.I)
 MATEO = re.compile(r"pastrana", re.I)  # Mateo Pastrana; "mateo" solo también es Guini
-# Los que publican sin pedir permiso (Facu, 13/11/2026). Cualquier otro —Mateo Pastrana desde
-# el 16/11/2026— trabaja en una rama, abre un PR y lo publica Facu: «que me pida autorización».
-PUBLICAN_SOLOS = ("Facu", "Vlado")
-GITHUB_SOLOS = ("facue1900-byte", "vladinic-macos")
+# Los que publican sin pedir permiso: Facu y Vlado (13/11/2026), Mateo Pastrana desde el
+# 18/11/2026 (Facu: «hacé que pueda como Vlado»; del 16 al 18/11 pedía OK por PR). Cualquier
+# otro trabaja en una rama, abre un PR y lo publica Facu.
+PUBLICAN_SOLOS = ("Facu", "Vlado", "Mateo")
+GITHUB_SOLOS = ("facue1900-byte", "vladinic-macos", "mateopastranadj-ui")
 REPO_WEB = "facue1900-byte/astronomy-members"
 GH = pathlib.Path.home() / ".local/gh/bin/gh"
 MAIL_VLADO = "vladimir.nadinic@gmail.com"
