@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 619.3707157059755,
+  "usdt": 499.3707157059755,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0023701011385500862,
       "entrada": 63225.15,
-      "maximo": 63225.15,
+      "maximo": 63301.14,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795113180000
+      "vigilado_hasta": 1795116660000
+    },
+    "UNIUSDT": {
+      "nivel": "trading",
+      "cantidad": 23.828264758497316,
+      "entrada": 5.031,
+      "maximo": 5.031,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795116780000
     }
   },
-  "comisiones_usd": 53.15576599999992,
+  "comisiones_usd": 53.27576599999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4650,6 +4672,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: BTC tocó el mínimo de 48 h (62.227,8 en la vela de 17 UTC) y la de 18 UTC no hizo mínimo nuevo (mín 62.662, va 63.255, 1 h +0,78%), volumen 4 h 1,43x; BTC 4 h -0,5% sin bloqueo. Invalida: cierre de 1 h abajo de 62.228 o stop 5%."
+    },
+    {
+      "ms": 1795116726144,
+      "fecha": "2026-11-19 19:32 UTC",
+      "lado": "buy",
+      "par": "UNIUSDT",
+      "nivel": "trading",
+      "cantidad": 23.828264758497316,
+      "precio": 5.031,
+      "usd": 120.0,
+      "comision": 0.12,
+      "motivo": "Rebote en soporte: UNI tocó el mínimo de 48 h (4,901-4,905 en las velas de 15 y 17 UTC), la de 18 UTC cerró 5,007 arriba de 4,97 sin perder 4,901 y la de 19 UTC no hace mínimo nuevo (mín 4,99), 4 h +1,62%; BTC 4 h -0,6% sin bloqueo. Tamaño reducido (120) por ser mediana (25 M/día). Invalida: cierre de 1 h abajo de 4,901 o stop 5%."
     }
   ]
 }

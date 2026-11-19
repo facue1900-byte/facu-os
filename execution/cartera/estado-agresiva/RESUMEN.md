@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-19 18:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-19 19:32 UTC
 
-**Total: 769.26 USD (-23.07%)** desde 2026-10-07 23:06 UTC · USDT libre 619.37 · comisiones 53.16 · 385 operaciones
+**Total: 767.86 USD (-23.21%)** desde 2026-10-07 23:06 UTC · USDT libre 499.37 · comisiones 53.28 · 386 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **769.26** |
+| **Esta carpeta** | **767.86** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 759.90 |
+| hodl btc | 753.06 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 149.89 | +0.02% | 60,063.9 |
+| BTC | trading | 148.54 | -0.88% | 60,136.1 |
+| UNI | trading | 119.95 | +0.06% | 4.77945 |
 
 ## Últimas operaciones
 
+- 2026-11-19 19:32 UTC · compra UNI 120.00 USD a 5.031 — Rebote en soporte: UNI tocó el mínimo de 48 h (4,901-4,905 en las velas de 15 y 17 UTC), la de 18 UTC cerró 5,007 arriba de 4,97 sin perder 
 - 2026-11-19 18:32 UTC · compra BTC 150.00 USD a 63,225.2 — Rebote en soporte: BTC tocó el mínimo de 48 h (62.227,8 en la vela de 17 UTC) y la de 18 UTC no hizo mínimo nuevo (mín 62.662, va 63.255, 1 
 - 2026-11-19 17:33 UTC · venta ETH 189.80 USD a 1,781.73 — Salida por tiempo: 24 h sin llegar a +8% ni al stop; rebote en soporte plano (~0%, 4 h -1,68%). Se rota a USDT.
 - 2026-11-19 17:33 UTC · venta BTC 149.07 USD a 63,178.5 — Salida por tiempo: 24 h (desde 17:32 del 18/11) sin llegar a +8% ni al stop; rebote en soporte sin continuación (-0,6%, 4 h -1,32%). Se rota
@@ -23,6 +25,5 @@
 - 2026-11-18 17:32 UTC · compra ETH 190.00 USD a 1,781.84 — Rebote en soporte: ETH tocó el mínimo de 48 h (1.732,83) en la vela de las 16 UTC y la de las 17 no hizo mínimo nuevo (piso 1.747,8), 1 h +1
 - 2026-11-18 03:32 UTC · venta ZEC 148.72 USD a 954 — Invalidación de momentum: 24 h cayó a +3,43% (< +5%) con 4 h roja (-1,45%) y volumen 0,58x, a -1,99% del máximo de 48 h. Salgo antes del sto
 - 2026-11-18 03:32 UTC · venta NEAR 150.16 USD a 3.384 — Invalidación de momentum: 24 h cayó a +3,26% (< +5%) con 4 h roja (-0,27%) y volumen 0,83x, a -0,76% del máximo de 48 h. Salgo antes del sto
-- 2026-11-17 23:32 UTC · compra ZEC 150.00 USD a 961.27 — Momentum 24 h: +6,49% en 24 h (>= +6%), 4 h +4,53% sigue subiendo, 1 h +1,71% (no estirada), a -1,08% del máximo de 48 h; volumen 0,89x es e
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
