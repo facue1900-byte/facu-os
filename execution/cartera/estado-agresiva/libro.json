@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795077060000
+      "vigilado_hasta": 1795080660000
     },
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0023595712618864288,
       "entrada": 63507.3,
-      "maximo": 63879.0,
+      "maximo": 63941.43,
       "reglas": {
         "stop": 3.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795077060000
+      "vigilado_hasta": 1795080660000
     }
   },
   "comisiones_usd": 52.37342899999992,
