@@ -4,35 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 499.3707157059755,
+  "usdt": 646.245807418688,
   "posiciones": {
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.0023701011385500862,
-      "entrada": 63225.15,
-      "maximo": 63301.14,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795116660000
-    },
     "UNIUSDT": {
       "nivel": "trading",
       "cantidad": 23.828264758497316,
       "entrada": 5.031,
-      "maximo": 5.031,
+      "maximo": 5.061,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795116780000
+      "vigilado_hasta": 1795120260000
     }
   },
-  "comisiones_usd": 53.27576599999992,
+  "comisiones_usd": 53.42278799999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4684,6 +4662,18 @@
       "usd": 120.0,
       "comision": 0.12,
       "motivo": "Rebote en soporte: UNI tocó el mínimo de 48 h (4,901-4,905 en las velas de 15 y 17 UTC), la de 18 UTC cerró 5,007 arriba de 4,97 sin perder 4,901 y la de 19 UTC no hace mínimo nuevo (mín 4,99), 4 h +1,62%; BTC 4 h -0,6% sin bloqueo. Tamaño reducido (120) por ser mediana (25 M/día). Invalida: cierre de 1 h abajo de 4,901 o stop 5%."
+    },
+    {
+      "ms": 1795120349626,
+      "fecha": "2026-11-19 20:32 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.0023701011385500862,
+      "precio": 62032.0,
+      "usd": 147.0221,
+      "comision": 0.147022,
+      "motivo": "Tesis de rebote en soporte invalidada: BTC rompió el mínimo de 48 h que la sostenía (62.227,8) e hizo mínimo nuevo en 61.760 en la vela de 20 UTC, cotiza ~61.8-62.0k abajo de la invalidación 62.228; 1 h -0,69%, 4 h -1,33%. La vela no cerró, pero el soporte se perdió: el rebote no existe y esperar es vender más cerca del stop (mismo criterio que PEPE 15:32).",
+      "resultado_pct": -1.89
     }
   ]
 }
