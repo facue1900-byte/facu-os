@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Vigía del bot de WhatsApp de Astronomy: cada 10 minutos, si el número 11 2400-5565 se desconecta,
+  avisa a Facu por Telegram (y cada 2 h mientras siga caído; avisa también cuando vuelve).
+  Script: execution/vigia_bot_whatsapp.py (18/11/2026: el bot estuvo caído desde las 17:56 sin que
+  nadie se enterara y no salieron los recordatorios de las 18:00).
+
+  Instalar:
+    cp ~/facu-os/execution/launchd/com.facu.vigia-bot-whatsapp.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.vigia-bot-whatsapp.plist
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.vigia-bot-whatsapp</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>vigia-bot-whatsapp</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/vigia_bot_whatsapp.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+    <key>StartInterval</key>
+    <integer>600</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/vigia-bot-whatsapp.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/vigia-bot-whatsapp.log</string>
+</dict>
+</plist>
