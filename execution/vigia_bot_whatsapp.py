@@ -12,6 +12,13 @@ instancia `astronomy_01` en Evolution.
   - El servidor no responde dos veces seguidas → aviso (una sola falla suele ser la red de la Mac).
 Si la Mac está apagada no avisa nada: eso lo marca el radar (tareas.jsonl, vía correr.sh).
 
+19/11/2026: hay un segundo vigía EN EL SERVIDOR (`execution/vps/vigia_vps.py`, cron cada 5 min en
+/root/vigia/), que además detecta el bot «sordo» (conectado sin mensajes entrantes) y contenedores
+caídos, y sigue mirando con la Mac apagada. Como el token de Jarvis no va al servidor, lo que ése
+detecta queda en una cola y ESTE script lo retransmite por Telegram en cada corrida
+(`--pendientes`). Si algún día el servidor tiene su propio bot de alertas, la cola queda vacía y
+esto no hace nada. Este vigía sigue prendido igual: si muere el servidor entero, avisa la Mac.
+
     .venv/bin/python execution/vigia_bot_whatsapp.py            # chequea y avisa
     .venv/bin/python execution/vigia_bot_whatsapp.py --probar   # muestra el estado, sin avisar
 """
@@ -19,6 +26,7 @@ import argparse
 import json
 import os
 import pathlib
+import shlex
 import subprocess
 import urllib.parse
 import urllib.request
@@ -41,6 +49,26 @@ def estado_instancia():
     except Exception as e:
         print(f"sin respuesta del servidor: {e!r}")
         return None
+
+
+def retransmitir_cola():
+    """Manda por Telegram lo que el vigía del servidor dejó encolado. Lo que no sale, vuelve a la cola."""
+    try:
+        r = subprocess.run(["ssh", "-o", "ConnectTimeout=20", "-o", "BatchMode=yes", "astro-bot",
+                            "python3 /root/vigia/vigia.py --pendientes"], capture_output=True, text=True, timeout=90)
+    except Exception as e:
+        print(f"no pude leer la cola del servidor: {e!r}")
+        return
+    for linea in r.stdout.splitlines():
+        try:
+            texto = json.loads(linea)["texto"]
+        except Exception:
+            continue
+        ok = telegram(f"[servidor] {texto}")
+        print(f"cola del servidor: {'enviado' if ok else 'FALLÓ, vuelve a la cola'}: {texto[:60]}")
+        if not ok:
+            subprocess.run(["ssh", "-o", "BatchMode=yes", "astro-bot",
+                            "python3 /root/vigia/vigia.py --encolar " + shlex.quote(texto)], capture_output=True, timeout=60)
 
 
 def telegram(texto):
@@ -108,6 +136,8 @@ def main():
         return
     if texto and not telegram(texto):
         nuevo.pop("ultimo_aviso", None)  # no se perdió: se reintenta en la próxima corrida
+    if estado is not None:
+        retransmitir_cola()
     ESTADO.parent.mkdir(parents=True, exist_ok=True)
     ESTADO.write_text(json.dumps(nuevo))
     if estado is None and nuevo.get("sin_respuesta", 0) >= 2:
