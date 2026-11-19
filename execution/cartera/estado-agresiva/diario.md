@@ -4888,3 +4888,16 @@ Tesis de momentum invalidada: perdió 0,00000388 (mínimo de la vela del impulso
 ## 2026-11-19 16:32 UTC — nota
 16:31 UTC — Sin disparos, 0 entradas, 0 salidas. Vigilante: BTC y ETH sin disparos (60 min). Cartera 768,95 (-23,1% desde el 07/10, HODL BTC 757,65), 430,84 USDT + 2 posiciones (~44% invertido). BTC 4 h -1,32%: sin bloqueo. Velas de 1 h: BTC cierre 15 UTC 63.103 (lejos de 62.062), ETH 1.781,89 (lejos de 1.732,83). Posiciones: BTC 63.053 (-0,72%, stop 61.602) a +1,56% del mínimo de 48 h; ETH 1.777,43 (-0,25%, stop 1.726,69) a +2,56% del mínimo. Tesis vigente, se mantienen; stops sin tocar. Salida por tiempo a las 17:32 del 19/11 si no llegan a +8% (próxima pasada). Mercado: 1 h plana pareja (-0,37/+0,34%; MMT +5,06% aparte), 4 h roja pareja (BTC -1,32%, NEAR -3,97%, UNI -3,52%, ZEC -3,04%, PEPE -5,47%), 24 h plana; volumen 4 h 1,05-2,19x (XRP 2,19x, UNI 2,99x, ambos cayendo). 13 pares pasan 20 M/día. Sin entradas: ruptura nadie (todos -1,2% o más del máximo de 48 h); momentum nadie (MMT 24 h +7,94% pero 1 h +5,06% estirada y +138% sobre el mínimo, pump descartado); rebote: UNI en +1,27% del mínimo de 48 h y la vela de 16 UTC (mín 4,931) no rompió el mínimo de las 15 (4,901), pero es mediana (24 M/día, no 'grande') con volumen vendedor 2,99x y la hora no cerró — se espera confirmación; TRX +1,08% del mínimo todavía haciendo mínimos. A mirar: BTC/ETH salir a las 17:32 si no llegan a +8%; BTC abajo de 62.062 / ETH abajo de 1.732,83 = salir; UNI rebote si cierra 1 h arriba de 4,97 sin perder 4,901; BTC 4 h <= -3% = sin entradas nuevas. 2 posiciones.
 
+## 2026-11-19 17:33 UTC — Venta BTCUSDT
+149.07 USD a 63,178.5 (-0.52% contra la compra).
+
+Salida por tiempo: 24 h (desde 17:32 del 18/11) sin llegar a +8% ni al stop; rebote en soporte sin continuación (-0,6%, 4 h -1,32%). Se rota a USDT.
+
+## 2026-11-19 17:33 UTC — Venta ETHUSDT
+189.80 USD a 1,781.73 (-0.01% contra la compra).
+
+Salida por tiempo: 24 h sin llegar a +8% ni al stop; rebote en soporte plano (~0%, 4 h -1,68%). Se rota a USDT.
+
+## 2026-11-19 17:33 UTC — nota
+17:33 UTC — Sin disparos, 0 entradas, 2 salidas. Vigilante: BTC y ETH sin disparos (61 min). SALIDAS por tiempo (24 h sin +8% ni stop, regla de rotación): BTC todo a 63.178,5 (-0,52%, 149,07 USD) y ETH todo a 1.781,73 (-0,01%, 189,80 USD). La tesis de rebote en soporte del 18/11 no tuvo continuación. Cartera ~769 USD (-23,1% desde el 07/10, HODL BTC 758,65), 100% USDT. BTC 4 h -1,32%: sin bloqueo. Mercado: 1 h verde pareja (+0,29/+2,01%, rebote tras 4 h rojas -0,1/-3,53%), 24 h plana; volumen 4 h 1,3-3,5x (vendedor en las 4 h). 13 pares pasan 20 M/día. Sin entradas: ruptura nadie (el más cerca TRX -0,92% del máximo de 48 h con 1,42x, no llega a 1,5x); momentum nadie (MMT 24 h +16%, 4 h +30%, +115% sobre el mínimo — pump, descartado como en pasadas anteriores); rebote nadie confirmado (BTC hizo mínimo nuevo en la vela de 17 UTC, 62.228 bajo 62.607 de las 16; UNI cerró 16 UTC en 4,937, no pasó 4,97, la de 17 va 4,985 sin cerrar y es mediana con volumen vendedor 3,48x). A mirar: UNI rebote si cierra 1 h arriba de 4,97 sin perder 4,901; BTC/ETH rebote si la próxima hora no hace mínimo nuevo (BTC > 62.228); TRX ruptura con >= 1,5x; BTC 4 h <= -3% = sin entradas nuevas. 0 posiciones.
+

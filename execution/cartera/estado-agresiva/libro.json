@@ -4,54 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 430.83713291089657,
-  "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.10652471602388543,
-      "entrada": 1781.84,
-      "maximo": 1817.57,
-      "reglas": {
-        "stop": 3.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795105860000
-    },
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.0023595712618864288,
-      "entrada": 63507.3,
-      "maximo": 64080.8,
-      "reglas": {
-        "stop": 3.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795105860000
-    }
-  },
-  "comisiones_usd": 52.66689399999992,
+  "usdt": 769.3707157059755,
+  "posiciones": {},
+  "comisiones_usd": 53.00576599999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4636,6 +4591,30 @@
       "comision": 0.143465,
       "motivo": "Tesis de momentum invalidada: perdió 0,00000388 (mínimo de la vela del impulso), cotiza 0,00000381 pegado al stop; 24 h cayó a +3,23% y 4 h -2,79%. La vela de 1 h de las 15 UTC no cerró todavía, pero el impulso murió y esperar al stop es vender al mismo precio.",
       "resultado_pct": -4.26
+    },
+    {
+      "ms": 1795109592901,
+      "fecha": "2026-11-19 17:33 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.0023595712618864288,
+      "precio": 63178.5,
+      "usd": 149.0742,
+      "comision": 0.149074,
+      "motivo": "Salida por tiempo: 24 h (desde 17:32 del 18/11) sin llegar a +8% ni al stop; rebote en soporte sin continuación (-0,6%, 4 h -1,32%). Se rota a USDT.",
+      "resultado_pct": -0.52
+    },
+    {
+      "ms": 1795109593742,
+      "fecha": "2026-11-19 17:33 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.10652471602388543,
+      "precio": 1781.73,
+      "usd": 189.7983,
+      "comision": 0.189798,
+      "motivo": "Salida por tiempo: 24 h sin llegar a +8% ni al stop; rebote en soporte plano (~0%, 4 h -1,68%). Se rota a USDT.",
+      "resultado_pct": -0.01
     }
   ]
 }
