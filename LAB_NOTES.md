@@ -706,3 +706,9 @@ turno entero (`avIgnorar = avTurno`).
 - **El code review de la web encontró la carrera** de chequear y después insertar (dos mensajes seguidos = dos links, y el cupo se pasaba). Ahora decide una función de la base con lock (`clase_gratis_bot.sql`).
 - **Trampa de n8n:** `docker cp` de un archivo con mode 600 de root → `n8n import:credentials` da EACCES y **el archivo con la clave queda en /tmp del contenedor**. Hay que hacer `chown node` antes y borrarlo con `docker exec -u root`.
 - **Trampa del banco:** el chequeo de tools leía `intermediateSteps` del agente, que en n8n v3.1 no llega; daba «no usó la tool» con la tool usada. Ahora lee las tools de `chat_history` (sesión `banco:<jid>`). Un chequeo que dice «no» por no poder ver es tan malo como uno que dice «sí».
+
+## 2026-11-19 · FAIL ✓ · /admin/leads caída para todos por un caso con estado «abierto»
+- **Síntoma:** «This page couldn't load» en `/admin/leads`. En Vercel: `Cannot read properties of undefined (reading 'abierto')` en `LeadsPanel`.
+- **Causa raíz:** `incidencias` es una tabla compartida (leads + problemas técnicos) y su default de `estado` es `'abierto'`, que no es un estado de lead. `accionRapida` hacía upsert **sin** `estado` cuando la acción no avanza el caso («Sin respuesta»); si la fila no existía, la base ponía su default. Pasó el 18/11 17:47, la primera vez que alguien tocó «Sin respuesta» en un lead sin trabajar.
+- **Fix (astronomy-members 0721a93):** el upsert manda siempre `estado`; `calcularLeads` lee un estado ajeno como «pendiente»; la fila mala corregida. Verificado corriendo `calcularLeads` contra la base: 74 leads, 0 con estado desconocido.
+- **Lección:** en un upsert, una columna que no se manda no «queda como estaba» si la fila es nueva: toma el default de la tabla. Y un `Record[valorDeLaBase]` sin red tira la pantalla entera por una sola fila.
