@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795134660000
+      "vigilado_hasta": 1795138260000
     },
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0024099931487682256,
       "entrada": 62178.6,
-      "maximo": 62344.9,
+      "maximo": 62639.52,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795134660000
+      "vigilado_hasta": 1795138260000
     },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.06812137742925332,
       "entrada": 1759.8,
-      "maximo": 1766.39,
+      "maximo": 1770.55,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795134660000
+      "vigilado_hasta": 1795138260000
     }
   },
   "comisiones_usd": 53.692787999999915,
