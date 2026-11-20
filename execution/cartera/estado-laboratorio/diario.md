@@ -918,3 +918,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-19 22:16 UTC — nota
 [v2] Sin operar: stop de NEARUSDT salto 21:32 UTC (-3.12%), carpeta en USDT. Ningun par cumple entrada (MMT var_24h 17.09 pero var_4h -11.23<0, vs_max -13.94; resto var_24h<3). BTC var_4h -1.73 < -1.5 -> filtro de mercado cerrado igual. 1 disparo.
 
+## 2026-11-20 00:16 UTC — nota
+[v2] Sin operar: carpeta en USDT, sin posiciones. Ningun par cumpliria entrada (solo MMT var_24h 20.05 pero var_4h -0.97<0, vs_max -16.71, vol4h 0.37; resto var_24h<3). BTC libre (var_24h -1.69, var_4h -0.02). Sin disparos.
+
