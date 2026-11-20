@@ -1,20 +1,20 @@
-# Carpeta cripto ficticia — 2026-11-20 02:06 UTC
+# Carpeta cripto ficticia — 2026-11-20 04:06 UTC
 
-**Total: 802.28 USD (-19.77%)** desde 2026-10-07 20:58 UTC · USDT libre 763.90 · comisiones 3.08 · 98 operaciones
+**Total: 798.73 USD (-20.13%)** desde 2026-10-07 20:58 UTC · USDT libre 798.73 · comisiones 3.11 · 99 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **802.28** |
+| **Esta carpeta** | **798.73** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 737.60 |
-| plan inicial sin tocar | 684.65 |
+| hodl btc | 741.74 |
+| plan inicial sin tocar | 684.84 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| MEGA | riesgo | 38.39 | -3.94% | 0.051595 |
 
 ## Últimas operaciones
 
+- 2026-11-20 03:49 UTC · venta MEGA 34.87 USD a 0.051595 — Stop automático en 0.051595 (entrada 0.05913, máximo 0.0607).
 - 2026-11-19 12:07 UTC · compra MEGA 40.00 USD a 0.05913 — Tesis: momentum de riesgo. MEGA cumple la condición fijada en ciclos previos: pasó los 5 M de volumen (5,4 M), a 1,1% del máximo de 90 d, 7d
 - 2026-11-14 22:08 UTC · venta BTC 228.69 USD a 63,673.5 — Stop automático en 63,673.5 (entrada 83,446.01, máximo 84,898).
 - 2026-11-14 20:54 UTC · venta BNB 37.72 USD a 582.173 — Stop automático en 582.1725 (entrada 770.95, máximo 776.23).
@@ -24,6 +24,5 @@
 - 2026-11-07 02:51 UTC · venta XRP 24.58 USD a 1.16653 — Stop automático en 1.166532 (entrada 1.4226, máximo 1.43).
 - 2026-10-31 10:06 UTC · venta HYPE 36.07 USD a 86.93 — Rotación por tesis invalidada, no por stop: la compra del 29/10 16:05 era momentum cerca del máximo de 90 d y su propio motivo decía reconsi
 - 2026-10-30 00:18 UTC · venta LTC 20.48 USD a 54.243 — Stop automático en 54.243 (entrada 66.15, máximo 66.33).
-- 2026-10-29 20:42 UTC · venta TAO 20.76 USD a 241.6 — Stop automático en 241.6 (entrada 290.6, máximo 302).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
