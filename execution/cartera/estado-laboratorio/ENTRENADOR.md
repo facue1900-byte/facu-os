@@ -220,3 +220,17 @@ Patrones (≥3 casos): (1) agresiva pierde con muchas vueltas cortas (0 de 21 ga
 Historia: sin cambios (HISTORIA.md del 28/10); nada le gana a todo en vivo y en historia, no se copia nada.
 Por qué no cambio: v2 tiene 13 días pero **3 vueltas cerradas (< 5)**; no se toca. Sigue a vigilar lo de ayer: si con 5 vueltas las entradas con vol4h < 1,5 salen por tendencia rota, el candidato es subir ese umbral. La NEAR abierta (vol4h 1,31) es justo uno de esos casos: hoy va ganando.
 +20%/mes: no está al alcance. El lab va −4,62% en 22,5 días; ninguna de las 33 estrategias del torneo le gana a USDT en vivo, y la historia no muestra una ventaja medida que lo sostenga sin caídas de −12% a −25%. Se dice tal cual.
+
+## 2026-11-20 — v2 igual
+Diagnóstico (operaciones cerradas, en Python sobre `libro.json`, neto de comisiones):
+- Laboratorio: 12 vueltas desde el inicio (1 nueva), 17% ganadoras, +10,80 / −8,16, neto −60,02, 5 por stop, 20,0 h medias, comisiones 4,67. Últimos 7 d: 2 vueltas (NEAR y NEAR), 0% gan, neto −13,54. Total 942,34 (−5,77%) al 20/11 10:16, todo en USDT.
+- Nuevo en 24 h: la NEAR del 17/11 22:16 (vol4h 1,31) llegó a +5,3% (máx 3,477), el trail subió el stop a 3,19884 y saltó el 19/11 21:32, ~47 h adentro, a 44 min de la salida por tiempo: −3,12% (−6,48 neto). Desde entonces el filtro de BTC está cerrado (var_24h −2,7 a −3,1) y ningún par cumple entrada. Rebote post-stop: 1 caso, sin vela del día siguiente completa; ruido.
+- Por versión: v1 8 vueltas, 1 ganadora, neto −47,59; **v2 4 vueltas**, 1 ganadora (PEPE +10,83), NEAR −9,72 / −7,06 / −6,48 → neto −12,43. Ventana v2 (06/11 → hoy, `historial.csv`): 954,01 → 942,34 (−1,2%), peor caída −2,54%.
+- Lo que anoté para vigilar (vol4h < 1,5 sale mal): no se sostiene. PEPE entró con 1,46 y ganó; la NEAR con 1,77 perdió. Subir ese umbral no tiene respaldo.
+- Agresiva: 191 vueltas, 22% gan, +3,55 / −2,80, neto −268,36, 181 por stop/trail, 8,5 h medias, comisiones 53,78. 7 d: 27 vueltas, **0% gan**, 26 por stop, neto −73,30. Total 757,89 (−24,21%).
+- 3 niveles: 48 vueltas, 15% gan, neto −202,93; 7 d: 4 vueltas, las 4 por stop, −114,28. 798,73 en USDT (−20,13%).
+- DCA 948,91 (−5,11%, RESUMEN del 16/11). Torneo en vivo (20/11 08 h): 0 de 33 le ganan a USDT; arriba P0, L2, L5 (0,0%), L4 −0,1%, L7 −0,2%, L6 −0,3%; L1N −5,4%, L1 (v1 en 4 h) −6,8%. HODL BTC 764,45: el lab le gana por ~18 pp.
+Patrones (≥3 casos): (1) agresiva pierde con muchas vueltas cortas (0 de 27 ganadoras en 7 d); (2) 3 niveles pierde aguantando con stops anchos — 4 de 4 stops en 7 d; (3) "tendencia rota"/stop cortan pérdidas chicas en el lab (−3% a −5%); (4) entradas con otra posición abierta, 5 de 5 perdedoras — atacado por v2, sin casos nuevos; (5) **nuevo: v2 entró 3 veces a NEAR y perdió las 3** (−23,26 entre las tres), siempre con var_24h apenas arriba de +3 y salida en 4 a 47 h. Es candidato, no regla todavía: con 4 vueltas de v2 no se puede separar "NEAR" de "la señal de entrada en este mercado".
+Historia: sin cambios (HISTORIA.md del 28/10); nada le gana a todo en vivo y en historia, no se copia nada.
+Por qué no cambio: v2 tiene 14 días pero **4 vueltas cerradas (< 5)**; la regla pide las dos cosas, no se toca. Cuando llegue a 5, el candidato a mirar primero es la reentrada al mismo par tras una salida perdedora (patrón 5), no el umbral de volumen.
++20%/mes: no está al alcance. El lab va −5,77% en 23,5 días; ninguna de las 33 estrategias del torneo le gana a USDT en vivo, y la historia no muestra una ventaja medida que lo sostenga sin caídas de −12% a −25%. Se dice tal cual.
