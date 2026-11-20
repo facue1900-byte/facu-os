@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-20 05:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-20 06:32 UTC
 
-**Total: 757.16 USD (-24.28%)** desde 2026-10-07 23:06 UTC · USDT libre 608.64 · comisiones 53.93 · 391 operaciones
+**Total: 757.66 USD (-24.23%)** desde 2026-10-07 23:06 UTC · USDT libre 488.64 · comisiones 54.05 · 392 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **757.16** |
+| **Esta carpeta** | **757.66** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 740.52 |
+| hodl btc | 743.66 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 148.52 | -0.89% | 59,507.5 |
+| BTC | trading | 149.15 | -0.47% | 59,507.5 |
+| ETH | trading | 119.88 | -0.00% | 1,656.51 |
 
 ## Últimas operaciones
 
+- 2026-11-20 06:32 UTC · compra ETH 120.00 USD a 1,743.69 — Rebote en soporte: ETH hizo mínimo de 48 h 1.717,82 (vela 04 UTC); la de 05 UTC cerró verde 1.741,54 (abrió 1.727,31) arriba de 1.736 sin pe
 - 2026-11-20 02:31 UTC · venta ETH 118.06 USD a 1,733.05 — Tesis de rebote en soporte invalidada: la vela de 1 h de 01 UTC cerró 1.735,73, abajo de la invalidación 1.736,28 (mín 1.723,52, mínimo nuev
 - 2026-11-20 01:54 UTC · venta UNI 114.57 USD a 4.80795 — Stop automático en 4.80795 (entrada 5.031, máximo 5.061).
 - 2026-11-19 22:32 UTC · compra ETH 120.00 USD a 1,759.8 — Rebote en soporte: ETH hizo mínimo de 48 h en 1.736,28 (vela 21 UTC) y la de 22 UTC no hizo mínimo nuevo (mín 1.738,78, va 1.760, 1 h +1,04%
@@ -23,6 +25,5 @@
 - 2026-11-19 18:32 UTC · compra BTC 150.00 USD a 63,225.2 — Rebote en soporte: BTC tocó el mínimo de 48 h (62.227,8 en la vela de 17 UTC) y la de 18 UTC no hizo mínimo nuevo (mín 62.662, va 63.255, 1 
 - 2026-11-19 17:33 UTC · venta ETH 189.80 USD a 1,781.73 — Salida por tiempo: 24 h sin llegar a +8% ni al stop; rebote en soporte plano (~0%, 4 h -1,68%). Se rota a USDT.
 - 2026-11-19 17:33 UTC · venta BTC 149.07 USD a 63,178.5 — Salida por tiempo: 24 h (desde 17:32 del 18/11) sin llegar a +8% ni al stop; rebote en soporte sin continuación (-0,6%, 4 h -1,32%). Se rota
-- 2026-11-19 15:32 UTC · venta PEPE 143.47 USD a 3.82e-06 — Tesis de momentum invalidada: perdió 0,00000388 (mínimo de la vela del impulso), cotiza 0,00000381 pegado al stop; 24 h cayó a +3,23% y 4 h 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

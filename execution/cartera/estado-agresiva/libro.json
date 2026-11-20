@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 608.6360432593732,
+  "usdt": 488.6360432593732,
   "posiciones": {
     "BTCUSDT": {
       "nivel": "trading",
@@ -26,10 +26,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795152660000
+      "vigilado_hasta": 1795156260000
+    },
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.06875075271407188,
+      "entrada": 1743.69,
+      "maximo": 1743.69,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795156380000
     }
   },
-  "comisiones_usd": 53.92541099999991,
+  "comisiones_usd": 54.04541099999991,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4722,6 +4744,18 @@
       "comision": 0.118058,
       "motivo": "Tesis de rebote en soporte invalidada: la vela de 1 h de 01 UTC cerró 1.735,73, abajo de la invalidación 1.736,28 (mín 1.723,52, mínimo nuevo de 48 h); la de 02 UTC mín 1.727 sigue abajo. El soporte se perdió por cierre, se sale.",
       "resultado_pct": -1.52
+    },
+    {
+      "ms": 1795156346024,
+      "fecha": "2026-11-20 06:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.06875075271407188,
+      "precio": 1743.69,
+      "usd": 120.0,
+      "comision": 0.12,
+      "motivo": "Rebote en soporte: ETH hizo mínimo de 48 h 1.717,82 (vela 04 UTC); la de 05 UTC cerró verde 1.741,54 (abrió 1.727,31) arriba de 1.736 sin perder 1.717,82 — condición anotada a las 05:32 cumplida — y la de 06 UTC no hace mínimo nuevo (mín 1.738), volumen 4 h 1,21x; BTC 4 h -0,68% sin bloqueo. Tamaño 120 por correlación con BTC abierto. Invalida: cierre de 1 h abajo de 1.717,82 o stop 5%."
     }
   ]
 }
