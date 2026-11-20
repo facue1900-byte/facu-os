@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 376.24580741868795,
+  "usdt": 608.6360432593732,
   "posiciones": {
-    "UNIUSDT": {
-      "nivel": "trading",
-      "cantidad": 23.828264758497316,
-      "entrada": 5.031,
-      "maximo": 5.061,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795138260000
-    },
     "BTCUSDT": {
       "nivel": "trading",
       "cantidad": 0.0024099931487682256,
@@ -48,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795138260000
-    },
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.06812137742925332,
-      "entrada": 1759.8,
-      "maximo": 1770.55,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795138260000
+      "vigilado_hasta": 1795141860000
     }
   },
-  "comisiones_usd": 53.692787999999915,
+  "comisiones_usd": 53.92541099999991,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4742,6 +4698,30 @@
       "usd": 120.0,
       "comision": 0.12,
       "motivo": "Rebote en soporte: ETH hizo mínimo de 48 h en 1.736,28 (vela 21 UTC) y la de 22 UTC no hizo mínimo nuevo (mín 1.738,78, va 1.760, 1 h +1,04%), volumen 4 h 1,08x; BTC 4 h -1,12% sin bloqueo. Tamaño menor (120) por correlación con BTC. Invalida: cierre de 1 h abajo de 1.736,28 o stop 5%."
+    },
+    {
+      "ms": 1795139640000,
+      "fecha": "2026-11-20 01:54 UTC",
+      "lado": "sell",
+      "par": "UNIUSDT",
+      "cantidad": 23.828264758497316,
+      "precio": 4.80795,
+      "usd": 114.5651,
+      "comision": 0.114565,
+      "motivo": "Stop automático en 4.80795 (entrada 5.031, máximo 5.061).",
+      "resultado_pct": -4.43
+    },
+    {
+      "ms": 1795141914988,
+      "fecha": "2026-11-20 02:31 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.06812137742925332,
+      "precio": 1733.05,
+      "usd": 118.0578,
+      "comision": 0.118058,
+      "motivo": "Tesis de rebote en soporte invalidada: la vela de 1 h de 01 UTC cerró 1.735,73, abajo de la invalidación 1.736,28 (mín 1.723,52, mínimo nuevo de 48 h); la de 02 UTC mín 1.727 sigue abajo. El soporte se perdió por cierre, se sale.",
+      "resultado_pct": -1.52
     }
   ]
 }
