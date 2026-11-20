@@ -42,7 +42,12 @@ Dónde mirar (variar las fuentes día a día):
   Palmas del Pilar) en el último año.
 
 Para cada candidato hace falta un **contacto comercial público**: mail de expansión,
-franquicias o comercial que figure en su web o en una nota. Nada de datos personales de
+franquicias o comercial que figure en su web o en una nota. **Entrar a la web de la marca
+(páginas «Franquicias», «Expansión», «Contacto») antes de marcarlo «sin contacto».** Si un
+sitio no abre por la red de la sesión, decir cuál en el mensaje final.
+
+Ya hay que descartar: marcas que **ya tienen local en Nordelta** (salvo que el formato sea
+otro), y comercios de un solo local. Nada de datos personales de
 particulares. Si no tiene contacto público, va igual pero marcado «sin contacto».
 
 ## Lo que NO se hace — regla 10 de Facu
@@ -61,15 +66,13 @@ particulares. Si no tiene contacto público, va igual pero marcado «sin contact
 3. Agregar cada candidato nuevo al final de `vistos.md`:
    `- DD/MM/AAAA · Marca · rubro · local sugerido (servicios/Market) · por qué encaja (1 línea) · contacto o «sin contacto» · link de la fuente`
 4. Commit y push a la rama `claude/paseo-locales`.
-5. **Sólo si hubo candidatos nuevos**, mandarle a Facu un Telegram corto (ver el prompt de la
-   rutina para el canal). Formato:
-
-   ```
-   🏬 Paseo · 3 candidatos nuevos
-   1. Marca — rubro → servicios. Por qué. Contacto.
-   2. ...
-   ¿A cuál le escribimos?
-   ```
+5. **Sólo si hubo candidatos nuevos**, armar el aviso con el script (nunca a mano):
+   escribir `/tmp/candidatos.json` (lista de `{marca, rubro, local: "servicios"|"Market",
+   por_que, contacto, fuente, web}`) y correr
+   `python3 active/paseo-nordelta/agente-locales/aviso.py /tmp/candidatos.json > /tmp/aviso.json`
+   (usa el `aviso.py` y `execution/mail_format.py` de MAIN: `git checkout origin/main -- active/paseo-nordelta/agente-locales/aviso.py execution/mail_format.py`).
+   El JSON trae `asunto`, `html`, `texto` y `telegram`. Telegram lleva `telegram`; el mail va
+   con `asunto`, `html` como cuerpo HTML y `texto` como alternativa.
 
    Sin candidatos nuevos, no se manda nada (Facu quiere pocos avisos).
 6. Si algo falló (búsqueda, push o Telegram), decirlo en el mensaje de cierre de la sesión.
