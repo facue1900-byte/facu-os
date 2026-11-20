@@ -33,6 +33,7 @@ from cartera_semanal import DOC, YAHOO, UA, leer_posiciones, fecha_tabla, _num  
 SALIDA = RAIZ / "data/inversiones/tablero.json"
 NETX = RAIZ / "data/inversiones/netx_mensual.json"
 PAPER = RAIZ / "data/paper/historial.csv"
+PAPER_GROK = RAIZ / "data/paper-grok/historial.csv"
 HOJA_ID = "1zdFhNK1wecyBvJgsc9EGtj6jTKK2GyxvOcXHGreq0pU"  # «Tablero inversiones · datos (no editar)», Drive de facue1900@
 EFECTIVO = {"DIDI"}  # money market: vale 1 USD, no tiene precio en Yahoo
 
@@ -172,6 +173,12 @@ def cripto():
         carpetas.append({"id": "paper", "nombre": "La de 10.000 (Mac)", "capital": 10000.0,
                          "que_es": "Paper trading de 10.000 USDT en la Mac, cada 4 h.",
                          "serie": [[f, v] for f, v, _ in serie], "hodl_btc": [[f, h] for f, _, h in serie if h]})
+    if PAPER_GROK.exists():
+        serie = _historial(PAPER_GROK.read_text())
+        if serie:
+            carpetas.append({"id": "grok", "nombre": "Grok (Mac)", "capital": 10000.0,
+                             "que_es": "Mismo motor y reglas que la de 10.000 de Claude, pero decide Grok, que además lee X y noticias. Desde el 20/11.",
+                             "serie": [[f, v] for f, v, _ in serie], "hodl_btc": [[f, h] for f, _, h in serie if h]})
     vivo = json.loads(git_show("claude/cartera-torneo", "execution/cartera/estado-torneo/vivo.json"))
     torneo = {"desde": vivo.get("desde"), "hasta": vivo.get("hasta"), "regimen": vivo.get("regimen_hoy"),
               "capital": vivo.get("capital"),
