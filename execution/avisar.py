@@ -34,7 +34,7 @@ A_LA_PRIMERA = {"chequeo-pauta", "efectivo-diario"}
 # Facu, 02/11/2026, ante «paper-trading salió con código 1»: «si me mandás algo, que sea súper
 # claro y clave para tomar decisiones». Un ciclo caído de plata ficticia no le pide ninguna
 # decisión: no manda mail nunca y lo marca el radar.
-SIN_MAIL = {"paper-trading"}
+SIN_MAIL = {"paper-trading", "paper-grok"}
 
 # tarea: (área, nivel, nombre para el asunto, qué significa)
 TAREAS = {

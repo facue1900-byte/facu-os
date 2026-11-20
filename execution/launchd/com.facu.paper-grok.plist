@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Carpeta de Grok (20/11/2026): ciclo cada 4 h, 5 min después de la de Claude (com.facu.paper-trading).
+  Instalar (Facu, en la Terminal):
+    cp ~/facu-os/execution/launchd/com.facu.paper-grok.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.paper-grok.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.paper-grok</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>paper-grok</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/execution/paper/grok_ciclo.sh</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Hour</key><integer>0</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Hour</key><integer>4</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Hour</key><integer>8</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Hour</key><integer>12</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Hour</key><integer>16</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Hour</key><integer>20</integer><key>Minute</key><integer>25</integer></dict>
+    </array>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/Facu/facu-os/data/logs/paper-grok.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/Facu/facu-os/data/logs/paper-grok.log</string>
+</dict>
+</plist>
