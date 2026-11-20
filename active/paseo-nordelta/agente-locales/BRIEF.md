@@ -42,7 +42,12 @@ Dónde mirar (variar las fuentes día a día):
   Palmas del Pilar) en el último año.
 
 Para cada candidato hace falta un **contacto comercial público**: mail de expansión,
-franquicias o comercial que figure en su web o en una nota. Nada de datos personales de
+franquicias o comercial que figure en su web o en una nota. **Entrar a la web de la marca
+(páginas «Franquicias», «Expansión», «Contacto») antes de marcarlo «sin contacto».** Si un
+sitio no abre por la red de la sesión, decir cuál en el mensaje final.
+
+Ya hay que descartar: marcas que **ya tienen local en Nordelta** (salvo que el formato sea
+otro), y comercios de un solo local. Nada de datos personales de
 particulares. Si no tiene contacto público, va igual pero marcado «sin contacto».
 
 ## Lo que NO se hace — regla 10 de Facu
