@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 445.0358806528478,
+  "usdt": 297.0358806528478,
   "posiciones": {
     "TAOUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795289460000
+      "vigilado_hasta": 1795293060000
     },
     "UNIUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795289460000
+      "vigilado_hasta": 1795293060000
+    },
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.18591655559188192,
+      "entrada": 795.26,
+      "maximo": 795.26,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795293120000
     }
   },
-  "comisiones_usd": 54.89421399999992,
+  "comisiones_usd": 55.04221399999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4828,6 +4850,18 @@
       "usd": 148.0,
       "comision": 0.148,
       "motivo": "Momentum 24 h: UNI +6,33% 24 h, 4 h +5,57% sigue subiendo, 1 h +0,34% no estirada, volumen 4 h 1,84x, a -6,68% del máximo de 48 h. Invalida: 4 h vuelve a rojo con 24 h abajo de +5%, o el stop 5%. Salida por tiempo 16:31 del 22/11 si no llega a +8%."
+    },
+    {
+      "ms": 1795293112721,
+      "fecha": "2026-11-21 20:31 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.18591655559188192,
+      "precio": 795.26,
+      "usd": 148.0,
+      "comision": 0.148,
+      "motivo": "Momentum 24 h: ZEC +7,98% 24 h (el más fuerte del top), 4 h +1,02% sigue subiendo (el 4 h más firme entre los que pasan +5%), 1 h +0,35% no estirada; volumen 4 h 0,3x (sábado flojo, punto débil), a -12,09% del máximo de 48 h. Invalida: 4 h vuelve a rojo con 24 h abajo de +5%, o el stop 5%. Salida por tiempo 20:31 del 22/11 si no llega a +8%."
     }
   ]
 }
