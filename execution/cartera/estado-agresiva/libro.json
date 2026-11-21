@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 741.0358806528478,
-  "posiciones": {},
-  "comisiones_usd": 54.59821399999991,
+  "usdt": 593.0358806528478,
+  "posiciones": {
+    "TAOUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.7893860117458622,
+      "entrada": 187.3,
+      "maximo": 187.3,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795275180000
+    }
+  },
+  "comisiones_usd": 54.74621399999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4759,6 +4782,18 @@
       "comision": 0.144221,
       "motivo": "Stop automático en 56,440.098 (entrada 58,642.93, máximo 59,410.63).",
       "resultado_pct": -3.76
+    },
+    {
+      "ms": 1795275125729,
+      "fecha": "2026-11-21 15:32 UTC",
+      "lado": "buy",
+      "par": "TAOUSDT",
+      "nivel": "trading",
+      "cantidad": 0.7893860117458622,
+      "precio": 187.3,
+      "usd": 148.0,
+      "comision": 0.148,
+      "motivo": "Momentum 24 h: TAO +6,79% 24 h (único del top que pasa +5%), 4 h +3,31% sigue subiendo, 1 h -0,32% no estirada, volumen 1,0x, a -5,79% del máximo de 48 h. Invalida: 4 h vuelve a rojo con 24 h abajo de +5%, o el stop 5%. Salida por tiempo 15:31 del 22/11 si no llega a +8%."
     }
   ]
 }

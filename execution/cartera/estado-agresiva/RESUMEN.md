@@ -1,18 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-21 14:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-21 15:32 UTC
 
-**Total: 741.04 USD (-25.90%)** desde 2026-10-07 23:06 UTC · USDT libre 741.04 · comisiones 54.60 · 396 operaciones
+**Total: 740.97 USD (-25.90%)** desde 2026-10-07 23:06 UTC · USDT libre 593.04 · comisiones 54.75 · 397 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **741.04** |
+| **Esta carpeta** | **740.97** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 725.47 |
+| hodl btc | 719.90 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| TAO | trading | 147.93 | +0.05% | 177.935 |
 
 ## Últimas operaciones
 
+- 2026-11-21 15:32 UTC · compra TAO 148.00 USD a 187.3 — Momentum 24 h: TAO +6,79% 24 h (único del top que pasa +5%), 4 h +3,31% sigue subiendo, 1 h -0,32% no estirada, volumen 1,0x, a -5,79% del m
 - 2026-11-21 03:55 UTC · venta BTC 144.22 USD a 56,440.1 — Stop automático en 56,440.098 (entrada 58,642.93, máximo 59,410.63).
 - 2026-11-20 21:32 UTC · compra BTC 150.00 USD a 58,642.9 — Rebote en soporte: mín 48 h 57.778 (vela 19 UTC); velas 20 UTC (mín 58.210, cerrada) y 21 UTC (mín 58.200) ya no hacen mínimo nuevo, 21 UTC 
 - 2026-11-20 15:47 UTC · venta BTC 143.41 USD a 59,507.5 — Stop automático en 59,507.544 (entrada 62,178.6, máximo 62,639.52).
@@ -22,6 +24,5 @@
 - 2026-11-20 01:54 UTC · venta UNI 114.57 USD a 4.80795 — Stop automático en 4.80795 (entrada 5.031, máximo 5.061).
 - 2026-11-19 22:32 UTC · compra ETH 120.00 USD a 1,759.8 — Rebote en soporte: ETH hizo mínimo de 48 h en 1.736,28 (vela 21 UTC) y la de 22 UTC no hizo mínimo nuevo (mín 1.738,78, va 1.760, 1 h +1,04%
 - 2026-11-19 22:32 UTC · compra BTC 150.00 USD a 62,178.6 — Rebote en soporte: BTC hizo mínimo de 48 h en 61.428 (vela 21 UTC) y la de 22 UTC no hizo mínimo nuevo (mín 61.526, va 62.178, 1 h +1,03%), 
-- 2026-11-19 20:32 UTC · venta BTC 147.02 USD a 62,032 — Tesis de rebote en soporte invalidada: BTC rompió el mínimo de 48 h que la sostenía (62.227,8) e hizo mínimo nuevo en 61.760 en la vela de 2
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
