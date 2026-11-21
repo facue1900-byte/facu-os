@@ -4,30 +4,8 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 297.0358806528478,
+  "usdt": 443.32055472652644,
   "posiciones": {
-    "TAOUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.7893860117458622,
-      "entrada": 187.3,
-      "maximo": 189.0,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795293060000
-    },
     "UNIUSDT": {
       "nivel": "trading",
       "cantidad": 31.278189126295747,
@@ -48,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795293060000
+      "vigilado_hasta": 1795296660000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.18591655559188192,
       "entrada": 795.26,
-      "maximo": 795.26,
+      "maximo": 800.15,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795293120000
+      "vigilado_hasta": 1795296660000
     }
   },
-  "comisiones_usd": 55.04221399999992,
+  "comisiones_usd": 55.18864499999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4862,6 +4840,18 @@
       "usd": 148.0,
       "comision": 0.148,
       "motivo": "Momentum 24 h: ZEC +7,98% 24 h (el más fuerte del top), 4 h +1,02% sigue subiendo (el 4 h más firme entre los que pasan +5%), 1 h +0,35% no estirada; volumen 4 h 0,3x (sábado flojo, punto débil), a -12,09% del máximo de 48 h. Invalida: 4 h vuelve a rojo con 24 h abajo de +5%, o el stop 5%. Salida por tiempo 20:31 del 22/11 si no llega a +8%."
+    },
+    {
+      "ms": 1795296712405,
+      "fecha": "2026-11-21 21:31 UTC",
+      "lado": "sell",
+      "par": "TAOUSDT",
+      "cantidad": 0.7893860117458622,
+      "precio": 185.5,
+      "usd": 146.4311,
+      "comision": 0.146431,
+      "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -0,32% en rojo con 24 h +3,98% (bajo +5%). Sale a ~185,6 (-0,9%) antes del stop.",
+      "resultado_pct": -0.96
     }
   ]
 }
