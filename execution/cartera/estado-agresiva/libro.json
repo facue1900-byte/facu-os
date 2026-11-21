@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 443.32055472652644,
+  "usdt": 589.6205790954122,
   "posiciones": {
     "UNIUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795296660000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.18591655559188192,
-      "entrada": 795.26,
-      "maximo": 800.15,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795296660000
+      "vigilado_hasta": 1795300260000
     }
   },
-  "comisiones_usd": 55.18864499999992,
+  "comisiones_usd": 55.33509099999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4852,6 +4830,18 @@
       "comision": 0.146431,
       "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -0,32% en rojo con 24 h +3,98% (bajo +5%). Sale a ~185,6 (-0,9%) antes del stop.",
       "resultado_pct": -0.96
+    },
+    {
+      "ms": 1795300308977,
+      "fecha": "2026-11-21 22:31 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.18591655559188192,
+      "precio": 787.7,
+      "usd": 146.4465,
+      "comision": 0.146446,
+      "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -0,18% en rojo con 24 h +4,42% (bajo +5%). Sale a ~787,9 (-0,9%) antes del stop.",
+      "resultado_pct": -0.95
     }
   ]
 }
