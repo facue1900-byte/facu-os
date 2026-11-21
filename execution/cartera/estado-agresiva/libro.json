@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 596.9589866186518,
-  "posiciones": {
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.002555295241898725,
-      "entrada": 58642.93,
-      "maximo": 59410.63,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795231860000
-    }
-  },
-  "comisiones_usd": 54.45399299999991,
+  "usdt": 741.0358806528478,
+  "posiciones": {},
+  "comisiones_usd": 54.59821399999991,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4770,6 +4747,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Rebote en soporte: mín 48 h 57.778 (vela 19 UTC); velas 20 UTC (mín 58.210, cerrada) y 21 UTC (mín 58.200) ya no hacen mínimo nuevo, 21 UTC va verde 58.640; volumen 4 h 2,09x; BTC 4 h -0,76% sin bloqueo. Invalida: cierre de 1 h abajo de 57.778 o stop 5%. Salida por tiempo 21:32 UTC del 21/11 si no llega a +8%."
+    },
+    {
+      "ms": 1795233300000,
+      "fecha": "2026-11-21 03:55 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.002555295241898725,
+      "precio": 56440.09849999999,
+      "usd": 144.2211,
+      "comision": 0.144221,
+      "motivo": "Stop automático en 56,440.098 (entrada 58,642.93, máximo 59,410.63).",
+      "resultado_pct": -3.76
     }
   ]
 }

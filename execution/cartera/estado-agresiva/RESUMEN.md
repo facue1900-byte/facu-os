@@ -1,19 +1,19 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-21 03:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-21 04:31 UTC
 
-**Total: 743.25 USD (-25.68%)** desde 2026-10-07 23:06 UTC · USDT libre 596.96 · comisiones 54.45 · 395 operaciones
+**Total: 741.04 USD (-25.90%)** desde 2026-10-07 23:06 UTC · USDT libre 741.04 · comisiones 54.60 · 396 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **743.25** |
+| **Esta carpeta** | **741.04** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 687.92 |
+| hodl btc | 671.92 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| BTC | trading | 146.29 | -2.38% | 56,440.1 |
 
 ## Últimas operaciones
 
+- 2026-11-21 03:55 UTC · venta BTC 144.22 USD a 56,440.1 — Stop automático en 56,440.098 (entrada 58,642.93, máximo 59,410.63).
 - 2026-11-20 21:32 UTC · compra BTC 150.00 USD a 58,642.9 — Rebote en soporte: mín 48 h 57.778 (vela 19 UTC); velas 20 UTC (mín 58.210, cerrada) y 21 UTC (mín 58.200) ya no hacen mínimo nuevo, 21 UTC 
 - 2026-11-20 15:47 UTC · venta BTC 143.41 USD a 59,507.5 — Stop automático en 59,507.544 (entrada 62,178.6, máximo 62,639.52).
 - 2026-11-20 15:20 UTC · venta ETH 115.17 USD a 1,675.16 — Stop automático en 1,675.1635 (entrada 1,743.69, máximo 1,763.33).
@@ -23,6 +23,5 @@
 - 2026-11-19 22:32 UTC · compra ETH 120.00 USD a 1,759.8 — Rebote en soporte: ETH hizo mínimo de 48 h en 1.736,28 (vela 21 UTC) y la de 22 UTC no hizo mínimo nuevo (mín 1.738,78, va 1.760, 1 h +1,04%
 - 2026-11-19 22:32 UTC · compra BTC 150.00 USD a 62,178.6 — Rebote en soporte: BTC hizo mínimo de 48 h en 61.428 (vela 21 UTC) y la de 22 UTC no hizo mínimo nuevo (mín 61.526, va 62.178, 1 h +1,03%), 
 - 2026-11-19 20:32 UTC · venta BTC 147.02 USD a 62,032 — Tesis de rebote en soporte invalidada: BTC rompió el mínimo de 48 h que la sostenía (62.227,8) e hizo mínimo nuevo en 61.760 en la vela de 2
-- 2026-11-19 19:32 UTC · compra UNI 120.00 USD a 5.031 — Rebote en soporte: UNI tocó el mínimo de 48 h (4,901-4,905 en las velas de 15 y 17 UTC), la de 18 UTC cerró 5,007 arriba de 4,97 sin perder 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
