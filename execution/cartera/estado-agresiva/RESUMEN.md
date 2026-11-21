@@ -1,19 +1,21 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-21 15:32 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-21 16:32 UTC
 
-**Total: 740.97 USD (-25.90%)** desde 2026-10-07 23:06 UTC · USDT libre 593.04 · comisiones 54.75 · 397 operaciones
+**Total: 739.67 USD (-26.03%)** desde 2026-10-07 23:06 UTC · USDT libre 445.04 · comisiones 54.89 · 398 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **740.97** |
+| **Esta carpeta** | **739.67** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 719.90 |
+| hodl btc | 721.74 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| TAO | trading | 147.93 | +0.05% | 177.935 |
+| UNI | trading | 147.73 | -0.08% | 4.49065 |
+| TAO | trading | 146.90 | -0.64% | 179.55 |
 
 ## Últimas operaciones
 
+- 2026-11-21 16:31 UTC · compra UNI 148.00 USD a 4.727 — Momentum 24 h: UNI +6,33% 24 h, 4 h +5,57% sigue subiendo, 1 h +0,34% no estirada, volumen 4 h 1,84x, a -6,68% del máximo de 48 h. Invalida:
 - 2026-11-21 15:32 UTC · compra TAO 148.00 USD a 187.3 — Momentum 24 h: TAO +6,79% 24 h (único del top que pasa +5%), 4 h +3,31% sigue subiendo, 1 h -0,32% no estirada, volumen 1,0x, a -5,79% del m
 - 2026-11-21 03:55 UTC · venta BTC 144.22 USD a 56,440.1 — Stop automático en 56,440.098 (entrada 58,642.93, máximo 59,410.63).
 - 2026-11-20 21:32 UTC · compra BTC 150.00 USD a 58,642.9 — Rebote en soporte: mín 48 h 57.778 (vela 19 UTC); velas 20 UTC (mín 58.210, cerrada) y 21 UTC (mín 58.200) ya no hacen mínimo nuevo, 21 UTC 
@@ -23,6 +25,5 @@
 - 2026-11-20 02:31 UTC · venta ETH 118.06 USD a 1,733.05 — Tesis de rebote en soporte invalidada: la vela de 1 h de 01 UTC cerró 1.735,73, abajo de la invalidación 1.736,28 (mín 1.723,52, mínimo nuev
 - 2026-11-20 01:54 UTC · venta UNI 114.57 USD a 4.80795 — Stop automático en 4.80795 (entrada 5.031, máximo 5.061).
 - 2026-11-19 22:32 UTC · compra ETH 120.00 USD a 1,759.8 — Rebote en soporte: ETH hizo mínimo de 48 h en 1.736,28 (vela 21 UTC) y la de 22 UTC no hizo mínimo nuevo (mín 1.738,78, va 1.760, 1 h +1,04%
-- 2026-11-19 22:32 UTC · compra BTC 150.00 USD a 62,178.6 — Rebote en soporte: BTC hizo mínimo de 48 h en 61.428 (vela 21 UTC) y la de 22 UTC no hizo mínimo nuevo (mín 61.526, va 62.178, 1 h +1,03%), 
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
