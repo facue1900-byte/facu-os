@@ -11,6 +11,7 @@ Salida: {"asunto", "html", "texto", "telegram"}. El mail usa execution/mail_form
 """
 import html
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -33,15 +34,17 @@ def tarjeta(i, c):
     local = (c.get("local") or "servicios").strip()
     color, fondo = COLOR_LOCAL.get(local.lower(), COLOR_LOCAL["servicios"])
     contacto = (c.get("contacto") or "").strip()
-    linea_contacto = (f"<a href='mailto:{_e(contacto)}' style='color:#111'>{_e(contacto)}</a>" if "@" in contacto
-                      else "<span style='color:#9A5B00'>Sin contacto público todavía</span>")
+    m = re.search(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+", contacto)
+    mail = m.group(0) if m else ""
+    linea_contacto = (_e(contacto).replace(_e(mail), f"<a href='mailto:{_e(mail)}' style='color:#111'>{_e(mail)}</a>", 1) if mail
+                      else (_e(contacto) if contacto else "<span style='color:#9A5B00'>Sin contacto público todavía</span>"))
     botones = ""
     if c.get("fuente"):
         botones += _boton(c["fuente"], "Ver la nota", "#555")
     if c.get("web"):
         botones += _boton(c["web"], "Web de la marca", "#555")
-    if "@" in contacto:
-        botones += _boton(f"mailto:{contacto}", "Escribirle", color)
+    if mail:
+        botones += _boton(f"mailto:{mail}", "Escribirle", color)
     return (
         f"<div style='border:1px solid #E6E6EA;border-left:4px solid {color};border-radius:10px;padding:14px 16px;margin:14px 0 0;font-family:{FUENTE}'>"
         f"<div style='font-size:12px;color:#999'>#{i}</div>"
