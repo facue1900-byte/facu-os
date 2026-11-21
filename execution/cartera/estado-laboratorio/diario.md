@@ -984,3 +984,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-21 18:16 UTC — nota
 [v2] Sin operar: carpeta en USDT, sin posiciones. Filtro de mercado ABIERTO (BTC var_24h 2.96, var_4h -0.32) pero ningun par cumple entrada: UNI var_24h 7.06 pero var_4h 0.06, vs_max -6.48 y vol4h 0.53; TAO var_24h 4.83 pero var_4h -0.59, vs_max -5.32, vol4h 0.51; ETH var_24h 4.04 pero var_4h -0.53, vs_max -6.12; ADA var_24h 3.06 pero vs_max -6.27 y vol4h 0.63; resto var_24h<3. Sin disparos.
 
+## 2026-11-21 20:16 UTC — nota
+[v2] Sin operar: carpeta en USDT, sin posiciones. Filtro de mercado ABIERTO (BTC var_24h 3.18, var_4h 0.45) pero ningun par cumple entrada: todos con vs_max_48h < -1.5 (ZEC -12.43, UNI -6.43, ETH -4.79, TAO -4.93) y volumen_4h_vs_promedio < 1.3 (max NEAR 0.82). Sin disparos.
+
