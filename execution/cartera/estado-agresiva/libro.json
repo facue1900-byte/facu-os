@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795278660000
+      "vigilado_hasta": 1795282260000
     },
     "UNIUSDT": {
       "nivel": "trading",
       "cantidad": 31.278189126295747,
       "entrada": 4.727,
-      "maximo": 4.727,
+      "maximo": 4.759,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795278720000
+      "vigilado_hasta": 1795282260000
     }
   },
   "comisiones_usd": 54.89421399999992,
