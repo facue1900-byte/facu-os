@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 736.4498135891714,
-  "posiciones": {},
-  "comisiones_usd": 55.48206699999992,
+  "usdt": 588.4498135891714,
+  "posiciones": {
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.18827933985330075,
+      "entrada": 785.28,
+      "maximo": 785.28,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795329180000
+    }
+  },
+  "comisiones_usd": 55.630066999999926,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4831,6 +4854,18 @@
       "comision": 0.146976,
       "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -0,78% en rojo con 24 h +4,65% (bajo +5%). Sale a ~4,70 (-0,6%) antes del stop.",
       "resultado_pct": -0.59
+    },
+    {
+      "ms": 1795329137610,
+      "fecha": "2026-11-22 06:32 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.18827933985330075,
+      "precio": 785.28,
+      "usd": 148.0,
+      "comision": 0.148,
+      "motivo": "Momentum 24 h: ZEC +6,73% 24 h, 4 h +2,26% volvió a verde firme (el único 4 h claramente positivo del top), 1 h +0,77% no estirada; volumen 4 h 0,47x (domingo flojo, punto débil), a -8,47% del máximo de 48 h. Invalida: 4 h vuelve a rojo con 24 h abajo de +5%, o el stop 5%. Salida por tiempo 06:31 del 23/11 si no llega a +8%."
     }
   ]
 }

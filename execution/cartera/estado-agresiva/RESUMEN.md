@@ -1,18 +1,20 @@
-# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-22 05:31 UTC
+# Carpeta cripto AGRESIVA (objetivo +20%/mes) — 2026-11-22 06:32 UTC
 
-**Total: 736.45 USD (-26.36%)** desde 2026-10-07 23:06 UTC · USDT libre 736.45 · comisiones 55.48 · 402 operaciones
+**Total: 736.22 USD (-26.38%)** desde 2026-10-07 23:06 UTC · USDT libre 588.45 · comisiones 55.63 · 403 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **736.45** |
+| **Esta carpeta** | **736.22** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 709.60 |
+| hodl btc | 709.27 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| ZEC | trading | 147.77 | -0.06% | 746.016 |
 
 ## Últimas operaciones
 
+- 2026-11-22 06:32 UTC · compra ZEC 148.00 USD a 785.28 — Momentum 24 h: ZEC +6,73% 24 h, 4 h +2,26% volvió a verde firme (el único 4 h claramente positivo del top), 1 h +0,77% no estirada; volumen 
 - 2026-11-22 01:32 UTC · venta UNI 146.98 USD a 4.699 — Invalidación de la tesis de momentum 24 h: 4 h -0,78% en rojo con 24 h +4,65% (bajo +5%). Sale a ~4,70 (-0,6%) antes del stop.
 - 2026-11-21 22:31 UTC · venta ZEC 146.45 USD a 787.7 — Invalidación de la tesis de momentum 24 h: 4 h -0,18% en rojo con 24 h +4,42% (bajo +5%). Sale a ~787,9 (-0,9%) antes del stop.
 - 2026-11-21 21:31 UTC · venta TAO 146.43 USD a 185.5 — Invalidación de la tesis de momentum 24 h: 4 h -0,32% en rojo con 24 h +3,98% (bajo +5%). Sale a ~185,6 (-0,9%) antes del stop.
@@ -22,6 +24,5 @@
 - 2026-11-21 03:55 UTC · venta BTC 144.22 USD a 56,440.1 — Stop automático en 56,440.098 (entrada 58,642.93, máximo 59,410.63).
 - 2026-11-20 21:32 UTC · compra BTC 150.00 USD a 58,642.9 — Rebote en soporte: mín 48 h 57.778 (vela 19 UTC); velas 20 UTC (mín 58.210, cerrada) y 21 UTC (mín 58.200) ya no hacen mínimo nuevo, 21 UTC 
 - 2026-11-20 15:47 UTC · venta BTC 143.41 USD a 59,507.5 — Stop automático en 59,507.544 (entrada 62,178.6, máximo 62,639.52).
-- 2026-11-20 15:20 UTC · venta ETH 115.17 USD a 1,675.16 — Stop automático en 1,675.1635 (entrada 1,743.69, máximo 1,763.33).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
