@@ -1,4 +1,4 @@
-# Veredicto de las carpetas cripto — 2026-11-22 18:55 UTC
+# Veredicto de las carpetas cripto — 2026-11-22 18:51 UTC
 
 **En una línea:** **ninguna carpeta le gana a USDT.** La que menos pierde sigue siendo **Original (-1,04%)**; atrás vienen **DCA BTC (-5,11%)** y **Laboratorio (-5,77%)**. En el Torneo las líderes (P0, L2, L5) siguen en 0,00% porque nunca operaron: **0 de 33 le ganan a USDT** y 29 le ganan a HODL BTC (-23,95%). Todas le ganan a HODL BTC, pero quedarse quieto en USDT rinde más que todas. **Sin mail:** nadie llegó a +20% y todas las carpetas corren.
 
@@ -15,7 +15,7 @@ Notas de medición:
 - **Ventana común:** arranca el 27/10 22:37 UTC; la base de cada carpeta es su último snapshot en o antes de ese momento.
 - **7 días:** la base es el último snapshot en o antes de 7 días antes del último.
 - **HODL BTC:** cada carpeta contra la columna `hodl_btc` de su propio `historial.csv` (la DCA mide contra su último snapshot, del 16/11; por eso su HODL difiere).
-- **Frescura (ahora 22/11 18:55 UTC):** 3 niveles 18:07 (48 min) · Agresiva 18:32 (23 min) · Laboratorio 18:16 (39 min) · DCA 16/11 13:06 (6 d 5 h 49 min; límite 8 días, le toca el lunes 23/11) · Torneo `vivo.json` 16:41 (2 h 14 min; límite 8 h) · Original 22/11 12:12 (6 h 43 min; corre en la Mac, no es falla). **Todas corren.**
+- **Frescura (ahora 22/11 18:51 UTC):** 3 niveles 18:07 (44 min) · Agresiva 18:32 (19 min) · Laboratorio 18:16 (35 min) · DCA 16/11 13:06 (6 d 5 h 45 min; límite 8 días, le toca el lunes 23/11) · Torneo `vivo.json` 16:41 (2 h 10 min; límite 8 h) · Original 22/11 12:12 (6 h 39 min; corre en la Mac, no es falla). **Todas corren.**
 - **Torneo:** entre las que operaron, la mejor sigue siendo L4 (cruce 20/50 en las 14): -0,11% con 2 ops. La peor es A3: -38,86%, peor caída -39,85%, 29 ops y 20,79 USD de comisiones. Promedio de las 33: -10,16% (antes -10,15%).
 - **Original:** 100% en USDT, sin movimiento en 7 días. No publica `libro.json`: faltan comisiones y ops.
 - **+20% en 30 días:** 3 niveles -13,66%, Agresiva -21,09%, Original -1,04%; Laboratorio y DCA (menos de 30 días, desde el inicio) -5,77% y -5,11%; Torneo, la mejor en 0,00%. Ninguna cerca.
