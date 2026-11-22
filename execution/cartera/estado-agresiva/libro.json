@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 589.6205790954122,
-  "posiciones": {
-    "UNIUSDT": {
-      "nivel": "trading",
-      "cantidad": 31.278189126295747,
-      "entrada": 4.727,
-      "maximo": 4.759,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795307460000
-    }
-  },
-  "comisiones_usd": 55.33509099999992,
+  "usdt": 736.4498135891714,
+  "posiciones": {},
+  "comisiones_usd": 55.48206699999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4842,6 +4819,18 @@
       "comision": 0.146446,
       "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -0,18% en rojo con 24 h +4,42% (bajo +5%). Sale a ~787,9 (-0,9%) antes del stop.",
       "resultado_pct": -0.95
+    },
+    {
+      "ms": 1795311142335,
+      "fecha": "2026-11-22 01:32 UTC",
+      "lado": "sell",
+      "par": "UNIUSDT",
+      "cantidad": 31.278189126295747,
+      "precio": 4.699,
+      "usd": 146.9762,
+      "comision": 0.146976,
+      "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -0,78% en rojo con 24 h +4,65% (bajo +5%). Sale a ~4,70 (-0,6%) antes del stop.",
+      "resultado_pct": -0.59
     }
   ]
 }

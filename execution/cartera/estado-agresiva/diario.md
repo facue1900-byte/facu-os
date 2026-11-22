@@ -5143,3 +5143,11 @@ Invalidación de la tesis de momentum 24 h: 4 h -0,18% en rojo con 24 h +4,42% (
 ## 2026-11-22 00:31 UTC — nota
 00:31 UTC — Sin disparos, 0 entradas, 0 salidas. Vigilante: UNI (60 min) sin disparos. Cartera 737,13 (-26,29% desde el 07/10, HODL BTC 723,70), 589,62 USDT + 1 posición (~20% invertido). BTC 4 h -0,38% (volumen 0,29x, a 9,25% del mínimo y -3,85% del máximo de 48 h): sin bloqueo. Posición: UNI 4,716 (-0,23%, stop 4,521) — 24 h +5,22%, 4 h +0,11% verde: tesis vigente pero al borde (0,22 pt de +5%); se mantiene, stop sin tocar. Mercado: sábado/domingo a la madrugada, quieto y sin volumen — 1 h -0,57/+0,2%, 4 h -1,92/+0,2%, 24 h verde leve (UNI +5,22%, ETH +3,68%, ZEC +3,34%, NEAR +2,77%), volumen 4 h 0,1-0,46x en todo. Sin entradas: momentum solo UNI (ya adentro), ETH +3,68% con 4 h -0,21% no cumple; ruptura nadie (TRX -1,77% del máximo con 0,19x, rango chico; RWUSD es estable); rebote: nadie cerca del mínimo (7,5-14,5% arriba salvo TRX 2,28%, sin recorrido). Plata en USDT está bien. A mirar: UNI sale si 24 h < +5% con 4 h rojo; ETH si pasa +5% 24 h con 4 h subiendo; BTC 4 h <= -3% = sin entradas. Salida por tiempo: UNI 16:31 del 22/11. 1 posición.
 
+## 2026-11-22 01:32 UTC — Venta UNIUSDT
+146.98 USD a 4.699 (-0.59% contra la compra).
+
+Invalidación de la tesis de momentum 24 h: 4 h -0,78% en rojo con 24 h +4,65% (bajo +5%). Sale a ~4,70 (-0,6%) antes del stop.
+
+## 2026-11-22 01:32 UTC — nota
+01:31 UTC — Sin disparos, 0 entradas, 1 salida. Vigilante: UNI (60 min) sin disparos. BTC 4 h -0,61% (volumen 0,25x, a 9,03% del mínimo y -4,04% del máximo de 48 h): sin bloqueo. Salida: UNI vendida toda a 4,699 (-0,59%) — se cumplió la invalidación anunciada: 4 h -0,78% rojo con 24 h +4,65% bajo +5%. Mercado: domingo de madrugada quieto y sin volumen — 1 h -0,29/+0,24%, 4 h -1,71/+0,28%, 24 h verde leve (UNI +4,65%, ZEC +3,83%, NEAR +3,71%, ETH +3,6%), volumen 4 h 0,11-0,47x en todo. Sin entradas: momentum nadie pasa +5% en 24 h; ruptura nadie (TRX -1,74% del máximo con 0,18x, rango chico; RWUSD es estable); rebote: nadie cerca del mínimo (7,7-14,5% arriba salvo TRX 2,31%, sin recorrido). 100% en USDT, está bien con este volumen. A mirar: NEAR/ETH si pasan +5% 24 h con 4 h subiendo y +1 h <= 4%; rupturas con volumen >= 1,5x cuando vuelva el volumen del lunes; BTC 4 h <= -3% = sin entradas. 0 posiciones.
+
