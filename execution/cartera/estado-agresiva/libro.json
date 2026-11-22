@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.18827933985330075,
       "entrada": 785.28,
-      "maximo": 797.0,
+      "maximo": 805.0,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795336260000
+      "vigilado_hasta": 1795339860000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 50.84319119669876,
       "entrada": 2.908,
-      "maximo": 2.908,
+      "maximo": 2.948,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,7 +48,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795336380000
+      "vigilado_hasta": 1795339860000
     }
   },
   "comisiones_usd": 55.77806699999993,
