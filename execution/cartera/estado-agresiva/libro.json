@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 440.5226200677778,
+  "usdt": 588.5346824237752,
   "posiciones": {
     "NEARUSDT": {
       "nivel": "trading",
@@ -26,32 +26,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795368660000
-    },
-    "HYPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 2.370942912123156,
-      "entrada": 62.36,
-      "maximo": 63.37,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795368660000
+      "vigilado_hasta": 1795372260000
     }
   },
-  "comisiones_usd": 56.07428799999993,
+  "comisiones_usd": 56.22244799999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4924,6 +4902,18 @@
       "comision": 0.148221,
       "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -1,02% en rojo con 24 h +2,2% (bajo +5%), 1 h -1,49%. Sale a ~786 (~+0,1%) antes del stop 769,14.",
       "resultado_pct": 0.25
+    },
+    {
+      "ms": 1795372329244,
+      "fecha": "2026-11-22 18:32 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 2.370942912123156,
+      "precio": 62.49,
+      "usd": 148.1602,
+      "comision": 0.14816,
+      "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -0,71% en rojo con 24 h +2,58% (bajo +5%), 1 h -1,06%. Sale a ~62,5 (~+0,2%) antes del stop 60,20.",
+      "resultado_pct": 0.21
     }
   ]
 }
