@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 588.5346824237752,
-  "posiciones": {
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 50.84319119669876,
-      "entrada": 2.908,
-      "maximo": 3.06,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795375860000
-    }
-  },
-  "comisiones_usd": 56.22244799999993,
+  "usdt": 739.3371636521108,
+  "posiciones": {},
+  "comisiones_usd": 56.37340099999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4914,6 +4891,18 @@
       "comision": 0.14816,
       "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -0,71% en rojo con 24 h +2,58% (bajo +5%), 1 h -1,06%. Sale a ~62,5 (~+0,2%) antes del stop 60,20.",
       "resultado_pct": 0.21
+    },
+    {
+      "ms": 1795379502986,
+      "fecha": "2026-11-22 20:31 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 50.84319119669876,
+      "precio": 2.969,
+      "usd": 150.9534,
+      "comision": 0.150953,
+      "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -0,87% en rojo con 24 h +2,27% (bajo +5%), 1 h -0,5%. Sale a ~2,97 (~+2%) antes del stop 2,907.",
+      "resultado_pct": 2.1
     }
   ]
 }
