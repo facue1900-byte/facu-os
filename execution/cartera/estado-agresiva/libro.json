@@ -4,13 +4,13 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 440.4498135891714,
+  "usdt": 292.4498135891714,
   "posiciones": {
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.18827933985330075,
       "entrada": 785.28,
-      "maximo": 805.0,
+      "maximo": 809.62,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795339860000
+      "vigilado_hasta": 1795343460000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 50.84319119669876,
       "entrada": 2.908,
-      "maximo": 2.948,
+      "maximo": 2.989,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795339860000
+      "vigilado_hasta": 1795343460000
+    },
+    "HYPEUSDT": {
+      "nivel": "trading",
+      "cantidad": 2.370942912123156,
+      "entrada": 62.36,
+      "maximo": 62.36,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795343520000
     }
   },
-  "comisiones_usd": 55.77806699999993,
+  "comisiones_usd": 55.92606699999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4900,6 +4922,18 @@
       "usd": 148.0,
       "comision": 0.148,
       "motivo": "Momentum 24 h: NEAR +7,91% 24 h, el 4 h ahora sube firme (+1,22%, venía plano +0,1/+0,21 a las 02:31-07:31), 1 h +1,5% no estirada; volumen 4 h 0,41x (domingo flojo, punto débil), a -4,66% del máximo de 48 h. Invalida: 4 h vuelve a rojo con 24 h abajo de +5%, o el stop 5%. Salida por tiempo 08:31 del 23/11 si no llega a +8%."
+    },
+    {
+      "ms": 1795343505542,
+      "fecha": "2026-11-22 10:31 UTC",
+      "lado": "buy",
+      "par": "HYPEUSDT",
+      "nivel": "trading",
+      "cantidad": 2.370942912123156,
+      "precio": 62.36,
+      "usd": 148.0,
+      "comision": 0.148,
+      "motivo": "Momentum 24 h: HYPE +6,58% 24 h, 4 h +3,67% (el 4 h más fuerte del top), 1 h +0,27% no estirada; volumen 4 h 0,45x (domingo flojo, punto débil), a -4,81% del máximo de 48 h. Invalida: 4 h vuelve a rojo con 24 h abajo de +5%, o el stop 5%. Salida por tiempo 10:31 del 23/11 si no llega a +8%."
     }
   ]
 }
