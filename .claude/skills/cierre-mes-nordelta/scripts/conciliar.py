@@ -279,6 +279,38 @@ def main():
     del_sheet = multiset(banco)
     faltan_en_sheet = del_extracto - del_sheet
     sobran_en_sheet = del_sheet - del_extracto
+    # Una transferencia de la CC Especial a la CC Bancaria propia («... MISMO ...»)
+    # no es un gasto: desde la Bancaria se pagan cosas (ej. 19/10/2026: $797.246,96
+    # → dos IMP. AFIP de $558.171,74 + $239.075,22). En Movimientos se cargan los
+    # pagos reales, no el pase. Si egresos sobrantes suman EXACTO el pase, es la
+    # misma plata: se informa y no cuenta como problema. Sin suma exacta, sigue ⚠.
+    for c in agrupados:
+        if c["tipo"] != "Egreso" or "MISMO" not in str(c["obs"]).upper():
+            continue
+        clave = ("egreso", round(c["monto"], 2))
+        if faltan_en_sheet[clave] <= 0:
+            continue
+        candidatos = [k[1] for k, n in sobran_en_sheet.items()
+                      if k[0] == "egreso" for _ in range(n)]
+        elegidos = None
+        if len(candidatos) <= 16:
+            import itertools
+            for r in range(1, min(len(candidatos), 4) + 1):
+                for combo in itertools.combinations(candidatos, r):
+                    if abs(sum(combo) - c["monto"]) <= CENTAVO:
+                        elegidos = combo
+                        break
+                if elegidos:
+                    break
+        if elegidos:
+            faltan_en_sheet[clave] -= 1
+            for v in elegidos:
+                sobran_en_sheet[("egreso", v)] -= 1
+            faltan_en_sheet += collections.Counter()   # limpia ceros
+            sobran_en_sheet += collections.Counter()
+            print(f"ℹ Pase a la CC Bancaria ${c['monto']:,.2f} ({c['fecha']}) = "
+                  + " + ".join(f"${v:,.2f}" for v in elegidos)
+                  + " cargados en Movimientos (pagados desde la Bancaria): cruzado.")
     detalle = []
     for (tipo, monto), n in sorted(faltan_en_sheet.items()):
         detalle.append(f"falta en Movimientos: {tipo.capitalize()} ${monto:,.2f}" +

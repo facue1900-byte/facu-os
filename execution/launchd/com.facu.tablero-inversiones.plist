@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Datos del tablero «Cartera y Cripto» (https://claude.ai/artifact/NXAmosD2gwfkpQzyqKB7kE).
+  Cada 15 min: precios de Yahoo × tu tabla CARTERA ACTUAL + carpetas cripto → planilla de Drive
+  que lee la página. Nunca opera nada.
+
+  Instalar (lo corre Facu en la Terminal):
+    cp ~/facu-os/execution/launchd/com.facu.tablero-inversiones.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.facu.tablero-inversiones.plist
+
+  Probar:
+    launchctl start com.facu.tablero-inversiones
+    tail -20 ~/facu-os/data/logs/tablero-inversiones.log
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.facu.tablero-inversiones</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/Facu/facu-os/execution/launchd/correr.sh</string>
+        <string>tablero-inversiones</string>
+        <string>--</string>
+        <string>/Users/Facu/facu-os/.venv/bin/python /Users/Facu/facu-os/execution/tablero_inversiones.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/Facu/facu-os</string>
+
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Minute</key><integer>45</integer></dict>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>

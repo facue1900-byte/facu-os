@@ -8,6 +8,27 @@ Reglas: documentar la **causa raíz**, no el síntoma. Nombrar el script / la AP
 El postmortem completo va acá; la lección corta (dos oraciones) va al `SKILL.md` del skill
 afectado. Si es un patrón transferible, va a memoria en `indice-trampas.md`.
 
+### 2026-11-17 · FAIL · Paseo: efectivo-diario frenado 4 días por un egreso que no llegó a la planilla
+
+**Síntoma:** `efectivo-diario` corta en el paso 1 desde el 14/11 («1 movimiento en Supabase
+y NO en el Master Plan»). El aviso no decía cuál, así que hubo que buscarlo a mano.
+
+**Causa raíz:** el 12/11 15:19 Mati cargó «Pague Daniel mantenimiento $500.000» (Egreso,
+Caja, Mejoras, id `1db59163…`). El POST de la app al Apps Script se perdió: los otros 7
+movimientos de ese día sí llegaron. La app no mira la respuesta del POST, así que nadie se
+enteró hasta el `--estricto` del día siguiente. El chequeo funcionó: frenó bien.
+No es la primera vez: el 14/10 Mati avisó por WhatsApp «estoy poniendo lo que le pagué a
+Daniel y no me lo toma». Dos veces con pagos a Daniel: mirar si es la categoría o el texto.
+El 17/11 16:11 se le preguntó a Mati por WhatsApp si el pago es real, antes de pasarlo.
+Mati confirmó (16:15). Facu lo pasó con el Apps Script (fila 717, mismo id), app y planilla
+quedaron 692/692 y `efectivo-diario` corrió entero: Bigg, Boss y Peak One volcados ($3.313.460).
+Sigue FAIL: la app sigue sin enterarse cuando el POST falla.
+
+**Fix:** `sincronizar_supabase.py` ahora lista cada movimiento que sobra (fecha, monto, obs,
+cuándo se cargó, id) con `!!!`, así llega al mail Y al Telegram. **Pendiente:** reenviar el
+registro al Apps Script (OK de Facu) y que la app reintente o avise cuando el POST falla —
+mientras no, esto se repite.
+
 ### 2026-11-12 · FAIL ✓ · Paseo: el brief decía «nadie debe nada vencido» y Bigg debía la ND 11
 
 **Síntoma:** el panel de Jarvis (12/11 07:50) mostraba exigible $0 y a Bigg entero como
@@ -658,3 +679,36 @@ turno entero (`avIgnorar = avTurno`).
 - La sesión vinculada de `execution/wa_tanda` estaba vencida (pedía QR). `--setup` espera 10 min: si Facu no escanea en ese rato, se corta solo y la sesión sigue vencida, sin otro aviso que el log.
 - Ya vinculada, la 1.34.7 fallaba contra el WhatsApp Web actual: `getChats()` tiraba `ERROR r` y `sendMessage` tiraba "Data passed to getter must include an id property". **Arreglo: subir a 1.34.8**, con eso mandó bien (imagen, ack 2, confirmada en `ChatStorage.sqlite`).
 - Lección: si wa_tanda tira errores crípticos de minificado (`r`, `getter ... id`), primero `npm view whatsapp-web.js version` y actualizar. El número de un contacto sale de la base local de WhatsApp Desktop (`ZWACHATSESSION.ZCONTACTJID`), sin `getChats()`.
+
+## 16/11/2026 — Cierre del 16: dos alarmas falsas que frenaban el reporte a inversores
+- **«Falta el extracto de octubre»** con el PDF ahí desde el 05/11: `conciliar_mes_anterior.sh` buscaba sólo `<Mes> <Año>.pdf` y desde octubre el resumen se guarda como `<Mes> <Año> - Resumen General.pdf`. Ahora acepta los dos. Con el PDF, octubre CIERRA.
+- La conciliación marcaba ⚠ el pase de $797.246,96 a la CC Bancaria propia (`TRF MO CCDO MISMO`), que se gastó en dos IMP. AFIP cargados en Movimientos. `conciliar.py` cruza un pase `MISMO` contra egresos sobrantes que lo sumen EXACTO (hasta 4); sin suma exacta sigue ⚠.
+- **«La comprobación no cierra por $47.000.000»**: `comprobacion()` sumaba Caja + Banco y dejaba afuera el medio `FCI`, adonde se suscribieron $47 M en octubre. Peor: el PDF le iba a decir a Richi «total disponible» sin esos $47 M. Ahora suma el FCI y lo muestra.
+- Lección: cuando aparece un medio nuevo en Movimientos (FCI), revisar todo lo que suma saldos por medio con una lista fija. Y un control que nunca había visto un FCI no estaba probado contra él.
+
+## 2026-11-17 · El mail de las 20 hs repetía cada cambio 3-4 veces y en inglés
+- **Síntoma:** el mail del 17/11 «Cambios de hoy · Facu» traía 0 cambios nuevos: eran los commits del 16/11 repetidos, en inglés.
+- **Causa:** `active/astronomy/herramientas/al_cerrar.sh` anota en `BITACORA.md` todos los commits desde que abrió la sesión. Con varias sesiones de Claude abiertas a la vez, cada una que cierra los vuelve a anotar. El mail los copiaba en «lo que anotó».
+- **Fix:** el hook no anota un commit que ya está, ni los «Auto …»; el mail ignora esas copias de commits (ya salen en «cambios»), deduplica y traduce con Gemini (si falla, sale en inglés y lo dice). Bitácora limpia: 68 → 29 líneas.
+- **Pendiente:** el estado de Vercel da 403 desde el 16/11 («No pude leer si la web quedó publicada»): el token de la CLI no tiene acceso al proyecto.
+
+## 2026-11-18 · Bot de WhatsApp: caído 17:56–18:15 sin que nadie se enterara, y un día de pruebas
+- **Síntoma:** los recordatorios de las 18:00 dieron error (Evolution 500 en el primero, el workflow cortó y no salió ninguno de los 4). A esos alumnos ya no les llega el mail.
+- **Causa:** WhatsApp desvinculó la sesión a las 17:56 (`stream:error 401 conflict device_removed`): alguien quitó el dispositivo vinculado o vinculó otro. No vino de los reinicios de n8n. Nada lo vigilaba.
+- **Fix:** Facu revinculó con código de emparejamiento (`/instance/connect/astronomy_01?number=5491124005565`), se reenviaron los 4 recordatorios con el texto aprobado (entregados) y quedó el vigía `execution/vigia_bot_whatsapp.py` (Telegram cada 10 min, desde la Mac).
+- **Del mismo día:** el modelo dice «se lo paso al equipo» y NO llama a la tool de derivar (2 de 3 veces). Más prompt no lo arregla: v10 deriva por código si la respuesta promete el pase y no hubo derivación. Y en n8n un nodo corre por CADA fila del anterior: el aviso al grupo salió repetido 60 veces (v8b, `executeOnce`).
+- **Pendiente:** `AstroRecordator1` corta todo si falla un envío (un teléfono roto bloquea a los demás).
+
+## 2026-11-18 (noche) · Bot: la clase de prueba la da el bot, banco de pruebas y fases 3 y 4
+- **Síntoma (banco de pruebas, antes de publicar):** en 1 de 4 charlas el modelo escribió un link de clase de prueba de memoria (`astronomyofficial.com/claseprueba`, no existe) sin llamar a la tool. Y prometía «alguien del equipo te va a escribir» sin derivar.
+- **Causa:** es lo mismo de la tarde: el modelo no llama la tool de forma confiable, y más prompt no alcanza.
+- **Fix:** red por código después de `limpiar_output`. `validar_links` borra todo link de astronomyofficial.com que no esté en la lista blanca; si la respuesta habla del link de la prueba sin uno real, `pedir_link_prueba` lo pide a la web y lo agrega. La red de derivar también agarra «alguien del equipo te va a escribir».
+- **El code review de la web encontró la carrera** de chequear y después insertar (dos mensajes seguidos = dos links, y el cupo se pasaba). Ahora decide una función de la base con lock (`clase_gratis_bot.sql`).
+- **Trampa de n8n:** `docker cp` de un archivo con mode 600 de root → `n8n import:credentials` da EACCES y **el archivo con la clave queda en /tmp del contenedor**. Hay que hacer `chown node` antes y borrarlo con `docker exec -u root`.
+- **Trampa del banco:** el chequeo de tools leía `intermediateSteps` del agente, que en n8n v3.1 no llega; daba «no usó la tool» con la tool usada. Ahora lee las tools de `chat_history` (sesión `banco:<jid>`). Un chequeo que dice «no» por no poder ver es tan malo como uno que dice «sí».
+
+## 2026-11-19 · FAIL ✓ · /admin/leads caída para todos por un caso con estado «abierto»
+- **Síntoma:** «This page couldn't load» en `/admin/leads`. En Vercel: `Cannot read properties of undefined (reading 'abierto')` en `LeadsPanel`.
+- **Causa raíz:** `incidencias` es una tabla compartida (leads + problemas técnicos) y su default de `estado` es `'abierto'`, que no es un estado de lead. `accionRapida` hacía upsert **sin** `estado` cuando la acción no avanza el caso («Sin respuesta»); si la fila no existía, la base ponía su default. Pasó el 18/11 17:47, la primera vez que alguien tocó «Sin respuesta» en un lead sin trabajar.
+- **Fix (astronomy-members 0721a93):** el upsert manda siempre `estado`; `calcularLeads` lee un estado ajeno como «pendiente»; la fila mala corregida. Verificado corriendo `calcularLeads` contra la base: 74 leads, 0 con estado desconocido.
+- **Lección:** en un upsert, una columna que no se manda no «queda como estaba» si la fila es nueva: toma el default de la tabla. Y un `Record[valorDeLaBase]` sin red tira la pantalla entera por una sola fila.
