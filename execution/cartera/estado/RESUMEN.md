@@ -1,19 +1,21 @@
-# Carpeta cripto ficticia — 2026-11-23 18:06 UTC
+# Carpeta cripto ficticia — 2026-11-23 20:06 UTC
 
-**Total: 798.73 USD (-20.13%)** desde 2026-10-07 20:58 UTC · USDT libre 798.73 · comisiones 3.11 · 99 operaciones
+**Total: 798.63 USD (-20.14%)** desde 2026-10-07 20:58 UTC · USDT libre 768.73 · comisiones 3.14 · 100 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **798.73** |
+| **Esta carpeta** | **798.63** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 738.13 |
-| plan inicial sin tocar | 682.01 |
+| hodl btc | 732.99 |
+| plan inicial sin tocar | 675.20 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| LISTA | riesgo | 29.90 | -0.23% | 0.07548 |
 
 ## Últimas operaciones
 
+- 2026-11-23 20:06 UTC · compra LISTA 30.00 USD a 0.0888 — Momentum: segundo ciclo seguido a <5% del máximo de 90 d (-4,5%), 7d +30%, 30d +10%, vol 5,8 M (sobre el piso, bajo los 10 M preferibles: po
 - 2026-11-20 03:49 UTC · venta MEGA 34.87 USD a 0.051595 — Stop automático en 0.051595 (entrada 0.05913, máximo 0.0607).
 - 2026-11-19 12:07 UTC · compra MEGA 40.00 USD a 0.05913 — Tesis: momentum de riesgo. MEGA cumple la condición fijada en ciclos previos: pasó los 5 M de volumen (5,4 M), a 1,1% del máximo de 90 d, 7d
 - 2026-11-14 22:08 UTC · venta BTC 228.69 USD a 63,673.5 — Stop automático en 63,673.5 (entrada 83,446.01, máximo 84,898).
@@ -23,6 +25,5 @@
 - 2026-11-11 02:07 UTC · compra PEPE 40.00 USD a 5.44e-06 — Tesis de riesgo pactada el 00:05 (11/11): PEPE segundo ciclo seguido a <5% del máximo de 90 d (4,6% -> 4,0%), con volumen 98,6 M/día, 7d +9,
 - 2026-11-07 02:51 UTC · venta XRP 24.58 USD a 1.16653 — Stop automático en 1.166532 (entrada 1.4226, máximo 1.43).
 - 2026-10-31 10:06 UTC · venta HYPE 36.07 USD a 86.93 — Rotación por tesis invalidada, no por stop: la compra del 29/10 16:05 era momentum cerca del máximo de 90 d y su propio motivo decía reconsi
-- 2026-10-30 00:18 UTC · venta LTC 20.48 USD a 54.243 — Stop automático en 54.243 (entrada 66.15, máximo 66.33).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
