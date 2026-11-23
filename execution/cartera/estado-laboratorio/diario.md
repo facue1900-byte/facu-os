@@ -1047,3 +1047,8 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-23 12:16 UTC — nota
 [v2] Sin operar: carpeta en USDT, sin posiciones. Filtro de mercado ABIERTO (BTC var_24h 0.8, var_4h -0.29) pero ningun par cumple entrada: SOL var_24h 3.16 pero var_4h 0.0 (no >0) y vol4h 0.73; HYPE vol4h 1.34 pero var_24h 1.78 (<3); PROM var_24h 20.3, var_4h 25 y vol4h 9.26 pero var_1h -9.89 y vs_max -15.06 (no esta en zona de maximo); resto var_24h<3 y vol4h<1.3. Sin disparos.
 
+## 2026-11-23 14:16 UTC — Compra PEPEUSDT (trading)
+188.46 USD a 3.67e-06. Stop 7.0% · trailing 8.0% · tomas [[10.0, 0.5], [20.0, 1.0]].
+
+[v2] BTC filtro abierto (var_24h 3.95, var_4h 3.11); PEPE var_24h 7.62>=3, var_4h 6.38>0, var_1h 1.38<=2.5, vs_max 0.0>=-1.5, vol4h 4.23>=1.3 (mayor de los que cumplen; tambien cumplian SUI, DOGE, XRP, SOL, ENA, ETH, etc.) · invalida: stop 7% / tendencia rota
+
