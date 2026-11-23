@@ -21,3 +21,8 @@ DCA semanal: cuota fija de BTC, sin mirar precio
 
 DCA semanal: cuota fija de BTC, sin mirar precio
 
+## 2026-11-23 13:04 UTC — Compra BTCUSDT (conservador)
+100.00 USD a 61,304.07. Stop 60.0% · trailing 60.0% · tomas [].
+
+DCA semanal: cuota fija de BTC, sin mirar precio
+
