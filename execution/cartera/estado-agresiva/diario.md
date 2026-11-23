@@ -5289,3 +5289,21 @@ Invalidación de la tesis de momentum 24 h: 4 h -0,87% en rojo con 24 h +2,27% (
 ## 2026-11-23 13:32 UTC — nota
 13:31 UTC — Sin disparos, 0 entradas, 0 salidas. Vigilante: sin posiciones abiertas. Cartera 739,34 (-26,07% desde el 07/10, HODL BTC 735,61), 100% en USDT. BTC 4 h -0,39% (1 h -0,2%, volumen 0,59x, a 4,15% del mínimo y -1,22% del máximo de 48 h): sin bloqueo. Mercado: mediodía del lunes UTC, plano y sin volumen — 1 h -0,2/+0,95%, 4 h -0,39/+0,7% (sin contar PROM), 24 h -0,73/+3,37%, volumen 4 h 0,56-1,18x; solo 9 pares pasan 20 M/día. Sin entradas: PROM (+28,69% 4 h, +20,16% 24 h, 12,3x) sigue desinflándose: -9,19% del máximo de 48 h y 1 h -1,41%, pump de par chico — no se persigue (criterio de las 12:31). Momentum nadie más (máximo SOL +3,37% 24 h). Ruptura nadie (SOL -0,56%, XRP -0,67%, HYPE -0,77% del máximo de 48 h con 0,7-1,18x, bajo 1,5x). Rebote nadie (4,1-7,5% arriba del mínimo). Plata en USDT está bien. A mirar: SOL/XRP/HYPE si rompen el máximo de 48 h con >= 1,5x (apertura de EE. UU.); momentum si algún par pasa +6% 24 h o +5% con volumen >= 1,2x y 4 h firme; PROM no se persigue; BTC 4 h <= -3% = sin entradas. 0 posiciones.
 
+## 2026-11-23 14:32 UTC — Compra SOLUSDT (trading)
+110.00 USD a 77.54. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: SOL +10,17% 24 h, 4 h +7,13% sigue subiendo, 1 h +1,15% verde y no estirada, volumen 4 h 3,52x, a -1,27% del máximo de 48 h. Reglas por defecto. Invalida: stop 5%, o 24 h bajo +5% con 4 h roja. Rota 24/11 14:31 si no llega a +8%.
+
+## 2026-11-23 14:32 UTC — Compra ETHUSDT (trading)
+110.00 USD a 1,824.43. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: ETH +6,52% 24 h (>= +6%), 4 h +5,78%, 1 h +0,8% verde no estirada, volumen 4 h 3,25x, a -1,11% del máximo de 48 h; si rompe el máximo con >= 1,5x confirma. Reglas por defecto. Invalida: stop 5%, o 24 h bajo +5% con 4 h roja. Rota 24/11 14:31 si no llega a +8%.
+
+## 2026-11-23 14:32 UTC — Compra XRPUSDT (trading)
+110.00 USD a 1.0117. Stop 5.0% · trailing 5.0% · tomas [[8.0, 0.5], [15.0, 1.0]].
+
+Momentum 24 h: XRP +9,15% 24 h, 4 h +7,48%, 1 h +2,21% verde no estirada, volumen 4 h 3,97x, a -1,56% del máximo de 48 h. Reglas por defecto. Invalida: stop 5%, o 24 h bajo +5% con 4 h roja. Rota 24/11 14:31 si no llega a +8%.
+
+## 2026-11-23 14:32 UTC — nota
+14:31 UTC — Sin disparos, 3 entradas (SOL, ETH, XRP), 0 salidas. Vigilante: sin posiciones abiertas. Cartera 739,34 antes de entrar (-26,07% desde el 07/10). BTC 4 h +3,95% (1 h +0,02%, volumen 2,72x, -1,16% del máximo de 48 h): sin bloqueo. Mercado: apertura de EE. UU. con suba pareja y CON volumen — 4 h +1,27/+12,36%, 24 h +1,7/+12,2%, volumen 4 h 2,28-5,59x en todo el top; 16 pares pasan 20 M/día. Entradas de momentum, 110 USD cada una (~15%), reglas por defecto: SOL 77,54 (+10,17% 24 h, 3,52x), ETH 1824,43 (+6,52% 24 h, 3,25x), XRP 1,0117 (+9,15% 24 h, 3,97x) — todas con 1 h verde, no estiradas y pasan la lección (>= +6% o >= 1,2x). Descartadas: ZEC (1 h +5,09%) y UNI (1 h +4,65%) estiradas; ENA 1 h +3,73% al límite; PROM pump de par chico, no se persigue; resto por máximo 3 entradas por hora. Riesgo: las tres están correlacionadas con la misma vela de EE. UU.; si BTC devuelve, saltan juntas. Ruptura: nadie arriba del máximo de 48 h (todos entre -0,2 y -2,6%). A mirar: invalidación 24 h < +5% con 4 h roja; BTC 4 h <= -3% = sin entradas; rotar 24/11 14:31 si no llegan a +8%. 3 posiciones.
+

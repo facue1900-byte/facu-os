@@ -4,9 +4,76 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 739.3371636521108,
-  "posiciones": {},
-  "comisiones_usd": 56.37340099999993,
+  "usdt": 409.3371636521108,
+  "posiciones": {
+    "SOLUSDT": {
+      "nivel": "trading",
+      "cantidad": 1.417204023729688,
+      "entrada": 77.54,
+      "maximo": 77.54,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795444380000
+    },
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.06023251097603087,
+      "entrada": 1824.43,
+      "maximo": 1824.43,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795444380000
+    },
+    "XRPUSDT": {
+      "nivel": "trading",
+      "cantidad": 108.6191558762479,
+      "entrada": 1.0117,
+      "maximo": 1.0117,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795444380000
+    }
+  },
+  "comisiones_usd": 56.70340099999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4903,6 +4970,42 @@
       "comision": 0.150953,
       "motivo": "Invalidación de la tesis de momentum 24 h: 4 h -0,87% en rojo con 24 h +2,27% (bajo +5%), 1 h -0,5%. Sale a ~2,97 (~+2%) antes del stop 2,907.",
       "resultado_pct": 2.1
+    },
+    {
+      "ms": 1795444336596,
+      "fecha": "2026-11-23 14:32 UTC",
+      "lado": "buy",
+      "par": "SOLUSDT",
+      "nivel": "trading",
+      "cantidad": 1.417204023729688,
+      "precio": 77.54,
+      "usd": 110.0,
+      "comision": 0.11,
+      "motivo": "Momentum 24 h: SOL +10,17% 24 h, 4 h +7,13% sigue subiendo, 1 h +1,15% verde y no estirada, volumen 4 h 3,52x, a -1,27% del máximo de 48 h. Reglas por defecto. Invalida: stop 5%, o 24 h bajo +5% con 4 h roja. Rota 24/11 14:31 si no llega a +8%."
+    },
+    {
+      "ms": 1795444345085,
+      "fecha": "2026-11-23 14:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.06023251097603087,
+      "precio": 1824.43,
+      "usd": 110.0,
+      "comision": 0.11,
+      "motivo": "Momentum 24 h: ETH +6,52% 24 h (>= +6%), 4 h +5,78%, 1 h +0,8% verde no estirada, volumen 4 h 3,25x, a -1,11% del máximo de 48 h; si rompe el máximo con >= 1,5x confirma. Reglas por defecto. Invalida: stop 5%, o 24 h bajo +5% con 4 h roja. Rota 24/11 14:31 si no llega a +8%."
+    },
+    {
+      "ms": 1795444352478,
+      "fecha": "2026-11-23 14:32 UTC",
+      "lado": "buy",
+      "par": "XRPUSDT",
+      "nivel": "trading",
+      "cantidad": 108.6191558762479,
+      "precio": 1.0117,
+      "usd": 110.0,
+      "comision": 0.11,
+      "motivo": "Momentum 24 h: XRP +9,15% 24 h, 4 h +7,48%, 1 h +2,21% verde no estirada, volumen 4 h 3,97x, a -1,56% del máximo de 48 h. Reglas por defecto. Invalida: stop 5%, o 24 h bajo +5% con 4 h roja. Rota 24/11 14:31 si no llega a +8%."
     }
   ]
 }
