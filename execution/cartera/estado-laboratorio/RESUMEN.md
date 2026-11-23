@@ -1,19 +1,19 @@
-# Carpeta cripto LABORATORIO (reglas del entrenador, objetivo +20%/mes) — 2026-11-23 18:16 UTC
+# Carpeta cripto LABORATORIO (reglas del entrenador, objetivo +20%/mes) — 2026-11-23 20:16 UTC
 
-**Total: 933.43 USD (-6.66%)** desde 2026-10-27 22:37 UTC · USDT libre 753.88 · comisiones 4.86 · 27 operaciones
+**Total: 931.63 USD (-6.84%)** desde 2026-10-27 22:37 UTC · USDT libre 931.63 · comisiones 5.03 · 28 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **933.43** |
+| **Esta carpeta** | **931.63** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 760.50 |
+| hodl btc | 759.65 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
-| PEPE | trading | 179.55 | -4.63% | 3.47e-06 |
 
 ## Últimas operaciones
 
+- 2026-11-23 19:37 UTC · venta PEPE 177.93 USD a 3.4684e-06 — Stop automático en 3.4684e-06 (entrada 3.67e-06, máximo 3.77e-06).
 - 2026-11-23 14:16 UTC · compra PEPE 188.46 USD a 3.67e-06 — [v2] BTC filtro abierto (var_24h 3.95, var_4h 3.11); PEPE var_24h 7.62>=3, var_4h 6.38>0, var_1h 1.38<=2.5, vs_max 0.0>=-1.5, vol4h 4.23>=1.
 - 2026-11-19 21:32 UTC · venta NEAR 183.62 USD a 3.19884 — Stop automático en 3.19884 (entrada 3.302, máximo 3.477).
 - 2026-11-17 22:16 UTC · compra NEAR 189.73 USD a 3.302 — [v2] BTC libre (var_24h -1.32, var_4h 1.07); NEAR var_24h 4.36>=3, var_4h 4.59>0, var_1h 0.61<=2.5, vs_max_48h -0.36>=-1.5, vol4h 1.31>=1.3;
@@ -23,6 +23,5 @@
 - 2026-11-11 12:20 UTC · compra NEAR 193.00 USD a 3.771 — [v2] filtro BTC abierto (var_24h -0.48, var_4h 0.42); NEAR #6 por volumen, var_24h 3.52>=3, var_4h 4.85>0, var_1h -0.58<=2.5, vs_max_48h -1.
 - 2026-11-10 16:25 UTC · venta PEPE 97.19 USD a 5.1704e-06 — Stop automático en 5.1704e-06 (entrada 5.07e-06, máximo 5.62e-06).
 - 2026-11-10 14:54 UTC · venta PEPE 104.84 USD a 5.577e-06 — Toma de ganancia +10% en 5.577e-06: vende 50% de lo que quedaba.
-- 2026-11-08 20:16 UTC · compra PEPE 190.80 USD a 5.07e-06 — [v2] filtro BTC abierto (var_24h 0.24, var_4h 0.13); PEPE var_24h 4.75, var_4h 1.4, var_1h -0.2, vs_max_48h -1.17, vol4h 1.46; 0 posiciones,
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.
