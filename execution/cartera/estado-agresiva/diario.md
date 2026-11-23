@@ -5313,3 +5313,19 @@ Momentum 24 h: XRP +9,15% 24 h, 4 h +7,48%, 1 h +2,21% verde no estirada, volume
 ## 2026-11-23 16:31 UTC — nota
 16:31 UTC — Sin disparos, 0 entradas, 0 salidas. Vigilante: ETH/SOL/XRP 60 min sin disparos. Cartera 729,45 (-27,06% desde el 07/10, HODL BTC 753,1), 44% invertido. Posiciones: ETH 1774,24 (-2,75%, stop 1733,39), SOL 75,15 (-3,08%, stop 73,77), XRP 0,9827 (-2,87%, stop 0,962). Ninguna invalidada: ETH 24 h +2,98% (bajo +5%) pero 4 h sigue verde (+3,04%), no se cumple '24 h < +5% con 4 h roja'; SOL 24 h +6,35%/4 h +4,06%, XRP +5,68%/4 h +4,52%. Ojo ETH: si el 4 h se pone rojo con 24 h bajo +5%, se saca. BTC 4 h +2,21% (1 h -0,34%, 4,24x, -2,97% del máximo de 48 h): sin bloqueo. Mercado: la suba de EE. UU. se devuelve — 1 h roja en casi todo el top (-2,0/+0,3%), todos entre -1,5 y -7% del máximo de 48 h; volumen 4 h todavía alto (3,3-8,6x) pero es de la vela de las 14:31. Sin entradas: SUI (+7,62% 24 h, 1 h -0,73%), ADA (+6,2%, 1 h 0,0%), UNI (+6,57%, 1 h -1,0%), PEPE/DOGE (+5,6-5,8%) pasan la letra de momentum en 24 h/4 h pero la vela de 1 h ya no sigue subiendo y sumarlas es la misma apuesta correlacionada que ya está en rojo — descartadas. Ruptura nadie (TRX -0,1% del máximo con 3,26x, pero no rompe y es de baja volatilidad). Rebote nadie (6-12% arriba del mínimo). PROM no se persigue (1 h -4,27%). A mirar: stops SOL 73,77 / XRP 0,962 / ETH 1733,39 cerca (1,8-2,3%); invalidación 24 h < +5% con 4 h roja; BTC 4 h <= -3% = sin entradas; rotar 24/11 14:31 si no llegan a +8%. 3 posiciones.
 
+## 2026-11-23 16:47 UTC — Stop SOLUSDT (vigilante)
+104.54 USD a 73.7675 (-4.87%). Stop automático en 73.7675 (entrada 77.54, máximo 77.65).
+
+## 2026-11-23 17:31 UTC — Venta ETHUSDT
+105.84 USD a 1,757.16 (-3.69% contra la compra).
+
+Invalidada la tesis de momentum: 24 h +2,33% (bajo +5%) con 4 h roja -3,08% y 1 h -0,86%; BTC 4 h -3,42%. Se saca antes del stop 1733,39 según la invalidación escrita a las 14:31.
+
+## 2026-11-23 17:31 UTC — Venta XRPUSDT
+105.00 USD a 0.9667 (-4.45% contra la compra).
+
+Invalidada la tesis de momentum: 24 h +3,98% (bajo +5%) con 4 h roja -2,38% y 1 h -0,93%; BTC 4 h -3,42%. A 0,2% del stop 0,962: se saca según la invalidación escrita a las 14:31.
+
+## 2026-11-23 17:32 UTC — nota
+17:31 UTC — 1 disparo (stop SOL 16:47 a 73,77, -4,87%), 0 entradas, 2 salidas (ETH 1757,16 -3,69%, XRP 0,9667 -4,45%) por invalidación escrita: 24 h bajo +5% con 4 h roja. BTC 4 h -3,42% (1 h -0,95%, 3,43x, -4,56% del máximo de 48 h): BLOQUEO, sin entradas esta hora. Mercado: la suba de EE. UU. de las 14:31 se devolvió entera — 1 h roja en todo el top (-1,94/-0,06%, PROM -9,7%), 4 h -4,28/+0,78%, todos entre -3,4 y -9% del máximo de 48 h. Solo UNI (+6,16% 24 h) y SUI (+5,61%) pasan +5% en 24 h, ambas con 1 h roja: no hay momentum y hay bloqueo. Lección: las tres entradas de las 14:31 se compraron en el techo de una sola vela correlacionada y cayeron juntas (lo que ya decía el riesgo escrito); costo del ciclo ≈ -15 USD. Próxima vez: no entrar a tres pares de la misma vela de 4 h; esperar una 1 h de confirmación o limitar a una. A mirar: fin del bloqueo cuando BTC 4 h > -3%; rebote en soporte si BTC/ETH tocan el mínimo de 48 h y la 1 h deja de hacer mínimo nuevo. 0 posiciones, 100% USDT.
+

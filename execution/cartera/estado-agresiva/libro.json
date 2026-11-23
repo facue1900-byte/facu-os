@@ -4,76 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 409.3371636521108,
-  "posiciones": {
-    "SOLUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.417204023729688,
-      "entrada": 77.54,
-      "maximo": 77.65,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795451460000
-    },
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.06023251097603087,
-      "entrada": 1824.43,
-      "maximo": 1824.62,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795451460000
-    },
-    "XRPUSDT": {
-      "nivel": "trading",
-      "cantidad": 108.6191558762479,
-      "entrada": 1.0117,
-      "maximo": 1.0127,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795451460000
-    }
-  },
-  "comisiones_usd": 56.70340099999993,
+  "usdt": 724.405674550009,
+  "posiciones": {},
+  "comisiones_usd": 57.01878499999992,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5006,6 +4939,42 @@
       "usd": 110.0,
       "comision": 0.11,
       "motivo": "Momentum 24 h: XRP +9,15% 24 h, 4 h +7,48%, 1 h +2,21% verde no estirada, volumen 4 h 3,97x, a -1,56% del máximo de 48 h. Reglas por defecto. Invalida: stop 5%, o 24 h bajo +5% con 4 h roja. Rota 24/11 14:31 si no llega a +8%."
+    },
+    {
+      "ms": 1795452420000,
+      "fecha": "2026-11-23 16:47 UTC",
+      "lado": "sell",
+      "par": "SOLUSDT",
+      "cantidad": 1.417204023729688,
+      "precio": 73.7675,
+      "usd": 104.5436,
+      "comision": 0.104544,
+      "motivo": "Stop automático en 73.7675 (entrada 77.54, máximo 77.65).",
+      "resultado_pct": -4.87
+    },
+    {
+      "ms": 1795455114041,
+      "fecha": "2026-11-23 17:31 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.06023251097603087,
+      "precio": 1757.16,
+      "usd": 105.8382,
+      "comision": 0.105838,
+      "motivo": "Invalidada la tesis de momentum: 24 h +2,33% (bajo +5%) con 4 h roja -3,08% y 1 h -0,86%; BTC 4 h -3,42%. Se saca antes del stop 1733,39 según la invalidación escrita a las 14:31.",
+      "resultado_pct": -3.69
+    },
+    {
+      "ms": 1795455114815,
+      "fecha": "2026-11-23 17:31 UTC",
+      "lado": "sell",
+      "par": "XRPUSDT",
+      "cantidad": 108.6191558762479,
+      "precio": 0.9667,
+      "usd": 105.0021,
+      "comision": 0.105002,
+      "motivo": "Invalidada la tesis de momentum: 24 h +3,98% (bajo +5%) con 4 h roja -2,38% y 1 h -0,93%; BTC 4 h -3,42%. A 0,2% del stop 0,962: se saca según la invalidación escrita a las 14:31.",
+      "resultado_pct": -4.45
     }
   ]
 }
