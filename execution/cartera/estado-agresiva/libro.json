@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 1.417204023729688,
       "entrada": 77.54,
-      "maximo": 77.54,
+      "maximo": 77.65,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795444380000
+      "vigilado_hasta": 1795447860000
     },
     "ETHUSDT": {
       "nivel": "trading",
       "cantidad": 0.06023251097603087,
       "entrada": 1824.43,
-      "maximo": 1824.43,
+      "maximo": 1824.62,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795444380000
+      "vigilado_hasta": 1795447860000
     },
     "XRPUSDT": {
       "nivel": "trading",
       "cantidad": 108.6191558762479,
       "entrada": 1.0117,
-      "maximo": 1.0117,
+      "maximo": 1.0127,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795444380000
+      "vigilado_hasta": 1795447860000
     }
   },
   "comisiones_usd": 56.70340099999993,
