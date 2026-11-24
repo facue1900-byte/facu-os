@@ -37,6 +37,7 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 DOC = pathlib.Path.home() / "Desktop/Facu/INVERSIONES_Facu.md"
 CARPETA_REPORTES = pathlib.Path.home() / "Desktop/Facu/Inversiones"
 ESTADO = RAIZ / "data/cartera_semanal_estado.json"   # sólo la foto anterior, para detectar compras
+HISTORIAL = RAIZ / "data/inversiones/historial_guardian.md"   # un reporte por lunes, el más nuevo arriba
 CLAUDE = pathlib.Path.home() / ".local/node/bin/claude"
 UA = {"User-Agent": "Mozilla/5.0"}
 EFECTIVO = {"DIDI"}          # money market: vale US$1, no se cotiza
@@ -277,6 +278,18 @@ def mandar_telegram(texto):
         return bool(json.load(r).get("ok"))
 
 
+def guardar_historial(texto):
+    """Suma el reporte que salió arriba de todo en el historial (la más nueva primero)."""
+    HISTORIAL.parent.mkdir(parents=True, exist_ok=True)
+    cab, viejo = "# Historial del guardián de la cartera\n", ""
+    if HISTORIAL.exists():
+        actual = HISTORIAL.read_text()
+        corte = actual.find("\n---\n")
+        cab, viejo = (actual, "") if corte < 0 else (actual[:corte], actual[corte:])
+    nuevo = f"\n---\n\n## Lunes {dt.date.today():%d/%m/%Y}\n\n```\n{texto}\n```\n"
+    HISTORIAL.write_text(cab.rstrip("\n") + "\n" + nuevo + viejo)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--send", action="store_true", help="mandarlo por Telegram (apagado por defecto)")
@@ -303,6 +316,7 @@ def main():
         print("\n→ Telegram:", "enviado" if ok else "NO SALIÓ")
         if not ok:
             raise SystemExit(1)
+        guardar_historial(texto)
         ESTADO.parent.mkdir(exist_ok=True)
         ESTADO.write_text(json.dumps({"fecha": dt.date.today().isoformat(), "posiciones": pos}, indent=1))
 
