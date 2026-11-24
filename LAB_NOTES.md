@@ -712,3 +712,9 @@ turno entero (`avIgnorar = avTurno`).
 - **Causa raíz:** `incidencias` es una tabla compartida (leads + problemas técnicos) y su default de `estado` es `'abierto'`, que no es un estado de lead. `accionRapida` hacía upsert **sin** `estado` cuando la acción no avanza el caso («Sin respuesta»); si la fila no existía, la base ponía su default. Pasó el 18/11 17:47, la primera vez que alguien tocó «Sin respuesta» en un lead sin trabajar.
 - **Fix (astronomy-members 0721a93):** el upsert manda siempre `estado`; `calcularLeads` lee un estado ajeno como «pendiente»; la fila mala corregida. Verificado corriendo `calcularLeads` contra la base: 74 leads, 0 con estado desconocido.
 - **Lección:** en un upsert, una columna que no se manda no «queda como estaba» si la fila es nueva: toma el default de la tabla. Y un `Record[valorDeLaBase]` sin red tira la pantalla entera por una sola fila.
+
+## 2026-11-24 · FAIL ✓ · el guardián de la cartera mandó un Telegram vacío
+- **Síntoma:** el Telegram semanal del lunes 23/11 decía «la cartera llegó vacía» y «sin noticias».
+- **Causa raíz:** la Mac recién despierta. `correr.sh` chequea la red contra `www.googleapis.com` y pasó, pero Yahoo no resolvía DNS: fallaron todos los precios y titulares, y el script mandaba el reporte igual.
+- **Fix:** `cartera_semanal.py` espera hasta 10 min a que Yahoo conteste, y si falta más de la mitad de los precios no manda y sale con 75 (lo marca el radar). Probado con red y simulando la caída.
+- **Lección:** que una tarea tenga red no significa que llegue a *su* fuente. Un reporte armado con menos de la mitad de los datos es un error, no se manda (regla 2).

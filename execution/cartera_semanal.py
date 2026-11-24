@@ -27,6 +27,7 @@ import os
 import pathlib
 import re
 import subprocess
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -109,7 +110,7 @@ def leer_reglas(texto):
 
 # ---------- datos de afuera ----------
 
-def precio(ticker):
+def precio(ticker, avisar=True):
     """(último, cierre de hace ~5 ruedas) desde Yahoo. None si falla."""
     t = YAHOO.get(ticker, ticker)
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{urllib.parse.quote(t)}?range=1mo&interval=1d"
@@ -121,7 +122,8 @@ def precio(ticker):
         hace_5 = cierres[-6] if len(cierres) >= 6 else cierres[0]
         return float(ultimo), float(hace_5)
     except Exception as e:
-        print(f"!!! precio de {ticker} falló: {e!r}")
+        if avisar:
+            print(f"!!! precio de {ticker} falló: {e!r}")
         return None
 
 
@@ -262,7 +264,7 @@ def armar(texto_doc, con_resumen=True):
     if rep_fecha and (hoy - rep_fecha).days > 14:
         L += ["", f"ℹ️ El último reporte de one618 que tengo es del {rep_fecha:%d/%m}. Si te llegó uno nuevo, guardalo en Desktop/Facu/Inversiones."]
     L += ["", "No opero nada: avisar y decidir es tuyo."]
-    return "\n".join(L), pos
+    return "\n".join(L), pos, faltan
 
 
 def mandar_telegram(texto):
@@ -281,7 +283,20 @@ def main():
     ap.add_argument("--sin-resumen", action="store_true", help="sin noticias ni Claude")
     a = ap.parse_args()
     cargar_env()
-    texto, pos = armar(DOC.read_text(), con_resumen=not a.sin_resumen)
+    # 23/11/2026: la Mac recién despierta resolvía googleapis (el chequeo de correr.sh) pero no
+    # Yahoo; fallaron los 13 precios y salió igual un Telegram con «la cartera llegó vacía».
+    # Ahora: se espera a que Yahoo conteste, y si falta más de la mitad de los precios no se manda.
+    for i in range(20):
+        if precio("SPY", avisar=False) is not None:
+            break
+        if i == 0:
+            print("Yahoo no contesta todavía: espero hasta 10 minutos...")
+        time.sleep(30)
+    texto, pos, faltan = armar(DOC.read_text(), con_resumen=not a.sin_resumen)
+    papeles = [t for t in pos if t not in EFECTIVO]
+    if papeles and len(faltan) * 2 > len(papeles):
+        print(f"!!! Fallaron {len(faltan)} de {len(papeles)} precios: NO se manda (sería un reporte vacío).")
+        raise SystemExit(75)
     print(texto)
     if a.send:
         ok = mandar_telegram(texto)
