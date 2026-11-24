@@ -27,6 +27,7 @@ import os
 import pathlib
 import re
 import subprocess
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -36,6 +37,7 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 DOC = pathlib.Path.home() / "Desktop/Facu/INVERSIONES_Facu.md"
 CARPETA_REPORTES = pathlib.Path.home() / "Desktop/Facu/Inversiones"
 ESTADO = RAIZ / "data/cartera_semanal_estado.json"   # sólo la foto anterior, para detectar compras
+HISTORIAL = RAIZ / "data/inversiones/historial_guardian.md"   # un reporte por lunes, el más nuevo arriba
 CLAUDE = pathlib.Path.home() / ".local/node/bin/claude"
 UA = {"User-Agent": "Mozilla/5.0"}
 EFECTIVO = {"DIDI"}          # money market: vale US$1, no se cotiza
@@ -109,7 +111,7 @@ def leer_reglas(texto):
 
 # ---------- datos de afuera ----------
 
-def precio(ticker):
+def precio(ticker, avisar=True):
     """(último, cierre de hace ~5 ruedas) desde Yahoo. None si falla."""
     t = YAHOO.get(ticker, ticker)
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{urllib.parse.quote(t)}?range=1mo&interval=1d"
@@ -121,7 +123,8 @@ def precio(ticker):
         hace_5 = cierres[-6] if len(cierres) >= 6 else cierres[0]
         return float(ultimo), float(hace_5)
     except Exception as e:
-        print(f"!!! precio de {ticker} falló: {e!r}")
+        if avisar:
+            print(f"!!! precio de {ticker} falló: {e!r}")
         return None
 
 
@@ -262,7 +265,7 @@ def armar(texto_doc, con_resumen=True):
     if rep_fecha and (hoy - rep_fecha).days > 14:
         L += ["", f"ℹ️ El último reporte de one618 que tengo es del {rep_fecha:%d/%m}. Si te llegó uno nuevo, guardalo en Desktop/Facu/Inversiones."]
     L += ["", "No opero nada: avisar y decidir es tuyo."]
-    return "\n".join(L), pos
+    return "\n".join(L), pos, faltan
 
 
 def mandar_telegram(texto):
@@ -275,19 +278,45 @@ def mandar_telegram(texto):
         return bool(json.load(r).get("ok"))
 
 
+def guardar_historial(texto):
+    """Suma el reporte que salió arriba de todo en el historial (la más nueva primero)."""
+    HISTORIAL.parent.mkdir(parents=True, exist_ok=True)
+    cab, viejo = "# Historial del guardián de la cartera\n", ""
+    if HISTORIAL.exists():
+        actual = HISTORIAL.read_text()
+        corte = actual.find("\n---\n")
+        cab, viejo = (actual, "") if corte < 0 else (actual[:corte], actual[corte:])
+    nuevo = f"\n---\n\n## Lunes {dt.date.today():%d/%m/%Y}\n\n```\n{texto}\n```\n"
+    HISTORIAL.write_text(cab.rstrip("\n") + "\n" + nuevo + viejo)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--send", action="store_true", help="mandarlo por Telegram (apagado por defecto)")
     ap.add_argument("--sin-resumen", action="store_true", help="sin noticias ni Claude")
     a = ap.parse_args()
     cargar_env()
-    texto, pos = armar(DOC.read_text(), con_resumen=not a.sin_resumen)
+    # 23/11/2026: la Mac recién despierta resolvía googleapis (el chequeo de correr.sh) pero no
+    # Yahoo; fallaron los 13 precios y salió igual un Telegram con «la cartera llegó vacía».
+    # Ahora: se espera a que Yahoo conteste, y si falta más de la mitad de los precios no se manda.
+    for i in range(20):
+        if precio("SPY", avisar=False) is not None:
+            break
+        if i == 0:
+            print("Yahoo no contesta todavía: espero hasta 10 minutos...")
+        time.sleep(30)
+    texto, pos, faltan = armar(DOC.read_text(), con_resumen=not a.sin_resumen)
+    papeles = [t for t in pos if t not in EFECTIVO]
+    if papeles and len(faltan) * 2 > len(papeles):
+        print(f"!!! Fallaron {len(faltan)} de {len(papeles)} precios: NO se manda (sería un reporte vacío).")
+        raise SystemExit(75)
     print(texto)
     if a.send:
         ok = mandar_telegram(texto)
         print("\n→ Telegram:", "enviado" if ok else "NO SALIÓ")
         if not ok:
             raise SystemExit(1)
+        guardar_historial(texto)
         ESTADO.parent.mkdir(exist_ok=True)
         ESTADO.write_text(json.dumps({"fecha": dt.date.today().isoformat(), "posiciones": pos}, indent=1))
 

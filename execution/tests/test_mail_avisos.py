@@ -60,9 +60,20 @@ def test_sin_red_nunca_manda_mail():
     assert decidir("reporte-pauta", 75, [corrida(0, 75)], None, AHORA)[0] is False
 
 
-def test_la_carpeta_ficticia_nunca_manda_mail_por_falla():
-    fallas = [corrida(8, 1), corrida(4, 1), corrida(0, 1)]
+def test_la_carpeta_ficticia_no_manda_mail_por_un_ciclo_caido():
+    fallas = [corrida(12, 0), corrida(8, 1), corrida(4, 1), corrida(0, 1)]
     assert decidir("paper-trading", 1, fallas, None, AHORA)[0] is False
+
+
+def test_la_carpeta_ficticia_avisa_tras_24_h_sin_un_ciclo_bueno():
+    # Grok 20-24/11/2026: 402 en todos los ciclos durante 3,5 días.
+    fallas = [corrida(30, 0), corrida(20, 1), corrida(8, 1), corrida(0, 1)]
+    assert decidir("paper-grok", 1, fallas, None, AHORA)[0] is True
+    assert decidir("paper-grok", 1, fallas, AHORA - timedelta(days=1), AHORA)[0] is False
+
+
+def test_la_carpeta_ficticia_sin_ningun_ciclo_bueno_tambien_avisa():
+    assert decidir("paper-grok", 1, [corrida(25, 1), corrida(0, 1)], None, AHORA)[0] is True
 
 
 def test_sin_log_el_mail_no_muestra_jerga():
