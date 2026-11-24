@@ -27,32 +27,9 @@
       }
     }
   },
-  "usdt": 768.7287359776667,
-  "posiciones": {
-    "LISTAUSDT": {
-      "nivel": "riesgo",
-      "cantidad": 337.5,
-      "entrada": 0.0888,
-      "maximo": 0.115,
-      "reglas": {
-        "stop": 15.0,
-        "trail": 15.0,
-        "tp": [
-          [
-            40.0,
-            0.5
-          ],
-          [
-            100.0,
-            0.5
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795500240000
-    }
-  },
-  "comisiones_usd": 3.1441850000000007,
+  "usdt": 801.6863703526667,
+  "posiciones": {},
+  "comisiones_usd": 3.1771760000000007,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1253,6 +1230,18 @@
       "usd": 30.0,
       "comision": 0.03,
       "motivo": "Momentum: segundo ciclo seguido a <5% del máximo de 90 d (-4,5%), 7d +30%, 30d +10%, vol 5,8 M (sobre el piso, bajo los 10 M preferibles: por eso 30 USD, ~3,8% y no el 5%). Sin vela vertical nueva desde las 16:05. Invalida: stop 15% / trailing 15%, perder el 7d positivo, o volumen bajo 5 M sostenido."
+    },
+    {
+      "ms": 1795501860000,
+      "fecha": "2026-11-24 06:31 UTC",
+      "lado": "sell",
+      "par": "LISTAUSDT",
+      "cantidad": 337.5,
+      "precio": 0.09775,
+      "usd": 32.9906,
+      "comision": 0.032991,
+      "motivo": "Stop automático en 0.09775 (entrada 0.0888, máximo 0.115).",
+      "resultado_pct": 10.08
     }
   ]
 }
