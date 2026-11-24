@@ -273,3 +273,23 @@ Patrones (≥3 casos): (1) agresiva pierde con muchas vueltas cortas (1 de 23 ga
 Historia: sin cambios (HISTORIA.md del 28/10); nada le gana a todo en vivo y en historia, no se copia nada.
 Por qué no cambio: v2 tiene 17 días pero **4 vueltas cerradas (< 5)**; no se toca. Bajar el umbral de volumen porque SOL quedó a 0,03 sería cambiar por un caso, no por un patrón. Cuando llegue a 5 vueltas, mirar primero la reentrada al mismo par tras una salida perdedora (patrón 5).
 +20%/mes: no está al alcance. El lab va −5,77% en 26,5 días; ninguna de las 33 estrategias del torneo le gana a USDT en vivo, y la historia no muestra una ventaja medida que lo sostenga sin caídas de −12% a −25%. Se dice tal cual.
+
+## 2026-11-24 — v2 igual
+Diagnóstico (operaciones cerradas, en Python sobre `libro.json`, neto de comisiones):
+- Laboratorio: 13 vueltas desde el inicio, 15% ganadoras, +10,80 / −8,41, neto −70,92, 6 con stop automático, 18,9 h medias, comisiones 5,03. Últimos 7 d: 3 vueltas (NEAR, NEAR, PEPE), 0% gan, neto −24,44. **Vuelta nueva:** PEPE 23/11 14:16 → stop 19:37, −5,49% (−10,90 USD). Total 931,63 (−6,84%) al 24/11 10:16, todo en USDT. HODL BTC 742,18: el lab le gana por ~19 pp.
+- Por versión: v1 8 vueltas, 1 ganadora, neto −47,59; **v2 5 vueltas**, 1 ganadora, neto −23,33. Ventana v2 (06/11 → hoy): 954,01 → 931,63 (−2,3%).
+- Stops vs mínimo de las 24 h siguientes (velas 1 h, data-api.binance.vision): PEPE 23/11 bajó otro −2,8% y volvió justo al stop (+0,05%), sin llegar a la entrada; NEAR 19/11 siguió −20%; PEPE 10/11 siguió −29%. Los stops no están saltando en ruido: 0 de 3 rebotaron a ganancia.
+- Agresiva: 203 vueltas, 21% gan, +3,53 / −2,85, neto −304,23, comisiones 57,02; 7 d: 24 vueltas, 1 ganadora (4%), neto −66,75. 724,24 (−27,58%).
+- 3 niveles: 49 vueltas, 16% gan, +4,29 / −5,72, neto −200,00, 162 h medias; 7 d: 2 vueltas, neto −2,28. 801,69 en USDT (−19,83%).
+- DCA 932,83 (−6,72%, RESUMEN del 23/11). Torneo en vivo (24/11 08 h): 0 de 33 le ganan a USDT; arriba P0, L2, L5 (0,0%), L4 −0,1%, L7 −0,2%, L6 −0,3%; L1 (v1 en 4 h) −5,8%. El régimen cambió: **BTC abajo de la media 200, bajando 30 d** (HISTORIA.md del 28/10 todavía mide "arriba de la media 200").
+Patrones (≥3 casos): (1)–(5) igual que ayer (agresiva muere por vueltas cortas y comisiones; 3 niveles por stops anchos aguantando; "tendencia rota"/stop cortan pérdidas chicas; entradas con otra posición abierta 5/5 perdedoras, atacado por v2; NEAR 3 entradas v2, 3 perdedoras). **(6) nuevo: entradas con BTC `var_4h` ≥ +1,0 → 0 de 7 ganadoras (−64,8 USD); con BTC `var_4h` < 1,0 → 2 de 6 (−5,7).** Limpias de posición múltiple: 3 casos (UNI 04/11, NEAR 17/11 22 h, PEPE 23/11), 0 ganadoras, −22,68. La PEPE de ayer es el caso típico: BTC +3,11 en 4 h, "también cumplían SUI, DOGE, XRP, SOL, ENA, ETH" → empujón de todo el mercado que se dio vuelta en 5 h.
+Prueba del candidato (no aplicado): corrí L1 con 1 posición (= v2) y L1 + "no entrar si BTC `var_4h` > X" con `torneo.py` sobre velas de 4 h 2021 → 24/11/2026, ventanas de 30 d cada 15:
+| Variante | Todas (142) mediana / peor caída | 2025-26 (44) mediana | Mercado de hoy (36) mediana / positivas | Vivo 29/10 |
+|---|---|---|---|---|
+| v2 | −0,59% / −11,9% | −0,34% | −0,72% / 42% | −6,46% |
+| v2 + tope 1,0 | −0,59% / −9,1% | −0,56% | −1,06% / 33% | +0,32% |
+| v2 + tope 0,5 | −0,51% / −11,4% | −0,53% | −0,84% / 39% | +0,32% |
+| v2 + tope 1,5 | −0,67% / −17,0% | −0,99% | −1,92% / 31% | +0,32% |
+En vivo el tope arregla todo, pero eso es el mismo período donde se encontró el patrón. En el mercado de hoy y en 2025-2026 **empeora la mediana** contra v2 con cualquier umbral: por la regla del prompt, no entra. Queda anotado como patrón medido y descartado por historia.
+Por qué no cambio: v2 ya tiene 18 días y 5 vueltas, así que se podía tocar, pero el único patrón nuevo no pasa la prueba histórica, y la reentrada a NEAR (patrón 5) sigue en 2 casos de reentrada tras pérdida. De paso, la historia confirma lo de v2: misma mediana que v1 (−0,59% contra −0,61%) con la mitad de peor caída (−11,9% contra −22,9%).
++20%/mes: no está al alcance. El lab va −6,84% en 27,5 días; ninguna variante de sus reglas tiene mediana positiva en ningún bloque histórico (ventanas que llegan a +20%: ~0%), y ninguna de las 33 del torneo le gana a USDT en vivo. Con ventaja medida, lo honesto hoy es "no perder mucho en un mercado bajista", no +20%. Se dice tal cual.
