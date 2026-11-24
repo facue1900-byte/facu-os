@@ -15,8 +15,10 @@ negociación), academia de DJ, y un lavadero de autos en el futuro. **No buscar 
 
 | Local | Superficie | Entrega |
 |---|---|---|
-| **8 locales de servicios** | 29,7 m² c/u (3,30 m de frente × 9 de fondo), sobre el paseo, junto al Market | obra en gris · julio 2027 aprox. |
-| **Market** | ~119 m² en planta libre (~13 m de frente × 9), junto al acceso principal | obra en gris · julio 2027 aprox. |
+| **8 locales de servicios** | 29,7 m² c/u (3,30 m de frente × 9 de fondo), sobre el paseo, junto al Market | obra en gris · agosto 2027 aprox. (Facu, 24/11) |
+| **Market** | ~119 m² en planta libre (~13 m de frente × 9), junto al acceso principal | obra en gris · agosto 2027 aprox. (Facu, 24/11) |
+
+> Dos (o más) módulos de servicios contiguos **se pueden unir** (Facu, 24/11): a una marca que pide más de 30 m², ofrecerle 2 módulos ≈ 59,4 m² (6,60 m de frente).
 
 Rubros que encajan en los de servicios: estética, peluquería, barbería, uñas, depilación,
 farmacia o perfumería, óptica, veterinaria o pet shop, tintorería/lavandería, consultorios,

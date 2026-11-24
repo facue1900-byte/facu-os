@@ -33,8 +33,12 @@ FRECUENTE = timedelta(hours=36)
 A_LA_PRIMERA = {"chequeo-pauta", "efectivo-diario"}
 # Facu, 02/11/2026, ante «paper-trading salió con código 1»: «si me mandás algo, que sea súper
 # claro y clave para tomar decisiones». Un ciclo caído de plata ficticia no le pide ninguna
-# decisión: no manda mail nunca y lo marca el radar.
+# decisión: un ciclo caído no manda mail y lo marca el radar.
+# 24/11/2026: Grok estuvo 3,5 días caído (402, sin suscripción) y nadie se enteró: el radar lo
+# marcaba, pero Facu no lo mira. Si pasan 24 h sin un ciclo bueno ya no es un ciclo caído:
+# hay algo que sólo destraba Facu (pago, login), y eso sí avisa.
 SIN_MAIL = {"paper-trading", "paper-grok"}
+CAIDA_LARGA = timedelta(hours=24)
 
 # tarea: (área, nivel, nombre para el asunto, qué significa)
 TAREAS = {
@@ -46,7 +50,8 @@ TAREAS = {
     "reporte-equipo": ("astronomy", "revisar", "Reporte del equipo sin salir", "El mail de los viernes no llegó al equipo."),
     "verificar-leads": ("astronomy", "revisar", "Verificador de leads caído", "El control diario de los leads no terminó."),
     "reels-diarios": ("astronomy", "revisar", "Reels diarios sin publicar", "Hoy no se publicó ningún reel de prueba."),
-    "paper-trading": ("cripto", "revisar", "Carpeta de 10.000 frenada", "La carpeta ficticia de la Mac no completó su ciclo."),
+    "paper-trading": ("cripto", "revisar", "Carpeta de 10.000 frenada", "La carpeta ficticia de la Mac lleva más de 24 h sin completar un ciclo."),
+    "paper-grok": ("cripto", "revisar", "Carpeta de Grok frenada", "La carpeta de Grok lleva más de 24 h sin completar un ciclo. Si el log dice 402, es la suscripción de Grok."),
     "radar-diario": ("sistema", "revisar", "Radar diario sin actualizar", "El doc del radar de hoy puede estar viejo."),
 }
 
@@ -56,7 +61,13 @@ def decidir(tarea, codigo, registros, ultimo_mail, ahora):
     if codigo == 75:
         return False, "sin red: lo marca el radar"
     if tarea in SIN_MAIL:
-        return False, "no pide ninguna decisión: lo marca el radar"
+        buenas = [r for r in registros if r["codigo"] == 0]
+        desde = datetime.fromisoformat((buenas[-1] if buenas else registros[0])["inicio"])
+        if datetime.fromisoformat(registros[-1]["inicio"]) - desde < CAIDA_LARGA:
+            return False, "no pide ninguna decisión: lo marca el radar"
+        if ultimo_mail and ahora - ultimo_mail < ENTRE_MAILS:
+            return False, f"ya se avisó el {ultimo_mail:%d/%m %H:%M}"
+        return True, "más de 24 h sin un ciclo bueno"
     previas = registros[:-1]
     if tarea not in A_LA_PRIMERA and len(registros) >= 2:
         gap = datetime.fromisoformat(registros[-1]["inicio"]) - datetime.fromisoformat(previas[-1]["inicio"])
