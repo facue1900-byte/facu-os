@@ -56,6 +56,16 @@ ACCIONES = {
     "block": "bloqueó un horario",
     "salary_paid": "marcó un sueldo como pagado",
     "announcement": "publicó un aviso",
+    "procesos": "corrió un proceso del admin",
+    "egreso_cargado": "cargó un egreso",
+    "incidencia": "abrió una incidencia",
+    "espejo_mp.ya_cargado": "marcó un movimiento de MP como ya cargado",
+    "cobro_baja": "dio de baja un cobro",
+    "cobro_recordatorio": "le mandó un recordatorio de pago",
+    "caso_lead_estado": "cambió el estado de un lead",
+    "clase_gratis": "generó un link de clase gratis",
+    "nota": "dejó una nota",
+    "label_demo": "procesó un demo del sello",
 }
 CONTACTOS = {
     "contacto:mandado": "le escribió a un alumno",
@@ -69,6 +79,13 @@ CONTACTOS = {
     "accion:wsp": "abrió un WhatsApp desde la cola",
     "accion:asignar_pago_libro": "asignó un pago al Libro",
     "respuesta": "contestó una pregunta",
+    "estado:ignorado": "marcó un caso como ignorado",
+    "estado:descartado": "descartó un caso",
+    "contacto:hecho": "marcó un contacto como hecho",
+    "contacto:descartado": "descartó un contacto",
+    "contacto:se_baja_y_vuelve": "anotó que se baja y vuelve",
+    "accion:no_corresponde": "marcó que no corresponde",
+    "contacto:se_da_de_baja": "anotó que se da de baja",
 }
 DIAS = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 
