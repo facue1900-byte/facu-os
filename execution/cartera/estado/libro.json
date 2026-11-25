@@ -33,7 +33,7 @@
       "nivel": "riesgo",
       "cantidad": 131.51947339550193,
       "entrada": 0.1823,
-      "maximo": 0.1823,
+      "maximo": 0.1844,
       "reglas": {
         "stop": 15.0,
         "trail": 15.0,
@@ -49,7 +49,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795586820000
+      "vigilado_hasta": 1795593900000
     }
   },
   "comisiones_usd": 3.2011760000000007,
