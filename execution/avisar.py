@@ -49,7 +49,7 @@ TAREAS = {
     "reporte-pauta": ("astronomy", "revisar", "Reporte de pauta con problemas", "El informe de la semana falló, o algo dejó de registrarse."),
     "reporte-equipo": ("astronomy", "revisar", "Reporte del equipo sin salir", "El mail de los viernes no llegó al equipo."),
     "verificar-leads": ("astronomy", "revisar", "Verificador de leads caído", "El control diario de los leads no terminó."),
-    "reels-diarios": ("astronomy", "revisar", "Reels diarios sin publicar", "Hoy no se publicó ningún reel de prueba."),
+    "reels-diarios": ("astronomy", "revisar", "Reel del día sin mandar", "Hoy no te llegó por Telegram el reel para aprobar (el agente no armó uno que pase al crítico, o falló)."),
     "paper-trading": ("cripto", "revisar", "Carpeta de 10.000 frenada", "La carpeta ficticia de la Mac lleva más de 24 h sin completar un ciclo."),
     "paper-grok": ("cripto", "revisar", "Carpeta de Grok frenada", "La carpeta de Grok lleva más de 24 h sin completar un ciclo. Si el log dice 402, es la suscripción de Grok."),
     "radar-diario": ("sistema", "revisar", "Radar diario sin actualizar", "El doc del radar de hoy puede estar viejo."),

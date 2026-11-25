@@ -413,6 +413,8 @@ def atender(msg, estado):
     if not texto:
         mandar(chat_id, "Por ahora leo texto y audios.")
         return
+    if motivo_reel(chat_id, msg, texto, estado):
+        return
 
     mandar(chat_id, "🧠 Pensando…")
     log("PREGUNTA recibida:", len(texto), "caracteres")
@@ -483,6 +485,8 @@ def atender_boton(cb, estado):
            reply_markup=json.dumps({"inline_keyboard": []}))
     except Exception:
         pass
+    if (cb.get("data") or "").startswith("reel:"):
+        return atender_reel(chat_id, cb["data"], estado)
     decision, _, pid = (cb.get("data") or "").partition(":")
     plan = estado.get("plan")
     if not plan or plan.get("id") != pid:
@@ -513,6 +517,123 @@ def atender_boton(cb, estado):
             mandar_voz(chat_id, resultado)
         except Exception as e:
             log("ERROR voz:", repr(e))
+
+
+# --- Reel del día (25/11/2026) ---
+# El agente de reels diarios ya no publica solo: arma uno, un crítico le pone nota y
+# `reels_diarios/proponer_reel.py` se lo manda a Facu con «Publicar / No». Su «Publicar» es el OK
+# para ESE reel (como reel de prueba, igual que la autorización del 28/10). Su «No» + el motivo
+# que escriba después quedan en feedback_facu.jsonl: es lo que el agente lee primero al otro día.
+REELS = OS_DIR / "active/astronomy/contenido/reels_diarios"
+VENCE_REEL = 30 * 3600     # el de ayer ya no se publica: mañana llega otro
+TIEMPO_MAX_PUBLICAR = 900
+
+
+def anotar_feedback_reel(fila):
+    fila["fecha"] = time.strftime("%Y-%m-%d %H:%M")
+    with (REELS / "feedback_facu.jsonl").open("a") as f:
+        f.write(json.dumps(fila, ensure_ascii=False) + "\n")
+
+
+def _pedir_respuesta(chat_id, texto, estado, base, le_gusto=False):
+    """Pregunta con ForceReply: sólo la RESPUESTA a este mensaje se anota como opinión del reel.
+    Cualquier otro mensaje sigue siendo una pregunta normal para Jarvis (no se come nada)."""
+    m = tg("sendMessage", chat_id=chat_id, text=texto,
+           reply_markup=json.dumps({"force_reply": True, "input_field_placeholder": "Qué cambiarías…"}))
+    estado["reel_motivo"] = {**base, "msg_id": m["message_id"], "le_gusto": le_gusto}
+    guardar_estado(estado)
+
+
+def _botones_reel(pid, reintentar=False):
+    si = "🔁 Reintentar" if reintentar else "✅ Publicar"
+    return json.dumps({"inline_keyboard": [[{"text": si, "callback_data": f"reel:si:{pid}"},
+                                            {"text": "❌ No", "callback_data": f"reel:no:{pid}"}]]})
+
+
+def atender_reel(chat_id, data, estado):
+    _, decision, pid = data.split(":", 2)
+    prop = REELS / "propuesta.json"
+    try:
+        p = json.loads(prop.read_text())
+    except Exception:
+        p = {}
+    if p.get("id") != pid:
+        mandar(chat_id, "Ese reel ya no es el vigente (llegó otro después o ya se resolvió). No hice nada.")
+        return
+    base = {"slug": p["slug"], "carpeta": p["carpeta"], "nota_critico": p.get("nota")}
+    if decision != "si":
+        prop.unlink()
+        _pedir_respuesta(chat_id, "No lo subo. ¿Qué no te gustó? RESPONDÉ a este mensaje (texto o audio) "
+                                  "y lo aprende para el de mañana.", estado, base)
+        anotar_feedback_reel({**base, "veredicto": "no"})
+        return
+    if time.time() - p["ts"] > VENCE_REEL:
+        prop.unlink()
+        mandar(chat_id, "Ese reel tiene más de 30 horas: no lo subo, mañana llega uno nuevo.")
+        return
+    # Se publica exactamente el video que Facu vio: si la carpeta se rearmó después, no.
+    try:
+        sha_hoy = json.loads((pathlib.Path(p["carpeta"]) / "qa.json").read_text()).get("sha_reel")
+    except Exception:
+        sha_hoy = None
+    if not p.get("sha_reel") or sha_hoy != p["sha_reel"]:
+        prop.unlink()
+        mandar(chat_id, "⚠️ No lo subo: el reel de la carpeta ya no es el que te mandé (se rearmó). "
+                        "Mañana llega uno nuevo.")
+        return
+    mandar(chat_id, "⏫ Subiendo como reel de prueba… tarda un par de minutos.")
+    estado["ejecutando"] = {"id": "reel-" + pid, "ts": time.time(), "resumen": f"publicar el reel «{p['slug']}»"}
+    guardar_estado(estado)
+    env = {**os.environ, "REELS_HOY": time.strftime("%Y-%m-%d")}
+    proc = subprocess.Popen([str(OS_DIR / ".venv/bin/python"), str(REELS / "publicar.py"), p["carpeta"], "--send"],
+                            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, cwd=str(REELS),
+                            env=env, start_new_session=True)
+    try:
+        salida, _ = proc.communicate(timeout=TIEMPO_MAX_PUBLICAR)
+    except subprocess.TimeoutExpired:
+        os.killpg(proc.pid, signal.SIGKILL)   # también al nieto (publicar_reel.py)
+        proc.communicate()
+        estado["ejecutando"] = None
+        guardar_estado(estado)
+        prop.unlink(missing_ok=True)
+        anotar_feedback_reel({**base, "veredicto": "si", "publicado": None})
+        mandar(chat_id, "⚠️ La subida tardó más de 15 minutos y la corté. PUEDE haber quedado publicado: "
+                        "mirá @astronomy.academy en Instagram. No lo reintento solo (quedó marcado para revisión).")
+        return
+    estado["ejecutando"] = None
+    guardar_estado(estado)
+    salida = (salida or "").strip()
+    ok = next((l for l in salida.splitlines() if l.startswith("PUBLICADO_OK")), None)
+    if ok:
+        prop.unlink(missing_ok=True)
+        anotar_feedback_reel({**base, "veredicto": "si", "publicado": True})
+        mandar(chat_id, "✅ Publicado: " + ok.split(" ", 1)[1])
+        _pedir_respuesta(chat_id, "¿Qué te gustó? Si querés, respondé a este mensaje y lo profundizo.",
+                         estado, base, le_gusto=True)
+        return
+    log("REEL publicar falló:", salida[-800:])
+    if (pathlib.Path(p["carpeta"]) / "pendiente.lock").exists():
+        prop.unlink(missing_ok=True)
+        mandar(chat_id, "⚠️ Falló a mitad de la subida y PUEDE haber quedado publicado: mirá Instagram.\n\n"
+                        + salida[-600:])
+        return
+    # Falló antes de publicar (red, token): la propuesta sigue viva y se puede reintentar.
+    tg("sendMessage", chat_id=chat_id, reply_markup=_botones_reel(pid, reintentar=True),
+       text=("⚠️ No se pudo publicar (no llegó a subirse):\n" + salida[-700:])[:LIMITE_TG])
+
+
+def motivo_reel(chat_id, msg, texto, estado):
+    """Sólo la respuesta (reply) al «¿Qué no te gustó?» se anota; el resto va a Jarvis como siempre."""
+    m = estado.get("reel_motivo")
+    resp = (msg.get("reply_to_message") or {}).get("message_id")
+    if not m or resp is None or resp != m.get("msg_id"):
+        return False
+    estado["reel_motivo"] = None
+    guardar_estado(estado)
+    anotar_feedback_reel({"slug": m["slug"], "carpeta": m["carpeta"],
+                          "veredicto": "si" if m.get("le_gusto") else "no", "motivo": texto})
+    mandar(chat_id, "📝 Anotado. El reel de mañana lo tiene en cuenta.")
+    return True
 
 
 # --- Llamada de emergencia (Twilio) ---

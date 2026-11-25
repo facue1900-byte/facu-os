@@ -724,3 +724,10 @@ turno entero (`avIgnorar = avTurno`).
 - **Causa raíz:** las carpetas ficticias estaban en `SIN_MAIL` sin excepción: «lo marca el radar». El radar lo marcaba, pero Facu no lo lee.
 - **Fix (20b0484e):** una falla suelta sigue sin mail; 24 h sin un ciclo bueno avisa (como mucho cada 3 días). Tests nuevos en `test_mail_avisos.py`.
 - **Lección:** «lo marca el radar» sólo sirve si alguien mira el radar. Una falla que sólo destraba Facu (pago, login) tiene que llegarle a él.
+
+## 25/11/2026 — Reporte de pauta vacío en la bandeja «✅ corrió bien»
+- **Síntoma:** los reportes de pauta del 16/11 y del 23/11 llegaron a la bandeja de Astronomy vacíos. Lo notó Vlado.
+- **Causa:** el plist mandaba todo a `REPORTE_PAUTA.txt` (`{ …; } > "$OUT"`) y no imprimía nada en pantalla. `correr.sh` copia a la bandeja sólo lo que sale en pantalla.
+- **Arreglo:** `cat "$OUT"` al final del comando (8ba24435). Lo corrí a mano y llegó con 45 líneas.
+- **Lección:** una tarea que manda la bandeja tiene que imprimir su resultado. Si la salida queda en un archivo, la bandeja llega vacía y dice «corrió bien».
+- **Mismo día, «Recordarle» de Cobros del mes:** sólo mandaba mail, y el cartel de confirmación salía arriba de la página. Mateo lo apretó 3 veces creyendo que no andaba. Ahora manda WhatsApp por Evolution y muestra el resultado en la fila (web f48bb39). 🔴 Faltan `EVOLUTION_URL`/`EVOLUTION_API_KEY` en Vercel: el auto mode no dejó cargarlas.
