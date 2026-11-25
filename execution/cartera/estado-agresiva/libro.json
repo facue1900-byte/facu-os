@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 720.8368852284394,
-  "posiciones": {},
-  "comisiones_usd": 57.30535799999993,
+  "usdt": 545.8368852284394,
+  "posiciones": {
+    "ETHUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.10498928037377564,
+      "entrada": 1665.17,
+      "maximo": 1665.17,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795627980000
+    }
+  },
+  "comisiones_usd": 57.480357999999924,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -4999,6 +5022,18 @@
       "comision": 0.141573,
       "motivo": "Salida por tiempo: 24 h (entrada 24/11 11:32) sin llegar a +8% ni al stop. Tesis de rebote en soporte agotada: BTC en el mínimo de 48 h (+0,02%), 1 h -0,71%, a 0,2% del stop 58.340. Se saca y se rota sólo con tesis limpia.",
       "resultado_pct": -2.27
+    },
+    {
+      "ms": 1795627931047,
+      "fecha": "2026-11-25 17:32 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "trading",
+      "cantidad": 0.10498928037377564,
+      "precio": 1665.17,
+      "usd": 175.0,
+      "comision": 0.175,
+      "motivo": "Rebote en soporte confirmado: ETH barrió el mínimo de 48 h dos veces (15:31 y 16:31) con volumen y esta hora cerró +1,14% sin mínimo nuevo (distancia al mínimo 2,22->3,44%, al ritmo del precio), volumen 4 h 2,25x, BTC 4 h +2,15% acompaña. Invalida: perder el mínimo de la barrida (~3,3% abajo) o el stop del 5%; si en 24 h no llega a +8%, afuera."
     }
   ]
 }
