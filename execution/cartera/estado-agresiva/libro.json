@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 405.8368852284394,
+  "usdt": 265.8368852284394,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795642260000
+      "vigilado_hasta": 1795645860000
     },
     "ZECUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795642260000
+      "vigilado_hasta": 1795645860000
+    },
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 46.067193675889335,
+      "entrada": 3.036,
+      "maximo": 3.036,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795645980000
     }
   },
-  "comisiones_usd": 57.620357999999925,
+  "comisiones_usd": 57.760357999999925,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5068,6 +5090,18 @@
       "usd": 140.0,
       "comision": 0.14,
       "motivo": "Momentum de 24 h: ZEC +5,85% en 24 h, sigue subiendo en 4 h (+10,1%) y no está estirada en la hora (1 h +1,68% < 4%), volumen 4 h 1,78x, 144 M USD/día. Activo distinto de ETH (no duplica la vela de BTC del todo). BTC 4 h +3,14% acompaña. Invalida: stop 5%, o que la 1 h siguiente devuelva el +4 h (vuelva bajo ~+5% del mínimo de 48 h); si en 24 h no llega a +8%, afuera."
+    },
+    {
+      "ms": 1795645934775,
+      "fecha": "2026-11-25 22:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 46.067193675889335,
+      "precio": 3.036,
+      "usd": 140.0,
+      "comision": 0.14,
+      "motivo": "Momentum de 24 h: NEAR +5,27% en 24 h, sigue subiendo en 4 h (+4,84%) y no está estirada en la hora (1 h +0,43% < 4%), volumen 4 h 1,9x, a 0,78% del máximo de 48 h, 70 M USD/día. Activo distinto de ETH/ZEC. BTC 4 h +0,72%, sin bloqueo. Invalida: stop 5%, o que pierda el +4 h (vuelva bajo ~+6% del mínimo de 48 h); si en 24 h no llega a +8%, afuera."
     }
   ]
 }
