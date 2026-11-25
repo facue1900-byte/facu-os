@@ -1,7 +1,8 @@
 """Reporte semanal del equipo de Astronomy Academy: qué hizo cada uno en la web y qué no.
 
-Pedido de Facu, 21/09/2026: todos los viernes a las 17:00 un mail a Facu y a Vlado con lo
-que José y Luqui hicieron en la web en la semana y lo que les quedó sin hacer.
+Pedido de Facu, 21/09/2026: todos los viernes a las 17:00 un mail con lo que el equipo hizo en
+la web en la semana y lo que le quedó sin hacer. Desde el 25/11/2026 (Facu: «hacelo solamente
+con Vlado, Mateo y yo») trae y se manda sólo a Vlado, Mateo Pastrana y Facu.
 
 Los datos los junta `npm run reporte:equipo` en astronomy-members (sólo lee la base): lo
 hecho sale de lo que la web registra sola y lo pendiente, del mismo motor que arma el
@@ -34,6 +35,7 @@ APP = pathlib.Path.home() / "Desktop/Productoras/Astronomy/Academia/astronomy-me
 NODE_BIN = pathlib.Path.home() / ".local/node/bin"
 PARA = ["facue1900@gmail.com", "vladimir.nadinic@gmail.com", "mateopastranadj@gmail.com"]
 SALIDA = RAIZ / "data" / "reportes-equipo"
+ESPERADOS = {"Vlado", "Mateo", "Facu"}  # los arma scripts/reporte-semanal-equipo.mjs
 
 # Lo que registra la web, dicho en castellano. Una acción que no está acá sale con su
 # nombre técnico: mejor feo que escondido.
@@ -68,8 +70,6 @@ CONTACTOS = {
     "accion:asignar_pago_libro": "asignó un pago al Libro",
     "respuesta": "contestó una pregunta",
 }
-# En `staff` Valen figura con su nombre de artista.
-NOMBRES_PROFES = {"Owners of Time": "Valen Frando (Owners of Time)"}
 DIAS = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 
 
@@ -102,10 +102,10 @@ def juntar(intentos=3, espera=120):
     if r.returncode != 0:
         raise RuntimeError(f"npm run reporte:equipo salió con {r.returncode} ({intentos} intentos):\n{r.stderr[-3000:]}")
     datos = json.loads(r.stdout)
-    # Regla 2: un reporte sin José y Luqui no es "no hicieron nada", es un reporte roto.
+    # Regla 2: un reporte al que le falta alguien no es "no hizo nada", es un reporte roto.
     nombres = {p["nombre"] for p in datos["personas"] if p.get("principal")}
-    if not {"José", "Luqui"} <= nombres:
-        raise RuntimeError(f"El reporte no trae a José y Luqui (trajo: {sorted(nombres)})")
+    if not ESPERADOS <= nombres:
+        raise RuntimeError(f"El reporte no trae a {sorted(ESPERADOS - nombres)} (trajo: {sorted(nombres)})")
     return datos
 
 
@@ -168,21 +168,9 @@ def bloque_persona(p, habiles):
 def armar(d):
     desde, hasta = d["desde"], d["hasta"]
     principales = [p for p in d["personas"] if p.get("principal")]
-    profes = [p for p in d["personas"] if not p.get("principal")]
     cuerpo = []
     for p in principales:
         cuerpo.append(bloque_persona(p, d["dias_habiles"]))
-    cuerpo.append("<h2 style='margin:24px 0 4px;font-size:18px'>Profes</h2>")
-    clases = d["clasesPorProfe"]
-    filas = []
-    for p in profes:
-        n = clases.get(p["nombre"], 0)
-        nombre = NOMBRES_PROFES.get(p["nombre"], p["nombre"])
-        filas.append(f"{html.escape(nombre)}: {n} clase(s) en agenda en la semana · {p['total_registros']} registro(s) en el panel")
-    otros = {k: v for k, v in clases.items() if k not in {p['nombre'] for p in profes}}
-    for k, v in otros.items():
-        filas.append(f"{html.escape('Alquileres de cabina' if k == 'Alquiler de cabina' else k)}: {v}")
-    cuerpo.append(lista(filas))
     habiles = d["dias_habiles"]
     kpis = []
     for p in principales[:4]:
@@ -206,7 +194,7 @@ def mandar(correo, para):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--send", action="store_true", help="Manda el mail. Sin esto, sólo guarda el HTML.")
-    ap.add_argument("--para", nargs="+", default=PARA, help="Destinatarios (default: Facu, festevez y Vlado).")
+    ap.add_argument("--para", nargs="+", default=PARA, help="Destinatarios (default: Facu, Vlado y Mateo Pastrana).")
     a = ap.parse_args()
 
     SALIDA.mkdir(parents=True, exist_ok=True)
