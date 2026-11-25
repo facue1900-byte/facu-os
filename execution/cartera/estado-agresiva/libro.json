@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 579.405674550009,
-  "posiciones": {
-    "BTCUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.0024208528762198894,
-      "entrada": 59836.35,
-      "maximo": 60687.53,
-      "reglas": {
-        "stop": 2.5,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795602660000
-    }
-  },
-  "comisiones_usd": 57.163784999999926,
+  "usdt": 720.8368852284394,
+  "posiciones": {},
+  "comisiones_usd": 57.30535799999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5010,6 +4987,18 @@
       "usd": 145.0,
       "comision": 0.145,
       "motivo": "Rebote en soporte: BTC a +0,87% del mínimo de 48 h, 1 h +0,2% y la distancia al mínimo subió 0,63->0,87% al ritmo del precio (sin mínimo nuevo en la hora); 4 h -0,87%, sin bloqueo. Una sola entrada, no tres de la misma vela. Invalida: perder el mínimo de 48 h (~-0,9%) -> stop ajustado a 2,5%."
+    },
+    {
+      "ms": 1795606311450,
+      "fecha": "2026-11-25 11:31 UTC",
+      "lado": "sell",
+      "par": "BTCUSDT",
+      "cantidad": 0.0024208528762198894,
+      "precio": 58480.54,
+      "usd": 141.5728,
+      "comision": 0.141573,
+      "motivo": "Salida por tiempo: 24 h (entrada 24/11 11:32) sin llegar a +8% ni al stop. Tesis de rebote en soporte agotada: BTC en el mínimo de 48 h (+0,02%), 1 h -0,71%, a 0,2% del stop 58.340. Se saca y se rota sólo con tesis limpia.",
+      "resultado_pct": -2.27
     }
   ]
 }
