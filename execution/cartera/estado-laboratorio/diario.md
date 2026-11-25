@@ -1136,3 +1136,8 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-25 20:17 UTC — nota
 [v2] Sin operar: carpeta en USDT, sin posiciones. Filtro de mercado ABIERTO (BTC var_24h 0.48, var_4h 2.5) pero ningun par cumple entrada: candidatos con var_24h>=3 y var_4h>0 (ZEC 4.14, NEAR 4.02, HYPE 3.25) fallan vs_max_48h >= -1.5 (ZEC -5.95, NEAR -2.68, HYPE -4.99; rebotando de abajo). Sin disparos.
 
+## 2026-11-25 22:17 UTC — Compra NEARUSDT (trading)
+186.33 USD a 3.048. Stop 7.0% · trailing 8.0% · tomas [[10.0, 0.5], [20.0, 1.0]].
+
+[v2] BTC filtro abierto (var_24h 0.27, var_4h 0.7); NEAR var_24h 5.86>=3, var_4h 5.42>0, var_1h 0.99<=2.5, vs_max_48h -0.23>=-1.5, vol4h 1.82>=1.3; unica candidata valida (MMT vs_max -6.19); 0 posiciones, 0 entradas hoy · invalida: stop 7% / var_24h<0 y var_4h<-2 / 48h
+
