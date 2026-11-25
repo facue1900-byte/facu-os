@@ -1118,3 +1118,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-25 08:16 UTC — nota
 [v2] Sin operar: carpeta en USDT, sin posiciones. Filtro de mercado CERRADO: BTC var_24h -2.24 < -2 (var_4h -0.54) -> no se abre nada nuevo; ademas ningun par cumple (var_24h negativa en todos salvo PEPE -0.85, vol4h < 1.3 en todos). Sin disparos.
 
+## 2026-11-25 10:16 UTC — nota
+[v2] Sin operar: carpeta en USDT, sin posiciones. Filtro de mercado ABIERTO (BTC var_24h -1.29, var_4h -0.37) pero ningun par cumple entrada: var_24h < 3 en todos (todos negativos o planos), vol4h < 1.3 salvo WBTC 1.47 (var_24h -1.38, no apta). Sin disparos.
+
