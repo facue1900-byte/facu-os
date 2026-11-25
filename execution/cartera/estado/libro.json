@@ -27,9 +27,32 @@
       }
     }
   },
-  "usdt": 801.6863703526667,
-  "posiciones": {},
-  "comisiones_usd": 3.1771760000000007,
+  "usdt": 777.6863703526667,
+  "posiciones": {
+    "OPGUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 131.51947339550193,
+      "entrada": 0.1823,
+      "maximo": 0.1823,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795586820000
+    }
+  },
+  "comisiones_usd": 3.2011760000000007,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1242,6 +1265,18 @@
       "comision": 0.032991,
       "motivo": "Stop automático en 0.09775 (entrada 0.0888, máximo 0.115).",
       "resultado_pct": 10.08
+    },
+    {
+      "ms": 1795586801550,
+      "fecha": "2026-11-25 06:06 UTC",
+      "lado": "buy",
+      "par": "OPGUSDT",
+      "nivel": "riesgo",
+      "cantidad": 131.51947339550193,
+      "precio": 0.1823,
+      "usd": 24.0,
+      "comision": 0.024,
+      "motivo": "Momentum: segundo ciclo seguido sobre el piso de 5 M (6,3 M) y en la zona del máximo de 90 d (-0,9%; 04:05 a -1,9%), 7d +33,2%, 30d +58,4%, sin vela vertical (1d de +2,8% a +7,2% en 2 h, avance gradual). Tamaño ~3% (24 USD) y no 5% porque el volumen está lejos de los 10 M preferibles. Invalida: stop 15% / trailing 15%, perder el 7d positivo, o volumen bajo 5 M sostenido."
     }
   ]
 }
