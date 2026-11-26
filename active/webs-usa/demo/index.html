@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Martínez Landscaping · Houston, TX</title>
+<meta name="description" content="Lawn care, landscaping and tree trimming in Houston, TX. Free estimates. Se habla español.">
+<!-- DEMO TEMPLATE — negocio ficticio. Para cada lead real se reemplazan los datos marcados con data-fill. -->
+<style>
+  :root{--green:#1f5133;--green2:#2e7a4c;--sand:#f6f1e7;--ink:#1b1b1b;--muted:#5c5c5c;--accent:#e8a23a;--wa:#25d366}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--sand);line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  header{position:sticky;top:0;z-index:5;background:var(--green);color:#fff}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+  .logo{font-weight:800;font-size:1.1rem;letter-spacing:.3px}
+  .lang{background:transparent;border:1px solid #ffffff80;color:#fff;border-radius:20px;padding:4px 12px;cursor:pointer;font-size:.85rem}
+  .hero{background:linear-gradient(160deg,var(--green) 0%,var(--green2) 100%);color:#fff;padding:64px 0 72px}
+  .hero h1{font-size:clamp(1.9rem,5vw,3rem);line-height:1.1;max-width:720px}
+  .hero p{margin-top:14px;font-size:1.1rem;max-width:560px;opacity:.92}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .badge{background:#ffffff1f;border-radius:20px;padding:4px 12px;font-size:.85rem}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:1rem}
+  .btn-call{background:var(--accent);color:#1b1b1b}
+  .btn-wa{background:var(--wa);color:#fff}
+  section{padding:56px 0}
+  h2{font-size:1.7rem;margin-bottom:24px;color:var(--green)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 1px 3px #0001}
+  .card h3{font-size:1.05rem;margin-bottom:6px}
+  .card p{color:var(--muted);font-size:.95rem}
+  .ph{aspect-ratio:4/3;border-radius:14px;background:repeating-linear-gradient(45deg,#cfe3d4,#cfe3d4 12px,#bcd8c4 12px,#bcd8c4 24px);display:flex;align-items:center;justify-content:center;color:var(--green);font-weight:600;font-size:.85rem;text-align:center;padding:8px}
+  .stars{color:var(--accent);letter-spacing:2px}
+  .area{background:#fff}
+  .area ul{columns:2;list-style:none;color:var(--muted)}
+  .area li::before{content:"✓ ";color:var(--green2);font-weight:700}
+  form{display:grid;gap:12px;max-width:520px}
+  input,textarea,select{width:100%;padding:12px;border:1px solid #d5d0c4;border-radius:10px;font:inherit;background:#fff}
+  button.submit{background:var(--green);color:#fff;border:0;padding:14px;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer}
+  footer{background:var(--ink);color:#ccc;padding:28px 0;font-size:.9rem}
+  .float-wa{position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px #0003;text-decoration:none;font-size:1.6rem;color:#fff}
+  [data-es]{display:none}
+  body.es [data-en]{display:none}
+  body.es [data-es]{display:revert}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="logo" data-fill="name">Martínez Landscaping</div>
+  <button class="lang" onclick="document.body.classList.toggle('es')"><span data-en>Español</span><span data-es>English</span></button>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <h1><span data-en>Beautiful yards in <span data-fill="city">Houston</span>, done right and on time.</span><span data-es>Jardines impecables en <span data-fill="city">Houston</span>, bien hechos y a tiempo.</span></h1>
+  <p><span data-en>Lawn care, landscaping and tree trimming for homes and businesses. Free estimates — se habla español.</span><span data-es>Corte de pasto, paisajismo y poda para casas y negocios. Presupuesto gratis — we speak English.</span></p>
+  <div class="badges">
+    <span class="badge stars">★★★★★</span>
+    <span class="badge" data-fill="rating"><span data-en>4.9 on Google</span><span data-es>4,9 en Google</span></span>
+    <span class="badge"><span data-en>Licensed &amp; insured</span><span data-es>Con licencia y seguro</span></span>
+    <span class="badge"><span data-en>Free estimates</span><span data-es>Presupuesto gratis</span></span>
+  </div>
+  <div class="cta">
+    <a class="btn btn-call" href="tel:+17135550100" data-fill="phone">📞 <span data-en>Call (713) 555-0100</span><span data-es>Llamar (713) 555-0100</span></a>
+    <a class="btn btn-wa" href="https://wa.me/17135550100" data-fill="whatsapp">💬 WhatsApp</a>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <h2><span data-en>Services</span><span data-es>Servicios</span></h2>
+  <div class="grid" data-fill="services">
+    <div class="card"><h3><span data-en>Lawn mowing</span><span data-es>Corte de pasto</span></h3><p><span data-en>Weekly or bi-weekly, edging and cleanup included.</span><span data-es>Semanal o quincenal, con bordes y limpieza.</span></p></div>
+    <div class="card"><h3><span data-en>Landscaping</span><span data-es>Paisajismo</span></h3><p><span data-en>Plants, mulch, rock beds and full yard makeovers.</span><span data-es>Plantas, mulch, canteros de piedra y jardines completos.</span></p></div>
+    <div class="card"><h3><span data-en>Tree trimming</span><span data-es>Poda de árboles</span></h3><p><span data-en>Safe trimming and removal, debris hauled away.</span><span data-es>Poda y retiro seguro, nos llevamos todo.</span></p></div>
+    <div class="card"><h3><span data-en>Sod &amp; irrigation</span><span data-es>Césped y riego</span></h3><p><span data-en>New sod installation and sprinkler repair.</span><span data-es>Colocación de césped y arreglo de regadores.</span></p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2><span data-en>Recent work</span><span data-es>Trabajos recientes</span></h2>
+  <div class="grid" data-fill="photos">
+    <div class="ph">Foto del cliente (de su Google Maps / Facebook)</div>
+    <div class="ph">Foto del cliente</div>
+    <div class="ph">Foto del cliente</div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2><span data-en>What customers say</span><span data-es>Lo que dicen los clientes</span></h2>
+  <div class="grid" data-fill="reviews">
+    <div class="card"><div class="stars">★★★★★</div><p>[Reseña real de Google del negocio — se copia de su ficha]</p></div>
+    <div class="card"><div class="stars">★★★★★</div><p>[Reseña real de Google del negocio]</p></div>
+    <div class="card"><div class="stars">★★★★★</div><p>[Reseña real de Google del negocio]</p></div>
+  </div>
+</div></section>
+
+<section class="area"><div class="wrap">
+  <h2><span data-en>Areas we serve</span><span data-es>Zonas donde trabajamos</span></h2>
+  <ul data-fill="areas"><li>Houston</li><li>Katy</li><li>Sugar Land</li><li>Pasadena</li><li>Pearland</li><li>Spring</li></ul>
+</div></section>
+
+<section><div class="wrap">
+  <h2><span data-en>Get a free estimate</span><span data-es>Pedí tu presupuesto gratis</span></h2>
+  <form onsubmit="event.preventDefault();this.querySelector('button').textContent='✓';">
+    <input required placeholder="Name / Nombre">
+    <input required type="tel" placeholder="Phone / Teléfono">
+    <select><option>Lawn mowing / Corte de pasto</option><option>Landscaping / Paisajismo</option><option>Tree trimming / Poda</option><option>Other / Otro</option></select>
+    <textarea rows="3" placeholder="Address & details / Dirección y detalles"></textarea>
+    <button class="submit"><span data-en>Send request</span><span data-es>Enviar</span></button>
+  </form>
+</div></section>
+
+<footer><div class="wrap">
+  <span data-fill="name">Martínez Landscaping</span> · <span data-fill="city">Houston, TX</span> · (713) 555-0100<br>
+  <span data-en>Mon–Sat 7am–6pm</span><span data-es>Lun a sáb 7 a 18 h</span>
+</div></footer>
+<a class="float-wa" href="https://wa.me/17135550100" aria-label="WhatsApp">💬</a>
+</body>
+</html>
