@@ -6,7 +6,7 @@ no se repiten.** Este archivo es solo la mecánica: dónde vive cada cosa, cómo
 qué no se toca.
 
 Negocios activos: **Astronomy** (eventos, academia, música), **Paseo Nordelta** (paseo
-comercial) y **campos** (Chaco, Pergamino).
+comercial), **campos** (Chaco, Pergamino) y **Clave Studio** (agencia para negocios de EE.UU., con Mateo Estevez).
 
 > **Pendiente: revisar Nordelta Plaza (NDPL SAS) y Noreventos en un futuro con Facu.**
 > Quedó viejo y hoy no se toca — su data cruda sigue en `~/Desktop/Nordelta Plaza/` y

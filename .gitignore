@@ -38,3 +38,6 @@ execution/cartera/torneo-cache/
 active/astronomy/
 active/webs-usa/leads/
 active/webs-usa/demos/
+
+# Grok web prompt: includes personal portfolio weights, stays local
+active/grok/PROMPT_GROK_WEB.md
