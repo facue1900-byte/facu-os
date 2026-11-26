@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 265.8368852284394,
+  "usdt": 402.9018543242029,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,29 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795674660000
-    },
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.18304605598963447,
-      "entrada": 764.07,
-      "maximo": 789.0,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795674660000
+      "vigilado_hasta": 1795678260000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795674660000
+      "vigilado_hasta": 1795678260000
     }
   },
-  "comisiones_usd": 57.760357999999925,
+  "comisiones_usd": 57.89755999999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5102,6 +5080,18 @@
       "usd": 140.0,
       "comision": 0.14,
       "motivo": "Momentum de 24 h: NEAR +5,27% en 24 h, sigue subiendo en 4 h (+4,84%) y no está estirada en la hora (1 h +0,43% < 4%), volumen 4 h 1,9x, a 0,78% del máximo de 48 h, 70 M USD/día. Activo distinto de ETH/ZEC. BTC 4 h +0,72%, sin bloqueo. Invalida: stop 5%, o que pierda el +4 h (vuelva bajo ~+6% del mínimo de 48 h); si en 24 h no llega a +8%, afuera."
+    },
+    {
+      "ms": 1795675620000,
+      "fecha": "2026-11-26 06:47 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.18304605598963447,
+      "precio": 749.55,
+      "usd": 137.2022,
+      "comision": 0.137202,
+      "motivo": "Stop automático en 749.55 (entrada 764.07, máximo 789).",
+      "resultado_pct": -1.9
     }
   ]
 }
