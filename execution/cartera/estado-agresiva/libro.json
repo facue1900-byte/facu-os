@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 402.9018543242029,
+  "usdt": 262.9018543242029,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,7 +26,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795699860000
+      "vigilado_hasta": 1795703460000
     },
     "NEARUSDT": {
       "nivel": "trading",
@@ -48,10 +48,32 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795699860000
+      "vigilado_hasta": 1795703460000
+    },
+    "SOLUSDT": {
+      "nivel": "trading",
+      "cantidad": 1.9566312255176275,
+      "entrada": 71.48,
+      "maximo": 71.48,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795703580000
     }
   },
-  "comisiones_usd": 57.89755999999993,
+  "comisiones_usd": 58.03755999999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5092,6 +5114,18 @@
       "comision": 0.137202,
       "motivo": "Stop automático en 749.55 (entrada 764.07, máximo 789).",
       "resultado_pct": -1.9
+    },
+    {
+      "ms": 1795703548341,
+      "fecha": "2026-11-26 14:32 UTC",
+      "lado": "buy",
+      "par": "SOLUSDT",
+      "nivel": "trading",
+      "cantidad": 1.9566312255176275,
+      "precio": 71.48,
+      "usd": 140.0,
+      "comision": 0.14,
+      "motivo": "Momentum 24 h: SOL +5,87% en 24 h, 4 h +1,13% (sigue subiendo, la más firme del top), 1 h +0,2% (no estirada), a 0,81% del máximo de 48 h y 8,4% sobre el mínimo; volumen 4 h flojo (0,56x, feriado EE. UU.), por eso un solo tamaño normal. Invalida: 4 h vuelve a rojo con 24 h bajo +3%, o stop 5%; salida por tiempo 27/11 14:32."
     }
   ]
 }
