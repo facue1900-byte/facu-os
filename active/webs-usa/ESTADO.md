@@ -1,5 +1,7 @@
 # Webs para negocios de EE.UU. sin página — ESTADO
 
+> **26/11 tarde: Facu armó Clave Studio con Mateo Estevez** (agencia para belleza y bienestar en EE.UU.). Ver `active/clave-studio/ESTADO.md`. ✅ Absorbida (Facu 26/11). Twilio, dominio holasitio y estas 3 demos quedan sin seguir: el canal es mail y el nicho es belleza.
+
 Arrancado 26/11/2026 a pedido de Facu. **Base: PERSONAL de Facu (confirmado 26/11): negocio nuevo, sin socios. No se suma con Astronomy, Paseo ni campos.**
 
 ## La apuesta (en una línea)
