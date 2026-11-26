@@ -731,3 +731,9 @@ turno entero (`avIgnorar = avTurno`).
 - **Arreglo:** `cat "$OUT"` al final del comando (8ba24435). Lo corrí a mano y llegó con 45 líneas.
 - **Lección:** una tarea que manda la bandeja tiene que imprimir su resultado. Si la salida queda en un archivo, la bandeja llega vacía y dice «corrió bien».
 - **Mismo día, «Recordarle» de Cobros del mes:** sólo mandaba mail, y el cartel de confirmación salía arriba de la página. Mateo lo apretó 3 veces creyendo que no andaba. Ahora manda WhatsApp por Evolution y muestra el resultado en la fila (web f48bb39). 🔴 Faltan `EVOLUTION_URL`/`EVOLUTION_API_KEY` en Vercel: el auto mode no dejó cargarlas.
+
+## 26/11/2026 — Pedido de ajustar saldos para que la auditoría dé 0
+- **Síntoma:** Vlado pidió sumarle 60 créditos a Abril Palacios y sacarle 10 a Rochi Mounier para que la auditoría de créditos las diera en 0.
+- **Causa:** los dos saldos estaban bien y la que fallaba era la auditoría. Contaba dos veces el reintegro de una clase cancelada que vuelve como lote aparte (`refund:slot:<turno>`). Tampoco sumaba un premio otorgado antes de la ventana y gastado dentro de ella.
+- **Arreglo (web c2ff4bf):** la auditoría repite el reparto FIFO de `spend_credits` para saber qué lote pagó cada clase. Sólo lo usa si cierra con el `amount_remaining` real de cada lote y si ningún empate de vencimiento cambia la cuenta. Si no, usa la regla anterior. Comparado contra la base antes y después, con ventanas de 2 y de 24 meses: cambian sólo Abril y Rochi, las dos a 0.
+- **Lección:** cuando piden «ajustá el saldo para que el chequeo dé bien», primero hay que mirar la cuenta movimiento por movimiento. Ajustar el saldo para tapar un chequeo mal hecho es mover plata real (regla 3).
