@@ -1141,3 +1141,6 @@ Capital ficticio: 1,000.00 USDT.
 
 [v2] BTC filtro abierto (var_24h 0.27, var_4h 0.7); NEAR var_24h 5.86>=3, var_4h 5.42>0, var_1h 0.99<=2.5, vs_max_48h -0.23>=-1.5, vol4h 1.82>=1.3; unica candidata valida (MMT vs_max -6.19); 0 posiciones, 0 entradas hoy · invalida: stop 7% / var_24h<0 y var_4h<-2 / 48h
 
+## 2026-11-26 00:16 UTC — nota
+[v2] Sin operar: ya hay 1 posicion abierta (NEAR, +1,3%, ~2h) -> max 1 posicion, no se abre nada nuevo (ZEC var_24h 5.97 no cumplia igual: vs_max -1.71, vol4h 1.17). Salidas: ni 48h ni tendencia rota (NEAR var_24h +8.34). Filtro BTC abierto. Sin disparos.
+
