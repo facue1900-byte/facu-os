@@ -10,7 +10,7 @@
       "nivel": "trading",
       "cantidad": 0.10498928037377564,
       "entrada": 1665.17,
-      "maximo": 1698.72,
+      "maximo": 1730.0,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -26,13 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795649460000
+      "vigilado_hasta": 1795653060000
     },
     "ZECUSDT": {
       "nivel": "trading",
       "cantidad": 0.18304605598963447,
       "entrada": 764.07,
-      "maximo": 769.94,
+      "maximo": 789.0,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -48,13 +48,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795649460000
+      "vigilado_hasta": 1795653060000
     },
     "NEARUSDT": {
       "nivel": "trading",
       "cantidad": 46.067193675889335,
       "entrada": 3.036,
-      "maximo": 3.044,
+      "maximo": 3.138,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,7 +70,7 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795649460000
+      "vigilado_hasta": 1795653060000
     }
   },
   "comisiones_usd": 57.760357999999925,
