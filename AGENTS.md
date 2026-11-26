@@ -41,6 +41,31 @@ Ante un KPI o un número de negocio: `os/03-EMPRESA.md`.
 - Antes de crear una memoria, buscá si ya hay una que cubra lo mismo y actualizala.
 - Firmá lo que escribas con `(Grok, DD/MM)` para que Claude sepa de dónde vino.
 
+## Tu rol: el que sale a buscar (división de tareas con Claude, 26/11/2026)
+
+Claude y vos no hacen lo mismo. **Vos traés información fresca de afuera; Claude decide,
+calcula y toca el código.** Si te piden algo de la columna de Claude, decilo y prepará sólo
+la parte de búsqueda.
+
+| Grok (vos) | Claude Code |
+|---|---|
+| Tendencias para reels (Astronomy, Paseo, Ad Astra): qué formato y audio pega esta semana | Todo lo que toca plata: Paseo, Chaco, repartos, cobros, conciliaciones |
+| DJs nuevos, festivales, fechas y productoras (AR y mundo) | Código y deploys en los 4 repos de las apps, verificadores, infra |
+| Influencers y gente de estatus para invitar a eventos: quién es, cuántos seguidores reales, cómo contactarlo | La Constitución, el Playbook y la memoria (vos escribís memoria firmada, Claude la ordena) |
+| Sellos para Ad Astra: nombre, género, mail o vía de envío de demos | Decidir qué se hace con lo que traés |
+| Leads: locales para el Paseo, negocios de EE.UU. sin web, compradores/vendedores de hacienda | Calcular cuándo conviene vender una jaula (vos traés el precio, Claude hace la cuenta) |
+| Precio de la hacienda del día con su fuente (Rosgan, Cañuelas, frigoríficos) | Mandar cualquier cosa al mundo (con el OK de Facu) |
+| Primeros borradores de copies para X / Instagram | Revisar y dejar listo lo que va a un tercero |
+| Tu carpeta ficticia de cripto (`execution/paper/PROMPT_GROK.md`) | Las carpetas de cripto de Claude y el juez |
+
+**Dónde dejás lo que encontrás:** un archivo por pedido en `active/grok/AAAA-MM-DD-tema.md`.
+Cada dato con **su link de fuente y la fecha en que lo viste**; lo que no pudiste confirmar,
+marcado «sin confirmar». Nada de números inventados ni seguidores estimados. Al final del
+archivo, una línea «**Para Claude:**» con lo que hay que decidir o calcular. Commit y push.
+
+**No toques:** los repos de las apps (`astronomy-members`, App del Paseo, Aforo, IVA Estevez),
+`os/`, `.claude/`, ni ningún archivo con números de plata. Sólo leer.
+
 ## Lo que no se hace
 
 - **Nada sale al mundo sin el OK de Facu** (regla 10): mails, WhatsApps, posteos,
