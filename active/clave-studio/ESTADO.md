@@ -1,6 +1,6 @@
 # Clave Studio — ESTADO
 
-Unidad de negocio nueva, registrada 26/11/2026. **Socios: Facu y Mateo Estevez (hermano). % pendiente — no repartir nada hasta que Facu lo diga.**
+Unidad de negocio nueva, registrada 26/11/2026. **Socios: Facu y Mateo Estevez (hermano). Clientes que cierra Facu: 50/50 (26/11). % de la sociedad y clientes de Mateo: sin definir.**
 Qué es y cómo funciona: `~/.claude/CLAUDE.md` → *4. Clave Studio* (única fuente; acá va sólo el estado).
 
 ## Lo verificado (26/11)
@@ -13,7 +13,7 @@ Webs USA era la línea **personal** de Facu (26/11 mañana): hispanos, WhatsApp,
 Clave Studio es otro modelo: belleza y bienestar, inglés, mail, US$500 + US$147/mes, con socio.
 - Lo que sirve: `demo.py` (genera la web con datos reales de Google Maps), `leads.py` (Apify), el contador de abajo.
 - Lo que no entra en el nicho: los 51 leads y las 3 demos de Webs USA (ningún rubro de belleza).
-- 🔴 Facu confirma si Webs USA queda absorbida (recomendado) o sigue aparte.
+- ✅ 26/11 Facu: Webs USA queda absorbida. Pide el embudo 24/7 con la Mac apagada (leads → preview → mail, 50/día).
 
 ## Reglas para los envíos (regla 10 + ley de EE.UU.)
 - Cada envío lo aprueba Mateo. Nada sale desde este repo sin `--send`.
@@ -27,7 +27,7 @@ Clave Studio es otro modelo: belleza y bienestar, inglés, mail, US$500 + US$147
 | 26/11 | ? | ≥1 (A Spa For You) | ? | ? | ? | ? | ? | ? |
 
 ## Pendientes de dato
-- 🔴 Participación Facu/Mateo.
+- ✅ Cierres de Facu 50/50 (26/11). 🔴 Clientes que cierra Mateo y % de la sociedad.
 - 🔴 Dónde vive el código de los agentes (leads, previews, seguimientos, calidad) y el registro de envíos — si es repo de Mateo, clonarlo y anotarlo en `facu-os/.claude/CLAUDE.md` (tabla de repos).
 - 🔴 Números reales del embudo hasta hoy para llenar el contador.
 - 🔴 El cliente de US$1.500/mes del ejemplo: ¿existe ya o es ilustrativo?
