@@ -6,7 +6,7 @@
 |---|---:|
 | **Esta carpeta** | **932.98** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 750.48 |
+| hodl btc | 750.57 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
