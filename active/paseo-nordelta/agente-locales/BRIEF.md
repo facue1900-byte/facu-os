@@ -48,6 +48,8 @@ franquicias o comercial que figure en su web o en una nota. **Entrar a la web de
 (páginas «Franquicias», «Expansión», «Contacto») antes de marcarlo «sin contacto».** Si un
 sitio no abre por la red de la sesión, decir cuál en el mensaje final.
 
+**Sólo sirve un MAIL** (Facu, 26/11): si la marca sólo tiene formulario web o WhatsApp, no se le escribe — priorizar candidatos con mail público de expansión, franquicias o comercial.
+
 Ya hay que descartar: marcas que **ya tienen local en Nordelta** (salvo que el formato sea
 otro), y comercios de un solo local. Nada de datos personales de
 particulares. Si no tiene contacto público, va igual pero marcado «sin contacto».
