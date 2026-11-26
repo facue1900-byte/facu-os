@@ -4,7 +4,7 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 262.9018543242029,
+  "usdt": 400.09543448032935,
   "posiciones": {
     "ETHUSDT": {
       "nivel": "trading",
@@ -26,35 +26,13 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795703460000
-    },
-    "NEARUSDT": {
-      "nivel": "trading",
-      "cantidad": 46.067193675889335,
-      "entrada": 3.036,
-      "maximo": 3.138,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795703460000
+      "vigilado_hasta": 1795707060000
     },
     "SOLUSDT": {
       "nivel": "trading",
       "cantidad": 1.9566312255176275,
       "entrada": 71.48,
-      "maximo": 71.48,
+      "maximo": 71.5,
       "reglas": {
         "stop": 5.0,
         "trail": 5.0,
@@ -70,10 +48,10 @@
         ]
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795703580000
+      "vigilado_hasta": 1795707060000
     }
   },
-  "comisiones_usd": 58.03755999999993,
+  "comisiones_usd": 58.17489099999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5126,6 +5104,18 @@
       "usd": 140.0,
       "comision": 0.14,
       "motivo": "Momentum 24 h: SOL +5,87% en 24 h, 4 h +1,13% (sigue subiendo, la más firme del top), 1 h +0,2% (no estirada), a 0,81% del máximo de 48 h y 8,4% sobre el mínimo; volumen 4 h flojo (0,56x, feriado EE. UU.), por eso un solo tamaño normal. Invalida: 4 h vuelve a rojo con 24 h bajo +3%, o stop 5%; salida por tiempo 27/11 14:32."
+    },
+    {
+      "ms": 1795705620000,
+      "fecha": "2026-11-26 15:07 UTC",
+      "lado": "sell",
+      "par": "NEARUSDT",
+      "cantidad": 46.067193675889335,
+      "precio": 2.9810999999999996,
+      "usd": 137.3309,
+      "comision": 0.137331,
+      "motivo": "Stop automático en 2.9811 (entrada 3.036, máximo 3.138).",
+      "resultado_pct": -1.81
     }
   ]
 }
