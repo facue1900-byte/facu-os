@@ -5583,3 +5583,16 @@ Momentum 24 h: SOL +5,87% en 24 h, 4 h +1,13% (sigue subiendo, la más firme del
 ## 2026-11-26 16:32 UTC — nota
 16:31 UTC — Sin disparos, 0 entradas, 0 salidas. Vigilante: ETH y SOL revisados 60 min, sin disparos. Cartera 715,58 (-28,44% desde el 07/10, HODL BTC 726,66), 56% en USDT. BTC 4 h -0,59% (1 h -0,25%, 0,64x, -1,87% del máximo y +5,53% del mínimo de 48 h): sin bloqueo. Posiciones: ETH +1,27% a 1.686,36 (stop trailing 1.643,5; rebote en soporte floja, 4,82% sobre el mínimo, 4 h -1,18%; cumple 24 h a las 17:32 sin llegar a +8%: la próxima pasada la saca y rota); SOL -1,02% a 70,75 (stop 67,925; momentum al borde: 24 h +4,26% sigue sobre +3%, 4 h -0,31% en rojo — no invalida todavía, la regla pide las dos). Mercado: tarde del jueves (feriado EE. UU.), 4 h roja en bloque (-0,3/-2,2%) con volumen mixto. Sin entradas: ruptura nadie (DOGE -1,33%, XRP -1,64%, SOL -1,67% del máximo; nadie rompe). Momentum: NEAR +11% en 24 h pero 4 h -1,1%, DOGE +5,49% con 4 h -0,46%: no siguen subiendo, se pasan. Rebote: MMT a 0,47% del mínimo pero 1 h -6,43%, sigue cayendo; ZEC 4 h -4,42% con 2,34x, cae con volumen. Con 2 posiciones y el bloque bajando, plata en USDT está bien. A mirar: ETH salida por tiempo en la próxima pasada; SOL sale si 24 h baja de +3% con 4 h roja, o stop 67,925, salida por tiempo 27/11 14:32; BTC 4 h <= -3% = sin entradas. 2 posiciones.
 
+## 2026-11-26 17:31 UTC — Venta ETHUSDT
+177.66 USD a 1,692.18 (+1.62% contra la compra).
+
+Salida por tiempo: 24 h desde la entrada (25/11 17:32) sin llegar a +8% ni al stop; rebote en soporte se apagó (4 h -0,72%, 24 h +0,77%, 2,19% bajo el máximo de 48 h). Se rota a USDT.
+
+## 2026-11-26 17:31 UTC — Venta SOLUSDT
+138.71 USD a 70.89 (-0.83% contra la compra).
+
+Invalidación de la tesis de momentum: 24 h bajó a +2,09% (< +3%) con 4 h roja (-0,48%), que era la señal escrita al entrar. Se sale antes del stop.
+
+## 2026-11-26 17:32 UTC — nota
+17:31 UTC — Sin disparos, 0 entradas, 2 salidas. Vigilante: ETH y SOL revisados 60 min, sin disparos. Salidas: ETH a 1.692,18 (+1,62%) por tiempo, 24 h sin llegar a +8% ni al stop (rebote apagado: 4 h -0,72%, 24 h +0,77%); SOL a 70,89 (-0,83%) por invalidación escrita: 24 h bajó a +2,09% (< +3%) con 4 h roja (-0,48%). BTC 4 h -0,67% (1 h -0,09%, 0,65x, -1,87% del máximo y +5,53% del mínimo de 48 h): sin bloqueo. Mercado: tarde del jueves (feriado EE. UU.), 4 h roja en bloque (-0,3/-3,4%), todo 1,5-6% bajo el máximo de 48 h. Sin entradas: ruptura nadie (todo bajo el máximo y cayendo). Momentum: NEAR +7,57% en 24 h con 1,58x pero 4 h -0,55%, no sigue subiendo, se pasa; el resto bajo +5%. Rebote: UNI a 4,72% del mínimo con 2,25x pero 1 h -0,8%, sigue cayendo; ZEC 4 h -3,41% con 2,31x, cae con volumen; MMT pump desarmándose. Nada limpio: 100% en USDT está bien. A mirar: NEAR si la 4 h vuelve a verde sin estirarse; ruptura sólo con volumen >= 1,5x; rebote de UNI/ZEC sólo si la 1 h deja de hacer mínimos; BTC 4 h <= -3% = sin entradas. 0 posiciones.
+

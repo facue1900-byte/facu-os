@@ -4,54 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 400.09543448032935,
-  "posiciones": {
-    "ETHUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.10498928037377564,
-      "entrada": 1665.17,
-      "maximo": 1730.0,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795710660000
-    },
-    "SOLUSDT": {
-      "nivel": "trading",
-      "cantidad": 1.9566312255176275,
-      "entrada": 71.48,
-      "maximo": 71.5,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795710660000
-    }
-  },
-  "comisiones_usd": 58.17489099999993,
+  "usdt": 716.1454161721299,
+  "posiciones": {},
+  "comisiones_usd": 58.49125799999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5116,6 +5071,30 @@
       "comision": 0.137331,
       "motivo": "Stop automático en 2.9811 (entrada 3.036, máximo 3.138).",
       "resultado_pct": -1.81
+    },
+    {
+      "ms": 1795714313454,
+      "fecha": "2026-11-26 17:31 UTC",
+      "lado": "sell",
+      "par": "ETHUSDT",
+      "cantidad": 0.10498928037377564,
+      "precio": 1692.18,
+      "usd": 177.6608,
+      "comision": 0.177661,
+      "motivo": "Salida por tiempo: 24 h desde la entrada (25/11 17:32) sin llegar a +8% ni al stop; rebote en soporte se apagó (4 h -0,72%, 24 h +0,77%, 2,19% bajo el máximo de 48 h). Se rota a USDT.",
+      "resultado_pct": 1.62
+    },
+    {
+      "ms": 1795714314162,
+      "fecha": "2026-11-26 17:31 UTC",
+      "lado": "sell",
+      "par": "SOLUSDT",
+      "cantidad": 1.9566312255176275,
+      "precio": 70.89,
+      "usd": 138.7056,
+      "comision": 0.138706,
+      "motivo": "Invalidación de la tesis de momentum: 24 h bajó a +2,09% (< +3%) con 4 h roja (-0,48%), que era la señal escrita al entrar. Se sale antes del stop.",
+      "resultado_pct": -0.83
     }
   ]
 }
