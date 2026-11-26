@@ -1168,3 +1168,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-26 16:16 UTC — nota
 [v2] Sin operar: ya hay 1 posicion abierta (NEAR, +1,38%, ~18h) -> max 1 posicion, no se abre nada nuevo (ningun par cumplia igual: vol4h>=1.3 solo ZEC 2.21 con var_24h 1.53, WBTC 1.68 con var_4h -0.27, SUI 1.71 con var_4h -0.3; NEAR ya en cartera). Salidas: ni 48h ni tendencia rota (NEAR var_24h +12.56, var_4h +0.23). Filtro BTC abierto (var_24h 3.41, var_4h -0.37). Sin disparos.
 
+## 2026-11-26 18:16 UTC — nota
+[v2] Sin operar: ya hay 1 posicion abierta (NEAR, +0,62%, ~20h) -> max 1 posicion, no se abre nada nuevo (ningun otro par cumplia igual: INIT var_24h 52.8 pero vs_max -11.12; ZEC/MMT var_24h negativa). Salidas: ni 48h ni tendencia rota (NEAR var_24h +5.94, var_4h +0.72). Filtro BTC abierto (var_24h 1.26, var_4h -0.42). Sin disparos.
+
