@@ -118,3 +118,4 @@
 2026-11-25 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-19.99% agresiva=-27.92% laboratorio=-6.84% dca=-6.72% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · Agresiva sale de BTC por tiempo; nadie le gana a USDT: sin mail
 2026-11-25 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-19.94% agresiva=-27.79% laboratorio=-6.84% dca=-6.72% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · Agresiva entra en ETH; nadie le gana a USDT: sin mail
 2026-11-26 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-20.17% agresiva=-27.16% laboratorio=-6.60% dca=-6.72% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · Agresiva queda bajo HODL; nadie le gana a USDT: sin mail
+2026-11-26 · régimen=BTC abajo de la media 200, bajando 30 d · 3niveles=-20.49% agresiva=-27.59% laboratorio=-6.76% dca=-6.72% torneo(P0 USDT, empate sin operar)=+0.00% original=-1.04% · 3 niveles pierde MMT por stop; nadie gana: sin mail
