@@ -8,6 +8,13 @@ Qué es y cómo funciona: `~/.claude/CLAUDE.md` → *4. Clave Studio* (única fu
 - `clave-studio.github.io` responde 200.
 - Preview de ejemplo que mandó Facu: «A Spa For You», Sedona AZ (escritorio + celular, botones Book / Call / Map).
 
+## Lo que ya existe (medido 26/11, no reconstruir)
+- **~934 previews publicados** por Mateo en `github.com/clave-studio` (repos públicos `clave-studio.github.io` 330, `previews2` 257, `previews7` 253, `previews8` 53 —médicos—, `previews3-6` 41). Con `noindex`. El generador y la lista de enviados viven con Mateo: 🔴 pedírselos.
+- Agenda: Calendly de Mateo `calendly.com/mateoestevez/free-15-min-call` (15 min), con turnos 7:00–14:30 hora de Arizona, días hábiles. Si genera Meet: sin verificar.
+- 🚨 El mail de Mateo a Sway (reenviado a facu1900) **cayó en Spam** aunque SPF/DKIM/DMARC pasan → la reputación de clave.studio1 ya está tocada. Mail mejorado en `MAIL_1.md`.
+- Envío desde **facu1900@gmail.com** (cuenta `clave` en `google_auth`, conectada 26/11). Foto de perfil: Facu la sube (el selector de Google no se deja automatizar).
+- Reuniones: siempre con Mateo (host del Calendly; si se responde por mail, copia a clave.studio1@gmail.com).
+
 ## Relación con «Webs USA» (`active/webs-usa/`)
 Webs USA era la línea **personal** de Facu (26/11 mañana): hispanos, WhatsApp, US$299–499 + US$49/mes, jardinería/limpieza/remodelación/detailing.
 Clave Studio es otro modelo: belleza y bienestar, inglés, mail, US$500 + US$147/mes, con socio.
