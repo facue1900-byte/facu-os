@@ -31,12 +31,14 @@ Facu es ciudadano de EE.UU. → Stripe como persona (SSN, sin LLC) con payout a 
 ## Contador (regla 24)
 | Fecha | Leads sacados | Demos hechas | Contactados | Respondieron | Pagaron |
 |---|---|---|---|---|---|
-| 26/11 | 0 | 1 plantilla | 0 | 0 | 0 |
+| 26/11 | 51 (jardinería Houston 15, limpieza Miami 5, remodelación Houston 15, detailing Dallas 16) | 3 (MedinaLawn, PGM, Chuy's) | 0 | 0 | 0 |
 
 ## Pendientes de dato
-- 🔴 `APIFY_API_TOKEN` está vacío en `.env` → sin esto no hay lista. (Plan gratis: US$5/mes de crédito ≈ 1.000 lugares.)
+- ✅ Apify cargado 26/11. `leads.py` corrido: 240 lugares, 51 sin web con teléfono (CSV en `leads/`, gitignoreado).
+- ✅ `demo.py leads/demo_3.json` arma la web con reseñas y fotos reales (ciudad por código de área; frena si queda texto de plantilla). Mirado en escritorio; en celular no se pudo medir a 390 px (Chrome headless no baja de ~500).
+- 🔴 Twilio está en TRIAL con US$0: Facu tiene que pasarla a paga y cargar saldo antes de comprar el número.
+- 🔴 Publicar las 3 demos en Netlify (URL de preview, noindex) con OK de Facu.
 - ✅ 26/11 Facu: los 4 rubros a la vez — jardinería Houston, limpieza Miami, remodelación Houston, detailing Dallas (~60 lugares c/u ≈ US$1 de Apify).
 - ✅ Número: uno de EE.UU. nuevo en Twilio + WhatsApp Business. 🔴 Comprarlo sólo con el OK de Facu (gasto mensual).
 - 🔴 Stripe: Facu la abre. **Ojo:** Shopify Payments exige vivir en EE.UU. y Stripe pide domicilio en EE.UU.; a confirmar si alcanza con ser ciudadano + SSN + BofA viviendo en Argentina. Plan B: domicilio de un familiar en EE.UU., o LLC (Stripe Atlas).
-- Marca: .com libres verificados por RDAP el 26/11: holasitio.com (recomendado), sitiodelbarrio.com, webdelbarrio.com, placitaweb.com, latinolisto.com. 🔴 Facu elige; el dominio se compra con su OK.
-- `leads.py` **no se corrió todavía** (falta la key): primera corrida = verificación.
+- Marca: .com libres verificados por RDAP el 26/11: holasitio.com (recomendado), sitiodelbarrio.com, webdelbarrio.com, placitaweb.com, latinolisto.com; 2ª tanda: sitiocompadre.com, andalesites.com, negocioarriba.com, webencasa.com, elsitiolisto.com, buenvecinoweb.com, webderaiz.com. 🔴 Facu elige; el dominio se compra con su OK.
