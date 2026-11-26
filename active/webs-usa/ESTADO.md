@@ -35,5 +35,8 @@ Facu es ciudadano de EE.UU. → Stripe como persona (SSN, sin LLC) con payout a 
 
 ## Pendientes de dato
 - 🔴 `APIFY_API_TOKEN` está vacío en `.env` → sin esto no hay lista. (Plan gratis: US$5/mes de crédito ≈ 1.000 lugares.)
-- 🔴 Primer rubro + ciudad (propuesta: landscaping en Houston, después cleaning en Miami).
+- ✅ 26/11 Facu: los 4 rubros a la vez — jardinería Houston, limpieza Miami, remodelación Houston, detailing Dallas (~60 lugares c/u ≈ US$1 de Apify).
+- ✅ Número: uno de EE.UU. nuevo en Twilio + WhatsApp Business. 🔴 Comprarlo sólo con el OK de Facu (gasto mensual).
+- 🔴 Stripe: Facu la abre. **Ojo:** Shopify Payments exige vivir en EE.UU. y Stripe pide domicilio en EE.UU.; a confirmar si alcanza con ser ciudadano + SSN + BofA viviendo en Argentina. Plan B: domicilio de un familiar en EE.UU., o LLC (Stripe Atlas).
+- Marca: .com libres verificados por RDAP el 26/11: holasitio.com (recomendado), sitiodelbarrio.com, webdelbarrio.com, placitaweb.com, latinolisto.com. 🔴 Facu elige; el dominio se compra con su OK.
 - `leads.py` **no se corrió todavía** (falta la key): primera corrida = verificación.
