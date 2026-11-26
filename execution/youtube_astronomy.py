@@ -308,8 +308,9 @@ def banner(out: Path, estilo: str = "vidrio"):
 def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, brillo: float = 1.0,
            zoom: float = 1.0, foco_y: float = 0.35, estilo: str = "vidrio", color: bool = True,
            recortar_firma: bool = False, tag: str = "THE BUNKER",
-           arriba: tuple = ("LIVE SET", "ASTRONOMY ACADEMY"), tam_nombre: int = 104, oscuro_abajo: float = 0.82):
-    W, H = 1280, 720
+           arriba: tuple = ("LIVE SET", "ASTRONOMY ACADEMY"), tam_nombre: int = 104, oscuro_abajo: float = 0.82, escala: float = 1.0):
+    e = escala  # 1.5 = 1920x1080: mismo diseño, más resolución
+    W, H = round(1280 * e), round(720 * e)
     ph = Image.open(foto).convert("RGB")
     if recortar_firma:  # fotogramas del video traen la firma quemada abajo a la derecha
         ph = ph.crop((0, 0, int(ph.width * 0.9), int(ph.height * 0.9)))
@@ -345,32 +346,32 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     img = Image.fromarray(np.clip(rgb, 0, 255).astype(np.uint8), "RGB").convert("RGBA")
 
     d = ImageDraw.Draw(img)
-    pad = 56
+    pad = round(56 * e)
     num = f"{numero:02d}"  # minimalista: va chico, en la línea de THE BUNKER (Facu: el número gigante era feo)
     # isotipo chico arriba a la izquierda
-    iso = _mask_de_png(ISOTIPO, 92)
-    _pegar_centrado(img, relieve(iso, estilo, 3), pad + iso.width / 2, pad + iso.height / 2)
-    rotulo(d, (pad + iso.width + 18, pad + 22), ["ASTRONOMY"], 17, color=(255, 255, 255, 200))
+    iso = _mask_de_png(ISOTIPO, round(92 * e))
+    _pegar_centrado(img, relieve(iso, estilo, 3 * e), pad + iso.width / 2, pad + iso.height / 2)
+    rotulo(d, (pad + iso.width + 18 * e, pad + 22 * e), ["ASTRONOMY"], round(17 * e), color=(255, 255, 255, 200))
     if any(arriba):  # vacío en colabs: arriba a la derecha va la marca de agua del otro
-      rotulo(d, (W - pad, pad + 4), list(arriba), 17, anchor="ra", color=(255, 255, 255, 180))
+      rotulo(d, (W - pad, pad + 4 * e), list(arriba), round(17 * e), anchor="ra", color=(255, 255, 255, 180))
     # tipografía: rótulo + artista, alineado a la izquierda y anclado abajo
-    f_art = ImageFont.truetype(HELV, tam_nombre, index=1)
+    f_art = ImageFont.truetype(HELV, round(tam_nombre * e), index=1)
     nombre = artista.upper()
-    while f_art.getlength(nombre) > W * 0.56 and f_art.size > 56:
+    while f_art.getlength(nombre) > W * 0.56 and f_art.size > 56 * e:
         f_art = ImageFont.truetype(HELV, f_art.size - 4, index=1)
-    y_base = H - pad - 6
-    d.text((pad - 4, y_base), nombre, font=f_art, fill=(255, 255, 255, 255), anchor="ls")
-    f_tag = ImageFont.truetype(HELV, 30, index=10)
-    y_tag = y_base - f_art.size * 0.78 - 26
+    y_base = H - pad - 6 * e
+    d.text((pad - 4 * e, y_base), nombre, font=f_art, fill=(255, 255, 255, 255), anchor="ls")
+    f_tag = ImageFont.truetype(HELV, round(30 * e), index=10)
+    y_tag = y_base - f_art.size * 0.78 - 26 * e
     d.text((pad, y_tag), tag, font=f_tag, fill=(255, 255, 255, 235), anchor="ls")
     if numero:  # 0 = sin número (colaboraciones fuera del ciclo The Bunker)
-        x_l = pad + f_tag.getlength(tag) + 22
-        d.line([(x_l, y_tag - 11), (x_l + 64, y_tag - 11)], fill=(200, 185, 255, 220), width=2)
-        f_num = ImageFont.truetype(HELV, 30, index=7)  # Light
-        d.text((x_l + 86, y_tag), num, font=f_num, fill=(215, 200, 255, 255), anchor="ls")
-    borde_degrade(img, inset=18, grosor=3, glow_r=9)
-    for x, y in [(30, 30), (W - 30, 30), (30, H - 30), (W - 30, H - 30)]:
-        cruz(d, x, y, 9, color=(255, 255, 255, 120), ancho=1)
+        x_l = pad + f_tag.getlength(tag) + 22 * e
+        d.line([(x_l, y_tag - 11 * e), (x_l + 64 * e, y_tag - 11 * e)], fill=(200, 185, 255, 220), width=round(2 * e))
+        f_num = ImageFont.truetype(HELV, round(30 * e), index=7)  # Light
+        d.text((x_l + 86 * e, y_tag), num, font=f_num, fill=(215, 200, 255, 255), anchor="ls")
+    borde_degrade(img, inset=round(18 * e), grosor=round(3 * e), glow_r=9 * e)
+    for x, y in [(30 * e, 30 * e), (W - 30 * e, 30 * e), (30 * e, H - 30 * e), (W - 30 * e, H - 30 * e)]:
+        cruz(d, x, y, 9 * e, color=(255, 255, 255, 120), ancho=max(1, round(e)))
     img.convert("RGB").save(out, quality=93)
 
 
@@ -438,6 +439,7 @@ def main():
     c.add_argument("--arriba", default="LIVE SET|ASTRONOMY ACADEMY", help="rótulo arriba a la derecha, líneas separadas por |")
     c.add_argument("--tam-nombre", type=int, default=104, help="tamaño del nombre; más chico deja ver la consola")
     c.add_argument("--oscuro-abajo", type=float, default=0.82, help="0 = no oscurece la parte de abajo")
+    c.add_argument("--escala", type=float, default=1.0, help="1.5 = 1920x1080 (YouTube acepta hasta 2 MB)")
     c.add_argument("--recortar-firma", action="store_true", help="para fotogramas con la firma quemada")
     args = p.parse_args()
     if args.cmd == "perfil":
@@ -450,7 +452,7 @@ def main():
         bunker(args.foto, args.numero, args.artista, args.out, args.foco, args.brillo, args.zoom, args.foco_y,
                color=not args.byn, recortar_firma=args.recortar_firma,
                tag=args.tag, arriba=tuple(args.arriba.split("|")) if args.arriba else ("",),
-               tam_nombre=args.tam_nombre, oscuro_abajo=args.oscuro_abajo)
+               tam_nombre=args.tam_nombre, oscuro_abajo=args.oscuro_abajo, escala=args.escala)
     print(args.out)
 
 
