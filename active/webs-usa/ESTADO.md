@@ -21,7 +21,7 @@ Facu es ciudadano de EE.UU. → Stripe como persona (SSN, sin LLC) con payout a 
 
 ## Embudo
 1. `leads.py "<rubro>" "<ciudad>"` → CSV de sin-web con teléfono, ordenado por reseñas.
-2. Demo: copiar `demo/index.html`, reemplazar lo marcado `data-fill` (nombre, tel, fotos y reseñas reales de su ficha). Publicar en Netlify con URL de preview.
+2. Demo: traer reseñas y fotos (`startUrls` en Apify, ver `leads/demo_3.json`), elegir portada/galería en `leads/curacion.json` (y servicios reales si los hay, p. ej. de su tarjeta) → `demo.py`. Cada rubro tiene su estética (SKINS). Publicar en Netlify con URL de preview.
 3. Mensaje (abajo) con el link → Facu lo manda.
 4. Si dice que sí: link de pago de Stripe → dominio → se publica.
 
@@ -35,7 +35,7 @@ Facu es ciudadano de EE.UU. → Stripe como persona (SSN, sin LLC) con payout a 
 
 ## Pendientes de dato
 - ✅ Apify cargado 26/11. `leads.py` corrido: 240 lugares, 51 sin web con teléfono (CSV en `leads/`, gitignoreado).
-- ✅ `demo.py leads/demo_3.json` arma la web con reseñas y fotos reales (ciudad por código de área; frena si queda texto de plantilla). Mirado en escritorio; en celular no se pudo medir a 390 px (Chrome headless no baja de ~500).
+- ✅ `demo.py leads/demo_3.json` arma la web con reseñas y fotos reales (ciudad por código de área; frena si queda texto de plantilla). 26/11 rediseño «mega profesional» a pedido de Facu: foto real a pantalla completa, tipografía y paleta por rubro, horarios reales, formulario que abre WhatsApp. Mirado en escritorio 1280 y celular 500 px.
 - 🔴 Twilio está en TRIAL con US$0: Facu tiene que pasarla a paga y cargar saldo antes de comprar el número.
 - 🔴 Publicar las 3 demos en Netlify (URL de preview, noindex) con OK de Facu.
 - ✅ 26/11 Facu: los 4 rubros a la vez — jardinería Houston, limpieza Miami, remodelación Houston, detailing Dallas (~60 lugares c/u ≈ US$1 de Apify).
