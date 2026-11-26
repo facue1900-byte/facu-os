@@ -1,19 +1,21 @@
-# Carpeta cripto ficticia — 2026-11-26 00:06 UTC
+# Carpeta cripto ficticia — 2026-11-26 02:06 UTC
 
-**Total: 798.28 USD (-20.17%)** desde 2026-10-07 20:58 UTC · USDT libre 798.28 · comisiones 3.22 · 103 operaciones
+**Total: 798.18 USD (-20.18%)** desde 2026-10-07 20:58 UTC · USDT libre 774.28 · comisiones 3.25 · 104 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **798.28** |
+| **Esta carpeta** | **798.18** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 723.99 |
-| plan inicial sin tocar | 665.15 |
+| hodl btc | 729.45 |
+| plan inicial sin tocar | 671.38 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| MMT | riesgo | 23.90 | -0.31% | 0.27166 |
 
 ## Últimas operaciones
 
+- 2026-11-26 02:06 UTC · compra MMT 24.00 USD a 0.3196 — Momentum: segundo ciclo seguido en la zona del máximo de 90 d (00:05 a -2,3%, 02:05 a -2,5%) con volumen sobre 20 M (23,7 M), 7d +19,5%, 30d
 - 2026-11-25 22:52 UTC · venta OPG 20.61 USD a 0.15674 — Stop automático en 0.15674 (entrada 0.1823, máximo 0.1844).
 - 2026-11-25 06:06 UTC · compra OPG 24.00 USD a 0.1823 — Momentum: segundo ciclo seguido sobre el piso de 5 M (6,3 M) y en la zona del máximo de 90 d (-0,9%; 04:05 a -1,9%), 7d +33,2%, 30d +58,4%, 
 - 2026-11-24 06:31 UTC · venta LISTA 32.99 USD a 0.09775 — Stop automático en 0.09775 (entrada 0.0888, máximo 0.115).
@@ -23,6 +25,5 @@
 - 2026-11-14 22:08 UTC · venta BTC 228.69 USD a 63,673.5 — Stop automático en 63,673.5 (entrada 83,446.01, máximo 84,898).
 - 2026-11-14 20:54 UTC · venta BNB 37.72 USD a 582.173 — Stop automático en 582.1725 (entrada 770.95, máximo 776.23).
 - 2026-11-13 03:51 UTC · venta ETH 75.31 USD a 1,940.46 — Stop automático en 1,940.46 (entrada 2,574.09, máximo 2,587.28).
-- 2026-11-11 21:37 UTC · venta PEPE 34.28 USD a 4.6665e-06 — Stop automático en 4.6665e-06 (entrada 5.44e-06, máximo 5.49e-06).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

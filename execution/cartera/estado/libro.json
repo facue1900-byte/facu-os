@@ -27,9 +27,32 @@
       }
     }
   },
-  "usdt": 798.2801182504177,
-  "posiciones": {},
-  "comisiones_usd": 3.221790000000001,
+  "usdt": 774.2801182504177,
+  "posiciones": {
+    "MMTUSDT": {
+      "nivel": "riesgo",
+      "cantidad": 75.01877346683354,
+      "entrada": 0.3196,
+      "maximo": 0.3196,
+      "reglas": {
+        "stop": 15.0,
+        "trail": 15.0,
+        "tp": [
+          [
+            40.0,
+            0.5
+          ],
+          [
+            100.0,
+            0.5
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795658820000
+    }
+  },
+  "comisiones_usd": 3.245790000000001,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1266,6 +1289,18 @@
       "comision": 0.020614,
       "motivo": "Stop automático en 0.15674 (entrada 0.1823, máximo 0.1844).",
       "resultado_pct": -14.02
+    },
+    {
+      "ms": 1795658802187,
+      "fecha": "2026-11-26 02:06 UTC",
+      "lado": "buy",
+      "par": "MMTUSDT",
+      "nivel": "riesgo",
+      "cantidad": 75.01877346683354,
+      "precio": 0.3196,
+      "usd": 24.0,
+      "comision": 0.024,
+      "motivo": "Momentum: segundo ciclo seguido en la zona del máximo de 90 d (00:05 a -2,3%, 02:05 a -2,5%) con volumen sobre 20 M (23,7 M), 7d +19,5%, 30d +127%, y sin vela vertical nueva (1d -0,5%: consolida arriba en vez de seguir estirando). Se cumple la regla fijada a las 00:05. Tamaño ~3% (24 USD) y no 5% por la volatilidad de 260%: el stop de 15% puede saltar por ruido. Invalida: stop 15% / trailing 15%, alejarse más de 10% del máximo con 7d dándose vuelta, o volumen bajo 10 M sostenido."
     }
   ]
 }
