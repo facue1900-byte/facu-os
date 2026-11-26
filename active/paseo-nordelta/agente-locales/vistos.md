@@ -26,3 +26,4 @@ mandó Locales de servicios.pdf).
 - 26/11/2026 · One Trip · agencia de viajes · servicios · 10 franquicias (Córdoba/Salta), pide ≥30 m²; débil para zona norte · sin contacto · https://www.iprofesional.com/negocios/439415-cuanto-cuesta-invertir-en-una-franquicia-one-trip-y-rentabilidad
 - 26/11/2026 · descartados en búsqueda manual: Hair Recovery (ya en Nordelta), Japanese Head Spa (80-90 m²), MALA (150 m²), Hospital para Celulares (sólo Córdoba)
 - 26/11/2026 · CONTACTADO: Lavatería — mail desde paseonordelta@ a contato@lavateria.com.br (casa matriz, pedido de derivar a Argentina), firmado «Claudio»
+- 26/11/2026 · DECISIÓN de Facu: Tijeritas y Guzel NO («no me tientan»); Casper y Niki Beauty Bar NO contactados (sólo tienen formulario, Facu sólo escribe por mail); Market en pausa; GoFix no.
