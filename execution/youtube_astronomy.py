@@ -308,7 +308,8 @@ def banner(out: Path, estilo: str = "vidrio"):
 def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, brillo: float = 1.0,
            zoom: float = 1.0, foco_y: float = 0.35, estilo: str = "vidrio", color: bool = True,
            recortar_firma: bool = False, tag: str = "THE BUNKER",
-           arriba: tuple = ("LIVE SET", "ASTRONOMY ACADEMY"), tam_nombre: int = 104, oscuro_abajo: float = 0.82, escala: float = 1.0):
+           arriba: tuple = ("LIVE SET", "ASTRONOMY ACADEMY"), tam_nombre: int = 104, oscuro_abajo: float = 0.82, escala: float = 1.0,
+           natural: bool = False, vineta: bool = True):
     e = escala  # 1.5 = 1920x1080: mismo diseño, más resolución
     W, H = round(1280 * e), round(720 * e)
     ph = Image.open(foto).convert("RGB")
@@ -319,7 +320,9 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     y0 = (ph.height - ch) * foco_y
     ph = ph.crop((int(x0), int(y0), int(x0 + cw), int(y0 + ch)))
     ph = ImageOps.fit(ph, (W, H), Image.LANCZOS)
-    if color:
+    if natural:  # sin curva ni saturación: el color tal cual sale del video
+        rgb = np.asarray(ph, np.float32) * brillo
+    elif color:
         # color real del estudio (ya es violeta/magenta): curva en S y sombras hacia el marino
         c = np.asarray(ph, np.float32) / 255.0
         c = np.clip((c - 0.02) * 1.12 * brillo, 0, 1)
@@ -339,6 +342,8 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     # viñeta y degradé inferior para el texto
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
     vin = np.clip(1 - (((xx - W * 0.5) / (W * 0.75)) ** 2 + ((yy - H * 0.45) / (H * 0.8)) ** 2), 0.15, 1)
+    if not vineta:
+        vin = np.ones_like(vin)
     abajo = np.clip((yy / H - 0.45) / 0.55, 0, 1) ** 1.3
     izq = np.clip(1 - xx / (W * 0.55), 0, 1) ** 1.5
     oscuro = np.clip(vin * (1 - oscuro_abajo * abajo) * (1 - 0.45 * izq * abajo), 0, 1)
@@ -440,6 +445,8 @@ def main():
     c.add_argument("--tam-nombre", type=int, default=104, help="tamaño del nombre; más chico deja ver la consola")
     c.add_argument("--oscuro-abajo", type=float, default=0.82, help="0 = no oscurece la parte de abajo")
     c.add_argument("--escala", type=float, default=1.0, help="1.5 = 1920x1080 (YouTube acepta hasta 2 MB)")
+    c.add_argument("--natural", action="store_true", help="color del video sin curva ni saturación")
+    c.add_argument("--sin-vineta", action="store_true", help="no oscurece los bordes")
     c.add_argument("--recortar-firma", action="store_true", help="para fotogramas con la firma quemada")
     args = p.parse_args()
     if args.cmd == "perfil":
@@ -452,7 +459,8 @@ def main():
         bunker(args.foto, args.numero, args.artista, args.out, args.foco, args.brillo, args.zoom, args.foco_y,
                color=not args.byn, recortar_firma=args.recortar_firma,
                tag=args.tag, arriba=tuple(args.arriba.split("|")) if args.arriba else ("",),
-               tam_nombre=args.tam_nombre, oscuro_abajo=args.oscuro_abajo, escala=args.escala)
+               tam_nombre=args.tam_nombre, oscuro_abajo=args.oscuro_abajo, escala=args.escala,
+               natural=args.natural, vineta=not args.sin_vineta)
     print(args.out)
 
 
