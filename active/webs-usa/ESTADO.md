@@ -1,6 +1,6 @@
 # Webs para negocios de EE.UU. sin página — ESTADO
 
-Arrancado 26/11/2026 a pedido de Facu. **Base: ¿personal de Facu (como cripto) o de la empresa? — sin definir, preguntar antes de repartir nada.**
+Arrancado 26/11/2026 a pedido de Facu. **Base: PERSONAL de Facu (confirmado 26/11): negocio nuevo, sin socios. No se suma con Astronomy, Paseo ni campos.**
 
 ## La apuesta (en una línea)
 Negocios locales hispanos de EE.UU. con buenas reseñas en Google y **sin web** → les mandamos **su web ya hecha** (demo con su nombre, fotos y reseñas reales) → cobro de setup + mensualidad por Stripe.
@@ -36,5 +36,4 @@ Facu es ciudadano de EE.UU. → Stripe como persona (SSN, sin LLC) con payout a 
 ## Pendientes de dato
 - 🔴 `APIFY_API_TOKEN` está vacío en `.env` → sin esto no hay lista. (Plan gratis: US$5/mes de crédito ≈ 1.000 lugares.)
 - 🔴 Primer rubro + ciudad (propuesta: landscaping en Houston, después cleaning en Miami).
-- 🔴 Base: personal o empresa.
 - `leads.py` **no se corrió todavía** (falta la key): primera corrida = verificación.
