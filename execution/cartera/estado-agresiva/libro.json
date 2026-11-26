@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 716.1454161721299,
-  "posiciones": {},
-  "comisiones_usd": 58.49125799999993,
+  "usdt": 576.1454161721299,
+  "posiciones": {
+    "NEARUSDT": {
+      "nivel": "trading",
+      "cantidad": 45.145255003227895,
+      "entrada": 3.098,
+      "maximo": 3.098,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795717980000
+    }
+  },
+  "comisiones_usd": 58.63125799999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5095,6 +5118,18 @@
       "comision": 0.138706,
       "motivo": "Invalidación de la tesis de momentum: 24 h bajó a +2,09% (< +3%) con 4 h roja (-0,48%), que era la señal escrita al entrar. Se sale antes del stop.",
       "resultado_pct": -0.83
+    },
+    {
+      "ms": 1795717922967,
+      "fecha": "2026-11-26 18:32 UTC",
+      "lado": "buy",
+      "par": "NEARUSDT",
+      "nivel": "trading",
+      "cantidad": 45.145255003227895,
+      "precio": 3.098,
+      "usd": 140.0,
+      "comision": 0.14,
+      "motivo": "Momentum 24 h: NEAR +7,01% en 24 h, 4 h +1,74% (sigue subiendo, volvió a verde), 1 h +0,85% (no estirada), volumen 4 h 1,6x (el único del top con volumen propio y 4 h verde), a 1,27% del máximo de 48 h. Reentrada tras el stop de las 15:07: la señal que se esperaba (4 h verde sin estirarse) apareció. Invalida: 4 h vuelve a rojo con 24 h bajo +3%, o stop 5%; salida por tiempo 27/11 18:32."
     }
   ]
 }
