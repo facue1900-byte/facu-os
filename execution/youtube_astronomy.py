@@ -309,10 +309,10 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
            zoom: float = 1.0, foco_y: float = 0.35, estilo: str = "vidrio", color: bool = True,
            recortar_firma: bool = False, tag: str = "THE BUNKER",
            arriba: tuple = ("LIVE SET", "ASTRONOMY ACADEMY"), tam_nombre: int = 104, oscuro_abajo: float = 0.82, escala: float = 1.0,
-           natural: bool = False, vineta: bool = True):
+           natural: bool = False, vineta: bool = True, logo_izq: Path | None = None):
     e = escala  # 1.5 = 1920x1080: mismo diseño, más resolución
     W, H = round(1280 * e), round(720 * e)
-    ph = Image.open(foto).convert("RGB")
+    ph = foto.convert("RGB") if isinstance(foto, Image.Image) else Image.open(foto).convert("RGB")
     if recortar_firma:  # fotogramas del video traen la firma quemada abajo a la derecha
         ph = ph.crop((0, 0, int(ph.width * 0.9), int(ph.height * 0.9)))
     cw, ch = ph.width / zoom, ph.height / zoom
@@ -353,10 +353,15 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     d = ImageDraw.Draw(img)
     pad = round(56 * e)
     num = f"{numero:02d}"  # minimalista: va chico, en la línea de THE BUNKER (Facu: el número gigante era feo)
-    # isotipo chico arriba a la izquierda
-    iso = _mask_de_png(ISOTIPO, round(92 * e))
-    _pegar_centrado(img, relieve(iso, estilo, 3 * e), pad + iso.width / 2, pad + iso.height / 2)
-    rotulo(d, (pad + iso.width + 18 * e, pad + 22 * e), ["ASTRONOMY"], round(17 * e), color=(255, 255, 255, 200))
+    if logo_izq:  # colabs: el logo del otro arriba a la izquierda, en blanco
+        m = _mask_de_png(logo_izq, round(40 * e))
+        blanco = Image.new("RGBA", m.size, (255, 255, 255, 0))
+        blanco.putalpha(m)
+        img.alpha_composite(blanco, (pad, pad + round(8 * e)))
+    else:  # isotipo chico arriba a la izquierda
+        iso = _mask_de_png(ISOTIPO, round(92 * e))
+        _pegar_centrado(img, relieve(iso, estilo, 3 * e), pad + iso.width / 2, pad + iso.height / 2)
+        rotulo(d, (pad + iso.width + 18 * e, pad + 22 * e), ["ASTRONOMY"], round(17 * e), color=(255, 255, 255, 200))
     if any(arriba):  # vacío en colabs: arriba a la derecha va la marca de agua del otro
       rotulo(d, (W - pad, pad + 4 * e), list(arriba), round(17 * e), anchor="ra", color=(255, 255, 255, 180))
     # tipografía: rótulo + artista, alineado a la izquierda y anclado abajo
@@ -377,7 +382,24 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     borde_degrade(img, inset=round(18 * e), grosor=round(3 * e), glow_r=9 * e)
     for x, y in [(30 * e, 30 * e), (W - 30 * e, 30 * e), (30 * e, H - 30 * e), (W - 30 * e, H - 30 * e)]:
         cruz(d, x, y, 9 * e, color=(255, 255, 255, 120), ancho=max(1, round(e)))
+    if out is None:
+        return img.convert("RGB")
     img.convert("RGB").save(out, quality=93)
+
+
+def capa(out: Path, escala: float = 1.0, **kw):
+    """La portada SIN foto, en PNG transparente, para que otro diseñador la pegue arriba de su foto.
+
+    Se renderiza la misma portada sobre negro y sobre blanco y se recupera el alfa por diferencia:
+    así la capa es idéntica a lo que hace `bunker` (texto, marco, cruces y la sombra de abajo)."""
+    W, H = round(1280 * escala), round(720 * escala)
+    kw.update(natural=True, brillo=1.0)
+    sobre_negro = np.asarray(bunker(Image.new("RGB", (W, H), 0), out=None, escala=escala, **kw), np.float32)
+    sobre_blanco = np.asarray(bunker(Image.new("RGB", (W, H), (255, 255, 255)), out=None, escala=escala, **kw), np.float32)
+    alfa = np.clip(1 - (sobre_blanco - sobre_negro).mean(axis=2) / 255.0, 0, 1)
+    color = np.where(alfa[..., None] > 1e-3, sobre_negro / np.maximum(alfa[..., None], 1e-3), 0)
+    rgba = np.dstack([np.clip(color, 0, 255), alfa * 255]).astype(np.uint8)
+    Image.fromarray(rgba, "RGBA").save(out)
 
 
 def especial(titulo: str, episodio: str, bajada: str, fecha: str, out: Path, estilo: str = "vidrio"):
@@ -431,7 +453,7 @@ def main():
     e.add_argument("--fecha", required=True)
     e.add_argument("--out", type=Path, required=True)
     c = sub.add_parser("bunker")
-    c.add_argument("--foto", type=Path, required=True)
+    c.add_argument("--foto", type=Path)
     c.add_argument("--numero", type=int, required=True)
     c.add_argument("--artista", required=True)
     c.add_argument("--out", type=Path, required=True)
@@ -448,6 +470,9 @@ def main():
     c.add_argument("--natural", action="store_true", help="color del video sin curva ni saturación")
     c.add_argument("--sin-vineta", action="store_true", help="no oscurece los bordes")
     c.add_argument("--recortar-firma", action="store_true", help="para fotogramas con la firma quemada")
+    c.add_argument("--logo-izq", type=Path, help="colabs: logo del otro arriba a la izquierda en vez del isotipo")
+    c.add_argument("--capa", action="store_true",
+                   help="sin foto: PNG transparente para que otro lo pegue arriba de su foto (--foto se ignora)")
     args = p.parse_args()
     if args.cmd == "perfil":
         perfil(args.out, estilo=args.estilo)
@@ -455,12 +480,19 @@ def main():
         banner(args.out, estilo=args.estilo)
     elif args.cmd == "especial":
         especial(args.titulo, args.episodio, args.bajada, args.fecha, args.out)
+    elif args.capa:
+        capa(args.out, escala=args.escala, numero=args.numero, artista=args.artista,
+             tag=args.tag, arriba=tuple(args.arriba.split("|")) if args.arriba else ("",),
+             tam_nombre=args.tam_nombre, oscuro_abajo=args.oscuro_abajo,
+             vineta=not args.sin_vineta, logo_izq=args.logo_izq)
     else:
+        if not args.foto:
+            p.error("bunker necesita --foto (o --capa)")
         bunker(args.foto, args.numero, args.artista, args.out, args.foco, args.brillo, args.zoom, args.foco_y,
                color=not args.byn, recortar_firma=args.recortar_firma,
                tag=args.tag, arriba=tuple(args.arriba.split("|")) if args.arriba else ("",),
                tam_nombre=args.tam_nombre, oscuro_abajo=args.oscuro_abajo, escala=args.escala,
-               natural=args.natural, vineta=not args.sin_vineta)
+               natural=args.natural, vineta=not args.sin_vineta, logo_izq=args.logo_izq)
     print(args.out)
 
 
