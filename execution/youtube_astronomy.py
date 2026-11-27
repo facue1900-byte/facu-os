@@ -353,25 +353,23 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     d = ImageDraw.Draw(img)
     pad = round(56 * e)
     num = f"{numero:02d}"  # minimalista: va chico, en la línea de THE BUNKER (Facu: el número gigante era feo)
-    if logo_izq:  # colabs: el logo del otro arriba a la izquierda, en blanco
-        m = _mask_de_png(logo_izq, round(40 * e))
+    # isotipo chico arriba a la izquierda, igual en todas las portadas (también en colabs)
+    iso = _mask_de_png(ISOTIPO, round(92 * e))
+    _pegar_centrado(img, relieve(iso, estilo, 3 * e), pad + iso.width / 2, pad + iso.height / 2)
+    f_mono = ImageFont.truetype(str(MONO), round(17 * e))
+    x_txt = pad + iso.width + 18 * e
+    rotulo(d, (x_txt, pad + 22 * e), ["ASTRONOMY"], round(17 * e), color=(255, 255, 255, 200))
+    if logo_izq:  # colabs: «ASTRONOMY × <logo del otro>», en la misma línea y en blanco plano
+        x = x_txt + f_mono.getlength("ASTRONOMY") + 16 * e
+        rotulo(d, (x, pad + 22 * e), ["×"], round(17 * e), color=(255, 255, 255, 200))
+        x += f_mono.getlength("×") + 16 * e
+        m = _mask_de_png(logo_izq, round(36 * e))
         blanco = Image.new("RGBA", m.size, (255, 255, 255, 0))
         blanco.putalpha(m)
-        img.alpha_composite(blanco, (pad, pad + round(8 * e)))
-    else:  # isotipo chico arriba a la izquierda
-        iso = _mask_de_png(ISOTIPO, round(92 * e))
-        _pegar_centrado(img, relieve(iso, estilo, 3 * e), pad + iso.width / 2, pad + iso.height / 2)
-        rotulo(d, (pad + iso.width + 18 * e, pad + 22 * e), ["ASTRONOMY"], round(17 * e), color=(255, 255, 255, 200))
-    x_rot = W - pad
-    if logo_izq:  # colab con el logo del otro a la izquierda: nuestro isotipo espejado a la derecha
-        iso = _mask_de_png(ISOTIPO, round(62 * e))
-        cy = pad + round(28 * e)  # centrado con las dos líneas del rótulo
-        blanco = Image.new("RGBA", iso.size, (255, 255, 255, 0))  # plano blanco, igual que el logo del otro
-        blanco.putalpha(iso)
-        _pegar_centrado(img, blanco, W - pad - iso.width / 2, cy)
-        x_rot = W - pad - iso.width - round(18 * e)
+        cy = pad + 22 * e + 17 * e * 0.55  # centro óptico de la línea de ASTRONOMY
+        img.alpha_composite(blanco, (round(x), round(cy - m.height / 2)))
     if any(arriba):  # vacío en colabs: arriba a la derecha va la marca de agua del otro
-      rotulo(d, (x_rot, pad + 4 * e), list(arriba), round(17 * e), anchor="ra", color=(255, 255, 255, 180))
+      rotulo(d, (W - pad, pad + 4 * e), list(arriba), round(17 * e), anchor="ra", color=(255, 255, 255, 180))
     # tipografía: rótulo + artista, alineado a la izquierda y anclado abajo
     f_art = ImageFont.truetype(HELV, round(tam_nombre * e), index=1)
     nombre = artista.upper()
