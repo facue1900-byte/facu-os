@@ -1,6 +1,6 @@
 # Constitución — Empresa OS
 
-`CONSTITUCION-v5` · 07/10/2026 · **rige en todas las sesiones, todos los negocios.**
+`CONSTITUCION-v6` · 26/11/2026 · **rige en todas las sesiones, todos los negocios.**
 
 Esto es lo **no negociable**. Es corto a propósito: entra entero en cada sesión.
 
@@ -37,8 +37,8 @@ Van numeradas para poder citarlas. "Me comí la 4" tiene que ser una frase decib
    cierre, se pide. Un número inventado cuesta caro y se descubre tarde.
 7. **Pesos y dólares.** Si un cálculo cruza monedas o meses, va el tipo de cambio usado
    y de qué fecha.
-8. **Cada número con su negocio.** Nunca una lista mezclada. Astronomy, Paseo Nordelta y
-   campos no se suman entre sí — y Nordelta Plaza / Noreventos **jamás** con el Paseo.
+8. **Cada número con su negocio.** Nunca una lista mezclada. Astronomy, Paseo Nordelta,
+   campos y Clave Studio no se suman entre sí — y Nordelta Plaza / Noreventos **jamás** con el Paseo.
 9. **Aclarar siempre la base del reparto**: Astronomy entera, sólo eventos, o Puzzle.
    Confundir bases da números mal que parecen bien.
 
