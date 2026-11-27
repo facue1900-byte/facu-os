@@ -1209,3 +1209,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-27 16:16 UTC — nota
 [v2] Vendida NEAR entera por tendencia rota (var_24h -2.15, var_4h -3.78). Filtro BTC cerrado (var_4h -2.63 < -1.5): no se abre nada nuevo. Sin disparos de vigilancia.
 
+## 2026-11-27 18:16 UTC — nota
+[v2] Sin operar: carpeta en USDT, 0 posiciones. Filtro BTC abierto (var_24h -1.0, var_4h 1.11). Ningun par cumple entrada: ZEC var_24h 4.53/var_4h 3.26 pero vs_max -5.16 y vol4h 1.07<1.3; HYPE var_24h 3.25 pero var_4h 0.05, vs_max -4.75; PORTAL var_24h 228 pero vs_max -7.02 y var_1h 4.15>2.5. Sin posiciones para salidas. Sin disparos.
+
