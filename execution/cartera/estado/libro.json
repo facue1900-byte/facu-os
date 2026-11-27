@@ -33,40 +33,40 @@
       "nivel": "conservador",
       "cantidad": 0.0009849479122932968,
       "entrada": 60856.01,
-      "maximo": 61881.03,
+      "maximo": 61984.22,
       "reglas": {
         "stop": 25.0,
         "trail": 25.0,
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795752300000
+      "vigilado_hasta": 1795759500000
     },
     "ETHUSDT": {
       "nivel": "conservador",
       "cantidad": 0.02052261802046099,
       "entrada": 1703.73,
-      "maximo": 1739.02,
+      "maximo": 1755.22,
       "reglas": {
         "stop": 25.0,
         "trail": 25.0,
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795752300000
+      "vigilado_hasta": 1795759500000
     },
     "BNBUSDT": {
       "nivel": "conservador",
       "cantidad": 0.044831176291084025,
       "entrada": 557.09,
-      "maximo": 565.16,
+      "maximo": 568.25,
       "reglas": {
         "stop": 25.0,
         "trail": 25.0,
         "tp": []
       },
       "tomas_hechas": [],
-      "vigilado_hasta": 1795752300000
+      "vigilado_hasta": 1795759500000
     }
   },
   "comisiones_usd": 3.386597000000001,
