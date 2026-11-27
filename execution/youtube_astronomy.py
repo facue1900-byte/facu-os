@@ -1,11 +1,9 @@
 """Piezas del canal de YouTube de Astronomy: foto de perfil, banner y portadas de The Bunker.
 
 Estética: la del manual de identidad (Marca Astronomy/Branding/AstronomyIDENTIDAD.pdf):
-isotipo en cromo/plata con relieve, negro, azul marino #180040, Helvetica Neue + Roboto Mono,
-cruces de registro y micro-rótulos mono como el Instagram de @astronomy.academy.
-
-El cromo se calcula, no es un filtro: mapa de altura desde la distancia al borde del logo,
-normales, y reflexión contra un "cielo" de estudio (gradiente con línea de horizonte).
+isotipo en VIDRIO violeta con relieve (la única versión: cromo, neón y el plano se rechazaron),
+negro, azul marino #180040, Helvetica Neue + Roboto Mono, cruces de registro y micro-rótulos
+mono como el Instagram de @astronomy.academy.
 
 Uso (siempre con el Python del venv):
   .venv/bin/python execution/youtube_astronomy.py perfil  --out perfil.png
@@ -68,51 +66,6 @@ def _mask_de_texto(texto: str, alto_px: int, font_index: int = 1, tracking: floa
     return lienzo.crop(lienzo.getbbox())
 
 
-def _env(e: np.ndarray) -> np.ndarray:
-    """Cielo de estudio: suelo oscuro, horizonte brillante, banda negra, cielo blanco."""
-    xs = [-1.6, -0.7, -0.25, -0.04, 0.0, 0.05, 0.18, 0.45, 0.8, 1.6]
-    ys = [0.05, 0.22, 0.55, 0.98, 1.00, 0.02, 0.06, 0.45, 0.95, 1.0]
-    return np.interp(e, xs, ys)
-
-
-def cromo(mask: Image.Image, bisel: float, inclinacion: float = 0.9, ss: int = 3) -> Image.Image:
-    """Devuelve RGBA con la máscara convertida en metal pulido con relieve.
-
-    Se calcula a `ss`x y se reduce: sin eso las puntas finas salen rayadas."""
-    big = mask.resize((mask.width * ss, mask.height * ss), Image.LANCZOS)
-    bisel = bisel * ss
-    a = np.asarray(big, dtype=np.float32) / 255.0
-    adentro = a > 0.5
-    d = distance_transform_edt(adentro)
-    d = gaussian_filter(d, max(1.5, bisel * 0.12))
-    t = np.clip(d / bisel, 0, 1)
-    h = np.sqrt(1 - (1 - t) ** 2) * bisel  # perfil redondeado
-    h = gaussian_filter(h, max(1.5, bisel * 0.1))
-    gy, gx = np.gradient(h)
-    n = np.dstack([-gx, -gy, np.ones_like(h) * 0.9])
-    n /= np.linalg.norm(n, axis=2, keepdims=True)
-    nx, ny, nz = n[..., 0], n[..., 1], n[..., 2]
-    # reflexión de la vista (0,0,1)
-    rx, ry = 2 * nz * nx, 2 * nz * ny
-    alto, ancho = a.shape
-    yy = np.linspace(-1, 1, alto)[:, None]
-    xx = np.linspace(-1, 1, ancho)[None, :]
-    e = -ry * 1.4 + 0.25 * rx - yy * inclinacion * 0.55 + xx * 0.08
-    lum = _env(e)
-    luz = np.array([-0.45, -0.65, 0.62])
-    luz /= np.linalg.norm(luz)
-    spec = np.clip(nx * luz[0] + ny * luz[1] + nz * luz[2], 0, 1) ** 60
-    lum = np.clip(lum + spec * 0.9, 0, 1)
-    # oclusión suave en el canto interior
-    lum *= 0.82 + 0.18 * t
-    # color: sombras hacia el marino, medios plata fría, altas blancas
-    stops = np.array([0.0, 0.35, 0.75, 1.0])
-    cols = np.array([[6, 4, 16], [64, 60, 92], [200, 203, 216], [255, 255, 255]], dtype=np.float32)
-    rgb = np.dstack([np.interp(lum, stops, cols[:, k]) for k in range(3)])
-    out = np.dstack([rgb, a * 255]).astype(np.uint8)
-    return Image.fromarray(out, "RGBA").resize(mask.size, Image.LANCZOS)
-
-
 def plata(mask: Image.Image) -> Image.Image:
     """Relleno plata plano (para trazos finos, donde el cromo ensucia)."""
     h = mask.height
@@ -160,29 +113,10 @@ def vidrio(mask: Image.Image, bisel: float, ss: int = 3) -> Image.Image:
     return Image.fromarray(out, "RGBA").resize(mask.size, Image.LANCZOS)
 
 
-def neon(mask: Image.Image, ancho: float, pad: int, ss: int = 2) -> Image.Image:
-    """Tubo de neón siguiendo el contorno, como los carteles del Bunker. Devuelve con `pad` de margen."""
-    m = ImageOps.expand(mask, pad, 0)
-    big = m.resize((m.width * ss, m.height * ss), Image.LANCZOS)
-    a = np.asarray(big, np.float32) / 255.0
-    adentro = a > 0.5
-    borde = distance_transform_edt(adentro) + distance_transform_edt(~adentro)
-    w = ancho * ss
-    tubo = np.clip(1 - borde / w, 0, 1) ** 0.6
-    tubo_img = Image.fromarray((tubo * 255).astype(np.uint8)).resize(m.size, Image.LANCZOS)
-    out = Image.new("RGBA", m.size, (0, 0, 0, 0))
-    for radio, color, f in [(pad * 0.55, (110, 40, 255), 1.4), (pad * 0.22, (150, 90, 255), 1.6), (ancho * 1.5, (200, 170, 255), 1.5)]:
-        out.alpha_composite(glow(tubo_img, color, radio, f))
-    nucleo = Image.new("RGBA", m.size, (250, 246, 255, 0))
-    nucleo.putalpha(tubo_img.point(lambda v: 255 if v > 150 else int(v * 1.2)))
-    out.alpha_composite(nucleo)
-    return out
-
-
-def relieve(mask: Image.Image, estilo: str, bisel: float) -> Image.Image:
-    if estilo == "vidrio":
-        return vidrio(mask, bisel)
-    return cromo(mask, bisel)
+def relieve(mask: Image.Image, bisel: float) -> Image.Image:
+    """El isotipo de Astronomy en YouTube es SIEMPRE el de vidrio violeta (Facu, 16/11 y 27/11).
+    Cromo y neón se probaron y se rechazaron: se sacaron del código para que no vuelvan a salir."""
+    return vidrio(mask, bisel)
 
 
 def glow(mask: Image.Image, color, radio: float, fuerza: float = 1.0, pad: int = 0) -> Image.Image:
@@ -265,20 +199,16 @@ def _pegar_centrado(img, capa, cx, cy):
 # ---------------------------------------------------------------- piezas
 
 
-def perfil(out: Path, S: int = 1200, estilo: str = "vidrio"):
+def perfil(out: Path, S: int = 1200):
     img = fondo(S, S, centro=(0.5, 0.5), radio=0.62, intensidad=1.0)
     # sin anillos y estrella grande: el avatar se ve a 40-48 px en comentarios
     m = _mask_de_png(ISOTIPO, int(S * 0.76))
     _pegar_centrado(img, glow(m, VIOLETA, S * 0.05, 0.9, pad=int(S * 0.12)), S / 2, S / 2)
-    if estilo == "neon":
-        pad = int(S * 0.12)
-        _pegar_centrado(img, neon(m, ancho=S * 0.013, pad=pad), S / 2, S / 2)
-    else:
-        _pegar_centrado(img, relieve(m, estilo, S * 0.022), S / 2, S / 2)
+    _pegar_centrado(img, relieve(m, S * 0.022), S / 2, S / 2)
     img.convert("RGB").save(out)
 
 
-def banner(out: Path, estilo: str = "vidrio"):
+def banner(out: Path):
     W, H = 2560, 1440
     img = fondo(W, H, centro=(0.5, 0.5), radio=0.42, intensidad=1.0)
     d = ImageDraw.Draw(img)
@@ -293,10 +223,7 @@ def banner(out: Path, estilo: str = "vidrio"):
     x_logo = x_iso + iso.width / 2 + gap + logo.width / 2
     hud(img, x_iso, H / 2, 132, color=(190, 190, 230, 40))
     _pegar_centrado(img, glow(iso, VIOLETA, 40, 0.8, pad=120), x_iso, H / 2)
-    if estilo == "neon":
-        _pegar_centrado(img, neon(iso, ancho=2.4, pad=110), x_iso, H / 2)
-    else:
-        _pegar_centrado(img, relieve(iso, estilo, 8), x_iso, H / 2)
+    _pegar_centrado(img, relieve(iso, 8), x_iso, H / 2)
     _pegar_centrado(img, plata(logo), x_logo, H / 2)
     # Rótulos de punta a punta (pedido de Facu 16/11: "MUSIC" chocaba con el anillo).
     # En desktop YouTube muestra el ancho entero (2560) y sólo 423 de alto; en celular sólo los 1546
@@ -314,7 +241,7 @@ def banner(out: Path, estilo: str = "vidrio"):
 
 
 def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, brillo: float = 1.0,
-           zoom: float = 1.0, foco_y: float = 0.35, estilo: str = "vidrio", color: bool = True,
+           zoom: float = 1.0, foco_y: float = 0.35, color: bool = True,
            recortar_firma: bool = False, tag: str = "THE BUNKER",
            arriba: tuple = ("LIVE SET", "ASTRONOMY ACADEMY"), tam_nombre: int = 104, oscuro_abajo: float = 0.82, escala: float = 1.0,
            natural: bool = False, vineta: bool = True, logo_izq: Path | None = None):
@@ -363,7 +290,7 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     num = f"{numero:02d}"  # minimalista: va chico, en la línea de THE BUNKER (Facu: el número gigante era feo)
     # isotipo chico arriba a la izquierda, igual en todas las portadas (también en colabs)
     iso = _mask_de_png(ISOTIPO, round(92 * e))
-    _pegar_centrado(img, relieve(iso, estilo, 3 * e), pad + iso.width / 2, pad + iso.height / 2)
+    _pegar_centrado(img, relieve(iso, 3 * e), pad + iso.width / 2, pad + iso.height / 2)
     f_mono = ImageFont.truetype(str(MONO), round(17 * e))
     x_txt = pad + iso.width + 18 * e
     rotulo(d, (x_txt, pad + 22 * e), ["ASTRONOMY"], round(17 * e), color=(255, 255, 255, 200))
@@ -458,7 +385,7 @@ def set_bunker(artista: str, colab: str | None = None, foto: Path | None = None,
     return salidas
 
 
-def especial(titulo: str, episodio: str, bajada: str, fecha: str, out: Path, estilo: str = "vidrio"):
+def especial(titulo: str, episodio: str, bajada: str, fecha: str, out: Path):
     """Portada sin foto, tipográfica, para ciclos que no son The Bunker (ej. Free for All)."""
     W, H = 1280, 720
     img = fondo(W, H, centro=(0.72, 0.45), radio=0.6, intensidad=1.25, semilla=11)
@@ -470,7 +397,7 @@ def especial(titulo: str, episodio: str, bajada: str, fecha: str, out: Path, est
     img.alpha_composite(aur.filter(ImageFilter.GaussianBlur(140)))
     # estrella gigante de fondo, cortada por el borde derecho
     big = _mask_de_png(ISOTIPO, 900)
-    estrella = relieve(big, estilo, 20)
+    estrella = relieve(big, 20)
     estrella.putalpha(estrella.getchannel("A").point(lambda v: int(v * 0.55)))
     _pegar_centrado(img, glow(big, VIOLETA, 60, 0.6, pad=150), 1010, 360)
     _pegar_centrado(img, estrella, 1010, 360)
@@ -498,10 +425,8 @@ def main():
     sub = p.add_subparsers(dest="cmd", required=True)
     a = sub.add_parser("perfil")
     a.add_argument("--out", type=Path, required=True)
-    a.add_argument("--estilo", default="vidrio", choices=["vidrio", "neon", "cromo"])
     b = sub.add_parser("banner")
     b.add_argument("--out", type=Path, required=True)
-    b.add_argument("--estilo", default="vidrio", choices=["vidrio", "neon", "cromo"])
     e = sub.add_parser("especial")
     e.add_argument("--titulo", required=True)
     e.add_argument("--episodio", required=True)
@@ -550,9 +475,9 @@ def main():
             print(f)
         return
     if args.cmd == "perfil":
-        perfil(args.out, estilo=args.estilo)
+        perfil(args.out)
     elif args.cmd == "banner":
-        banner(args.out, estilo=args.estilo)
+        banner(args.out)
     elif args.cmd == "especial":
         especial(args.titulo, args.episodio, args.bajada, args.fecha, args.out)
     elif args.capa:
