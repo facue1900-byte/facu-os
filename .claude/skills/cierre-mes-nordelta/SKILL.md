@@ -89,6 +89,15 @@ Lectura rápida en vivo por gviz:
   /Users/Facu/facu-os/data/master_plan.xlsx
 ```
 
+**También lee «Últimos Movimientos» de la web empresa** (`Ultimos_Movimientos.pdf`,
+26/11/2026): un dato por renglón, cuenta sin guiones (445209605121479), saldo por
+movimiento; el script exige que cada saldo sea el anterior más el importe. Trampa: trae
+~un mes corrido, así que **mezcla el mes anterior** — los SIRCREB y Ley 25413 de esos días
+ya están dentro del agrupado del mes anterior y el dedupe no lo ve (agrupa distinto).
+Cargar sólo las filas del mes en curso. Se archiva como
+`<Mes> 2026 - ultimos movimientos al DD-MM.pdf`. (El script lee la planilla en vivo: no
+lleva el `master_plan.xlsx` como segundo argumento, aunque el ejemplo de arriba lo muestre.)
+
 **Sin resumen mensual alcanza el export de movimientos** del home banking
 (`mov_caja_de_ahorros_mahni.pdf`, 21/10/2026): el script lo detecta solo, lee
 débito/crédito por la columna y exige que el saldo reconstruido caiga exacto en
