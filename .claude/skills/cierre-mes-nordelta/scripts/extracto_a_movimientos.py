@@ -211,6 +211,47 @@ def texto_movimientos_export(doc):
         + [f"   SALDO FINAL AL DIA {fecha_final}   {ar(saldo)}"])
 
 
+def texto_ultimos_movimientos(texto):
+    """Rearma el export «Últimos Movimientos» de la web empresa (`Ultimos_Movimientos.pdf`).
+
+    Un dato por renglón (Fecha, Nro. ref, Causal, Concepto, Importe, Saldo), del más
+    nuevo al más viejo, importes con signo y en formato argentino ($ -1.234,56), y la
+    cuenta sin guiones (445209605121479). Trae saldo por movimiento: se exige que cada
+    saldo sea el anterior más el importe. Si un solo renglón no da, no se devuelve nada.
+    """
+    L = [l.strip() for l in texto.split("\n") if l.strip()]
+    try:
+        i = L.index("Saldo") + 1
+    except ValueError:
+        sys.exit("Últimos Movimientos: no encontré la cabecera de columnas.")
+    pesos = lambda s: plata(s.replace("$", "").replace(" ", ""))  # noqa: E731
+    filas = []
+    while i + 5 < len(L) and re.match(r"^\d{2}/\d{2}/\d{4}$", L[i]):
+        fecha, _ref, _causal, desc, imp, sal = L[i:i + 6]
+        if not (imp.startswith("$") and sal.startswith("$")):
+            sys.exit(f"Últimos Movimientos: renglón {fecha} '{desc}' sin importe o saldo.")
+        filas.append((fecha, desc, pesos(imp), pesos(sal)))
+        i += 6
+    if not filas:
+        sys.exit("Últimos Movimientos: el PDF no trae movimientos.")
+    filas.reverse()  # del más viejo al más nuevo
+    saldo = round(filas[0][3] - filas[0][2], 2)
+    inicial, lineas = saldo, []
+    for fecha, desc, imp, sal in filas:
+        saldo = round(saldo + imp, 2)
+        if abs(saldo - sal) > 0.005:
+            sys.exit(f"Últimos Movimientos: al {fecha} '{desc}' el saldo da {ar(saldo)} "
+                     f"y el banco dice {ar(sal)}.")
+        dd, mm, aaaa = fecha.split("/")
+        lineas.append(f"  {dd}/{mm}/{aaaa[2:]} {desc}   {ar(abs(imp))}   {ar(sal)}")
+    d0 = datetime.datetime.strptime(filas[0][0], "%d/%m/%Y").date() - datetime.timedelta(days=1)
+    return "\n".join(
+        [f"CUENTA CORRIENTE ESPECIAL EN PESOS NRO.: {CUENTA}",
+         f"   SALDO ULTIMO EXTRACTO AL {d0:%d/%m/%Y}   {ar(inicial)}"]
+        + lineas
+        + [f"   SALDO FINAL AL DIA {filas[-1][0]}   {ar(saldo)}"])
+
+
 def texto_pdf(pdf_path):
     """Texto del extracto en el layout del resumen mensual, venga como venga."""
     doc = fitz.open(pdf_path)
@@ -219,6 +260,8 @@ def texto_pdf(pdf_path):
         return texto
     if CUENTA in texto and "SALDO FINAL DEL DIA" in texto:
         return texto_movimientos_export(doc)
+    if "Últimos Movimientos" in texto and CUENTA.replace("-", "") in texto:
+        return texto_ultimos_movimientos(texto)
     return texto
 
 
