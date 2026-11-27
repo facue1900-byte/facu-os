@@ -362,8 +362,16 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
         iso = _mask_de_png(ISOTIPO, round(92 * e))
         _pegar_centrado(img, relieve(iso, estilo, 3 * e), pad + iso.width / 2, pad + iso.height / 2)
         rotulo(d, (pad + iso.width + 18 * e, pad + 22 * e), ["ASTRONOMY"], round(17 * e), color=(255, 255, 255, 200))
+    x_rot = W - pad
+    if logo_izq:  # colab con el logo del otro a la izquierda: nuestro isotipo espejado a la derecha
+        iso = _mask_de_png(ISOTIPO, round(62 * e))
+        cy = pad + round(28 * e)  # centrado con las dos líneas del rótulo
+        blanco = Image.new("RGBA", iso.size, (255, 255, 255, 0))  # plano blanco, igual que el logo del otro
+        blanco.putalpha(iso)
+        _pegar_centrado(img, blanco, W - pad - iso.width / 2, cy)
+        x_rot = W - pad - iso.width - round(18 * e)
     if any(arriba):  # vacío en colabs: arriba a la derecha va la marca de agua del otro
-      rotulo(d, (W - pad, pad + 4 * e), list(arriba), round(17 * e), anchor="ra", color=(255, 255, 255, 180))
+      rotulo(d, (x_rot, pad + 4 * e), list(arriba), round(17 * e), anchor="ra", color=(255, 255, 255, 180))
     # tipografía: rótulo + artista, alineado a la izquierda y anclado abajo
     f_art = ImageFont.truetype(HELV, round(tam_nombre * e), index=1)
     nombre = artista.upper()
