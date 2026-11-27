@@ -60,7 +60,9 @@ las haría Facu, con todas las reglas de la Constitución (~/facu-os/os/01-CONST
 CLAUDE.md de cada repo:
 - La web es ~/Desktop/Productoras/Astronomy/Academia/astronomy-members (push a main = deploy).
   Antes de tocar: git pull --rebase --autostash. Después: npx tsc --noEmit -p . y, si toca plata o
-  Finanzas/Resultado, npm run verificar:resultado. Verificá contra la base real o la página real.
+  Finanzas/Resultado, npm run verificar:resultado.
+  Si toca algo visual: seguí «Estética: las reglas de Facu» del CLAUDE.md de la web y corré
+  npm run verificar:estetica antes del push (si falla, se arregla, no se pushea así). Verificá contra la base real o la página real.
 - DDL y queries: Management API de Supabase con SUPABASE_ACCESS_TOKEN de ~/facu-os/.env, SÓLO el
   proyecto de Astronomy qeakrjnseboiulcojlcw. Verificá contra information_schema después.
 - Antes de cambiar o borrar filas con plata, guardá cómo estaban en ~/facu-os/archive/.
