@@ -1,19 +1,25 @@
-# Carpeta cripto ficticia — 2026-11-27 00:06 UTC
+# Carpeta cripto ficticia — 2026-11-27 02:06 UTC
 
-**Total: 795.07 USD (-20.49%)** desde 2026-10-07 20:58 UTC · USDT libre 795.07 · comisiones 3.27 · 105 operaciones
+**Total: 794.94 USD (-20.51%)** desde 2026-10-07 20:58 UTC · USDT libre 675.07 · comisiones 3.39 · 108 operaciones
 
 | Contra qué | USD |
 |---|---:|
-| **Esta carpeta** | **795.07** |
+| **Esta carpeta** | **794.94** |
 | quedarse en usdt | 1,000.00 |
-| hodl btc | 726.28 |
-| plan inicial sin tocar | 666.65 |
+| hodl btc | 729.32 |
+| plan inicial sin tocar | 670.12 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
+| BTC | conservador | 59.94 | -0.00% | 45,642 |
+| ETH | conservador | 34.96 | -0.01% | 1,277.8 |
+| BNB | conservador | 24.98 | +0.01% | 417.817 |
 
 ## Últimas operaciones
 
+- 2026-11-27 02:06 UTC · compra BNB 25.00 USD a 557.09 — Primer tramo conservador escalonado. Segundo ciclo seguido con 7d positivo (BNB 7d +3,0%, 1d +0,5%, 46 M), a 31,2% del máximo de 90 d. Regla
+- 2026-11-27 02:06 UTC · compra ETH 35.00 USD a 1,703.73 — Primer tramo conservador escalonado. Segundo ciclo seguido con 7d positivo (ETH 7d +4,8%, 1d +0,7%, 339 M), a 39,4% del máximo de 90 d: recu
+- 2026-11-27 02:06 UTC · compra BTC 60.00 USD a 60,856 — Primer tramo conservador escalonado (~15% del total entre BTC/ETH/BNB). Confirmación del conteo 1 de las 00:05: segundo ciclo seguido con 7d
 - 2026-11-26 04:21 UTC · venta MMT 20.81 USD a 0.277355 — Stop automático en 0.277355 (entrada 0.3196, máximo 0.3263).
 - 2026-11-26 02:06 UTC · compra MMT 24.00 USD a 0.3196 — Momentum: segundo ciclo seguido en la zona del máximo de 90 d (00:05 a -2,3%, 02:05 a -2,5%) con volumen sobre 20 M (23,7 M), 7d +19,5%, 30d
 - 2026-11-25 22:52 UTC · venta OPG 20.61 USD a 0.15674 — Stop automático en 0.15674 (entrada 0.1823, máximo 0.1844).
@@ -21,8 +27,5 @@
 - 2026-11-24 06:31 UTC · venta LISTA 32.99 USD a 0.09775 — Stop automático en 0.09775 (entrada 0.0888, máximo 0.115).
 - 2026-11-23 20:06 UTC · compra LISTA 30.00 USD a 0.0888 — Momentum: segundo ciclo seguido a <5% del máximo de 90 d (-4,5%), 7d +30%, 30d +10%, vol 5,8 M (sobre el piso, bajo los 10 M preferibles: po
 - 2026-11-20 03:49 UTC · venta MEGA 34.87 USD a 0.051595 — Stop automático en 0.051595 (entrada 0.05913, máximo 0.0607).
-- 2026-11-19 12:07 UTC · compra MEGA 40.00 USD a 0.05913 — Tesis: momentum de riesgo. MEGA cumple la condición fijada en ciclos previos: pasó los 5 M de volumen (5,4 M), a 1,1% del máximo de 90 d, 7d
-- 2026-11-14 22:08 UTC · venta BTC 228.69 USD a 63,673.5 — Stop automático en 63,673.5 (entrada 83,446.01, máximo 84,898).
-- 2026-11-14 20:54 UTC · venta BNB 37.72 USD a 582.173 — Stop automático en 582.1725 (entrada 770.95, máximo 776.23).
 
 El diario completo con cada decisión está en `diario.md`, al lado de este archivo.

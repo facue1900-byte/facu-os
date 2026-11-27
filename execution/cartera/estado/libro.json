@@ -27,9 +27,49 @@
       }
     }
   },
-  "usdt": 795.0661433333964,
-  "posiciones": {},
-  "comisiones_usd": 3.266597000000001,
+  "usdt": 675.0661433333964,
+  "posiciones": {
+    "BTCUSDT": {
+      "nivel": "conservador",
+      "cantidad": 0.0009849479122932968,
+      "entrada": 60856.01,
+      "maximo": 60856.01,
+      "reglas": {
+        "stop": 25.0,
+        "trail": 25.0,
+        "tp": []
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795745220000
+    },
+    "ETHUSDT": {
+      "nivel": "conservador",
+      "cantidad": 0.02052261802046099,
+      "entrada": 1703.73,
+      "maximo": 1703.73,
+      "reglas": {
+        "stop": 25.0,
+        "trail": 25.0,
+        "tp": []
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795745220000
+    },
+    "BNBUSDT": {
+      "nivel": "conservador",
+      "cantidad": 0.044831176291084025,
+      "entrada": 557.09,
+      "maximo": 557.09,
+      "reglas": {
+        "stop": 25.0,
+        "trail": 25.0,
+        "tp": []
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795745220000
+    }
+  },
+  "comisiones_usd": 3.386597000000001,
   "operaciones": [
     {
       "ms": 1791406722430,
@@ -1290,6 +1330,42 @@
       "comision": 0.020807,
       "motivo": "Stop automático en 0.277355 (entrada 0.3196, máximo 0.3263).",
       "resultado_pct": -13.22
+    },
+    {
+      "ms": 1795745176526,
+      "fecha": "2026-11-27 02:06 UTC",
+      "lado": "buy",
+      "par": "BTCUSDT",
+      "nivel": "conservador",
+      "cantidad": 0.0009849479122932968,
+      "precio": 60856.01,
+      "usd": 60.0,
+      "comision": 0.06,
+      "motivo": "Primer tramo conservador escalonado (~15% del total entre BTC/ETH/BNB). Confirmación del conteo 1 de las 00:05: segundo ciclo seguido con 7d positivo (BTC 7d +3,1%, 1d +0,4%, 911 M) y 1d no negativo en las tres grandes. Precio a 30,4% del máximo de 90 d, 30d -25%: entrada de recuperación, no de momentum. Reglas por defecto (stop 25 / trailing 25). Invalida: stop, o 7d vuelve a negativo dos ciclos seguidos (no se agranda en ese caso)."
+    },
+    {
+      "ms": 1795745180465,
+      "fecha": "2026-11-27 02:06 UTC",
+      "lado": "buy",
+      "par": "ETHUSDT",
+      "nivel": "conservador",
+      "cantidad": 0.02052261802046099,
+      "precio": 1703.73,
+      "usd": 35.0,
+      "comision": 0.035,
+      "motivo": "Primer tramo conservador escalonado. Segundo ciclo seguido con 7d positivo (ETH 7d +4,8%, 1d +0,7%, 339 M), a 39,4% del máximo de 90 d: recuperación de una grande muy castigada. Reglas por defecto (stop 25 / trailing 25). Invalida: stop, o 7d vuelve a negativo dos ciclos seguidos."
+    },
+    {
+      "ms": 1795745185436,
+      "fecha": "2026-11-27 02:06 UTC",
+      "lado": "buy",
+      "par": "BNBUSDT",
+      "nivel": "conservador",
+      "cantidad": 0.044831176291084025,
+      "precio": 557.09,
+      "usd": 25.0,
+      "comision": 0.025,
+      "motivo": "Primer tramo conservador escalonado. Segundo ciclo seguido con 7d positivo (BNB 7d +3,0%, 1d +0,5%, 46 M), a 31,2% del máximo de 90 d. Reglas por defecto (stop 25 / trailing 25). Invalida: stop, o 7d vuelve a negativo dos ciclos seguidos."
     }
   ]
 }
