@@ -1,17 +1,23 @@
 """Piezas del canal de YouTube de Astronomy: foto de perfil, banner y portadas de The Bunker.
 
 Estética: la del manual de identidad (Marca Astronomy/Branding/AstronomyIDENTIDAD.pdf):
-isotipo en cromo/plata con relieve, negro, azul marino #180040, Helvetica Neue + Roboto Mono,
-cruces de registro y micro-rótulos mono como el Instagram de @astronomy.academy.
-
-El cromo se calcula, no es un filtro: mapa de altura desde la distancia al borde del logo,
-normales, y reflexión contra un "cielo" de estudio (gradiente con línea de horizonte).
+isotipo en VIDRIO violeta con relieve (la única versión: cromo, neón y el plano se rechazaron),
+negro, azul marino #180040, Helvetica Neue + Roboto Mono, cruces de registro y micro-rótulos
+mono como el Instagram de @astronomy.academy.
 
 Uso (siempre con el Python del venv):
   .venv/bin/python execution/youtube_astronomy.py perfil  --out perfil.png
   .venv/bin/python execution/youtube_astronomy.py banner  --out banner.png
   .venv/bin/python execution/youtube_astronomy.py bunker  --foto frame.jpg --numero 5 \
       --artista "NOMBRE" --out portada.jpg [--foco 0.5]
+
+THE BUNKER — el template de todos los sets (usar éste, no `bunker` a mano):
+  .venv/bin/python execution/youtube_astronomy.py set --artista "NOMBRE" [--colab "Monkey Music"] [--foto frame.jpg]
+  - El número sale solo del registro `execution/youtube_bunker_sets.json` (si el artista ya está, reusa el suyo).
+  - Deja todo en `Youtube 2026/The Bunker/NN Artista/`: `capa_4K.png` SIEMPRE (transparente, para que el
+    diseñador de la marca la pegue arriba de su foto) y, con --foto, `portada_4K.jpg` + `portada_HD.jpg`.
+  - Colaboración con una marca: dejar su logo en `Youtube 2026/Colabs/<Marca>.png` (fondo transparente) y
+    pasar `--colab "<Marca>"`. Queda «ASTRONOMY × <logo>» arriba a la izquierda; el resto no cambia.
 
 No sube nada a YouTube: genera archivos. Subirlos es un paso aparte, con OK de Facu.
 """
@@ -58,51 +64,6 @@ def _mask_de_texto(texto: str, alto_px: int, font_index: int = 1, tracking: floa
         d.text((x, alto_px * 0.25), c, font=f, fill=255)
         x += f.getlength(c) + tracking * alto_px
     return lienzo.crop(lienzo.getbbox())
-
-
-def _env(e: np.ndarray) -> np.ndarray:
-    """Cielo de estudio: suelo oscuro, horizonte brillante, banda negra, cielo blanco."""
-    xs = [-1.6, -0.7, -0.25, -0.04, 0.0, 0.05, 0.18, 0.45, 0.8, 1.6]
-    ys = [0.05, 0.22, 0.55, 0.98, 1.00, 0.02, 0.06, 0.45, 0.95, 1.0]
-    return np.interp(e, xs, ys)
-
-
-def cromo(mask: Image.Image, bisel: float, inclinacion: float = 0.9, ss: int = 3) -> Image.Image:
-    """Devuelve RGBA con la máscara convertida en metal pulido con relieve.
-
-    Se calcula a `ss`x y se reduce: sin eso las puntas finas salen rayadas."""
-    big = mask.resize((mask.width * ss, mask.height * ss), Image.LANCZOS)
-    bisel = bisel * ss
-    a = np.asarray(big, dtype=np.float32) / 255.0
-    adentro = a > 0.5
-    d = distance_transform_edt(adentro)
-    d = gaussian_filter(d, max(1.5, bisel * 0.12))
-    t = np.clip(d / bisel, 0, 1)
-    h = np.sqrt(1 - (1 - t) ** 2) * bisel  # perfil redondeado
-    h = gaussian_filter(h, max(1.5, bisel * 0.1))
-    gy, gx = np.gradient(h)
-    n = np.dstack([-gx, -gy, np.ones_like(h) * 0.9])
-    n /= np.linalg.norm(n, axis=2, keepdims=True)
-    nx, ny, nz = n[..., 0], n[..., 1], n[..., 2]
-    # reflexión de la vista (0,0,1)
-    rx, ry = 2 * nz * nx, 2 * nz * ny
-    alto, ancho = a.shape
-    yy = np.linspace(-1, 1, alto)[:, None]
-    xx = np.linspace(-1, 1, ancho)[None, :]
-    e = -ry * 1.4 + 0.25 * rx - yy * inclinacion * 0.55 + xx * 0.08
-    lum = _env(e)
-    luz = np.array([-0.45, -0.65, 0.62])
-    luz /= np.linalg.norm(luz)
-    spec = np.clip(nx * luz[0] + ny * luz[1] + nz * luz[2], 0, 1) ** 60
-    lum = np.clip(lum + spec * 0.9, 0, 1)
-    # oclusión suave en el canto interior
-    lum *= 0.82 + 0.18 * t
-    # color: sombras hacia el marino, medios plata fría, altas blancas
-    stops = np.array([0.0, 0.35, 0.75, 1.0])
-    cols = np.array([[6, 4, 16], [64, 60, 92], [200, 203, 216], [255, 255, 255]], dtype=np.float32)
-    rgb = np.dstack([np.interp(lum, stops, cols[:, k]) for k in range(3)])
-    out = np.dstack([rgb, a * 255]).astype(np.uint8)
-    return Image.fromarray(out, "RGBA").resize(mask.size, Image.LANCZOS)
 
 
 def plata(mask: Image.Image) -> Image.Image:
@@ -152,29 +113,10 @@ def vidrio(mask: Image.Image, bisel: float, ss: int = 3) -> Image.Image:
     return Image.fromarray(out, "RGBA").resize(mask.size, Image.LANCZOS)
 
 
-def neon(mask: Image.Image, ancho: float, pad: int, ss: int = 2) -> Image.Image:
-    """Tubo de neón siguiendo el contorno, como los carteles del Bunker. Devuelve con `pad` de margen."""
-    m = ImageOps.expand(mask, pad, 0)
-    big = m.resize((m.width * ss, m.height * ss), Image.LANCZOS)
-    a = np.asarray(big, np.float32) / 255.0
-    adentro = a > 0.5
-    borde = distance_transform_edt(adentro) + distance_transform_edt(~adentro)
-    w = ancho * ss
-    tubo = np.clip(1 - borde / w, 0, 1) ** 0.6
-    tubo_img = Image.fromarray((tubo * 255).astype(np.uint8)).resize(m.size, Image.LANCZOS)
-    out = Image.new("RGBA", m.size, (0, 0, 0, 0))
-    for radio, color, f in [(pad * 0.55, (110, 40, 255), 1.4), (pad * 0.22, (150, 90, 255), 1.6), (ancho * 1.5, (200, 170, 255), 1.5)]:
-        out.alpha_composite(glow(tubo_img, color, radio, f))
-    nucleo = Image.new("RGBA", m.size, (250, 246, 255, 0))
-    nucleo.putalpha(tubo_img.point(lambda v: 255 if v > 150 else int(v * 1.2)))
-    out.alpha_composite(nucleo)
-    return out
-
-
-def relieve(mask: Image.Image, estilo: str, bisel: float) -> Image.Image:
-    if estilo == "vidrio":
-        return vidrio(mask, bisel)
-    return cromo(mask, bisel)
+def relieve(mask: Image.Image, bisel: float) -> Image.Image:
+    """El isotipo de Astronomy en YouTube es SIEMPRE el de vidrio violeta (Facu, 16/11 y 27/11).
+    Cromo y neón se probaron y se rechazaron: se sacaron del código para que no vuelvan a salir."""
+    return vidrio(mask, bisel)
 
 
 def glow(mask: Image.Image, color, radio: float, fuerza: float = 1.0, pad: int = 0) -> Image.Image:
@@ -257,20 +199,16 @@ def _pegar_centrado(img, capa, cx, cy):
 # ---------------------------------------------------------------- piezas
 
 
-def perfil(out: Path, S: int = 1200, estilo: str = "vidrio"):
+def perfil(out: Path, S: int = 1200):
     img = fondo(S, S, centro=(0.5, 0.5), radio=0.62, intensidad=1.0)
     # sin anillos y estrella grande: el avatar se ve a 40-48 px en comentarios
     m = _mask_de_png(ISOTIPO, int(S * 0.76))
     _pegar_centrado(img, glow(m, VIOLETA, S * 0.05, 0.9, pad=int(S * 0.12)), S / 2, S / 2)
-    if estilo == "neon":
-        pad = int(S * 0.12)
-        _pegar_centrado(img, neon(m, ancho=S * 0.013, pad=pad), S / 2, S / 2)
-    else:
-        _pegar_centrado(img, relieve(m, estilo, S * 0.022), S / 2, S / 2)
+    _pegar_centrado(img, relieve(m, S * 0.022), S / 2, S / 2)
     img.convert("RGB").save(out)
 
 
-def banner(out: Path, estilo: str = "vidrio"):
+def banner(out: Path):
     W, H = 2560, 1440
     img = fondo(W, H, centro=(0.5, 0.5), radio=0.42, intensidad=1.0)
     d = ImageDraw.Draw(img)
@@ -285,10 +223,7 @@ def banner(out: Path, estilo: str = "vidrio"):
     x_logo = x_iso + iso.width / 2 + gap + logo.width / 2
     hud(img, x_iso, H / 2, 132, color=(190, 190, 230, 40))
     _pegar_centrado(img, glow(iso, VIOLETA, 40, 0.8, pad=120), x_iso, H / 2)
-    if estilo == "neon":
-        _pegar_centrado(img, neon(iso, ancho=2.4, pad=110), x_iso, H / 2)
-    else:
-        _pegar_centrado(img, relieve(iso, estilo, 8), x_iso, H / 2)
+    _pegar_centrado(img, relieve(iso, 8), x_iso, H / 2)
     _pegar_centrado(img, plata(logo), x_logo, H / 2)
     # Rótulos de punta a punta (pedido de Facu 16/11: "MUSIC" chocaba con el anillo).
     # En desktop YouTube muestra el ancho entero (2560) y sólo 423 de alto; en celular sólo los 1546
@@ -306,13 +241,13 @@ def banner(out: Path, estilo: str = "vidrio"):
 
 
 def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, brillo: float = 1.0,
-           zoom: float = 1.0, foco_y: float = 0.35, estilo: str = "vidrio", color: bool = True,
+           zoom: float = 1.0, foco_y: float = 0.35, color: bool = True,
            recortar_firma: bool = False, tag: str = "THE BUNKER",
            arriba: tuple = ("LIVE SET", "ASTRONOMY ACADEMY"), tam_nombre: int = 104, oscuro_abajo: float = 0.82, escala: float = 1.0,
-           natural: bool = False, vineta: bool = True):
+           natural: bool = False, vineta: bool = True, logo_izq: Path | None = None):
     e = escala  # 1.5 = 1920x1080: mismo diseño, más resolución
     W, H = round(1280 * e), round(720 * e)
-    ph = Image.open(foto).convert("RGB")
+    ph = foto.convert("RGB") if isinstance(foto, Image.Image) else Image.open(foto).convert("RGB")
     if recortar_firma:  # fotogramas del video traen la firma quemada abajo a la derecha
         ph = ph.crop((0, 0, int(ph.width * 0.9), int(ph.height * 0.9)))
     cw, ch = ph.width / zoom, ph.height / zoom
@@ -353,10 +288,21 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     d = ImageDraw.Draw(img)
     pad = round(56 * e)
     num = f"{numero:02d}"  # minimalista: va chico, en la línea de THE BUNKER (Facu: el número gigante era feo)
-    # isotipo chico arriba a la izquierda
+    # isotipo chico arriba a la izquierda, igual en todas las portadas (también en colabs)
     iso = _mask_de_png(ISOTIPO, round(92 * e))
-    _pegar_centrado(img, relieve(iso, estilo, 3 * e), pad + iso.width / 2, pad + iso.height / 2)
-    rotulo(d, (pad + iso.width + 18 * e, pad + 22 * e), ["ASTRONOMY"], round(17 * e), color=(255, 255, 255, 200))
+    _pegar_centrado(img, relieve(iso, 3 * e), pad + iso.width / 2, pad + iso.height / 2)
+    f_mono = ImageFont.truetype(str(MONO), round(17 * e))
+    x_txt = pad + iso.width + 18 * e
+    rotulo(d, (x_txt, pad + 22 * e), ["ASTRONOMY"], round(17 * e), color=(255, 255, 255, 200))
+    if logo_izq:  # colabs: «ASTRONOMY × <logo del otro>», en la misma línea y en blanco plano
+        x = x_txt + f_mono.getlength("ASTRONOMY") + 16 * e
+        rotulo(d, (x, pad + 22 * e), ["×"], round(17 * e), color=(255, 255, 255, 200))
+        x += f_mono.getlength("×") + 16 * e
+        m = _mask_de_png(logo_izq, round(36 * e))
+        blanco = Image.new("RGBA", m.size, (255, 255, 255, 0))
+        blanco.putalpha(m)
+        cy = pad + 22 * e + 17 * e * 0.55  # centro óptico de la línea de ASTRONOMY
+        img.alpha_composite(blanco, (round(x), round(cy - m.height / 2)))
     if any(arriba):  # vacío en colabs: arriba a la derecha va la marca de agua del otro
       rotulo(d, (W - pad, pad + 4 * e), list(arriba), round(17 * e), anchor="ra", color=(255, 255, 255, 180))
     # tipografía: rótulo + artista, alineado a la izquierda y anclado abajo
@@ -377,10 +323,69 @@ def bunker(foto: Path, numero: int, artista: str, out: Path, foco: float = 0.5, 
     borde_degrade(img, inset=round(18 * e), grosor=round(3 * e), glow_r=9 * e)
     for x, y in [(30 * e, 30 * e), (W - 30 * e, 30 * e), (30 * e, H - 30 * e), (W - 30 * e, H - 30 * e)]:
         cruz(d, x, y, 9 * e, color=(255, 255, 255, 120), ancho=max(1, round(e)))
+    if out is None:
+        return img.convert("RGB")
     img.convert("RGB").save(out, quality=93)
 
 
-def especial(titulo: str, episodio: str, bajada: str, fecha: str, out: Path, estilo: str = "vidrio"):
+def capa(out: Path, escala: float = 1.0, **kw):
+    """La portada SIN foto, en PNG transparente, para que otro diseñador la pegue arriba de su foto.
+
+    Se renderiza la misma portada sobre negro y sobre blanco y se recupera el alfa por diferencia:
+    así la capa es idéntica a lo que hace `bunker` (texto, marco, cruces y la sombra de abajo)."""
+    W, H = round(1280 * escala), round(720 * escala)
+    kw.update(natural=True, brillo=1.0)
+    sobre_negro = np.asarray(bunker(Image.new("RGB", (W, H), 0), out=None, escala=escala, **kw), np.float32)
+    sobre_blanco = np.asarray(bunker(Image.new("RGB", (W, H), (255, 255, 255)), out=None, escala=escala, **kw), np.float32)
+    alfa = np.clip(1 - (sobre_blanco - sobre_negro).mean(axis=2) / 255.0, 0, 1)
+    color = np.where(alfa[..., None] > 1e-3, sobre_negro / np.maximum(alfa[..., None], 1e-3), 0)
+    rgba = np.dstack([np.clip(color, 0, 255), alfa * 255]).astype(np.uint8)
+    Image.fromarray(rgba, "RGBA").save(out)
+
+
+YT = MARCA / "Youtube 2026"
+COLABS = YT / "Colabs"
+REGISTRO = Path(__file__).resolve().parent / "youtube_bunker_sets.json"
+
+
+def set_bunker(artista: str, colab: str | None = None, foto: Path | None = None, numero: int | None = None, **kw):
+    """El template de The Bunker: numera solo, guarda en el registro y deja capa (+ portada si hay foto)."""
+    import json
+    from datetime import date
+    reg = json.loads(REGISTRO.read_text())
+    previo = next((x for x in reg["sets"] if x["artista"].casefold() == artista.casefold()), None)
+    if numero is None:
+        numero = previo["numero"] if previo else max(x["numero"] for x in reg["sets"]) + 1
+    otro = next((x for x in reg["sets"] if x["numero"] == numero and x is not previo), None)
+    if otro:
+        raise SystemExit(f"El {numero:02d} ya es de {otro['artista']}. Sacá --numero para que tome el próximo.")
+    logo = None
+    if colab:
+        logo = COLABS / f"{colab}.png"
+        if not logo.exists():
+            hay = ", ".join(sorted(p.stem for p in COLABS.glob("*.png"))) or "ninguno"
+            raise SystemExit(f"No está el logo de «{colab}» en {COLABS}/ (hay: {hay}). Dejalo como «{colab}.png».")
+    carpeta = YT / "The Bunker" / f"{numero:02d} {artista}"
+    carpeta.mkdir(parents=True, exist_ok=True)
+    comunes = dict(numero=numero, artista=artista, logo_izq=logo,
+                   oscuro_abajo=kw.pop("oscuro_abajo"), tam_nombre=kw.pop("tam_nombre"))
+    # la capa va sin viñeta: la foto del otro ya viene trabajada; sólo se oscurece abajo para leer el nombre
+    capa(carpeta / "capa_4K.png", escala=3, vineta=False, **comunes)
+    salidas = [carpeta / "capa_4K.png"]
+    if foto:
+        for esc, nombre in [(3, "portada_4K.jpg"), (1.5, "portada_HD.jpg")]:
+            bunker(foto, out=carpeta / nombre, escala=esc, **comunes, **kw)
+            salidas.append(carpeta / nombre)
+    fila = previo or {"numero": numero, "artista": artista}
+    fila.update(numero=numero, colab=colab, portada=str(carpeta.relative_to(MARCA)), actualizado=date.today().isoformat())
+    if not previo:
+        reg["sets"].append(fila)
+    reg["sets"].sort(key=lambda x: x["numero"])
+    REGISTRO.write_text(json.dumps(reg, ensure_ascii=False, indent=2) + "\n")
+    return salidas
+
+
+def especial(titulo: str, episodio: str, bajada: str, fecha: str, out: Path):
     """Portada sin foto, tipográfica, para ciclos que no son The Bunker (ej. Free for All)."""
     W, H = 1280, 720
     img = fondo(W, H, centro=(0.72, 0.45), radio=0.6, intensidad=1.25, semilla=11)
@@ -392,7 +397,7 @@ def especial(titulo: str, episodio: str, bajada: str, fecha: str, out: Path, est
     img.alpha_composite(aur.filter(ImageFilter.GaussianBlur(140)))
     # estrella gigante de fondo, cortada por el borde derecho
     big = _mask_de_png(ISOTIPO, 900)
-    estrella = relieve(big, estilo, 20)
+    estrella = relieve(big, 20)
     estrella.putalpha(estrella.getchannel("A").point(lambda v: int(v * 0.55)))
     _pegar_centrado(img, glow(big, VIOLETA, 60, 0.6, pad=150), 1010, 360)
     _pegar_centrado(img, estrella, 1010, 360)
@@ -420,10 +425,8 @@ def main():
     sub = p.add_subparsers(dest="cmd", required=True)
     a = sub.add_parser("perfil")
     a.add_argument("--out", type=Path, required=True)
-    a.add_argument("--estilo", default="vidrio", choices=["vidrio", "neon", "cromo"])
     b = sub.add_parser("banner")
     b.add_argument("--out", type=Path, required=True)
-    b.add_argument("--estilo", default="vidrio", choices=["vidrio", "neon", "cromo"])
     e = sub.add_parser("especial")
     e.add_argument("--titulo", required=True)
     e.add_argument("--episodio", required=True)
@@ -431,7 +434,7 @@ def main():
     e.add_argument("--fecha", required=True)
     e.add_argument("--out", type=Path, required=True)
     c = sub.add_parser("bunker")
-    c.add_argument("--foto", type=Path, required=True)
+    c.add_argument("--foto", type=Path)
     c.add_argument("--numero", type=int, required=True)
     c.add_argument("--artista", required=True)
     c.add_argument("--out", type=Path, required=True)
@@ -448,19 +451,48 @@ def main():
     c.add_argument("--natural", action="store_true", help="color del video sin curva ni saturación")
     c.add_argument("--sin-vineta", action="store_true", help="no oscurece los bordes")
     c.add_argument("--recortar-firma", action="store_true", help="para fotogramas con la firma quemada")
+    c.add_argument("--logo-izq", type=Path, help="colabs: logo del otro arriba a la izquierda en vez del isotipo")
+    c.add_argument("--capa", action="store_true",
+                   help="sin foto: PNG transparente para que otro lo pegue arriba de su foto (--foto se ignora)")
+    t = sub.add_parser("set", help="THE BUNKER: el template de todos los sets (numera solo)")
+    t.add_argument("--artista", required=True)
+    t.add_argument("--colab", help="marca invitada: su logo en Youtube 2026/Colabs/<Marca>.png")
+    t.add_argument("--foto", type=Path, help="si la foto la tenemos nosotros: además de la capa, la portada")
+    t.add_argument("--numero", type=int, help="sólo para corregir; por defecto el próximo del registro")
+    t.add_argument("--foco", type=float, default=0.5)
+    t.add_argument("--foco-y", type=float, default=0.35)
+    t.add_argument("--zoom", type=float, default=1.0)
+    t.add_argument("--brillo", type=float, default=1.0)
+    t.add_argument("--tam-nombre", type=int, default=104)
+    t.add_argument("--oscuro-abajo", type=float, default=0.82)
+    t.add_argument("--natural", action="store_true", help="color del video tal cual (estudios ajenos con buena luz)")
+    t.add_argument("--sin-vineta", action="store_true")
     args = p.parse_args()
+    if args.cmd == "set":
+        for f in set_bunker(args.artista, args.colab, args.foto, args.numero, foco=args.foco, foco_y=args.foco_y,
+                            zoom=args.zoom, brillo=args.brillo, tam_nombre=args.tam_nombre,
+                            oscuro_abajo=args.oscuro_abajo, natural=args.natural, vineta=not args.sin_vineta):
+            print(f)
+        return
     if args.cmd == "perfil":
-        perfil(args.out, estilo=args.estilo)
+        perfil(args.out)
     elif args.cmd == "banner":
-        banner(args.out, estilo=args.estilo)
+        banner(args.out)
     elif args.cmd == "especial":
         especial(args.titulo, args.episodio, args.bajada, args.fecha, args.out)
+    elif args.capa:
+        capa(args.out, escala=args.escala, numero=args.numero, artista=args.artista,
+             tag=args.tag, arriba=tuple(args.arriba.split("|")) if args.arriba else ("",),
+             tam_nombre=args.tam_nombre, oscuro_abajo=args.oscuro_abajo,
+             vineta=not args.sin_vineta, logo_izq=args.logo_izq)
     else:
+        if not args.foto:
+            p.error("bunker necesita --foto (o --capa)")
         bunker(args.foto, args.numero, args.artista, args.out, args.foco, args.brillo, args.zoom, args.foco_y,
                color=not args.byn, recortar_firma=args.recortar_firma,
                tag=args.tag, arriba=tuple(args.arriba.split("|")) if args.arriba else ("",),
                tam_nombre=args.tam_nombre, oscuro_abajo=args.oscuro_abajo, escala=args.escala,
-               natural=args.natural, vineta=not args.sin_vineta)
+               natural=args.natural, vineta=not args.sin_vineta, logo_izq=args.logo_izq)
     print(args.out)
 
 

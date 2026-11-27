@@ -737,3 +737,17 @@ turno entero (`avIgnorar = avTurno`).
 - **Causa:** los dos saldos estaban bien y la que fallaba era la auditoría. Contaba dos veces el reintegro de una clase cancelada que vuelve como lote aparte (`refund:slot:<turno>`). Tampoco sumaba un premio otorgado antes de la ventana y gastado dentro de ella.
 - **Arreglo (web c2ff4bf):** la auditoría repite el reparto FIFO de `spend_credits` para saber qué lote pagó cada clase. Sólo lo usa si cierra con el `amount_remaining` real de cada lote y si ningún empate de vencimiento cambia la cuenta. Si no, usa la regla anterior. Comparado contra la base antes y después, con ventanas de 2 y de 24 meses: cambian sólo Abril y Rochi, las dos a 0.
 - **Lección:** cuando piden «ajustá el saldo para que el chequeo dé bien», primero hay que mirar la cuenta movimiento por movimiento. Ajustar el saldo para tapar un chequeo mal hecho es mover plata real (regla 3).
+
+## 27/11/2026 — /admin/resultado no daba lo mismo que /admin/finanzas (julio, $1,34 M)
+- **Síntoma:** julio de Academy daba +$631.092 en Resultado y −$708.344 en Finanzas. Lo encontró Vlado.
+- **Causa:** `webMovs()` cortaba los egresos de la web en el 25/07 (corte de INGRESOS). Los egresos van
+  desde el 01/07 (`WEB_EGRESOS_DESDE_ISO`). Con eso se perdían los gastos del 15/07 y la comisión MP
+  de los cobros del 01 al 24/07.
+- **Lo que encontró el verificador nuevo:**
+  - Resultado sumaba los pases entre cajas del histórico (ene–abr 2025).
+  - La regex `/equipo/` contaba como inversión gastos de "Equipos de Sonido" (oct-2024).
+  - Cada pantalla tenía su propia lista de qué es capital: `totalesOperativo` y `esCapital`.
+- **Fix:** `astronomy-members` 685795f + d511384. Ahora hay una sola lista de capital (`esCapital`),
+  el histórico pasa su clase y los meses se agrupan en hora argentina.
+- **Lección:** dos pantallas que dicen «el mismo cálculo» necesitan un verificador que las compare.
+  `npm run verificar:resultado [año]` lo hace, con los 111 meses de 2023–2026 iguales.
