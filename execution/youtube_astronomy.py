@@ -13,6 +13,14 @@ Uso (siempre con el Python del venv):
   .venv/bin/python execution/youtube_astronomy.py bunker  --foto frame.jpg --numero 5 \
       --artista "NOMBRE" --out portada.jpg [--foco 0.5]
 
+THE BUNKER — el template de todos los sets (usar éste, no `bunker` a mano):
+  .venv/bin/python execution/youtube_astronomy.py set --artista "NOMBRE" [--colab "Monkey Music"] [--foto frame.jpg]
+  - El número sale solo del registro `execution/youtube_bunker_sets.json` (si el artista ya está, reusa el suyo).
+  - Deja todo en `Youtube 2026/The Bunker/NN Artista/`: `capa_4K.png` SIEMPRE (transparente, para que el
+    diseñador de la marca la pegue arriba de su foto) y, con --foto, `portada_4K.jpg` + `portada_HD.jpg`.
+  - Colaboración con una marca: dejar su logo en `Youtube 2026/Colabs/<Marca>.png` (fondo transparente) y
+    pasar `--colab "<Marca>"`. Queda «ASTRONOMY × <logo>» arriba a la izquierda; el resto no cambia.
+
 No sube nada a YouTube: genera archivos. Subirlos es un paso aparte, con OK de Facu.
 """
 from __future__ import annotations
@@ -408,6 +416,48 @@ def capa(out: Path, escala: float = 1.0, **kw):
     Image.fromarray(rgba, "RGBA").save(out)
 
 
+YT = MARCA / "Youtube 2026"
+COLABS = YT / "Colabs"
+REGISTRO = Path(__file__).resolve().parent / "youtube_bunker_sets.json"
+
+
+def set_bunker(artista: str, colab: str | None = None, foto: Path | None = None, numero: int | None = None, **kw):
+    """El template de The Bunker: numera solo, guarda en el registro y deja capa (+ portada si hay foto)."""
+    import json
+    from datetime import date
+    reg = json.loads(REGISTRO.read_text())
+    previo = next((x for x in reg["sets"] if x["artista"].casefold() == artista.casefold()), None)
+    if numero is None:
+        numero = previo["numero"] if previo else max(x["numero"] for x in reg["sets"]) + 1
+    otro = next((x for x in reg["sets"] if x["numero"] == numero and x is not previo), None)
+    if otro:
+        raise SystemExit(f"El {numero:02d} ya es de {otro['artista']}. Sacá --numero para que tome el próximo.")
+    logo = None
+    if colab:
+        logo = COLABS / f"{colab}.png"
+        if not logo.exists():
+            hay = ", ".join(sorted(p.stem for p in COLABS.glob("*.png"))) or "ninguno"
+            raise SystemExit(f"No está el logo de «{colab}» en {COLABS}/ (hay: {hay}). Dejalo como «{colab}.png».")
+    carpeta = YT / "The Bunker" / f"{numero:02d} {artista}"
+    carpeta.mkdir(parents=True, exist_ok=True)
+    comunes = dict(numero=numero, artista=artista, logo_izq=logo,
+                   oscuro_abajo=kw.pop("oscuro_abajo"), tam_nombre=kw.pop("tam_nombre"))
+    # la capa va sin viñeta: la foto del otro ya viene trabajada; sólo se oscurece abajo para leer el nombre
+    capa(carpeta / "capa_4K.png", escala=3, vineta=False, **comunes)
+    salidas = [carpeta / "capa_4K.png"]
+    if foto:
+        for esc, nombre in [(3, "portada_4K.jpg"), (1.5, "portada_HD.jpg")]:
+            bunker(foto, out=carpeta / nombre, escala=esc, **comunes, **kw)
+            salidas.append(carpeta / nombre)
+    fila = previo or {"numero": numero, "artista": artista}
+    fila.update(numero=numero, colab=colab, portada=str(carpeta.relative_to(MARCA)), actualizado=date.today().isoformat())
+    if not previo:
+        reg["sets"].append(fila)
+    reg["sets"].sort(key=lambda x: x["numero"])
+    REGISTRO.write_text(json.dumps(reg, ensure_ascii=False, indent=2) + "\n")
+    return salidas
+
+
 def especial(titulo: str, episodio: str, bajada: str, fecha: str, out: Path, estilo: str = "vidrio"):
     """Portada sin foto, tipográfica, para ciclos que no son The Bunker (ej. Free for All)."""
     W, H = 1280, 720
@@ -479,7 +529,26 @@ def main():
     c.add_argument("--logo-izq", type=Path, help="colabs: logo del otro arriba a la izquierda en vez del isotipo")
     c.add_argument("--capa", action="store_true",
                    help="sin foto: PNG transparente para que otro lo pegue arriba de su foto (--foto se ignora)")
+    t = sub.add_parser("set", help="THE BUNKER: el template de todos los sets (numera solo)")
+    t.add_argument("--artista", required=True)
+    t.add_argument("--colab", help="marca invitada: su logo en Youtube 2026/Colabs/<Marca>.png")
+    t.add_argument("--foto", type=Path, help="si la foto la tenemos nosotros: además de la capa, la portada")
+    t.add_argument("--numero", type=int, help="sólo para corregir; por defecto el próximo del registro")
+    t.add_argument("--foco", type=float, default=0.5)
+    t.add_argument("--foco-y", type=float, default=0.35)
+    t.add_argument("--zoom", type=float, default=1.0)
+    t.add_argument("--brillo", type=float, default=1.0)
+    t.add_argument("--tam-nombre", type=int, default=104)
+    t.add_argument("--oscuro-abajo", type=float, default=0.82)
+    t.add_argument("--natural", action="store_true", help="color del video tal cual (estudios ajenos con buena luz)")
+    t.add_argument("--sin-vineta", action="store_true")
     args = p.parse_args()
+    if args.cmd == "set":
+        for f in set_bunker(args.artista, args.colab, args.foto, args.numero, foco=args.foco, foco_y=args.foco_y,
+                            zoom=args.zoom, brillo=args.brillo, tam_nombre=args.tam_nombre,
+                            oscuro_abajo=args.oscuro_abajo, natural=args.natural, vineta=not args.sin_vineta):
+            print(f)
+        return
     if args.cmd == "perfil":
         perfil(args.out, estilo=args.estilo)
     elif args.cmd == "banner":

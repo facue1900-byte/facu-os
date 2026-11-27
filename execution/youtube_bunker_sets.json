@@ -1,0 +1,36 @@
+{
+  "_que_es": "Registro único de The Bunker (portadas de YouTube). Lo escribe `youtube_astronomy.py set`; no editar el número a mano.",
+  "sets": [
+    {
+      "numero": 1,
+      "artista": "Gueva",
+      "colab": null,
+      "portada": "Youtube 2026/final/bunker_01_gueva.jpg"
+    },
+    {
+      "numero": 2,
+      "artista": "Natcheo",
+      "colab": null,
+      "portada": "Youtube 2026/final/bunker_02_natcheo.jpg"
+    },
+    {
+      "numero": 3,
+      "artista": "DØME",
+      "colab": null,
+      "portada": "Youtube 2026/final/bunker_03_dome.jpg"
+    },
+    {
+      "numero": 4,
+      "artista": "Moncho Amaral",
+      "colab": null,
+      "portada": "Youtube 2026/final/bunker_04_moncho.jpg"
+    },
+    {
+      "numero": 5,
+      "artista": "Maxi Aguirre",
+      "colab": "Monkey Music",
+      "portada": "Youtube 2026/The Bunker/05 Maxi Aguirre",
+      "actualizado": "2026-11-27"
+    }
+  ]
+}
