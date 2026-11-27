@@ -1201,3 +1201,11 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-27 14:16 UTC — nota
 [v2] Sin operar: ya hay 1 posicion abierta (NEAR, +0,98%, ~40h) -> max 1 posicion, no se abre nada nuevo (ningun otro par cumplia igual: vol4h < 1.3 salvo TRX 2.08 con var_24h 0.53 y PORTAL 15.77 con vs_max -11.26). Salidas: ni 48h ni tendencia rota (NEAR var_24h +1.08, var_4h -1.91 > -2). Filtro BTC abierto (var_24h 1.16, var_4h -0.37). Sin disparos.
 
+## 2026-11-27 16:16 UTC — Venta NEARUSDT
+183.46 USD a 3.004 (-1.44% contra la compra).
+
+[v2] tendencia rota: NEAR var_24h -2.15 <0 y var_4h -3.78 < -2 · invalida: n/a (salida)
+
+## 2026-11-27 16:16 UTC — nota
+[v2] Vendida NEAR entera por tendencia rota (var_24h -2.15, var_4h -3.78). Filtro BTC cerrado (var_4h -2.63 < -1.5): no se abre nada nuevo. Sin disparos de vigilancia.
+
