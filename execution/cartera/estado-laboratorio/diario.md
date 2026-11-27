@@ -1189,3 +1189,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-27 06:16 UTC — nota
 [v2] Sin operar: ya hay 1 posicion abierta (NEAR, +2,7%, ~32h) -> max 1 posicion, no se abre nada nuevo. Cumplia entrada HYPE (var_24h 8.49, var_4h 2.08, var_1h 0.39, vs_max -0.76, vol4h 1.59) pero no se abre por tope. Salidas: ni 48h ni tendencia rota (NEAR var_24h +2.72, var_4h +0.51). Filtro BTC abierto (var_24h 2.26, var_4h 0.99). Sin disparos.
 
+## 2026-11-27 08:15 UTC — nota
+[v2] Sin operar: ya hay 1 posicion abierta (NEAR, +1,84%, ~34h) -> max 1 posicion, no se abre nada nuevo (ningun otro par cumplia igual: HYPE var_24h 6.83 pero var_4h -0.24 y vol4h 0.86<1.3; resto con vol4h < 1.3). Salidas: ni 48h ni tendencia rota (NEAR var_24h +0.78, var_4h -0.03). Filtro BTC abierto (var_24h 1.68, var_4h 0.83). Sin disparos.
+
