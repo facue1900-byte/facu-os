@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 574.6027530991796,
-  "posiciones": {
-    "HYPEUSDT": {
-      "nivel": "trading",
-      "cantidad": 2.1556720098643654,
-      "entrada": 64.88,
-      "maximo": 66.8,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795789860000
-    }
-  },
-  "comisiones_usd": 58.90985399999993,
+  "usdt": 711.2648998994263,
+  "posiciones": {},
+  "comisiones_usd": 59.046652999999935,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5154,6 +5131,18 @@
       "usd": 140.0,
       "comision": 0.14,
       "motivo": "Momentum 24 h: HYPE +5,31% en 24 h, 4 h +4,06% (sigue subiendo), 1 h +3,07% (no estirada, < +4%), volumen 4 h 1,28x (el más alto del top junto a UNI), a 0,43% del máximo de 48 h. BTC acompaña (4 h +1,78%), sin bloqueo. Invalida: 4 h vuelve a rojo con 24 h bajo +3%, o stop 5%; salida por tiempo 28/11 02:32."
+    },
+    {
+      "ms": 1795791600000,
+      "fecha": "2026-11-27 15:00 UTC",
+      "lado": "sell",
+      "par": "HYPEUSDT",
+      "cantidad": 2.1556720098643654,
+      "precio": 63.459999999999994,
+      "usd": 136.7989,
+      "comision": 0.136799,
+      "motivo": "Stop automático en 63.46 (entrada 64.88, máximo 66.8).",
+      "resultado_pct": -2.19
     }
   ]
 }
