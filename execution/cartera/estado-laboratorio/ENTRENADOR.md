@@ -318,3 +318,16 @@ Patrones (≥3 casos): (1)–(6) igual que ayer, sin casos nuevos cerrados.
 Historia: HISTORIA.md sigue siendo la del 28/10; nada le gana a todo en vivo y en historia, no se copia nada.
 Por qué no cambio: ninguna vuelta cerrada nueva; la única novedad es una posición abierta que todavía no tiene resultado. El candidato a mirar (reentrada repetida a NEAR) se juzga cuando esta cierre.
 +20%/mes: no está al alcance. El lab va −6,76% en 29,5 días; ninguna variante de sus reglas tiene mediana positiva en la historia y ninguna de las 33 del torneo le gana a USDT en vivo. Se dice tal cual.
+
+## 2026-11-27 — v2 igual
+Diagnóstico (operaciones cerradas, en Python sobre `libro.json`, neto de comisiones):
+- Laboratorio: 13 vueltas desde el inicio (ninguna nueva cerrada desde el 23/11), 15% ganadoras, +10,80 / −8,41, neto −70,92, 6 con stop automático, 18,9 h medias, comisiones 5,22 (incluye la compra abierta). Últimos 7 d: 1 vuelta (PEPE 23/11, stop), neto −10,90. Total 935,30 (−6,47%) al 27/11 10:16. **Posición abierta:** NEAR desde 25/11 22:17 a 3,048 (~+2,0%, máximo 3,166, ~36 h); a las 48 h (27/11 22:17) sale por tiempo si no toca +10% ni el stop. HODL BTC 762,63: el lab le gana por ~23 pp.
+- Por versión: v1 8 vueltas, 1 ganadora, neto −47,59; **v2 5 vueltas**, 1 ganadora, +10,83 / −8,54, neto −23,33, 22,5 h medias.
+- Últimas 24 h: el filtro de BTC estuvo abierto; HYPE cumplió entrada a las 06:16 pero no se abrió por el tope de 1 posición (regla de v2 funcionando como está escrita).
+- Agresiva: 209 vueltas, 21% gan, +3,50 / −2,84, neto −314,91, 199 con stop/trail, 8,6 h medias, comisiones 58,77; 7 d: 18 vueltas, 2 ganadoras (11%), neto −46,55. 716,96 (−28,3%), con HYPE abierta.
+- 3 niveles: 51 vueltas, 16% gan, +4,29 / −5,61, neto −206,67, 156 h medias; 7 d: 3 vueltas (todas con stop), 1 ganadora, neto −3,74. 796,49 (−20,35%), con BTC, ETH y BNB abiertas.
+- DCA 932,83 (−6,72%, RESUMEN del 23/11, sin actualizar). Torneo en vivo (27/11 08 h): 0 de 33 le ganan a USDT; arriba P0, L2, L5 (0,0%), L4 −0,1%, L7 −0,2%, L6 −0,3%; L1N −5,4%, L1 (v1 en 4 h) −5,9%. Mercado: BTC abajo de la media 200, bajando 30 d.
+Patrones (≥3 casos): (1)–(6) igual que ayer, sin casos nuevos cerrados.
+Historia: HISTORIA.md sigue siendo la del 28/10; nada le gana a todo en vivo y en historia, no se copia nada.
+Por qué no cambio: ninguna vuelta cerrada nueva; NEAR (4.ª entrada v2 al mismo par) sigue abierta y es justo el caso que decide el patrón 5. Se juzga cuando cierre.
++20%/mes: no está al alcance. El lab va −6,47% en 30,5 días; ninguna variante de sus reglas tiene mediana positiva en la historia y ninguna de las 33 del torneo le gana a USDT en vivo. Se dice tal cual.
