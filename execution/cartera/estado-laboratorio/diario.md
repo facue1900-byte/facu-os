@@ -1198,3 +1198,6 @@ Capital ficticio: 1,000.00 USDT.
 ## 2026-11-27 12:16 UTC — nota
 [v2] Sin operar: ya hay 1 posicion abierta (NEAR, +2,5%, ~38h) -> max 1 posicion, no se abre nada nuevo. Cumplia entrada DOGE (var_24h 3.68, var_4h 1.12, var_1h 0.0, vs_max -0.1, vol4h 1.4) pero no se abre por tope. Salidas: ni 48h ni tendencia rota (NEAR var_24h +1.39, var_4h +0.48). Filtro BTC abierto (var_24h 1.4, var_4h -0.08). Sin disparos.
 
+## 2026-11-27 14:16 UTC — nota
+[v2] Sin operar: ya hay 1 posicion abierta (NEAR, +0,98%, ~40h) -> max 1 posicion, no se abre nada nuevo (ningun otro par cumplia igual: vol4h < 1.3 salvo TRX 2.08 con var_24h 0.53 y PORTAL 15.77 con vs_max -11.26). Salidas: ni 48h ni tendencia rota (NEAR var_24h +1.08, var_4h -1.91 > -2). Filtro BTC abierto (var_24h 1.16, var_4h -0.37). Sin disparos.
+
