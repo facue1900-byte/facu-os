@@ -4,9 +4,32 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 711.2648998994263,
-  "posiciones": {},
-  "comisiones_usd": 59.046652999999935,
+  "usdt": 561.2648998994263,
+  "posiciones": {
+    "ZECUSDT": {
+      "nivel": "trading",
+      "cantidad": 0.1991150442477876,
+      "entrada": 752.58,
+      "maximo": 752.58,
+      "reglas": {
+        "stop": 5.0,
+        "trail": 5.0,
+        "tp": [
+          [
+            8.0,
+            0.5
+          ],
+          [
+            15.0,
+            1.0
+          ]
+        ]
+      },
+      "tomas_hechas": [],
+      "vigilado_hasta": 1795829520000
+    }
+  },
+  "comisiones_usd": 59.196652999999934,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5143,6 +5166,18 @@
       "comision": 0.136799,
       "motivo": "Stop automático en 63.46 (entrada 64.88, máximo 66.8).",
       "resultado_pct": -2.19
+    },
+    {
+      "ms": 1795829519308,
+      "fecha": "2026-11-28 01:31 UTC",
+      "lado": "buy",
+      "par": "ZECUSDT",
+      "nivel": "trading",
+      "cantidad": 0.1991150442477876,
+      "precio": 752.58,
+      "usd": 150.0,
+      "comision": 0.15,
+      "motivo": "Momentum 24 h: ZEC +6,61% en 24 h, sigue subiendo en 4 h (+2,19%) y no está estirada (1 h +1,91% < 4%); BTC 4 h +0,65% sin bloqueo. Volumen flojo (0,44x, madrugada de sábado): tamaño moderado. Invalida: stop 5% o 4 h roja con 24 h bajo +3%; salida por tiempo 29/11 01:32 si no llega a +8%."
     }
   ]
 }
