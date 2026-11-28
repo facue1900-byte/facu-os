@@ -4,32 +4,9 @@
     "capital": 1000.0,
     "btc": 83221.33
   },
-  "usdt": 561.2648998994263,
-  "posiciones": {
-    "ZECUSDT": {
-      "nivel": "trading",
-      "cantidad": 0.1991150442477876,
-      "entrada": 752.58,
-      "maximo": 762.5,
-      "reglas": {
-        "stop": 5.0,
-        "trail": 5.0,
-        "tp": [
-          [
-            8.0,
-            0.5
-          ],
-          [
-            15.0,
-            1.0
-          ]
-        ]
-      },
-      "tomas_hechas": [],
-      "vigilado_hasta": 1795840260000
-    }
-  },
-  "comisiones_usd": 59.196652999999934,
+  "usdt": 708.8684760056209,
+  "posiciones": {},
+  "comisiones_usd": 59.34440399999993,
   "operaciones": [
     {
       "ms": 1791416632773,
@@ -5178,6 +5155,18 @@
       "usd": 150.0,
       "comision": 0.15,
       "motivo": "Momentum 24 h: ZEC +6,61% en 24 h, sigue subiendo en 4 h (+2,19%) y no está estirada (1 h +1,91% < 4%); BTC 4 h +0,65% sin bloqueo. Volumen flojo (0,44x, madrugada de sábado): tamaño moderado. Invalida: stop 5% o 4 h roja con 24 h bajo +3%; salida por tiempo 29/11 01:32 si no llega a +8%."
+    },
+    {
+      "ms": 1795843921200,
+      "fecha": "2026-11-28 05:32 UTC",
+      "lado": "sell",
+      "par": "ZECUSDT",
+      "cantidad": 0.1991150442477876,
+      "precio": 742.04,
+      "usd": 147.7513,
+      "comision": 0.147751,
+      "motivo": "Invalidación de la tesis de momentum: 4 h roja (-2,15%) con 24 h bajo +3% (-2,72%); el momentum se terminó y la salida estaba escrita.",
+      "resultado_pct": -1.4
     }
   ]
 }
