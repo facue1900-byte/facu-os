@@ -7,7 +7,7 @@
 | **Esta carpeta** | **792.60** |
 | quedarse en usdt | 1,000.00 |
 | hodl btc | 715.78 |
-| plan inicial sin tocar | 660.36 |
+| plan inicial sin tocar | 660.33 |
 
 | Par | Nivel | USD | vs compra | Stop vigente |
 |---|---|---:|---:|---:|
