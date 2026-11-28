@@ -331,3 +331,25 @@ Patrones (≥3 casos): (1)–(6) igual que ayer, sin casos nuevos cerrados.
 Historia: HISTORIA.md sigue siendo la del 28/10; nada le gana a todo en vivo y en historia, no se copia nada.
 Por qué no cambio: ninguna vuelta cerrada nueva; NEAR (4.ª entrada v2 al mismo par) sigue abierta y es justo el caso que decide el patrón 5. Se juzga cuando cierre.
 +20%/mes: no está al alcance. El lab va −6,47% en 30,5 días; ninguna variante de sus reglas tiene mediana positiva en la historia y ninguna de las 33 del torneo le gana a USDT en vivo. Se dice tal cual.
+
+## 2026-11-28 — v3
+Diagnóstico (operaciones cerradas, en Python sobre `libro.json`, neto de comisiones):
+- Laboratorio: 14 vueltas desde el inicio, 14% ganadoras, +10,80 / −7,98, neto −74,16, 6 con stop automático, 20,5 h medias, comisiones 5,40. Últimos 7 d: 2 vueltas (PEPE 23/11 stop, NEAR 27/11 tendencia rota), 0% gan, neto −14,14. Total 928,58 (−7,14%) al 28/11 10:16, todo en USDT. HODL BTC 735,37: el lab le gana por ~19 pp.
+- **Vuelta nueva:** NEAR 25/11 22:17 → 27/11 16:16 (42 h), salida "tendencia rota", −3,24. Era la 4.ª entrada v2 a NEAR y la 3.ª a menos de 7 días de una salida perdedora del mismo par.
+- Por versión: v1 8 vueltas, 1 ganadora, neto −47,59; **v2 6 vueltas** en 22 días, 1 ganadora (PEPE 08/11), neto −26,57. NEAR en v2: 4 de 4 perdedoras (−26,50).
+- Agresiva: 211 vueltas, 21% gan, +3,50 / −2,84, neto −320,93, comisiones 59,34; 7 d: 17 vueltas, 12% gan, neto −34,56. 708,87 (−29,11%), todo en USDT.
+- 3 niveles: 51 vueltas, 16% gan, +4,29 / −5,61, neto −206,67, 156 h medias; 7 d: 3 vueltas (todas con stop), 1 ganadora, neto −3,74. 792,35 (−20,76%), con BTC, ETH y BNB abiertas.
+- DCA 932,83 (−6,72%, RESUMEN del 23/11, sin actualizar). Torneo en vivo (28/11 08 h): 0 de 33 le ganan a USDT; arriba P0, L2, L5 (0,0%), L4 −0,1%, L7 −0,2%, L6 −0,3%; L1N −5,4%, L1 −5,8%. Mercado: BTC abajo de la media 200, bajando 30 d.
+Patrones (≥3 casos): (1) agresiva muere por vueltas cortas y comisiones (12% gan en 7 d); (2) 3 niveles pierde aguantando con stops anchos; (3) "tendencia rota"/stop cortan pérdidas chicas en el lab (NEAR −1,7%, un caso más); (4) entradas con otra posición abierta 5/5 perdedoras, atacado por v2; (5) **ya con ≥3 casos, reformulado: reentrada al mismo par a < 7 d de cerrarlo en pérdida → 4 de 4 perdedoras** (UNI 04/11 −5,30; NEAR 17/11 12 h −7,06; NEAR 17/11 22 h −6,48; NEAR 25/11 −3,24; total −22,08, el 30% de la pérdida del lab). Ojo: 3 de los 4 son NEAR, así que están correlacionados; (6) entradas con BTC var_4h ≥ 1,0, ya probado contra la historia el 24/11 y descartado.
+Prueba del candidato con `torneo.py` (L1 con 1 posición = v2, velas de 4 h 2021 → 28/11/2026, ventanas de 30 d cada 15; mediana / peor caída):
+| Variante | Todas (142) | 2025-26 (44) | Mercado de hoy (36) | Vivo 29/10 |
+|---|---|---|---|---|
+| v2 | −0,59% / −11,9% | −0,34% / −8,5% | −0,72% / −8,8% | −6,40% |
+| v2 + espera 3 d tras pérdida | −0,36% / −11,4% | −0,47% / −9,1% | −0,59% / −6,1% | −4,53% |
+| **v2 + espera 7 d tras pérdida** | **−0,33% / −9,2%** | −0,47% / −9,1% | **−0,59% / −6,9%** | −5,25% |
+| v2 + espera 14 d tras pérdida | −0,72% / −8,8% | −0,65% / −8,8% | −0,52% / −7,2% | −3,36% |
+| v2 + espera 7 d tras cualquier salida | −0,54% / −9,2% | −0,62% / −8,1% | −1,04% / −7,2% | −5,25% |
+Lo de 7 d tras pérdida mejora mediana y peor caída en el total y en el mercado de hoy; en 2025-2026 empeora la mediana (−0,13 pp) y la caída (−0,6 pp). No pierde en los dos bloques que pide el prompt, así que puede entrar. La espera tras *cualquier* salida es peor en todo: lo que ayuda es no volver a lo que acaba de fallar, no operar menos en general.
+Cambio: v3 = v2 + espera de 168 h para volver a entrar a un par cuya última vuelta cerró en pérdida. Una sola cosa. Con esto en vivo, las 4 reentradas perdedoras no se habrían hecho (−22,08 menos de pérdida).
+Cómo se va a juzgar: en 14 días (12/12) o a las 5 vueltas v3, lo que llegue último: (a) cero reentradas perdedoras evitadas que luego hayan subido +10% en las 168 h (lo mido con velas de 1 h cada vez que la regla bloquee un par); (b) neto por vuelta v3 mejor que el de v2 (−4,43); (c) peor caída de la carpeta en la ventana v3 no peor que −5%. Si los bloqueos dejan afuera ganadoras en 2 de 3 casos o más, se vuelve a v2.
++20%/mes: no está al alcance. El lab va −7,14% en 31,5 días; ninguna variante probada hoy tiene mediana positiva en ningún bloque (la mejor, −0,33% en 30 d), y ninguna de las 33 del torneo le gana a USDT en vivo. v3 apunta a perder menos, no a ganar 20%. Se dice tal cual.
